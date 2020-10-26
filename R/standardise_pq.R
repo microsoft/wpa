@@ -1,0 +1,63 @@
+#' @title Standardise variable names to a Standard Person Query
+#'
+#' @description
+#' This function standardises the variable names to a Standard Person
+#' Query, where the standard use case is to pass a Collaboration Assessment
+#' Query to the function.
+#'
+#' @details
+#' The following standardisation steps are taken:
+#' - `Collaboration_hrs` -> `Collaboration_hours`
+#' - `Instant_message_hours` -> `Instant_Message_hours`
+#'
+#' @param data A Collaboration Assessment query to pass through as a data frame.
+#'
+#' @export
+standardise_pq <- function(data){
+
+  if(identify_query(data) != "Collaboration Assessment Query"){
+    stop("Currently only Collaboration Assessment Query to Standard Person Query
+         conversions are supported.")
+  }
+
+  ## Message what the function is doing
+  message("Standardising variable names with a Person Query...")
+
+  ## Collaboration_hours
+  if(!("Collaboration_hours" %in% names(data)) &
+     ("Collaboration_hrs" %in% names(data))){
+
+    data <- data %>% rename(Collaboration_hours = "Collaboration_hrs")
+    message("`Collaboration_hrs` renamed to `Collaboration_hours`")
+
+  } else if(!("Collaboration_hrs" %in% names(data)) &
+            ("Collaboration_hours" %in% names(data))){
+
+            # Do nothing
+
+  } else {
+
+    warning("No collaboration hour metric exists in the data.")
+
+  }
+
+## Instant_Message_hours
+  if(!("Instant_message_hours" %in% names(data)) &
+   ("Instant_Message_hours" %in% names(data))){
+
+  # Do nothing
+
+  } else if(!("Instant_Message_hours" %in% names(data)) &
+          ("Instant_message_hours" %in% names(data))){
+
+    data <- data %>% rename(Instant_Message_hours = "Instant_message_hours")
+    message("`Instant_message_hours` renamed to `Instant_Message_hours`")
+
+  } else {
+
+    warning("No instant message hour metric exists in the data.")
+
+  }
+
+  return(data)
+}

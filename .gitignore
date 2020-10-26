@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.Rbuildignore
+_data/
+_development/
+.RData
+doc
+Meta
+.RDataTmp
+SQ-overview.html
+wpa export 20200427_131327.png
+*.html

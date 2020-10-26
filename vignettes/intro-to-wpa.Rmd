@@ -1,0 +1,177 @@
+---
+title: "Introduction to {wpa}"
+author: "Microsoft WpA"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{intro-to-wpa}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=8,
+  fig.height=8
+)
+```
+
+## Background
+
+This document walks through the {wpa} package, and provides some examples on how to use some of the functions. The {wpa} package is still under early active development, and new functions and features are continuously being added. 
+
+### Setting up
+
+To start off using the {wpa}, you'll have to load it by running `library(wpa)`. For the purpose of our examples, let's also load {tidyverse}:
+
+```{r message=FALSE, warning=FALSE}
+library(wpa)
+library(dplyr)
+library(tibble)
+library(tidyr)
+```
+
+The package ships with a standard Person query dataset `sq_data`:
+
+```{r message=FALSE, warning=FALSE}
+data("sq_data") # Standard Query data
+
+# Check what the first ten columns look like
+sq_data %>%
+  .[,1:10] %>%
+  glimpse()
+```
+
+---
+
+## Example Analysis
+
+### Collaboration Summary
+
+The `collaboration_summary()` function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify:
+
+```{r}
+sq_data %>% collaboration_summary(hrvar = "LevelDesignation")
+```
+
+By changing the `hrvar()` argument, you can change the data being shown easily:
+
+```{r}
+sq_data %>% collaboration_summary(hrvar = "Organization")
+```
+
+The `collaboration_summary()` function also comes with an option to return summary tables, rather than plots. Just specify "table" in the `return` argument:
+
+```{r}
+sq_data %>% collaboration_summary(hrvar = "LevelDesignation", return = "table")
+```
+
+---
+
+### Summary of Key Metrics
+
+The `keymetrics_scan()` function allows you to produce summary metrics from the Standard Query data. Similar to most of the functions in this package, you can specify what output to return with the `return` argument. In addition, you have to specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument.
+
+There are two valid return values for `keymetrics_scan()`:
+
+- Heat map (`return = "plot"`)
+- Summary table (`return = "table"`)
+
+And here are what the outputs look like. 
+
+Heatmap:
+
+```{r}
+sq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
+```
+
+Summary table:
+
+```{r}
+sq_data %>% keymetrics_scan(hrvar = "Organization", return = "table")
+```
+
+---
+
+## Meeting Habits
+
+The `meeting_summary()` provides a very similar output to the previous functions, but focusses on meeting habit data. Again, the input data is the Standard Query, and you will need to specify a HR attribute/variable to use as a grouping variable with the `hrvar` argument.
+
+There are two valid return values for `meeting_summary()`:
+
+- Heat map (`return = "plot"`)
+- Summary table (`return = "table"`)
+
+> The idea is that functions in this package will share a consistent design, and the required arguments and outputs will be what users 'expect' as they explore the package. The benefit of this is to improve ease of use and adoption.
+
+
+And here are what the outputs look like, for `meeting_summary()`. 
+
+Heatmap:
+
+```{r}
+sq_data %>% meeting_summary(hrvar = "Organization", return = "plot")
+```
+
+Summary table:
+
+```{r}
+sq_data %>% meeting_summary(hrvar = "Organization", return = "table")
+```
+
+---
+
+### Manager Relationship 2x2 Matrix
+
+The `mgrrel_matrix()` function from {wpa} enables you to plot a 2 by 2 matrix straight from the Standard Query data, which is returned as a ggplot object:
+
+```{r}
+sq_data %>% mgrrel_matrix(hrvar = "LevelDesignation")
+```
+
+By changing the `return` argument, you can also return a **summary table**:
+
+```{r}
+sq_data %>% mgrrel_matrix(hrvar = "LevelDesignation", return = "table")
+```
+
+Alternatively, you can return the input data that is used to create the plot:
+```{r}
+sq_data %>% mgrrel_matrix(hrvar = "LevelDesignation", return = "chartdata")
+```
+
+### Distribution of Time spent with Manager
+
+The `mgrcoatt_dist()` function generates the distribution of meeting co-attendence rate of staff with managers.
+
+```{r}
+sq_data %>% mgrcoatt_dist(hrvar = "LevelDesignation")
+```
+
+A table can be generated:
+
+```{r}
+sq_data %>% mgrcoatt_dist(hrvar = "LevelDesignation", return = "table")
+```
+
+
+---
+
+### Getting a quick overview of Standard Query data
+
+The `keymetrics_report()` function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, results="hide"}
+# sq_data %>% keymetrics_report()
+```
+
+Running the function will open up a HTML report in your browser, summarising the key metrics and plots of the Standard Query. You can manually save this report, or only have it open as an ad-hoc reference document.
+
+
+---
+
+## Feedback
+
+Hope you found this useful! If you have any suggestions or feedback, please feel free to send them to mac@microsoft.com.

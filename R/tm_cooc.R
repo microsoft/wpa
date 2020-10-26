@@ -1,0 +1,85 @@
+#' @title Word co-occurrence analysis
+#'
+#' @description
+#' This function generates a word co-occurence network plot,
+#' with options to return a table.
+#' This is a sub-function that feeds into `meeting_tm_report()`.
+#'
+#' @details
+#' This function uses `tm_clean()` as the underlying data wrangling function.
+#' There is an option to remove stopwords by passing a data frame into the `stopwords`
+#' argument.
+#'
+#' @param data A Meeting Query dataset in the form of a data frame.
+#' @param stopwords A single-column data frame labelled 'word' containing custom stopwords to remove.
+#' @param seed A numeric vector to set seed for random generation.
+#' @param return Character vector specifying what to return, defaults to "plot".
+#' Valid inputs are "plot" and "table".
+#' @param lmult A multiplier to adjust the line width in the output plot. Defaults to 0.05.
+#'
+#' @import dplyr
+#' @import ggplot2
+#' @import ggraph
+#' @importFrom igraph graph_from_data_frame
+#' @importFrom widyr pairwise_count
+#' @importFrom tidytext unnest_tokens
+#'
+#' @family Text-mining
+#'
+#' @examples
+#' \dontrun{
+#' tm_cooc(mt_data,lmult = 0.01)
+#' }
+#' @export
+tm_cooc <- function(data,
+                    stopwords = NULL,
+                    seed = 100,
+                    return = "plot",
+                    lmult = 0.05){
+
+  # Clean data
+  text_df <- suppressMessages(tm_clean(data = data,
+                                       token = "words",
+                                       stopwords = stopwords))
+
+  # Calculate frequency of pairs
+  title_word_pairs <-
+    text_df %>%
+    widyr::pairwise_count(word,
+                          line,
+                          sort = TRUE,
+                          upper = FALSE)
+
+  # Graph networks
+  set.seed(seed)
+
+  p <-
+    title_word_pairs %>%
+    dplyr::top_n(500) %>%
+    igraph::graph_from_data_frame() %>%
+    ggraph::ggraph(layout = "fr") +
+    ggraph::geom_edge_link(aes(edge_alpha = 0.5, edge_width = n * lmult), edge_colour = "cyan4") +
+    ggraph::geom_node_point(size = 2) +
+    ggraph::geom_node_text(aes(label = name),
+                           repel = TRUE,
+                           point.padding = unit(0.2, "lines")) +
+    ggplot2::theme(panel.background = ggplot2::element_rect(fill = 'white'), legend.position = "none")
+
+  if(return == "table"){
+
+    title_word_pairs %>%
+      dplyr::top_n(500) %>%
+      as_tibble() %>%
+      return()
+
+  } else if(return == "plot"){
+
+    return(p)
+
+  } else {
+
+    stop("Please enter a valid input for `return`.")
+
+  }
+
+}
