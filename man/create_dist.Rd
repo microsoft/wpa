@@ -47,6 +47,7 @@ create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ret
 }
 \seealso{
 Other Collaboration: 
+\code{\link{afterhours_fizz}()},
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_dist}()},
 \code{\link{collaboration_fizz}()},

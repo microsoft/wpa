@@ -59,6 +59,7 @@ collaboration_dist(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
 Other Collaboration: 
+\code{\link{afterhours_fizz}()},
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_fizz}()},
 \code{\link{collaboration_line}()},
