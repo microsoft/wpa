@@ -30,7 +30,7 @@ collaboration_distribution(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
@@ -59,7 +59,6 @@ collaboration_dist(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
 Other Collaboration: 
-\code{\link{afterhours_fizz}()},
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_fizz}()},
 \code{\link{collaboration_line}()},

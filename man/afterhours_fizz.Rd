@@ -7,7 +7,7 @@
 afterhours_fizz(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
@@ -23,20 +23,17 @@ Additional options available to return a table with distribution elements.
 }
 \details{
 Uses the metric \code{After_hours_collaboration_hours}.
+See \code{create_fizz()} for applying the same analysis to a different metric.
 }
 \examples{
 afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
-Other Collaboration: 
-\code{\link{collaboration_area}()},
-\code{\link{collaboration_dist}()},
-\code{\link{collaboration_fizz}()},
-\code{\link{collaboration_line}()},
-\code{\link{collaboration_rank}()},
-\code{\link{collaboration_sum}()},
-\code{\link{collaboration_trend}()},
-\code{\link{create_dist}()},
-\code{\link{meeting_trend}()}
+Other After-Hours: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()}
 }
-\concept{Collaboration}
+\concept{After-Hours}

@@ -10,7 +10,7 @@
 #' This is a general purpose function that powers all the functions
 #' in the package that produce faceted line plots.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"

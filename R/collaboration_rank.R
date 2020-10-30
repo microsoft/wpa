@@ -6,27 +6,14 @@
 #'
 #' @details
 #' Uses the metric `Collaboration_hours`.
+#' See `create_rank()` for applying the same analysis to a different metric.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
-#' @param hrvar A list of HR Variables to consider in the scan.
-#' Defaults to all HR attributes identified.
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size.
-#' Defaults to 5.
-#' @param return A character vector specifying what to return.
-#' Valid values include "html" (default, returning an interactive DataTable)
-#' and "df" (data frame)
-#'
-#' @import dplyr
-#' @import ggplot2
-#' @import reshape2
-#' @import scales
-#' @importFrom stats reorder
+#' @inheritParams create_rank
 #'
 #' @family Collaboration
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
+#' When 'table' is passed in `return`, a summary table is returned as a data frame.
 #'
 #' @export
 
@@ -35,16 +22,10 @@ collaboration_rank <- function(data,
                                mingroup = 5,
                                return = "table"){
 
-  output <-
-    data %>% create_rank(metric="Collaboration_hours",   hrvar = hrvar,
-                               mingroup = mingroup,
-                               return = "table")
+  data %>%
+    create_rank(metric="Collaboration_hours",
+                hrvar = hrvar,
+                mingroup = mingroup,
+                return = return)
 
-  if(return == "html"){
-    return(create_dt(output))
-  } else if(return == "table"){
-    return(output)
-  } else {
-    stop("Invalid `return` argument.")
-  }
 }

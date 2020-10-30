@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_rank.R
 \name{create_rank}
 \alias{create_rank}
-\title{Create Ranking}
+\title{Rank all groups across HR attributes on a selected Workplace Analytics metric}
 \usage{
 create_rank(
   data,
@@ -13,7 +13,7 @@ create_rank(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
@@ -25,15 +25,16 @@ Defaults to all HR attributes identified.}
 Defaults to 5.}
 
 \item{return}{A character vector specifying what to return.
-Valid values include "table" (default) and "df" (data frame)}
+Valid values include "table" (default). Features are being considered for alternative return options but are currently
+unavailable.}
 }
 \value{
 Returns a ggplot object by default, where 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{
-This function scans a standard query output for groups with high levels of a given Workplace Analytics Metric.
-Returns a table with a all of groups (across multiple HR attributes) ranked by the specified metric.
+This function scans a standard Person query output for groups with high levels of a given Workplace Analytics Metric.
+Returns a table with all groups (across multiple HR attributes) ranked by the specified metric.
 }
 \seealso{
 Other General: 

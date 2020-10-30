@@ -45,7 +45,6 @@ and \code{Instant_Message_hours}.
 }
 \seealso{
 Other Collaboration: 
-\code{\link{afterhours_fizz}()},
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_dist}()},
 \code{\link{collaboration_fizz}()},

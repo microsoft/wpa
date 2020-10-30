@@ -13,7 +13,7 @@ create_fizz(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}

@@ -1,4 +1,4 @@
-#' @title Scatter plot (General Purpose)
+#' @title Create a Scatter plot with two selected Workplace Analytics metrics (General Purpose)
 #'
 #' @description
 #' Returns a scatter plot of two selected metrics, using colour to map
@@ -10,7 +10,7 @@
 #' This is a general purpose function that powers all the functions
 #' in the package that produce scatter plots.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric_x Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param metric_y Character string containing the name of the metric,
@@ -44,8 +44,8 @@
 #'
 #' @export
 create_scatter <- function(data,
-                           metric_x = "Internal_network_size",
-                           metric_y = "External_network_size",
+                           metric_x,
+                           metric_y,
                            hrvar = "Organization",
                            mingroup = 5,
                            return = "plot"){

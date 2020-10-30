@@ -12,7 +12,7 @@ collaboration_rank(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{A list of HR Variables to consider in the scan.
 Defaults to all HR attributes identified.}
@@ -21,12 +21,11 @@ Defaults to all HR attributes identified.}
 Defaults to 5.}
 
 \item{return}{A character vector specifying what to return.
-Valid values include "html" (default, returning an interactive DataTable)
-and "df" (data frame)}
+Valid values include "table" (default). Features are being considered for alternative return options but are currently
+unavailable.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+When 'table' is passed in \code{return}, a summary table is returned as a data frame.
 }
 \description{
 This function scans a standard query output for groups with high levels of 'Weekly Digital Collaboration'.
@@ -34,10 +33,10 @@ Returns a table with a all of groups (across multiple HR attributes) ranked by h
 }
 \details{
 Uses the metric \code{Collaboration_hours}.
+See \code{create_rank()} for applying the same analysis to a different metric.
 }
 \seealso{
 Other Collaboration: 
-\code{\link{afterhours_fizz}()},
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_dist}()},
 \code{\link{collaboration_fizz}()},

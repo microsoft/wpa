@@ -39,6 +39,8 @@ afterhours_trend(sq_data, hrvar = "LevelDesignation", return = "table")
 \seealso{
 Other After-Hours: 
 \code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
 \code{\link{afterhours_rank}()},
 \code{\link{afterhours_summary}()}
 }

@@ -9,6 +9,8 @@ meetingtype_dist_ca(data, hrvar = NULL, mingroup = 5, return = "plot")
 \arguments{
 \item{data}{Meeting Query data frame. Must contain the variables \code{Attendee} and \code{DurationHours}}
 
+\item{hrvar}{Character string to specify the HR attribute to split the data by.}
+
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
 \item{return}{Character vector specifying what to return, defaults to "plot".

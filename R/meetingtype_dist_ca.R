@@ -5,6 +5,7 @@
 #' using a Collaboration Assessment Query with core WpA variables as an input.
 #'
 #' @param data Meeting Query data frame. Must contain the variables `Attendee` and `DurationHours`
+#' @param hrvar Character string to specify the HR attribute to split the data by.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param return Character vector specifying what to return, defaults to "plot".
 #' Valid inputs are "plot" and "table".

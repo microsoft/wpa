@@ -2,20 +2,18 @@
 % Please edit documentation in R/workloads_dist.R
 \name{workloads_dist}
 \alias{workloads_dist}
-\alias{workloads_distribution}
-\title{Work Week Span distribution}
+\title{Distribution of Work Week Span}
 \usage{
-workloads_dist(data, hrvar = "Organization", mingroup = 5, return = "plot")
-
-workloads_distribution(
+workloads_dist(
   data,
   hrvar = "Organization",
   mingroup = 5,
-  return = "plot"
+  return = "plot",
+  cut = c(15, 30, 45)
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
@@ -23,10 +21,13 @@ workloads_distribution(
 
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}
+
+\item{cut}{A numeric vector of length three to specify the breaks for the distribution,
+e.g. c(10, 15, 20)}
 }
 \description{
 Analyze Work Week Span distribution.
-Returns a a 'fizzy' scatter plot by default.
+Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
@@ -36,6 +37,7 @@ workloads_dist(sq_data, hrvar = "Organization", return = "table")
 Other Workloads: 
 \code{\link{workloads_fizz}()},
 \code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
 \code{\link{workloads_summary}()},
 \code{\link{workloads_trend}()}
 }

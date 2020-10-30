@@ -2,18 +2,9 @@
 % Please edit documentation in R/afterhours_dist.R
 \name{afterhours_dist}
 \alias{afterhours_dist}
-\alias{afterhours_distribution}
 \title{After-Hours distribution}
 \usage{
 afterhours_dist(
-  data,
-  hrvar = "Organization",
-  mingroup = 5,
-  return = "plot",
-  cut = c(1, 2, 3)
-)
-
-afterhours_distribution(
   data,
   hrvar = "Organization",
   mingroup = 5,
@@ -42,6 +33,7 @@ Additional options available to return a table with distribution elements.
 }
 \details{
 Uses the metric \code{After_hours_collaboration_hours}.
+See \code{create_dist()} for applying the same analysis to a different metric.
 }
 \examples{
 \dontrun{
@@ -57,6 +49,8 @@ afterhours_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 }
 \seealso{
 Other After-Hours: 
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
 \code{\link{afterhours_rank}()},
 \code{\link{afterhours_summary}()},
 \code{\link{afterhours_trend}()}

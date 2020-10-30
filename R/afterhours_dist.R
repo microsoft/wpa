@@ -7,6 +7,7 @@
 #'
 #' @details
 #' Uses the metric \code{After_hours_collaboration_hours}.
+#' See `create_dist()` for applying the same analysis to a different metric.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
@@ -58,7 +59,3 @@ afterhours_dist <- function(data,
 
 
 }
-
-#' @rdname afterhours_dist
-#' @export
-afterhours_distribution <- afterhours_dist

@@ -7,10 +7,11 @@
 #'
 #' @details
 #' Uses the metric `After_hours_collaboration_hours`.
+#' See `create_fizz()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_fizz
 #'
-#' @family Collaboration
+#' @family After-Hours
 #'
 #' @examples
 #' afterhours_fizz(sq_data, hrvar = "Organization", return = "table")

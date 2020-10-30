@@ -42,7 +42,6 @@ collaboration_line(sq_data, hrvar = "LevelDesignation", return = "table")
 }
 \seealso{
 Other Collaboration: 
-\code{\link{afterhours_fizz}()},
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_dist}()},
 \code{\link{collaboration_fizz}()},

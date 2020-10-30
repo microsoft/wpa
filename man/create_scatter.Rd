@@ -2,19 +2,19 @@
 % Please edit documentation in R/create_scatter.R
 \name{create_scatter}
 \alias{create_scatter}
-\title{Scatter plot (General Purpose)}
+\title{Create a Scatter plot with two selected Workplace Analytics metrics (General Purpose)}
 \usage{
 create_scatter(
   data,
-  metric_x = "Internal_network_size",
-  metric_y = "External_network_size",
+  metric_x,
+  metric_y,
   hrvar = "Organization",
   mingroup = 5,
   return = "plot"
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric_x}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
