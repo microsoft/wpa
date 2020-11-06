@@ -25,7 +25,7 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
-#' @family Collaboration
+#' @family General
 #'
 #' @examples
 #' ## Return a plot

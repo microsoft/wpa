@@ -23,6 +23,8 @@
 #' @import ggplot2
 #' @import dplyr
 #'
+#' @family General
+#'
 #' @export
 create_bar_asis <- function(data,
                             group_var,

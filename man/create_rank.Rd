@@ -38,9 +38,12 @@ Returns a table with all groups (across multiple HR attributes) ranked by the sp
 }
 \seealso{
 Other General: 
+\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_scatter}()},

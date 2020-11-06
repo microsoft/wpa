@@ -43,7 +43,6 @@ Other Collaboration:
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_sum}()},
 \code{\link{collaboration_trend}()},
-\code{\link{create_dist}()},
 \code{\link{meeting_trend}()}
 }
 \concept{Collaboration}

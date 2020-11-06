@@ -30,9 +30,12 @@ sq_data \%>\% extract_hr(return = "vars")
 }
 \seealso{
 Other General: 
+\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
