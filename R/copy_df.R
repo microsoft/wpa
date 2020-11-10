@@ -1,10 +1,15 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Copy a data frame to clipboard for pasting in Excel
 #'
 #' @description
 #' This is a pipe-optimised function, that feeds into `wpa::export()`,
 #' but can be used as a stand-alone function.
 #'
-#' Based on the original function at http://www.github.com/martinctc/surveytoolbox.
+#' Based on the original function at https://www.github.com/martinctc/surveytoolbox.
 #'
 #' @param x Data frame to be passed through. Cannot contain list-columns or nested data frames.
 #' @param row.names A logical vector for specifying whether to allow row names. Defaults to FALSE.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/tm_cooc.R
 \name{tm_cooc}
 \alias{tm_cooc}
-\title{Word co-occurrence analysis}
+\title{Analyse word co-occurrence in subject lines and return a network plot}
 \usage{
 tm_cooc(data, stopwords = NULL, seed = 100, return = "plot", lmult = 0.05)
 }

@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Flag unusual outlook time settings for work day start and end time
 #'
 #' @description This function flags unusual outlook calendar settings for
@@ -86,7 +91,7 @@ flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
     FlagMessage <- paste(Pass_Message1, Detail_Message, sep = "\n")
 
   } else if(FlagProp==0){
-    FlagMessage <- Pass_Message2 
+    FlagMessage <- Pass_Message2
   }
 
   ## Print diagnosis

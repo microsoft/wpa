@@ -1,4 +1,9 @@
-#' @title Generate a Collaboration report in HTML
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Generate a Collaboration Report in HTML
 #'
 #' @description
 #' The function generates an interactive HTML report using

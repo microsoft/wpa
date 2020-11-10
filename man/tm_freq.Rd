@@ -2,7 +2,7 @@
 % Please edit documentation in R/tm_freq.R
 \name{tm_freq}
 \alias{tm_freq}
-\title{Frequency Analysis}
+\title{Perform a Word or Ngram Frequency Analysis and return a Circular Bar Plot}
 \usage{
 tm_freq(data, token = "words", stopwords = NULL, keep = 100, return = "plot")
 }

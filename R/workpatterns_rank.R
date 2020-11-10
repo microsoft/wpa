@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Create a rank table of working patterns
 #'
 #' @description
@@ -33,7 +38,7 @@ workpatterns_rank <- function(data,
 
   # Make sure data.table knows we know we're using it
   .datatable.aware = TRUE
-  
+
   ## Save original
   start_hour_o <- start_hour
   end_hour_o <- end_hour
@@ -41,7 +46,7 @@ workpatterns_rank <- function(data,
   ## Coerce to numeric, remove trailing zeros
   start_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = start_hour))
   end_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = end_hour))
-  
+
   ## convert to data.table
   data2 <-
     data %>%

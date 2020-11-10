@@ -2,7 +2,7 @@
 % Please edit documentation in R/collaboration_report.R
 \name{collaboration_report}
 \alias{collaboration_report}
-\title{Generate a Collaboration report in HTML}
+\title{Generate a Collaboration Report in HTML}
 \usage{
 collaboration_report(
   data,

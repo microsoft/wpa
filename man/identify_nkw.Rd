@@ -2,7 +2,7 @@
 % Please edit documentation in R/identify_nkw.R
 \name{identify_nkw}
 \alias{identify_nkw}
-\title{Identify Non-Knowledge workers (nkw)}
+\title{Identify Non-Knowledge workers in a Person Query using Collaboration Hours}
 \usage{
 identify_nkw(data, collab_threshold = 5, return = "data_summary")
 }

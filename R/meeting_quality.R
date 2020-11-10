@@ -1,4 +1,12 @@
-#' Run a meeting habits / meeting quality analysis
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Run a meeting habits / meeting quality analysis
+#'
+#' @description Return an analysis of Meeting Quality with a bubble plot, using a Standard Person
+#' Query as an input.
 #'
 #' @param data A Standard Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, e.g. "Organization"

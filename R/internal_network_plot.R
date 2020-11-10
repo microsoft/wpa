@@ -1,7 +1,12 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Plot the internal network metrics for a HR variable
 #'
 #' @description
-#' lot the internal network metrics for a HR variable.
+#' Plot the internal network metrics for a HR variable.
 #'
 #' @param data Person Query as a dataframe including date column named "Date"
 #' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.

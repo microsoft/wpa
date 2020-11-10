@@ -1,4 +1,9 @@
-#' @title Information Value HTML Report
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Generate a Information Value HTML Report
 #'
 #' @description
 #' The function generates an interactive HTML report using
