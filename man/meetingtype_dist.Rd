@@ -13,6 +13,9 @@ meetingtype_dist(data, hrvar = NULL, mingroup = 5, return = "plot")
 Note that this is only applicable if a Collaboration Assessment query is passed to the function. If a Meeting Query
 is passed instead, this argument is ignored.}
 
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
+Only applicable when using a Collaboration Assessment query.}
+
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}
 }

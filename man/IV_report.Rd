@@ -2,7 +2,7 @@
 % Please edit documentation in R/IV_report.R
 \name{IV_report}
 \alias{IV_report}
-\title{Information Value HTML Report}
+\title{Generate a Information Value HTML Report}
 \usage{
 IV_report(
   data,

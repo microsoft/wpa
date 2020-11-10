@@ -10,7 +10,7 @@ afterhours_summary(data, hrvar = "Organization", mingroup = 5, return = "plot")
 afterhours_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "LevelDesignation"}
@@ -42,6 +42,8 @@ afterhours_summary(sq_data, hrvar = "LevelDesignation", return = "table")
 \seealso{
 Other After-Hours: 
 \code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
 \code{\link{afterhours_rank}()},
 \code{\link{afterhours_trend}()}
 }

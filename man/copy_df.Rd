@@ -21,5 +21,5 @@ copy_df(x, row.names = FALSE, col.names = TRUE, quietly = FALSE, ...)
 This is a pipe-optimised function, that feeds into \code{wpa::export()},
 but can be used as a stand-alone function.
 
-Based on the original function at http://www.github.com/martinctc/surveytoolbox.
+Based on the original function at https://www.github.com/martinctc/surveytoolbox.
 }

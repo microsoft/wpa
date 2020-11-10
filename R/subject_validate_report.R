@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Generate Meeting Text Mining report in HTML for Common Exclusion Terms
 #'
 #' @description
@@ -30,7 +35,7 @@ subject_validate_report <- function(data,
   }
 
 # Get Results
-test_data <- data %>% subject_validate(return="data") %>% filter(subjectFlag==1) 
+test_data <- data %>% subject_validate(return="data") %>% filter(subjectFlag==1)
 results <- data %>% subject_validate(return="table")
 
 # Set outputs

@@ -1,6 +1,11 @@
-#' Email Hours Time Trend
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Email Hours Time Trend
 #'
-#' Provides a week by week view of email time.
+#' @description Provides a week by week view of email time.
 #' By default returns a week by week heatmap, highlighting the points in time with most activity.
 #' Additional options available to return a summary table.
 #'

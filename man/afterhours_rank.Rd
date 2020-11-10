@@ -16,12 +16,11 @@ Defaults to all HR attributes identified.}
 Defaults to 5.}
 
 \item{return}{A character vector specifying what to return.
-Valid values include "html" (default, returning an interactive DataTable)
-and "df" (data frame)}
+Valid values include "table" (default). Features are being considered for alternative return options but are currently
+unavailable.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+When 'table' is passed in \code{return}, a summary table is returned as a data frame.
 }
 \description{
 This function scans a Standard Person Query for groups with high levels of After-Hours Collaboration.
@@ -29,10 +28,13 @@ Returns a table with a all of groups (across multiple HR attributes) ranked by h
 }
 \details{
 Uses the metric \code{After_hours_collaboration_hours}.
+See \code{create_rank()} for applying the same analysis to a different metric.
 }
 \seealso{
 Other After-Hours: 
 \code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
 \code{\link{afterhours_summary}()},
 \code{\link{afterhours_trend}()}
 }

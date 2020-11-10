@@ -1,4 +1,9 @@
-#' @title Word co-occurrence analysis
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Analyse word co-occurrence in subject lines and return a network plot
 #'
 #' @description
 #' This function generates a word co-occurence network plot,

@@ -1,4 +1,9 @@
-#' @title Frequency Analysis
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Perform a Word or Ngram Frequency Analysis and return a Circular Bar Plot
 #'
 #' @description
 #' Generate a circular bar plot with frequency of words / ngrams.

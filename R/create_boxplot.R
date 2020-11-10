@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Box Plot (General Purpose)
 #'
 #' @description
@@ -8,7 +13,7 @@
 #' This is a general purpose function that powers all the functions
 #' in the package that produce box plots.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"

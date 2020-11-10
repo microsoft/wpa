@@ -1,4 +1,9 @@
-#' @title Identify Non-Knowledge workers (nkw)
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Identify Non-Knowledge workers in a Person Query using Collaboration Hours
 #'
 #' @description
 #' This function scans a standard query output to identify employees with consistently low collaboration signals.

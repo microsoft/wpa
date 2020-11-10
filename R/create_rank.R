@@ -1,10 +1,15 @@
-#' @title Create Ranking
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Rank all groups across HR attributes on a selected Workplace Analytics metric
 #'
 #' @description
-#' This function scans a standard query output for groups with high levels of a given Workplace Analytics Metric.
-#' Returns a table with a all of groups (across multiple HR attributes) ranked by the specified metric.
+#' This function scans a standard Person query output for groups with high levels of a given Workplace Analytics Metric.
+#' Returns a table with all groups (across multiple HR attributes) ranked by the specified metric.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param hrvar A list of HR Variables to consider in the scan.
@@ -12,7 +17,8 @@
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size.
 #' Defaults to 5.
 #' @param return A character vector specifying what to return.
-#' Valid values include "table" (default) and "df" (data frame)
+#' Valid values include "table" (default). Features are being considered for alternative return options but are currently
+#' unavailable.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -35,23 +41,26 @@ create_rank <- function(data,
                         return = "table"){
 
   results <-
-    data %>% create_bar(
-             metric = metric,
-             hrvar = hrvar[1],
-             mingroup = mingroup,
-             return = return, bar_colour = "default")
+    create_bar(data,
+               metric = metric,
+               hrvar = hrvar[1],
+               mingroup = mingroup,
+               return = "table")
 
+  ## Create a blank column
   results$hrvar <- ""
 
+  ## Empty table
   results <- results[0,]
 
-  	for (p in hrvar) {
+  ## Loop through each HR attribute supplied in argument
+  for (p in hrvar) {
   	table1 <-
   	  data %>%
-	  create_bar(metric = metric,
-             hrvar = p,
-             mingroup = mingroup,
-             return = "table", bar_colour = "default")
+  	  create_bar(metric = metric,
+  	             hrvar = p,
+  	             mingroup = mingroup,
+  	             return = "table")
 
   	table1$hrvar <- p
 
@@ -59,7 +68,8 @@ create_rank <- function(data,
   	}
 
   output <-
-    results %>% arrange(desc(get(metric))) %>%
+    results %>%
+    arrange(desc(get(metric))) %>%
     select(hrvar, everything())
 
   if(return == "table"){

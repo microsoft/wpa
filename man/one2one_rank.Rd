@@ -7,7 +7,7 @@
 one2one_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{A list of HR Variables to consider in the scan.
 Defaults to all HR attributes identified.}
@@ -16,22 +16,26 @@ Defaults to all HR attributes identified.}
 Defaults to 5.}
 
 \item{return}{A character vector specifying what to return.
-Valid values include "html" (default, returning an interactive DataTable)
-and "df" (data frame)}
+Valid values include "table" (default). Features are being considered for alternative return options but are currently
+unavailable.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+When 'table' is passed in \code{return}, a summary table is returned as a data frame.
 }
 \description{
 This function scans a standard query output for groups with high levels of 'Manager 1:1 Time'.
 Returns a table with a all of groups (across multiple HR attributes) ranked by hours of digital collaboration.
+}
+\details{
+Uses the metric \code{Meeting_hours_with_manager_1_on_1}.
+See \code{create_rank()} for applying the same analysis to a different metric.
 }
 \seealso{
 Other Managerial Relations: 
 \code{\link{mgrcoatt_dist}()},
 \code{\link{mgrrel_matrix}()},
 \code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
 \code{\link{one2one_line}()},
 \code{\link{one2one_sum}()},
 \code{\link{one2one_trend}()}

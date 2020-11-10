@@ -15,7 +15,7 @@ create_dist(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
@@ -46,14 +46,20 @@ create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 }
 \seealso{
-Other Collaboration: 
-\code{\link{collaboration_area}()},
-\code{\link{collaboration_dist}()},
-\code{\link{collaboration_fizz}()},
-\code{\link{collaboration_line}()},
-\code{\link{collaboration_rank}()},
-\code{\link{collaboration_sum}()},
-\code{\link{collaboration_trend}()},
-\code{\link{meeting_trend}()}
+Other General: 
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_hr}()},
+\code{\link{hrvar_count}()},
+\code{\link{identify_outlier}()}
 }
-\concept{Collaboration}
+\concept{General}

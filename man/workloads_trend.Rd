@@ -36,7 +36,9 @@ workloads_trend(sq_data, hrvar = "LevelDesignation", return = "table")
 \seealso{
 Other Workloads: 
 \code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
 \code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
 \code{\link{workloads_summary}()}
 }
 \concept{Workloads}

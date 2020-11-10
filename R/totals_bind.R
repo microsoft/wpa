@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Row-bind an identical data frame for computing grouped totals
 #'
 #' @description Row-bind an identical data frame and impute a specific

@@ -7,7 +7,7 @@
 workloads_summary(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "LevelDesignation"}
@@ -36,7 +36,9 @@ workloads_summary(sq_data, hrvar = "LevelDesignation", return = "table")
 \seealso{
 Other Workloads: 
 \code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
 \code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
 \code{\link{workloads_trend}()}
 }
 \concept{Workloads}

@@ -13,7 +13,7 @@ create_fizz(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
@@ -45,8 +45,11 @@ create_fizz(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation",
 }
 \seealso{
 Other General: 
+\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_dist}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},

@@ -38,6 +38,7 @@ mgrrel_matrix(sq_data)
 Other Managerial Relations: 
 \code{\link{mgrcoatt_dist}()},
 \code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
 \code{\link{one2one_line}()},
 \code{\link{one2one_rank}()},
 \code{\link{one2one_sum}()},

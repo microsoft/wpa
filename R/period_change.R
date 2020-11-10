@@ -1,6 +1,10 @@
-#' @title
-#' Plot the distribution of percentage change between periods
-#'  of a WpA metric by the number of employees.
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Plot the distribution of percentage change between periods
+#' of a WpA metric by the number of employees.
 #'
 #' @description
 #' This function also presents the p-value for the null hypothesis

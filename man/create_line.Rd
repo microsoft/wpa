@@ -13,7 +13,7 @@ create_line(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
@@ -51,9 +51,12 @@ sq_data \%>\% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
 }
 \seealso{
 Other General: 
+\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
 \code{\link{create_scatter}()},

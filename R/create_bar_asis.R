@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Create a bar chart without aggregation
 #'
 #' @description
@@ -22,6 +27,8 @@
 #'
 #' @import ggplot2
 #' @import dplyr
+#'
+#' @family General
 #'
 #' @export
 create_bar_asis <- function(data,

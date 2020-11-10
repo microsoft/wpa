@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Flag unusual high collaboration hours to after-hours collaboration hours ratio
 #'
 #' @description This function flags persons who have an unusual ratio
@@ -40,7 +45,7 @@ flag_ch_ratio <- function(data, threshold = c(1, 30), return = "message"){
            CH_FlagHigh = ifelse(CH_ratio > max_thres, TRUE, FALSE),
            CH_Flag = ifelse(CH_ratio > max_thres | CH_ratio < min_thres, TRUE, FALSE))
 
-  ## Percent of people with high collab hours + low afterhour collab hours  
+  ## Percent of people with high collab hours + low afterhour collab hours
   CHFlagN <- sum(ch_summary$CH_Flag, na.rm = TRUE)
   CHFlagProp <- mean(ch_summary$CH_Flag, na.rm = TRUE)
   CHFlagProp2 <- paste(round(CHFlagProp * 100), "%") # Formatted
@@ -48,7 +53,7 @@ flag_ch_ratio <- function(data, threshold = c(1, 30), return = "message"){
   CHFlagMessage_Warning <- paste0("[Warning]  The ratio of after-hours collaboration to total collaboration hours is outside the expected threshold for ", CHFlagN, " employees (", CHFlagProp2, " of the total).")
   CHFlagMessage_Pass_Low <- paste0("[Pass] The ratio of after-hours collaboration to total collaboration hours is outside the expected threshold for only ", CHFlagN, " employees (", CHFlagProp2, " of the total).")
   CHFlagMessage_Pass_Zero <- paste0("[Pass] The ratio of after-hours collaboration to total collaboration hours falls within the expected threshold for all employees.")
-						 
+
 
   CHFlagLowN <- sum(ch_summary$CH_FlagLow, na.rm = TRUE)
   CHFlagLowProp <- mean(ch_summary$CH_FlagLow, na.rm = TRUE)
@@ -60,15 +65,15 @@ flag_ch_ratio <- function(data, threshold = c(1, 30), return = "message"){
   CHFlagHighProp <- mean(ch_summary$CH_FlagHigh, na.rm = TRUE)
   CHFlagHighProp2 <- paste(round(CHFlagHighProp * 100), "%") # Formatted
   CHFlagHighMessage <- paste0("- ", CHFlagHighN, " employees (", CHFlagHighProp2 , ") have an unusually high after-hours collaboration (relative to weekly collaboration hours)")
-							 
+
   if(CHFlagProp >= .05){
     CHFlagMessage <- paste(CHFlagMessage_Warning, CHFlagHighMessage, CHFlagLowMessage, sep = "\n")
   } else if(CHFlagProp < .05 & CHFlagProp2 > 0){
     CHFlagMessage <- paste(CHFlagMessage_Pass_Low, CHFlagHighMessage, CHFlagLowMessage, sep = "\n")
   } else if(CHFlagProp==0){
-    CHFlagMessage <- CHFlagMessage_Pass_Zero 
+    CHFlagMessage <- CHFlagMessage_Pass_Zero
   }
-  
+
   ## Print diagnosis
   ## Should implement options to return the PersonIds or a full data frame
   if(return == "message"){

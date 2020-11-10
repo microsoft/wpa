@@ -7,7 +7,7 @@
 one2one_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "LevelDesignation"}
@@ -31,6 +31,7 @@ Other Managerial Relations:
 \code{\link{mgrcoatt_dist}()},
 \code{\link{mgrrel_matrix}()},
 \code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
 \code{\link{one2one_line}()},
 \code{\link{one2one_rank}()},
 \code{\link{one2one_trend}()}

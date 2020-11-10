@@ -27,7 +27,7 @@ Valid inputs are "plot" and "table".}
 \item{bubble_size}{A numeric vector of length two to specify the size range of the bubbles}
 }
 \description{
-lot the internal network metrics for a HR variable.
+Plot the internal network metrics for a HR variable.
 }
 \examples{
 \dontrun{internal_network_plot(sq_data)

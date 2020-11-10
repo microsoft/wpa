@@ -40,6 +40,8 @@ workloads_line(sq_data, hrvar = "LevelDesignation", return = "table")
 \seealso{
 Other Workloads: 
 \code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_rank}()},
 \code{\link{workloads_summary}()},
 \code{\link{workloads_trend}()}
 }
