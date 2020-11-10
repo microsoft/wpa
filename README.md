@@ -79,7 +79,7 @@ By passing 'table' to the `return` argument, the function will return a data fra
 ---
 ## :hammer: Developers
 
-We welcome contributions to the package! If you would like contribute code to the repo, please read our [developer / contribution guide](.github/developer_guide.md). This documentation should provide you all the information you will need to get started.
+We welcome contributions to the package! If you would like contribute code to the repo, please read our [Contributor Guide](CONTRIBUTING.md) and [Developer Guide](.github/developer_guide.md). This documentation should provide you all the information you will need to get started.
 
 ---
 
