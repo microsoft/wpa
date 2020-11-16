@@ -90,7 +90,28 @@ The six key metrics are:
 5. `one2one`: stands for one-to-one collaboration hours with direct manager. Uses the metric `Meeting_hours_with_manager_1_on_1`.
 6. `workloads`: stands for Work Week Span, and uses the metric `Workweek_span`.
 
+You can combine the **plot types** and the **key metrics** (as prefixes and suffixes) to generate the desired output, e.g. `email_` and `dist` for `email_dist()`.
 
+For more advanced users, there are also a number of **flexible analysis** functions which allow you to generate the plots with _any_ Workplace Analytics metric, where the metric name needs to be supplied in addition to the function. For instance, 
+
+```R
+create_bar(sq_data, metric = "Email_hours")
+```
+
+would return a similar result as `email_summary(sq_data)`, but where you can replace the metric with one of your own choice. Here are some of the available flexible analysis functions, which are typically prefixed with `create_`:
+
+- `create_bar()`
+- `create_bar_asis()`
+- `create_boxplot()`
+- `create_dist()`
+- `create_fizz()`
+- `create_line()`
+- `create_line_asis()`
+- `create_plot_scatter()`
+- `create_rank()`
+- `create_stacked()`
+
+You can find out more about the feature of each individual function by running `?function` once you have the package loaded.
 
 ### 2. Report Generation
 **Report Generation** functions are a special class of functions within **wpa** which outputs an interactive HTML report on a specific area based on the data you supply. 
