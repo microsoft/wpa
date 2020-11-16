@@ -71,7 +71,26 @@ Examples:
 - `collaboration_dist()`
 - `meeting_summary()`
 - `email_trend()`
-- `mgrrel_matrix()`
+
+For the standard functions, there are six basic **plot types** which could be paired with six different **key metrics**. The six plot types are:
+
+1. `_summary()`: produces a summary bar plot of the metric. 
+2. `_dist()`: produces a stacked bar plot of the metric. 
+3. `_fizz()`: produces a jittered, 'fizzy drink' plot of the metric.
+4. `_line()`: produces a time-series line plot of the metric, with organizational attributes shown as facets.
+5. `_trend()`: produces heatmap bars of the metric to show intensity over time.
+6. `_rank()`: produces a rank table of all sub-groups (as per a set of organizational attributes) for a given metric. This is the only exception where the function returns a data frame by default, rather than a plot. 
+
+The six key metrics are:
+
+1. `collab`: stands for Collaboration Hours, and uses the metric `Collaboration_hours`.
+2. `email`: stands for Email Hours, and uses the metric `Email_hours`.
+3. `meeting`: stands for Meeting Hours, and uses the metric `Meeting_hours`.
+4. `afterhours`: stands for After-hours Collaboration Hours, and uses the metric `After_hours_collaboration_hours`.
+5. `one2one`: stands for one-to-one collaboration hours with direct manager. Uses the metric `Meeting_hours_with_manager_1_on_1`.
+6. `workloads`: stands for Work Week Span, and uses the metric `Workweek_span`.
+
+
 
 ### 2. Report Generation
 **Report Generation** functions are a special class of functions within **wpa** which outputs an interactive HTML report on a specific area based on the data you supply. 
