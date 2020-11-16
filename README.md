@@ -29,6 +29,7 @@ Here is just a _fraction_ of the plots that you can create with **wpa**:
 
 <img src="man/figures/plot-demo.gif" align="center" width=80% />
 
+
 ## :rocket: Quick start guide - For users
 
 ### Installing the package from GitHub
@@ -103,6 +104,9 @@ There are several pre-loaded demo Workplace Analytics datasets that you can use 
 
 You can explore the structure of these datasets by running `?sq_data` or `dplyr::glimpse(sq_data)`, for instance.
 
+Check out our package cheat sheet for more information:
+
+<a href="man/figures/wpa cheatsheet_20201116.pdf"><img src="man/figures/wpa cheatsheet_20201116.png" align="center" width=50% /></a>
 
 ---
 
