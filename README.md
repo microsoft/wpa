@@ -25,7 +25,7 @@ This is an R package for analyzing and visualizing data from [Microsoft Workplac
 
 
 
-Here is just a _fraction_ of the plots that you can create with **wpa**:
+Here are just some examples of the plots that you can create with **wpa**:
 
 <img src="man/figures/plot-demo.gif" align="center" width=80% />
 
