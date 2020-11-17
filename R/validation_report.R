@@ -68,8 +68,8 @@ validation_report <- function(data,
     wktimes_obj <- data %>% flag_outlooktime(return = "text")
     shift_obj <- data %>% identify_shifts(return = "plot")
   } else {
-    wktimes_obj <- paste(wktimes_msg, wktimes_var, collapse = "\n")
-    shift_obj <- paste(wktimes_msg, wktimes_var, collapse = "\n")
+    wktimes_obj <- paste(wktimes_msg, paste(wrap(wktimes_var, "`"), collapse = ", "), collapse = "\n")
+    shift_obj <- paste(wktimes_msg, paste(wrap(wktimes_var, "`"), collapse = ", "), collapse = "\n")
   }
 
   ## Dynamic: Track HR changes
