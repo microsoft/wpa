@@ -66,8 +66,10 @@ validation_report <- function(data,
 
   if(all(wktimes_var %in% names(data))){
     wktimes_obj <- data %>% flag_outlooktime(return = "text")
+    shift_obj <- data %>% identify_shifts(return = "plot")
   } else {
     wktimes_obj <- paste(wktimes_msg, wktimes_var, collapse = "\n")
+    shift_obj <- paste(wktimes_msg, wktimes_var, collapse = "\n")
   }
 
   ## Dynamic: Track HR changes
@@ -89,7 +91,9 @@ validation_report <- function(data,
 
          read_preamble("blank.md"), # Header - 1.1 Workplace Analytics Settings
          read_preamble("outlook_settings_1.md"),
-         data %>% identify_shifts(return = "plot"),
+
+         shift_obj, # See `identify_shifts()` dynamic treatment above
+
          read_preamble("outlook_settings_2.md"),
          paste(">", wktimes_obj),
          paste(">", data %>% flag_ch_ratio(return = "text")),
