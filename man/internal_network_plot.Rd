@@ -2,14 +2,14 @@
 % Please edit documentation in R/internal_network_plot.R
 \name{internal_network_plot}
 \alias{internal_network_plot}
-\title{Plot the internal network metrics for a HR variable}
+\title{Plot Internal Network Breadth and Size as a scatter plot}
 \usage{
 internal_network_plot(
   data,
   hrvar = "Organization",
   mingroup = 5,
   return = "plot",
-  bubble_size = c(1, 5)
+  bubble_size = c(1, 8)
 )
 }
 \arguments{
@@ -27,10 +27,13 @@ Valid inputs are "plot" and "table".}
 \item{bubble_size}{A numeric vector of length two to specify the size range of the bubbles}
 }
 \description{
-Plot the internal network metrics for a HR variable.
+Plot the internal network metrics for a HR variable as a scatter plot, showing
+Internal Network Breadth as the vertical axis and Internal Network Size as the
+horizontal axis.
 }
 \examples{
-\dontrun{internal_network_plot(sq_data)
+\dontrun{
+internal_network_plot(sq_data)
 }
 
 }

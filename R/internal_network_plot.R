@@ -3,10 +3,12 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Plot the internal network metrics for a HR variable
+#' @title Plot Internal Network Breadth and Size as a scatter plot
 #'
 #' @description
-#' Plot the internal network metrics for a HR variable.
+#' Plot the internal network metrics for a HR variable as a scatter plot, showing
+#' Internal Network Breadth as the vertical axis and Internal Network Size as the
+#' horizontal axis.
 #'
 #' @param data Person Query as a dataframe including date column named "Date"
 #' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.
@@ -23,8 +25,8 @@
 #' @import ggrepel
 #'
 #' @examples
-#' \dontrun{internal_network_plot(sq_data)
-#
+#' \dontrun{
+#' internal_network_plot(sq_data)
 #' }
 #'
 #' @family Connectivity
@@ -35,7 +37,7 @@ internal_network_plot <- function(data,
                                   hrvar = "Organization",
                                   mingroup = 5,
                                   return = "plot",
-                                  bubble_size = c(1, 5))
+                                  bubble_size = c(1, 8))
   {
   plot_data <-
     data %>%
@@ -65,37 +67,15 @@ internal_network_plot <- function(data,
     scale_x_continuous(name = "Internal Network Size") +
     scale_y_continuous(name = "Internal Network Breadth") +
     scale_size(range = bubble_size) +
-    theme_classic() +
-    theme(
-      axis.text = element_text(size = 10),
-      axis.text.x = element_text(
-        angle = 90,
-        hjust = 1,
-        vjust = 0.5
-      ),
-      plot.title = element_text(
-        color = "grey40",
-        face = "bold",
-        size = 18
-      ),
-      plot.subtitle = element_text(size = 14)
-    ) +
+    theme_wpa_basic() +
     labs(
       title = paste("Internal network metrics by", hrvar),
-      subtitle = paste(
-        "Network size is number of people, breadth is number of organizations"
-        )
+      subtitle = paste("Network size is number of people, breadth is number of organizations"),
+      size = "Size"
     ) +
-    labs(
-      caption = paste(
-        "Total employees =",
-        sum(plot_data$Employee_count),
-        "| Data from",
-        min(as.Date(data$Date, "%m/%d/%Y")),
-        "to",
-        max(as.Date(data$Date, "%m/%d/%Y"))
-      )
-      )
+    labs(caption = paste("Total employees =", sum(plot_data$Employee_count), "|", extract_date_range(data, return = "text")))
+
+
 
   if(return == "table"){
 

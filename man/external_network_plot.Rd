@@ -2,14 +2,14 @@
 % Please edit documentation in R/external_network_plot.R
 \name{external_network_plot}
 \alias{external_network_plot}
-\title{Plot the external network metrics for a HR variable}
+\title{Plot External Network Breadth and Size as a scatter plot}
 \usage{
 external_network_plot(
   data,
   hrvar = "Organization",
   mingroup = 5,
   return = "plot",
-  bubble_size = c(1, 5)
+  bubble_size = c(1, 8)
 )
 }
 \arguments{
@@ -27,7 +27,9 @@ Valid inputs are "plot" and "table".}
 \item{bubble_size}{A numeric vector of length two to specify the size range of the bubbles}
 }
 \description{
-Plot the external network metrics for a HR variable.
+Plot the external network metrics for a HR variable as a scatter plot, showing
+External Network Breadth as the vertical axis and External Network Size as the
+horizontal axis.
 }
 \examples{
 \dontrun{external_network_plot(sq_data)
