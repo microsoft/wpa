@@ -58,7 +58,7 @@ By passing 'table' to the `return` argument, the function will return a data fra
 
 ## :package: Package Structure
 
-For information on the package structure, please see [here](.github/analyst_guide.md).
+For information on the package structure, please see the relevant section in our [Analyst Guide](.github/analyst_guide.md).
 
 Also check out our package cheat sheet for more information:
 
