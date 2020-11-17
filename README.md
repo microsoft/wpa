@@ -31,9 +31,9 @@ Here are just some examples of the plots that you can create with **wpa**:
 
 ## :rocket: Quick start guide - For users
 
-### Installing the package from GitHub
+### Installing the package
 
-You can install **wpa** from GitHub with the following: 
+You can install the GitHub version of **wpa** with the following in R: 
 ```R
 # Check if devtools is installed, if not then install it
 if(!"devtools" %in% installed.packages()){
@@ -41,6 +41,8 @@ if(!"devtools" %in% installed.packages()){
 }
 devtools::install_git(url = "https://github.com/microsoft/wpa.git")
 ```
+Note that **wpa** is not yet released on CRAN, and therefore `install.packages()` will not work.
+
 ### Examples
 
 The package comes shipped with a sample Standard Query dataset (`sq_data`), so you can start exploring functions without having to read in any data. Most functions in **wpa** share a consistent API, and enable you to return results for both a **plot** or a **table** (data frame):
@@ -56,7 +58,7 @@ By passing 'table' to the `return` argument, the function will return a data fra
 
 ## :package: Package Structure
 
-For information on the package structure, please see [here](.github/analyst_guide.md).
+For information on the package structure, please see the relevant section in our [Analyst Guide](.github/analyst_guide.md).
 
 Also check out our package cheat sheet for more information:
 
