@@ -6,16 +6,6 @@
 
 This is an R package for analyzing and visualizing data from [Microsoft Workplace Analytics](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics).
 
-## Design Principles
-
-- **Simple**: the functions ought to be simple and intuitive, to maximise adoption.
-- **Practical**: the functions should prioritise delivering against the most frequently used outputs and analyses.
-- **Consistency**: functions should share a broadly consistent set of input arguments and naming conventions. This will help minimise unexpected results and errors when using the package. 
-- **Parsimony**: in creating the package, as much of the existing code should be re-used if possible to minimise duplication of work and to make analysis reproducible.
-- **Tidy**: the functions from the package are designed to be consistent with tidy principles, and work well with a **dplyr** pipe (`%>%`) workflow.
-
-<img src="man/figures/api-demo.png" align="center" width=80% />
-
 ## With the **wpa** package, you can...
 
 1. **Run prebuilt analysis and visualizations** off Workplace Analytics data with settings for HR variables, privacy threshold, etc.
@@ -23,12 +13,21 @@ This is an R package for analyzing and visualizing data from [Microsoft Workplac
 3. Leverage **advanced analytics functions**, such as text mining and hierarchical clustering, which are built for Workplace Analytics metrics
 4. Integrate analysis of Workplace Analytics data with your R workflow seamlessly
 
-
-
 Here are just some examples of the plots that you can create with **wpa**:
 
 <img src="man/figures/plot-demo.gif" align="center" width=80% />
 
+## Design Principles
+
+- **Simple**: the functions ought to be simple and intuitive to maximise adoption.
+- **Practical**: the functions should prioritise delivering against the most frequently used outputs and analyses.
+- **Consistency**: functions should share a broadly consistent set of input arguments and naming conventions. This will help minimise unexpected results and errors when using the package. 
+- **Parsimony**: in creating the package, as much of the existing code should be re-used if possible to minimise duplication of work and to make analysis reproducible.
+- **Tidy**: the functions from the package are designed to be consistent with tidy principles, and work well with a **dplyr** pipe (`%>%`) workflow.
+
+<img src="man/figures/api-demo.png" align="center" width=80% />
+
+---
 
 ## :rocket: Quick start guide - For users
 
@@ -172,8 +171,10 @@ If you would like to log an issue or submit a feature request, please create a n
 ### Reporting Security Issues
 Please do not report security vulnerabilities through public GitHub issues. Please read our Security document [for more details](.github/reporting_security_issues.md).
 
----
+### Changelog
+See [NEWS.md](NEWS.md) for the package changelog.
 
+---
 
 ## Code of Conduct
 
