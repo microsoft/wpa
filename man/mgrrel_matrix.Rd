@@ -8,7 +8,7 @@ mgrrel_matrix(
   data,
   hrvar = NULL,
   return = "plot",
-  plot_colors = c("#FE7F4F", "#C3E5FF", "#FFD4C4", "#FEAA8A"),
+  plot_colors = c("#fe7f4f", "#b4d5dd", "#facebc", "#fcf0eb"),
   threshold = 15
 )
 }

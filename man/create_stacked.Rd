@@ -10,7 +10,7 @@ create_stacked(
   metrics = c("Meeting_hours", "Email_hours"),
   mingroup = 5,
   return = "plot",
-  stack_colours = c("#203864", "#5191DD", "darkgrey", "lightgrey"),
+  stack_colours = c("#1d627e", "#34b1e2", "#b4d5dd", "#adc0cb"),
   plot_title = "Collaboration Hours",
   plot_subtitle = "Weekly collaboration hours"
 )
