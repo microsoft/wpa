@@ -35,7 +35,7 @@ meeting_summary <- function(data,
              hrvar = hrvar,
              mingroup = mingroup,
              return = return,
-             bar_colour = "darkblue")
+             bar_colour = "default")
 }
 
 

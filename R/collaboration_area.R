@@ -97,10 +97,10 @@ collaboration_area <- function(data,
 
   ## Colour definitions
   colour_defs <-
-    c("Meeting" = "#b4d5dd",
-      "Email" = "#bfe5ee",
+    c("Meeting" = "#34b1e2",
+      "Email" = "#1d627e",
       "Instant_Message" = "#adc0cb",
-      "Unscheduled_Call" = "#e1e1e1")
+      "Unscheduled_Call" = "#b4d5dd")
 
   colour_defs <- colour_defs[names(colour_defs) %in% level_chr]
 

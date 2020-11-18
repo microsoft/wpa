@@ -49,7 +49,7 @@ create_dist <- function(data,
                         dist_colours = c("#facebc",
                                          "#fcf0eb",
                                          "#b4d5dd",
-                                         "#adc0cb")) {
+                                         "#bfe5ee")) {
 
   ## Check inputs
   required_variables <- c("Date",
