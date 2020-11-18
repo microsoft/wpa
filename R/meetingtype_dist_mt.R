@@ -92,7 +92,7 @@ meetingtype_dist_mt <- function(data, return = "plot"){
               y = mean(Attendees)) %>%
     mutate(value2 = sub(" ", "\n", value),
            text = ifelse(id %in% c(1, 2, 6, 7),"#FFFFFF", "black"),
-           fill = ifelse(id %in% c(1, 2, 6, 7),"#31617C", "#9FE5FF")) %>%
+           fill = ifelse(id %in% c(1, 2, 6, 7),"#1d627e", "#34b1e2")) %>%
     left_join(select(myResultsTable, MeetingType, Percent),
               by = c("value" = "MeetingType")) %>%
     mutate(Percent = ifelse(is.na(Percent), "0 %", Percent)) %>%
