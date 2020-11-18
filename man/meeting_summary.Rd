@@ -2,9 +2,12 @@
 % Please edit documentation in R/meeting_summary.R
 \name{meeting_summary}
 \alias{meeting_summary}
+\alias{meeting_sum}
 \title{Meeting Summary}
 \usage{
 meeting_summary(data, hrvar = "Organization", mingroup = 5, return = "plot")
+
+meeting_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
@@ -37,6 +40,7 @@ meeting_summary(sq_data, hrvar = "LevelDesignation", return = "table")
 Other Meetings: 
 \code{\link{meeting_fizz}()},
 \code{\link{meeting_line}()},
-\code{\link{meeting_rank}()}
+\code{\link{meeting_rank}()},
+\code{\link{meetingtype_summary}()}
 }
 \concept{Meetings}

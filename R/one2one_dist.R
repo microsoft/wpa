@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Manager 1:1 Time Trend distribution
+#' @title Distribution of Manager 1:1 Time as a 100% stacked bar
 #'
 #' @description
 #' Analyze Manager 1:1 Time distribution.

@@ -1,4 +1,4 @@
-#' @title Meeting Type Distribution
+#' @title Distribution of Meeting Types by number of Attendees and Duration
 #'
 #' @description
 #' Calculate the hour distribution of internal meeting types.

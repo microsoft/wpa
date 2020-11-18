@@ -2,7 +2,7 @@
 % Please edit documentation in R/email_dist.R
 \name{email_dist}
 \alias{email_dist}
-\title{Email Hours distribution}
+\title{Distribution of Email Hours as a 100\% stacked bar}
 \usage{
 email_dist(
   data,

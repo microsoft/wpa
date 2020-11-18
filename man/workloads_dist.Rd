@@ -2,7 +2,7 @@
 % Please edit documentation in R/workloads_dist.R
 \name{workloads_dist}
 \alias{workloads_dist}
-\title{Distribution of Work Week Span}
+\title{Distribution of Work Week Span as a 100\% stacked bar}
 \usage{
 workloads_dist(
   data,

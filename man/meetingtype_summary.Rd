@@ -2,6 +2,7 @@
 % Please edit documentation in R/meetingtype_summary.R
 \name{meetingtype_summary}
 \alias{meetingtype_summary}
+\alias{meetingtype_sum}
 \title{Create a summary bar chart of the proportion of Meeting Hours spent in Long or Large Meetings}
 \usage{
 meetingtype_summary(
@@ -10,6 +11,8 @@ meetingtype_summary(
   mingroup = 5,
   return = "plot"
 )
+
+meetingtype_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{Collaboration Assessment query in the form of a data frame. Requires the following variables:
@@ -35,3 +38,11 @@ Valid inputs are "plot" and "table".}
 This function creates a bar chart showing the percentage of meeting hours which are spent in
 long or large meetings.
 }
+\seealso{
+Other Meetings: 
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()}
+}
+\concept{Meetings}

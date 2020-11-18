@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title After-Hours distribution
+#' @title Distribution of After-hours Collaboration Hours as a 100% stacked bar
 #' @name afterhours_dist
 #'
 #' @description Analyse the distribution of weekly after-hours collaboration time.

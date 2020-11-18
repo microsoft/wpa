@@ -34,6 +34,7 @@ See \code{create_rank()} for applying the same analysis to a different metric.
 Other Meetings: 
 \code{\link{meeting_fizz}()},
 \code{\link{meeting_line}()},
-\code{\link{meeting_summary}()}
+\code{\link{meeting_summary}()},
+\code{\link{meetingtype_summary}()}
 }
 \concept{Meetings}

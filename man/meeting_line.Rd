@@ -41,6 +41,7 @@ meeting_line(sq_data, hrvar = "LevelDesignation", return = "table")
 Other Meetings: 
 \code{\link{meeting_fizz}()},
 \code{\link{meeting_rank}()},
-\code{\link{meeting_summary}()}
+\code{\link{meeting_summary}()},
+\code{\link{meetingtype_summary}()}
 }
 \concept{Meetings}

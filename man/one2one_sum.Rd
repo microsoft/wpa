@@ -2,9 +2,12 @@
 % Please edit documentation in R/one2one_sum.R
 \name{one2one_sum}
 \alias{one2one_sum}
+\alias{one2one_summary}
 \title{Manager 1:1 Time Summary}
 \usage{
 one2one_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
+
+one2one_summary(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}

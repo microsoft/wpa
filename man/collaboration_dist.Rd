@@ -3,17 +3,9 @@
 \name{collaboration_dist}
 \alias{collaboration_dist}
 \alias{collaboration_distribution}
-\title{Collaboration Hours distribution}
+\title{Distribution of Collaboration Hours as a 100\% stacked bar}
 \usage{
 collaboration_dist(
-  data,
-  hrvar = "Organization",
-  mingroup = 5,
-  return = "plot",
-  cut = c(15, 20, 25)
-)
-
-collaboration_distribution(
   data,
   hrvar = "Organization",
   mingroup = 5,

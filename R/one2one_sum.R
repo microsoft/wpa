@@ -39,7 +39,9 @@ one2one_sum <- function(data,
 
 }
 
-
+#' @rdname one2one_sum
+#' @export
+one2one_summary <- one2one_sum
 
 
 

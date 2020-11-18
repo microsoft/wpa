@@ -2,18 +2,9 @@
 % Please edit documentation in R/meeting_dist.R
 \name{meeting_dist}
 \alias{meeting_dist}
-\alias{meeting_distribution}
-\title{Meeting Hours distribution}
+\title{Distribution of Meeting Hours as a 100\% stacked bar}
 \usage{
 meeting_dist(
-  data,
-  hrvar = "Organization",
-  mingroup = 5,
-  return = "plot",
-  cut = c(5, 10, 15)
-)
-
-meeting_distribution(
   data,
   hrvar = "Organization",
   mingroup = 5,

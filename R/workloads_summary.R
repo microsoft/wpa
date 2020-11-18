@@ -38,3 +38,7 @@ workloads_summary <- function(data,
              bar_colour = "darkblue")
 }
 
+
+#' @rdname workloads_summary
+#' @export
+workloads_sum <- workloads_summary
