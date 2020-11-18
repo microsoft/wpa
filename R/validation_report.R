@@ -23,6 +23,14 @@
 #' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
 #' Defaults to TRUE.
 #'
+#' @examples
+#' \dontrun{
+#' validation_report(dv_data,
+#'                   meeting_data = mt_data,
+#'                   hrvar = "Organization")
+#'
+#' }
+#'
 #' @importFrom purrr map_if
 #' @importFrom dplyr `%>%`
 #'
