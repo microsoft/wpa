@@ -22,9 +22,10 @@ navbar:
       text: Analyst Guide
       href: analyst_guide.html
     reference:
-      text: Documentation
+      text: Reference
       href: reference/index.html
     contributing:
+      text: Contribute
       menu:
       - text: Contributor Guide
         href: CONTRIBUTING.html
