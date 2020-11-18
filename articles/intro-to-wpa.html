@@ -54,7 +54,24 @@
   <a href="../analyst_guide.html">Analyst Guide</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">Documentation</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../CONTRIBUTING.html">Contributor Guide</a>
+    </li>
+    <li>
+      <a href="../developer_guide.html">Developer Guide</a>
+    </li>
+    <li>
+      <a href="../reporting_security_issues.html">Reporting Security Issues</a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -65,6 +82,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/intro-to-wpa.html">Introduction to {wpa}</a>
+    </li>
+    <li>
+      <a href="../articles/text-mining-capabilities.html">Text-mining Meeting Subject lines</a>
     </li>
   </ul>
 </li>
@@ -112,7 +132,7 @@
 <div id="setting-up" class="section level3">
 <h3 class="hasAnchor">
 <a href="#setting-up" class="anchor"></a>Setting up</h3>
-<p>To start off using the {wpa}, you’ll have to load it by running <code><a href="https://github.com/microsoft/wpa">library(wpa)</a></code>. For the purpose of our examples, let’s also load {tidyverse}:</p>
+<p>To start off using the {wpa}, you’ll have to load it by running <code><a href="https://github.com/microsoft/wpa">library(wpa)</a></code>. For the purpose of our examples, let’s also load {tidyverse}, or its component packages:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa">wpa</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
@@ -259,7 +279,7 @@
 <a href="#manager-relationship-2x2-matrix" class="anchor"></a>Manager Relationship 2x2 Matrix</h3>
 <p>The <code><a href="../reference/mgrrel_matrix.html">mgrrel_matrix()</a></code> function from {wpa} enables you to plot a 2 by 2 matrix straight from the Standard Query data, which is returned as a ggplot object:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
 <p>By changing the <code>return</code> argument, you can also return a <strong>summary table</strong>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -336,13 +356,13 @@
 <span class="co">#&gt; 6 Support      NA         0.105       0.198   0.697</span></code></pre></div>
 <hr>
 </div>
-<div id="getting-a-quick-overview-of-standard-query-data" class="section level3">
+<div id="getting-a-quick-overview-of-standard-person-query-data" class="section level3">
 <h3 class="hasAnchor">
-<a href="#getting-a-quick-overview-of-standard-query-data" class="anchor"></a>Getting a quick overview of Standard Query data</h3>
-<p>The <code>keymetrics_report()</code> function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:</p>
+<a href="#getting-a-quick-overview-of-standard-person-query-data" class="anchor"></a>Getting a quick overview of Standard Person Query data</h3>
+<p>The <code><a href="../reference/collaboration_report.html">collaboration_report()</a></code> function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># sq_data %&gt;% keymetrics_report()</span></code></pre></div>
-<p>Running the function will open up a HTML report in your browser, summarising the key metrics and plots of the Standard Query. You can manually save this report, or only have it open as an ad-hoc reference document.</p>
+<code class="sourceCode R"><span class="co"># sq_data %&gt;% collaboration_report()</span></code></pre></div>
+<p>Running the function will open up a HTML report in your browser, summarising the key collaboration metrics and plots of the Standard Person Query. You can manually save this report, or only have it open as an ad-hoc reference document.</p>
 <hr>
 </div>
 </div>
