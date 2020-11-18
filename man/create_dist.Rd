@@ -11,7 +11,8 @@ create_dist(
   mingroup = 5,
   return = "plot",
   cut = c(15, 20, 25),
-  dist_colours = c("#FE7F4F", "#ffdfd3", "#bed6f2", "#e9f1fb")
+  dist_colours = c("#FE7F4F", "#ffdfd3", "#bed6f2", "#e9f1fb"),
+  unit = "hours"
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ e.g. c(10, 15, 20)}
 
 \item{dist_colours}{A character vector of length four to specify colour
 codes for the stacked bars.}
+
+\item{unit}{See \code{cut_hour()}.}
 }
 \description{
 Provides an analysis of the distribution of a selected metric.

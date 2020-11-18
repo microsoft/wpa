@@ -21,6 +21,7 @@
 #' e.g. c(10, 15, 20)
 #' @param dist_colours A character vector of length four to specify colour
 #' codes for the stacked bars.
+#' @param unit See `cut_hour()`.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -49,7 +50,8 @@ create_dist <- function(data,
                         dist_colours = c("#FE7F4F",
                                          "#ffdfd3",
                                          "#bed6f2",
-                                         "#e9f1fb")) {
+                                         "#e9f1fb"),
+                        unit = "hours") {
 
   ## Check inputs
   required_variables <- c("Date",
@@ -81,7 +83,7 @@ create_dist <- function(data,
   ## Create buckets of collaboration hours
   plot_data <-
     plot_data %>%
-    mutate(bucket_hours = cut_hour(!!sym(metric), cuts = cut))
+    mutate(bucket_hours = cut_hour(!!sym(metric), cuts = cut, unit = unit))
 
   ## Employee count / base size table
   plot_legend <-

@@ -12,6 +12,7 @@
 #' @param metric A numeric variable representing hours.
 #' @param cuts A numeric variable of minimum length 3 to represent the
 #' cut points required.
+#' @param unit String to specify the unit of the labels. Defaults to "hours".
 #'
 #' @family General
 #'
@@ -24,7 +25,7 @@
 #'
 #' @export
 
-cut_hour <- function(metric, cuts){
+cut_hour <- function(metric, cuts, unit = "hours"){
 
 
   cuts <- unique(cuts) # No duplicates allowed
@@ -42,9 +43,9 @@ cut_hour <- function(metric, cuts){
   midcut_min_1 <- cuts[match(midcut, cuts) - 1] # one value smaller
 
   # Individual labels
-  label_mincut <- paste0("< ", mincut, " hours")
-  label_maxcut <- paste0(maxcut, "+ hours")
-  label_midcut <- paste0(midcut_min_1, " - ", midcut, " hours")
+  label_mincut <- paste0("< ", mincut, " ", unit)
+  label_maxcut <- paste0(maxcut, "+ ", unit)
+  label_midcut <- paste0(midcut_min_1, " - ", midcut, " ", unit)
 
   # All labels
   all_labels <- c(label_mincut, label_midcut, label_maxcut)
