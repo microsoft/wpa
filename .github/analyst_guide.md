@@ -25,7 +25,7 @@ Here is an example of `collaboration_sum()`:
 ```R
 collaboration_sum(sq_data, return = "plot")
 ```
-<img src="../man/figures/collaboration_sum2.jpg" align="center" width=80% />
+<img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/collaboration_sum2.jpg" align="center" width=80% />
 
 For the standard functions, there are six basic **plot types** which could be paired with six different **key metrics**. The six plot types are:
 
@@ -101,4 +101,4 @@ You can explore the structure of these datasets by running `?sq_data` or `dplyr:
 
 Also check out our package cheat sheet for more information:
 
-<a href="../man/figures/wpa cheatsheet_20201116.pdf"><img src="../man/figures/wpa cheatsheet_20201116.png" align="center" width=50% /></a>
+<a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet_20201116.png" align="center" width=50% /></a>
