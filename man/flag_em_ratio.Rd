@@ -2,19 +2,23 @@
 % Please edit documentation in R/flag_em_ratio.R
 \name{flag_em_ratio}
 \alias{flag_em_ratio}
-\title{Flag unusual high Email hours to emails sent ratio}
+\title{Flag Persons with unusually high Email Hours to Emails Sent ratio}
 \usage{
-flag_em_ratio(data, threshold = 1)
+flag_em_ratio(data, threshold = 1, return = "text")
 }
 \arguments{
 \item{data}{A data frame containing a Person Query.}
 
 \item{threshold}{Numeric value specifying the threshold for flagging. Defaults to 1.}
+
+\item{return}{Character vector specifying what to return. Defaults to "text", with
+valid options to return a data frame ("data").}
 }
 \description{
 This function flags persons who have an unusual ratio
-of email hours to emails sent.
-Returns a character string by default.
+of email hours to emails sent. If the ratio between Email Hours and
+Emails Sent is greater than the threshold, then observations tied to
+a \code{PersonId} is flagged as unusual.
 }
 \examples{
 flag_em_ratio(sq_data)

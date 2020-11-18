@@ -66,3 +66,8 @@ standardise_pq <- function(data){
 
   return(data)
 }
+
+#' @rdname standardise_pq
+#' @export
+standardize_pq <- standardise_pq
+

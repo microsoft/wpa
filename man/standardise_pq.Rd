@@ -2,9 +2,12 @@
 % Please edit documentation in R/standardise_pq.R
 \name{standardise_pq}
 \alias{standardise_pq}
+\alias{standardize_pq}
 \title{Standardise variable names to a Standard Person Query}
 \usage{
 standardise_pq(data)
+
+standardize_pq(data)
 }
 \arguments{
 \item{data}{A Collaboration Assessment query to pass through as a data frame.}

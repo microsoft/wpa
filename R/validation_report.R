@@ -11,7 +11,7 @@
 #' Workplace Analytics query outputs, to provide diagnostic information
 #' for the Analyst pre-analysis.
 #'
-#' For your input data or meeting_data, please use the function wpa::import_wpa()'
+#' For your input data or meeting_data, please use the function `wpa::import_wpa()`
 #' to import your csv query files into R. This function will standardize format
 #' and prepare the data as input for this report.
 #'
@@ -22,6 +22,14 @@
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
 #' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
 #' Defaults to TRUE.
+#'
+#' @examples
+#' \dontrun{
+#' validation_report(dv_data,
+#'                   meeting_data = mt_data,
+#'                   hrvar = "Organization")
+#'
+#' }
 #'
 #' @importFrom purrr map_if
 #' @importFrom dplyr `%>%`
@@ -66,8 +74,10 @@ validation_report <- function(data,
 
   if(all(wktimes_var %in% names(data))){
     wktimes_obj <- data %>% flag_outlooktime(return = "text")
+    shift_obj <- data %>% identify_shifts(return = "plot")
   } else {
-    wktimes_obj <- paste(wktimes_msg, wktimes_var, collapse = "\n")
+    wktimes_obj <- paste(wktimes_msg, paste(wrap(wktimes_var, "`"), collapse = ", "), collapse = "\n")
+    shift_obj <- paste(wktimes_msg, paste(wrap(wktimes_var, "`"), collapse = ", "), collapse = "\n")
   }
 
   ## Dynamic: Track HR changes
@@ -89,7 +99,9 @@ validation_report <- function(data,
 
          read_preamble("blank.md"), # Header - 1.1 Workplace Analytics Settings
          read_preamble("outlook_settings_1.md"),
-         data %>% identify_shifts(return = "plot"),
+
+         shift_obj, # See `identify_shifts()` dynamic treatment above
+
          read_preamble("outlook_settings_2.md"),
          paste(">", wktimes_obj),
          paste(">", data %>% flag_ch_ratio(return = "text")),

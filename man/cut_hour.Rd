@@ -4,13 +4,15 @@
 \alias{cut_hour}
 \title{Convert a numeric variable for hours into categorical}
 \usage{
-cut_hour(metric, cuts)
+cut_hour(metric, cuts, unit = "hours")
 }
 \arguments{
 \item{metric}{A numeric variable representing hours.}
 
-\item{cuts}{A numeric variable of length 3 to represent the
+\item{cuts}{A numeric variable of minimum length 3 to represent the
 cut points required.}
+
+\item{unit}{String to specify the unit of the labels. Defaults to "hours".}
 }
 \description{
 Supply a numeric variable, e.g. \code{Collaboration_hours},

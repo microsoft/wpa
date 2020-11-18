@@ -21,6 +21,7 @@
 #' e.g. c(10, 15, 20)
 #' @param dist_colours A character vector of length four to specify colour
 #' codes for the stacked bars.
+#' @param unit See `cut_hour()`.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -81,23 +82,22 @@ create_dist <- function(data,
   ## Create buckets of collaboration hours
   plot_data <-
     plot_data %>%
-    mutate(bucket_hours = cut_hour(!!sym(metric),
-                                          cuts = cut))
+    mutate(bucket_hours = cut_hour(!!sym(metric), cuts = cut, unit = unit))
 
   ## Employee count / base size table
   plot_legend <-
     plot_data %>%
     group_by(group) %>%
-    summarize(Employee_Count=first(Employee_Count)) %>%
+    summarize(Employee_Count = first(Employee_Count)) %>%
     mutate(Employee_Count = paste("n=",Employee_Count))
 
   ## Data for bar plot
   plot_table <-
     plot_data %>%
     group_by(group, bucket_hours) %>%
-    summarize(Employees=n(),
-              Employee_Count=first(Employee_Count),
-              percent= Employees / Employee_Count ) %>%
+    summarize(Employees = n(),
+              Employee_Count = first(Employee_Count),
+              percent = Employees / Employee_Count ) %>%
     arrange(group, desc(bucket_hours))
 
   ## Table for annotation

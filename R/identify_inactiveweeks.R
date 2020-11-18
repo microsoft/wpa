@@ -26,35 +26,60 @@
 #'
 #' @export
 identify_inactiveweeks <- function(data, sd = 2, return = "text"){
-  Calc <-
+
+  init_data <-
     data %>%
     group_by(PersonId) %>%
-    mutate(z_score = (Collaboration_hours - mean(Collaboration_hours))/sd(Collaboration_hours)) %>%
-    filter(z_score<= -sd) %>%
-    select(PersonId,Date,z_score) %>%
+    mutate(z_score = (Collaboration_hours - mean(Collaboration_hours))/sd(Collaboration_hours))
+
+
+  Calc <-
+    init_data %>%
+    filter(z_score <= -sd) %>%
+    select(PersonId, Date, z_score) %>%
     data.frame()
 
-  Message <- paste0("There are ",nrow(Calc), " rows of data with weekly collaboration hours more than ",sd," standard deviations below the mean.")
+  pop_mean <-
+    data %>%
+    dplyr::mutate(Total = "Total") %>%
+    create_bar(metric = "Collaboration_hours",
+               hrvar = "Total",
+               return = "table") %>%
+    dplyr::pull(Collaboration_hours) %>%
+    round(digits = 1)
+
+
+  Message <- paste0("There are ", nrow(Calc), " rows of data with weekly collaboration hours more than ",
+                    sd," standard deviations below the mean (", pop_mean, ").")
 
   if(return == "text"){
+
     return(Message)
 
   } else if(return == "data_dirty"){
-    data %>% group_by(PersonId) %>% mutate(
-      z_score = (Collaboration_hours - mean(Collaboration_hours))/sd(Collaboration_hours)) %>%
-      filter(z_score<= -sd) %>% select(-z_score) %>% data.frame()
+
+    init_data %>%
+      filter(z_score <= -sd) %>%
+      select(-z_score) %>%
+      data.frame()
 
   } else if(return == "data_cleaned"){
-    data %>% group_by(PersonId) %>% mutate(
-      z_score = (Collaboration_hours - mean(Collaboration_hours))/sd(Collaboration_hours)) %>%
-      filter(z_score> -sd) %>% select(-z_score) %>% data.frame()
+
+    init_data %>%
+      filter(z_score > -sd) %>%
+      select(-z_score) %>%
+      data.frame()
 
   } else if(return == "data"){
-    data %>% group_by(PersonId) %>% mutate(
-      z_score = (Collaboration_hours - mean(Collaboration_hours))/sd(Collaboration_hours)) %>%
-        mutate(inactiveweek = (z_score<= -sd)) %>% select(-z_score) %>% data.frame()
+
+    init_data %>%
+      mutate(inactiveweek = (z_score<= -sd)) %>%
+      select(-z_score) %>%
+      data.frame()
 
   } else {
+
     stop("Error: please check inputs for `return`")
+
   }
 }

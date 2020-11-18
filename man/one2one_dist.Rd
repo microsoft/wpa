@@ -4,10 +4,16 @@
 \alias{one2one_dist}
 \title{Manager 1:1 Time Trend distribution}
 \usage{
-one2one_dist(data, hrvar = "Organization", mingroup = 5, return = "plot")
+one2one_dist(
+  data,
+  hrvar = "Organization",
+  mingroup = 5,
+  return = "plot",
+  cut = c(5, 15, 30)
+)
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
@@ -15,6 +21,9 @@ one2one_dist(data, hrvar = "Organization", mingroup = 5, return = "plot")
 
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}
+
+\item{cut}{A numeric vector of length three to specify the breaks for the distribution,
+e.g. c(10, 15, 20)}
 }
 \description{
 Analyze Manager 1:1 Time distribution.

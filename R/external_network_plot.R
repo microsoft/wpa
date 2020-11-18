@@ -3,10 +3,12 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Plot the external network metrics for a HR variable
+#' @title Plot External Network Breadth and Size as a scatter plot
 #'
 #' @description
-#' Plot the external network metrics for a HR variable.
+#' Plot the external network metrics for a HR variable as a scatter plot, showing
+#' External Network Breadth as the vertical axis and External Network Size as the
+#' horizontal axis.
 #'
 #' @param data Person Query as a dataframe including date column named "Date"
 #' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.
@@ -35,7 +37,7 @@ external_network_plot <- function(data,
                                   hrvar = "Organization",
                                   mingroup = 5,
                                   return = "plot",
-                                  bubble_size = c(1, 5)){
+                                  bubble_size = c(1, 8)){
   plot_data <-
     data %>%
     rename(group = !!sym(hrvar))
@@ -62,40 +64,11 @@ external_network_plot <- function(data,
     scale_x_continuous(name = "External Network Size") +
     scale_y_continuous(name = "External Network Breadth") +
     scale_size(range = bubble_size) +
-    theme_classic() +
-    theme(
-      axis.text = element_text(size = 10),
-      axis.text.x = element_text(
-        angle = 90,
-        hjust = 1,
-        vjust = 0.5
-      ),
-      plot.title = element_text(
-        color = "grey40",
-        face = "bold",
-        size = 18
-      ),
-      plot.subtitle = element_text(size = 14)
-    ) +
-    labs(
-      size = "Size"
-    ) +
-    labs(
-      title = paste("External network metrics by", hrvar),
-      subtitle = paste(
-        "Network size is number of people, breadth is number of organizations"
-      )
-    ) +
-    labs(
-      caption = paste(
-        "Total employees =",
-        sum(plot_data$Employee_count),
-        "| Data from",
-        min(as.Date(data$Date, "%m/%d/%Y")),
-        "to",
-        max(as.Date(data$Date, "%m/%d/%Y"))
-      )
-    )
+    theme_wpa_basic() +
+    labs(title = paste("External network metrics by", hrvar),
+         subtitle = paste("Network size is number of people, breadth is number of organizations"),
+         size = "Size") +
+    labs(caption = paste("Total employees =", sum(plot_data$Employee_count), "|", extract_date_range(data, return = "text")))
 
   if(return == "table"){
 
