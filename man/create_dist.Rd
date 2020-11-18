@@ -11,7 +11,8 @@ create_dist(
   mingroup = 5,
   return = "plot",
   cut = c(15, 20, 25),
-  dist_colours = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee")
+  dist_colours = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee"),
+  unit = "hours"
 )
 }
 \arguments{
