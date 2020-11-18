@@ -8,7 +8,7 @@ The changes made in this PR are:
 ...
 
 # Check
-- [ ] Check 1
+- [ ] All R CMD checks pass 
 - [ ] Check 2
 ...
 
