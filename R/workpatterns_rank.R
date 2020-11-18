@@ -144,7 +144,7 @@ workpatterns_rank <- function(data,
       ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
       ggplot2::geom_tile(height=.5) +
       ggplot2::ylab("Top 10 Work Patterns") +
-      ggplot2::scale_fill_gradient2(low = "white", high = "red") +
+      ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
       ggplot2::scale_y_reverse(breaks=seq(1,10)) +
       theme_wpa_basic() +
       ggplot2::theme(legend.position = "none") +
@@ -164,14 +164,14 @@ workpatterns_rank <- function(data,
                ymin = 0.5,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
-               fill = "red") +
+               fill = "#fe7f4f") +
       ggplot2::annotate("rect",
                xmin = end_hour + 0.5,
                xmax = 24.5,
                ymin = 0.5,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
-               fill = "red")
+               fill = "#fe7f4f")
 
   } else if(return == "table"){
 

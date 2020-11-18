@@ -45,15 +45,15 @@ create_bar_asis <- function(data,
   ## Colour bar override
   if(bar_colour == "default"){
 
-    bar_colour <- rgb2hex(0, 120, 212)
+    bar_colour <- "#34b1e2"
 
   } else if(bar_colour == "alert"){
 
-    bar_colour <- rgb2hex(215, 59, 1)
+    bar_colour <- "#FE7F4F"
 
   } else if(bar_colour == "darkblue"){
 
-    bar_colour <- rgb2hex(0, 32, 80)
+    bar_colour <- "#1d627e"
 
   }
 
