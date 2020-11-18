@@ -197,19 +197,30 @@ e.g. c(10, 15, 20)</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Return a plot</span>
 <span class='fu'>meeting_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Problem with `mutate()` input `bucket_hours`.</span>
-#&gt; <span class='error'><span style='color: #BB0000;'>✖</span><span> cannot coerce type 'closure' to vector of type 'character'</span>
-#&gt; <span class='error'></span><span style='color: #0000BB;'>ℹ</span><span> Input `bucket_hours` is `cut_hour(Meeting_hours, cuts = cut, unit = unit)`.</span></div><div class='input'>
+</div><div class='img'><img src='meeting_dist-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Return a table</span>
 <span class='fu'>meeting_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Problem with `mutate()` input `bucket_hours`.</span>
-#&gt; <span class='error'></span><span style='color: #BB0000;'>✖</span><span> cannot coerce type 'closure' to vector of type 'character'</span>
-#&gt; <span class='error'></span><span style='color: #0000BB;'>ℹ</span><span> Input `bucket_hours` is `cut_hour(Meeting_hours, cuts = cut, unit = unit)`.</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 6</span><span>
+#&gt;    group   `&lt; 5 hours` `5 - 10 hours` `10 - 15 hours` `15+ hours` Employee_Count
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Biz Dev      0.08            0.907          0.013</span><span style='text-decoration: underline;'>3</span><span>     </span><span style='color: #BB0000;'>NA</span><span>                  75
+#&gt; </span><span style='color: #555555;'> 2</span><span> Custom…      0.016</span><span style='text-decoration: underline;'>4</span><span>          0.770          0.148       0.065</span><span style='text-decoration: underline;'>6</span><span>             61
+#&gt; </span><span style='color: #555555;'> 3</span><span> Facili…      0.013</span><span style='text-decoration: underline;'>9</span><span>          0.611          0.375      </span><span style='color: #BB0000;'>NA</span><span>                  72
+#&gt; </span><span style='color: #555555;'> 4</span><span> Financ…      0.029</span><span style='text-decoration: underline;'>4</span><span>          0.735          0.221       0.014</span><span style='text-decoration: underline;'>7</span><span>             68
+#&gt; </span><span style='color: #555555;'> 5</span><span> Financ…      0.057</span><span style='text-decoration: underline;'>1</span><span>          0.329          0.414       0.2                70
+#&gt; </span><span style='color: #555555;'> 6</span><span> Financ…      0.098</span><span style='text-decoration: underline;'>8</span><span>          0.531          0.321       0.049</span><span style='text-decoration: underline;'>4</span><span>             81
+#&gt; </span><span style='color: #555555;'> 7</span><span> Financ…      0.013</span><span style='text-decoration: underline;'>7</span><span>          0.493          0.452       0.041</span><span style='text-decoration: underline;'>1</span><span>             73
+#&gt; </span><span style='color: #555555;'> 8</span><span> Financ…      0.066</span><span style='text-decoration: underline;'>7</span><span>          0.76           0.12        0.053</span><span style='text-decoration: underline;'>3</span><span>             75
+#&gt; </span><span style='color: #555555;'> 9</span><span> G&amp;A Ce…      0.035</span><span style='text-decoration: underline;'>1</span><span>          0.596          0.316       0.052</span><span style='text-decoration: underline;'>6</span><span>             57
+#&gt; </span><span style='color: #555555;'>10</span><span> G&amp;A Ea…      0.015</span><span style='text-decoration: underline;'>4</span><span>          0.862          0.123      </span><span style='color: #BB0000;'>NA</span><span>                  65
+#&gt; </span><span style='color: #555555;'>11</span><span> G&amp;A So…     </span><span style='color: #BB0000;'>NA</span><span>               0.316          0.526       0.158              76
+#&gt; </span><span style='color: #555555;'>12</span><span> Human …     </span><span style='color: #BB0000;'>NA</span><span>               0.225          0.535       0.239              71
+#&gt; </span><span style='color: #555555;'>13</span><span> Invent…     </span><span style='color: #BB0000;'>NA</span><span>               0.117          0.583       0.3                60
+#&gt; </span><span style='color: #555555;'>14</span><span> IT-Cor…      0.132           0.132          0.529       0.206              68
+#&gt; </span><span style='color: #555555;'>15</span><span> IT-East      0.064</span><span style='text-decoration: underline;'>5</span><span>          0.323          0.516       0.096</span><span style='text-decoration: underline;'>8</span><span>             62</div><div class='input'>
 <span class='co'>## Return result with a custom specified breaks</span>
 <span class='fu'>meeting_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, cut <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Problem with `mutate()` input `bucket_hours`.</span>
-#&gt; <span class='error'></span><span style='color: #BB0000;'>✖</span><span> cannot coerce type 'closure' to vector of type 'character'</span>
-#&gt; <span class='error'></span><span style='color: #0000BB;'>ℹ</span><span> Input `bucket_hours` is `cut_hour(Meeting_hours, cuts = cut, unit = unit)`.</span></div><div class='input'>
+</div><div class='img'><img src='meeting_dist-2.png' alt='' width='700' height='433' /></div><div class='input'>
 
 </div></span></pre>
   </div>
