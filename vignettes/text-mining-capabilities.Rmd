@@ -1,0 +1,148 @@
+---
+title: "Text Mining Capabilities for Meeting Subject Lines"
+author: "Martin Chan"
+date: "2020-11-10"
+categories: ["R"]
+tags: ["text mining"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+# About
+
+This post provides an introduction to the text mining capabilities for meeting subject lines in the **wpa** package.
+
+# Getting started
+
+## Loading the packages
+
+The first step is to load the **wpa** package. We would also recommend loading **tidyverse** for any handy data manipulation that you will need. 
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(wpa)
+library(tidyverse) # For data manipulation
+```
+
+## Loading the datasets
+
+For subject line text mining analysis, you will require a meeting query. To load a dataset, we always recommend using `import_wpa()` as checks are run to ensure that the variables are of the right class. Here is an example of how to load in a CSV file called `MeetingQuery.csv` and assign it to an object called `mt_df`:
+
+```
+mt_df <- import_wpa("data/Meeting Query.csv")
+
+```
+
+A couple of notes on the above:
+
+- The above line of code provides a file path to the CSV file, loads it, and assigns it to `mt_df`
+- You will need to update this with your own path, but remember that you must use forward slash (`/`), not back slash (`\`)
+- If you are NOT using RStudio Projects: run `getwd()` to check current working directory, use `setwd()` to set current working directory
+
+If you just wish to test out the examples on this post and don't want to load in your own dataset (or you do not have access to one), you can also use the inbuilt demo dataset `mt_data`, which is essentially a Standard Meeting Query. For the subsequent examples, please substitute `mt_data` with `mt_df` if you wish to use your own data instead of the inbuilt demo dataset.
+
+## Word clouds
+
+To create a word cloud with subject lines, you can run the following:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% tm_wordcloud(keep = 50) # Using the inbuilt demo dataset
+
+```
+
+The `keep` argument allows you to specify the maximum number of words to keep in the word cloud. The default value is 100, and in the above example we have changed it to 50. You can find out more from the documentation by prepending the function name with `?`, such as `?tm_wordcloud`.
+
+Note that you can also return a summary table instead by adding `return == "table"`:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% tm_wordcloud(keep = 50, return = "table") # Using the inbuilt demo dataset
+
+```
+
+
+## Co-occurrence Network Plot
+
+The key function for co-occurrence analysis is `tm_cooc()`. As its name suggest, this looks at whether pairs of words co-occur in the same subject line.
+
+The following line of code generates a co-occurrence network plot:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% tm_cooc()
+
+```
+
+Like `tm_wordcloud()`, you can also return a summary table as a data frame, instead of a plot:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% tm_cooc(return = "table")
+
+```
+
+## Circular Bar Plot
+
+You can also create a circular bar plot based on the frequency of the text. 
+
+With `tm_freq()`, you can choose to tokenize the text either as individual **words** or **ngrams**.
+
+**Words**:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% tm_freq()
+
+```
+
+**ngrams**:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% tm_freq(token = "ngrams", return = "plot")
+
+```
+
+Remember that there is again, an option to return a summary table:
+
+**ngrams**:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% tm_freq(token = "ngrams", return = "table")
+
+```
+
+## Meeting Text Mining Report
+
+The `meeting_tm_report()` function brings everything together: it will run a HTML report and save it in your current working directory.
+
+You can simply run:
+
+```
+mt_data %>% meeting_tm_report() 
+```
+
+## Subject Line Validation Report
+
+If your objective is to validate your subject lines for common exclusion terms, you can run:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+mt_data %>% subject_validate() 
+
+```
+
+This does a check for common exlusion terms in subject lines, returning a string.
+
+
+To run a full report, you can do:
+
+```
+mt_data %>% subject_validate_report() 
+```
+
+This runs a text mining report based on the common exclusion terms in subject lines.
+

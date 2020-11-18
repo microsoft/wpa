@@ -9,6 +9,7 @@ navbar:
     - intro
     - guide
     - reference
+    - contributing
     - articles
     - tutorials
     - news
@@ -21,8 +22,16 @@ navbar:
       text: Analyst Guide
       href: analyst_guide.html
     reference:
-      text: Reference
+      text: Documentation
       href: reference/index.html
+    contributing:
+      menu:
+      - text: Contributor Guide
+        href: CONTRIBUTING.html
+      - text: Developer Guide
+        href: developer_guide.html
+      - text: Reporting Security Issues
+        href: reporting_security_issues.html
     news:
       text: Changelog
       href: news/index.html
@@ -34,3 +43,5 @@ navbar:
       menu:
       - text: Introduction to {wpa}
         href: articles/intro-to-wpa.html
+      - text: Text-mining Meeting Subject lines
+        href: articles/text-mining-capabilities.html
