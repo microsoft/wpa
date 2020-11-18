@@ -3,9 +3,9 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Identify outliers across time
+#' @title Identify metric outliers over a date interval
 #'
-#' This function takes in a selected metric and uses
+#' @description This function takes in a selected metric and uses
 #' z-score (number of standard deviations) to identify outliers
 #' across time. There are applications in this for identifying
 #' weeks with abnormally low collaboration activity, e.g. holidays.
