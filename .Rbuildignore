@@ -1,0 +1,14 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^_data$
+^_development$
+^CONTRIBUTING.md$
+^LICENSE.txt$
+^doc$
+^docs$
+^.github$
+^_pkgdown\.yml$
+^pkgdown$
+^\.github$
+^man/figures/wpa cheatsheet_20201116.pdf$
+^man/figures/wpa cheatsheet_20201116.png$
