@@ -18,11 +18,11 @@ This post provides an introduction to the text mining capabilities for meeting s
 
 ## Loading the packages
 
-The first step is to load the **wpa** package. We would also recommend loading **tidyverse** for any handy data manipulation that you will need. 
+The first step is to load the **wpa** package. We would also recommend loading **tidyverse** or its component packages for any handy data manipulation that you will need. 
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(wpa)
-library(tidyverse) # For data manipulation
+library(dplyr) # For data manipulation
 ```
 
 ## Loading the datasets

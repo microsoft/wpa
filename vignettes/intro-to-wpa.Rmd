@@ -24,7 +24,7 @@ This document walks through the {wpa} package, and provides some examples on how
 
 ### Setting up
 
-To start off using the {wpa}, you'll have to load it by running `library(wpa)`. For the purpose of our examples, let's also load {tidyverse}:
+To start off using the {wpa}, you'll have to load it by running `library(wpa)`. For the purpose of our examples, let's also load {tidyverse}, or its component packages:
 
 ```{r message=FALSE, warning=FALSE}
 library(wpa)
@@ -128,7 +128,7 @@ sq_data %>% meeting_summary(hrvar = "Organization", return = "table")
 The `mgrrel_matrix()` function from {wpa} enables you to plot a 2 by 2 matrix straight from the Standard Query data, which is returned as a ggplot object:
 
 ```{r}
-sq_data %>% mgrrel_matrix(hrvar = "LevelDesignation")
+sq_data %>% mgrrel_matrix()
 ```
 
 By changing the `return` argument, you can also return a **summary table**:
@@ -159,16 +159,15 @@ sq_data %>% mgrcoatt_dist(hrvar = "LevelDesignation", return = "table")
 
 ---
 
-### Getting a quick overview of Standard Query data
+### Getting a quick overview of Standard Person Query data
 
-The `keymetrics_report()` function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:
+The `collaboration_report()` function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, results="hide"}
-# sq_data %>% keymetrics_report()
+# sq_data %>% collaboration_report()
 ```
 
-Running the function will open up a HTML report in your browser, summarising the key metrics and plots of the Standard Query. You can manually save this report, or only have it open as an ad-hoc reference document.
-
+Running the function will open up a HTML report in your browser, summarising the key collaboration metrics and plots of the Standard Person Query. You can manually save this report, or only have it open as an ad-hoc reference document.
 
 ---
 
