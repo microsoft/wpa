@@ -35,6 +35,15 @@ For your input data or meeting_data, please use the function wpa::import_wpa()'
 to import your csv query files into R. This function will standardize format
 and prepare the data as input for this report.
 }
+\examples{
+\dontrun{
+validation_report(dv_data,
+                  meeting_data = mt_data,
+                  hrvar = "Organization")
+
+}
+
+}
 \seealso{
 Other Reports: 
 \code{\link{IV_report}()},

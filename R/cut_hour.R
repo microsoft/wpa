@@ -10,7 +10,7 @@
 #' and the function returns a character vector
 #'
 #' @param metric A numeric variable representing hours.
-#' @param cuts A numeric variable of length 3 to represent the
+#' @param cuts A numeric variable of minimum length 3 to represent the
 #' cut points required.
 #'
 #' @family General
@@ -27,22 +27,33 @@
 cut_hour <- function(metric, cuts){
 
 
-  label1 <- paste0("< ", cuts[1], " hours")
-  label2 <- paste0(cuts[1], " - ", cuts[2], " hours")
-  label3 <- paste0(cuts[2], " - ", cuts[3], " hours")
-  label4 <- paste0(cuts[3], "+ hours")
+  cuts <- unique(cuts) # No duplicates allowed
+  ncuts <- length(cuts)
 
-  out <-
-    cut(metric,
-        breaks = c(0, cuts, 100),
-        include.lowest = TRUE,
-        labels = c(label1,
-                   label2,
-                   label3,
-                   label4))
+  if(ncuts < 3){
+    stop("Please provide a numeric vector of at least length 3 to `cuts`")
+  }
 
-  # out <- as.character(out)
-  return(out)
+
+  # Extract min, max, and middle values
+  mincut <- min(cuts, na.rm = TRUE)
+  maxcut <- max(cuts, na.rm = TRUE)
+  midcut <- cuts[!cuts %in% mincut] # Excludes mincut only
+  midcut_min_1 <- cuts[match(midcut, cuts) - 1] # one value smaller
+
+  # Individual labels
+  label_mincut <- paste0("< ", mincut, " hours")
+  label_maxcut <- paste0(maxcut, "+ hours")
+  label_midcut <- paste0(midcut_min_1, " - ", midcut, " hours")
+
+  # All labels
+  all_labels <- c(label_mincut, label_midcut, label_maxcut)
+
+
+  cut(metric,
+      breaks = c(0, cuts, 100),
+      include.lowest = TRUE,
+      labels = all_labels)
 }
 
 

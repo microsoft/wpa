@@ -9,7 +9,7 @@ cut_hour(metric, cuts)
 \arguments{
 \item{metric}{A numeric variable representing hours.}
 
-\item{cuts}{A numeric variable of length 3 to represent the
+\item{cuts}{A numeric variable of minimum length 3 to represent the
 cut points required.}
 }
 \description{
