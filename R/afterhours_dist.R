@@ -56,11 +56,7 @@ afterhours_dist <- function(data,
               hrvar = hrvar,
               mingroup = mingroup,
               return = return,
-              cut = cut,
-              dist_colours = c("#FE7F4F",
-                               "#ffdfd3",
-                               "#bed6f2",
-                               "#e9f1fb"))
+              cut = cut)
 
 
 }
