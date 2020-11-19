@@ -39,3 +39,7 @@ collaboration_dist <- function(data,
 
 
 }
+
+#' @rdname collaboration_dist
+#' @export
+collab_dist <- collaboration_dist

@@ -64,3 +64,7 @@ collaboration_line <- function(data,
     stop("Invalid `return` value")
   }
 }
+
+#' @rdname collaboration_line
+#' @export
+collab_line <- collaboration_line

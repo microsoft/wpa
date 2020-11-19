@@ -27,10 +27,15 @@ collaboration_rank <- function(data,
                                mingroup = 5,
                                return = "table"){
 
-  data %>%
-    create_rank(metric="Collaboration_hours",
-                hrvar = hrvar,
-                mingroup = mingroup,
-                return = return)
+
+  create_rank(data,
+              metric="Collaboration_hours",
+              hrvar = hrvar,
+              mingroup = mingroup,
+              return = return)
 
 }
+
+#' @rdname collaboration_rank
+#' @export
+collab_rank <- collaboration_rank

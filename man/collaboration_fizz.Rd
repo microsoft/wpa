@@ -2,9 +2,12 @@
 % Please edit documentation in R/collaboration_fizz.R
 \name{collaboration_fizz}
 \alias{collaboration_fizz}
+\alias{collab_fizz}
 \title{Distribution of Collaboration Hours (Fizzy Drink plot)}
 \usage{
 collaboration_fizz(data, hrvar = "Organization", mingroup = 5, return = "plot")
+
+collab_fizz(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}

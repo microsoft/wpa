@@ -77,7 +77,7 @@ collaboration_summary <- collaboration_sum
 
 #' @rdname collaboration_sum
 #' @export
-collab_summary <-collaboration_sum
+collab_summary <- collaboration_sum
 
 
 

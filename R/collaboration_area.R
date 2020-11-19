@@ -137,3 +137,7 @@ collaboration_area <- function(data,
   }
 
 }
+
+#' @rdname collaboration_area
+#' @export
+collab_area <- collaboration_area

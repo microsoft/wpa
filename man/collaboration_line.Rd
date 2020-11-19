@@ -2,9 +2,12 @@
 % Please edit documentation in R/collaboration_line.R
 \name{collaboration_line}
 \alias{collaboration_line}
+\alias{collab_line}
 \title{Collaboration Time Trend - Line Chart}
 \usage{
 collaboration_line(data, hrvar = "Organization", mingroup = 5, return = "plot")
+
+collab_line(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Query dataset in the form of a data frame.}
