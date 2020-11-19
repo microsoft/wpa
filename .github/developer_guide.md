@@ -2,6 +2,16 @@
 
 This is guide for "developers", or anyone who is looking to contribute code to the {wpa} R package. 
 
+## Design Principles
+
+Please try to adhere to the following package design principles before proceeding with code contribution.
+
+- **Simple**: the functions ought to be simple and intuitive to maximise adoption.
+- **Practical**: the functions should prioritise delivering against the most frequently used outputs and analyses.
+- **Consistency**: functions should share a broadly consistent set of input arguments and naming conventions. This will help minimise unexpected results and errors when using the package. 
+- **Parsimony**: in creating the package, as much of the existing code should be re-used if possible to minimise duplication of work and to make analysis reproducible.
+- **Tidy**: the functions from the package are designed to be consistent with tidy principles, and work well with a **dplyr** pipe (`%>%`) workflow.
+
 ## Pre-requisites
 
 You should have the following installed before starting:

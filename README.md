@@ -17,16 +17,6 @@ Here are just some examples of the plots that you can create with **wpa**:
 
 <img src="man/figures/plot-demo.gif" align="center" width=80% />
 
-## Design Principles
-
-- **Simple**: the functions ought to be simple and intuitive to maximise adoption.
-- **Practical**: the functions should prioritise delivering against the most frequently used outputs and analyses.
-- **Consistency**: functions should share a broadly consistent set of input arguments and naming conventions. This will help minimise unexpected results and errors when using the package. 
-- **Parsimony**: in creating the package, as much of the existing code should be re-used if possible to minimise duplication of work and to make analysis reproducible.
-- **Tidy**: the functions from the package are designed to be consistent with tidy principles, and work well with a **dplyr** pipe (`%>%`) workflow.
-
-<img src="man/figures/api-demo.png" align="center" width=80% />
-
 ---
 
 ## :rocket: Quick start guide - For users
@@ -53,6 +43,10 @@ collaboration_sum(sq_data, return = "plot")
 <img src="man/figures/collaboration_sum2.jpg" align="center" width=80% />
 
 By passing 'table' to the `return` argument, the function will return a data frame with the relevant summary statistics. 
+
+The following illustrates the basic API of standard analysis functions:
+
+<img src="man/figures/api-demo.png" align="center" width=80% />
 
 ---
 
