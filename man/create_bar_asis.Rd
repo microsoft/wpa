@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_bar_asis.R
 \name{create_bar_asis}
 \alias{create_bar_asis}
-\title{Create a bar chart without aggregation}
+\title{Create a bar chart without aggregation for any metric}
 \usage{
 create_bar_asis(
   data,
@@ -51,14 +51,7 @@ into the function.
 Other General: 
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
-\code{\link{create_dist}()},
-\code{\link{create_fizz}()},
-\code{\link{create_line_asis}()},
-\code{\link{create_line}()},
-\code{\link{create_period_scatter}()},
-\code{\link{create_rank}()},
 \code{\link{create_scatter}()},
-\code{\link{create_stacked}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},
 \code{\link{hrvar_count}()},

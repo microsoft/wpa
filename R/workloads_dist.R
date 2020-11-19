@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Distribution of Work Week Span
+#' @title Distribution of Work Week Span as a 100% stacked bar
 #'
 #' @description
 #' Analyze Work Week Span distribution.

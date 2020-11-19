@@ -10,6 +10,9 @@
 #' a 'fizzy' scatter plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
+#' @details
+#' Uses the metric `Meeting_hours`.
+#'
 #' @inheritParams create_fizz
 #'
 #' @family Meetings

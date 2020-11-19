@@ -2,9 +2,12 @@
 % Please edit documentation in R/workloads_summary.R
 \name{workloads_summary}
 \alias{workloads_summary}
+\alias{workloads_sum}
 \title{Work Week Span Summary}
 \usage{
 workloads_summary(data, hrvar = "Organization", mingroup = 5, return = "plot")
+
+workloads_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}

@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Meeting Hours distribution
+#' @title Distribution of Meeting Hours as a 100% stacked bar
 #'
 #' @description
 #' Analyze Meeting Hours distribution.
@@ -40,7 +40,3 @@ meeting_dist <- function(data,
               return = return,
               cut = cut)
 }
-
-#' @rdname meeting_dist
-#' @export
-meeting_distribution <- meeting_dist

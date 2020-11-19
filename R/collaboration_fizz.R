@@ -33,3 +33,7 @@ collaboration_fizz <- function(data,
               return = return)
 
 }
+
+#' @rdname collaboration_fizz
+#' @export
+collab_fizz <- collaboration_fizz

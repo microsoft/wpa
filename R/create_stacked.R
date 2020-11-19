@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Horizontal stacked bar plot (General Purpose)
+#' @title Horizontal stacked bar plot for any metric
 #'
 #' @description
 #' Creates a sum total calculation using selected metrics,
@@ -32,7 +32,7 @@
 #' @import scales
 #' @importFrom stats reorder
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.

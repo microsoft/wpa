@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_boxplot.R
 \name{create_boxplot}
 \alias{create_boxplot}
-\title{Box Plot (General Purpose)}
+\title{Box Plot for any metric}
 \usage{
 create_boxplot(
   data,
@@ -47,14 +47,7 @@ create_boxplot(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignatio
 Other General: 
 \code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
-\code{\link{create_dist}()},
-\code{\link{create_fizz}()},
-\code{\link{create_line_asis}()},
-\code{\link{create_line}()},
-\code{\link{create_period_scatter}()},
-\code{\link{create_rank}()},
 \code{\link{create_scatter}()},
-\code{\link{create_stacked}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},
 \code{\link{hrvar_count}()},

@@ -41,7 +41,9 @@ email_summary <- function(data,
 
 }
 
-
+#' @rdname email_summary
+#' @export
+email_sum <- email_summary
 
 
 

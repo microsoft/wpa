@@ -2,6 +2,7 @@
 % Please edit documentation in R/collaboration_rank.R
 \name{collaboration_rank}
 \alias{collaboration_rank}
+\alias{collab_rank}
 \title{Collaboration Ranking}
 \usage{
 collaboration_rank(
@@ -10,6 +11,8 @@ collaboration_rank(
   mingroup = 5,
   return = "table"
 )
+
+collab_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
@@ -42,7 +45,6 @@ Other Collaboration:
 \code{\link{collaboration_fizz}()},
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_sum}()},
-\code{\link{collaboration_trend}()},
-\code{\link{meeting_trend}()}
+\code{\link{collaboration_trend}()}
 }
 \concept{Collaboration}

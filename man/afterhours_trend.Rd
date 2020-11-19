@@ -9,7 +9,8 @@ afterhours_trend(data, hrvar = "Organization", mingroup = 5, return = "plot")
 \arguments{
 \item{data}{A Standard Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
+but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 

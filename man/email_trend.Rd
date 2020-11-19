@@ -26,6 +26,9 @@ Provides a week by week view of email time.
 By default returns a week by week heatmap, highlighting the points in time with most activity.
 Additional options available to return a summary table.
 }
+\details{
+Uses the metric \code{Email_hours}.
+}
 \seealso{
 Other Emails: 
 \code{\link{email_dist}()},

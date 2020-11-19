@@ -2,7 +2,7 @@
 % Please edit documentation in R/one2one_dist.R
 \name{one2one_dist}
 \alias{one2one_dist}
-\title{Manager 1:1 Time Trend distribution}
+\title{Distribution of Manager 1:1 Time as a 100\% stacked bar}
 \usage{
 one2one_dist(
   data,

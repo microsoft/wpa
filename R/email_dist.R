@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Email Hours distribution
+#' @title Distribution of Email Hours as a 100% stacked bar
 #'
 #' @description
 #' Analyze Email Hours distribution.

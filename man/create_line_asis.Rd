@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_line_asis.R
 \name{create_line_asis}
 \alias{create_line_asis}
-\title{Create a line chart without aggregation}
+\title{Create a line chart without aggregation for any metric}
 \usage{
 create_line_asis(
   data,
@@ -44,20 +44,13 @@ calculation for \code{create_line_asis()} and the values are rendered as they ar
 into the function. The only requirement is that a \code{date_var} is provided for the x-axis.
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
+Other Flexible: 
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
-\code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{create_trend}()}
 }
-\concept{General}
+\concept{Flexible}

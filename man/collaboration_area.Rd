@@ -2,9 +2,12 @@
 % Please edit documentation in R/collaboration_area.R
 \name{collaboration_area}
 \alias{collaboration_area}
+\alias{collab_area}
 \title{Collaboration - Stacked Area Plot}
 \usage{
 collaboration_area(data, hrvar = "Organization", mingroup = 5, return = "plot")
+
+collab_area(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Query dataset in the form of a data frame.
@@ -38,7 +41,6 @@ Other Collaboration:
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},
 \code{\link{collaboration_sum}()},
-\code{\link{collaboration_trend}()},
-\code{\link{meeting_trend}()}
+\code{\link{collaboration_trend}()}
 }
 \concept{Collaboration}

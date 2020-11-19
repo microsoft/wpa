@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Collaboration Hours distribution
+#' @title Distribution of Collaboration Hours as a 100% stacked bar
 #'
 #' @description
 #' Analyze the distribution of Collaboration Hours.
@@ -42,4 +42,4 @@ collaboration_dist <- function(data,
 
 #' @rdname collaboration_dist
 #' @export
-collaboration_distribution <- collaboration_dist
+collab_dist <- collaboration_dist

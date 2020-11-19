@@ -21,6 +21,8 @@
 #' @import ggplot2
 #' @import dplyr
 #'
+#' @family Meetings
+#'
 #' @export
 meetingtype_summary <- function(data,
                                 hrvar = "Organization",
@@ -67,3 +69,8 @@ meetingtype_summary <- function(data,
     stop("Please enter a valid input for `return`.")
   }
 }
+
+#' @rdname meetingtype_summary
+#' @export
+meetingtype_sum <- meetingtype_summary
+

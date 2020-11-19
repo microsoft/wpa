@@ -2,7 +2,7 @@
 % Please edit documentation in R/meetingtype_dist.R
 \name{meetingtype_dist}
 \alias{meetingtype_dist}
-\title{Meeting Type Distribution}
+\title{Distribution of Meeting Types by number of Attendees and Duration}
 \usage{
 meetingtype_dist(data, hrvar = NULL, mingroup = 5, return = "plot")
 }

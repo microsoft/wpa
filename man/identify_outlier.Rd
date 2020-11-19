@@ -2,14 +2,7 @@
 % Please edit documentation in R/identify_outlier.R
 \name{identify_outlier}
 \alias{identify_outlier}
-\title{Identify outliers across time
-
-This function takes in a selected metric and uses
-z-score (number of standard deviations) to identify outliers
-across time. There are applications in this for identifying
-weeks with abnormally low collaboration activity, e.g. holidays.
-Time as a grouping variable can be overridden with the \code{group_var}
-argument.}
+\title{Identify metric outliers over a date interval}
 \usage{
 identify_outlier(data, group_var = "Date", metric = "Collaboration_hours")
 }
@@ -27,8 +20,6 @@ Returns a data frame with \code{Date} (if grouping variable is not set),
 the metric, and the corresponding z-score.
 }
 \description{
-Identify outliers across time
-
 This function takes in a selected metric and uses
 z-score (number of standard deviations) to identify outliers
 across time. There are applications in this for identifying
@@ -45,14 +36,7 @@ Other General:
 \code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
-\code{\link{create_dist}()},
-\code{\link{create_fizz}()},
-\code{\link{create_line_asis}()},
-\code{\link{create_line}()},
-\code{\link{create_period_scatter}()},
-\code{\link{create_rank}()},
 \code{\link{create_scatter}()},
-\code{\link{create_stacked}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},
 \code{\link{hrvar_count}()}

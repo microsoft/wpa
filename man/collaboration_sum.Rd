@@ -50,7 +50,6 @@ Other Collaboration:
 \code{\link{collaboration_fizz}()},
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},
-\code{\link{collaboration_trend}()},
-\code{\link{meeting_trend}()}
+\code{\link{collaboration_trend}()}
 }
 \concept{Collaboration}

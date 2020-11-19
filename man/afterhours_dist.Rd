@@ -2,7 +2,7 @@
 % Please edit documentation in R/afterhours_dist.R
 \name{afterhours_dist}
 \alias{afterhours_dist}
-\title{After-Hours distribution}
+\title{Distribution of After-hours Collaboration Hours as a 100\% stacked bar}
 \usage{
 afterhours_dist(
   data,

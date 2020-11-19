@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_fizz.R
 \name{create_fizz}
 \alias{create_fizz}
-\title{Fizzy Drink / Jitter Scatter Plot (General Purpose)}
+\title{Fizzy Drink / Jitter Scatter Plot for any metric}
 \usage{
 create_fizz(
   data,
@@ -44,20 +44,13 @@ create_fizz(sq_data, metric = "Workweek_span", hrvar = "Organization", return = 
 create_fizz(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
+Other Flexible: 
 \code{\link{create_dist}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
-\code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{create_trend}()}
 }
-\concept{General}
+\concept{Flexible}

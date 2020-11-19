@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Period comparison scatter plot (General Purpose)
+#' @title Period comparison scatter plot for any two metrics
 #'
 #' @description
 #' Returns two side-by-side scatter plots representing two selected metrics,
@@ -36,19 +36,18 @@
 #' @import dplyr
 #' @import ggplot2
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @examples
-#' \dontrun{
+#' ## Return a plot
+#' create_period_scatter(sq_data,
+#'                       hrvar = "LevelDesignation",
+#'                       before_start = "2019-11-03",
+#'                       before_end = "2019-12-31",
+#'                       after_start = "2020-01-01",
+#'                       after_end = "2020-01-26")
 #'
-#'create_period_scatter(sq_data,
-#'hrvar = "LevelDesignation",
-#'before_start = "2019-11-03",
-#'before_end = "2019-12-31",
-#'after_start = "2020-01-01",
-#'after_end = "2020-01-26")
-#'
-#'
+#' ## Return a summary table
 #' create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
 #' }
 #'

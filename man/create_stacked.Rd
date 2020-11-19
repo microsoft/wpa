@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_stacked.R
 \name{create_stacked}
 \alias{create_stacked}
-\title{Horizontal stacked bar plot (General Purpose)}
+\title{Horizontal stacked bar plot for any metric}
 \usage{
 create_stacked(
   data,
@@ -72,20 +72,13 @@ sq_data \%>\%
 }
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
+Other Flexible: 
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
-\code{\link{create_scatter}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{create_trend}()}
 }
-\concept{General}
+\concept{Flexible}

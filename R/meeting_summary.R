@@ -38,6 +38,9 @@ meeting_summary <- function(data,
              bar_colour = "default")
 }
 
+#' @rdname meeting_summary
+#' @export
+meeting_sum <- meeting_summary
 
 
 

@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create a line chart without aggregation
+#' @title Create a line chart without aggregation for any metric
 #'
 #' @description
 #' This function creates a line chart directly from the aggregated / summarised data.
@@ -26,7 +26,7 @@
 #' @import ggplot2
 #' @import dplyr
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @export
 create_line_asis <- function(data,

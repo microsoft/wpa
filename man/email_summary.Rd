@@ -2,9 +2,12 @@
 % Please edit documentation in R/email_summary.R
 \name{email_summary}
 \alias{email_summary}
+\alias{email_sum}
 \title{Email Summary}
 \usage{
 email_summary(data, hrvar = "Organization", mingroup = 5, return = "plot")
+
+email_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}

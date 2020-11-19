@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Time Trend - Line Chart (General Purpose)
+#' @title Time Trend - Line Chart for any metric
 #'
 #' @description
 #' Provides a week by week view of a selected metric, visualised as line charts.
@@ -30,7 +30,7 @@
 #' @import scales
 #' @importFrom tidyselect all_of
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @examples
 #' \dontrun{

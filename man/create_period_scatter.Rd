@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_period_scatter.R
 \name{create_period_scatter}
 \alias{create_period_scatter}
-\title{Period comparison scatter plot (General Purpose)}
+\title{Period comparison scatter plot for any two metrics}
 \usage{
 create_period_scatter(
   data,
@@ -75,20 +75,13 @@ create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
 
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
+Other Flexible: 
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_rank}()},
-\code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{create_trend}()}
 }
-\concept{General}
+\concept{Flexible}

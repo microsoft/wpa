@@ -9,7 +9,8 @@ one2one_trend(data, hrvar = "Organization", mingroup = 5, return = "plot")
 \arguments{
 \item{data}{A Standard Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector (e.g. "LevelDesignation")}
+\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
+but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
@@ -24,6 +25,9 @@ When 'table' is passed, a summary table is returned as a data frame.
 Provides a week by week view of scheduled manager 1:1 Time.
 By defualt returns a week by week heatmap, highlighting the points in time with most activity.
 Additional options available to return a summary table.
+}
+\details{
+Uses the metric \code{Meeting_hours_with_manager_1_on_1}.
 }
 \seealso{
 Other Managerial Relations: 

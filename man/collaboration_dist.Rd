@@ -2,8 +2,9 @@
 % Please edit documentation in R/collaboration_dist.R, R/create_dist.R
 \name{collaboration_dist}
 \alias{collaboration_dist}
+\alias{collab_dist}
 \alias{collaboration_distribution}
-\title{Collaboration Hours distribution}
+\title{Distribution of Collaboration Hours as a 100\% stacked bar}
 \usage{
 collaboration_dist(
   data,
@@ -13,7 +14,7 @@ collaboration_dist(
   cut = c(15, 20, 25)
 )
 
-collaboration_distribution(
+collab_dist(
   data,
   hrvar = "Organization",
   mingroup = 5,
@@ -64,7 +65,6 @@ Other Collaboration:
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},
 \code{\link{collaboration_sum}()},
-\code{\link{collaboration_trend}()},
-\code{\link{meeting_trend}()}
+\code{\link{collaboration_trend}()}
 }
 \concept{Collaboration}

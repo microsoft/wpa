@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Fizzy Drink / Jitter Scatter Plot (General Purpose)
+#' @title Fizzy Drink / Jitter Scatter Plot for any metric
 #'
 #' @description
 #' Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
@@ -28,7 +28,7 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @examples
 #' ## Create a fizzy plot for Work Week Span by Level Designation
