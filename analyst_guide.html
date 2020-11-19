@@ -91,8 +91,29 @@
      
   </a>
 </li>
-<li>
-  <a href="analyst_guide.html">Analyst Guide</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyst Guide
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="analyst_guide.html">Introduction</a>
+    </li>
+    <li>
+      <a href="analyst_guide_summary.html">Summary analysis</a>
+    </li>
+    <li>
+      <a href="analyst_guide_distribution.html">Distribution analysis</a>
+    </li>
+    <li>
+      <a href="analyst_guide_trend.html">Trend analysis</a>
+    </li>
+    <li>
+      <a href="analyst_guide_network.html">Network analysis</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -159,11 +180,7 @@
 
 <div id="analyst-guide" class="section level1">
 
-<p>This is an analyst guide for the <strong>wpa</strong> package.</p>
-<ol>
-<li><a href="#why-use-r-for-workplace-analytics">Why use R for Workplace Analytics</a></li>
-<li><a href="#-package-structure">Package Structure</a></li>
-</ol>
+<p>This is an analyst guide for the <strong>wpa</strong> package. Please use the links in the navigation bar above to access the individual sections.</p>
 <div id="why-use-r-for-workplace-analytics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why-use-r-for-workplace-analytics" class="anchor"></a>Why use R for Workplace Analytics?</h2>
@@ -180,124 +197,8 @@
 <li>
 <strong>Go beyond basic reporting</strong>: One of the most appealing feature of R is the access it offers to a wide range of packages. For instance, clustering and text mining can be done very easily as part of a R workflow – which are both available from the <strong>wpa</strong> package</li>
 </ol>
-</div>
-<div id="-package-structure" class="section level2">
-<h2 class="hasAnchor">
-<a href="#-package-structure" class="anchor"></a><span class="emoji" data-emoji="package">📦</span> Package Structure</h2>
-<p>There are four main types of functions in <strong>wpa</strong>:</p>
-<ol>
-<li>Standard Analysis</li>
-<li>Report Generation</li>
-<li>Advanced / Support Functions</li>
-<li>Sample datasets</li>
-</ol>
-<div id="1-standard-analysis" class="section level3">
-<h3 class="hasAnchor">
-<a href="#1-standard-analysis" class="anchor"></a>1. Standard Analysis</h3>
-<p><strong>Standard Analysis</strong> functions are the most common type of functions in <strong>wpa</strong>. They typically accept a data frame as an input (usually requiring a Standard Person Query), and can return either a pre-designed graph as a ggplot object, or a summary data table as a data frame.</p>
-<p>Examples:</p>
-<ul>
-<li><code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code></li>
-<li><code><a href="reference/meeting_summary.html">meeting_summary()</a></code></li>
-<li><code><a href="reference/email_trend.html">email_trend()</a></code></li>
-<li><code><a href="reference/collaboration_sum.html">collaboration_sum()</a></code></li>
-</ul>
-<p>Here is an example of <code><a href="reference/collaboration_sum.html">collaboration_sum()</a></code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
-<p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/collaboration_sum2.jpg" align="center" width="80%"></p>
-<p>For the standard functions, there are six basic <strong>plot types</strong> which could be paired with six different <strong>key metrics</strong>. The six plot types are:</p>
-<ol>
-<li>
-<code>_summary()</code>: produces a summary bar plot of the metric.</li>
-<li>
-<code>_dist()</code>: produces a stacked bar plot of the metric.</li>
-<li>
-<code>_fizz()</code>: produces a jittered, ‘fizzy drink’ plot of the metric.</li>
-<li>
-<code>_line()</code>: produces a time-series line plot of the metric, with organizational attributes shown as facets.</li>
-<li>
-<code>_trend()</code>: produces heatmap bars of the metric to show intensity over time.</li>
-<li>
-<code>_rank()</code>: produces a rank table of all sub-groups (as per a set of organizational attributes) for a given metric. This is the only exception where the function returns a data frame by default, rather than a plot.</li>
-</ol>
-<p>The six key metrics are:</p>
-<ol>
-<li>
-<code>collab</code>: stands for Collaboration Hours, and uses the metric <code>Collaboration_hours</code>.</li>
-<li>
-<code>email</code>: stands for Email Hours, and uses the metric <code>Email_hours</code>.</li>
-<li>
-<code>meeting</code>: stands for Meeting Hours, and uses the metric <code>Meeting_hours</code>.</li>
-<li>
-<code>afterhours</code>: stands for After-hours Collaboration Hours, and uses the metric <code>After_hours_collaboration_hours</code>.</li>
-<li>
-<code>one2one</code>: stands for one-to-one collaboration hours with direct manager. Uses the metric <code>Meeting_hours_with_manager_1_on_1</code>.</li>
-<li>
-<code>workloads</code>: stands for Work Week Span, and uses the metric <code>Workweek_span</code>.</li>
-</ol>
-<p>You can combine the <strong>plot types</strong> and the <strong>key metrics</strong> (as prefixes and suffixes) to generate the desired output, e.g. <code>email_</code> and <code>dist</code> for <code><a href="reference/email_dist.html">email_dist()</a></code>.</p>
-<p>For more advanced users, there are also a number of <strong>flexible analysis</strong> functions which allow you to generate the plots with <em>any</em> Workplace Analytics metric, where the metric name needs to be supplied in addition to the function. For instance,</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/create_bar.html">create_bar</a></span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Email_hours"</span><span class="op">)</span></code></pre></div>
-<p>would return a similar result as <code><a href="reference/email_summary.html">email_summary(sq_data)</a></code>, but where you can replace the metric with one of your own choice. Here are some of the available flexible analysis functions, which are typically prefixed with <code>create_</code>:</p>
-<ul>
-<li><code><a href="reference/create_bar.html">create_bar()</a></code></li>
-<li><code><a href="reference/create_bar_asis.html">create_bar_asis()</a></code></li>
-<li><code><a href="reference/create_boxplot.html">create_boxplot()</a></code></li>
-<li><code><a href="reference/create_dist.html">create_dist()</a></code></li>
-<li><code><a href="reference/create_fizz.html">create_fizz()</a></code></li>
-<li><code><a href="reference/create_line.html">create_line()</a></code></li>
-<li><code><a href="reference/create_line_asis.html">create_line_asis()</a></code></li>
-<li><code>create_plot_scatter()</code></li>
-<li><code><a href="reference/create_rank.html">create_rank()</a></code></li>
-<li><code><a href="reference/create_stacked.html">create_stacked()</a></code></li>
-</ul>
-<p>You can find out more about the feature of each individual function by running <code>?function</code> once you have the package loaded.</p>
-</div>
-<div id="2-report-generation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#2-report-generation" class="anchor"></a>2. Report Generation</h3>
-<p><strong>Report Generation</strong> functions are a special class of functions within <strong>wpa</strong> which outputs an interactive HTML report on a specific area based on the data you supply.</p>
-<p><strong>Examples:</strong></p>
-<ul>
-<li><code><a href="reference/collaboration_report.html">collaboration_report()</a></code></li>
-<li><code><a href="reference/capacity_report.html">capacity_report()</a></code></li>
-<li><code><a href="reference/coaching_report.html">coaching_report()</a></code></li>
-<li><code><a href="reference/connectivity_report.html">connectivity_report()</a></code></li>
-<li><code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code></li>
-<li><code><a href="reference/validation_report.html">validation_report()</a></code></li>
-</ul>
-</div>
-<div id="3-advanced--support-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#3-advanced--support-functions" class="anchor"></a>3. Advanced / support functions</h3>
-<p>This group consists of miscellaneous functions which either perform a specific piece of analysis (e.g. computing the Information Value score), or are designed to be used with Standard Analysis functions.</p>
-<p>A significant example of this is <code><a href="reference/export.html">export()</a></code>, which you can use with a Standard Analysis function to:</p>
-<ul>
-<li>Copy a data frame to clipboard (which can be pasted into Excel)</li>
-<li>Save the generated plot as a PNG or a SVG image file</li>
-<li>Save the data frame to a CSV file</li>
-</ul>
-</div>
-<div id="4-sample-datasets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#4-sample-datasets" class="anchor"></a>4. Sample datasets</h3>
-<p>There are several pre-loaded demo Workplace Analytics datasets that you can use straight away from the package, to help you explore the functions more easily. Here is a list of them:</p>
-<ul>
-<li>
-<code>sq_data</code>: Standard Person Query</li>
-<li>
-<code>mt_data</code>: Standard Meeting Query</li>
-<li>
-<code>em_data</code>: Hourly Collaboration Query</li>
-<li>
-<code>g2g_data</code>: Group-to-group Query</li>
-</ul>
-<p>You can explore the structure of these datasets by running <code><a href="reference/sq_data.html">?sq_data</a></code> or <code><a href="https://tibble.tidyverse.org/reference/glimpse.html">dplyr::glimpse(sq_data)</a></code>, for instance.</p>
 <p>Also check out our package cheat sheet for more information:</p>
 <p><a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet_20201116.png" align="center" width="50%"></a></p>
-</div>
 </div>
 </div>
 
