@@ -168,7 +168,9 @@ Returns a bar plot showing average weekly meeting hours by default.
 Additional options available to return a summary table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>meeting_summary</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>meeting_summary</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+
+<span class='fu'>meeting_sum</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,7 +204,9 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
     <div class='dont-index'><p>Other Meetings: 
 <code><a href='meeting_fizz.html'>meeting_fizz</a>()</code>,
 <code><a href='meeting_line.html'>meeting_line</a>()</code>,
-<code><a href='meeting_rank.html'>meeting_rank</a>()</code></p></div>
+<code><a href='meeting_rank.html'>meeting_rank</a>()</code>,
+<code><a href='meeting_trend.html'>meeting_trend</a>()</code>,
+<code><a href='meetingtype_summary.html'>meetingtype_summary</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Return a ggplot bar chart</span>

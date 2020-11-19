@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Distribution of Meeting Types by number of Attendees and Duration — meetingtype_dist • wpa</title>
+<title>Heat mapped horizontal bar plot over time for any metric — create_trend • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,10 @@
 
 
 
-<meta property="og:title" content="Distribution of Meeting Types by number of Attendees and Duration — meetingtype_dist" />
-<meta property="og:description" content="Calculate the hour distribution of internal meeting types.
-This is a wrapper around meetingtype_dist_mt() and
-meetingtype_dist_ca(), depending on whether a Meeting Query or a Collaboration Assessment Query
-is passed as an input." />
+<meta property="og:title" content="Heat mapped horizontal bar plot over time for any metric — create_trend" />
+<meta property="og:description" content="Provides a week by week view of a selected Workplace Analytics metric.
+By default returns a week by week heatmap bar plot, highlighting the points in time with most activity.
+Additional options available to return a summary table." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -158,37 +157,45 @@ is passed as an input." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Distribution of Meeting Types by number of Attendees and Duration</h1>
-    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/meetingtype_dist.R'><code>R/meetingtype_dist.R</code></a></small>
-    <div class="hidden name"><code>meetingtype_dist.Rd</code></div>
+    <h1>Heat mapped horizontal bar plot over time for any metric</h1>
+    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/create_trend.R'><code>R/create_trend.R</code></a></small>
+    <div class="hidden name"><code>create_trend.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate the hour distribution of internal meeting types.
-This is a wrapper around <code><a href='meetingtype_dist_mt.html'>meetingtype_dist_mt()</a></code> and
-<code><a href='meetingtype_dist_ca.html'>meetingtype_dist_ca()</a></code>, depending on whether a Meeting Query or a Collaboration Assessment Query
-is passed as an input.</p>
+    <p>Provides a week by week view of a selected Workplace Analytics metric.
+By default returns a week by week heatmap bar plot, highlighting the points in time with most activity.
+Additional options available to return a summary table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>meetingtype_dist</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='cn'>NULL</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_trend</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>metric</span>,
+  hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+  mingroup <span class='op'>=</span> <span class='fl'>5</span>,
+  return <span class='op'>=</span> <span class='st'>"plot"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Data frame. If a meeting query, must contain the variables <code>Attendee</code> and <code>DurationHours</code>.</p></td>
+      <td><p>A Standard Query dataset in the form of a data frame.</p></td>
+    </tr>
+    <tr>
+      <th>metric</th>
+      <td><p>Character string containing the name of the metric,
+e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>Character string to specify the HR attribute to split the data by.
-Note that this is only applicable if a Collaboration Assessment query is passed to the function. If a Meeting Query
-is passed instead, this argument is ignored.</p></td>
+      <td><p>HR Variable by which to split metrics, defaults to "Organization"
+but accepts any character vector, e.g. "LevelDesignation"</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-Only applicable when using a Collaboration Assessment query.</p></td>
+      <td><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -197,6 +204,20 @@ Valid inputs are "plot" and "table".</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns a ggplot object by default, where 'plot' is passed in <code>return</code>.
+When 'table' is passed, a summary table is returned as a data frame.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Flexible: 
+<code><a href='create_dist.html'>create_dist</a>()</code>,
+<code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
+<code><a href='create_line.html'>create_line</a>()</code>,
+<code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_rank.html'>create_rank</a>()</code>,
+<code><a href='create_stacked.html'>create_stacked</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

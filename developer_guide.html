@@ -160,6 +160,23 @@
 <div id="-developer-guide" class="section level1">
 
 <p>This is guide for “developers”, or anyone who is looking to contribute code to the {wpa} R package.</p>
+<div id="design-principles" class="section level2">
+<h2 class="hasAnchor">
+<a href="#design-principles" class="anchor"></a>Design Principles</h2>
+<p>Please try to adhere to the following package design principles before proceeding with code contribution.</p>
+<ul>
+<li>
+<strong>Simple</strong>: the functions ought to be simple and intuitive to maximise adoption.</li>
+<li>
+<strong>Practical</strong>: the functions should prioritise delivering against the most frequently used outputs and analyses.</li>
+<li>
+<strong>Consistency</strong>: functions should share a broadly consistent set of input arguments and naming conventions. This will help minimise unexpected results and errors when using the package.</li>
+<li>
+<strong>Parsimony</strong>: in creating the package, as much of the existing code should be re-used if possible to minimise duplication of work and to make analysis reproducible.</li>
+<li>
+<strong>Tidy</strong>: the functions from the package are designed to be consistent with tidy principles, and work well with a <strong>dplyr</strong> pipe (<code><a href="reference/%&gt;%.html">%&gt;%</a></code>) workflow.</li>
+</ul>
+</div>
 <div id="pre-requisites" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pre-requisites" class="anchor"></a>Pre-requisites</h2>

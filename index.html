@@ -143,23 +143,6 @@
 </ol>
 <p>Here are just some examples of the plots that you can create with <strong>wpa</strong>:</p>
 <p><img src="reference/figures/plot-demo.gif" align="center" width="80%"></p>
-</div>
-<div id="design-principles" class="section level2">
-<h2 class="hasAnchor">
-<a href="#design-principles" class="anchor"></a>Design Principles</h2>
-<ul>
-<li>
-<strong>Simple</strong>: the functions ought to be simple and intuitive to maximise adoption.</li>
-<li>
-<strong>Practical</strong>: the functions should prioritise delivering against the most frequently used outputs and analyses.</li>
-<li>
-<strong>Consistency</strong>: functions should share a broadly consistent set of input arguments and naming conventions. This will help minimise unexpected results and errors when using the package.</li>
-<li>
-<strong>Parsimony</strong>: in creating the package, as much of the existing code should be re-used if possible to minimise duplication of work and to make analysis reproducible.</li>
-<li>
-<strong>Tidy</strong>: the functions from the package are designed to be consistent with tidy principles, and work well with a <strong>dplyr</strong> pipe (<code><a href="reference/%&gt;%.html">%&gt;%</a></code>) workflow.</li>
-</ul>
-<p><img src="reference/figures/api-demo.png" align="center" width="80%"></p>
 <hr>
 </div>
 <div id="-quick-start-guide---for-users" class="section level2">
@@ -185,6 +168,8 @@
 <code class="sourceCode R"><span class="fu"><a href="reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/collaboration_sum2.jpg" align="center" width="80%"></p>
 <p>By passing ‘table’ to the <code>return</code> argument, the function will return a data frame with the relevant summary statistics.</p>
+<p>The following illustrates the basic API of standard analysis functions:</p>
+<p><img src="reference/figures/api-demo.png" align="center" width="80%"></p>
 <hr>
 </div>
 </div>
