@@ -15,11 +15,8 @@ navbar:
     - tutorials
     - news
     - bug
-    right: 
-      - icon: fa-bug
-        href: https://​github.com/​microsoft/​wpa/​issues
-      - icon: fa-github
-        href: https://github.com/microsoft/wpa/      
+    right: github
+
   components:
     home:
       icon: fas fa-home fa-lg
@@ -64,6 +61,4 @@ navbar:
         href: articles/intro-to-wpa.html
       - text: Text-mining Meeting Subject lines
         href: articles/text-mining-capabilities.html
-    bug:
-      text: Report issue
-      href: 
+
