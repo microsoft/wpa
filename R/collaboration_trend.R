@@ -71,7 +71,7 @@ collaboration_trend <- function(data,
     myTable_plot %>%
     ggplot(aes(x = Date , y = group , fill = Collaboration_hours)) +
     geom_tile(height=.5) +
-    scale_fill_gradient(name="Hours", low = "white", high = "red") +
+    scale_fill_gradient(name="Hours", low = "#FFFFFF", high = "#fe7f4f") +
     theme_classic() +
     theme(axis.text=element_text(size=12),
           plot.title = element_text(color="grey40", face="bold", size=18),
