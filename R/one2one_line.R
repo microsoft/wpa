@@ -11,17 +11,10 @@
 #' with a separate panel per value in the HR attribute.
 #' Additional options available to return a summary table.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @details
+#' Uses the metric `Meeting_hours_with_manager_1_on_1`.
 #'
-#' @import dplyr
-#' @import ggplot2
-#' @import reshape2
-#' @import scales
+#' @inheritParams create_line
 #'
 #' @family Managerial Relations
 #'

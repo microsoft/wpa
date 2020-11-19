@@ -41,6 +41,7 @@ Other Meetings:
 \code{\link{meeting_fizz}()},
 \code{\link{meeting_line}()},
 \code{\link{meeting_rank}()},
+\code{\link{meeting_trend}()},
 \code{\link{meetingtype_summary}()}
 }
 \concept{Meetings}

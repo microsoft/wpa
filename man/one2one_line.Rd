@@ -7,7 +7,7 @@
 one2one_line(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "LevelDesignation"}
@@ -26,6 +26,9 @@ Provides a week by week view of 1:1 time with managers, visualised as line chart
 By default returns a line chart for 1:1 meeting hours,
 with a separate panel per value in the HR attribute.
 Additional options available to return a summary table.
+}
+\details{
+Uses the metric \code{Meeting_hours_with_manager_1_on_1}.
 }
 \examples{
 

@@ -41,7 +41,6 @@ Other Collaboration:
 \code{\link{collaboration_fizz}()},
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},
-\code{\link{collaboration_sum}()},
-\code{\link{meeting_trend}()}
+\code{\link{collaboration_sum}()}
 }
 \concept{Collaboration}

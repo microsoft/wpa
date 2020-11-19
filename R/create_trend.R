@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Heat mapped horizontal bar plot for any metric
+#' @title Heat mapped horizontal bar plot over time for any metric
 #'
 #' @description
 #' Provides a week by week view of a selected Workplace Analytics metric.

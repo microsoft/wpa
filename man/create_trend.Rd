@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_trend.R
 \name{create_trend}
 \alias{create_trend}
-\title{Heat mapped horizontal bar plot for any metric}
+\title{Heat mapped horizontal bar plot over time for any metric}
 \usage{
 create_trend(
   data,

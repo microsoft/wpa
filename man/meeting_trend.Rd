@@ -26,14 +26,15 @@ Provides a week by week view of meeting time.
 By default returns a week by week heatmap, highlighting the points in time with most activity.
 Additional options available to return a summary table.
 }
-\seealso{
-Other Collaboration: 
-\code{\link{collaboration_area}()},
-\code{\link{collaboration_dist}()},
-\code{\link{collaboration_fizz}()},
-\code{\link{collaboration_line}()},
-\code{\link{collaboration_rank}()},
-\code{\link{collaboration_sum}()},
-\code{\link{collaboration_trend}()}
+\details{
+Uses the metric \code{Meeting_hours}.
 }
-\concept{Collaboration}
+\seealso{
+Other Meetings: 
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meetingtype_summary}()}
+}
+\concept{Meetings}

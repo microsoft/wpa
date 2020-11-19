@@ -21,6 +21,9 @@ Analyze weekly meeting hours distribution, and returns
 a 'fizzy' scatter plot by default.
 Additional options available to return a table with distribution elements.
 }
+\details{
+Uses the metric \code{Meeting_hours}.
+}
 \examples{
 meeting_fizz(sq_data, hrvar = "Organization", return = "table")
 }
@@ -29,6 +32,7 @@ Other Meetings:
 \code{\link{meeting_line}()},
 \code{\link{meeting_rank}()},
 \code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
 \code{\link{meetingtype_summary}()}
 }
 \concept{Meetings}

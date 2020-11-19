@@ -31,7 +31,7 @@ collaboration_trend <- function(data,
   create_trend(data,
                metric = "Collaboration_hours",
                hrvar = hrvar,
-               mingroup = 5,
+               mingroup = mingroup,
                return = return)
 
 }
