@@ -1,6 +1,7 @@
 template:
   params:
     bootswatch: cosmo
+  path: "inst/pkgdown"
 
 navbar:
   structure:

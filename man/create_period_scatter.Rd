@@ -60,18 +60,17 @@ This is a general purpose function that powers all the functions
 in the package that produce faceted scatter plots.
 }
 \examples{
-\dontrun{
-
+## Return a plot
 create_period_scatter(sq_data,
-hrvar = "LevelDesignation",
-before_start = "2019-11-03",
-before_end = "2019-12-31",
-after_start = "2020-01-01",
-after_end = "2020-01-26")
+                      hrvar = "LevelDesignation",
+                      before_start = "2019-11-03",
+                      before_end = "2019-12-31",
+                      after_start = "2020-01-01",
+                      after_end = "2020-01-26")
 
-
+## Return a summary table
 create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
-}
+
 
 }
 \seealso{

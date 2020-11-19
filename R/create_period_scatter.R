@@ -49,7 +49,7 @@
 #'
 #' ## Return a summary table
 #' create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
-#' }
+#'
 #'
 #' @export
 create_period_scatter <- function(data,
