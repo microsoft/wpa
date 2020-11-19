@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_bar.R
 \name{create_bar}
 \alias{create_bar}
-\title{Mean Bar Plot (General Purpose)}
+\title{Mean Bar Plot for any metric}
 \usage{
 create_bar(
   data,
@@ -58,14 +58,7 @@ create_bar(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", 
 Other General: 
 \code{\link{create_bar_asis}()},
 \code{\link{create_boxplot}()},
-\code{\link{create_dist}()},
-\code{\link{create_fizz}()},
-\code{\link{create_line_asis}()},
-\code{\link{create_line}()},
-\code{\link{create_period_scatter}()},
-\code{\link{create_rank}()},
 \code{\link{create_scatter}()},
-\code{\link{create_stacked}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},
 \code{\link{hrvar_count}()},

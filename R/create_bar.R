@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Mean Bar Plot (General Purpose)
+#' @title Mean Bar Plot for any metric
 #'
 #' @description
 #' Provides an overview analysis of a selected metric by calculating a mean per metric.

@@ -26,7 +26,7 @@
 #' @import scales
 #' @importFrom stats reorder
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.

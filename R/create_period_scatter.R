@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Period comparison scatter plot (General Purpose)
+#' @title Period comparison scatter plot for any two metrics
 #'
 #' @description
 #' Returns two side-by-side scatter plots representing two selected metrics,
@@ -36,7 +36,7 @@
 #' @import dplyr
 #' @import ggplot2
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @examples
 #' \dontrun{

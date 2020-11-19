@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create a bar chart without aggregation
+#' @title Create a bar chart without aggregation for any metric
 #'
 #' @description
 #' This function creates a bar chart directly from the aggregated / summarised data.

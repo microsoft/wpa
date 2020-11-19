@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Horizontal 100 percent stacked bar plot (General Purpose)
+#' @title Horizontal 100 percent stacked bar plot for any metric
 #'
 #' @description
 #' Provides an analysis of the distribution of a selected metric.
@@ -31,7 +31,7 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
-#' @family General
+#' @family Flexible
 #'
 #' @examples
 #' ## Return a plot

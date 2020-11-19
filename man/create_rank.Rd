@@ -37,20 +37,13 @@ This function scans a standard Person query output for groups with high levels o
 Returns a table with all groups (across multiple HR attributes) ranked by the specified metric.
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
+Other Flexible: 
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
-\code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{create_trend}()}
 }
-\concept{General}
+\concept{Flexible}

@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Box Plot (General Purpose)
+#' @title Box Plot for any metric
 #'
 #' @description
 #' Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
