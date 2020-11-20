@@ -3,11 +3,10 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create a network plot with the G2G query
+#' @title Create a network plot with the group-to-group query
 #'
 #' @description
-#' Pass a data frame containing a G2G query and return a network
-#' plot.
+#' Pass a data frame containing a group-to-group query and return a network plot.
 #' Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
 #'
 #' @param data Data frame containing a G2G query.
@@ -27,13 +26,13 @@
 #' @examples
 #' \dontrun{
 #' g2g_data %>%
-#'   g2g_network(time_investor = "TimeInvestors_Organization",
+#'   network_g2g(time_investor = "TimeInvestors_Organization",
 #'               collaborator = "Collaborators_Organization",
 #'               metric = "Collaboration_hours")
 #' }
 #'
 #' @export
-g2g_network <- function(data,
+network_g2g <- function(data,
                         time_investor,
                         collaborator,
                         metric,
@@ -64,6 +63,7 @@ g2g_network <- function(data,
 
   } else if(return == "plot"){
 
+    ## Network object
     mynet_em <-
       plot_data %>%
       filter(metric_prop > exc_threshold) %>%
@@ -73,6 +73,7 @@ g2g_network <- function(data,
                        ignore.eval = FALSE,
                        names.eval = "weights")
 
+    ## Plot object
     mynet_em %>%
       GGally::ggnet2(size = 12,
                      color = "lightblue",
@@ -96,3 +97,7 @@ g2g_network <- function(data,
 
   }
 }
+
+#' @rdname network_g2g
+#' @export
+g2g_network <- network_g2g
