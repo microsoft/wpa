@@ -90,11 +90,12 @@ network_p2p <- function(data,
                      node.alpha =  .8,
                      palette = pal,
                      ...) +
-      theme_void() +
       theme(legend.position = "bottom",
             plot.background = element_rect(fill = bg_fill),
             text = element_text(colour = font_col),
-            axis.line = element_blank())
+            axis.line = element_blank()) +
+      labs(y = "",
+           x = "")
 
 
   } else {
