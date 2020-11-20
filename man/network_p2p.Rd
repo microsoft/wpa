@@ -8,7 +8,7 @@ network_p2p(
   data,
   hrvar,
   return = "plot",
-  bg_fill = "#000000",
+  bg_fill = "#404040",
   font_col = "#FFFFFF",
   ...
 )
@@ -22,7 +22,12 @@ network_p2p(
 Valid inputs are "plot", "network" and "table". "network" returns the \code{network}
 object used to generate the network plot.}
 
-\item{...}{Additional arguments to pass to \code{GGally::ggnet2()}}
+\item{bg_fill}{String to specify background fill colour.}
+
+\item{font_col}{String to specify font colour}
+
+\item{...}{Additional arguments to pass to \code{GGally::ggnet2()}.
+For instance, you may specify the argument \code{mode} to change the node placement algorithm.}
 }
 \description{
 Pass a data frame containing a person-to-person query and return a network

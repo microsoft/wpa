@@ -12,10 +12,13 @@
 #'
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
-#' @param ... Additional arguments to pass to `GGally::ggnet2()`
 #' @param return Character vector specifying what to return, defaults to "plot".
 #' Valid inputs are "plot", "network" and "table". "network" returns the `network`
 #' object used to generate the network plot.
+#' @param bg_fill String to specify background fill colour.
+#' @param font_col String to specify font colour
+#' @param ... Additional arguments to pass to `GGally::ggnet2()`.
+#' For instance, you may specify the argument `mode` to change the node placement algorithm.
 #'
 #'
 #' @import ggplot2
@@ -26,7 +29,7 @@
 network_p2p <- function(data,
                         hrvar,
                         return = "plot",
-                        bg_fill = "#000000",
+                        bg_fill = "#404040",
                         font_col = "#FFFFFF",
                         ...){
 
