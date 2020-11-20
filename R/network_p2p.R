@@ -17,6 +17,7 @@
 #' object used to generate the network plot.
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font colour
+#' @param legend_pos String to specify position of legend. Defaults to "bottom". See `ggplot2::theme()`.
 #' @param ... Additional arguments to pass to `GGally::ggnet2()`.
 #' For instance, you may specify the argument `mode` to change the node placement algorithm.
 #'
@@ -31,6 +32,7 @@ network_p2p <- function(data,
                         return = "plot",
                         bg_fill = "#404040",
                         font_col = "#FFFFFF",
+                        legend_pos = "bottom",
                         ...){
 
   data <-
@@ -90,7 +92,7 @@ network_p2p <- function(data,
                      node.alpha =  .8,
                      palette = pal,
                      ...) +
-      theme(legend.position = "bottom",
+      theme(legend.position = legend_pos,
             plot.background = element_rect(fill = bg_fill),
             text = element_text(colour = font_col),
             axis.line = element_blank()) +

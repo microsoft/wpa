@@ -10,6 +10,7 @@ network_p2p(
   return = "plot",
   bg_fill = "#404040",
   font_col = "#FFFFFF",
+  legend_pos = "bottom",
   ...
 )
 }
@@ -25,6 +26,8 @@ object used to generate the network plot.}
 \item{bg_fill}{String to specify background fill colour.}
 
 \item{font_col}{String to specify font colour}
+
+\item{legend_pos}{String to specify position of legend. Defaults to "bottom". See \code{ggplot2::theme()}.}
 
 \item{...}{Additional arguments to pass to \code{GGally::ggnet2()}.
 For instance, you may specify the argument \code{mode} to change the node placement algorithm.}
