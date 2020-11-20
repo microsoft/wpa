@@ -30,7 +30,7 @@
 network_p2p <- function(data,
                         hrvar,
                         return = "plot",
-                        bg_fill = "#404040",
+                        bg_fill = "#000000",
                         font_col = "#FFFFFF",
                         legend_pos = "bottom",
                         ...){
@@ -93,6 +93,7 @@ network_p2p <- function(data,
                      palette = pal,
                      ...) +
       theme(legend.position = legend_pos,
+            legend.background = element_rect(fill = bg_fill),
             plot.background = element_rect(fill = bg_fill),
             text = element_text(colour = font_col),
             axis.line = element_blank()) +

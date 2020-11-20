@@ -8,7 +8,7 @@ network_p2p(
   data,
   hrvar,
   return = "plot",
-  bg_fill = "#404040",
+  bg_fill = "#000000",
   font_col = "#FFFFFF",
   legend_pos = "bottom",
   ...
