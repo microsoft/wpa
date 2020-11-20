@@ -70,7 +70,7 @@ network_p2p <- function(data,
   ## Palette
   pal <-
     tibble(!!sym(hrvar) := unique(myedges[[hrvar]])) %>%
-    mutate(Colours = heat_colours(nrow(.), alpha = 1)) %>%
+    mutate(Colours = rainbow(nrow(.), alpha = 1)) %>%
     tibble::deframe()
 
   if(return == "table"){
