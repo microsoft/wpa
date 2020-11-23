@@ -7,7 +7,8 @@
 network_p2p(
   data,
   hrvar,
-  return = "plot",
+  return = "pdf",
+  path = "network_p2p",
   bg_fill = "#000000",
   font_col = "#FFFFFF",
   legend_pos = "bottom",
@@ -19,13 +20,17 @@ network_p2p(
 
 \item{hrvar}{String containing the label for the HR attribute.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot", "network" and "table". "network" returns the \code{network}
-object used to generate the network plot.}
+\item{return}{Character vector specifying what to return, defaults to "pdf".
+Other valid inputs are "plot", "network" and "table". "network" returns the \code{network}
+object used to generate the network plot. The "pdf" option is highly recommended over the "plot"
+option as the PDF export format has significantly higher performance. The "plot" option is highly
+computationally intensive and is not generally recommended.}
+
+\item{path}{File path for saving the PDF output. Defaults to "network_p2p".}
 
 \item{bg_fill}{String to specify background fill colour.}
 
-\item{font_col}{String to specify font colour}
+\item{font_col}{String to specify font and link colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to "bottom". See \code{ggplot2::theme()}.}
 

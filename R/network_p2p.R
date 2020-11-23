@@ -12,11 +12,14 @@
 #'
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot", "network" and "table". "network" returns the `network`
-#' object used to generate the network plot.
+#' @param return Character vector specifying what to return, defaults to "pdf".
+#' Other valid inputs are "plot", "network" and "table". "network" returns the `network`
+#' object used to generate the network plot. The "pdf" option is highly recommended over the "plot"
+#' option as the PDF export format has significantly higher performance. The "plot" option is highly
+#' computationally intensive and is not generally recommended.
+#' @param path File path for saving the PDF output. Defaults to "network_p2p".
 #' @param bg_fill String to specify background fill colour.
-#' @param font_col String to specify font colour
+#' @param font_col String to specify font and link colour.
 #' @param legend_pos String to specify position of legend. Defaults to "bottom". See `ggplot2::theme()`.
 #' @param ... Additional arguments to pass to `GGally::ggnet2()`.
 #' For instance, you may specify the argument `mode` to change the node placement algorithm.
@@ -29,7 +32,8 @@
 #' @export
 network_p2p <- function(data,
                         hrvar,
-                        return = "plot",
+                        return = "pdf",
+                        path = "network_p2p",
                         bg_fill = "#000000",
                         font_col = "#FFFFFF",
                         legend_pos = "bottom",
@@ -81,9 +85,10 @@ network_p2p <- function(data,
 
     mynet
 
-  } else if(return == "plot"){
+  } else if(return %in% c("plot", "pdf")){
 
-    mynet %>%
+    outputPlot <-
+      mynet %>%
       GGally::ggnet2(size = 1,
                      color = hrvar,
                      label = FALSE,
@@ -100,6 +105,21 @@ network_p2p <- function(data,
       labs(y = "",
            x = "")
 
+    ## Inner conditional
+    if(return == "pdf"){
+
+      fn <- paste0(path, "_", tstamp(), ".pdf")
+      ggsave(filename = fn,
+             plot = outputPlot,
+             width = 12,
+             height = 9)
+
+
+    } else if(return == "plot"){
+
+      outputPlot
+
+    }
 
   } else {
 
