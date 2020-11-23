@@ -9,7 +9,8 @@ Authors@R: c(
     person(given = "Ainize", family = "Cidoncha", role = "ctb", email = "ainize.cidoncha@microsoft.com"),
     person(given = "Rosamary", family = "Ochoa Vargas", role = "ctb", email = "rosamary.ochoa@microsoft.com"),
     person(given = "Tannaz", family = "Sattari", role = "ctb", email = "tannaz.sattari@microsoft.com"),
-	person(given = "Lucas", family = "Hogner", role = "ctb", email = "lucas.hogner@microsoft.com")
+	person(given = "Lucas", family = "Hogner", role = "ctb", email = "lucas.hogner@microsoft.com",
+	person(given = "Ellen", family = "Trinklein", role = "ctb"))
 	)
 Description: Opinionated functions that enable easier and faster
     analysis of Workplace Analytics data. There are three main types of functions in wpa:

@@ -13,9 +13,9 @@ This is an R package for analyzing and visualizing data from [Microsoft Workplac
 3. Leverage **advanced analytics functions**, such as text mining and hierarchical clustering, which are built for Workplace Analytics metrics
 4. Integrate analysis of Workplace Analytics data with your R workflow seamlessly
 
-Here are just some examples of the plots that you can create with **wpa**:
+Here is an example of **wpa** in action:
 
-<img src="man/figures/plot-demo.gif" align="center" width=80% />
+<img src="man/figures/output2.gif" align="center" width=80% />
 
 ---
 
@@ -56,7 +56,7 @@ For information on the package structure, please see the relevant section in our
 
 Also check out our package cheat sheet for more information:
 
-<a href="man/figures/wpa cheatsheet_20201116.pdf"><img src="man/figures/wpa cheatsheet_20201116.png" align="center" width=50% /></a>
+<a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet_20201116.png" align="center" width=50% /></a>
 
 ---
 
