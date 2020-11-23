@@ -12,6 +12,7 @@ network_p2p(
   bg_fill = "#000000",
   font_col = "#FFFFFF",
   legend_pos = "bottom",
+  palette = rainbow,
   ...
 )
 }
@@ -33,6 +34,8 @@ computationally intensive and is not generally recommended.}
 \item{font_col}{String to specify font and link colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to "bottom". See \code{ggplot2::theme()}.}
+
+\item{palette}{Function for generating a colour palette with a single argument \code{n}. Uses \code{rainbow()} by default.}
 
 \item{...}{Additional arguments to pass to \code{GGally::ggnet2()}.
 For instance, you may specify the argument \code{mode} to change the node placement algorithm.}

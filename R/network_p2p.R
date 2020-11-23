@@ -21,6 +21,7 @@
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param legend_pos String to specify position of legend. Defaults to "bottom". See `ggplot2::theme()`.
+#' @param palette Function for generating a colour palette with a single argument `n`. Uses `rainbow()` by default.
 #' @param ... Additional arguments to pass to `GGally::ggnet2()`.
 #' For instance, you may specify the argument `mode` to change the node placement algorithm.
 #'
@@ -37,6 +38,7 @@ network_p2p <- function(data,
                         bg_fill = "#000000",
                         font_col = "#FFFFFF",
                         legend_pos = "bottom",
+                        palette = rainbow,
                         ...){
 
   data <-
@@ -72,9 +74,15 @@ network_p2p <- function(data,
   mynet %v% hrvar <- myedges[[hrvar]]
 
   ## Palette
+
+  pal <- tibble(!!sym(hrvar) := unique(myedges[[hrvar]]))
+
+  col_pal <- do.call(what = palette, args = list(nrow(pal)))
+
+  ## named character vector
   pal <-
-    tibble(!!sym(hrvar) := unique(myedges[[hrvar]])) %>%
-    mutate(Colours = rainbow(nrow(.), alpha = 1)) %>%
+    pal %>%
+    mutate(Colours = col_pal) %>%
     tibble::deframe()
 
   if(return == "table"){
