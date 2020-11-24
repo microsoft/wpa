@@ -103,7 +103,7 @@ network_p2p <- function(data,
                      color = hrvar,
                      label = FALSE,
                      edge.size = .01,
-                     edge.alpha = .1,
+                     edge.alpha = .5,
                      node.alpha =  .8,
                      palette = pal,
                      ...) +
