@@ -41,7 +41,10 @@ computationally intensive and is not generally recommended.}
 For instance, you may specify the argument \code{mode} to change the node placement algorithm.}
 }
 \description{
-Pass a data frame containing a person-to-person query and return a network
-plot.
-Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
+Pass a data frame containing a person-to-person query and save a network
+plot as a PDF file.
+}
+\details{
+For specifying the node placement algorithm, please see the \code{gplot.layout} documentation for the \strong{sna}
+package, which provides a full list of the valid functions that can be passed into the \code{mode} argument.
 }

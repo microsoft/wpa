@@ -6,9 +6,8 @@
 #' @title Create a network plot with the person-to-person query
 #'
 #' @description
-#' Pass a data frame containing a person-to-person query and return a network
-#' plot.
-#' Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
+#' Pass a data frame containing a person-to-person query and save a network
+#' plot as a PDF file.
 #'
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
@@ -25,6 +24,9 @@
 #' @param ... Additional arguments to pass to `GGally::ggnet2()`.
 #' For instance, you may specify the argument `mode` to change the node placement algorithm.
 #'
+#' @details
+#' For specifying the node placement algorithm, please see the `gplot.layout` documentation for the **sna**
+#' package, which provides a full list of the valid functions that can be passed into the `mode` argument.
 #'
 #' @import ggplot2
 #' @import dplyr
