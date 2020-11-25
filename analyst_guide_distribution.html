@@ -183,7 +183,50 @@
 
 <div id="distribution" class="section level1">
 
-<p><em>Coming soon…</em></p>
+<p><strong>Distribution</strong> functions allow you to go beyond aggregated averages, and diagnose whether metrics are skewed, evenly distributed, or contain outliers.</p>
+<p>You can use the <code>fizz</code> and <code>dist</code> family of functions for this. For email hours, you can run the following:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_dist.html">email_dist</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># 100% horizontal stacked bar</span></code></pre></div>
+<p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/email_dist.png" align="center" width="80%"></p>
+<p>You can also return a jittered scatter plot (‘fizzy drink plot’).</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_fizz.html">email_fizz</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Fizzy drink plot</span></code></pre></div>
+<div id="functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#functions" class="anchor"></a>Functions</h2>
+<p>Other examples of distribution functions include:</p>
+<div id="dist" class="section level3">
+<h3 class="hasAnchor">
+<a href="#dist" class="anchor"></a>Dist</h3>
+<ul>
+<li><code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code></li>
+<li><code><a href="reference/meeting_dist.html">meeting_dist()</a></code></li>
+<li><code><a href="reference/one2one_dist.html">one2one_dist()</a></code></li>
+<li><code><a href="reference/afterhours_dist.html">afterhours_dist()</a></code></li>
+<li><code><a href="reference/workloads_dist.html">workloads_dist()</a></code></li>
+</ul>
+</div>
+<div id="fizz" class="section level3">
+<h3 class="hasAnchor">
+<a href="#fizz" class="anchor"></a>Fizz</h3>
+<ul>
+<li><code><a href="reference/collaboration_fizz.html">collaboration_fizz()</a></code></li>
+<li><code><a href="reference/meeting_fizz.html">meeting_fizz()</a></code></li>
+<li><code><a href="reference/one2one_fizz.html">one2one_fizz()</a></code></li>
+<li><code><a href="reference/afterhours_fizz.html">afterhours_fizz()</a></code></li>
+<li><code><a href="reference/workloads_fizz.html">workloads_fizz()</a></code></li>
+</ul>
+</div>
+<div id="flexible-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#flexible-functions" class="anchor"></a>Flexible functions</h3>
+<ul>
+<li><code><a href="reference/create_dist.html">create_dist()</a></code></li>
+<li><code><a href="reference/create_fizz.html">create_fizz()</a></code></li>
+<li><code><a href="reference/create_boxplot.html">create_boxplot()</a></code></li>
+</ul>
+</div>
+</div>
 </div>
 
   </div>

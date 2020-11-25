@@ -187,9 +187,20 @@
 <p>An instance of a summary function in action would be:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>You can use return a summary table rather than a plot:</p>
+<p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align="center" width="80%"></p>
+<p>This returns a plot that you can either as a SVG (vector) or PNG (scalar) image by passing the output to <code><a href="reference/export.html">export()</a></code>. Since the plot output is a ggplot object, you can also make further customizations to it by appending ggplot layers, for instance:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
+<p>You can use return a summary table rather than a plot:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<p>To export the results to a clipboard, you can pass the outputs to <code><a href="reference/export.html">export()</a></code> again:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>There is also an option to change the threshold for excluding group size:</p>
 <pre><code>sq_data %&gt;%
   collaboration_sum(hrvar = "LevelDesignation",
@@ -203,6 +214,7 @@
 <li><code><a href="reference/workloads_summary.html">workloads_summary()</a></code></li>
 <li><code><a href="reference/afterhours_summary.html">afterhours_summary()</a></code></li>
 </ul>
+<p>See <code><a href="reference/create_bar.html">create_bar()</a></code> for creating summary functions with other Workplace Analytics metrics.</p>
 </div>
 
   </div>
