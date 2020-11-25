@@ -106,7 +106,7 @@ To get started, open a new session in R and load the following packages:
 
 ```{r message=FALSE, warning=FALSE}
 library(wpa)
-library(tidyverse) # For data manipulation
+library(dplyr) # For data manipulation
 ```
 
 The general format looks like this:
