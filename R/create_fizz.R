@@ -58,7 +58,7 @@ create_fizz <- function(data,
     check_inputs(requirements = required_variables)
 
   ## Clean metric name
-  clean_nm <- gsub(pattern = "_", replacement = "", x = metric)
+  clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
 
   ## Plot data
   plot_data <-
@@ -93,15 +93,7 @@ create_fizz <- function(data,
     ylim(0, max_point) +
     annotate("text", x = plot_legend$group, y = 0, label = plot_legend$Employee_Count) +
     scale_x_discrete(labels = scales::wrap_format(10)) +
-    theme_classic() +
-    theme(axis.text=element_text(size=12),
-          axis.text.x = element_text(angle = 30, hjust = 1),
-          plot.title = element_text(color="grey40", face="bold", size=18),
-          plot.subtitle = element_text(size=14),
-          legend.position = "top",
-          legend.justification = "right",
-          legend.title=element_text(size=14),
-          legend.text=element_text(size=14)) +
+    theme_wpa_basic() +
     labs(title = clean_nm,
          subtitle = paste("Distribution of",
                           tolower(clean_nm),
