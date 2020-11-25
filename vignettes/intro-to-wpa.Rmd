@@ -1,6 +1,6 @@
 ---
 title: "Introduction to {wpa}"
-author: "Microsoft WpA"
+author: "Martin Chan"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

@@ -63,4 +63,6 @@ navbar:
         href: articles/text-mining-capabilities.html
       - text: Best Practices when using wpa
         href: articles/best-practices.html
+      - text: Introduction to Information Value
+      - href: articles/IV-report.html
 
