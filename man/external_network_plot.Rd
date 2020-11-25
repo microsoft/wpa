@@ -13,13 +13,12 @@ external_network_plot(
 )
 }
 \arguments{
-\item{data}{Person Query as a dataframe including date column named "Date"
-This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{WpA variable for an HR variable to group networks by
-For example, "Layer"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
+but accepts any character vector, e.g. "LevelDesignation"}
 
-\item{mingroup}{Numeric vector for minimum group size for aggregation}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}
@@ -32,8 +31,8 @@ External Network Breadth as the vertical axis and External Network Size as the
 horizontal axis.
 }
 \examples{
-\dontrun{external_network_plot(sq_data)
-}
+## Return a plot
+sq_data \%>\% external_network_plot(return = "plot")
 
 }
 \seealso{
