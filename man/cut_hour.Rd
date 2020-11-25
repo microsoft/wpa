@@ -31,6 +31,7 @@ Other General:
 \code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
 \code{\link{create_scatter}()},
 \code{\link{extract_hr}()},
 \code{\link{hrvar_count}()},
