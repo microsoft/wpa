@@ -87,7 +87,7 @@ create_IV <- function(data,
                       subtitle = "Showing top 12 only")
 
   } else if(return == "plot-WOE"){
-    Information::plot_infotables(IV, IV$Summary$Variable[], same_scale=TRUE) %>% grDevices::recordPlot()
+    Information::plot_infotables(IV, IV$Summary$Variable[1:9], same_scale=TRUE) %>% grDevices::recordPlot()
 
   } else if(return == "list"){
     output_list
