@@ -61,4 +61,6 @@ navbar:
         href: articles/intro-to-wpa.html
       - text: Text-mining Meeting Subject lines
         href: articles/text-mining-capabilities.html
+      - text: Best Practices when using wpa
+        href: articles/best-practices.html
 
