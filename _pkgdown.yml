@@ -64,5 +64,5 @@ navbar:
       - text: Best Practices when using wpa
         href: articles/best-practices.html
       - text: Introduction to Information Value
-      - href: articles/IV-report.html
+        href: articles/IV-report.html
 
