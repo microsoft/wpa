@@ -40,7 +40,7 @@ The package comes shipped with a sample Standard Query dataset (`sq_data`), so y
 ```R
 collaboration_sum(sq_data, return = "plot")
 ```
-<img src="man/figures/collaboration_sum2.jpg" align="center" width=80% />
+<img src=".github/gallery/collab_sum.png" align="center" width=80% />
 
 By passing 'table' to the `return` argument, the function will return a data frame with the relevant summary statistics. 
 
