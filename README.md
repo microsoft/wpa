@@ -101,4 +101,12 @@ This project may contain trademarks or logos for projects, products, or services
 
 ---
 
-Finding this project useful? Star this repository to keep us going! :star:
+## Finding this project useful? 
+
+:star: Please star this repository to keep us going! 
+
+Contributors to the GitHub repo:
+
+![](CONTRIBUTORS.svg)
+
+See full list [here](https://microsoft.github.io/wpa/authors.html).
