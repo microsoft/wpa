@@ -1,4 +1,4 @@
-## :package: Package Structure
+# :package: Package Structure
 
 There are four main types of functions in **wpa**:
 1. Standard Analysis 
