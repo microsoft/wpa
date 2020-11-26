@@ -107,6 +107,6 @@ This project may contain trademarks or logos for projects, products, or services
 
 Contributors to the GitHub repo:
 
-![](CONTRIBUTORS.svg)
+![](https://raw.githubusercontent.com/microsoft/wpa/main/CONTRIBUTORS.svg)
 
 See full list [here](https://microsoft.github.io/wpa/authors.html).
