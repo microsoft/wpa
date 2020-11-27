@@ -22,7 +22,7 @@ There are multiple reasons:
 
 This guide is organized in five key sections:
 
-1. [**Getting Stared**](analyst_guide_getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
+1. [**Getting Started**](analyst_guide_getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
 2. [**Summary Functions**](analyst_guide_summary.html): This section introduces functions that calculate averages and draw comparisons across groups.
 3. [**Distribution Functions**](analyst_guide_distribution.html): This section describes functions that help you explore distributions across groups.
 4. [**Trend Functions**](analyst_guide_trend.html): This section explains functions that explore time dyanmics across a wide range of metrics.
