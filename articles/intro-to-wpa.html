@@ -159,11 +159,11 @@
 <div id="background" class="section level2">
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
-<p>This document walks through the {wpa} package, and provides some examples on how to use some of the functions. The {wpa} package is still under early active development, and new functions and features are continuously being added.</p>
+<p>This document walks through the <strong>wpa</strong> package, and provides some examples on how to use some of the functions. For our full online documentation for the package, please visit <a href="https://microsoft.github.io/wpa" class="uri">https://microsoft.github.io/wpa</a>. For anything else related to Workplace Analytics, please visit <a href="https://docs.microsoft.com/en-us/workplace-analytics/" class="uri">https://docs.microsoft.com/en-us/workplace-analytics/</a>.</p>
 <div id="setting-up" class="section level3">
 <h3 class="hasAnchor">
 <a href="#setting-up" class="anchor"></a>Setting up</h3>
-<p>To start off using the {wpa}, you’ll have to load it by running <code><a href="https://github.com/microsoft/wpa">library(wpa)</a></code>. For the purpose of our examples, let’s also load {tidyverse}, or its component packages:</p>
+<p>To start off using <strong>wpa</strong>, you’ll have to load it by running <code><a href="https://github.com/microsoft/wpa">library(wpa)</a></code>. For the purpose of our examples, let’s also loada few of the component packages of <strong>tidyverse</strong> (alternatively, you can just run <code><a href="https://rdrr.io/r/base/library.html">library(tidyverse)</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa">wpa</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
@@ -223,7 +223,7 @@
 <div id="summary-of-key-metrics" class="section level3">
 <h3 class="hasAnchor">
 <a href="#summary-of-key-metrics" class="anchor"></a>Summary of Key Metrics</h3>
-<p>The <code><a href="../reference/keymetrics_scan.html">keymetrics_scan()</a></code> function allows you to produce summary metrics from the Standard Query data. Similar to most of the functions in this package, you can specify what output to return with the <code>return</code> argument. In addition, you have to specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument.</p>
+<p>The <code><a href="../reference/keymetrics_scan.html">keymetrics_scan()</a></code> function allows you to produce summary metrics from the Standard Person Query data. Similar to most of the functions in this package, you can specify what output to return with the <code>return</code> argument. In addition, you have to specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument.</p>
 <p>There are two valid return values for <code><a href="../reference/keymetrics_scan.html">keymetrics_scan()</a></code>:</p>
 <ul>
 <li>Heat map (<code>return = "plot"</code>)</li>
@@ -387,12 +387,35 @@
 <span class="co">#&gt; 6 Support      NA         0.105       0.198   0.697</span></code></pre></div>
 <hr>
 </div>
+<div id="customizing-plot-outputs" class="section level3">
+<h3 class="hasAnchor">
+<a href="#customizing-plot-outputs" class="anchor"></a>Customizing plot outputs</h3>
+<p>With a few rare exceptions such as <code><a href="../reference/track_HR_change.html">track_HR_change()</a></code>, the majority of plot outputs returned by <strong>wpa</strong> functions are ggplot outputs. What this means is that there is a lot of flexibility in adding or overriding visual elements in the plots. For instance, you can take the following ‘fizzy drink’ (jittered scatter) plot:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-15-1.png" width="768"></p>
+<p>… and add custom titles, subtitles, and flip the axes by adding ggplot layers:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> <span class="co"># Requires ggplot2 for customizations</span>
+
+<span class="va">sq_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a custom title"</span>,
+       subtitle <span class="op">=</span> <span class="st">"This is a custom sub-title"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span></code></pre></div>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
+<p>Note that the “pipe” syntax changes from <code><a href="../reference/%&gt;%.html">%&gt;%</a></code> to <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> once you are manipulating a ggplot output, which will return an error if not used correctly.</p>
+<p>Adding customized elements may ‘break’ the visualization, so please exercise caution when doing so.</p>
+<p>For more information on ggplot, please visit <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a>.</p>
+<hr>
+</div>
 <div id="getting-a-quick-overview-of-standard-person-query-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-a-quick-overview-of-standard-person-query-data" class="anchor"></a>Getting a quick overview of Standard Person Query data</h3>
 <p>The <code><a href="../reference/collaboration_report.html">collaboration_report()</a></code> function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># sq_data %&gt;% collaboration_report()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/collaboration_report.html">collaboration_report</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Running the function will open up a HTML report in your browser, summarising the key collaboration metrics and plots of the Standard Person Query. You can manually save this report, or only have it open as an ad-hoc reference document.</p>
 <hr>
 </div>
@@ -400,7 +423,7 @@
 <div id="feedback" class="section level2">
 <h2 class="hasAnchor">
 <a href="#feedback" class="anchor"></a>Feedback</h2>
-<p>Hope you found this useful! If you have any suggestions or feedback, please feel free to send them to <a href="mailto:mac@microsoft.com" class="email">mac@microsoft.com</a>.</p>
+<p>Hope you found this useful! If you have any suggestions or feedback, please log them at <a href="https://github.com/microsoft/wpa/issues" class="uri">https://github.com/microsoft/wpa/issues</a>.</p>
 </div>
   </div>
 
