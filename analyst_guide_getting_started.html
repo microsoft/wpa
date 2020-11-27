@@ -6,15 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform a query check for the validation report — check_query_validation • wpa</title>
+<title>Getting Started • wpa</title>
 
 <!-- favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -25,8 +25,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script>
+<link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -40,16 +40,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Perform a query check for the validation report — check_query_validation" />
-<meta property="og:description" content="Prints diagnostic data about the data query to the R console, with information
-such as date range, number of employees, HR attributes identified, etc.
-Optimised for the validation_report()" />
+<meta property="og:title" content="Getting Started" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -69,7 +66,7 @@ Optimised for the validation_report()" />
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -81,7 +78,7 @@ Optimised for the validation_report()" />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">wpa</a>
+        <a class="navbar-link" href="index.html">wpa</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
@@ -89,7 +86,7 @@ Optimised for the validation_report()" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
@@ -102,27 +99,27 @@ Optimised for the validation_report()" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../analyst_guide.html">Introduction</a>
+      <a href="analyst_guide.html">Introduction</a>
     </li>
     <li>
-      <a href="../analyst_guide_getting_started.html">Getting Started</a>
+      <a href="analyst_guide_getting_started.html">Getting Started</a>
     </li>
     <li>
-      <a href="../analyst_guide_summary.html">Summary analysis</a>
+      <a href="analyst_guide_summary.html">Summary analysis</a>
     </li>
     <li>
-      <a href="../analyst_guide_distribution.html">Distribution analysis</a>
+      <a href="analyst_guide_distribution.html">Distribution analysis</a>
     </li>
     <li>
-      <a href="../analyst_guide_trend.html">Trend analysis</a>
+      <a href="analyst_guide_trend.html">Trend analysis</a>
     </li>
     <li>
-      <a href="../analyst_guide_network.html">Network analysis</a>
+      <a href="analyst_guide_network.html">Network analysis</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -132,16 +129,16 @@ Optimised for the validation_report()" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../CONTRIBUTING.html">Contributor Guide</a>
+      <a href="CONTRIBUTING.html">Contributor Guide</a>
     </li>
     <li>
-      <a href="../developer_guide.html">Developer Guide</a>
+      <a href="developer_guide.html">Developer Guide</a>
     </li>
     <li>
-      <a href="../reporting_security_issues.html">Reporting Security Issues</a>
+      <a href="reporting_security_issues.html">Reporting Security Issues</a>
     </li>
     <li>
-      <a href="../package_structure.html">Package Structure</a>
+      <a href="package_structure.html">Package Structure</a>
     </li>
   </ul>
 </li>
@@ -153,21 +150,21 @@ Optimised for the validation_report()" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/intro-to-wpa.html">Introduction to {wpa}</a>
+      <a href="articles/intro-to-wpa.html">Introduction to {wpa}</a>
     </li>
     <li>
-      <a href="../articles/text-mining-capabilities.html">Text-mining Meeting Subject lines</a>
+      <a href="articles/text-mining-capabilities.html">Text-mining Meeting Subject lines</a>
     </li>
     <li>
-      <a href="../articles/best-practices.html">Best Practices when using wpa</a>
+      <a href="articles/best-practices.html">Best Practices when using wpa</a>
     </li>
     <li>
-      <a href="../articles/IV-report.html">Introduction to Information Value</a>
+      <a href="articles/IV-report.html">Introduction to Information Value</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -188,47 +185,50 @@ Optimised for the validation_report()" />
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-    <h1>Perform a query check for the validation report</h1>
-    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/check_query.R'><code>R/check_query.R</code></a></small>
-    <div class="hidden name"><code>check_query_validation.Rd</code></div>
+      <h1>Getting Started</h1>
     </div>
 
-    <div class="ref-description">
-    <p>Prints diagnostic data about the data query to the R console, with information
-such as date range, number of employees, HR attributes identified, etc.
-Optimised for the <code><a href='validation_report.html'>validation_report()</a></code></p>
-    </div>
+<div id="getting-started" class="section level1">
 
-    <pre class="usage"><span class='fu'>check_query_validation</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>return</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>A person-level query in the form of a data frame, including the standard person query,
-collaboration assessment query, and the hourly collaboration query.</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>Character string to specify whether to return a console message ("message"),
-a character string ("text"), or a data frame. Defaults to "message".</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Used as part of <code><a href='check_query.html'>check_query()</a></code>.</p>
+<div id="installation-instructions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation-instructions" class="anchor"></a>Installation instructions</h2>
+<p><em>Coming soon…</em></p>
+</div>
+<div id="importing-workplace-analytics-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#importing-workplace-analytics-data" class="anchor"></a>Importing Workplace Analytics Data</h2>
+<p><em>Coming soon…</em></p>
+</div>
+<div id="exploring-the-dataset" class="section level2">
+<h2 class="hasAnchor">
+<a href="#exploring-the-dataset" class="anchor"></a>Exploring the dataset</h2>
+<p><em>Coming soon…</em></p>
+</div>
+<div id="function-structure-and-additional-parameters" class="section level2">
+<h2 class="hasAnchor">
+<a href="#function-structure-and-additional-parameters" class="anchor"></a>Function Structure and additional parameters</h2>
+<p><em>Coming soon…</em></p>
+</div>
+<div id="exporting-plots-and-tables" class="section level2">
+<h2 class="hasAnchor">
+<a href="#exporting-plots-and-tables" class="anchor"></a>Exporting Plots and Tables</h2>
+<p><em>Coming soon…</em></p>
+</div>
+</div>
 
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
+
 
 
       <footer>
