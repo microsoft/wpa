@@ -34,7 +34,17 @@ combine_signals <- function(data,
   hr2 <- ifelse(nchar(hr_two) == 1, paste0(0, hr_two), hr_two)
 
   # Create string vectors
-  full_string <- paste0("Signals_sent_", hr1, "_", hr2)
+  # Use original supplied string if length of signals == 1
+  if(length(signals) == 1){
+
+    full_string <- paste0(signals, "_", hr1, "_", hr2)
+
+  } else {
+
+    full_string <- paste0("Signals_sent_", hr1, "_", hr2)
+
+  }
+
   input_string <- paste0(signals, "_", hr1, "_", hr2) # Should be length > 1
 
   # Sum columns and only return `Signals_sent_` prefixed column
