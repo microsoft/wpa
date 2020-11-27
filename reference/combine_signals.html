@@ -201,7 +201,7 @@ signal for <code>Emails_sent</code> and <code>IMs_sent</code> in <code>Signals_s
 function used in the Working Patterns functions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>combine_signals</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>hr</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>combine_signals</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>hr</span>, signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Emails_sent"</span>, <span class='st'>"IMs_sent"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -213,6 +213,11 @@ function used in the Working Patterns functions.</p>
     <tr>
       <th>hr</th>
       <td><p>Numeric value between 0 to 23 to iterate through</p></td>
+    </tr>
+    <tr>
+      <th>signals</th>
+      <td><p>Character vector for specifying which signal types to combine.
+Defaults to c("Emails_sent", "IMs_sent").</p></td>
     </tr>
     </table>
 

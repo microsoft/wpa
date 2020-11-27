@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Identify the WPA metrics that have the biggest change between two periods. — IV_by_period • wpa</title>
+<title>Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
+representing the number of employees in the group. — create_bubble • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +47,9 @@
 
 
 
-<meta property="og:title" content="Identify the WPA metrics that have the biggest change between two periods. — IV_by_period" />
-<meta property="og:description" content="This function uses the Information Value algorithm to predict which WPA metrics are most explained by the change in dates." />
+<meta property="og:title" content="Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
+representing the number of employees in the group. — create_bubble" />
+<meta property="og:description" content="Returns a bubble plot of two selected metrics, using size to map the number of employees." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -188,23 +190,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Identify the WPA metrics that have the biggest change between two periods.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/IV_by_Period.R'><code>R/IV_by_Period.R</code></a></small>
-    <div class="hidden name"><code>IV_by_period.Rd</code></div>
+    <h1>Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
+representing the number of employees in the group.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/create_bubble.R'><code>R/create_bubble.R</code></a></small>
+    <div class="hidden name"><code>create_bubble.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function uses the Information Value algorithm to predict which WPA metrics are most explained by the change in dates.</p>
+    <p>Returns a bubble plot of two selected metrics, using size to map the number of employees.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>IV_by_period</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>create_bubble</span><span class='op'>(</span>
   <span class='va'>data</span>,
-  before_start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>Date</span>, <span class='st'>"%m/%d/%Y"</span><span class='op'>)</span><span class='op'>)</span>,
-  <span class='va'>before_end</span>,
-  after_start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>before_end</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span>,
-  after_end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>Date</span>, <span class='st'>"%m/%d/%Y"</span><span class='op'>)</span><span class='op'>)</span>,
-  mybins <span class='op'>=</span> <span class='fl'>10</span>,
-  return <span class='op'>=</span> <span class='st'>"table"</span>
+  <span class='va'>metric_x</span>,
+  <span class='va'>metric_y</span>,
+  hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+  mingroup <span class='op'>=</span> <span class='fl'>5</span>,
+  return <span class='op'>=</span> <span class='st'>"plot"</span>,
+  bubble_size <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -212,44 +215,70 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Person Query as a dataframe including date column named "Date"
-This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.</p></td>
+      <td><p>A Standard Person Query dataset in the form of a data frame.</p></td>
     </tr>
     <tr>
-      <th>before_start</th>
-      <td><p>Start date of "before" time period in YYYY-MM-DD. Defaults to earliest date in dataset.</p></td>
+      <th>metric_x</th>
+      <td><p>Character string containing the name of the metric,
+e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
-      <th>before_end</th>
-      <td><p>End date of "before" time period in YYYY-MM-DD</p></td>
+      <th>metric_y</th>
+      <td><p>Character string containing the name of the metric,
+e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
-      <th>after_start</th>
-      <td><p>Start date of "after" time period in YYYY-MM-DD. Defaults to day after before_end.</p></td>
+      <th>hrvar</th>
+      <td><p>HR Variable by which to split metrics, defaults to "Organization"
+but accepts any character vector, e.g. "LevelDesignation"</p></td>
     </tr>
     <tr>
-      <th>after_end</th>
-      <td><p>End date of "after" time period in YYYY-MM-DD. Defaults to latest date in dataset.</p></td>
-    </tr>
-    <tr>
-      <th>mybins</th>
-      <td><p>Number of bins to cut the data into for Information Value analysis. Defaults to 10.</p></td>
+      <th>mingroup</th>
+      <td><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Specify whether to return a summary table or detailed Excel and PDF files
-Specify "table" or "detailed" for outputs. Defaults to table.</p></td>
+      <td><p>Character vector specifying what to return, defaults to "plot".
+Valid inputs are "plot" and "table".</p></td>
+    </tr>
+    <tr>
+      <th>bubble_size</th>
+      <td><p>A numeric vector of length two to specify the size range of the bubbles</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns a ggplot object by default, where 'plot' is passed in <code>return</code>.
+When 'table' is passed, a summary table is returned as a data frame.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a general purpose function that powers all the functions
+in the package that produce bubble plots.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Flexible Input: 
-<code><a href='period_change.html'>period_change</a>()</code></p>
-<p>Other Information Value: 
-<code><a href='IV_report.html'>IV_report</a>()</code>,
-<code><a href='create_IV.html'>create_IV</a>()</code></p></div>
+    <div class='dont-index'><p>Other General: 
+<code><a href='create_bar_asis.html'>create_bar_asis</a>()</code>,
+<code><a href='create_bar.html'>create_bar</a>()</code>,
+<code><a href='create_boxplot.html'>create_boxplot</a>()</code>,
+<code><a href='create_scatter.html'>create_scatter</a>()</code>,
+<code><a href='cut_hour.html'>cut_hour</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_outlier.html'>identify_outlier</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>create_bubble</span><span class='op'>(</span><span class='va'>sq_data</span>,
+<span class='st'>"Internal_network_size"</span>,
+<span class='st'>"External_network_size"</span>,
+<span class='st'>"Organization"</span><span class='op'>)</span>
+</div><div class='img'><img src='create_bubble-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>create_bubble</span><span class='op'>(</span><span class='va'>sq_data</span>,
+<span class='st'>"Generated_workload_call_hours"</span>,
+<span class='st'>"Generated_workload_email_hours"</span>,
+<span class='st'>"Organization"</span>, mingroup <span class='op'>=</span> <span class='fl'>100</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+</div><div class='img'><img src='create_bubble-2.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
