@@ -22,16 +22,16 @@ There are multiple reasons:
 
 This guide is organized in six sections. 
 
-1. <a href="analyst_guide_getting_started.html">**Getting Stared**</a>: This section contains the detailed installation instructions, and a general overview of how functions work. 
-2. **Summary Functions**: This section introduces functions that calculate averages and draw comparisons across groups.
-3. **Distribution Functions**: This section describes functions that help you explore distributions across groups.
-4. **Trend Functions**: This section explains functions that explore time dyanmics across a wide range of metrics.
-5. **Network Functions**: This section explores functions that help you plot and analyse networks.
+1. [**Getting Stared**](analyst_guide_getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
+2. [**Summary Functions**](analyst_guide_summary.html): This section introduces functions that calculate averages and draw comparisons across groups.
+3. [**Distribution Functions**](analyst_guide_distribution.html): This section describes functions that help you explore distributions across groups.
+4. [**Trend Functions**](analyst_guide_trend.html): This section explains functions that explore time dyanmics across a wide range of metrics.
+5. [**Network Functions**](analyst_guide_network.html): This section explores functions that help you plot and analyse networks.
 
 ## Additional Resources
 
 As you use **wpa** for analysis, make sure to leaverage these additional resources: 
 
 1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf).
-2. A growing list of [articles]("https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
+2. A growing list of [articles](https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
 
