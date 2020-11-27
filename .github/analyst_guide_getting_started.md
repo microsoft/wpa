@@ -3,7 +3,7 @@ This section contains the detailed installation instructions, and a general over
 
 ## Installation
 
-The latest stable version of **wpa** is available in Github. Use the following script in R to automatically download and install it in your local installation of R:
+The latest stable version of **wpa** is available in Github. Use the following script in R to automatically download and install it in your local device:
 
 ```R
 # Check if devtools is installed, if not then install it
@@ -14,22 +14,21 @@ devtools::install_git(url = "https://github.com/microsoft/wpa.git")
 
 ```
 
-**wpa** is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to do a local installation, you can download a .tar file from [here](https://github.com/microsoft/wpa/). 
+This package is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to do a local installation, you can download a .tar file [here](https://github.com/microsoft/wpa/). 
 
 ## Loading the wpa package
-One the installation is complete, you can can load the package with:
+One the installation is complete, you can load the package with:
 
 ```R
 library(wpa)
 ```
 
-You will need to load the package everytime you start a new R session. 
-
+You only need to install the package once, but will need to load it everytime you start a new R session. 
 
 ## Importing Workplace Analytics Data
-All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) funciton, to read any query file in .CSV format.
+All functions in **wpa** are designed to work with query data from Workpalce Analytics. To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function, that accepts any query file in .CSV format.
 
-Assuming you have a file called *myquery.csv* on your desktop, you can import that data into R using:
+Assuming you have a file called *myquery.csv* on your desktop, you can import it into R using:
 
 ```R
 person_data <- import_wpa("Desktop/myquery.csv") 
