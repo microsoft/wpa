@@ -3,7 +3,7 @@ This section contains the detailed installation instructions, and a general over
 
 ## Installation
 
-The latest stable version of *wpa* is available in Github. Use the following script in R to automatically download and install it in your local installation of R:
+The latest stable version of **wpa** is available in Github. Use the following script in R to automatically download and install it in your local installation of R:
 
 ```R
 # Check if devtools is installed, if not then install it
@@ -27,7 +27,7 @@ You will need to load the package everytime you start a new R session.
 
 
 ## Importing Workplace Analytics Data
-All functions in *wpa* are designed to work with query data from Workpalce Analytics. To load in some data you can use wpa::import_wpa, loading any query file in .CSV format:
+All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use wpa::import_wpa, loading any query file in .CSV format:
 
 ```R
 

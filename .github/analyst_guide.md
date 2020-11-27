@@ -5,7 +5,7 @@ Welcome to the Analyst Guide of the **wpa** package. The objective of this docum
 ## Before we begin...
 
 Make sure you have:
-1.  Analyst access to  <a href="https://docs.microsoft.com/en-us/workplace-analytics/">Workplace Analytics</a>
+1.  Analyst access to <a href="https://docs.microsoft.com/en-us/workplace-analytics/">Workplace Analytics</a>
 2.  Either <a href="https://www.r-project.org/">R</a> or <a href="https://rstudio.com/products/rstudio/download/#download"> RStudio Desktop </a> installed in your local device
 
 ## Why use R for Workplace Analytics?
@@ -30,7 +30,7 @@ This guide is organized in six sections.
 
 ## Additional Resources
 
-As you start actively using *wpa* for analysis, make sure to leaverage these additional resources: 
+As you use **wpa** for analysis, make sure to leaverage these additional resources: 
 
 1. Our official <a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf">**wpa** cheat sheet</a>.
 2. A growing list of <a href="https://microsoft.github.io/wpa/articles/">articles</a> with detailed walkthroughs, written by multiple contributors. 
