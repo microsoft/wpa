@@ -240,21 +240,23 @@
 <div id="exploring-a-person-query" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-a-person-query" class="anchor"></a>Exploring a Person Query</h2>
-<p>We can explore a person query using some of the basic functions from <strong>wpa</strong>. For example, <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope</a> can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute. For example, if we want to know the number of individuals per organisation.</p>
+<p>We can explore a person query using some of the basic functions from <strong>wpa</strong>. The function <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope</a> can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute.</p>
+<p>For example, if we want to know the number of individuals per organization, you can use:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
-<p>If you prefer, you can also use pipes (%&gt;%) a common notation in tidyverse. Lets use that notation to take a look at the distribution by both Organization and LevelDesignation.</p>
+<code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> <span class="co"># Option 1</span>
+<span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> <span class="co"># Option 2 </span></code></pre></div>
+<p>The syntaxis in option 2, illustrates how you can use pipes (%&gt;%). This is the common notation in tidyverse, and the one we will use in this guide moving forward.</p>
+<p>This function can be use to explore of other groups. For example, for LevelDesignation:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span>
-<span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
-<p>The default behaviour of most functions in <strong>wpa</strong> is to create a plot. However, this behaviour can be modified by changing the <code>return</code> argument. If you use <code>return</code>=“table”, the function will now produce a table / data frame with the relevant summary statistics.</p>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<p>The default behaviour of most functions in <strong>wpa</strong> is to create a plot. However, this can be altered by adding a <code>return</code> argument. If you use <code>return</code>=“table”, the function will now produce a table / data frame with the relevant summary statistics.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar<span class="op">=</span><span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="function-structure-and-additional-parameters" class="section level2">
 <h2 class="hasAnchor">
 <a href="#function-structure-and-additional-parameters" class="anchor"></a>Function Structure and additional parameters</h2>
-<p>All funcitons in <strong>wpa</strong> follow the same behaviour. The following illustrates the basic API of standard analysis functions:</p>
+<p>All funcitons in <strong>wpa</strong> follow a similar behaviou, and include many common arguments. The following illustrates the basic API of standard analysis functions:</p>
 <p><img src="https://github.com/microsoft/wpa/blob/main/man/figures/api-demo.png" align="center" width="80%"></p>
 </div>
 <div id="exporting-plots-and-tables" class="section level2">
