@@ -49,10 +49,16 @@
 #'
 #' @examples
 #' \dontrun{
-#' workpatterns_hclust(em_data, k = 4, return = "plot", signals = c("IM", "email"))
+#' # Run clusters with all three signal types, return plot
+#' workpatterns_hclust(em_data,
+#'                     k = 4,
+#'                     return = "plot",
+#'                     signals = c("IM", "email", "unscheduled_calls"))
 #'
+#' # Run clusters, return raw data
 #' workpatterns_hclust(em_data, k = 4, return = "data")
 #'
+#' # Run clusters for instant messages only, return hclust object
 #' workpatterns_hclust(em_data, k = 4, return = "hclust", signals = c("IM"))
 #' }
 #'
