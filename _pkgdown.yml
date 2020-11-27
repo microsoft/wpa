@@ -26,10 +26,12 @@ navbar:
       menu:
       - text: Introduction
         href: analyst_guide.html
+      - text: Getting Started
+        href: analyst_guide_getting_started.html
       - text: Summary analysis
         href: analyst_guide_summary.html
       - text: Distribution analysis
-        href: analyst_guide_distribution.html  
+        href: analyst_guide_distribution.html
       - text: Trend analysis
         href: analyst_guide_trend.html
       - text: Network analysis
