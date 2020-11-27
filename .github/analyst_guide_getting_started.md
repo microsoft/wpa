@@ -27,14 +27,14 @@ You will need to load the package everytime you start a new R session.
 
 
 ## Importing Workplace Analytics Data
-All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use wpa::import_wpa, loading any query file in .CSV format:
+All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use the included [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html), loading any query file in .CSV format:
 
 ```R
 
-person_data <- import_wpa("Desktop/myquery.csv")
+person_data <- import_wpa("Desktop/myquery.csv") 
 ```
 
-The wpa::import_wpa function works with all workplace analytics query types.
+The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function works with all workplace analytics query types.
 
 ## Exploring the dataset
 _Coming soon..._
