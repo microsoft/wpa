@@ -1,0 +1,26 @@
+Analyst Guide
+
+
+1. Introduction
+
+ - Welcome Note
+ - Why use R for Workplace Analytics?
+ - Pre-Requisites
+ - Useful Resources
+ - Analysis Guide Contents
+ 
+2. Getting Stared
+ 
+ - Intallation Instructions
+ - Importing Workplace Analytics Data
+ - Exploring the dataset
+ - Function Structure and additional parameters
+ - Exporting Plots and Tables
+
+3. Summary Functions
+
+4. Distribution Functions
+
+5. Trend Functions
+
+6. Network Functions
