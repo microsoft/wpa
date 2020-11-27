@@ -12,9 +12,13 @@
 #'
 #' @param data Data containing Emails_sent and IMs_sent variables
 #' @param hr Numeric value between 0 to 23 to iterate through
+#' @param signals Character vector for specifying which signal types to combine.
+#' Defaults to c("Emails_sent", "IMs_sent").
 #'
 #' @export
-combine_signals <- function(data, hr){
+combine_signals <- function(data,
+                            hr,
+                            signals = c("Emails_sent", "IMs_sent")){
 
   if(!is.numeric(hr) | hr < 0 | hr > 23){
 
@@ -22,15 +26,29 @@ combine_signals <- function(data, hr){
 
   }
 
+  # End hour
   hr_two <- hr + 1
 
+  # String pad to two digits
   hr1 <- ifelse(nchar(hr) == 1, paste0(0, hr), hr)
   hr2 <- ifelse(nchar(hr_two) == 1, paste0(0, hr_two), hr_two)
 
-  full_string <- paste0("Signals_sent_", hr1, "_", hr2)
-  em_string <- paste0("Emails_sent_", hr1, "_", hr2)
-  im_string <- paste0("IMs_sent_", hr1, "_", hr2)
+  # Create string vectors
+  # Use original supplied string if length of signals == 1
+  if(length(signals) == 1){
 
+    full_string <- paste0(signals, "_", hr1, "_", hr2)
 
-  dplyr::transmute(data, !!sym(full_string) := !!sym(em_string) + !!sym(im_string))
+  } else {
+
+    full_string <- paste0("Signals_sent_", hr1, "_", hr2)
+
+  }
+
+  input_string <- paste0(signals, "_", hr1, "_", hr2) # Should be length > 1
+
+  # Sum columns and only return `Signals_sent_` prefixed column
+  data %>%
+    dplyr::transmute(!!sym(full_string) := select(., input_string) %>%
+                       apply(1, sum, na.rm = TRUE))
 }

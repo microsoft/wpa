@@ -17,7 +17,7 @@ export(
 \item{x}{Data frame or ggplot object to be passed through.}
 
 \item{method}{Character string specifying the method of export.
-Valid inputs include "clipboard" (default), "csv", "png", and "svg".}
+Valid inputs include "clipboard" (default), "csv", "png", "svg", "jpeg", and "pdf".}
 
 \item{path}{If exporting a file, enter the path and the desired file name, \emph{excluding the file extension}.
 For example, "Analysis/SQ Overview".}

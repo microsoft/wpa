@@ -37,5 +37,10 @@ This function uses the Information Value algorithm to predict which WPA metrics 
 \seealso{
 Other Flexible Input: 
 \code{\link{period_change}()}
+
+Other Information Value: 
+\code{\link{IV_report}()},
+\code{\link{create_IV}()}
 }
 \concept{Flexible Input}
+\concept{Information Value}

@@ -20,13 +20,21 @@
 #' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
 #' Defaults to TRUE.
 #'
+#' @examples
+#' \dontrun{
+#' sq_data %>%
+#'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>% # Simulate binary variable
+#'   IV_report(outcome =  "CH_binary", predictors = c("Email_hours", "Workweek_span"))
+#' }
+#'
 #' @family Reports
+#' @family Information Value
 #'
 #' @export
 IV_report <- function(data,
                       predictors = NULL,
                       outcome,
-                      bins= 5,
+                      bins = 5,
                       path = "IV report",
                       timestamp = TRUE){
 
