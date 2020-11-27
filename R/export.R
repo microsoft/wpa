@@ -13,7 +13,7 @@
 #'
 #' @param x Data frame or ggplot object to be passed through.
 #' @param method Character string specifying the method of export.
-#' Valid inputs include "clipboard" (default), "csv", "png", and "svg".
+#' Valid inputs include "clipboard" (default), "csv", "png", "svg", "jpeg", and "pdf".
 #' @param path If exporting a file, enter the path and the desired file name, _excluding the file extension_.
 #' For example, "Analysis/SQ Overview".
 #' @param timestamp Logical vector specifying whether to include a timestamp in the file name. Defaults to TRUE.
@@ -58,18 +58,10 @@ export <- function(x,
 
     write.csv(x = x, file = newpath)
 
-  ## Export option: PNG
-  } else if(method == "png"){
+  ## Export option: any ggsave methods
+  } else if(method %in% c("png", "svg", "jpeg", "pdf")){
 
-    newpath <- paste0(newpath, ".png")
-
-    ggsave(filename = newpath, plot = x, width = width, height = height)
-
-
-  ## Export option: SVG
-  } else if(method == "svg"){
-
-    newpath <- paste0(newpath, ".svg")
+    newpath <- paste0(newpath, ".", method)
 
     ggsave(filename = newpath, plot = x, width = width, height = height)
 
