@@ -27,7 +27,7 @@ You will need to load the package everytime you start a new R session.
 
 
 ## Importing Workplace Analytics Data
-All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use the included [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html), loading any query file in .CSV format:
+All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) funciton, to read any query file in .CSV format:
 
 ```R
 
@@ -36,11 +36,37 @@ person_data <- import_wpa("Desktop/myquery.csv")
 
 The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function works with all workplace analytics query types.
 
-## Exploring the dataset
-_Coming soon..._
+**wpa** includes a set of pre-loaded workplace analytics datasets that you we will use in this guide. These include:
 
+1. *sq_data*: A Standard Person Query
+2. *mt_data*: A Standard Meeting Query
+3. *em_data*: An Hourly Collaboration Query
+4. *g2g_data*: A Group-to-Group Query
+
+## Exploring the dataset
+We can explore sq_data using some of the basic functions from **wpa**.  [analysis_scope](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar chart, with the count of the distinct individuals in a specified group / HR attribute. For example, if we want to know the number of individuals per organisation.
+
+```R
+analysis_scope(sq_data, hrvar = "Organization")
+```
+
+If you prefer, you can also use pipes (%>%) a common notation in tidyverse. Lets use that notation to take a look at the distribution by both Organization and LevelDesignation.
+
+```R
+sq_data %>% analysis_scope(hrvar = "Organization")
+sq_data %>% analysis_scope(hrvar = "LevelDesignation")
+```
+
+The default behaviour of most functions in **wpa** is to create a plot. However, this behaviour can be changed by modifing the `return` argument. If you use `return`="table"',  the function will now produce a table / data frame with the relevant summary statistics. 
+
+```R
+sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
+```
 ## Function Structure and additional parameters
-_Coming soon..._
+
+The following illustrates the basic API of standard analysis functions:
+
+<img src="man/figures/api-demo.png" align="center" width=80% />
 
 ## Exporting Plots and Tables
 _Coming soon..._
