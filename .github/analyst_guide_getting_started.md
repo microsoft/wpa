@@ -31,7 +31,7 @@ All functions in **wpa** are designed to work with query data from Workpalce Ana
 
 ```R
 
-person_data <- import_wpa("Desktop/myquery.csv") # Step 2
+person_data <- import_wpa("Desktop/myquery.csv")
 ```
 
 The wpa::import_wpa function works with all workplace analytics query types.
