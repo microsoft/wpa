@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to the Analyst Guide of the **wpa** package. The objective of this document is to get you up an running with this library, and introduce you to the main functions that are included. 
+Welcome to the Analyst Guide of the **wpa** package. The objective of this document is to get you up an running with this library, introduce you to the broad functionality, and make you aware of some of the functions that are included. 
 
 ## Before we begin...
 
