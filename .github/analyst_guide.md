@@ -32,6 +32,6 @@ This guide is organized in six sections.
 
 As you start actively using *wpa* for analysis, make sure to leaverage these additional resources: 
 
-1. Our official **wpa** <a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf">cheat sheet</a>.
+1. Our official <a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf">**wpa** cheat sheet</a>.
 2. A growing list of <a href="https://microsoft.github.io/wpa/articles/">articles</a> with detailed walkthroughs, written by multiple contributors. 
 
