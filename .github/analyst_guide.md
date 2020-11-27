@@ -20,7 +20,7 @@ There are multiple reasons:
 
 ## Analyst Guide Contents
 
-This guide is organized in six sections. 
+This guide is organized in five key sections:
 
 1. [**Getting Stared**](analyst_guide_getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
 2. [**Summary Functions**](analyst_guide_summary.html): This section introduces functions that calculate averages and draw comparisons across groups.
@@ -30,7 +30,7 @@ This guide is organized in six sections.
 
 ## Additional Resources
 
-As you use **wpa** for analysis, make sure to leaverage these additional resources: 
+To get the most out of **wpa**, make sure to leaverage these additional resources: 
 
 1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf).
 2. A growing list of [articles](https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
