@@ -27,24 +27,27 @@ You will need to load the package everytime you start a new R session.
 
 
 ## Importing Workplace Analytics Data
-All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) funciton, to read any query file in .CSV format:
+All functions in **wpa** are designed to work with query data from Workpalce Analytics. To load in some data you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) funciton, to read any query file in .CSV format.
+
+Assuming you have a file called *myquery.csv* on your desktop, you can import that data into R using:
 
 ```R
-
 person_data <- import_wpa("Desktop/myquery.csv") 
 ```
 
 The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function works with all workplace analytics query types.
 
-**wpa** includes a set of pre-loaded workplace analytics datasets that you we will use in this guide. These include:
+
+## Demo Data
+**wpa** includes a set of pre-loaded workplace analytics datasets that you can use to explore the functionalty of this package. We will also use them extensively in this guide. The included dataframes are:
 
 1. *sq_data*: A Standard Person Query
 2. *mt_data*: A Standard Meeting Query
 3. *em_data*: An Hourly Collaboration Query
 4. *g2g_data*: A Group-to-Group Query
 
-## Exploring the dataset
-We can explore sq_data using some of the basic functions from **wpa**.  [analysis_scope](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar chart, with the count of the distinct individuals in a specified group / HR attribute. For example, if we want to know the number of individuals per organisation.
+## Exploring a Person Query 
+We can explore a person query using some of the basic functions from **wpa**. For example, [analysis_scope](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute. For example, if we want to know the number of individuals per organisation.
 
 ```R
 analysis_scope(sq_data, hrvar = "Organization")
@@ -57,14 +60,14 @@ sq_data %>% analysis_scope(hrvar = "Organization")
 sq_data %>% analysis_scope(hrvar = "LevelDesignation")
 ```
 
-The default behaviour of most functions in **wpa** is to create a plot. However, this behaviour can be changed by modifing the `return` argument. If you use `return`="table"',  the function will now produce a table / data frame with the relevant summary statistics. 
+The default behaviour of most functions in **wpa** is to create a plot. However, this behaviour can be modified by changing the `return` argument. If you use `return`="table", the function will now produce a table / data frame with the relevant summary statistics. 
 
 ```R
 sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
 ```
 ## Function Structure and additional parameters
 
-The following illustrates the basic API of standard analysis functions:
+All funcitons in **wpa** follow the same behaviour. The following illustrates the basic API of standard analysis functions:
 
 <img src="man/figures/api-demo.png" align="center" width=80% />
 
