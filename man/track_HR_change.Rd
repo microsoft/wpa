@@ -46,9 +46,9 @@ Through this chart you can see:
 }
 }
 \examples{
-\dontrun{
+
 dv_data \%>\% track_HR_change()
-}
+
 }
 \seealso{
 Other Data Validation: 

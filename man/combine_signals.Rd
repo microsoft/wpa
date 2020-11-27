@@ -4,12 +4,15 @@
 \alias{combine_signals}
 \title{Combine signals from Emails and IMs}
 \usage{
-combine_signals(data, hr)
+combine_signals(data, hr, signals = c("Emails_sent", "IMs_sent"))
 }
 \arguments{
 \item{data}{Data containing Emails_sent and IMs_sent variables}
 
 \item{hr}{Numeric value between 0 to 23 to iterate through}
+
+\item{signals}{Character vector for specifying which signal types to combine.
+Defaults to c("Emails_sent", "IMs_sent").}
 }
 \description{
 Takes in an Hourly Collaboration Data, and for each hour sums and stores the

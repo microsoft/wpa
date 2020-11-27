@@ -34,6 +34,14 @@ Defaults to TRUE.}
 The function generates an interactive HTML report using
 Standard Query data as an input. The report contains a full Information Value analysis,  a data exploration technique that helps determine which columns in a data set have predictive power or influence on the value of a specified dependent variable.
 }
+\examples{
+\dontrun{
+sq_data \%>\%
+  mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\% # Simulate binary variable
+  IV_report(outcome =  "CH_binary", predictors = c("Email_hours", "Workweek_span"))
+}
+
+}
 \seealso{
 Other Reports: 
 \code{\link{capacity_report}()},
@@ -42,5 +50,10 @@ Other Reports:
 \code{\link{connectivity_report}()},
 \code{\link{generate_report}()},
 \code{\link{validation_report}()}
+
+Other Information Value: 
+\code{\link{IV_by_period}()},
+\code{\link{create_IV}()}
 }
+\concept{Information Value}
 \concept{Reports}

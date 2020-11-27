@@ -32,9 +32,9 @@
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
-#' \dontrun{
+#'
 #' dv_data %>% track_HR_change()
-#'}
+#'
 #' @export
 track_HR_change <- function(data,
                             start_date = min(data$Date),
