@@ -203,7 +203,7 @@
   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span></code></pre></div>
-<p>The <strong>wpa</strong> is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work. If you prefer to do a local installation, you can download a .tar file from here.</p>
+<p><strong>wpa</strong> is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work. If you prefer to do a local installation, you can download a .tar file from <a href="https://github.com/microsoft/wpa/">here</a>.</p>
 </div>
 <div id="loading-the-wpa-package" class="section level2">
 <h2 class="hasAnchor">
@@ -216,21 +216,42 @@
 <div id="importing-workplace-analytics-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#importing-workplace-analytics-data" class="anchor"></a>Importing Workplace Analytics Data</h2>
-<p>All functions in <strong>wpa</strong> are designed to work with query data from Workpalce Analytics. To load in some data you can use the included <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a>, loading any query file in .CSV format:</p>
+<p>All functions in <strong>wpa</strong> are designed to work with query data from Workpalce Analytics. To load in some data you can use the <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> funciton, to read any query file in .CSV format:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">person_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"Desktop/myquery.csv"</span><span class="op">)</span> </code></pre></div>
 <p>The <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> function works with all workplace analytics query types.</p>
+<p><strong>wpa</strong> includes a set of pre-loaded workplace analytics datasets that you we will use in this guide. These include:</p>
+<ol>
+<li>
+<em>sq_data</em>: A Standard Person Query</li>
+<li>
+<em>mt_data</em>: A Standard Meeting Query</li>
+<li>
+<em>em_data</em>: An Hourly Collaboration Query</li>
+<li>
+<em>g2g_data</em>: A Group-to-Group Query</li>
+</ol>
 </div>
 <div id="exploring-the-dataset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-the-dataset" class="anchor"></a>Exploring the dataset</h2>
-<p><em>Coming soon…</em></p>
+<p>We can explore sq_data using some of the basic functions from <strong>wpa</strong>. <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope</a> can help you to create a basic bar chart, with the count of the distinct individuals in a specified group / HR attribute. For example, if we want to know the number of individuals per organisation.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
+<p>If you prefer, you can also use pipes (%&gt;%) a common notation in tidyverse. Lets use that notation to take a look at the distribution by both Organization and LevelDesignation.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span>
+<span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<p>The default behaviour of most functions in <strong>wpa</strong> is to create a plot. However, this behaviour can be changed by modifing the <code>return</code> argument. If you use <code>return</code>=“table”’, the function will now produce a table / data frame with the relevant summary statistics.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar<span class="op">=</span><span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="function-structure-and-additional-parameters" class="section level2">
 <h2 class="hasAnchor">
 <a href="#function-structure-and-additional-parameters" class="anchor"></a>Function Structure and additional parameters</h2>
-<p><em>Coming soon…</em></p>
+<p>The following illustrates the basic API of standard analysis functions:</p>
+<p><img src="man/figures/api-demo.png" align="center" width="80%"></p>
 </div>
 <div id="exporting-plots-and-tables" class="section level2">
 <h2 class="hasAnchor">
