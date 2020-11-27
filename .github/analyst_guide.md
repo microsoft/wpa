@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to the Analyst Guide for the **wpa** package. The objective of this document is to get you up an running with this library, and introduce you to the main functions that are included. 
+Welcome to the Analyst Guide of the **wpa** package. The objective of this document is to get you up an running with this library, and introduce you to the main functions that are included. 
 
 ## Before we begin...
 
@@ -12,11 +12,11 @@ Make sure you have:
 
 There are multiple reasons:
 
-1. **Cutting edge data science**: R is an open-source language that is known for its **active user community** and a **wide range of packages** that together enable the quick and effective implementation of data science techniques
-2. **Reproducibility**: Code-based workflows help facilitate **reproducible analysis**, which is the notion that analysis should be built in a way that is replicable by others. R as a tool promotes this good practice. 
+1. **Cutting edge data science**: R is an open-source language that is known for its active user community and a wide range of packages that together enable the quick and effective implementation of data science techniques
+2. **Reproducibility**: Code-based workflows help facilitate reproducible analysis, which is the notion that analysis should be built in a way that is replicable by others. R as a tool promotes this good practice. 
 3. **Efficiency / scalability**: R scales relatively well in the context of large datasets. The application of functions and automated processes also help cut down routine analysis time 
-4. **Integration**: If you already use R as part of your analysis toolkit, adopting the **wpa** package as part of the workflow will be seamless and easy
-5. **Go beyond basic reporting**: One of the most appealing feature of R is the access it offers to a wide range of packages. For instance, clustering and text mining can be done very easily as part of a R workflow – which are both available from the **wpa** package
+4. **Integration**: If you already use R as part of your analysis toolkit, adopting this package as part of the workflow will be seamless and easy
+5. **Go beyond basic reporting**: One of the most appealing feature of R is the access it offers to a wide range of packages. For instance, clustering and text mining can be done very easily as part of a R workflow – which are both available in this package
 
 ## Analyst Guide Contents
 
