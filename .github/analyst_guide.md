@@ -5,7 +5,7 @@ Welcome to the Analyst Guide of the **wpa** package. The objective of this docum
 ## Before we begin...
 
 Make sure you have:
-1.  Analyst access to  <a href="https://docs.microsoft.com/en-us/workplace-analytics/"Workplace Analytics</a>
+1.  Analyst access to  <a href="https://docs.microsoft.com/en-us/workplace-analytics/">Workplace Analytics</a>
 2.  Either <a href="https://www.r-project.org/">R</a> or <a href="https://rstudio.com/products/rstudio/download/#download"> RStudio Desktop </a> installed in your local device
 
 ## Why use R for Workplace Analytics?
@@ -22,7 +22,7 @@ There are multiple reasons:
 
 This guide is organized in six sections. 
 
-1. **Getting Stared**: This section contains the detailed installation instructions, and a general overview of how functions work. 
+1. <a href="analyst_guide_getting_started.html">**Getting Stared**</a>: This section contains the detailed installation instructions, and a general overview of how functions work. 
 2. **Summary Functions**: This section introduces functions that calculate averages and draw comparisons across groups.
 3. **Distribution Functions**: This section describes functions that help you explore distributions across groups.
 4. **Trend Functions**: This section explains functions that explore time dyanmics across a wide range of metrics.
@@ -33,5 +33,5 @@ This guide is organized in six sections.
 As you start actively using *wpa* for analysis, make sure to leaverage these additional resources: 
 
 1. Our official **wpa** <a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf">cheat sheet</a>.
-2. A growing list of <a href="https://microsoft.github.io/wpa/articles/">articles</a> for analysts, written by multiple contributors. 
+2. A growing list of <a href="https://microsoft.github.io/wpa/articles/">articles</a> with detailed walkthroughs, written by multiple contributors. 
 
