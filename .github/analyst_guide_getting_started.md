@@ -46,27 +46,32 @@ The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) fu
 4. *g2g_data*: A Group-to-Group Query
 
 ## Exploring a Person Query 
-We can explore a person query using some of the basic functions from **wpa**. For example, [analysis_scope](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute. For example, if we want to know the number of individuals per organisation.
+We can explore a person query using some of the basic functions from **wpa**. The function [analysis_scope](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute. 
+
+For example, if we want to know the number of individuals per organization, you can use:
 
 ```R
-analysis_scope(sq_data, hrvar = "Organization")
+analysis_scope(sq_data, hrvar = "Organization") # Option 1
+sq_data %>% analysis_scope(hrvar = "Organization") # Option 2 
+
 ```
 
-If you prefer, you can also use pipes (%>%) a common notation in tidyverse. Lets use that notation to take a look at the distribution by both Organization and LevelDesignation.
+The syntaxis in option 2, illustrates how you can use pipes (%>%). This is the common notation in tidyverse, and the one we will use in this guide moving forward. 
+
+This function can be use to explore of other groups. For example, for LevelDesignation:
 
 ```R
-sq_data %>% analysis_scope(hrvar = "Organization")
 sq_data %>% analysis_scope(hrvar = "LevelDesignation")
 ```
 
-The default behaviour of most functions in **wpa** is to create a plot. However, this behaviour can be modified by changing the `return` argument. If you use `return`="table", the function will now produce a table / data frame with the relevant summary statistics. 
+The default behaviour of most functions in **wpa** is to create a plot. However, this can be altered by adding a `return` argument. If you use `return`="table", the function will now produce a table / data frame with the relevant summary statistics. 
 
 ```R
 sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
 ```
 ## Function Structure and additional parameters
 
-All funcitons in **wpa** follow the same behaviour. The following illustrates the basic API of standard analysis functions:
+All funcitons in **wpa** follow a similar behaviou, and include many common arguments. The following illustrates the basic API of standard analysis functions:
 
 <img src="https://github.com/microsoft/wpa/blob/main/man/figures/api-demo.png" align="center" width=80% />
 
