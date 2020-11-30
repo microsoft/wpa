@@ -79,7 +79,8 @@ Let's now use the  [analysis_scope()](https://microsoft.github.io/wpa/reference/
 sq_data %>% analysis_scope(hrvar = "LevelDesignation")
 ```
 
-Combining this function with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse, allows us to drill into a specific subset of the data:
+Combining this function with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse, allows us to drill into a specific subset of the data. This is where pipes become powerful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
+
 
 ```R
 sq_data %>% filter(LevelDesignation=="Support")  %>%  analysis_scope(hrvar = "Organization")
@@ -97,9 +98,7 @@ All functions in **wpa** follow a similar behaviour, including many common argum
 <img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/api-demo.png" align="center" width=80% />
 
 ## Exporting Plots and Tables
-Tables and plots can be saved with the [export()](https://microsoft.github.io/wpa/reference/export.html) function. This functions allows you to save plots and tables into your local drive.
-
-This is where pipes become powerful, as we can write a single line that takes the original data, creates the plot, and exports it to your current directory:
+Tables and plots can be saved with the [export()](https://microsoft.github.io/wpa/reference/export.html) function. This functions allows you to save plots and tables into your local drive:
 
 ```R
 sq_data %>% analysis_scope(hrvar = "Organization") %>% export()
