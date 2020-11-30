@@ -32,7 +32,7 @@ library(tidyverse)
 ```
 
 ## Importing Workplace Analytics data
-To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function. This funciton accepts any query file in .CSV format.
+To read data into R, you can use the `import_wpa()` function. This function accepts any query file in CSV format and performs variable type conversions optimized for Workplace Analytics.
 
 Assuming you have a file called *myquery.csv* on your desktop, you can import it into R using:
 
@@ -41,7 +41,7 @@ setwd("C:/Users/myuser/Desktop/")
 person_data <- import_wpa("myquery.csv") 
 ```
 
-In the code above, [setwd()](https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html) will  set the working directory to the Desktop, then [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) will read the source CSV. The contents will be saved to the object person_data (using "<-" as an [Assignment Operator](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html)).
+In the code above, `set_wd()` will  set the working directory to the Desktop, then `import_wpa()` will read the source CSV. The contents will be saved to the object person_data (using `<-` as an [Assignment Operator](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html)).
 
 
 ## Demo data
@@ -54,17 +54,17 @@ The **wpa** package includes a set of demo Workplace Analytics datasets that you
 5. *g2g_data*: A Group-to-Group Query
 
 ## Exploring a person query 
-We can explore the sq_data person query using the [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query). 
+We can explore the sq_data person query using the `analysis_scope()` function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query). 
 
-For example, if we want to know the number of individuals in sq_data per organization, we can use:
+For example, if we want to know the number of individuals in `sq_data` per organization, we can use:
 
 ```R
 analysis_scope(sq_data, hrvar = "Organization")
 ```
 
-This function requires you to provide a person query (sq_data) and specify which HR variable will be used to slice the data (hrvar). As we have indicated that the Organization attribute should be used, the resulting bar chart will show the number of individuals for each organization in the database.
+This function requires you to provide a person query (`sq_data`) and specify which HR variable will be used to slice the data (`hrvar`). As we have indicated that the `Organization` attribute should be used, the resulting bar chart will show the number of individuals for each organization in the database.
 
-The same R code can be written using a Forward-Pipe Operator (%>%) to feed our query into the funciton. The notation is common in R data science applications, and is the one we will use moving forward. 
+The same R code can be written using a Forward-Pipe Operator (`%>%`) to feed our query into the funciton. The notation is common in R data science applications, and is the one we will use moving forward. 
 
 
 ```R
@@ -78,13 +78,13 @@ sq_data %>% analysis_scope(hrvar = "LevelDesignation")
 sq_data %>% analysis_scope(hrvar = "TimeZone")
 ```
 
-We can expand this analysis by using the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (%>%) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
+We can expand this analysis by using the `dplyr::filter()` function from **dplyr**. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (`%>%`) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
 
 ```R
-sq_data %>% filter(LevelDesignation=="Support")  %>%  analysis_scope(hrvar = "Organization")
+sq_data %>% filter(LevelDesignation=="Support") %>% analysis_scope(hrvar = "Organization")
 ```
 
-Most functions in **wpa** create plot by default, but can change their behaviour by adding a `return` argument. If you add `return`="table" to this function it will now produce a table with the count of the distinct individuals by group.
+Most functions in **wpa** create plot by default, but can change their behaviour by adding a `return` argument. If you add `return="table"` to this function it will now produce a table with the count of the distinct individuals by group.
 
 ```R
 sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
@@ -98,7 +98,7 @@ All functions in **wpa** follow a similar behaviour, including many common argum
 So far we have explored the `hrvar` and `return` arguments. We will use the `mingroup` in the next section. 
 
 ## Exporting plots and tables
-Tables and plots can be saved with the [export()](https://microsoft.github.io/wpa/reference/export.html) function. This functions allows you to save plots and tables into your local drive.
+Tables and plots can be saved with the `export()` function. This functions allows you to save plots and tables into your local drive.
 
 One again, adding an additional forward-Pipe operator we can write:
 
