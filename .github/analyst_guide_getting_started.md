@@ -1,9 +1,9 @@
 # Getting Started
-This section contains the detailed installation instructions, and a general overview of how functions work in the **wpa** package. 
+This section contains the detailed installation instructions, and a first introduction on how functions work in the **wpa** package. 
 
 ## Installation
 
-The latest stable version of **wpa** is available in Github. Use the following script in R to automatically download and install it in your local device:
+The latest stable version of **wpa** is available in Github. You can automatically download and install the latest version it in your local device, by using the following script in R to:
 
 ```R
 # Check if devtools is installed, if not then install it
@@ -23,22 +23,29 @@ One the installation is complete, you can load the package with:
 library(wpa)
 ```
 
-You only need to install the package once, but will need to load it everytime you start a new R session. 
+You only need to install the package once; however, you will need to load it every time you start a new R session. 
 
-## Importing Workplace Analytics Data
-All functions in **wpa** are designed to work with query data from Workpalce Analytics. To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function, that accepts any query file in .CSV format.
-
-Assuming you have a file called *myquery.csv* on your desktop, you can import it into R using:
+**wpa** is designed to work side by side with other Data Science R packages from [tidyverse](https://www.tidyverse.org/). We generally recommend  to load that set of packages too. 
 
 ```R
-person_data <- import_wpa("Desktop/myquery.csv") 
+library(tidyverse)
+```
+
+## Importing Workplace Analytics Data
+All functions in **wpa** are designed to work with query data from Workplace Analytics. To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function, that accepts any query file in .CSV format.
+
+Assuming you have a file called *mystandardquery.csv* on your desktop, you can import it into R using:
+
+```R
+setwd("C:/Users/myuser/Desktop/")
+person_data <- import_wpa("myquery.csv") 
 ```
 
 The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function works with all workplace analytics query types.
 
 
 ## Demo Data
-**wpa** includes a set of pre-loaded workplace analytics datasets that you can use to explore the functionalty of this package. We will also use them extensively in this guide. The included dataframes are:
+**wpa** includes a set of pre-loaded Workplace Analytics datasets that you can use to explore the functionality  of this package. We will also use them extensively in this guide. The included data frames are:
 
 1. *sq_data*: A Standard Person Query
 2. *mt_data*: A Standard Meeting Query
@@ -71,7 +78,7 @@ sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
 ```
 ## Function Structure and additional parameters
 
-All funcitons in **wpa** follow a similar behaviou, and include many common arguments. The following illustrates the basic API of standard analysis functions:
+All functions in **wpa** follow a similar behaviour, including many common arguments. The following illustrates the basic API of standard analysis functions:
 
 <img src="https://github.com/microsoft/wpa/blob/main/man/figures/api-demo.png" align="center" width=80% />
 
