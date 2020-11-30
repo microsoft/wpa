@@ -25,7 +25,7 @@ library(wpa)
 
 You only need to install the package once; however, you will need to load it every time you start a new R session. 
 
-**wpa** is designed to work side by side with other Data Science R packages from [tidyverse](https://www.tidyverse.org/). We generally recommend  to load that set of packages too. 
+**wpa** is designed to work side by side with other Data Science R packages from [tidyverse](https://www.tidyverse.org/). We generally recommend to load that package too. 
 
 ```R
 library(tidyverse)
@@ -53,7 +53,7 @@ The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) fu
 4. *g2g_data*: A Group-to-Group Query
 
 ## Exploring a Person Query 
-We can explore a person query using some of the basic functions from **wpa**. The function [analysis_scope](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute. 
+We can explore a person query using some of the basic functions from **wpa**. The function [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute. 
 
 For example, if we want to know the number of individuals per organization, you can use:
 
@@ -63,7 +63,7 @@ sq_data %>% analysis_scope(hrvar = "Organization") # Option 2
 
 ```
 
-Both options above should get you the same result. Option 2 illustrates how you can use pipes (%>%) to feed a speciifc data frame into a funciton. This is the common notation in tidyverse, and the one we will use in this guide moving forward. 
+Both options above should get you the same result (a bar plot). Option 2 illustrates how you can use pipes (%>%) to feed a speciifc data frame into a funciton. This is the common notation in tidyverse, and the one we will use in this guide moving forward. 
 
 This function can be use to explore of other groups. For example, for LevelDesignation:
 
