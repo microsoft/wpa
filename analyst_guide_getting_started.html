@@ -220,10 +220,11 @@
 <h2 class="hasAnchor">
 <a href="#importing-workplace-analytics-data" class="anchor"></a>Importing Workplace Analytics Data</h2>
 <p>All functions in <strong>wpa</strong> are designed to work with query data from Workplace Analytics. To read data into R, you can use the <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> function, that accepts any query file in .CSV format.</p>
-<p>Assuming you have a file called <em>mystandardquery.csv</em> on your desktop, you can import it into R using:</p>
+<p>Assuming you have a file called <em>myquery.csv</em> on your desktop, you can import it into R using:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Users/myuser/Desktop/"</span><span class="op">)</span>
 <span class="va">person_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"myquery.csv"</span><span class="op">)</span> </code></pre></div>
+<p>In the code above, <a href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html">setwd()</a> will set the working directory to the Desktop, then <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> will read the source CSV that is there, and the contents will be saved to the object person_data (using &lt;- an <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html">Assignment Operator</a>).</p>
 <p>The <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> function works with all workplace analytics query types.</p>
 </div>
 <div id="demo-data" class="section level2">
@@ -233,6 +234,8 @@
 <ol>
 <li>
 <em>sq_data</em>: A Standard Person Query</li>
+<li>
+<em>dv_data</em>: A Standard Person Query with outliers</li>
 <li>
 <em>mt_data</em>: A Standard Meeting Query</li>
 <li>
