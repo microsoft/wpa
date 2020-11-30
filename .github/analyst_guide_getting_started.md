@@ -54,7 +54,7 @@ The **wpa** package includes a set of demo Workplace Analytics datasets that you
 5. *g2g_data*: A Group-to-Group Query
 
 ## Exploring a person query 
-We can explore the sq_data person query using the [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function from **wpa**. This function create a basic bar plot, with the count of the distinct individuals within a specified group (an HR attribute in your query). 
+We can explore the sq_data person query using the [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query). 
 
 For example, if we want to know the number of individuals in sq_data per organization, we can use:
 
@@ -62,9 +62,9 @@ For example, if we want to know the number of individuals in sq_data per organiz
 analysis_scope(sq_data, hrvar = "Organization")
 ```
 
-This function requires you to provide a person query (sq_data) and the HR variable that you will be used to group the data (hrvar). As we have specifified the Organization attribute, the resulting bar chart will show the number of individuals per organization.
+This function requires you to provide a person query (sq_data) and specify which HR variable will be used to slice the data (hrvar). As we have indicated that the Organization attribute should be used, the resulting bar chart will show the number of individuals for each organization in the database.
 
-The same R code can be written using a Forward-Pipe Operator (%>%) to feed our query into a funciton. The notation is common in R data science applications, and is the one we will use moving forward. 
+The same R code can be written using a Forward-Pipe Operator (%>%) to feed our query into the funciton. The notation is common in R data science applications, and is the one we will use moving forward. 
 
 
 ```R
