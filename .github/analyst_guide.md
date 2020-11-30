@@ -6,7 +6,9 @@ Welcome to the Analyst Guide of the **wpa** R package. This document will guide 
 
 Make sure you have:
 1.  Analyst access to [Workplace Analytics](https://www.microsoft.com/en-us/microsoft-365/business/workplace-analytics)
-2.  Either [R](https://www.r-project.org/) or [RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) installed in your local device
+2.  [R](https://www.r-project.org/) installed in your local device. 
+
+An IDE is optional, but we recommend either [RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) or [VS Code](https://code.visualstudio.com/).
 
 ## Why use R for Workplace Analytics?
 
@@ -37,5 +39,5 @@ To get the most out of **wpa**, make sure to leaverage these additional resource
 
 ## Ready to go?
 
-Let's being, with the [**Getting Started**](analyst_guide_getting_started.html) section.
+Let's begin with the [**Getting Started**](analyst_guide_getting_started.html) section.
 
