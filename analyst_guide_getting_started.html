@@ -212,7 +212,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa">wpa</a></span><span class="op">)</span></code></pre></div>
 <p>You only need to install the package once; however, you will need to load it every time you start a new R session.</p>
-<p><strong>wpa</strong> is designed to work side by side with other Data Science R packages from <a href="https://www.tidyverse.org/">tidyverse</a>. We generally recommend to load that set of packages too.</p>
+<p><strong>wpa</strong> is designed to work side by side with other Data Science R packages from <a href="https://www.tidyverse.org/">tidyverse</a>. We generally recommend to load that package too.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></code></pre></div>
 </div>
@@ -244,17 +244,20 @@
 <div id="exploring-a-person-query" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-a-person-query" class="anchor"></a>Exploring a Person Query</h2>
-<p>We can explore a person query using some of the basic functions from <strong>wpa</strong>. The function <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope</a> can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute.</p>
+<p>We can explore a person query using some of the basic functions from <strong>wpa</strong>. The function <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute.</p>
 <p>For example, if we want to know the number of individuals per organization, you can use:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> <span class="co"># Option 1</span>
 <span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> <span class="co"># Option 2 </span></code></pre></div>
-<p>The syntaxis in option 2, illustrates how you can use pipes (%&gt;%). This is the common notation in tidyverse, and the one we will use in this guide moving forward.</p>
+<p>Both options above should get you the same result (a bar plot). Option 2 illustrates how you can use pipes (%&gt;%) to feed a speciifc data frame into a funciton. This is the common notation in tidyverse, and the one we will use in this guide moving forward.</p>
 <p>This function can be use to explore of other groups. For example, for LevelDesignation:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
-<p>The default behaviour of most functions in <strong>wpa</strong> is to create a plot. However, this can be altered by adding a <code>return</code> argument. If you use <code>return</code>=“table”, the function will now produce a table / data frame with the relevant summary statistics.</p>
+<p>Combining this function with the <a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a> function from tiyverse, allows you to drill into a specific subset of the data:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span><span class="op">==</span><span class="st">"Support"</span><span class="op">)</span>  <span class="op">%&gt;%</span>  <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
+<p>The default behaviour of most functions in <strong>wpa</strong> is to create a plot. However, this can be altered by adding a <code>return</code> argument. If you use <code>return</code>=“table”, the function will now produce a table / data frame with the relevant summary statistics.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar<span class="op">=</span><span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="function-structure-and-additional-parameters" class="section level2">
