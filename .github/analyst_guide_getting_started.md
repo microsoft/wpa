@@ -80,7 +80,7 @@ sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
 
 All functions in **wpa** follow a similar behaviour, including many common arguments. The following illustrates the basic API of standard analysis functions:
 
-<img src="https://github.com/microsoft/wpa/blob/main/man/figures/api-demo.png" align="center" width=80% />
+<img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/api-demo.png" align="center" width=80% />
 
 ## Exporting Plots and Tables
 _Coming soon..._
