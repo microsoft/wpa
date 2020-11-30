@@ -60,20 +60,26 @@ We can explore a person query using some of the basic functions from **wpa**. Th
 For example, if we want to know the number of individuals per organization, you can use:
 
 ```R
-analysis_scope(sq_data, hrvar = "Organization") # Option 1
-sq_data %>% analysis_scope(hrvar = "Organization") # Option 2 
-
+analysis_scope(sq_data, hrvar = "Organization")
 ```
 
-Both options above should get you the same result (a bar plot). Option 2 illustrates how you can use pipes (%>%) to feed a speciifc data frame into a funciton. This is the common notation in tidyverse, and the one we will use in this guide moving forward. 
+The [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function requires you to provide the person query to be used (sq_data) and the HR variable that you will like to cut the data by (hrvar). As we decided to cut the data by organisation, the resulting bar chart will show the number of individuals per organization.
 
-This function can be use to explore of other groups. For example, for LevelDesignation:
+The same comman can also be written using pipes (%>%) to feed a speciifc data frame into a funciton. 
+
+```R
+sq_data %>% analysis_scope(hrvar = "Organization") 
+```
+
+The notation above is common in tidyverse, and is the one  we will use moving forward. 
+
+Let's now use the  [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function to explore of other groups. For example, for LevelDesignation:
 
 ```R
 sq_data %>% analysis_scope(hrvar = "LevelDesignation")
 ```
 
-Combining this function with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse, allows you to drill into a specific subset of the data:
+Combining this function with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse, allows us to drill into a specific subset of the data:
 
 ```R
 sq_data %>% filter(LevelDesignation=="Support")  %>%  analysis_scope(hrvar = "Organization")
@@ -91,17 +97,18 @@ All functions in **wpa** follow a similar behaviour, including many common argum
 <img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/api-demo.png" align="center" width=80% />
 
 ## Exporting Plots and Tables
-Tables and plots can be saved with the [export()](https://microsoft.github.io/wpa/reference/export.html) function. This functions allows you to save plots and tables into your local drive:
+Tables and plots can be saved with the [export()](https://microsoft.github.io/wpa/reference/export.html) function. This functions allows you to save plots and tables into your local drive.
+
+This is where pipes become powerful, as we can write a single line that takes the original data, creates the plot, and exports it to your current directory:
 
 ```R
-person_data %>% analysis_scope(hrvar = "Organization") %>% export()
+sq_data %>% analysis_scope(hrvar = "Organization") %>% export()
 
 ```
 
 ##  Summary: 4 simple steps from data to output
 
-The usage of **wpa** can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results:
-
+The examples above illustrate how the use of **wpa** can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results:
 
 ```R
 library(wpa) # Step 1
@@ -115,4 +122,4 @@ person_data %>% analysis_scope() %>% export() # Step 4
 ```
 
 
-Continue to the [**Summary Functions**](analyst_guide_summary.html) section.
+Continue to the [**Summary Functions**](analyst_guide_summary.html) section, to explore how we can analyse different Workplace Analytics Metrics in the same way.
