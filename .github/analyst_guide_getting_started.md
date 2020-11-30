@@ -32,7 +32,7 @@ library(tidyverse)
 ```
 
 ## Importing Workplace Analytics Data
-All functions in **wpa** exectute operations on the top of query data from Workplace Analytics. To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function. This funciton accepts any query file in .CSV format.
+To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function. This funciton accepts any query file in .CSV format.
 
 Assuming you have a file called *myquery.csv* on your desktop, you can import it into R using:
 
@@ -43,7 +43,6 @@ person_data <- import_wpa("myquery.csv")
 
 In the code above, [setwd()](https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html) will  set the working directory to the Desktop, then [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) will read the source CSV. The contents will be saved to the object person_data (using "<-" as an [Assignment Operator](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html)).
 
-[import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) works with all workplace analytics query types.
 
 ## Demo Data
 The **wpa** package includes a set of demo Workplace Analytics datasets that you can use to explore the functionality of this package. We will also use them extensively in this guide. The included datasets are:
