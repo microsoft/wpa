@@ -18,7 +18,7 @@ There are multiple reasons:
 4. **Integration**: If you already use R as part of your analysis toolkit, adopting this package as part of the workflow will be seamless and easy
 5. **Extensibility**: One of the most appealing feature of R is the access it offers to a wide range of packages. For instance, clustering and text mining can be done very easily as part of a R workflow – which are both available in this package
 
-## Analyst Guide Contents
+## Guide contents
 
 This guide is organized in five key sections:
 
@@ -28,14 +28,14 @@ This guide is organized in five key sections:
 4. [**Trend Functions**](analyst_guide_trend.html): This section explains functions that explore time dyanmics across a wide range of metrics.
 5. [**Network Functions**](analyst_guide_network.html): This section explores functions that help you plot and analyse networks.
 
-## Additional Resources
+## Additional resources
 
 To get the most out of **wpa**, make sure to leaverage these additional resources: 
 
 1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf).
 2. A growing list of [articles](https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
 
-## Ready to Go?
+## Ready to go?
 
-Let's get going, with the [**Getting Started**](analyst_guide_getting_started.html) section.
+Let's being, with the [**Getting Started**](analyst_guide_getting_started.html) section.
 
