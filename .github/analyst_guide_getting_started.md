@@ -53,7 +53,7 @@ The **wpa** package includes a set of demo Workplace Analytics datasets that you
 4. *em_data*: An Hourly Collaboration Query
 5. *g2g_data*: A Group-to-Group Query
 
-## Exploring a person Query 
+## Exploring a person query 
 We can explore the sq_data person query using the [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function from **wpa**. This function create a basic bar plot, with the count of the distinct individuals within a specified group (an HR attribute in your query). 
 
 For example, if we want to know the number of individuals in sq_data per organization, we can use:
