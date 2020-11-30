@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to the Analyst Guide of the **wpa** package. The objective of this document is to get you up an running with this library, introduce you to the broad functionality, and make you aware of some of the functions that are included. 
+Welcome to the Analyst Guide of the **wpa** package. This document will guide you through the installation process, explain the package functionality and structure, and get you comfortable with some common functions for analysis.
 
 ## Before we begin...
 
@@ -34,4 +34,7 @@ To get the most out of **wpa**, make sure to leaverage these additional resource
 
 1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf).
 2. A growing list of [articles](https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
+
+
+Continue to the [**Getting Started**](analyst_guide_getting_started.html) section.
 
