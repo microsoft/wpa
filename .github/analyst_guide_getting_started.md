@@ -89,7 +89,7 @@ Most functions in **wpa** create plot by default, but can change their behaviour
 ```R
 sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
 ```
-## Function structure and additional parameters
+## Function structure
 
 All functions in **wpa** follow a similar behaviour, including many common arguments. The following illustrates the basic API of standard analysis functions:
 
