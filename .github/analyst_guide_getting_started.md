@@ -78,7 +78,7 @@ sq_data %>% analysis_scope(hrvar = "LevelDesignation")
 sq_data %>% analysis_scope(hrvar = "TimeZone")
 ```
 
-We can combine analysis_scope() with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (%>%) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
+We can expand this analysis by using the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (%>%) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
 
 ```R
 sq_data %>% filter(LevelDesignation=="Support")  %>%  analysis_scope(hrvar = "Organization")
