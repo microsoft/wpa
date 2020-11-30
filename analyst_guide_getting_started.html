@@ -192,45 +192,45 @@
 
 <div id="getting-started" class="section level1">
 
-<p>This section contains the detailed installation instructions, and a first introduction on how functions work in the <strong>wpa</strong> package.</p>
+<p>This section contains the detailed installation instructions, and a first overview on how functions work in the <strong>wpa</strong> package.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>The latest stable version of <strong>wpa</strong> is available in Github. You can automatically download and install the latest version it in your local device, by using the following script in R to:</p>
+<p>The latest stable version of <strong>wpa</strong> is available in Github. You can automatically download and install it in your local device, by running the following code in R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Check if devtools is installed, if not then install it</span>
 <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"devtools"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span></code></pre></div>
-<p>This package is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work. If you prefer to do a local installation, you can download a installation file <a href="https://github.com/microsoft/wpa/releases">here</a>.</p>
+<p>This package is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work. If you prefer to proceed with a local installation, you can download a installation file <a href="https://github.com/microsoft/wpa/releases">here</a>.</p>
 </div>
 <div id="loading-the-wpa-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#loading-the-wpa-package" class="anchor"></a>Loading the wpa package</h2>
-<p>One the installation is complete, you can load the package with:</p>
+<p>Once the installation is complete, you can load the package with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa">wpa</a></span><span class="op">)</span></code></pre></div>
 <p>You only need to install the package once; however, you will need to load it every time you start a new R session.</p>
-<p><strong>wpa</strong> is designed to work side by side with other Data Science R packages from <a href="https://www.tidyverse.org/">tidyverse</a>. We generally recommend to load that package too.</p>
+<p><strong>wpa</strong> is designed to work side by side with other Data Science R packages from <a href="https://www.tidyverse.org/">tidyverse</a>. We generally recommend to load that package too:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="importing-workplace-analytics-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#importing-workplace-analytics-data" class="anchor"></a>Importing Workplace Analytics Data</h2>
-<p>All functions in <strong>wpa</strong> are designed to work with query data from Workplace Analytics. To read data into R, you can use the <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> function, that accepts any query file in .CSV format.</p>
+<p>All functions in <strong>wpa</strong> exectute operations on the top of query data from Workplace Analytics. To read data into R, you can use the <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> function. This funciton accepts any query file in .CSV format.</p>
 <p>Assuming you have a file called <em>myquery.csv</em> on your desktop, you can import it into R using:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Users/myuser/Desktop/"</span><span class="op">)</span>
 <span class="va">person_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"myquery.csv"</span><span class="op">)</span> </code></pre></div>
-<p>In the code above, <a href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html">setwd()</a> will set the working directory to the Desktop, then <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> will read the source CSV that is there, and the contents will be saved to the object person_data (using &lt;- an <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html">Assignment Operator</a>).</p>
-<p>The <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> function works with all workplace analytics query types.</p>
+<p>In the code above, <a href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html">setwd()</a> will set the working directory to the Desktop, then <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> will read the source CSV. The contents will be saved to the object person_data (using “&lt;-” as an <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html">Assignment Operator</a>).</p>
+<p><a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> works with all workplace analytics query types.</p>
 </div>
 <div id="demo-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#demo-data" class="anchor"></a>Demo Data</h2>
-<p><strong>wpa</strong> includes a set of pre-loaded Workplace Analytics datasets that you can use to explore the functionality of this package. We will also use them extensively in this guide. The included data frames are:</p>
+<p>The <strong>wpa</strong> package includes a set of demo Workplace Analytics datasets that you can use to explore the functionality of this package. We will also use them extensively in this guide. The included datasets are:</p>
 <ol>
 <li>
 <em>sq_data</em>: A Standard Person Query</li>
@@ -247,22 +247,22 @@
 <div id="exploring-a-person-query" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-a-person-query" class="anchor"></a>Exploring a Person Query</h2>
-<p>We can explore a person query using some of the basic functions from <strong>wpa</strong>. The function <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute.</p>
-<p>For example, if we want to know the number of individuals per organization, you can use:</p>
+<p>We can explore the sq_data person query using the <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function from <strong>wpa</strong>. This function create a basic bar plot, with the count of the distinct individuals within a specified group (an HR attribute in your query).</p>
+<p>For example, if we want to know the number of individuals in sq_data per organization, we can use:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
-<p>The <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function requires you to provide the person query to be used (sq_data) and the HR variable that you will like to cut the data by (hrvar). As we decided to cut the data by organisation, the resulting bar chart will show the number of individuals per organization.</p>
-<p>The same comman can also be written using pipes (%&gt;%) to feed a speciifc data frame into a funciton.</p>
+<p>The <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function requires you to provide a person query (sq_data) and the HR variable that you will be used to group the data (hrvar). As we have specifified the Organization attribute, the resulting bar chart will show the number of individuals per organization.</p>
+<p>The same R code can be written using a Forward-Pipe Operator (%&gt;%) to feed our query into a funciton. The notation is common in R data science applications, and is the one we will use moving forward.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> </code></pre></div>
-<p>The notation above is common in tidyverse, and is the one we will use moving forward.</p>
-<p>Let’s now use the <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function to explore of other groups. For example, for LevelDesignation:</p>
+<p>Let’s now use the <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function to explore of other groups. For example:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
-<p>Combining this function with the <a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a> function from tiyverse, allows us to drill into a specific subset of the data. This is where pipes become powerful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:</p>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span>
+<span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"TimeZone"</span><span class="op">)</span></code></pre></div>
+<p>We can combine the <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function with the <a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a> function from tiyverse. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (%&gt;%) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span><span class="op">==</span><span class="st">"Support"</span><span class="op">)</span>  <span class="op">%&gt;%</span>  <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
-<p>The default behaviour of most functions in <strong>wpa</strong> is to create a plot. However, this can be altered by adding a <code>return</code> argument. If you use <code>return</code>=“table”, the function will now produce a table / data frame with the relevant summary statistics.</p>
+<p>Most functions in <strong>wpa</strong> create plot by default, but can also return tables by adding a <code>return</code> argument. If you add <code>return</code>=“table” to the <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function it will now produce a table with the count of the distinct individuals by group.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar<span class="op">=</span><span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -271,6 +271,7 @@
 <a href="#function-structure-and-additional-parameters" class="anchor"></a>Function Structure and additional parameters</h2>
 <p>All functions in <strong>wpa</strong> follow a similar behaviour, including many common arguments. The following illustrates the basic API of standard analysis functions:</p>
 <p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/api-demo.png" align="center" width="80%"></p>
+<p>So far we have explored the <code>hrvar</code> and <code>return</code> arguments. We will use the <code>mingroup</code> in the next section.</p>
 </div>
 <div id="exporting-plots-and-tables" class="section level2">
 <h2 class="hasAnchor">
@@ -282,7 +283,7 @@
 <div id="summary-4-simple-steps-from-data-to-output" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summary-4-simple-steps-from-data-to-output" class="anchor"></a>Summary: 4 simple steps from data to output</h2>
-<p>The examples above illustrate how the use of <strong>wpa</strong> can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results:</p>
+<p>The examples above illustrate how the use of <strong>wpa</strong> can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results. The script below illustrates this funcitonality:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa">wpa</a></span><span class="op">)</span> <span class="co"># Step 1</span>
 
@@ -291,7 +292,11 @@
 <span class="va">person_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Step 3</span>
 
 <span class="va">person_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Step 4</span></code></pre></div>
-<p>Continue to the <a href="analyst_guide_summary.html"><strong>Summary Functions</strong></a> section, to explore how we can analyse different Workplace Analytics Metrics in the same way.</p>
+</div>
+<div id="ready-to-learn-more" class="section level2">
+<h2 class="hasAnchor">
+<a href="#ready-to-learn-more" class="anchor"></a>Ready to Learn More?</h2>
+<p>Let’s go to the <a href="analyst_guide_summary.html"><strong>Summary Functions</strong></a> section, to see how we can analyse different Workplace Analytics Metrics in a similar way.</p>
 </div>
 </div>
 
