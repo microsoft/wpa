@@ -97,7 +97,7 @@ All functions in **wpa** follow a similar behaviour, including many common argum
 
 So far we have explored the `hrvar` and `return` arguments. We will use the `mingroup` in the next section. 
 
-## Exporting Plots and Tables
+## Exporting plots and tables
 Tables and plots can be saved with the [export()](https://microsoft.github.io/wpa/reference/export.html) function. This functions allows you to save plots and tables into your local drive.
 
 One again, adding an additional forward-Pipe operator we can write:
