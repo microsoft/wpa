@@ -5,7 +5,7 @@ Welcome to the Analyst Guide of the **wpa** package. This document will guide yo
 ## Before we begin...
 
 Make sure you have:
-1.  Analyst access to [Workplace Analytics](https://docs.microsoft.com/en-us/workplace-analytics/)
+1.  Analyst access to [Workplace Analytics](https://www.microsoft.com/en-us/microsoft-365/business/workplace-analytics)
 2.  Either [R](https://www.r-project.org/) or [RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) installed in your local device
 
 ## Why use R for Workplace Analytics?
