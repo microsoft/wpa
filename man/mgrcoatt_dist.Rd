@@ -36,7 +36,6 @@ Other Managerial Relations:
 
 Other Meeting Culture: 
 \code{\link{meeting_dist}()},
-\code{\link{meeting_quality}()},
 \code{\link{mgrrel_matrix}()}
 }
 \concept{Managerial Relations}

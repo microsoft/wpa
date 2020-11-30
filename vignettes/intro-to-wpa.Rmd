@@ -20,11 +20,11 @@ knitr::opts_chunk$set(
 
 ## Background
 
-This document walks through the {wpa} package, and provides some examples on how to use some of the functions. The {wpa} package is still under early active development, and new functions and features are continuously being added. 
+This document walks through the **wpa** package, and provides some examples on how to use some of the functions. For our full online documentation for the package, please visit <https://microsoft.github.io/wpa>. For anything else related to Workplace Analytics, please visit <https://docs.microsoft.com/en-us/workplace-analytics/>.
 
 ### Setting up
 
-To start off using the {wpa}, you'll have to load it by running `library(wpa)`. For the purpose of our examples, let's also load {tidyverse}, or its component packages:
+To start off using **wpa**, you'll have to load it by running `library(wpa)`. For the purpose of our examples, let's also loada few of the component packages of **tidyverse** (alternatively, you can just run `library(tidyverse)`:
 
 ```{r message=FALSE, warning=FALSE}
 library(wpa)
@@ -44,7 +44,7 @@ sq_data %>%
   glimpse()
 ```
 
----
+------------------------------------------------------------------------
 
 ## Example Analysis
 
@@ -68,18 +68,18 @@ The `collaboration_summary()` function also comes with an option to return summa
 sq_data %>% collaboration_summary(hrvar = "LevelDesignation", return = "table")
 ```
 
----
+------------------------------------------------------------------------
 
 ### Summary of Key Metrics
 
-The `keymetrics_scan()` function allows you to produce summary metrics from the Standard Query data. Similar to most of the functions in this package, you can specify what output to return with the `return` argument. In addition, you have to specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument.
+The `keymetrics_scan()` function allows you to produce summary metrics from the Standard Person Query data. Similar to most of the functions in this package, you can specify what output to return with the `return` argument. In addition, you have to specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument.
 
 There are two valid return values for `keymetrics_scan()`:
 
-- Heat map (`return = "plot"`)
-- Summary table (`return = "table"`)
+-   Heat map (`return = "plot"`)
+-   Summary table (`return = "table"`)
 
-And here are what the outputs look like. 
+And here are what the outputs look like.
 
 Heatmap:
 
@@ -93,7 +93,7 @@ Summary table:
 sq_data %>% keymetrics_scan(hrvar = "Organization", return = "table")
 ```
 
----
+------------------------------------------------------------------------
 
 ## Meeting Habits
 
@@ -101,13 +101,12 @@ The `meeting_summary()` provides a very similar output to the previous functions
 
 There are two valid return values for `meeting_summary()`:
 
-- Heat map (`return = "plot"`)
-- Summary table (`return = "table"`)
+-   Heat map (`return = "plot"`)
+-   Summary table (`return = "table"`)
 
 > The idea is that functions in this package will share a consistent design, and the required arguments and outputs will be what users 'expect' as they explore the package. The benefit of this is to improve ease of use and adoption.
 
-
-And here are what the outputs look like, for `meeting_summary()`. 
+And here are what the outputs look like, for `meeting_summary()`.
 
 Heatmap:
 
@@ -121,7 +120,7 @@ Summary table:
 sq_data %>% meeting_summary(hrvar = "Organization", return = "table")
 ```
 
----
+------------------------------------------------------------------------
 
 ### Manager Relationship 2x2 Matrix
 
@@ -138,6 +137,7 @@ sq_data %>% mgrrel_matrix(hrvar = "LevelDesignation", return = "table")
 ```
 
 Alternatively, you can return the input data that is used to create the plot:
+
 ```{r}
 sq_data %>% mgrrel_matrix(hrvar = "LevelDesignation", return = "chartdata")
 ```
@@ -156,21 +156,50 @@ A table can be generated:
 sq_data %>% mgrcoatt_dist(hrvar = "LevelDesignation", return = "table")
 ```
 
+------------------------------------------------------------------------
 
----
+### Customizing plot outputs
+
+With a few rare exceptions such as `track_HR_change()`, the majority of plot outputs returned by **wpa** functions are ggplot outputs. What this means is that there is a lot of flexibility in adding or overriding visual elements in the plots. For instance, you can take the following 'fizzy drink' (jittered scatter) plot:
+
+```{r}
+sq_data %>%
+  workloads_fizz(hrvar = "LevelDesignation", return = "plot")
+```
+
+... and add custom titles, subtitles, and flip the axes by adding ggplot layers:
+
+```{r}
+library(ggplot2) # Requires ggplot2 for customizations
+
+sq_data %>%
+  workloads_fizz(hrvar = "LevelDesignation", return = "plot") +
+  labs(title = "This is a custom title",
+       subtitle = "This is a custom sub-title") +
+  coord_flip() # Flip coordinates
+```
+
+Note that the "pipe" syntax changes from `%>%` to `+` once you are manipulating a ggplot output, which will return an error if not used correctly.
+
+Adding customized elements may 'break' the visualization, so please exercise caution when doing so.
+
+For more information on ggplot, please visit <https://ggplot2.tidyverse.org/>.
+
+
+------------------------------------------------------------------------
 
 ### Getting a quick overview of Standard Person Query data
 
 The `collaboration_report()` function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, results="hide"}
-# sq_data %>% collaboration_report()
+```R
+sq_data %>% collaboration_report()
 ```
 
 Running the function will open up a HTML report in your browser, summarising the key collaboration metrics and plots of the Standard Person Query. You can manually save this report, or only have it open as an ad-hoc reference document.
 
----
+------------------------------------------------------------------------
 
 ## Feedback
 
-Hope you found this useful! If you have any suggestions or feedback, please feel free to send them to mac@microsoft.com.
+Hope you found this useful! If you have any suggestions or feedback, please log them at <https://github.com/microsoft/wpa/issues>.

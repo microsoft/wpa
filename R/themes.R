@@ -106,7 +106,7 @@ theme_wpa_basic <- function(font_size = 12){
           axis.ticks = element_blank(),
 
           legend.position = "bottom",
-          legend.title = element_blank(),
+          # legend.title = element_blank(),
 
           panel.grid = element_blank(),
           strip.background = element_rect(fill = bg_colour2, colour = bg_colour2),

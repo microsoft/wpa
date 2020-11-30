@@ -23,6 +23,7 @@
 #'
 #'
 #' @family Flexible Input
+#' @family Information Value
 #'
 #' @export
 

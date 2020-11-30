@@ -39,4 +39,9 @@ sq_data \%>\%
 }
 
 }
+\seealso{
+Other Information Value: 
+\code{\link{IV_by_period}()},
+\code{\link{IV_report}()}
+}
 \concept{Information Value}

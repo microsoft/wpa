@@ -31,7 +31,7 @@ and "abs".}
 
 \item{signals}{Character vector to specify which collaboration metrics to use:
 You may use "email" (default) for emails only, "IM" for Teams messages only,
-or a combination of the two \code{c("email", "IM")}.}
+"unscheduled_calls" for Unscheduled Calls only, or a combination, such as \code{c("email", "IM")}.}
 
 \item{start_hour}{A character vector specifying starting hours,
 e.g. "0900"}
@@ -55,10 +55,16 @@ are averaged by person and calculated as \% of total daily collaboration.
 }
 \examples{
 \dontrun{
-workpatterns_hclust(em_data, k = 4, return = "plot", signals = c("IM", "email"))
+# Run clusters with all three signal types, return plot
+workpatterns_hclust(em_data,
+                    k = 4,
+                    return = "plot",
+                    signals = c("IM", "email", "unscheduled_calls"))
 
+# Run clusters, return raw data
 workpatterns_hclust(em_data, k = 4, return = "data")
 
+# Run clusters for instant messages only, return hclust object
 workpatterns_hclust(em_data, k = 4, return = "hclust", signals = c("IM"))
 }
 
