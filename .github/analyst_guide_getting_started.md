@@ -14,7 +14,7 @@ devtools::install_git(url = "https://github.com/microsoft/wpa.git")
 
 ```
 
-This package is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to do a local installation, you can download a .tar file [here](https://github.com/microsoft/wpa/). 
+This package is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to do a local installation, you can download a installation file [here](https://github.com/microsoft/wpa/releases). 
 
 ## Loading the wpa package
 One the installation is complete, you can load the package with:
