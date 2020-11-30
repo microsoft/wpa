@@ -1,4 +1,4 @@
-# Getting Started
+# Getting started
 This section contains the detailed installation instructions, and a first overview on how functions work in the **wpa** package. 
 
 ## Installation
@@ -31,7 +31,7 @@ You only need to install the package once; however, you will need to load it eve
 library(tidyverse)
 ```
 
-## Importing Workplace Analytics Data
+## Importing Workplace Analytics data
 To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function. This funciton accepts any query file in .CSV format.
 
 Assuming you have a file called *myquery.csv* on your desktop, you can import it into R using:
@@ -44,7 +44,7 @@ person_data <- import_wpa("myquery.csv")
 In the code above, [setwd()](https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html) will  set the working directory to the Desktop, then [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) will read the source CSV. The contents will be saved to the object person_data (using "<-" as an [Assignment Operator](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html)).
 
 
-## Demo Data
+## Demo data
 The **wpa** package includes a set of demo Workplace Analytics datasets that you can use to explore the functionality of this package. We will also use them extensively in this guide. The included datasets are:
 
 1. *sq_data*: A Standard Person Query
@@ -53,7 +53,7 @@ The **wpa** package includes a set of demo Workplace Analytics datasets that you
 4. *em_data*: An Hourly Collaboration Query
 5. *g2g_data*: A Group-to-Group Query
 
-## Exploring a Person Query 
+## Exploring a person Query 
 We can explore the sq_data person query using the [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function from **wpa**. This function create a basic bar plot, with the count of the distinct individuals within a specified group (an HR attribute in your query). 
 
 For example, if we want to know the number of individuals in sq_data per organization, we can use:
@@ -89,7 +89,7 @@ Most functions in **wpa** create plot by default, but can change their behaviour
 ```R
 sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
 ```
-## Function Structure and additional parameters
+## Function structure and additional parameters
 
 All functions in **wpa** follow a similar behaviour, including many common arguments. The following illustrates the basic API of standard analysis functions:
 
@@ -107,7 +107,7 @@ sq_data %>% analysis_scope(hrvar = "Organization") %>% export()
 
 ```
 
-##  Summary: Four simple steps from data to output
+##  Summary: Four steps from data to output
 
 The examples above illustrate how the use of **wpa** can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results. The script below illustrates this funcitonality:
 
@@ -122,6 +122,6 @@ person_data %>% analysis_scope() %>% export() # Step 4
 
 ```
 
-## Ready to Learn More?
+## Ready to learn more?
 
 Let's go to the [**Summary Functions**](analyst_guide_summary.html) section, to see how we can analyse different Workplace Analytics Metrics in a similar way.
