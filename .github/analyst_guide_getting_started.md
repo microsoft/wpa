@@ -63,12 +63,18 @@ sq_data %>% analysis_scope(hrvar = "Organization") # Option 2
 
 ```
 
-The syntaxis in option 2, illustrates how you can use pipes (%>%). This is the common notation in tidyverse, and the one we will use in this guide moving forward. 
+Both options above should get you the same result. Option 2 illustrates how you can use pipes (%>%) to feed a speciifc data frame into a funciton. This is the common notation in tidyverse, and the one we will use in this guide moving forward. 
 
 This function can be use to explore of other groups. For example, for LevelDesignation:
 
 ```R
 sq_data %>% analysis_scope(hrvar = "LevelDesignation")
+```
+
+Combining this function with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse, allows you to drill into a specific subset of the data:
+
+```R
+sq_data %>% filter(LevelDesignation=="Support")  %>%  analysis_scope(hrvar = "Organization")
 ```
 
 The default behaviour of most functions in **wpa** is to create a plot. However, this can be altered by adding a `return` argument. If you use `return`="table", the function will now produce a table / data frame with the relevant summary statistics. 
