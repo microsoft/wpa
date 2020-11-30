@@ -89,4 +89,28 @@ All functions in **wpa** follow a similar behaviour, including many common argum
 <img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/api-demo.png" align="center" width=80% />
 
 ## Exporting Plots and Tables
-_Coming soon..._
+Tables and plots can be saved with the [export()](https://microsoft.github.io/wpa/reference/export.html) function. This functions allows you to save plots and tables into your local drive:
+
+```R
+person_data %>% analysis_scope(hrvar = "Organization") %>% export()
+
+```
+
+##  Summary: 4 simple steps from data to output
+
+The usage of **wpa** can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results:
+
+
+```R
+library(wpa) # Step 1
+
+person_data <- import_wpa("myquery.csv") # Step 2
+
+person_data %>% analysis_scope() # Step 3
+
+person_data %>% analysis_scope() %>% export() # Step 4
+
+```
+
+
+Continue to the [**Summary Functions**](analyst_guide_summary.html) section.
