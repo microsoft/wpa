@@ -34,7 +34,7 @@ library(tidyverse)
 ## Importing Workplace Analytics Data
 All functions in **wpa** are designed to work with query data from Workplace Analytics. To read data into R, you can use the [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function, that accepts any query file in .CSV format.
 
-Assuming you have a file called *mystandardquery.csv* on your desktop, you can import it into R using:
+Assuming you have a file called *myquery.csv* on your desktop, you can import it into R using:
 
 ```R
 setwd("C:/Users/myuser/Desktop/")
