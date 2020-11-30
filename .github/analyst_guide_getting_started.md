@@ -62,7 +62,7 @@ For example, if we want to know the number of individuals in sq_data per organiz
 analysis_scope(sq_data, hrvar = "Organization")
 ```
 
-The [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function requires you to provide a person query (sq_data) and the HR variable that you will be used to group the data (hrvar). As we have specifified the Organization attribute, the resulting bar chart will show the number of individuals per organization.
+This function requires you to provide a person query (sq_data) and the HR variable that you will be used to group the data (hrvar). As we have specifified the Organization attribute, the resulting bar chart will show the number of individuals per organization.
 
 The same R code can be written using a Forward-Pipe Operator (%>%) to feed our query into a funciton. The notation is common in R data science applications, and is the one we will use moving forward. 
 
@@ -71,20 +71,20 @@ The same R code can be written using a Forward-Pipe Operator (%>%) to feed our q
 sq_data %>% analysis_scope(hrvar = "Organization") 
 ```
 
-Let's now use the  [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function to explore of other groups. For example:
+Let's now use this function to explore of other groups. For example:
 
 ```R
 sq_data %>% analysis_scope(hrvar = "LevelDesignation")
 sq_data %>% analysis_scope(hrvar = "TimeZone")
 ```
 
-We can combine the [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (%>%) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
+We can combine analysis_scope() with the [filter()](https://dplyr.tidyverse.org/reference/filter.html) function from tiyverse. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (%>%) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
 
 ```R
 sq_data %>% filter(LevelDesignation=="Support")  %>%  analysis_scope(hrvar = "Organization")
 ```
 
-Most functions in **wpa** create plot by default, but can also return tables by adding a `return` argument. If you add `return`="table" to the [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) function it will now produce a table with the count of the distinct individuals by group.
+Most functions in **wpa** create plot by default, but can change their behaviour by adding a `return` argument. If you add `return`="table" to this function it will now produce a table with the count of the distinct individuals by group.
 
 ```R
 sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
