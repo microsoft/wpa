@@ -219,12 +219,12 @@
 <div id="importing-workplace-analytics-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#importing-workplace-analytics-data" class="anchor"></a>Importing Workplace Analytics data</h2>
-<p>To read data into R, you can use the <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> function. This funciton accepts any query file in .CSV format.</p>
+<p>To read data into R, you can use the <code><a href="reference/import_wpa.html">import_wpa()</a></code> function. This function accepts any query file in CSV format and performs variable type conversions optimized for Workplace Analytics.</p>
 <p>Assuming you have a file called <em>myquery.csv</em> on your desktop, you can import it into R using:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Users/myuser/Desktop/"</span><span class="op">)</span>
 <span class="va">person_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"myquery.csv"</span><span class="op">)</span> </code></pre></div>
-<p>In the code above, <a href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html">setwd()</a> will set the working directory to the Desktop, then <a href="https://microsoft.github.io/wpa/reference/import_wpa.html">import_wpa()</a> will read the source CSV. The contents will be saved to the object person_data (using “&lt;-” as an <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html">Assignment Operator</a>).</p>
+<p>In the code above, <code>set_wd()</code> will set the working directory to the Desktop, then <code><a href="reference/import_wpa.html">import_wpa()</a></code> will read the source CSV. The contents will be saved to the object person_data (using <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> as an <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html">Assignment Operator</a>).</p>
 </div>
 <div id="demo-data" class="section level2">
 <h2 class="hasAnchor">
@@ -246,22 +246,22 @@
 <div id="exploring-a-person-query" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-a-person-query" class="anchor"></a>Exploring a person query</h2>
-<p>We can explore the sq_data person query using the <a href="https://microsoft.github.io/wpa/reference/hrvar_count.html">analysis_scope()</a> function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query).</p>
-<p>For example, if we want to know the number of individuals in sq_data per organization, we can use:</p>
+<p>We can explore the sq_data person query using the <code><a href="reference/hrvar_count.html">analysis_scope()</a></code> function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query).</p>
+<p>For example, if we want to know the number of individuals in <code>sq_data</code> per organization, we can use:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
-<p>This function requires you to provide a person query (sq_data) and specify which HR variable will be used to slice the data (hrvar). As we have indicated that the Organization attribute should be used, the resulting bar chart will show the number of individuals for each organization in the database.</p>
-<p>The same R code can be written using a Forward-Pipe Operator (%&gt;%) to feed our query into the funciton. The notation is common in R data science applications, and is the one we will use moving forward.</p>
+<p>This function requires you to provide a person query (<code>sq_data</code>) and specify which HR variable will be used to slice the data (<code>hrvar</code>). As we have indicated that the <code>Organization</code> attribute should be used, the resulting bar chart will show the number of individuals for each organization in the database.</p>
+<p>The same R code can be written using a Forward-Pipe Operator (<code><a href="reference/%&gt;%.html">%&gt;%</a></code>) to feed our query into the funciton. The notation is common in R data science applications, and is the one we will use moving forward.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> </code></pre></div>
 <p>Let’s now use this function to explore of other groups. For example:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span>
 <span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"TimeZone"</span><span class="op">)</span></code></pre></div>
-<p>We can expand this analysis by using the <a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a> function from tiyverse. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (%&gt;%) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:</p>
+<p>We can expand this analysis by using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> function from <strong>dplyr</strong>. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (<code><a href="reference/%&gt;%.html">%&gt;%</a></code>) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span><span class="op">==</span><span class="st">"Support"</span><span class="op">)</span>  <span class="op">%&gt;%</span>  <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
-<p>Most functions in <strong>wpa</strong> create plot by default, but can change their behaviour by adding a <code>return</code> argument. If you add <code>return</code>=“table” to this function it will now produce a table with the count of the distinct individuals by group.</p>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span><span class="op">==</span><span class="st">"Support"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
+<p>Most functions in <strong>wpa</strong> create plot by default, but can change their behaviour by adding a <code>return</code> argument. If you add <code>return="table"</code> to this function it will now produce a table with the count of the distinct individuals by group.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar<span class="op">=</span><span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -275,7 +275,7 @@
 <div id="exporting-plots-and-tables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exporting-plots-and-tables" class="anchor"></a>Exporting plots and tables</h2>
-<p>Tables and plots can be saved with the <a href="https://microsoft.github.io/wpa/reference/export.html">export()</a> function. This functions allows you to save plots and tables into your local drive.</p>
+<p>Tables and plots can be saved with the <code><a href="reference/export.html">export()</a></code> function. This functions allows you to save plots and tables into your local drive.</p>
 <p>One again, adding an additional forward-Pipe operator we can write:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
