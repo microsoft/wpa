@@ -41,16 +41,18 @@ setwd("C:/Users/myuser/Desktop/")
 person_data <- import_wpa("myquery.csv") 
 ```
 
-The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function works with all workplace analytics query types.
+In the code above, [setwd()](https://stat.ethz.ch/R-manual/R-patched/library/base/html/getwd.html) will  set the working directory to the Desktop, then [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) will read the source CSV that is there, and the contents will be saved to the object person_data (using <- an [Assignment Operator](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html)).
 
+The [import_wpa()](https://microsoft.github.io/wpa/reference/import_wpa.html) function works with all workplace analytics query types.
 
 ## Demo Data
 **wpa** includes a set of pre-loaded Workplace Analytics datasets that you can use to explore the functionality  of this package. We will also use them extensively in this guide. The included data frames are:
 
 1. *sq_data*: A Standard Person Query
-2. *mt_data*: A Standard Meeting Query
-3. *em_data*: An Hourly Collaboration Query
-4. *g2g_data*: A Group-to-Group Query
+2. *dv_data*: A Standard Person Query with outliers
+3. *mt_data*: A Standard Meeting Query
+4. *em_data*: An Hourly Collaboration Query
+5. *g2g_data*: A Group-to-Group Query
 
 ## Exploring a Person Query 
 We can explore a person query using some of the basic functions from **wpa**. The function [analysis_scope()](https://microsoft.github.io/wpa/reference/hrvar_count.html) can help you to create a basic bar plot, with the count of the distinct individuals by a specified group / HR attribute. 
