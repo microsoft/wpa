@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Summary • wpa</title>
+<title>Summary functions • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Summary" />
+<meta property="og:title" content="Summary functions" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -187,34 +187,38 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>Summary</h1>
+      <h1>Summary functions</h1>
     </div>
 
-<div id="summary" class="section level1">
+<div id="summary-functions" class="section level1">
 
-<p><strong>Summary functions</strong> allow you to compare averages across organizational attributes.</p>
-<p>An instance of a summary function in action would be:</p>
+<p>This section describes the use of summary functions, that allow you to compare averages across organizational attributes.</p>
+<div id="summary-of-key-metrics" class="section level2">
+<h2 class="hasAnchor">
+<a href="#summary-of-key-metrics" class="anchor"></a>Summary of Key Metrics</h2>
+<p>The <code><a href="reference/keymetrics_scan.html">keymetrics_scan()</a></code> function allows you to produce a summary table with a wide range of metrics from the Standard Person Query data. Similar to most of the functions in this package, you can specify what output to obtain (either “plot” or “table”) with the <code>return</code> argument . In addition, you have to specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span>
+<span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="collaboration-summary" class="section level2">
+<h2 class="hasAnchor">
+<a href="#collaboration-summary" class="anchor"></a>Collaboration Summary</h2>
+<p>The <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify (if none is specified, organization will be used by default)</p>
+<pre class="{r}"><code>sq_data %&gt;% collaboration_summary()</code></pre>
 <p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align="center" width="80%"></p>
-<p>This returns a plot that you can either as a SVG (vector) or PNG (scalar) image by passing the output to <code><a href="reference/export.html">export()</a></code>. Since the plot output is a ggplot object, you can also make further customizations to it by appending ggplot layers, for instance:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
-<p>You can use return a summary table rather than a plot:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
-<p>To export the results to a clipboard, you can pass the outputs to <code><a href="reference/export.html">export()</a></code> again:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>There is also an option to change the threshold for excluding group size:</p>
+<p>By changing the <code>hrvar()</code> argument, you can change the data being shown easily:</p>
+<pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation")</code></pre>
+<p>By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the <code>mingroup()</code> argument:</p>
 <pre><code>sq_data %&gt;%
   collaboration_sum(hrvar = "LevelDesignation",
-                    mingroup = 10,
-                    return = "table")</code></pre>
+                    mingroup = 10)</code></pre>
+<p>Finally, you can also use “table” in the <code>return</code> argument, to obtain summary table instead of a plot. The <code><a href="reference/export.html">export()</a></code> function will copy all contents to the clipboard.</p>
+<pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation", return = "table")</code></pre>
+</div>
+<div id="other-summary-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-summary-functions" class="anchor"></a>Other summary functions</h2>
 <p>Other similar functions include:</p>
 <ul>
 <li><code><a href="reference/email_summary.html">email_summary()</a></code></li>
@@ -223,7 +227,22 @@
 <li><code><a href="reference/workloads_summary.html">workloads_summary()</a></code></li>
 <li><code><a href="reference/afterhours_summary.html">afterhours_summary()</a></code></li>
 </ul>
-<p>See <code><a href="reference/create_bar.html">create_bar()</a></code> for creating summary functions with other Workplace Analytics metrics.</p>
+<p>All of these functions use Standard Person Query data, and accept <code>hrvar</code>, <code>return</code> and <code>mingroup</code> arguments.</p>
+</div>
+<div id="customizing-plots" class="section level2">
+<h2 class="hasAnchor">
+<a href="#customizing-plots" class="anchor"></a>Customizing plots</h2>
+<p>All plots in <em>wpa</em> are <a href="https://rafalab.github.io/dsbook/ggplot2.html">ggplot objects</a>. This means you can also make further customizations to it by appending ggplot parameters and layers. For instance, you can customize the title of a <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> plot:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="going-beyond-averages" class="section level2">
+<h2 class="hasAnchor">
+<a href="#going-beyond-averages" class="anchor"></a>Going Beyond Averages?</h2>
+<p>In the next section, we will explore how we can analyse distributions from different Workplace Analytics Metrics in a similar way. Let’s continue to <a href="analyst_guide_distribution.html"><strong>Distribution Functions</strong></a>.</p>
+</div>
 </div>
 
   </div>
