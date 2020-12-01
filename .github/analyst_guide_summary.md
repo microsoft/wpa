@@ -122,14 +122,14 @@ div.desc {
   <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/keymetrics_scan">
     <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" alt="Key Metrics Scan" width="600" height="400">
   </a>
-  <div class="desc">Plot for keymetrics_scan()</div>
+  <div class="desc">Plot from keymetrics_scan()</div>
 </div>
 
 <div class="gallery">
   <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png">
     <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" alt="Collaboration Summary" width="600" height="400">
   </a>
-  <div class="desc">Plot for collaboration_summary()</div>
+  <div class="desc">Plot from collaboration_summary()</div>
 </div>
 
 <div class="gallery">
