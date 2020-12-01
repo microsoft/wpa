@@ -21,7 +21,7 @@ sq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot",
 
 The `keymetrics_scan()` function is a great starting point for exploratory data analysis, before you dive deeper into particular metrics.
 
-## Average Email and meeting hours
+## Average email and meeting hours
 
 The `collaboration_summary()` function generates a stacked bar plot summarising the email and meeting hours by an HR attribute you specify. If no HR attribute is specified, "organization" will be used by default:
 
@@ -40,8 +40,7 @@ sq_data %>% collaboration_summary(hrvar = "LevelDesignation")
 By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the `mingroup()` argument:
 
 ```
-sq_data %>%
-  collaboration_sum(hrvar = "LevelDesignation", mingroup = 10)
+sq_data %>% collaboration_sum(hrvar = "LevelDesignation", mingroup = 10)
 ```
 
 Finally, you can also use "table" in the `return` argument, to obtain summary table instead of a plot. The `export()` function will copy all contents to the clipboard. 
@@ -62,10 +61,23 @@ The package includes a wide range of summary functions, that create bar plots fo
 
 All of these functions work equivalently to the `collaboration_summary()` function: they use Standard Person Query data as an input, and accept `hrvar`, `return` and `mingroup` arguments.
 
-```{r}
-sq_data %>% email_summary(hrvar = "LevelDesignation", return = "table")
-sq_data %>% meeting_summary(hrvar = "Organization", return = "Plot", mingroup=10)
+For example, 
+
 ```
+sq_data %>% afterhours_summary()
+```
+<img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png" align ="center" width=80%>
+
+## Flexible Function 
+
+For other metrics (including custom ones) the `create_bar()` function is a good way to obtain a summary bar chart for any metric. This function requires you to include a character string containing the name of the metric you want to analyze, e.g. "Generated_workload_email_hours":
+
+```
+sq_data %>% create_bar(metric = "Generated_workload_email_hours")
+```
+
+The `create_bar()` function also accepts `hrvar`, `return` and `mingroup` arguments.
+
 
 ## Customizing plots
 
