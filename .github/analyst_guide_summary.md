@@ -87,6 +87,69 @@ All plots in *wpa* are [ggplot objects](https://rafalab.github.io/dsbook/ggplot2
 sq_data %>% collaboration_summary() + ggtitle("This is a custom title")
 ```
 
+
+## Summary Functions: Gallery
+
+<html>
+<head>
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png">
+    <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png" alt="Cinque Terre" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_forest.jpg">
+    <img src="img_forest.jpg" alt="Forest" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_lights.jpg">
+    <img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_mountains.jpg">
+    <img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+</body>
+</html>
+
+
+
 ##  Going beyond averages
 
  Let's continue to [**Distribution Functions**](analyst_guide_distribution.html) to explore how we can analyse distributions from different Workplace Analytics Metrics with unique functions.
