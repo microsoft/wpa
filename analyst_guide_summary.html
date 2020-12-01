@@ -237,10 +237,10 @@
 <p>For example,</p>
 <pre><code>sq_data %&gt;% afterhours_summary()</code></pre>
 </div>
-<div id="flexible-function" class="section level2">
+<div id="custom-bar-charts-and-tables" class="section level2">
 <h2 class="hasAnchor">
-<a href="#flexible-function" class="anchor"></a>Flexible Function</h2>
-<p>For other metrics (including custom ones) the <code><a href="reference/create_bar.html">create_bar()</a></code> function is a good way to obtain a summary bar chart for any metric. This function requires you to include a character string containing the name of the metric you want to analyze, e.g. “Generated_workload_email_hours”:</p>
+<a href="#custom-bar-charts-and-tables" class="anchor"></a>Custom bar charts and tables</h2>
+<p>For other metrics, the <code><a href="reference/create_bar.html">create_bar()</a></code> function is a good way to obtain a summary bar chart for any metric. This function requires you to include a character string containing the name of the metric you want to analyze, e.g. “Generated_workload_email_hours”:</p>
 <pre><code>sq_data %&gt;% create_bar(metric = "Generated_workload_email_hours")</code></pre>
 <p>The <code><a href="reference/create_bar.html">create_bar()</a></code> function also accepts <code>hrvar</code>, <code>return</code> and <code>mingroup</code> arguments.</p>
 </div>
