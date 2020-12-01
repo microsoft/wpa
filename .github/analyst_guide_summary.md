@@ -1,6 +1,6 @@
 # Summary functions
 
-This section describes the use of  summary functions. These functions allow you to compare averages for many Workplace Analytics metrics, across the groups defined by an organizational attribute.
+This section describes the use of  summary functions. These functions allow you to compare averages across the groups defined by an organizational attribute, for many Workplace Analytics metrics.
 
 
 ## Averages for key metrics
