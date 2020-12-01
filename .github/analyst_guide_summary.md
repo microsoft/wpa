@@ -65,9 +65,9 @@ For example,
 sq_data %>% afterhours_summary()
 ```
 
-## Flexible Function 
+## Custom bar charts and tables
 
-For other metrics (including custom ones) the `create_bar()` function is a good way to obtain a summary bar chart for any metric. This function requires you to include a character string containing the name of the metric you want to analyze, e.g. "Generated_workload_email_hours":
+For other metrics, the `create_bar()` function is a good way to obtain a summary bar chart for any metric. This function requires you to include a character string containing the name of the metric you want to analyze, e.g. "Generated_workload_email_hours":
 
 ```
 sq_data %>% create_bar(metric = "Generated_workload_email_hours")
