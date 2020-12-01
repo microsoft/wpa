@@ -3,7 +3,7 @@
 This section describes the use of  summary functions. These functions allow you to compare averages across the groups defined by an organizational attribute, for many Workplace Analytics metrics.
 
 
-## Averages for key metrics
+## Exploring key metrics
 
 The `keymetrics_scan()` function allows you to produce a summary table with a wide range of metrics from an Standard Person Query. Just like in the function we studied in the previous section, you can specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument, and what output to obtain (either "plot" or "table") with the `return` argument.
 
