@@ -119,8 +119,8 @@ div.desc {
 <body>
 
 <div class="gallery">
-  <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/keymetrics_scan">
-    <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/keymetrics_scan" alt="Key Metrics Scan" width="600" height="400">
+  <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/keymetrics_scan.png">
+    <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/keymetrics_scan.png" alt="Key Metrics Scan" width="600" height="400">
   </a>
   <div class="desc">Plot from keymetrics_scan()</div>
 </div>
