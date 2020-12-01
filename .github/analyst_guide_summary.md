@@ -3,7 +3,7 @@
 This section describes the use of  summary functions, that allow you to compare averages across organizational attributes.
 
 
-## Summary of Key Metrics
+## Averages for key metrics
 
 The `keymetrics_scan()` function allows you to produce a summary table with a wide range of metrics from the Standard Person Query data. Similar to most of the functions in this package, you can specify what output to obtain (either "plot" or "table") with the `return` argument . In addition, you have to specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument.
 
@@ -13,7 +13,7 @@ sq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
 sq_data %>% keymetrics_scan(hrvar = "Organization", return = "table")
 ```
 
-## Collaboration Summary
+## Email and meeting hours
 
 The `collaboration_summary()` function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify (if none is specified, organization will be used by default)
 
@@ -34,8 +34,7 @@ By default, all summary functions exclude groups with less that five individuals
 
 ```
 sq_data %>%
-  collaboration_sum(hrvar = "LevelDesignation",
-  					mingroup = 10)
+  collaboration_sum(hrvar = "LevelDesignation", mingroup = 10)
 ```
 
 Finally, you can also use "table" in the `return` argument, to obtain summary table instead of a plot. The `export()` function will copy all contents to the clipboard. 
@@ -62,9 +61,7 @@ All of these functions use Standard Person Query data, and accept `hrvar`, `retu
 All plots in *wpa* are [ggplot objects](https://rafalab.github.io/dsbook/ggplot2.html). This means you can also make further customizations to it by appending ggplot parameters and layers. For instance, you can customize the title of a `collaboration_summary()` plot:
 
 ```R
-sq_data %>%
-	collaboration_summary() +
-	ggtitle("This is a custom title")
+sq_data %>% collaboration_summary() + ggtitle("This is a custom title")
 ```
 
 ## Going Beyond Averages?
