@@ -15,7 +15,8 @@ sq_data %>% keymetrics_scan(hrvar = "Organization", return = "table")
 The resulting table, will provide a averages for 18 key Workplace Analytics Metrics. You can customised what specific indicators to include, with the `metrics` argument:
 
 ```R
-sq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot", metrics= c("Workweek_span", "Collaboration_hours", "After_hours_collaboration_hours")
+sq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot", 
+	metrics= c("Workweek_span", "Collaboration_hours", "After_hours_collaboration_hours")
 ```
 
 The `keymetrics_scan()` function is a great starting point for exploratory data analysis, before you dive deeper into particular metrics.
