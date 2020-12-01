@@ -125,3 +125,44 @@ person_data %>% analysis_scope() %>% export() # Step 4
 ## Ready to learn more?
 
 Let's go to the [**Summary Functions**](analyst_guide_summary.html) section, to see how we can analyse different Workplace Analytics Metrics in a similar way.
+
+
+
+## Gallery
+
+<html>
+<head>
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/analysis_scope.png">
+    <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/analysis_scope.png" alt="Analysis Scope" width="600" height="400">
+  </a>
+  <div class="desc">analysis_scope()</div>
+</div>
+
+</body>
+</html>
