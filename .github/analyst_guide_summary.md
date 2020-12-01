@@ -89,7 +89,7 @@ sq_data %>% collaboration_summary() + ggtitle("This is a custom title")
  Let's continue to [**Distribution Functions**](analyst_guide_distribution.html) to explore how we can analyse distributions from different Workplace Analytics Metrics with unique functions.
 
 
-## Summary Functions: Gallery
+## Gallery
 
 <html>
 <head>
