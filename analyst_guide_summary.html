@@ -213,7 +213,7 @@
 <p>By changing the <code>hrvar()</code> argument, you can change the groups being shown easily:</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation")</code></pre>
 <p>By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the <code>mingroup()</code> argument:</p>
-<pre><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation", mingroup = 10)</code></pre>
+<pre><code>sq_data %&gt;% collaboration_sum(hrvar = "LevelDesignation", mingroup = 10)</code></pre>
 <p>Finally, you can also use “table” in the <code>return</code> argument, to obtain summary table instead of a plot. The <code><a href="reference/export.html">export()</a></code> function will copy all contents to the clipboard.</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation", return = "table")</code></pre>
 </div>
