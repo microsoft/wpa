@@ -107,7 +107,7 @@ sq_data %>% analysis_scope(hrvar = "Organization") %>% export()
 
 ```
 
-##  Summary: Four steps from data to output
+## Four steps from data to output
 
 The examples above illustrate how the use of **wpa** can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results. The script below illustrates this funcitonality:
 
