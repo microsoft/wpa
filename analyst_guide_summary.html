@@ -105,16 +105,16 @@
       <a href="analyst_guide_getting_started.html">Getting Started</a>
     </li>
     <li>
-      <a href="analyst_guide_summary.html">Summary analysis</a>
+      <a href="analyst_guide_summary.html">Summary Functions</a>
     </li>
     <li>
-      <a href="analyst_guide_distribution.html">Distribution analysis</a>
+      <a href="analyst_guide_distribution.html">Distribution Functions</a>
     </li>
     <li>
-      <a href="analyst_guide_trend.html">Trend analysis</a>
+      <a href="analyst_guide_trend.html">Trend Functions</a>
     </li>
     <li>
-      <a href="analyst_guide_network.html">Network analysis</a>
+      <a href="analyst_guide_network.html">Network Functions</a>
     </li>
   </ul>
 </li>
@@ -213,7 +213,7 @@
 <p>By changing the <code>hrvar()</code> argument, you can change the groups being shown easily:</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation")</code></pre>
 <p>By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the <code>mingroup()</code> argument:</p>
-<pre><code>sq_data %&gt;% collaboration_sum(hrvar = "LevelDesignation", mingroup = 10)</code></pre>
+<pre><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation", mingroup = 10)</code></pre>
 <p>Finally, you can also use “table” in the <code>return</code> argument, to obtain summary table instead of a plot. The <code><a href="reference/export.html">export()</a></code> function will copy all contents to the clipboard.</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation", return = "table")</code></pre>
 </div>
@@ -247,7 +247,7 @@
 <div id="customizing-plots" class="section level2">
 <h2 class="hasAnchor">
 <a href="#customizing-plots" class="anchor"></a>Customizing plots</h2>
-<p>All plots in <em>wpa</em> are <a href="https://rafalab.github.io/dsbook/ggplot2.html">ggplot objects</a>. This means you can customize them by adding ggplot arguments and layers. For instance, you can change the title of a <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> plot:</p>
+<p>All plots in <strong>wpa</strong> are <a href="https://rafalab.github.io/dsbook/ggplot2.html">ggplot objects</a>. This means you can customize them by adding ggplot arguments and layers. For instance, you can change the title of a <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> plot:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
 </div>
