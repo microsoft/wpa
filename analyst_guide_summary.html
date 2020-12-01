@@ -193,17 +193,17 @@
 <div id="summary-functions" class="section level1">
 
 <p>This section describes the use of summary functions, that allow you to compare averages across organizational attributes.</p>
-<div id="summary-of-key-metrics" class="section level2">
+<div id="averages-for-key-metrics" class="section level2">
 <h2 class="hasAnchor">
-<a href="#summary-of-key-metrics" class="anchor"></a>Summary of Key Metrics</h2>
+<a href="#averages-for-key-metrics" class="anchor"></a>Averages for key metrics</h2>
 <p>The <code><a href="reference/keymetrics_scan.html">keymetrics_scan()</a></code> function allows you to produce a summary table with a wide range of metrics from the Standard Person Query data. Similar to most of the functions in this package, you can specify what output to obtain (either “plot” or “table”) with the <code>return</code> argument . In addition, you have to specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span>
 <span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="collaboration-summary" class="section level2">
+<div id="email-and-meeting-hours" class="section level2">
 <h2 class="hasAnchor">
-<a href="#collaboration-summary" class="anchor"></a>Collaboration Summary</h2>
+<a href="#email-and-meeting-hours" class="anchor"></a>Email and meeting hours</h2>
 <p>The <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify (if none is specified, organization will be used by default)</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary()</code></pre>
 <p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align="center" width="80%"></p>
@@ -211,8 +211,7 @@
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation")</code></pre>
 <p>By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the <code>mingroup()</code> argument:</p>
 <pre><code>sq_data %&gt;%
-  collaboration_sum(hrvar = "LevelDesignation",
-                    mingroup = 10)</code></pre>
+  collaboration_sum(hrvar = "LevelDesignation", mingroup = 10)</code></pre>
 <p>Finally, you can also use “table” in the <code>return</code> argument, to obtain summary table instead of a plot. The <code><a href="reference/export.html">export()</a></code> function will copy all contents to the clipboard.</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation", return = "table")</code></pre>
 </div>
@@ -234,9 +233,7 @@
 <a href="#customizing-plots" class="anchor"></a>Customizing plots</h2>
 <p>All plots in <em>wpa</em> are <a href="https://rafalab.github.io/dsbook/ggplot2.html">ggplot objects</a>. This means you can also make further customizations to it by appending ggplot parameters and layers. For instance, you can customize the title of a <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> plot:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="going-beyond-averages" class="section level2">
 <h2 class="hasAnchor">
