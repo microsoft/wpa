@@ -78,7 +78,7 @@ The `create_bar()` function also accepts `hrvar`, `return` and `mingroup` argume
 
 ## Customizing plots
 
-All plots in *wpa* are [ggplot objects](https://rafalab.github.io/dsbook/ggplot2.html). This means you can customize them by adding ggplot arguments and layers. For instance, you can change the title of a `collaboration_summary()` plot:
+All plots in **wpa** are [ggplot objects](https://rafalab.github.io/dsbook/ggplot2.html). This means you can customize them by adding ggplot arguments and layers. For instance, you can change the title of a `collaboration_summary()` plot:
 
 ```R
 sq_data %>% collaboration_summary() + ggtitle("This is a custom title")

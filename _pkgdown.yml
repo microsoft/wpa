@@ -28,13 +28,13 @@ navbar:
         href: analyst_guide.html
       - text: Getting Started
         href: analyst_guide_getting_started.html
-      - text: Summary analysis
+      - text: Summary Functions
         href: analyst_guide_summary.html
-      - text: Distribution analysis
+      - text: Distribution Functions
         href: analyst_guide_distribution.html
-      - text: Trend analysis
+      - text: Trend Functions
         href: analyst_guide_trend.html
-      - text: Network analysis
+      - text: Network Functions
         href: analyst_guide_network.html
     reference:
       text: Reference
