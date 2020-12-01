@@ -38,7 +38,7 @@ sq_data %>% collaboration_summary(hrvar = "LevelDesignation")
 By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the `mingroup()` argument:
 
 ```
-sq_data %>% collaboration_sum(hrvar = "LevelDesignation", mingroup = 10)
+sq_data %>% collaboration_summary(hrvar = "LevelDesignation", mingroup = 10)
 ```
 
 Finally, you can also use "table" in the `return` argument, to obtain summary table instead of a plot. The `export()` function will copy all contents to the clipboard. 
