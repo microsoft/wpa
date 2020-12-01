@@ -29,8 +29,6 @@ The `collaboration_summary()` function generates a stacked bar plot summarising 
 sq_data %>% collaboration_summary()
 ```
 
-<img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align ="center" width=80%>
-
 By changing the `hrvar()` argument, you can change the groups being shown easily:
 
 ```{r}
@@ -66,7 +64,6 @@ For example,
 ```
 sq_data %>% afterhours_summary()
 ```
-<img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png" align ="center" width=80%>
 
 ## Flexible Function 
 
@@ -86,6 +83,10 @@ All plots in *wpa* are [ggplot objects](https://rafalab.github.io/dsbook/ggplot2
 ```R
 sq_data %>% collaboration_summary() + ggtitle("This is a custom title")
 ```
+
+##  Going beyond averages
+
+ Let's continue to [**Distribution Functions**](analyst_guide_distribution.html) to explore how we can analyse distributions from different Workplace Analytics Metrics with unique functions.
 
 
 ## Summary Functions: Gallery
@@ -119,39 +120,19 @@ div.desc {
 
 <div class="gallery">
   <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png">
-    <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png" alt="Cinque Terre" width="600" height="400">
+    <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" alt="Collaboration Summary" width="600" height="400">
   </a>
-  <div class="desc">Add a description of the image here</div>
+  <div class="desc">Plot for collaboration_summary()</div>
 </div>
 
 <div class="gallery">
-  <a target="_blank" href="img_forest.jpg">
-    <img src="img_forest.jpg" alt="Forest" width="600" height="400">
+  <a target="_blank" href=https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png">
+    <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png" alt="After-Hours Summary" width="600" height="400">
   </a>
-  <div class="desc">Add a description of the image here</div>
-</div>
-
-<div class="gallery">
-  <a target="_blank" href="img_lights.jpg">
-    <img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
-  </a>
-  <div class="desc">Add a description of the image here</div>
-</div>
-
-<div class="gallery">
-  <a target="_blank" href="img_mountains.jpg">
-    <img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
-  </a>
-  <div class="desc">Add a description of the image here</div>
+  <div class="desc">Plot from afterhours_summary()</div>
 </div>
 
 </body>
 </html>
-
-
-
-##  Going beyond averages
-
- Let's continue to [**Distribution Functions**](analyst_guide_distribution.html) to explore how we can analyse distributions from different Workplace Analytics Metrics with unique functions.
 
 
