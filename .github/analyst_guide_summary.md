@@ -133,7 +133,7 @@ div.desc {
 </div>
 
 <div class="gallery">
-  <a target="_blank" href=https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png">
+  <a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png">
     <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/afterhours_sum.png" alt="After-Hours Summary" width="600" height="400">
   </a>
   <div class="desc">Plot from afterhours_summary()</div>
