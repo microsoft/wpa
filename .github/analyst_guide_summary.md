@@ -1,21 +1,28 @@
 # Summary functions
 
-This section describes the use of  summary functions, that allow you to compare averages across organizational attributes.
+This section describes the use of  summary functions. These functions allow you to compare averages for many Workplace Analytics metrics, across the groups defined by an organizational attribute.
 
 
 ## Averages for key metrics
 
-The `keymetrics_scan()` function allows you to produce a summary table with a wide range of metrics from the Standard Person Query data. Similar to most of the functions in this package, you can specify what output to obtain (either "plot" or "table") with the `return` argument . In addition, you have to specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument.
-
+The `keymetrics_scan()` function allows you to produce a summary table with a wide range of metrics from an Standard Person Query. Just like in the function we studied in the previous section, you can specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument, and what output to obtain (either "plot" or "table") with the `return` argument.
 
 ```R
 sq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
 sq_data %>% keymetrics_scan(hrvar = "Organization", return = "table")
 ```
 
-## Email and meeting hours
+The resulting table, will provide a averages for 18 key Workplace Analytics Metrics. You can customised what specific indicators to include, with the `metrics` argument:
 
-The `collaboration_summary()` function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify (if none is specified, organization will be used by default)
+```R
+sq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot", metrics= c("Workweek_span", "Collaboration_hours", "After_hours_collaboration_hours")
+```
+
+The `keymetrics_scan()` function is a great starting point for exploratory data analysis, before you dive deeper into particular metrics.
+
+## Average Email and meeting hours
+
+The `collaboration_summary()` function generates a stacked bar plot summarising the email and meeting hours by an HR attribute you specify. If no HR attribute is specified, "organization" will be used by default:
 
 ```{r}
 sq_data %>% collaboration_summary()
@@ -23,8 +30,7 @@ sq_data %>% collaboration_summary()
 
 <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align ="center" width=80%>
 
-
-By changing the `hrvar()` argument, you can change the data being shown easily:
+By changing the `hrvar()` argument, you can change the groups being shown easily:
 
 ```{r}
 sq_data %>% collaboration_summary(hrvar = "LevelDesignation")
@@ -43,28 +49,32 @@ Finally, you can also use "table" in the `return` argument, to obtain summary ta
 sq_data %>% collaboration_summary(hrvar = "LevelDesignation", return = "table")
 ```
 
-
 ## Other summary functions
 
-Other similar functions include:
+The package includes a wide range of summary functions, that create bar plots for specific metrics. These include:
 
-- `email_summary()`
-- `meeting_summary()`
-- `one2one_summary()`
-- `workloads_summary()`
-- `afterhours_summary()`
+- `email_summary()`:  Bar plot summarising email hours by an HR attribute.
+- `meeting_summary()`: Bar plot summarising meeting hours by an HR attribute.
+- `one2one_summary()`: Bar plot summarising manager one-to-one meeting hours, by an HR attribute.
+- `workloads_summary()`: Bar plot summarising workweek span by an HR attribute.
+- `afterhours_summary()`: Bar plot summarising after-hours collaboration hours by an HR attribute.
 
-All of these functions use Standard Person Query data, and accept `hrvar`, `return` and `mingroup` arguments.
+All of these functions work equivalently to the `collaboration_summary()` function: they use Standard Person Query data as an input, and accept `hrvar`, `return` and `mingroup` arguments.
+
+```{r}
+sq_data %>% email_summary(hrvar = "LevelDesignation", return = "table")
+sq_data %>% meeting_summary(hrvar = "Organization", return = "Plot", mingroup=10)
+```
 
 ## Customizing plots
 
-All plots in *wpa* are [ggplot objects](https://rafalab.github.io/dsbook/ggplot2.html). This means you can also make further customizations to it by appending ggplot parameters and layers. For instance, you can customize the title of a `collaboration_summary()` plot:
+All plots in *wpa* are [ggplot objects](https://rafalab.github.io/dsbook/ggplot2.html). This means you can customize them by adding ggplot arguments and layers. For instance, you can change the title of a `collaboration_summary()` plot:
 
 ```R
 sq_data %>% collaboration_summary() + ggtitle("This is a custom title")
 ```
 
-## Going Beyond Averages?
+##  Going beyond averages
 
 In the next section, we will explore how we can analyse distributions from different Workplace Analytics Metrics in a similar way. Let's continue to [**Distribution Functions**](analyst_guide_distribution.html).
 
