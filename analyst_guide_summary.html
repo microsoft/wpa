@@ -192,22 +192,25 @@
 
 <div id="summary-functions" class="section level1">
 
-<p>This section describes the use of summary functions, that allow you to compare averages across organizational attributes.</p>
+<p>This section describes the use of summary functions. These functions allow you to compare averages for many Workplace Analytics metrics, across the groups defined by an organizational attribute.</p>
 <div id="averages-for-key-metrics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#averages-for-key-metrics" class="anchor"></a>Averages for key metrics</h2>
-<p>The <code><a href="reference/keymetrics_scan.html">keymetrics_scan()</a></code> function allows you to produce a summary table with a wide range of metrics from the Standard Person Query data. Similar to most of the functions in this package, you can specify what output to obtain (either “plot” or “table”) with the <code>return</code> argument . In addition, you have to specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument.</p>
+<p>The <code><a href="reference/keymetrics_scan.html">keymetrics_scan()</a></code> function allows you to produce a summary table with a wide range of metrics from an Standard Person Query. Just like in the function we studied in the previous section, you can specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument, and what output to obtain (either “plot” or “table”) with the <code>return</code> argument.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span>
 <span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<p>The resulting table, will provide a averages for 18 key Workplace Analytics Metrics. You can customised what specific indicators to include, with the <code>metrics</code> argument:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>sq_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">keymetrics_scan</span>(<span class="dt">hrvar =</span> <span class="st">"Organization"</span>, <span class="dt">return =</span> <span class="st">"plot"</span>, <span class="dt">metrics=</span> <span class="kw">c</span>(<span class="st">"Workweek_span"</span>, <span class="st">"Collaboration_hours"</span>, <span class="st">"After_hours_collaboration_hours"</span>)</span></code></pre></div>
+<p>The <code><a href="reference/keymetrics_scan.html">keymetrics_scan()</a></code> function is a great starting point for exploratory data analysis, before you dive deeper into particular metrics.</p>
 </div>
-<div id="email-and-meeting-hours" class="section level2">
+<div id="average-email-and-meeting-hours" class="section level2">
 <h2 class="hasAnchor">
-<a href="#email-and-meeting-hours" class="anchor"></a>Email and meeting hours</h2>
-<p>The <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify (if none is specified, organization will be used by default)</p>
+<a href="#average-email-and-meeting-hours" class="anchor"></a>Average Email and meeting hours</h2>
+<p>The <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> function generates a stacked bar plot summarising the email and meeting hours by an HR attribute you specify. If no HR attribute is specified, “organization” will be used by default:</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary()</code></pre>
 <p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align="center" width="80%"></p>
-<p>By changing the <code>hrvar()</code> argument, you can change the data being shown easily:</p>
+<p>By changing the <code>hrvar()</code> argument, you can change the groups being shown easily:</p>
 <pre class="{r}"><code>sq_data %&gt;% collaboration_summary(hrvar = "LevelDesignation")</code></pre>
 <p>By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the <code>mingroup()</code> argument:</p>
 <pre><code>sq_data %&gt;%
@@ -218,26 +221,33 @@
 <div id="other-summary-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-summary-functions" class="anchor"></a>Other summary functions</h2>
-<p>Other similar functions include:</p>
+<p>The package includes a wide range of summary functions, that create bar plots for specific metrics. These include:</p>
 <ul>
-<li><code><a href="reference/email_summary.html">email_summary()</a></code></li>
-<li><code><a href="reference/meeting_summary.html">meeting_summary()</a></code></li>
-<li><code><a href="reference/one2one_sum.html">one2one_summary()</a></code></li>
-<li><code><a href="reference/workloads_summary.html">workloads_summary()</a></code></li>
-<li><code><a href="reference/afterhours_summary.html">afterhours_summary()</a></code></li>
+<li>
+<code><a href="reference/email_summary.html">email_summary()</a></code>: Bar plot summarising email hours by an HR attribute.</li>
+<li>
+<code><a href="reference/meeting_summary.html">meeting_summary()</a></code>: Bar plot summarising meeting hours by an HR attribute.</li>
+<li>
+<code><a href="reference/one2one_sum.html">one2one_summary()</a></code>: Bar plot summarising manager one-to-one meeting hours, by an HR attribute.</li>
+<li>
+<code><a href="reference/workloads_summary.html">workloads_summary()</a></code>: Bar plot summarising workweek span by an HR attribute.</li>
+<li>
+<code><a href="reference/afterhours_summary.html">afterhours_summary()</a></code>: Bar plot summarising after-hours collaboration hours by an HR attribute.</li>
 </ul>
-<p>All of these functions use Standard Person Query data, and accept <code>hrvar</code>, <code>return</code> and <code>mingroup</code> arguments.</p>
+<p>All of these functions work equivalently to the <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> function: they use Standard Person Query data as an input, and accept <code>hrvar</code>, <code>return</code> and <code>mingroup</code> arguments.</p>
+<pre class="{r}"><code>sq_data %&gt;% email_summary(hrvar = "LevelDesignation", return = "table")
+sq_data %&gt;% meeting_summary(hrvar = "Organization", return = "Plot", mingroup=10)</code></pre>
 </div>
 <div id="customizing-plots" class="section level2">
 <h2 class="hasAnchor">
 <a href="#customizing-plots" class="anchor"></a>Customizing plots</h2>
-<p>All plots in <em>wpa</em> are <a href="https://rafalab.github.io/dsbook/ggplot2.html">ggplot objects</a>. This means you can also make further customizations to it by appending ggplot parameters and layers. For instance, you can customize the title of a <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> plot:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>All plots in <em>wpa</em> are <a href="https://rafalab.github.io/dsbook/ggplot2.html">ggplot objects</a>. This means you can customize them by adding ggplot arguments and layers. For instance, you can change the title of a <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> plot:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="going-beyond-averages" class="section level2">
 <h2 class="hasAnchor">
-<a href="#going-beyond-averages" class="anchor"></a>Going Beyond Averages?</h2>
+<a href="#going-beyond-averages" class="anchor"></a>Going beyond averages</h2>
 <p>In the next section, we will explore how we can analyse distributions from different Workplace Analytics Metrics in a similar way. Let’s continue to <a href="analyst_guide_distribution.html"><strong>Distribution Functions</strong></a>.</p>
 </div>
 </div>
