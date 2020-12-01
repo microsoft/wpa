@@ -89,6 +89,6 @@ sq_data %>% collaboration_summary() + ggtitle("This is a custom title")
 
 ##  Going beyond averages
 
-In the next section, we will explore how we can analyse distributions from different Workplace Analytics Metrics in a similar way. Let's continue to [**Distribution Functions**](analyst_guide_distribution.html).
+ Let's continue to [**Distribution Functions**](analyst_guide_distribution.html) to explore how we can analyse distributions from different Workplace Analytics Metrics with unique functions.
 
 
