@@ -23,3 +23,12 @@ function used in the Working Patterns functions.
 \details{
 \code{combine_signals} uses string matching to aggregate columns.
 }
+\examples{
+# Demo using simulated variables
+sim_data <-
+  data.frame(Emails_sent_09_10 = sample(1:5, size = 10, replace = TRUE),
+             Unscheduled_calls_09_10 = sample(1:5, size = 10, replace = TRUE))
+
+combine_signals(sim_data, hr = 9, signals = c("Emails_sent", "Unscheduled_calls"))
+
+}
