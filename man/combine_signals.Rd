@@ -2,20 +2,24 @@
 % Please edit documentation in R/combine_signals.R
 \name{combine_signals}
 \alias{combine_signals}
-\title{Combine signals from Emails and IMs}
+\title{Combine signals from the Hourly Collaboration query}
 \usage{
 combine_signals(data, hr, signals = c("Emails_sent", "IMs_sent"))
 }
 \arguments{
-\item{data}{Data containing Emails_sent and IMs_sent variables}
+\item{data}{Hourly Collaboration query containing signal variables (e.g. \code{Emails_sent_00_01})}
 
 \item{hr}{Numeric value between 0 to 23 to iterate through}
 
 \item{signals}{Character vector for specifying which signal types to combine.
-Defaults to c("Emails_sent", "IMs_sent").}
+Defaults to c("Emails_sent", "IMs_sent"). Other valid values include "Unscheduled_calls" and
+"Meetings".}
 }
 \description{
-Takes in an Hourly Collaboration Data, and for each hour sums and stores the
-signal for \code{Emails_sent} and \code{IMs_sent} in \code{Signals_sent}. This is an internal
+Takes in an Hourly Collaboration Data, and for each hour sums and aggregates the
+signals (e.g.\code{Emails_sent} and \code{IMs_sent}) in \code{Signals_sent}. This is an internal
 function used in the Working Patterns functions.
+}
+\details{
+\code{combine_signals} uses string matching to aggregate columns.
 }

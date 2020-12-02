@@ -3,17 +3,21 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Combine signals from Emails and IMs
+#' @title Combine signals from the Hourly Collaboration query
 #'
 #' @description
-#' Takes in an Hourly Collaboration Data, and for each hour sums and stores the
-#' signal for `Emails_sent` and `IMs_sent` in `Signals_sent`. This is an internal
+#' Takes in an Hourly Collaboration Data, and for each hour sums and aggregates the
+#' signals (e.g.`Emails_sent` and `IMs_sent`) in `Signals_sent`. This is an internal
 #' function used in the Working Patterns functions.
 #'
-#' @param data Data containing Emails_sent and IMs_sent variables
+#' @param data Hourly Collaboration query containing signal variables (e.g. `Emails_sent_00_01`)
 #' @param hr Numeric value between 0 to 23 to iterate through
 #' @param signals Character vector for specifying which signal types to combine.
-#' Defaults to c("Emails_sent", "IMs_sent").
+#' Defaults to c("Emails_sent", "IMs_sent"). Other valid values include "Unscheduled_calls" and
+#' "Meetings".
+#'
+#' @details
+#' `combine_signals` uses string matching to aggregate columns.
 #'
 #' @export
 combine_signals <- function(data,
