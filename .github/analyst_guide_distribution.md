@@ -1,10 +1,10 @@
 # Distribution Functions
 
-**Distribution** functions allow you to go beyond aggregated averages, and diagnose whether metrics are skewed, evenly distributed, or contain outliers. 
+**Distribution** functions allow you to drill deeper into groups, to diagnose if the averages are truly representative of that group, or if they are hiding pockets of individuals with divergent behaviour (outliers).
 
 ## Grouping individuals
 
-The `collaboration_dist()` function allows you to produce a 100% stacked bar chart an Standard Person Query, with employees distributed in groups according to their amount of collaboration hours. 
+The `collaboration_dist()` function produces a 100% stacked bar chart using a Standard Person Query as input. This plot will allow you to see how employees distributed in groups according to specific ranges of collaboration hours. 
 
 ```R
 sq_data %>% collaboration_dist() 
@@ -24,14 +24,13 @@ The package includes a wide range of equivalent functions, that create 100% stac
 - `workloads_dist()`
 
 ## Fizzy Drink Plots 
-You can also explore distributions by using jittered ('fizzy drink') scatter plot. The `collaboration_fizz()` function illustrate how different individuals are distributed in a common scale:
+You can also explore distributions by using jittered ('fizzy drink') scatter plots. The `collaboration_fizz()` function illustrates how different individuals fall in a common scale:
 
 ```R
 sq_data %>% email_fizz() # Fizzy drink plot
 ```
 
-These functions are also flexible, allowing you to specify an HR attribute grouping variable and the `return` argument.
-
+As usual, you to specify an HR attribute grouping variable and create a table with the `return` argument.
 
 ```R
 sq_data %>% collaboration_fizz(hrvar = "LevelDesignation", return = "table")
@@ -47,8 +46,9 @@ Other examples of distribution fizzy drink plots include:
 
 ## Custom bar charts and tables
 
-For other metrics, you can obtain the equivalent graphs using the `create_dist()`,  `create_fizz()` and `create_boxplot()`. These functions requires you to include a character string containing the name of the metric you want to analyze, e.g. "Generated_workload_email_hours":
+Not all metrics include their own dist and fizz functions. However, you can obtain the equivalent graphs using the `create_dist()` and  `create_fizz()`. These functions requires you to include a character string containing the name of the metric you want to analyze. Additionall, the  `create_boxplot()` function allows you to create a box plot. 
 
+For example, using "Generated_workload_email_hours":
 
 ```
 sq_data %>% create_dist(metric = "Generated_workload_email_hours")
@@ -58,7 +58,6 @@ sq_data %>% create_fizz(metric = "Generated_workload_email_hours")
 sq_data %>% create_boxplot(metric = "Generated_workload_email_hours")
 
 ```
-
 
 ##  Exploring changes over time
 
