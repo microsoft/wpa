@@ -4,7 +4,7 @@
 
 ## Grouping individuals
 
-The `collaboration_dist()` function produces a 100% stacked bar chart using a Standard Person Query as input. This plot will allow you to see how employees distributed in groups according to specific ranges of collaboration hours. 
+The `collaboration_dist()` function produces a 100% stacked bar chart, with all individuals classified in pre-defined groups according to defined ranges of collaboration hours. This function uses a Standard Person Query as input:
 
 ```R
 sq_data %>% collaboration_dist() 
@@ -13,9 +13,9 @@ sq_data %>% collaboration_dist()
 You can specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument, and what output to obtain (either "plot" or "table") with the `return` argument.
 
 ```R
-sq_data %>% collaboration_dist(return="table") 
+sq_data %>% collaboration_dist(hrvar = "LevelDesignation", return="table") 
 ```
-The package includes a wide range of equivalent functions, that create 100% stacked bar plots for specific metrics. These include:
+*wpa* includes a wide range of equivalent functions, that create 100% stacked bar plots for specific metrics. These include:
 
 - `email_dist()`
 - `meeting_dist()`
