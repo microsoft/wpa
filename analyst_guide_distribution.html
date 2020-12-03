@@ -196,13 +196,13 @@
 <div id="grouping-individuals" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grouping-individuals" class="anchor"></a>Grouping individuals</h2>
-<p>The <code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code> function produces a 100% stacked bar chart using a Standard Person Query as input. This plot will allow you to see how employees distributed in groups according to specific ranges of collaboration hours.</p>
+<p>The <code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code> function produces a 100% stacked bar chart, with all individuals classified in pre-defined groups according to defined ranges of collaboration hours. This function uses a Standard Person Query as input:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 <p>You can specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument, and what output to obtain (either “plot” or “table”) with the <code>return</code> argument.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span>return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span> </code></pre></div>
-<p>The package includes a wide range of equivalent functions, that create 100% stacked bar plots for specific metrics. These include:</p>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span> </code></pre></div>
+<p><em>wpa</em> includes a wide range of equivalent functions, that create 100% stacked bar plots for specific metrics. These include:</p>
 <ul>
 <li><code><a href="reference/email_dist.html">email_dist()</a></code></li>
 <li><code><a href="reference/meeting_dist.html">meeting_dist()</a></code></li>
