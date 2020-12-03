@@ -168,7 +168,7 @@ devtools::build_manual()
 
 
 ## Documenting functions with {roxygen2}
-*It's on its way...*
+We recommend Karl Broman's guide on [Writing documentation with Roxygen2]([Writing documentation with Roxygen2 (kbroman.org)](https://kbroman.org/pkg_primer/pages/docs.html)).
 
 ## :link: Useful links
 
