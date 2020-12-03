@@ -59,7 +59,7 @@ For information on the package structure, please see the relevant section in our
 
 Also check out our package cheat sheet for more information:
 
-<a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet_20201116.png" align="center" width=50% /></a>
+<a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet.png" align="center" width=50% /></a>
 
 ---
 
