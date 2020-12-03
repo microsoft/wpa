@@ -21,9 +21,9 @@ You should have the following installed before starting:
 3. [GitHub Desktop](https://desktop.github.com/) (Highly recommended, unless you are very familiar with git)
 
 You should also have the following packages installed. These should all be available from CRAN:
-1. {devtools}
-2. {tidyverse}
-3. {roxygen2}
+1. **devtools**
+2. **tidyverse**
+3. **roxygen2**
 
 Once these are all installed, you should be ready to roll!
 
@@ -58,11 +58,27 @@ If everything runs smoothly, run this final line to install the local package. M
 devtools::install()
 ```
 
+#### Note: other installation methods
+
+You can also install the package directly from GitHub:
+
+```R
+devtools::install_git(url = "https://github.com/microsoft/wpa.git")
+```
+
+This will install the package from the main branch. If you'd like to install from a particular branch or install vignettes, you can leverage the additional arguments available with `devtools::install_git()`, for example:
+
+```R
+devtools::install_git(url = "https://github.com/microsoft/wpa.git",
+                      branch = "feature/network-functions",
+                      build_vignettes = TRUE)
+```
+
 ---
 
 ## To increment or change a package version
 
-Each package release has a corresponding package version (e.g. 1.4.2.) To change that package version number for a particular release, simply go into the `DESCRIPTION` at the project root folder of the {wpa} package. You can edit this with any notepad software or RStudio. 
+Each package release has a corresponding package version (e.g. 1.4.2.) To change that package version number for a particular release, simply go into the `DESCRIPTION` at the project root folder of the **wpa** package. You can edit this with any notepad software or RStudio. 
 
 Change the values that come after `Version: ` to change the package version. Prior to incrementing the package version, please align with the main developer team on the agreed version release details. 
 
@@ -92,19 +108,66 @@ devtools::build_manual()
 
 ## A short guide to adding a function to the package
 
-1. Let us assume that you have written a new function, e.g. a checking function that returns TRUE if PersonId exists, and returns FALSE if it does not).
-1. Once you check the function and ensure that it works, save this into a R file under the "R" folder of the package directory.
-    - Ensure that your current working directory is set to the package directory. You can either open the RStudio session with the package .Rproj file, or run `setwd()` to change you working directory. Run `getwd()` to check what your current working directory is.
-    - Ensure that the relevant roxygen headers are present (see [here](https://roxygen2.r-lib.org/articles/rd.html) for more reference).
-    - Whilst it is possible to have more than one function saved in a single R file, we recommend saving them in their own files with their own names for clarity. For instance, the function `collaboration_dist()` would be saved in a file called _collaboration_dist.R_.
-1. Follow the steps in the Developer Guide above to generate the documentation (`roxygen2::roxygenise()`), check the package (`devtools::check()`), and install the package (`devtools::install()`). 
-1. Once you are sure that everything works, open **GitHub Desktop**, and **check that you have selected the relevant branch**. If you are unsure what your changes are, it is always recommended that you work on a new branch so that you do not introduce any breaking changes to the master branch.
-1. _Fetch / pull_ from the branch. This ensures that your local package is updated with changes that others have made to the code.
-1. _Commit_ your changes, and add an intuitive commit message so others will know what you have changed to the code. Please see the wiki page of this repo for a style guide on the commit messages.
-1. _Push_ your changes to the branch. If there are no errors, you should be able to see the changes on the GitHub repository!
+1. Let us assume that you have written a new function, e.g. a checking function that returns TRUE if `PersonId` exists, and returns FALSE if it does not).
 
-## Using GitHub
-*It's on its way...*
+1. Once you check the function and ensure that it works, save this into a R file under the "R" folder of the package directory.
+    - Ensure that your current working directory is set to the package directory. You can either open the RStudio session with the package .Rproj file, or run `setwd()` to change you working directory. Run `getwd()` to check what your current working directory is.
+    - Ensure that the relevant roxygen headers are present (see [here](https://roxygen2.r-lib.org/articles/rd.html) for more reference).
+    - Whilst it is possible to have more than one function saved in a single R file, we recommend saving them in their own files with their own names for clarity. For instance, the function `collaboration_dist()` would be saved in a file called _collaboration_dist.R_.
+    
+1. Run `devtools::load_all()`. This will simulate loading the package with the function in it. Run the function with some example data to ensure that it works.    
+    
+1. Follow the steps in the Developer Guide above to generate the documentation (`roxygen2::roxygenise()`), check the package (`devtools::check()`), and install the package (`devtools::install()`). 
+
+1. Once you are sure that everything works, open **GitHub Desktop**, and **check that you have selected the relevant branch**. If you are unsure what your changes are, it is always recommended that you work on a new branch so that you do not introduce any breaking changes to the master branch.
+
+1. _Fetch/ pull_ from the branch. This ensures that your local package is updated with changes that others have made to the code.
+
+1. _Commit_ your changes, and add an intuitive commit message so others will know what you have changed to the code. Please see the wiki page of this repo for a style guide on the commit messages.
+
+1. _Push_ your changes to the branch. 
+
+## Working with GitHub
+
+### No repository access
+
+If you are contributing to this repository where you do not have direct access (e.g. as a non-Microsoft contributor), you will have to take the following steps:
+
+1. Fork the repository. This will create a repository called `<YOURUSERNAME>/wpa`. 
+
+1. Make required changes to this forked repository.
+
+1. Once you are happy with the changes, create a pull request to merge the changes with `microsoft/wpa`. 
+
+You can either use **GitHub Desktop** or **git**. 
+
+### With repository access
+
+If you have repository access, you may still be asked to enter the 2FA process due to the scurity protocols in place. 
+
+If you get an authentication error with GitHub Desktop, please following the following steps to clone the git repository for **wpa** v1.3.0. locally.
+
+1. Ensure you have git installed. If not, you can download this from [Git - Downloads (git-scm.com)](https://git-scm.com/downloads).
+
+2. Once installed, open up Git Bash. This should open up a Command Line interface. 
+
+3. Copy the path to the folder in which you want to clone the `wpa` repository; if this doesn't exist yet, you can create a new folder called `wpa` somewhere. An example of this path would be `C:\My Documents\GitHub\wpa`.
+
+4. Type `cd `, and followed (separated with a space) by the path to the local folder above. You will need to add quotes, so the full command would look something like `cd "C:/My Documents/GitHub/wpa"`. See [How to change folder with git bash? - Stack Overflow](https://stackoverflow.com/questions/8961334/how-to-change-folder-with-git-bash) if you have issues changing directories. 
+
+5. Once Git Bash is showing the correct file path to your `wpa` repository, run the command `git init`. This command initializes your folder as a git repository. In other words, it sets it up to do version control. 
+
+6. Next, run `git remote add origin https://github.com/microsoft/wpa.git`. This will "connect" your local folder with the Git repository. You may get some prompts for authentication somewhere around here. Run `git remote -v` to check whether this has been successfully applied. 
+
+7. Once the authentication through Git Bash is set up, you may now go back to the GitHub Desktop GUI window (phew!). Go to `File > Add local repository` and choose the `wpa` folder that you have just set up. You may be asked to login again, but this should now allow you to fetch or pull from the repository. You are now set up!
+
+
+You can contribute code to the open source repository in the "normal way" once the above is all set up. 
+
+### Git commands
+
+You may find it helpful [git cheat sheet](https://education.github.com/git-cheat-sheet-education.pdf) for git commands.
+
 
 ## Documenting functions with {roxygen2}
 *It's on its way...*
