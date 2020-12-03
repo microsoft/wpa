@@ -17,9 +17,7 @@ You should also have the following packages installed. These should all be avail
 2. **tidyverse**
 3. **roxygen2**
 
-Once these are all installed, you should be ready to roll!
-
-
+Once these are all installed, you should be ready to get started.
 
 ## Design Principles
 
@@ -71,23 +69,12 @@ If you are in the situation where you are simply trying to overcome the authenti
 After creating a copy of the repository on your local machine and having installed the repository version, you can start working with R. 
 
 1. Let us assume that you have written a new function, e.g. a checking function that returns TRUE if `PersonId` exists, and returns FALSE if it does not).
-
 1. Once you check the function and ensure that it works, save this into a R file under the "R" folder of the package directory.
    - Ensure that your current working directory is set to the package directory. You can either open the RStudio session with the package .Rproj file, or run `setwd()` to change you working directory. Run `getwd()` to check what your current working directory is.
    - Ensure that the relevant roxygen headers are present (see [here](https://roxygen2.r-lib.org/articles/rd.html) for more reference).
    - Whilst it is possible to have more than one function saved in a single R file, we recommend saving them in their own files with their own names for clarity. For instance, the function `collaboration_dist()` would be saved in a file called _collaboration_dist.R_.
-
 1. Run `devtools::load_all()`. This will simulate loading the package with the function in it. Run the function with some example data to ensure that it works.    
-
-1. Follow the steps in the Developer Guide above to generate the documentation (`roxygen2::roxygenise()`), check the package (`devtools::check()`), and install the package (`devtools::install()`). 
-
-1. Once you are sure that everything works, open **GitHub Desktop**, and **check that you have selected the relevant branch**. If you are unsure what your changes are, it is always recommended that you work on a new branch so that you do not introduce any breaking changes to the master branch.
-
-1. _Fetch/ pull_ from the branch. This ensures that your local package is updated with changes that others have made to the code.
-
-1. _Commit_ your changes, and add an intuitive commit message so others will know what you have changed to the code. Please see the wiki page of this repo for a style guide on the commit messages.
-
-1. _Push_ your changes to the branch. 
+1. Follow the steps in the next section to generate the documentation (`roxygen2::roxygenise()`), check the package (`devtools::check()`), and install the package (`devtools::install()`). 
 
 ### 3. Update package and installing to local directory
 
@@ -133,6 +120,17 @@ devtools::install_git(url = "https://github.com/microsoft/wpa.git",
                       branch = "feature/network-functions",
                       build_vignettes = TRUE)
 ```
+
+### 4. Pushing changes to GitHub
+
+Once you are sure that everything works, you can push your changes to GitHub either with git or GitHub Desktop. Depending on the set-up, the method to merge is different:
+
+- If you are pushing to your forked repository, you can push directly to the master/main branch. 
+- If you are pushing to the official repository at `microsoft/wpa` (assuming you have access), you are recommended to either create a new branch or push the changes to an existing patch branch that is **not** the main repository. It is recommended that you never push changes directly to the `main` branch so that you do not introduce any breaking changes.
+
+For commit messages, we would ask you to add an intuitive commit message so others will know what you have changed to the code. Please see the wiki page of this repo for a style guide on the commit messages.
+
+The next step is to create a pull request to merge your changes to `microsoft/wpa`. The repository itself provides a pull request template on what information you should include in the pull request. A maintainer will reply and review your pull request once it has been successfully submitted.
 
 ---
 
