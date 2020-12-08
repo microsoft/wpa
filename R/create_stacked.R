@@ -39,7 +39,6 @@
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
-#' \dontrun{
 #' sq_data %>%
 #'   create_stacked(hrvar = "LevelDesignation",
 #'                  metrics = c("Meeting_hours", "Email_hours"),
@@ -60,7 +59,6 @@
 #'                              "Call_hours",
 #'                              "Instant_Message_hours"),
 #'                  return = "table")
-#'}
 #' @export
 create_stacked <- function(data,
                            hrvar = "Organization",
@@ -84,6 +82,12 @@ create_stacked <- function(data,
   ## Nothing happens if all present
   data %>%
     check_inputs(requirements = required_variables)
+
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
 
   n_count <-
     data %>%

@@ -57,6 +57,12 @@ create_fizz <- function(data,
   data %>%
     check_inputs(requirements = required_variables)
 
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
+
   ## Clean metric name
   clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
 

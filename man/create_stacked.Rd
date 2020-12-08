@@ -48,7 +48,6 @@ Returns a stacked bar plot by default.
 Additional options available to return a summary table.
 }
 \examples{
-\dontrun{
 sq_data \%>\%
   create_stacked(hrvar = "LevelDesignation",
                  metrics = c("Meeting_hours", "Email_hours"),
@@ -69,7 +68,6 @@ sq_data \%>\%
                              "Call_hours",
                              "Instant_Message_hours"),
                  return = "table")
-}
 }
 \seealso{
 Other Flexible: 

@@ -66,6 +66,12 @@ create_dist <- function(data,
   ## Clean metric name
   clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
 
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
+
   ## Basic Data for bar plot
   plot_data <-
     data %>%
