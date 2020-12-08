@@ -43,6 +43,10 @@ Here are the steps if you do not have repository access to `microsoft/wpa` (if y
 1.  This will create a repository called `<YOURUSERNAME>/wpa`. 
 1. After this, you can either use **GitHub Desktop** or **git** to  clone this repository to your local machine.
 
+When creating a fork on GitHub, you may be asked whether you are looking to contribute to the parent project or for your own purposes (see screenshot). Please select **contribute to the parent project**. 
+
+<img src ="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/fork-repo-example.png" height=300></img>
+
 ### Using GitHub Desktop
 
 1. Click on the big green `Code` button on the repository page, and click 'Open with GitHub Desktop'.
