@@ -9,7 +9,7 @@ totals_col(data, total_value = "Total")
 \arguments{
 \item{data}{data frame}
 
-\item{target_value}{Character value defining the name and the value of the "Total" column.
+\item{total_value}{Character value defining the name and the value of the "Total" column.
 Defaults to "Total". An error is returned if an existing variable has the same name as the
 supplied value.}
 }

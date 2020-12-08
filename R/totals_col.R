@@ -16,7 +16,7 @@
 #'   collab_fizz(hrvar = "Total")
 #'
 #' @param data data frame
-#' @param target_value Character value defining the name and the value of the "Total" column.
+#' @param total_value Character value defining the name and the value of the "Total" column.
 #' Defaults to "Total". An error is returned if an existing variable has the same name as the
 #' supplied value.
 #'
