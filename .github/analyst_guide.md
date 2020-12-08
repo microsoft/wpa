@@ -34,7 +34,7 @@ This guide is organized in five key sections:
 
 To get the most out of **wpa**, make sure to leaverage these additional resources: 
 
-1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf).
+1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet.pdf).
 2. A growing list of [articles](https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
 
 ## Ready to go?
