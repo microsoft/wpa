@@ -59,7 +59,7 @@ The **wpa** package includes a set of demo Workplace Analytics datasets that you
 5. `g2g_data`: A Group-to-Group Query
 
 ## Exploring a person query 
-We can explore the sq_data person query using the `analysis_scope()` function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query). 
+We can explore the `sq_data` person query using the `analysis_scope()` function. This function creates a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query).  
 
 For example, if we want to know the number of individuals in `sq_data` per organization, we can use:
 
@@ -96,6 +96,14 @@ Most functions in **wpa** create plot by default, but can change their behaviour
 ```R
 sq_data %>% analysis_scope(hrvar = "LevelDesignation", return = "table")
 ```
+If at any point you would like to understand more about the functions, you can:
+
+- Run in the R console with the function name prefixed with a question mark, e.g. `?analysis_scope`
+- View the underlying source code of the function with `View()`,  e.g. `View(analysis_scope)`
+- Visit the reference page online: https://microsoft.github.io/wpa/reference
+
+
+
 ## Function structure
 
 All functions in **wpa** follow a similar behaviour, including many common arguments. The following illustrates the basic API of standard analysis functions:
