@@ -58,6 +58,8 @@ The **wpa** package includes a set of demo Workplace Analytics datasets that you
 4. `em_data`: An Hourly Collaboration Query
 5. `g2g_data`: A Group-to-Group Query
 
+See [here](https://docs.microsoft.com/en-us/Workplace-Analytics/tutorials/query-basics) for a full documentation of the queries in Workplace Analytics.
+
 ## Exploring a person query 
 We can explore the `sq_data` person query using the `analysis_scope()` function. This function creates a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query).  
 
