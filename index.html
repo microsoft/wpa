@@ -176,48 +176,16 @@
 <p><img src="reference/figures/output2.gif" align="center" width="80%"></p>
 <hr>
 </div>
-<div id="-quick-start-guide---for-users" class="section level2">
+<div id="-users" class="section level2">
 <h2 class="hasAnchor">
-<a href="#-quick-start-guide---for-users" class="anchor"></a><span class="emoji" data-emoji="rocket">🚀</span> Quick start guide - For users</h2>
-<div id="installing-the-package" class="section level3">
-<h3 class="hasAnchor">
-<a href="#installing-the-package" class="anchor"></a>Installing the package</h3>
-<p>You can install the GitHub version of <strong>wpa</strong> with the following in R:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Check if devtools is installed, if not then install it</span>
-<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"devtools"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span></code></pre></div>
-<p>Note that <strong>wpa</strong> is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work.</p>
-</div>
-<div id="examples" class="section level3">
-<h3 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h3>
-<p>The package comes shipped with a sample Standard Query dataset (<code>sq_data</code>), so you can start exploring functions without having to read in any data. Most functions in <strong>wpa</strong> share a consistent API, and enable you to return results for both a <strong>plot</strong> or a <strong>table</strong> (data frame):</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
-<p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align="center" width="80%"></p>
-<p>By passing ‘table’ to the <code>return</code> argument, the function will return a data frame with the relevant summary statistics.</p>
-<p>The following illustrates the basic API of standard analysis functions:</p>
-<p><img src="reference/figures/api-demo.png" align="center" width="80%"></p>
-<hr>
-</div>
-</div>
-<div id="-package-structure" class="section level2">
-<h2 class="hasAnchor">
-<a href="#-package-structure" class="anchor"></a><span class="emoji" data-emoji="package">📦</span> Package Structure</h2>
-<p>For information on the package structure, please see the relevant section in our <a href="analyst_guide.html">Analyst Guide</a>.</p>
-<p>Also check out our package cheat sheet for more information:</p>
+<a href="#-users" class="anchor"></a><span class="emoji" data-emoji="rocket">🚀</span> Users</h2>
+<p>To get started with the package, please see the following links:</p>
+<ul>
+<li><a href="https://microsoft.github.io/wpa/analyst_guide_getting_started.html">Installation and Set-up</a></li>
+<li><a href="https://microsoft.github.io/wpa/reference/index.html">Full function list</a></li>
+</ul>
+<p>Also check out our package cheat sheet for a quick glimpse of what <strong>wpa</strong> offers:</p>
 <p><a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet.png" align="center" width="50%"></a></p>
-<hr>
-</div>
-<div id="vignette" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vignette" class="anchor"></a>Vignette</h2>
-<p>You can browse the vignette by running the following in R:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"intro-to-wpa"</span>, package <span class="op">=</span> <span class="st">"wpa"</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
 <div id="-developers" class="section level2">

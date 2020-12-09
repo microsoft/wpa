@@ -203,7 +203,8 @@
   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span></code></pre></div>
-<p>This package is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work. If you prefer to proceed with a local installation, you can download a installation file <a href="https://github.com/microsoft/wpa/releases">here</a>.</p>
+<p>If you are prompted for a message to update your packages, we recommend updating all CRAN packages, unless you are aware that there are any significant breaking changes in the new packages that would be updated. You may need to restart your R Session both <strong>before</strong> and <strong>after</strong> the package updates prior to re-running the above code.</p>
+<p><strong>wpa</strong> is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work. If you prefer to proceed with a local installation, you can download a installation file <a href="https://github.com/microsoft/wpa/releases">here</a>.</p>
 </div>
 <div id="loading-the-wpa-package" class="section level2">
 <h2 class="hasAnchor">
@@ -224,7 +225,9 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Users/myuser/Desktop/"</span><span class="op">)</span>
 <span class="va">person_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"myquery.csv"</span><span class="op">)</span> </code></pre></div>
-<p>In the code above, <code>set_wd()</code> will set the working directory to the Desktop, then <code><a href="reference/import_wpa.html">import_wpa()</a></code> will read the source CSV. The contents will be saved to the object person_data (using <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> as an <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html">Assignment Operator</a>).</p>
+<p>In the code above, <code>set_wd()</code> will set the working directory to the Desktop, then <code><a href="reference/import_wpa.html">import_wpa()</a></code> will read the source CSV. Note that file paths in R must be provided as a forward-slash (<code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>) or escaped back-slash (<code>\\</code>).</p>
+<p>As an alternative to <code>set_wd()</code>, you may also consider using <a href="https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/">RStudio Projects</a>, which enables you to use relative links within the working directory <em>instead</em> of <code>set_wd()</code> and full file paths.</p>
+<p>The contents will be saved to the object person_data (using <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> as an <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html">Assignment Operator</a>).</p>
 </div>
 <div id="demo-data" class="section level2">
 <h2 class="hasAnchor">
@@ -232,21 +235,22 @@
 <p>The <strong>wpa</strong> package includes a set of demo Workplace Analytics datasets that you can use to explore the functionality of this package. We will also use them extensively in this guide. The included datasets are:</p>
 <ol>
 <li>
-<em>sq_data</em>: A Standard Person Query</li>
+<code>sq_data</code>: A Standard Person Query</li>
 <li>
-<em>dv_data</em>: A Standard Person Query with outliers</li>
+<code>dv_data</code>: A Standard Person Query with outliers</li>
 <li>
-<em>mt_data</em>: A Standard Meeting Query</li>
+<code>mt_data</code>: A Standard Meeting Query</li>
 <li>
-<em>em_data</em>: An Hourly Collaboration Query</li>
+<code>em_data</code>: An Hourly Collaboration Query</li>
 <li>
-<em>g2g_data</em>: A Group-to-Group Query</li>
+<code>g2g_data</code>: A Group-to-Group Query</li>
 </ol>
+<p>See <a href="https://docs.microsoft.com/en-us/Workplace-Analytics/tutorials/query-basics">here</a> for a full documentation of the queries in Workplace Analytics.</p>
 </div>
 <div id="exploring-a-person-query" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-a-person-query" class="anchor"></a>Exploring a person query</h2>
-<p>We can explore the sq_data person query using the <code><a href="reference/hrvar_count.html">analysis_scope()</a></code> function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query).</p>
+<p>We can explore the <code>sq_data</code> person query using the <code><a href="reference/hrvar_count.html">analysis_scope()</a></code> function. This function creates a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query).</p>
 <p>For example, if we want to know the number of individuals in <code>sq_data</code> per organization, we can use:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
@@ -260,10 +264,21 @@
 <span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"TimeZone"</span><span class="op">)</span></code></pre></div>
 <p>We can expand this analysis by using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> function from <strong>dplyr</strong>. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (<code><a href="reference/%&gt;%.html">%&gt;%</a></code>) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span><span class="op">==</span><span class="st">"Support"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span> <span class="op">==</span> <span class="st">"Support"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
 <p>Most functions in <strong>wpa</strong> create plot by default, but can change their behaviour by adding a <code>return</code> argument. If you add <code>return="table"</code> to this function it will now produce a table with the count of the distinct individuals by group.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar<span class="op">=</span><span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<p>If at any point you would like to understand more about the functions, you can:</p>
+<ul>
+<li>Run in the R console with the function name prefixed with a question mark, e.g. <code><a href="reference/hrvar_count.html">?analysis_scope</a></code>
+</li>
+<li>View the underlying source code of the function with <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>, e.g. <code><a href="https://rdrr.io/r/utils/View.html">View(analysis_scope)</a></code>
+</li>
+<li>Visit the reference page online: <a href="https://microsoft.github.io/wpa/reference" class="uri">https://microsoft.github.io/wpa/reference</a>
+</li>
+</ul>
 </div>
 <div id="function-structure" class="section level2">
 <h2 class="hasAnchor">
@@ -278,12 +293,14 @@
 <p>Tables and plots can be saved with the <code><a href="reference/export.html">export()</a></code> function. This functions allows you to save plots and tables into your local drive.</p>
 <p>One again, adding an additional forward-Pipe operator we can write:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="four-steps-from-data-to-output" class="section level2">
 <h2 class="hasAnchor">
 <a href="#four-steps-from-data-to-output" class="anchor"></a>Four steps from data to output</h2>
-<p>The examples above illustrate how the use of <strong>wpa</strong> can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results. The script below illustrates this funcitonality:</p>
+<p>The examples above illustrate how the use of <strong>wpa</strong> can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results. The script below illustrates this functionality:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa">wpa</a></span><span class="op">)</span> <span class="co"># Step 1</span>
 
@@ -291,7 +308,9 @@
 
 <span class="va">person_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Step 3</span>
 
-<span class="va">person_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Step 4</span></code></pre></div>
+<span class="va">person_data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/hrvar_count.html">analysis_scope</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/export.html">export</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Step 4</span></code></pre></div>
 </div>
 <div id="ready-to-learn-more" class="section level2">
 <h2 class="hasAnchor">
