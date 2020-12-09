@@ -14,7 +14,9 @@ devtools::install_git(url = "https://github.com/microsoft/wpa.git")
 
 ```
 
-This package is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to proceed with a local installation, you can download a installation file [here](https://github.com/microsoft/wpa/releases). 
+If you are prompted for a message to update your packages, we recommend updating all CRAN packages, unless you are aware that there are any significant breaking changes in the new packages that would be updated. You may need to restart your R Session both **before** and **after** the package updates prior to re-running the above code. 
+
+**wpa** is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to proceed with a local installation, you can download a installation file [here](https://github.com/microsoft/wpa/releases). 
 
 ## Loading the wpa package
 Once the installation is complete, you can load the package with:
@@ -41,17 +43,20 @@ setwd("C:/Users/myuser/Desktop/")
 person_data <- import_wpa("myquery.csv") 
 ```
 
-In the code above, `set_wd()` will  set the working directory to the Desktop, then `import_wpa()` will read the source CSV. The contents will be saved to the object person_data (using `<-` as an [Assignment Operator](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html)).
+In the code above, `set_wd()` will  set the working directory to the Desktop, then `import_wpa()` will read the source CSV. Note that file paths in R must be provided as a forward-slash (`/`) or escaped back-slash (`\\`). 
 
+As an alternative to `set_wd()`, you may also consider using [RStudio Projects](https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/), which enables you to use relative links within the working directory _instead_ of `set_wd()` and full file paths.
+
+The contents will be saved to the object person_data (using `<-` as an [Assignment Operator](https://stat.ethz.ch/R-manual/R-devel/library/base/html/assignOps.html)).
 
 ## Demo data
 The **wpa** package includes a set of demo Workplace Analytics datasets that you can use to explore the functionality of this package. We will also use them extensively in this guide. The included datasets are:
 
-1. *sq_data*: A Standard Person Query
-2. *dv_data*: A Standard Person Query with outliers
-3. *mt_data*: A Standard Meeting Query
-4. *em_data*: An Hourly Collaboration Query
-5. *g2g_data*: A Group-to-Group Query
+1. `sq_data`: A Standard Person Query
+2. `dv_data`: A Standard Person Query with outliers
+3. `mt_data`: A Standard Meeting Query
+4. `em_data`: An Hourly Collaboration Query
+5. `g2g_data`: A Group-to-Group Query
 
 ## Exploring a person query 
 We can explore the sq_data person query using the `analysis_scope()` function. This function create a basic bar plot, with the count of the distinct individuals for different group (groups defined by an HR attribute in your query). 
@@ -81,13 +86,15 @@ sq_data %>% analysis_scope(hrvar = "TimeZone")
 We can expand this analysis by using the `dplyr::filter()` function from **dplyr**. This will allows us to drill into a specific subset of the data. This is where the Forward-Pipe Operators (`%>%`) become very useful, as we can write a single line that takes the original data, applies a filter, and then creates the plot:
 
 ```R
-sq_data %>% filter(LevelDesignation=="Support") %>% analysis_scope(hrvar = "Organization")
+sq_data %>%
+	filter(LevelDesignation == "Support") %>%
+    analysis_scope(hrvar = "Organization")
 ```
 
 Most functions in **wpa** create plot by default, but can change their behaviour by adding a `return` argument. If you add `return="table"` to this function it will now produce a table with the count of the distinct individuals by group.
 
 ```R
-sq_data %>% analysis_scope(hrvar="LevelDesignation", return="table")
+sq_data %>% analysis_scope(hrvar = "LevelDesignation", return = "table")
 ```
 ## Function structure
 
@@ -103,13 +110,15 @@ Tables and plots can be saved with the `export()` function. This functions allow
 One again, adding an additional forward-Pipe operator we can write:
 
 ```R
-sq_data %>% analysis_scope(hrvar = "Organization") %>% export()
+sq_data %>%
+	analysis_scope(hrvar = "Organization") %>%
+	export()
 
 ```
 
 ## Four steps from data to output
 
-The examples above illustrate how the use of **wpa** can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results. The script below illustrates this funcitonality:
+The examples above illustrate how the use of **wpa** can be summarized in 4 simple steps: Load the package, read-in query data, run functions and export results. The script below illustrates this functionality:
 
 ```R
 library(wpa) # Step 1
@@ -118,7 +127,9 @@ person_data <- import_wpa("myquery.csv") # Step 2
 
 person_data %>% analysis_scope() # Step 3
 
-person_data %>% analysis_scope() %>% export() # Step 4
+person_data %>%
+	analysis_scope() %>%
+	export() # Step 4
 
 ```
 
