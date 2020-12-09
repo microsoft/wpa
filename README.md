@@ -22,53 +22,16 @@ Here is an example of **wpa** in action:
 
 ---
 
-## :rocket: Quick start guide - For users
+## :rocket: Users
 
-### Installing the package
+To get started with the package,  please see the following links: 
 
-You can install the GitHub version of **wpa** with the following in R: 
-```R
-# Check if devtools is installed, if not then install it
-if(!"devtools" %in% installed.packages()){
-  install.packages("devtools")
-}
-devtools::install_git(url = "https://github.com/microsoft/wpa.git")
-```
-Note that **wpa** is not yet released on CRAN, and therefore `install.packages()` will not work.
+- [Installation and Set-up](https://microsoft.github.io/wpa/analyst_guide_getting_started.html)
+- [Full function list](https://microsoft.github.io/wpa/reference/index.html)
 
-### Examples
-
-The package comes shipped with a sample Standard Query dataset (`sq_data`), so you can start exploring functions without having to read in any data. Most functions in **wpa** share a consistent API, and enable you to return results for both a **plot** or a **table** (data frame):
-
-```R
-collaboration_sum(sq_data, return = "plot")
-```
-<img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/collab_sum.png" align="center" width=80% />
-
-By passing 'table' to the `return` argument, the function will return a data frame with the relevant summary statistics. 
-
-The following illustrates the basic API of standard analysis functions:
-
-<img src="man/figures/api-demo.png" align="center" width=80% />
-
----
-
-## :package: Package Structure
-
-For information on the package structure, please see the relevant section in our [Analyst Guide](.github/analyst_guide.md).
-
-Also check out our package cheat sheet for more information:
+Also check out our package cheat sheet for a quick glimpse of what **wpa** offers:
 
 <a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet.png" align="center" width=50% /></a>
-
----
-
-## Vignette
-
-You can browse the vignette by running the following in R:
-```R
-vignette(topic = "intro-to-wpa", package = "wpa")
-```
 
 ---
 
