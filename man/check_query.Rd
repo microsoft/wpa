@@ -8,7 +8,7 @@ check_query(data, return = "message", validation = FALSE)
 }
 \arguments{
 \item{data}{A person-level query in the form of a data frame, including the standard person query,
-collaboration assessment query, and the hourly collaboration query.}
+Ways of Working assessment query, and the hourly collaboration query.}
 
 \item{return}{Character string to specify whether to return a console message ("message"),
 a character string ("text"), or a data frame. Defaults to "message".}
@@ -22,7 +22,7 @@ such as date range, number of employees, HR attributes identified, etc.
 }
 \details{
 This can be used with any person-level query, such as the standard person query,
-collaboration assessment query, and the hourly collaboration query. When run,
+Ways of Working assessment query, and the hourly collaboration query. When run,
 this prints diagnostic data to the R console.
 }
 \examples{

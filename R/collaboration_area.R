@@ -6,7 +6,7 @@
 #' @title Collaboration - Stacked Area Plot
 #'
 #' @description
-#' Provides an overview analysis of 'Weekly Digital Collaboration'.
+#' Provides an overview analysis of Weekly Digital Collaboration.
 #' Returns an stacked area plot of Email and Meeting Hours by default.
 #' Additional options available to return a summary table.
 #'
@@ -14,8 +14,8 @@
 #' Uses the metrics `Meeting_hours`, `Email_hours`, `Unscheduled_Call_hours`,
 #' and `Instant_Message_hours`.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
-#' A Collaboration assessment dataset may also be provided, in which
+#' @param data A Standard Person Query dataset in the form of a data frame.
+#' A Ways of Working assessment dataset may also be provided, in which
 #' Unscheduled call hours would be included in the output.
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
@@ -29,6 +29,9 @@
 #' @import scales
 #'
 #' @family Collaboration
+#'
+#' @examples
+#' collaboration_area(sq_data)
 #'
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.

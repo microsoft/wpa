@@ -19,7 +19,7 @@
 #' e.g. "/files/standard query.csv"
 #' @param standardise logical. If TRUE, `import_wpa()` runs `standardise_pq()` to make a Collaboration
 #' Assessment query's columns name standard and consistent with a Standard Person Query. Note that this
-#' will have no effect if the query being imported is not a Collaboration Assessment query. Defaults
+#' will have no effect if the query being imported is not a Ways of Working Assessment query. Defaults
 #' as FALSE.
 #'
 #' @export
@@ -43,8 +43,8 @@ import_wpa <- function(x, standardise = FALSE){
   }
 
   ## Standardise query if `standardise == TRUE`
-  if(standardise == TRUE & identify_query(return_data) == "Collaboration Assessment Query"){
-    message("Standardising column names for a Collaboration Assessment query to
+  if(standardise == TRUE & identify_query(return_data) == "Ways of Working Assessment Query"){
+    message("Standardising column names for a Ways of Working Assessment query to
             a Person query...")
     return_data <- standardise_pq(return_data)
   }

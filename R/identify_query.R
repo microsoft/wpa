@@ -32,7 +32,7 @@ identify_query <- function(data, threshold = 2){
 
   ## variables to check for in each query type
   spq_var <- c("PersonId", "Collaboration_hours", "Instant_Message_hours") # Standard Person query
-  caq_var <- c("PersonId", "Collaboration_hrs", "Instant_message_hours") # Collaboration Assessment query
+  caq_var <- c("PersonId", "Collaboration_hrs", "Instant_message_hours") # Ways of Working Assessment query
   smq_var <- c("MeetingId", "Date", "Attendees") # Standard Meeting Query
   shc_var <- c("PersonId", "Emails_sent_00_01", "IMs_sent_23_24") # Standard Hourly Collaboration
 
@@ -54,7 +54,7 @@ identify_query <- function(data, threshold = 2){
 
   ## Labels
   qlabels <- c("Person Query",
-               "Collaboration Assessment Query",
+               "Ways of Working Assessment Query",
                "Meeting Query",
                "Hourly Collaboration Query")
 
