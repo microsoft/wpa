@@ -23,7 +23,7 @@ heat_colours <- function (n, alpha, rev = FALSE) {
   ## Increasingly low value (darker)
   v <- seq(from = 1, to = 0.8, length.out = n)
 
-  cols <- hsv(h = h, s = s, v = v, alpha = alpha)
+  cols <- grDevices::hsv(h = h, s = s, v = v, alpha = alpha)
 
   if(rev){
 
