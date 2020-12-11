@@ -27,6 +27,9 @@
 #'
 #' @family Flexible
 #'
+#' @examples
+#' create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
+#'
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
@@ -56,7 +59,7 @@ create_trend <- function(data,
   }
 
   ## Clean metric name
-  clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
+  clean_nm <- us_to_space(metric)
 
   myTable <-
     data %>%

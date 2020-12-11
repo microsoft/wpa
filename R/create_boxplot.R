@@ -64,7 +64,7 @@ create_boxplot <- function(data,
   }
 
   ## Clean metric name
-  clean_nm <- gsub(pattern = "_", replacement = "", x = metric)
+  clean_nm <- us_to_space(metric)
 
   plot_data <-
     data %>%

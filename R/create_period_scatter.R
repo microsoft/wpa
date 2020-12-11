@@ -143,8 +143,8 @@ create_period_scatter <- function(data,
           "to",
           daterange_2_end)
 
-  clean_x <- gsub(pattern = "_", replacement = " ", x = metric_x)
-  clean_y <- gsub(pattern = "_", replacement = " ", x = metric_y)
+  clean_x <- us_to_space(metric_x)
+  clean_y <- us_to_space(metric_y)
 
   plot_title <-
     paste(clean_x, "and", clean_y,

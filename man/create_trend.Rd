@@ -35,6 +35,10 @@ Provides a week by week view of a selected Workplace Analytics metric.
 By default returns a week by week heatmap bar plot, highlighting the points in time with most activity.
 Additional options available to return a summary table.
 }
+\examples{
+create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
+
+}
 \seealso{
 Other Flexible: 
 \code{\link{create_dist}()},

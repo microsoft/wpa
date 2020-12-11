@@ -71,7 +71,7 @@ create_bar <- function(data,
   }
 
   ## Clean metric name
-  clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
+  clean_nm <- us_to_space(metric)
 
   ## Data for bar plot
   plot_data <-

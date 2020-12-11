@@ -54,8 +54,7 @@ flag_extreme <- function(data,
 
 
   ## Clean names for pretty printing
-  metric_nm <- gsub(pattern = "_", replacement = " ", x = metric)
-  metric_nm <- camel_clean(metric_nm)
+  metric_nm <- metric_nm %>% us_to_space() %>% camel_clean(metric_nm)
 
   ## Define MessageLevel
   if(person == TRUE){

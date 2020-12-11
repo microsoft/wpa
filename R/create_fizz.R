@@ -64,7 +64,7 @@ create_fizz <- function(data,
   }
 
   ## Clean metric name
-  clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
+  clean_nm <- us_to_space(metric)
 
   ## Plot data
   plot_data <-

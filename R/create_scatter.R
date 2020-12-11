@@ -74,9 +74,9 @@ create_scatter <- function(data,
     filter(n < mingroup) %>%
     pull(!!sym(hrvar))
 
-
-  clean_x <- gsub(pattern = "_", replacement = " ", x = metric_x)
-  clean_y <- gsub(pattern = "_", replacement = " ", x = metric_y)
+  ## Clean metric names
+  clean_x <- us_to_space(metric_x)
+  clean_y <- us_to_space(metric_y)
 
   myTable <-
     data %>%

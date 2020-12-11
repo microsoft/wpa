@@ -64,7 +64,7 @@ create_dist <- function(data,
     check_inputs(requirements = required_variables)
 
   ## Clean metric name
-  clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
+  clean_nm <- us_to_space(metric)
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
