@@ -87,7 +87,7 @@ theme_wpa_basic <- function(font_size = 12){
   text_italic <- element_text(size = font_size + 2, colour = text_colour, face = "italic")
 
   text_bold <- element_text(size = font_size + 2, colour = text_colour, face = "bold")
-  text_title <- element_text(size = font_size + 8, colour = text_colour, face = "bold")
+  text_title <- element_text(size = font_size + 5, colour = text_colour, face = "bold")
 
   theme_minimal() +
     theme(plot.background = element_blank(),
