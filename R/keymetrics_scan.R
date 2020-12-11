@@ -74,34 +74,38 @@ keymetrics_scan <- function(data,
     mutate(variable = factor(variable)) %>%
     group_by(variable) %>%
     # Heatmap by row
-    mutate(value_rescaled = value/mean(value)) %>%
+    mutate(value_rescaled = maxmin(value)) %>%
     ungroup()
-
-  # Underscore to space
-  us_to_space <- function(x){
-    gsub(pattern = "_", replacement = " ", x = x)
-  }
-
 
   plot_object <-
     myTable_long %>%
     filter(variable != "Employee_Count") %>%
     ggplot(aes(x = group,
                y = stats::reorder(variable, desc(variable)))) +
-    geom_tile(aes(fill = value_rescaled)) +
+    geom_tile(aes(fill = value_rescaled),
+              colour = "#FFFFFF",
+              size = 2) +
     geom_text(aes(label=round(value, 1)), size = textsize) +
-    scale_fill_distiller(palette = "Blues",  direction = 1) +
+    # Fill is contingent on max-min scaling
+    scale_fill_gradient2(low = rgb2hex(216, 24, 42),
+                         mid = rgb2hex(241, 204, 158),
+                         high = rgb2hex(7, 111, 161),
+                         midpoint = 0.5,
+                         breaks = c(0, 0.5, 1),
+                         labels = c("Minimum", "", "Maximum"),
+                         limits = c(0, 1)) +
     scale_x_discrete(position = "top") +
     scale_y_discrete(labels = us_to_space) +
-    theme_light() +
-    labs(title = "Key Workplace Analytics metrics",
+    theme_wpa_basic() +
+    theme(axis.line = element_line(color = "#FFFFFF")) +
+    labs(title = "Key metrics",
          subtitle = paste("Weekly average by", camel_clean(hrvar)),
          y =" ",
          x =" ",
+         fill = " ",
          caption = extract_date_range(data, return = "text")) +
     theme(axis.text.x = element_text(angle = 90, hjust = 0),
-          plot.title = element_text(color="grey40", face="bold", size=20)) +
-    guides(fill=FALSE)
+          plot.title = element_text(color="grey40", face="bold", size=20))
 
 
   if(return == "table"){
@@ -120,4 +124,42 @@ keymetrics_scan <- function(data,
 
   }
 
+}
+
+#' @title Replace underscore with space
+#'
+#' @description Convenience function to convert underscores to space
+#'
+#' @param x String to replace all occurrences of `_` with a single space
+#'
+#' @examples
+#' us_to_space("Meeting_hours_with_manager_1_on_1")
+#'
+#' @export
+us_to_space <- function(x){
+  gsub(pattern = "_", replacement = " ", x = x)
+}
+
+#' @title Max-Min Scaling Function
+#'
+#' @description This function allows you to scale vectors or an entire data frame using the max-min scaling method
+#' A numeric vector is always returned. Originally implemented in https://github.com/martinctc/surveytoolbox.
+#'
+#' @details This is used within `keymetrics_scan()` to enable row-wise heatmapping.
+#'
+#' @param x Pass a vector or the required columns of a data frame through this argument.
+#' @keywords max-min
+#' @export
+#' @examples
+#' numbers <- c(15, 40, 10, 2)
+#' maxmin(numbers)
+#' @export
+
+maxmin <- function(x){
+  if(any(is.na(x))){
+    warning("Warning: vector contains missing values. Those values will return as NA.")
+  }
+  maxs <- max(x, na.rm = TRUE)
+  mins <- min(x, na.rm = TRUE)
+  as.numeric(scale(x,center=mins,scale=maxs-mins))
 }
