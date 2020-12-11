@@ -184,6 +184,9 @@ utils::globalVariables(
     "value_rescaled",
     "values",
     "cleaned_data",
-    "zscore"
+    "zscore",
+    "StrongTieType",
+    "TieOrigin_PersonId",
+    "TieDestination_PersonId"
     )
 )

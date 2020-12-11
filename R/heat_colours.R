@@ -2,7 +2,8 @@
 #' Generate a vector of `n` contiguous colours, as a red-yellow-green palette.
 #'
 #' @param n the number of colors (≥ 1) to be in the palette.
-#' @param alpha an alpha-transparency level in the range [0,1] (0 means transparent and 1 means opaque)
+#' @param alpha an alpha-transparency level in the range of 0 to 1
+#' (0 means transparent and 1 means opaque)
 #' @param rev logical indicating whether the ordering of the colors should be reversed.
 #'
 #' @examples
