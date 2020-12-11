@@ -87,9 +87,9 @@ keymetrics_scan <- function(data,
               size = 2) +
     geom_text(aes(label=round(value, 1)), size = textsize) +
     # Fill is contingent on max-min scaling
-    scale_fill_gradient2(low = rgb2hex(216, 24, 42),
+    scale_fill_gradient2(low = rgb2hex(7, 111, 161),
                          mid = rgb2hex(241, 204, 158),
-                         high = rgb2hex(7, 111, 161),
+                         high = rgb2hex(216, 24, 42),
                          midpoint = 0.5,
                          breaks = c(0, 0.5, 1),
                          labels = c("Minimum", "", "Maximum"),
