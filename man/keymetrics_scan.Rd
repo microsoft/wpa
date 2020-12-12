@@ -2,7 +2,7 @@
 % Please edit documentation in R/keymetrics_scan.R
 \name{keymetrics_scan}
 \alias{keymetrics_scan}
-\title{Run a summary of Key Metrics from the Standard Query data}
+\title{Run a summary of Key Metrics from the Standard Person Query data}
 \usage{
 keymetrics_scan(
   data,
@@ -20,7 +20,7 @@ keymetrics_scan(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, e.g. "Organization"}
 

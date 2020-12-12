@@ -12,7 +12,7 @@
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a summary table.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metrics A character vector to specify variables to be used
 #' in calculating the "Total" value, e.g. c("Meeting_hours", "Email_hours").
 #' The order of the variable names supplied determine the order in which they

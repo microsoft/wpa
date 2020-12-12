@@ -12,7 +12,7 @@
 #' employees with NAs for that attribute.
 #' See hrvar_count function for more detail on the specific HR attribute of interest.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param n_var number of HR variables to include in report as rows. Default is set to 10 HR variables.
 #' @param return String to specify what to return
 #' @param threshold The max number of unique values allowed for any attribute. Default is 100.

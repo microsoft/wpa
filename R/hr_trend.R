@@ -9,7 +9,7 @@
 #' employee count over time. Part of a data validation process to check
 #' for unusual license growth / declines over time.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param return Character vector specifying what to return, defaults to "plot".
 #' Valid inputs are "plot" and "table".
 #'

@@ -10,7 +10,7 @@
 #' Returns a stacked bar plot of different buckets of coattendance.
 #' Additional options available to return a table with distribution elements.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
 #' @param return Character vector specifying what to return, defaults to "plot".

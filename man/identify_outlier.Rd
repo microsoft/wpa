@@ -7,7 +7,7 @@
 identify_outlier(data, group_var = "Date", metric = "Collaboration_hours")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{group_var}{A string with the name of the grouping variable.
 Defaults to \code{Date}.}

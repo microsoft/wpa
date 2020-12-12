@@ -13,7 +13,7 @@ hrvar_count_all(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{n_var}{number of HR variables to include in report as rows. Default is set to 10 HR variables.}
 

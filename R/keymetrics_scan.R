@@ -3,12 +3,12 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Run a summary of Key Metrics from the Standard Query data
+#' @title Run a summary of Key Metrics from the Standard Person Query data
 #'
 #' @description
 #' Returns a heatmapped table by default, with options to return a table.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, e.g. "Organization"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param metrics A character vector containing the variable names to calculate averages of.

@@ -7,7 +7,7 @@
 flag_extreme(data, metric, person = TRUE, threshold, return = "message")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{A character string specifying the metric to test.}
 

@@ -10,7 +10,7 @@
 #' by the specified HR attribute.The default behaviour is to return a
 #' bar chart as typically seen in 'Analysis Scope'.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
 #' but accepts any character vector, e.g. "LevelDesignation".
 #' If a vector with more than one value is provided, the HR attributes are automatically

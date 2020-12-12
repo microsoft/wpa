@@ -13,7 +13,7 @@ connectivity_report(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "LevelDesignation"}
@@ -28,7 +28,7 @@ Defaults to TRUE.}
 }
 \description{
 The function generates an interactive HTML report using
-Standard Query data as an input. The report contains a series
+Standard Person Query data as an input. The report contains a series
 of summary analysis and visualisations relating to key \strong{connectivity}
 metrics in Workplace Analytics, including external/internal network size
 vs breadth.

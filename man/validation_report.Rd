@@ -27,7 +27,7 @@ Defaults to TRUE.}
 }
 \description{
 The function generates an interactive HTML report using
-Standard Query data as an input. The report contains a checks on
+Standard Person Query data as an input. The report contains a checks on
 Workplace Analytics query outputs, to provide diagnostic information
 for the Analyst pre-analysis.
 

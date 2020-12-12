@@ -12,7 +12,7 @@
 #'
 #' @family Data Validation
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param end_date A string specifying the name of the date variable representing the latest date. Defaults to "Date".
 #' @param beg_date A string specifying the name of the date variable representing the hire date. Defaults to "HireDate".
 #' @param maxten A numeric value representing the maximum tenure.

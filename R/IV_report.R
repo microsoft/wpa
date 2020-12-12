@@ -7,9 +7,9 @@
 #'
 #' @description
 #' The function generates an interactive HTML report using
-#' Standard Query data as an input. The report contains a full Information Value analysis,  a data exploration technique that helps determine which columns in a data set have predictive power or influence on the value of a specified dependent variable.
+#' Standard Person Query data as an input. The report contains a full Information Value analysis,  a data exploration technique that helps determine which columns in a data set have predictive power or influence on the value of a specified dependent variable.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param predictors A character vector specifying the columns to be used as predictors.
 #' Defaults to NULL, where all numeric vectors in the data will be used as predictors.
 #' @param outcome A string specifying a binary variable, i.e. can only contain
