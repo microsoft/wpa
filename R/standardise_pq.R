@@ -7,7 +7,7 @@
 #'
 #' @description
 #' This function standardises the variable names to a Standard Person
-#' Query, where the standard use case is to pass a Collaboration Assessment
+#' Query, where the standard use case is to pass a Ways of Working Assessment
 #' Query to the function.
 #'
 #' @details
@@ -15,13 +15,13 @@
 #' - `Collaboration_hrs` -> `Collaboration_hours`
 #' - `Instant_message_hours` -> `Instant_Message_hours`
 #'
-#' @param data A Collaboration Assessment query to pass through as a data frame.
+#' @param data A Ways of Working Assessment query to pass through as a data frame.
 #'
 #' @export
 standardise_pq <- function(data){
 
-  if(identify_query(data) != "Collaboration Assessment Query"){
-    stop("Currently only Collaboration Assessment Query to Standard Person Query
+  if(identify_query(data) != "Ways of Working Assessment Query"){
+    stop("Currently only Ways of Working Assessment Query to Standard Person Query
          conversions are supported.")
   }
 

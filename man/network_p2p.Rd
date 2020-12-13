@@ -12,7 +12,7 @@ network_p2p(
   bg_fill = "#000000",
   font_col = "#FFFFFF",
   legend_pos = "bottom",
-  palette = rainbow,
+  palette = "rainbow",
   ...
 )
 }

@@ -14,7 +14,7 @@
 #' @details
 #' Uses the metric `Collaboration_hours`.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
 #'  but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.

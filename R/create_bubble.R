@@ -66,9 +66,15 @@ create_bubble <- function(data,
   data %>%
     check_inputs(requirements = required_variables)
 
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
+
   ## Clean metric names
-  clean_x <- gsub(pattern = "_", replacement = " ", x = metric_x)
-  clean_y <- gsub(pattern = "_", replacement = " ", x = metric_y)
+  clean_x <- us_to_space(metric_x)
+  clean_y <- us_to_space(metric_y)
 
   myTable <-
     data %>%

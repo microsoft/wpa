@@ -11,14 +11,9 @@
 #' row. See example below on usage.
 #'
 #' @examples
-#' \dontrun{
 #' sq_data %>%
-#'   totals_bind(target_col = "LevelDesignation",
-#'               target_value = "Total") %>%
-#'   collab_sum(hrvar = "LevelDesignation",
-#'              return = "table")
-#'
-#' }
+#'   totals_bind(target_col = "LevelDesignation", target_value = "Total") %>%
+#'   collab_sum(hrvar = "LevelDesignation", return = "table")
 #'
 #' @param data data frame
 #' @param target_col Character value of the column in which to impute "Total".

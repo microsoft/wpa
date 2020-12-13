@@ -7,11 +7,11 @@
 #'
 #' @description
 #' The function generates an interactive HTML report using
-#' Standard Query data as an input. The report contains a series
+#' Standard Person Query data as an input. The report contains a series
 #' of summary analysis and visualisations relating to key **collaboration**
 #' metrics in Workplace Analytics,including email and meeting hours.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
 #'  but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.

@@ -9,7 +9,7 @@
 #' This function scans a standard query output for groups with of employees under the privacy threshold.
 #' The method consists in reviewing each individual HR attribute, and count the distinct people within each group.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar A list of HR Variables to consider in the scan.
 #' Defaults to all HR attributes identified.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size.

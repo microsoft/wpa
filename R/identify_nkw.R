@@ -9,7 +9,7 @@
 #' This function scans a standard query output to identify employees with consistently low collaboration signals.
 #' Returns the % of non-knowledge workers identified by Organization, and optionally an edited dataframe with non-knowledge workers removed, or the full dataframe with the kw/nkw flag added.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param collab_threshold The collaboration hours threshold that should be exceeded as an average for the entire analysis period for the employee to be categorized as a knowledge worker ("kw").
 #' Enter a positive number. Default is set to 5 collaboration hours.
 #' @param return String to specify what to return

@@ -12,7 +12,7 @@
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a summary table.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metrics A character vector to specify variables to be used
 #' in calculating the "Total" value, e.g. c("Meeting_hours", "Email_hours").
 #' The order of the variable names supplied determine the order in which they
@@ -39,7 +39,6 @@
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
-#' \dontrun{
 #' sq_data %>%
 #'   create_stacked(hrvar = "LevelDesignation",
 #'                  metrics = c("Meeting_hours", "Email_hours"),
@@ -60,7 +59,6 @@
 #'                              "Call_hours",
 #'                              "Instant_Message_hours"),
 #'                  return = "table")
-#'}
 #' @export
 create_stacked <- function(data,
                            hrvar = "Organization",
@@ -84,6 +82,12 @@ create_stacked <- function(data,
   ## Nothing happens if all present
   data %>%
     check_inputs(requirements = required_variables)
+
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
 
   n_count <-
     data %>%

@@ -13,7 +13,7 @@ create_trend(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
@@ -34,6 +34,10 @@ When 'table' is passed, a summary table is returned as a data frame.
 Provides a week by week view of a selected Workplace Analytics metric.
 By default returns a week by week heatmap bar plot, highlighting the points in time with most activity.
 Additional options available to return a summary table.
+}
+\examples{
+create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
+
 }
 \seealso{
 Other Flexible: 

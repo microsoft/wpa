@@ -2,7 +2,7 @@
 % Please edit documentation in R/meetingtype_dist_ca.R
 \name{meetingtype_dist_ca}
 \alias{meetingtype_dist_ca}
-\title{Meeting Type Distribution (Collaboration Assessment Query)}
+\title{Meeting Type Distribution (Ways of Working Assessment Query)}
 \usage{
 meetingtype_dist_ca(data, hrvar = NULL, mingroup = 5, return = "plot")
 }
@@ -18,5 +18,5 @@ Valid inputs are "plot" and "table".}
 }
 \description{
 Calculate the hour distribution of internal meeting types,
-using a Collaboration Assessment Query with core WpA variables as an input.
+using a Ways of Working Assessment Query with core WpA variables as an input.
 }

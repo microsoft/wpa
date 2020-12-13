@@ -22,13 +22,8 @@ this is to enable to creation of summary tables with a calculated "Total"
 row. See example below on usage.
 }
 \examples{
-\dontrun{
 sq_data \%>\%
-  totals_bind(target_col = "LevelDesignation",
-              target_value = "Total") \%>\%
-  collab_sum(hrvar = "LevelDesignation",
-             return = "table")
-
-}
+  totals_bind(target_col = "LevelDesignation", target_value = "Total") \%>\%
+  collab_sum(hrvar = "LevelDesignation", return = "table")
 
 }

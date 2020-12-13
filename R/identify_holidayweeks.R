@@ -12,7 +12,7 @@
 #'
 #' As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param sd The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.
 #' @param return String to specify what to return
 #'

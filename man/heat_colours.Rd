@@ -9,7 +9,8 @@ heat_colours(n, alpha, rev = FALSE)
 \arguments{
 \item{n}{the number of colors (≥ 1) to be in the palette.}
 
-\item{alpha}{an alpha-transparency level in the range \link{0,1} (0 means transparent and 1 means opaque)}
+\item{alpha}{an alpha-transparency level in the range of 0 to 1
+(0 means transparent and 1 means opaque)}
 
 \item{rev}{logical indicating whether the ordering of the colors should be reversed.}
 }

@@ -31,6 +31,7 @@
 #' @import ggplot2
 #' @import dplyr
 #' @import network
+#' @importFrom grDevices rainbow
 #'
 #' @export
 network_p2p <- function(data,
@@ -40,7 +41,7 @@ network_p2p <- function(data,
                         bg_fill = "#000000",
                         font_col = "#FFFFFF",
                         legend_pos = "bottom",
-                        palette = rainbow,
+                        palette = "rainbow",
                         ...){
 
   data <-

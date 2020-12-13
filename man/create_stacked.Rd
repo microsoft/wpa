@@ -16,7 +16,7 @@ create_stacked(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
@@ -48,7 +48,6 @@ Returns a stacked bar plot by default.
 Additional options available to return a summary table.
 }
 \examples{
-\dontrun{
 sq_data \%>\%
   create_stacked(hrvar = "LevelDesignation",
                  metrics = c("Meeting_hours", "Email_hours"),
@@ -69,7 +68,6 @@ sq_data \%>\%
                              "Call_hours",
                              "Instant_Message_hours"),
                  return = "table")
-}
 }
 \seealso{
 Other Flexible: 

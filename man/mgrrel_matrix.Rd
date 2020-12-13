@@ -13,7 +13,7 @@ mgrrel_matrix(
 )
 }
 \arguments{
-\item{data}{Standard Query data to pass through. Accepts a data frame.}
+\item{data}{Standard Person Query data to pass through. Accepts a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector,
 e.g. "Organization". Defaults to NULL.}

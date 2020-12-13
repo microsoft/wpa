@@ -10,8 +10,8 @@ collaboration_area(data, hrvar = "Organization", mingroup = 5, return = "plot")
 collab_area(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.
-A Collaboration assessment dataset may also be provided, in which
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+A Ways of Working assessment dataset may also be provided, in which
 Unscheduled call hours would be included in the output.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
@@ -26,13 +26,17 @@ Returns a ggplot object by default, where 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{
-Provides an overview analysis of 'Weekly Digital Collaboration'.
+Provides an overview analysis of Weekly Digital Collaboration.
 Returns an stacked area plot of Email and Meeting Hours by default.
 Additional options available to return a summary table.
 }
 \details{
 Uses the metrics \code{Meeting_hours}, \code{Email_hours}, \code{Unscheduled_Call_hours},
 and \code{Instant_Message_hours}.
+}
+\examples{
+collaboration_area(sq_data)
+
 }
 \seealso{
 Other Collaboration: 

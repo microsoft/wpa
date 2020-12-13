@@ -10,11 +10,11 @@ meetingtype_dist(data, hrvar = NULL, mingroup = 5, return = "plot")
 \item{data}{Data frame. If a meeting query, must contain the variables \code{Attendee} and \code{DurationHours}.}
 
 \item{hrvar}{Character string to specify the HR attribute to split the data by.
-Note that this is only applicable if a Collaboration Assessment query is passed to the function. If a Meeting Query
+Note that this is only applicable if a Ways of Working Assessment query is passed to the function. If a Meeting Query
 is passed instead, this argument is ignored.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-Only applicable when using a Collaboration Assessment query.}
+Only applicable when using a Ways of Working Assessment query.}
 
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}
@@ -22,6 +22,11 @@ Valid inputs are "plot" and "table".}
 \description{
 Calculate the hour distribution of internal meeting types.
 This is a wrapper around \code{meetingtype_dist_mt()} and
-\code{meetingtype_dist_ca()}, depending on whether a Meeting Query or a Collaboration Assessment Query
+\code{meetingtype_dist_ca()}, depending on whether a Meeting Query or a Ways of Working Assessment Query
 is passed as an input.
+}
+\examples{
+## Implementation using Standard Meeting Query
+meetingtype_dist(mt_data)
+
 }

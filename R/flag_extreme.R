@@ -9,7 +9,7 @@
 #' This is used as part of data validation to check if there are extreme values
 #' in the dataset.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric A character string specifying the metric to test.
 #' @param person A logical value to specify whether to calculate person-averages.
 #' Defaults to TRUE (person-averages calculated).
@@ -54,8 +54,7 @@ flag_extreme <- function(data,
 
 
   ## Clean names for pretty printing
-  metric_nm <- gsub(pattern = "_", replacement = " ", x = metric)
-  metric_nm <- camel_clean(metric_nm)
+  metric_nm <- metric_nm %>% us_to_space() %>% camel_clean(metric_nm)
 
   ## Define MessageLevel
   if(person == TRUE){

@@ -11,7 +11,7 @@
 #' Additional options available to return a summary table.
 #'
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
@@ -26,6 +26,9 @@
 #' @import scales
 #'
 #' @family Flexible
+#'
+#' @examples
+#' create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 #'
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.
@@ -49,8 +52,14 @@ create_trend <- function(data,
   data %>%
     check_inputs(requirements = required_variables)
 
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
+
   ## Clean metric name
-  clean_nm <- gsub(pattern = "_", replacement = " ", x = metric)
+  clean_nm <- us_to_space(metric)
 
   myTable <-
     data %>%
