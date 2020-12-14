@@ -23,12 +23,15 @@ This is used as part of data validation to check if there are extreme values
 in the dataset.
 }
 \examples{
-\dontrun{
 # The threshold values are intentionally set low to trigger messages.
 flag_extreme(sq_data, "Email_hours", threshold = 15)
+
+# Return a summary table
 flag_extreme(sq_data, "Email_hours", threshold = 15, return = "table")
+
+# Person-week level
 flag_extreme(sq_data, "Email_hours", person = FALSE, threshold = 15)
-}
+
 
 }
 \seealso{
