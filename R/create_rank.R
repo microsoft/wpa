@@ -121,9 +121,9 @@ create_rank <- function(data,
                                  size = 3) +
         scale_x_continuous(position = "top") +
         scale_fill_manual(name = "Group",
-                          values = c("#FE7F4F",
+                          values = c(rgb2hex(68,151,169),
                                      "white",
-                                     rgb2hex(68,151,169)),
+                                     "#FE7F4F"),
                           guide = "legend") +
         theme_wpa_basic() +
         scale_size(guide = "none", range = c(1, 15)) +
@@ -164,9 +164,9 @@ create_rank <- function(data,
                                  size = 3) +
         scale_x_continuous(position = "top") +
         scale_fill_manual(name = "Group",
-                          values = c("#FE7F4F",
+                          values = c(rgb2hex(68,151,169),
                                      "white",
-                                     rgb2hex(68,151,169)),
+                                     "#FE7F4F"),
                           guide = "legend") +
         theme_wpa_basic() +
         scale_size(guide = "none", range = c(1, 8)) +
