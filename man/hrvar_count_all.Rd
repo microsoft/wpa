@@ -35,6 +35,11 @@ This function will return a summary table with the count of distinct fields per 
 employees with NAs for that attribute.
 See hrvar_count function for more detail on the specific HR attribute of interest.
 }
+\examples{
+# Return a summary table of all HR attributes
+hrvar_count_all(sq_data, return = "table")
+
+}
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},

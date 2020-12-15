@@ -22,6 +22,10 @@
 #'
 #' @family Data Validation
 #'
+#' @examples
+#' # Return a summary table of all HR attributes
+#' hrvar_count_all(sq_data, return = "table")
+#'
 #' @return
 #' Returns an error message by default, where 'text' is passed in `return`.
 #' When 'table' is passed, a summary table listing the number of distinct fields and percentage of NAs for the specified number of HR attributes will be returned.
@@ -36,7 +40,7 @@ hrvar_count_all <- function(data,
                             ){
 
   ## Character vector of HR attributes
-  extracted_chr <- extract_hr(data, return = "names")
+  extracted_chr <- extract_hr(data, return = "names", max_unique = threshold)
 
   summary_table_n <-
     data %>%
