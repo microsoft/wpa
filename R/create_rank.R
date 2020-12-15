@@ -129,8 +129,7 @@ create_rank <- function(data,
         scale_size(guide = "none", range = c(1, 15)) +
         theme(
           panel.grid.major.x = element_blank(),
-          panel.grid.major.y = element_line(colour = "darkgrey"),
-          panel.grid.minor.y = element_line(colour = "black"),
+          panel.grid.major.y = element_line(colour = "#D9E7F7", size = 3), # lightblue bar
           strip.placement = "outside",
           strip.background = element_blank(),
           strip.text = element_blank()
@@ -172,8 +171,7 @@ create_rank <- function(data,
         scale_size(guide = "none", range = c(1, 8)) +
         theme(
           panel.grid.major.x = element_blank(),
-          panel.grid.major.y = element_line(colour = "darkgrey"),
-          panel.grid.minor.y = element_line(colour = "black"),
+          panel.grid.major.y = element_line(colour = "#D9E7F7", size = 3), # lightblue bar
           strip.placement = "outside",
           strip.background = element_blank(),
           strip.text = element_blank()
