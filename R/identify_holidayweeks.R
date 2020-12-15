@@ -14,7 +14,13 @@
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param sd The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.
-#' @param return String to specify what to return
+#' @param return String to specify what to return. Returns a message by default (`return` = "message").
+#' Valid options are:
+#'   - When 'message' is passed, a message is printed identifying holiday weeks.
+#'   - When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
+#'   - When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
+#'   - when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
+#'   - when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -22,13 +28,14 @@
 #'
 #' @family Data Validation
 #'
+#' @examples
+#' # Return a message by default
+#' identify_holidayweeks(sq_data)
+#'
+#' # Return a plot
+#' identify_holidayweeks(sq_data, return = "plot")
+#'
 #' @return
-#' Returns a message by default (`return` = "message").
-#' When 'message' is passed, a message is printed identifying holiday weeks.
-#' When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
-#' When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
-#' when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
-#' when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.
 #'
 #' @export
 identify_holidayweeks <- function(data, sd = 1, return = "message"){
