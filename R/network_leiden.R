@@ -36,13 +36,13 @@ network_leiden <- function(data, hrvar, res = 0.5, return){
     rbind(
       # TieOrigin
       edges %>%
-        left_join(select(p2p_demo, TieOrigin_PersonId, TO_hrvar),
+        left_join(select(data, TieOrigin_PersonId, TO_hrvar),
                   by = c("from"  = "TieOrigin_PersonId")) %>%
         select(node = "from", !!sym(hrvar) := TO_hrvar),
 
       # TieDestination
       edges %>%
-        left_join(select(p2p_demo, TieDestination_PersonId, TD_hrvar),
+        left_join(select(data, TieDestination_PersonId, TD_hrvar),
                   by = c("to"  = "TieDestination_PersonId")) %>%
         select(node = "to", !!sym(hrvar) := TD_hrvar)
     )
