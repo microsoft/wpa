@@ -112,9 +112,9 @@ create_rank <- function(data,
                    pch = 21,
                    alpha = 0.8) +
         labs(title = us_to_space(metric),
-             subtitle = "Group averages by organizational attribute",
-             y = "Organizational attributes",
-             x = us_to_space(metric)) +
+             subtitle = "Lowest and highest values, by org. attribute",
+             y = "",
+             x = "") +
         ggrepel::geom_text_repel(aes(x = !!sym(metric),
                                      y = hrvar,
                                      label = ifelse(Group %in% c("Top 5", "Bottom 5"), group, "")),
@@ -128,13 +128,15 @@ create_rank <- function(data,
         theme_wpa_basic() +
         scale_size(guide = "none", range = c(1, 15)) +
         theme(
-          panel.grid.major.x = element_blank(),
+          axis.line=element_blank(),
+		  panel.grid.major.x = element_blank(),
           panel.grid.major.y = element_line(colour = "#D9E7F7", size = 3), # lightblue bar
+		  panel.grid.minor.x = element_line(color="gray"),
           strip.placement = "outside",
           strip.background = element_blank(),
           strip.text = element_blank()
         ) +
-        geom_vline(xintercept = avg_ch, colour = "red")
+        geom_vline(xintercept = avg_ch, colour = "red") 
 
     } else if(plot_mode == 2){
 
