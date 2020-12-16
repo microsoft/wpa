@@ -5,7 +5,7 @@ var config = {
                 lineage: true
         },
         coreData: {
-                appId: "JS:JSLLTest"
+                appId: "wpaGitHubSite"
         }
 };
 awa.init(config);
