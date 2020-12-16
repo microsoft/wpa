@@ -14,7 +14,9 @@
 #' Defaults to NULL, where all numeric vectors in the data will be used as predictors.
 #' @param outcome A string specifying a binary variable, i.e. can only contain
 #' the values 1 or 0.
-#' @param bins Number of bins to use in `Information::create_infotables()`, defaults to 10.
+#' @param bins Number of bins to use in `Information::create_infotables()`, defaults to 5.
+#' @param significance Significance level to use in comparing populations for the outcomes,
+#' defaults to 0.05
 #' @param return String specifying what output to return.
 #' Defaults to "plot" that return a bar plot summarising the information value.
 #' "summary" returns a summary table, "list" returns a list of outputs for all the
@@ -26,12 +28,12 @@
 #'
 #' @examples
 #' \dontrun{
+# sq_data %>%
+#   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
+#   create_IV_cw(outcome = "X", return = "summary")
 #' sq_data %>%
 #'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>%
-#'   create_IV(outcome = "X")
-#' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>%
-#'   create_IV(outcome = "X",
+#'   create_IV_cw(outcome = "X",
 #'             predictors = c("Email_hours", "Meeting_hours"),
 #'             return = "list")
 #' }
@@ -41,6 +43,7 @@ create_IV <- function(data,
                       predictors = NULL,
                       outcome,
                       bins = 5,
+                      significance = 0.05,
                       return = "plot"){
 
   if(is.null(predictors)){
@@ -61,9 +64,37 @@ create_IV <- function(data,
   odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
   lnodds <- log(odds)
 
+  
+  # Calculate p-value  
+  predictors <- data.frame(unlist(names(train)))
+  names(predictors) <- c("Variable") 
+  predictors <- predictors %>% filter(Variable != "outcome")
+  
+    p_val_fnxn <- function(outcome, 
+                         predictor){
+    train_2 <- train %>% 
+      filter(outcome == 1 | outcome == 0) %>%
+      select(outcome, predictor) %>%
+      mutate(outcome = as.character(outcome)) %>%
+      mutate(outcome = as.factor(outcome))
+    
+    pos <- train_2 %>% filter(outcome == 1, na.rm=TRUE) %>% select(predictor) 
+    neg <- train_2 %>% filter(outcome == 0, na.rm=TRUE) %>% select(predictor) 
+    
+    s <- wilcox.test(unlist(pos), unlist(neg), paired = FALSE)
+    return(s$p.value)
+  }
+  
+  for (i in 1:(nrow(predictors))){
+    predictors$pval[i] <- p_val_fnxn(outcome, predictors$Variable[i])
+  }
+
+  # Filter out variables whose p-value is above the significance level
+  predictors <- predictors %>% filter(pval <= significance)
+  train <- train %>% select(predictors$Variable, outcome)
+  
   # IV Analysis
   IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
-  IV_summary <- IV$Summary
   IV_names <- names(IV$Tables)
 
   # Output list
@@ -75,7 +106,12 @@ create_IV <- function(data,
                PROB = ODDS / (ODDS + 1))
     }) %>%
     purrr::set_names(IV_names)
+  
+  
+  IV_summary <- inner_join(IV$Summary, predictors, by = c("Variable"))
 
+  
+  
   if(return == "summary"){
     IV_summary
   } else if(return == "plot"){
@@ -85,7 +121,7 @@ create_IV <- function(data,
                       bar_var = "IV",
                       title = "Information Value (IV)",
                       subtitle = "Showing top 12 only")
-
+    
   } else if(return == "plot-WOE"){
     Information::plot_infotables(IV, IV$Summary$Variable[], same_scale=TRUE) %>% grDevices::recordPlot()
 
