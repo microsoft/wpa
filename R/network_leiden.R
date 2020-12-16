@@ -114,5 +114,9 @@ network_leiden <- function(data, hrvar, res = 0.5, return){
                   var2 = "cluster",
                   count = "n")
 
+  } else {
+
+    stop("Please enter a valid input for `return`.")
+
   }
 }
