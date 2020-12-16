@@ -31,6 +31,14 @@ By default, missing values are excluded.
 
 As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.
 }
+\examples{
+# Return a message by default
+identify_holidayweeks(sq_data)
+
+# Return a plot
+identify_holidayweeks(sq_data, return = "plot")
+
+}
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
