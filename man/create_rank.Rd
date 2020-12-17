@@ -9,7 +9,8 @@ create_rank(
   metric,
   hrvar = extract_hr(data),
   mingroup = 5,
-  return = "table"
+  return = "table",
+  plot_mode = 1
 )
 }
 \arguments{
@@ -27,6 +28,12 @@ Defaults to 5.}
 \item{return}{A character vector specifying what to return.
 Valid values include "table" (default). Features are being considered for alternative return options but are currently
 unavailable.}
+
+\item{plot_mode}{Numeric vector to determine which plot mode to return:
+\enumerate{
+\item Top and bottom five groups across the data population are highlighted
+\item Top and bottom groups \emph{per} organizational attribute are highlighted
+}}
 }
 \value{
 Returns a ggplot object by default, where 'plot' is passed in \code{return}.
