@@ -206,7 +206,8 @@ Returns a table with all groups (across multiple HR attributes) ranked by the sp
   <span class='va'>metric</span>,
   hrvar <span class='op'>=</span> <span class='fu'><a href='extract_hr.html'>extract_hr</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>,
   mingroup <span class='op'>=</span> <span class='fl'>5</span>,
-  return <span class='op'>=</span> <span class='st'>"table"</span>
+  return <span class='op'>=</span> <span class='st'>"table"</span>,
+  plot_mode <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -236,6 +237,13 @@ Defaults to 5.</p></td>
       <td><p>A character vector specifying what to return.
 Valid values include "table" (default). Features are being considered for alternative return options but are currently
 unavailable.</p></td>
+    </tr>
+    <tr>
+      <th>plot_mode</th>
+      <td><p>Numeric vector to determine which plot mode to return:</p><ol>
+<li><p>Top and bottom five groups across the data population are highlighted</p></li>
+<li><p>Top and bottom groups <em>per</em> organizational attribute are highlighted</p></li>
+</ol></td>
     </tr>
     </table>
 

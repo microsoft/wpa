@@ -220,18 +220,22 @@ By default, missing values are excluded.</p>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String to specify what to return</p></td>
+      <td><p>String to specify what to return. Returns a message by default (<code>return</code> = "message").
+Valid options are:</p><ul>
+<li><p>When 'message' is passed, a message is printed identifying holiday weeks.</p></li>
+<li><p>When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.</p></li>
+<li><p>When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.</p></li>
+<li><p>when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.</p></li>
+<li><p>when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.</p></li>
+</ul></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a message by default (<code>return</code> = "message").
-When 'message' is passed, a message is printed identifying holiday weeks.
-When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
-When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
-when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
-when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.</p>
+    
+
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
@@ -253,6 +257,15 @@ when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dat
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
 <code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Return a message by default</span>
+<span class='fu'>identify_holidayweeks</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>The weeks where collaboration was 1 standard deviations below the mean (19.9) are: </span>
+#&gt; <span class='message'>`2019-12-01`</span></div><div class='input'>
+<span class='co'># Return a plot</span>
+<span class='fu'>identify_holidayweeks</span><span class='op'>(</span><span class='va'>sq_data</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+</div><div class='img'><img src='identify_holidayweeks-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
