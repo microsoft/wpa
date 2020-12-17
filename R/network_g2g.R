@@ -27,10 +27,27 @@
 #'
 #' @examples
 #' \dontrun{
+#' ## Return a network plot
 #' g2g_data %>%
 #'   network_g2g(time_investor = "TimeInvestors_Organization",
 #'               collaborator = "Collaborators_Organization",
 #'               metric = "Collaboration_hours")
+#'
+#' ## Export the underlying network object for more customization
+#' g2g_data %>%
+#'   network_g2g(time_investor = "TimeInvestors_Organization",
+#'               collaborator = "Collaborators_Organization",
+#'               metric = "Collaboration_hours",
+#'               return = "network") %>%
+#'   GGally::ggnet2(size = 20,
+#'                  color = "#ed786f",
+#'                  label = TRUE,
+#'                  label.size = 2,
+#'                  label.color = "black",
+#'                  edge.size = "weights",
+#'                  edge.alpha = .5) +
+#'   theme(plot.background = element_rect(fill = "black"),
+#'         text = element_text(colour = "white"))
 #' }
 #'
 #' @export
