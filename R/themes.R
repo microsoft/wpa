@@ -94,7 +94,7 @@ theme_wpa_basic <- function(font_size = 12){
           # plot.background = element_rect(fill = bg_colour),
           text = text_normal,
           plot.title = text_title,
-          plot.subtitle = text_italic,
+          plot.subtitle = text_normal,
 
           axis.title = text_normal,
           axis.text = text_small_dark,
