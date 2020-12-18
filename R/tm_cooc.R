@@ -26,15 +26,16 @@
 #' @import ggplot2
 #' @import ggraph
 #' @importFrom igraph graph_from_data_frame
-#' @importFrom widyr pairwise_count
 #' @importFrom tidytext unnest_tokens
 #'
 #' @family Text-mining
 #'
 #' @examples
-#' \dontrun{
-#' tm_cooc(mt_data,lmult = 0.01)
-#' }
+#' # Demo using a subset of `mt_data`
+#' mt_data %>%
+#'   dplyr::slice(1:20) %>%
+#'   tm_cooc(lmult = 0.01)
+#'
 #' @export
 tm_cooc <- function(data,
                     stopwords = NULL,
@@ -50,10 +51,7 @@ tm_cooc <- function(data,
   # Calculate frequency of pairs
   title_word_pairs <-
     text_df %>%
-    widyr::pairwise_count(word,
-                          line,
-                          sort = TRUE,
-                          upper = FALSE)
+    pairwise_count(id = "line", word = "word")
 
   # Graph networks
   set.seed(seed)
