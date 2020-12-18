@@ -13,7 +13,8 @@ network_p2p(
   font_col = "#FFFFFF",
   legend_pos = "bottom",
   palette = "rainbow",
-  ...
+  node_alpha = 0.7,
+  algorithm = "fr"
 )
 }
 \arguments{
@@ -22,10 +23,15 @@ network_p2p(
 \item{hrvar}{String containing the label for the HR attribute.}
 
 \item{return}{Character vector specifying what to return, defaults to "pdf".
-Other valid inputs are "plot", "network" and "table". "network" returns the \code{network}
-object used to generate the network plot. The "pdf" option is highly recommended over the "plot"
-option as the PDF export format has significantly higher performance. The "plot" option is highly
-computationally intensive and is not generally recommended.}
+Valid inputs are:
+\itemize{
+\item "pdf": saves the network plot as a PDF in the specified path. See \code{path}. This is the recommended
+output format as large networks can be slow in other formats.
+\item "plot": returns a ggplot object of the network plot. It is not recommended that you run this without
+assigning the output to an object as plotting to the R console can be slow for large networks.
+\item "table": returns the edgelist data frame used in the network.
+\item "network": returns the igraph object used to create the network plot.
+}}
 
 \item{path}{File path for saving the PDF output. Defaults to "network_p2p".}
 
@@ -35,16 +41,31 @@ computationally intensive and is not generally recommended.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to "bottom". See \code{ggplot2::theme()}.}
 
-\item{palette}{Function for generating a colour palette with a single argument \code{n}. Uses \code{rainbow()} by default.}
+\item{palette}{Function for generating a colour palette with a single argument \code{n}. Uses "rainbow" by default.}
 
-\item{...}{Additional arguments to pass to \code{GGally::ggnet2()}.
-For instance, you may specify the argument \code{mode} to change the node placement algorithm.}
+\item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
+
+\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
+full list of options.}
 }
 \description{
 Pass a data frame containing a person-to-person query and save a network
 plot as a PDF file.
 }
-\details{
-For specifying the node placement algorithm, please see the \code{gplot.layout} documentation for the \strong{sna}
-package, which provides a full list of the valid functions that can be passed into the \code{mode} argument.
+\examples{
+## Simulate simple P2P network
+sim_net <-
+  data.frame(TieOrigin_PersonId = sample(seq(1, 100), size = 100, replace = TRUE),
+             TieDestination_PersonId = sample(seq(1, 100), size = 100, replace = TRUE)) \%>\%
+  dplyr::mutate(TieOrigin_Organization = ifelse(TieOrigin_PersonId >= 50, "A", "B"),
+                TieDestination_Organization = ifelse(TieDestination_PersonId >= 50, "A", "B"),
+                StrongTieScore = rep(1, 100))
+
+## Run plot
+## ONLY return 'plot' instead of 'pdf' when data size is small
+network_p2p(data = sim_net,
+            hrvar = "Organization",
+            return = "plot")
+
 }
