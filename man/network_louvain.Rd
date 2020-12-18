@@ -11,6 +11,7 @@ network_louvain(
   font_col = "#FFFFFF",
   node_alpha = 0.8,
   algorithm = "mds",
+  desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
   return
 )
 }
@@ -36,6 +37,7 @@ full list of options.}
 \item 'plot-sankey': return a sankey plot combining communities and HR attribute.
 \item 'table': return a vertex summary table with counts in communities and HR attribute.
 \item 'data': return a vertex data file that matches vertices with communities and HR attributes.
+\item 'describe': returns a list of data frames which describe each of the identified communities.
 }}
 }
 \description{

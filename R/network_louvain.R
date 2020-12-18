@@ -23,6 +23,7 @@
 #'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
 #'   - 'table': return a vertex summary table with counts in communities and HR attribute.
 #'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
+#'   - 'describe': returns a list of data frames which describe each of the identified communities.
 #'
 #' @import ggraph
 #' @import dplyr
@@ -34,6 +35,7 @@ network_louvain <- function(data,
                             font_col = "#FFFFFF",
                             node_alpha = 0.8,
                             algorithm = "mds",
+                            desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
                             return){
 
   ## Set variables
@@ -135,6 +137,30 @@ network_louvain <- function(data,
                   var1 = hrvar,
                   var2 = "cluster",
                   count = "n")
+
+  } else if(return == "describe"){
+
+    describe_tb <-
+      vertex_tb %>%
+      left_join(select(data, starts_with("TieOrigin_")),
+                by = c("name" = "TieOrigin_PersonId"))
+
+    desc_str <-
+      describe_tb %>%
+      pull(cluster) %>%
+      unique()
+
+    desc_str %>%
+      purrr::map(function(x){
+        describe_tb %>%
+          filter(cluster == x) %>%
+          network_describe(hrvar = desc_hrvar)
+      }) %>%
+      setNames(nm = desc_str)
+
+  } else {
+
+    stop("Please enter a valid input for `return`.")
 
   }
 }
