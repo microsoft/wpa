@@ -57,8 +57,6 @@ Imports:
     widyr,
     proxy,
     rlang,
-    GGally,
-    network,
     ggwordcloud,
     methods,
     data.table
