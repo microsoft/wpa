@@ -54,11 +54,8 @@ Imports:
     tidytext,
     ggraph,
     igraph,
-    widyr,
     proxy,
     rlang,
-    GGally,
-    network,
     ggwordcloud,
     methods,
     data.table

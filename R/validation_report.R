@@ -20,6 +20,9 @@
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
 #'  but accepts any character vector, e.g. "Organization"
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
+#' @param hrvar_threshold Numeric value determining the maximum number of unique values
+#' to be allowed to qualify as a HR variable. This is passed directly to the `threshold`
+#' argument within `hrvar_count_all()`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
 #' Defaults to TRUE.
 #'
@@ -41,6 +44,7 @@ validation_report <- function(data,
                               meeting_data = NULL,
                               hrvar = "Organization",
                               path = "validation report",
+                              hrvar_threshold = 150,
                               timestamp = TRUE){
 
   ## Create timestamped path (if applicable)
@@ -114,7 +118,7 @@ validation_report <- function(data,
 
          read_preamble("organizational_data_quality.md"), #13, Header - 2. Organizational Data Quality
          read_preamble("attributes_available.md"),#14
-         data %>% hrvar_count_all(return = "table"),
+         data %>% hrvar_count_all(return = "table", threshold = hrvar_threshold),
 
          read_preamble("groups_under_privacy_threshold_1.md"), #16, Header - 2.2 Groups under Privacy Threshold
          paste(">", data %>% identify_privacythreshold(return="text")),

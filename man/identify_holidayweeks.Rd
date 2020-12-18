@@ -21,15 +21,21 @@ Valid options are:
 \item when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.
 }}
 }
-\value{
-
-}
 \description{
 This function scans a standard query output for weeks where collaboration hours is far outside the mean.
 Returns a list of weeks that appear to be holiday weeks and optionally an edited dataframe with outliers removed.
 By default, missing values are excluded.
 
 As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.
+}
+\examples{
+# Return a message by default
+identify_holidayweeks(sq_data)
+
+# Return a plot
+identify_holidayweeks(sq_data, return = "plot")
+
+
 }
 \seealso{
 Other Data Validation: 
