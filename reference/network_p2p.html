@@ -210,7 +210,8 @@ plot as a PDF file.</p>
   font_col <span class='op'>=</span> <span class='st'>"#FFFFFF"</span>,
   legend_pos <span class='op'>=</span> <span class='st'>"bottom"</span>,
   palette <span class='op'>=</span> <span class='st'>"rainbow"</span>,
-  <span class='va'>...</span>
+  node_alpha <span class='op'>=</span> <span class='fl'>0.7</span>,
+  algorithm <span class='op'>=</span> <span class='st'>"fr"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -227,10 +228,14 @@ plot as a PDF file.</p>
     <tr>
       <th>return</th>
       <td><p>Character vector specifying what to return, defaults to "pdf".
-Other valid inputs are "plot", "network" and "table". "network" returns the <code>network</code>
-object used to generate the network plot. The "pdf" option is highly recommended over the "plot"
-option as the PDF export format has significantly higher performance. The "plot" option is highly
-computationally intensive and is not generally recommended.</p></td>
+Valid inputs are:</p><ul>
+<li><p>"pdf": saves the network plot as a PDF in the specified path. See <code>path</code>. This is the recommended
+output format as large networks can be slow in other formats.</p></li>
+<li><p>"plot": returns a ggplot object of the network plot. It is not recommended that you run this without
+assigning the output to an object as plotting to the R console can be slow for large networks.</p></li>
+<li><p>"table": returns the edgelist data frame used in the network.</p></li>
+<li><p>"network": returns the igraph object used to create the network plot.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>path</th>
@@ -250,20 +255,37 @@ computationally intensive and is not generally recommended.</p></td>
     </tr>
     <tr>
       <th>palette</th>
-      <td><p>Function for generating a colour palette with a single argument <code>n</code>. Uses <code><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow()</a></code> by default.</p></td>
+      <td><p>Function for generating a colour palette with a single argument <code>n</code>. Uses "rainbow" by default.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments to pass to <code><a href='https://ggobi.github.io/ggally/reference/ggnet2.html'>GGally::ggnet2()</a></code>.
-For instance, you may specify the argument <code>mode</code> to change the node placement algorithm.</p></td>
+      <th>node_alpha</th>
+      <td><p>A numeric value between 0 and 1 to specify the transparency of the nodes.</p></td>
+    </tr>
+    <tr>
+      <th>algorithm</th>
+      <td><p>String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+algorithm of Fruchterman and Reingold. See <a href='https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html'>https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a
+full list of options.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>For specifying the node placement algorithm, please see the <code>gplot.layout</code> documentation for the <strong>sna</strong>
-package, which provides a full list of the valid functions that can be passed into the <code>mode</code> argument.</p>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## Simulate simple P2P network</span>
+<span class='va'>sim_net</span> <span class='op'>&lt;-</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>TieOrigin_PersonId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>100</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+             TieDestination_PersonId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>100</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>TieOrigin_Organization <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>TieOrigin_PersonId</span> <span class='op'>&gt;=</span> <span class='fl'>50</span>, <span class='st'>"A"</span>, <span class='st'>"B"</span><span class='op'>)</span>,
+                TieDestination_Organization <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>TieDestination_PersonId</span> <span class='op'>&gt;=</span> <span class='fl'>50</span>, <span class='st'>"A"</span>, <span class='st'>"B"</span><span class='op'>)</span>,
+                StrongTieScore <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>
 
+<span class='co'>## Run plot</span>
+<span class='co'>## ONLY return 'plot' instead of 'pdf' when data size is small</span>
+<span class='fu'>network_p2p</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>sim_net</span>,
+            hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+            return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+</div><div class='img'><img src='network_p2p-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

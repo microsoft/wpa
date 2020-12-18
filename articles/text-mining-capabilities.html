@@ -230,20 +230,20 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">## # A tibble: 629 x 3</span>
+<span class="co">## # A tibble: 1,666 x 3</span>
 <span class="co">##    item1      item2          n</span>
-<span class="co">##    &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;</span>
-<span class="co">##  1 meeting    board         18</span>
-<span class="co">##  2 sql        server        15</span>
-<span class="co">##  3 report     annual        15</span>
+<span class="co">##    &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;</span>
+<span class="co">##  1 board      meeting       20</span>
+<span class="co">##  2 annual     report        17</span>
+<span class="co">##  3 sql        server        15</span>
 <span class="co">##  4 board      directors     14</span>
-<span class="co">##  5 plan       volometrix    10</span>
-<span class="co">##  6 weekly     discussion     9</span>
-<span class="co">##  7 meeting    internal       8</span>
-<span class="co">##  8 board      volometrix     8</span>
-<span class="co">##  9 volometrix annual         8</span>
-<span class="co">## 10 messaging  weekly         8</span>
-<span class="co">## # … with 619 more rows</span></code></pre></div>
+<span class="co">##  5 volometrix plan          10</span>
+<span class="co">##  6 volometrix board          8</span>
+<span class="co">##  7 weekly     discussion     8</span>
+<span class="co">##  8 volometrix annual         7</span>
+<span class="co">##  9 global     meeting        7</span>
+<span class="co">## 10 volometrix meeting        7</span>
+<span class="co">## # … with 1,656 more rows</span></code></pre></div>
 </div>
 <div id="circular-bar-plot" class="section level2">
 <h2 class="hasAnchor">
