@@ -21,7 +21,9 @@
 network_describe <- function(data, hrvar = c("Organization", "LevelDesignation", "FunctionType")){
 
   if(length(hrvar) != 3){
+
     stop("Please provide a character vector of length 3 for `hrvar`")
+
   }
 
   ## De-duplicated data containing only TieOrigins
@@ -38,7 +40,7 @@ network_describe <- function(data, hrvar = c("Organization", "LevelDesignation",
 
       agg <-
         features %>%
-        group_by_at(.vars=vars(c)) %>%
+        group_by_at(.vars = vars(c)) %>%
         summarise(count = n(), .groups = "drop") %>%
         mutate(percentage = count / sum(count, na.rm = TRUE))
 
