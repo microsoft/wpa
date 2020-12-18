@@ -4,12 +4,31 @@
 \alias{network_leiden}
 \title{Implement the Leiden community detection on a Person to Person network query}
 \usage{
-network_leiden(data, hrvar, res = 0.5, return)
+network_leiden(
+  data,
+  hrvar,
+  bg_fill = "#000000",
+  font_col = "#FFFFFF",
+  algorithm = "mds",
+  node_alpha = 0.8,
+  res = 0.5,
+  return
+)
 }
 \arguments{
 \item{data}{Data frame containing a Person to Person query.}
 
 \item{hrvar}{String containing the HR attribute to be matched in the dataset.}
+
+\item{bg_fill}{String to specify background fill colour.}
+
+\item{font_col}{String to specify font and link colour.}
+
+\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
+full list of options.}
+
+\item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults to 0.5.}
 

@@ -12,6 +12,12 @@
 #'
 #' @param data Data frame containing a Person to Person query.
 #' @param hrvar String containing the HR attribute to be matched in the dataset.
+#' @param bg_fill String to specify background fill colour.
+#' @param font_col String to specify font and link colour.
+#' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
+#' @param algorithm String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+#' algorithm of Fruchterman and Reingold. See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a
+#' full list of options.
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults to 0.5.
 #' @param return String specifying what output to return. Valid return options include:
 #'   - 'plot-leiden': return a network plot coloured by leiden communities.
@@ -23,7 +29,14 @@
 #' @import dplyr
 #'
 #' @export
-network_leiden <- function(data, hrvar, res = 0.5, return){
+network_leiden <- function(data,
+                           hrvar,
+                           bg_fill = "#000000",
+                           font_col = "#FFFFFF",
+                           algorithm = "mds",
+                           node_alpha = 0.8,
+                           res = 0.5,
+                           return){
 
   ## Set variables
   TO_hrvar <- paste0("TieOrigin_", hrvar)
@@ -66,7 +79,8 @@ network_leiden <- function(data, hrvar, res = 0.5, return){
   g <-
     g_raw %>%
     # Add leiden partitions to graph object
-    igraph::set_vertex_attr("cluster", value = as.character(ld))
+    igraph::set_vertex_attr("cluster", value = as.character(ld)) %>%
+    igraph::simplify()
 
   ## Create vertex table
   vertex_tb <-
@@ -74,29 +88,34 @@ network_leiden <- function(data, hrvar, res = 0.5, return){
     igraph::get.vertex.attribute() %>%
     as_tibble()
 
+  g_layout <-
+    g %>%
+    ggraph::ggraph(layout = "igraph", algorithm = algorithm)
+
   ## Return
   if(return == "plot-leiden"){
-    g %>%
-      ggraph::ggraph(layout = "stress") +
-      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.1) +
-      ggraph::geom_node_point(aes(colour = cluster), alpha = 0.8) +
+    g_layout +
+      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+      ggraph::geom_node_point(aes(colour = cluster), alpha = node_alpha) +
       theme_void() +
       theme(legend.position = "bottom",
-            # legend.background = element_rect(fill = "black"),
-            # plot.background = element_rect(fill = "black"),
-            # text = element_text(colour = "white"),
+            legend.background = element_rect(fill = bg_fill),
+            plot.background = element_rect(fill = bg_fill),
+            text = element_text(colour = font_col),
             axis.line = element_blank()) +
       labs(title = "Person to person collaboration with Community Detection",
            subtitle = "Based on Leiden algorithm and Strong Tie Score",
            y = "",
            x = "")
   } else if(return == "plot-hrvar"){
-    g %>%
-      ggraph::ggraph(layout = "stress") +
-      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.1) +
-      ggraph::geom_node_point(aes(colour = !!sym(hrvar)), alpha = 0.8) +
+    g_layout +
+      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+      ggraph::geom_node_point(aes(colour = !!sym(hrvar)), alpha = node_alpha) +
       theme_void() +
       theme(legend.position = "bottom",
+            legend.background = element_rect(fill = bg_fill),
+            plot.background = element_rect(fill = bg_fill),
+            text = element_text(colour = font_col),
             axis.line = element_blank()) +
       labs(title = "Person to person collaboration",
            subtitle = paste0("Showing ", hrvar),
