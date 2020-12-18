@@ -24,6 +24,7 @@
 #'   - 'table': return a vertex summary table with counts in communities and HR attribute.
 #'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
 #'   - 'describe': returns a list of data frames which describe each of the identified communities.
+#'   - 'network': return igraph object.
 #'
 #' @import ggraph
 #' @import dplyr
@@ -130,6 +131,11 @@ network_louvain <- function(data,
   } else if(return == "data"){
 
     vertex_tb
+
+  } else if(return == "network"){
+
+    g
+
 
   } else if(return == "plot-sankey"){
 
