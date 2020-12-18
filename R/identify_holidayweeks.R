@@ -35,7 +35,6 @@
 #' # Return a plot
 #' identify_holidayweeks(sq_data, return = "plot")
 #'
-#' @return
 #'
 #' @export
 identify_holidayweeks <- function(data, sd = 1, return = "message"){

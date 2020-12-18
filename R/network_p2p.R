@@ -12,25 +12,40 @@
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
 #' @param return Character vector specifying what to return, defaults to "pdf".
-#' Other valid inputs are "plot", "network" and "table". "network" returns the `network`
-#' object used to generate the network plot. The "pdf" option is highly recommended over the "plot"
-#' option as the PDF export format has significantly higher performance. The "plot" option is highly
-#' computationally intensive and is not generally recommended.
+#' Valid inputs are:
+#'   - "pdf": saves the network plot as a PDF in the specified path. See `path`. This is the recommended
+#'   output format as large networks can be slow in other formats.
+#'   - "plot": returns a ggplot object of the network plot. It is not recommended that you run this without
+#'   assigning the output to an object as plotting to the R console can be slow for large networks.
+#'   - "table": returns the edgelist data frame used in the network.
+#'   - "network": returns the igraph object used to create the network plot.
 #' @param path File path for saving the PDF output. Defaults to "network_p2p".
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param legend_pos String to specify position of legend. Defaults to "bottom". See `ggplot2::theme()`.
-#' @param palette Function for generating a colour palette with a single argument `n`. Uses `rainbow()` by default.
-#' @param ... Additional arguments to pass to `GGally::ggnet2()`.
-#' For instance, you may specify the argument `mode` to change the node placement algorithm.
+#' @param palette Function for generating a colour palette with a single argument `n`. Uses "rainbow" by default.
+#' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
+#' @param algorithm String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+#' algorithm of Fruchterman and Reingold. See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a
+#' full list of options.
 #'
-#' @details
-#' For specifying the node placement algorithm, please see the `gplot.layout` documentation for the **sna**
-#' package, which provides a full list of the valid functions that can be passed into the `mode` argument.
+#' @examples
+#' ## Simulate simple P2P network
+#' sim_net <-
+#'   data.frame(TieOrigin_PersonId = sample(seq(1, 100), size = 100, replace = TRUE),
+#'              TieDestination_PersonId = sample(seq(1, 100), size = 100, replace = TRUE)) %>%
+#'   dplyr::mutate(TieOrigin_Organization = ifelse(TieOrigin_PersonId >= 50, "A", "B"),
+#'                 TieDestination_Organization = ifelse(TieDestination_PersonId >= 50, "A", "B"),
+#'                 StrongTieScore = rep(1, 100))
+#'
+#' ## Run plot
+#' ## ONLY return 'plot' instead of 'pdf' when data size is small
+#' network_p2p(data = sim_net,
+#'             hrvar = "Organization",
+#'             return = "plot")
 #'
 #' @import ggplot2
 #' @import dplyr
-#' @import network
 #' @importFrom grDevices rainbow
 #'
 #' @export
@@ -42,44 +57,52 @@ network_p2p <- function(data,
                         font_col = "#FFFFFF",
                         legend_pos = "bottom",
                         palette = "rainbow",
-                        ...){
+                        node_alpha = 0.7,
+                        algorithm = "fr"){
 
-  data <-
-    data %>%
-    filter(StrongTieType > 0)
-
+  ## No filtering
   tieorigin_var <- paste0("TieOrigin_", hrvar)
   tiedestin_var <- paste0("TieDestination_", hrvar)
 
-
-  ## Extract edge list
-  strong_edgelist <-
+  ## Set edges df
+  edges <-
     data %>%
-    select(TieOrigin_PersonId, TieDestination_PersonId)
+    select(from = "TieOrigin_PersonId",
+           to = "TieDestination_PersonId",
+           weight = "StrongTieScore") %>%
+    select(-weight) # Overwrite - no info on edge
 
-  ## Create basic network object
-  mynet <-
-    network::network(strong_edgelist, matrix.type="edgelist")
+  ## Vertices data frame to provide meta-data
+  vert_ft <-
+    rbind(
+      # TieOrigin
+      edges %>%
+        left_join(select(data, TieOrigin_PersonId, tieorigin_var),
+                  by = c("from"  = "TieOrigin_PersonId")) %>%
+        select(node = "from", !!sym(hrvar) := tieorigin_var),
 
-  ## Extract list of nodes from network object
-  myedges <- data.frame(PersonId = network.vertex.names(mynet))
+      # TieDestination
+      edges %>%
+        left_join(select(data, TieDestination_PersonId, tiedestin_var),
+                  by = c("to"  = "TieDestination_PersonId")) %>%
+        select(node = "to", !!sym(hrvar) := tiedestin_var)
+    )
 
-  ## Extract attributes
-  totalAttributes <-
-    bind_rows(select(data, PersonId = "TieOrigin_PersonId", !!sym(hrvar) := tieorigin_var),
-              select(data, PersonId = "TieOrigin_PersonId", !!sym(hrvar) := tiedestin_var)) %>%
-    unique()
-
-  ## Merge list of nodes and attributes
-  myedges <- merge(myedges, totalAttributes, by = "PersonId", all.x = TRUE)
-
-  ## Add attributes to network object
-  mynet %v% hrvar <- myedges[[hrvar]]
+  ## Create igraph object
+  g <-
+    igraph::graph_from_data_frame(edges,
+                                  directed = FALSE, # Directed, but FALSE for visualization
+                                  vertices = unique(vert_ft)) %>% # remove duplicates
+    igraph::simplify()
 
   ## Palette
+  ## Create tibble
+  pal <-
+    tibble(!!sym(hrvar) := g %>%
+             igraph::get.vertex.attribute(hrvar) %>%
+             unique())
 
-  pal <- tibble(!!sym(hrvar) := unique(myedges[[hrvar]]))
-
+  ## Apply palette function
   col_pal <- do.call(what = palette, args = list(nrow(pal)))
 
   ## named character vector
@@ -90,24 +113,21 @@ network_p2p <- function(data,
 
   if(return == "table"){
 
-    data
+    edges
 
   } else if(return == "network"){
 
-    mynet
+    g
 
   } else if(return %in% c("plot", "pdf")){
 
     outputPlot <-
-      mynet %>%
-      GGally::ggnet2(size = 1,
-                     color = hrvar,
-                     label = FALSE,
-                     edge.size = .01,
-                     edge.alpha = .15,
-                     node.alpha =  .8,
-                     palette = pal,
-                     ...) +
+      g %>%
+      ggraph::ggraph(layout = "igraph", algorithm = algorithm) +
+      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+      ggraph::geom_node_point(aes(colour = !!sym(hrvar)), alpha = node_alpha) +
+      scale_colour_discrete(type = pal) +
+      theme_void() +
       theme(legend.position = legend_pos,
             legend.background = element_rect(fill = bg_fill),
             plot.background = element_rect(fill = bg_fill),
