@@ -51,12 +51,10 @@ Pass a data frame containing a group-to-group query and return a network plot.
 Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
 }
 \examples{
-\dontrun{
 ## Return a network plot
 g2g_data \%>\%
   network_g2g(time_investor = "TimeInvestors_Organization",
               collaborator = "Collaborators_Organization",
               metric = "Collaboration_hours")
-}
 
 }

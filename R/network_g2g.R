@@ -25,13 +25,11 @@
 #' @import dplyr
 #'
 #' @examples
-#' \dontrun{
 #' ## Return a network plot
 #' g2g_data %>%
 #'   network_g2g(time_investor = "TimeInvestors_Organization",
 #'               collaborator = "Collaborators_Organization",
 #'               metric = "Collaboration_hours")
-#' }
 #'
 #' @export
 network_g2g <- function(data,
