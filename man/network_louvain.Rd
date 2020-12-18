@@ -4,14 +4,39 @@
 \alias{network_louvain}
 \title{Implement the Louvain community detection on a Person to Person network query}
 \usage{
-network_louvain(data, hrvar, return)
+network_louvain(
+  data,
+  hrvar,
+  bg_fill = "#000000",
+  font_col = "#FFFFFF",
+  node_alpha = 0.8,
+  algorithm = "mds",
+  return
+)
 }
 \arguments{
 \item{data}{Data frame containing a Person to Person query.}
 
 \item{hrvar}{String containing the HR attribute to be matched in the dataset.}
 
-\item{return}{String specifying what output to return.}
+\item{bg_fill}{String to specify background fill colour.}
+
+\item{font_col}{String to specify font and link colour.}
+
+\item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
+
+\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
+full list of options.}
+
+\item{return}{String specifying what output to return.Valid return options include:
+\itemize{
+\item 'plot-louvain': return a network plot coloured by louvain communities.
+\item 'plot-hrvar': return a network plot coloured by HR attribute.
+\item 'plot-sankey': return a sankey plot combining communities and HR attribute.
+\item 'table': return a vertex summary table with counts in communities and HR attribute.
+\item 'data': return a vertex data file that matches vertices with communities and HR attributes.
+}}
 }
 \description{
 Take a P2P network query and implement the Louvain community detection method. The
