@@ -32,7 +32,7 @@
 #   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
 #   create_IV_cw(outcome = "X", return = "summary")
 #' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>%
+#'   mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
 #'   create_IV_cw(outcome = "X",
 #'             predictors = c("Email_hours", "Meeting_hours"),
 #'             return = "list")
@@ -46,7 +46,7 @@ create_IV <- function(data,
                       significance = 0.05,
                       return = "plot"){
 
-  if(is.null(predictors)){
+  if(is.null(all_of(predictors))){
     train <-
       data %>%
       rename(outcome = outcome) %>%
@@ -56,7 +56,7 @@ create_IV <- function(data,
     train <-
       data %>%
       rename(outcome = outcome) %>%
-      select(predictors, outcome) %>%
+      select(all_of(predictors), outcome) %>%
       tidyr::drop_na()
   }
 
@@ -70,23 +70,8 @@ create_IV <- function(data,
   names(predictors) <- c("Variable") 
   predictors <- predictors %>% filter(Variable != "outcome")
   
-    p_val_fnxn <- function(outcome, 
-                         predictor){
-    train_2 <- train %>% 
-      filter(outcome == 1 | outcome == 0) %>%
-      select(outcome, predictor) %>%
-      mutate(outcome = as.character(outcome)) %>%
-      mutate(outcome = as.factor(outcome))
-    
-    pos <- train_2 %>% filter(outcome == 1, na.rm=TRUE) %>% select(predictor) 
-    neg <- train_2 %>% filter(outcome == 0, na.rm=TRUE) %>% select(predictor) 
-    
-    s <- wilcox.test(unlist(pos), unlist(neg), paired = FALSE)
-    return(s$p.value)
-  }
-  
   for (i in 1:(nrow(predictors))){
-    predictors$pval[i] <- p_val_fnxn(outcome, predictors$Variable[i])
+    predictors$pval[i] <- p_test(outcome, predictors$Variable[i])
   }
 
   # Filter out variables whose p-value is above the significance level
