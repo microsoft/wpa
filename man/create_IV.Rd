@@ -4,7 +4,14 @@
 \alias{create_IV}
 \title{Calculate Information Value for a selected outcome variable}
 \usage{
-create_IV(data, predictors = NULL, outcome, bins = 5, return = "plot")
+create_IV(
+  data,
+  predictors = NULL,
+  outcome,
+  bins = 5,
+  significance = 0.05,
+  return = "plot"
+)
 }
 \arguments{
 \item{data}{A Person Query dataset in the form of a data frame.}
@@ -15,7 +22,10 @@ Defaults to NULL, where all numeric vectors in the data will be used as predicto
 \item{outcome}{A string specifying a binary variable, i.e. can only contain
 the values 1 or 0.}
 
-\item{bins}{Number of bins to use in \code{Information::create_infotables()}, defaults to 10.}
+\item{bins}{Number of bins to use in \code{Information::create_infotables()}, defaults to 5.}
+
+\item{significance}{Significance level to use in comparing populations for the outcomes,
+defaults to 0.05}
 
 \item{return}{String specifying what output to return.
 Defaults to "plot" that return a bar plot summarising the information value.
@@ -29,11 +39,8 @@ All numeric variables in the dataset are used as predictor variables.
 \examples{
 \dontrun{
 sq_data \%>\%
-  mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\%
-  create_IV(outcome = "X")
-sq_data \%>\%
-  mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\%
-  create_IV(outcome = "X",
+  mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) \%>\%
+  create_IV_cw(outcome = "X",
             predictors = c("Email_hours", "Meeting_hours"),
             return = "list")
 }
