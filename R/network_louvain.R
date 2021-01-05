@@ -106,7 +106,9 @@ network_louvain <- function(data,
     plot_output <-
       g_layout +
       ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = cluster), alpha = node_alpha) +
+      ggraph::geom_node_point(aes(colour = cluster),
+                              alpha = node_alpha,
+                              pch = 16) +
       theme_void() +
       theme(legend.position = "bottom",
             legend.background = element_rect(fill = bg_fill),
@@ -137,7 +139,9 @@ network_louvain <- function(data,
     plot_output <-
       g_layout +
       ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = !!sym(hrvar)), alpha = node_alpha) +
+      ggraph::geom_node_point(aes(colour = !!sym(hrvar)),
+                              alpha = node_alpha,
+                              pch = 16) +
       theme_void() +
       theme(legend.position = "bottom",
             legend.background = element_rect(fill = bg_fill),
@@ -179,7 +183,7 @@ network_louvain <- function(data,
 
   } else if(return == "plot-sankey"){
 
-    create_sankey(data = vertex_tb,
+    create_sankey(data = vertex_tb %>% count(!!sym(hrvar), cluster),
                   var1 = hrvar,
                   var2 = "cluster",
                   count = "n")

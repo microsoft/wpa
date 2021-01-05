@@ -109,7 +109,9 @@ network_leiden <- function(data,
     plot_output <-
       g_layout +
       ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = cluster), alpha = node_alpha) +
+      ggraph::geom_node_point(aes(colour = cluster),
+                              alpha = node_alpha,
+                              pch = 16) +
       theme_void() +
       theme(legend.position = "bottom",
             legend.background = element_rect(fill = bg_fill),
@@ -140,7 +142,9 @@ network_leiden <- function(data,
     plot_output <-
       g_layout +
       ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = !!sym(hrvar)), alpha = node_alpha) +
+      ggraph::geom_node_point(aes(colour = !!sym(hrvar)),
+                              alpha = node_alpha,
+                              pch = 16) +
       theme_void() +
       theme(legend.position = "bottom",
             legend.background = element_rect(fill = bg_fill),
