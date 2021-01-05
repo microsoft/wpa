@@ -11,6 +11,7 @@ network_louvain(
   font_col = "#FFFFFF",
   node_alpha = 0.8,
   algorithm = "mds",
+  path = "network_p2p_louvain",
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
   return
 )
@@ -26,9 +27,15 @@ network_louvain(
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
 
-\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
-algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
-full list of options.}
+\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "mds" to perform
+a multidimensional scaling of nodes using a shortest path, which is also a deterministic method.
+See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full list of options.}
+
+\item{path}{File path for saving the PDF output. Defaults to "network_p2p_louvain".
+Since the network outputs are computationally intensive, the default behaviour is to save time by
+saving the plot output directly as a PDF in the specified path. To override this behaviour and return
+a plot object instead, you can pass \code{NULL} to \code{path}. What is passed to \code{path} makes no difference
+if returning anything other than "plot-louvain" or "plot-hrvar".}
 
 \item{return}{String specifying what output to return.Valid return options include:
 \itemize{

@@ -14,9 +14,15 @@
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
-#' @param algorithm String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
-#' algorithm of Fruchterman and Reingold. See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a
-#' full list of options.
+#' @param algorithm String to specify the node placement algorithm to be used. Defaults to "mds" to perform
+#' a multidimensional scaling of nodes using a shortest path, which is also a deterministic method.
+#' See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full list of options.
+#' @param path File path for saving the PDF output. Defaults to "network_p2p_louvain".
+#' Since the network outputs are computationally intensive, the default behaviour is to save time by
+#' saving the plot output directly as a PDF in the specified path. To override this behaviour and return
+#' a plot object instead, you can pass `NULL` to `path`. What is passed to `path` makes no difference
+#' if returning anything other than "plot-louvain" or "plot-hrvar".
+#'
 #' @param return String specifying what output to return.Valid return options include:
 #'   - 'plot-louvain': return a network plot coloured by louvain communities.
 #'   - 'plot-hrvar': return a network plot coloured by HR attribute.
@@ -36,6 +42,7 @@ network_louvain <- function(data,
                             font_col = "#FFFFFF",
                             node_alpha = 0.8,
                             algorithm = "mds",
+                            path = "network_p2p_louvain",
                             desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
                             return){
 
@@ -95,7 +102,9 @@ network_louvain <- function(data,
 
   ## Return
   if(return == "plot-louvain"){
-    g_layout +
+
+    plot_output <-
+      g_layout +
       ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
       ggraph::geom_node_point(aes(colour = cluster), alpha = node_alpha) +
       theme_void() +
@@ -108,8 +117,25 @@ network_louvain <- function(data,
            subtitle = "Based on Louvain algorithm and Strong Tie Score",
            y = "",
            x = "")
+
+    # Default PDF output unless NULL supplied to path
+    if(is.null(path)){
+
+      plot_output
+
+    } else {
+
+      ggsave(paste0(path, tstamp(), ".pdf"),
+             plot = plot_output,
+             width = 16,
+             height = 9)
+
+    }
+
   } else if(return == "plot-hrvar"){
-    g_layout +
+
+    plot_output <-
+      g_layout +
       ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
       ggraph::geom_node_point(aes(colour = !!sym(hrvar)), alpha = node_alpha) +
       theme_void() +
@@ -122,6 +148,20 @@ network_louvain <- function(data,
            subtitle = paste0("Showing ", hrvar),
            y = "",
            x = "")
+
+    # Default PDF output unless NULL supplied to path
+    if(is.null(path)){
+
+      plot_output
+
+    } else {
+
+      ggsave(paste0(path, tstamp(), ".pdf"),
+             plot = plot_output,
+             width = 16,
+             height = 9)
+
+    }
 
   } else if(return == "table"){
 
