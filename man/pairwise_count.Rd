@@ -9,7 +9,7 @@ pairwise_count(data, id = "line", word = "word")
 \arguments{
 \item{data}{Data frame output from \code{tm_clean()}.}
 
-\item{id}{String to represent the id variable. Defaults to "word".}
+\item{id}{String to represent the id variable. Defaults to "line".}
 
 \item{word}{String to represent the word variable. Defaults to "word".}
 }
@@ -17,4 +17,11 @@ pairwise_count(data, id = "line", word = "word")
 This is a \strong{data.table} implementation that mimics the output of
 \code{widyr::pairwise_count()} to reduce package dependency. This is used internally
 within \code{tm_cooc()}.
+}
+\examples{
+td <- data.frame(line = c(1, 1, 2, 2),
+                 word = c("work", "meeting", "catch", "up"))
+
+pairwise_count(td, id = "line", word = "word")
+
 }

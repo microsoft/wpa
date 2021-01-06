@@ -5,15 +5,24 @@
 #' within `tm_cooc()`.
 #'
 #' @param data Data frame output from `tm_clean()`.
-#' @param id String to represent the id variable. Defaults to "word".
+#' @param id String to represent the id variable. Defaults to "line".
 #' @param word String to represent the word variable. Defaults to "word".
 #'
-#' @import data.table
+#' @importFrom data.table ":=" "%like%" "%between%" rbindlist as.data.table
+#'
+#' @examples
+#' td <- data.frame(line = c(1, 1, 2, 2),
+#'                  word = c("work", "meeting", "catch", "up"))
+#'
+#' pairwise_count(td, id = "line", word = "word")
 #'
 #' @export
 pairwise_count <- function(data,
                            id = "line",
                            word = "word"){
+
+  # Make sure data.table knows we know we're using it
+  .datatable.aware = TRUE
 
   data <-
     data %>%
