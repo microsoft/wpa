@@ -42,8 +42,8 @@ if returning anything other than "plot-louvain" or "plot-hrvar".}
 
 \item{return}{String specifying what output to return.Valid return options include:
 \itemize{
-\item 'plot-louvain': return a network plot coloured by louvain communities.
-\item 'plot-hrvar': return a network plot coloured by HR attribute.
+\item 'plot-louvain': return a network plot coloured by louvain communities, saving a PDF to \code{path}.
+\item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to \code{path}.
 \item 'plot-sankey': return a sankey plot combining communities and HR attribute.
 \item 'table': return a vertex summary table with counts in communities and HR attribute.
 \item 'data': return a vertex data file that matches vertices with communities and HR attributes.

@@ -29,8 +29,8 @@
 #' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
 #' "describe" output. See `network_describe()`.
 #' @param return String specifying what output to return. Valid return options include:
-#'   - 'plot-leiden': return a network plot coloured by leiden communities.
-#'   - 'plot-hrvar': return a network plot coloured by HR attribute.
+#'   - 'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to `path`.
+#'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to `path`.
 #'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
 #'   - 'table': return a vertex summary table with counts in communities and HR attribute.
 #'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.

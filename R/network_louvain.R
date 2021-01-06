@@ -26,8 +26,8 @@
 #' "describe" output. See `network_describe()`.
 #'
 #' @param return String specifying what output to return.Valid return options include:
-#'   - 'plot-louvain': return a network plot coloured by louvain communities.
-#'   - 'plot-hrvar': return a network plot coloured by HR attribute.
+#'   - 'plot-louvain': return a network plot coloured by louvain communities, saving a PDF to `path`.
+#'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to `path`.
 #'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
 #'   - 'table': return a vertex summary table with counts in communities and HR attribute.
 #'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
