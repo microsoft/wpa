@@ -6,7 +6,7 @@
 \usage{
 network_leiden(
   data,
-  hrvar,
+  hrvar = "Organization",
   bg_fill = "#000000",
   font_col = "#FFFFFF",
   algorithm = "mds",
@@ -14,13 +14,15 @@ network_leiden(
   node_alpha = 0.8,
   res = 0.5,
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-  return
+  return = "plot-leiden"
 )
 }
 \arguments{
-\item{data}{Data frame containing a Person to Person query.}
+\item{data}{Data frame containing a Person to Person Network query. Note that this function is
+computationally intensive and may take a noticeably longer time to process beyond 5000 rows.}
 
-\item{hrvar}{String containing the HR attribute to be matched in the dataset.}
+\item{hrvar}{String containing the HR attribute to be matched in the dataset.
+Defaults to "Organization".}
 
 \item{bg_fill}{String to specify background fill colour.}
 
@@ -43,7 +45,8 @@ if returning anything other than "plot-leiden" or "plot-hrvar".}
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
 "describe" output. See \code{network_describe()}.}
 
-\item{return}{String specifying what output to return. Valid return options include:
+\item{return}{String specifying what output to return. Defaults to "plot-leiden".
+Valid return options include:
 \itemize{
 \item 'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to \code{path}.
 \item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to \code{path}.

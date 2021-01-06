@@ -10,8 +10,10 @@
 #' this function, you will require all the pre-requisites of the **leiden** package installed,
 #' which includes Python and **reticulate**.
 #'
-#' @param data Data frame containing a Person to Person query.
+#' @param data Data frame containing a Person to Person Network query. Note that this function is
+#' computationally intensive and may take a noticeably longer time to process beyond 5000 rows.
 #' @param hrvar String containing the HR attribute to be matched in the dataset.
+#' Defaults to "Organization".
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
@@ -28,7 +30,8 @@
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults to 0.5.
 #' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
 #' "describe" output. See `network_describe()`.
-#' @param return String specifying what output to return. Valid return options include:
+#' @param return String specifying what output to return. Defaults to "plot-leiden".
+#' Valid return options include:
 #'   - 'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to `path`.
 #'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to `path`.
 #'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
@@ -41,7 +44,7 @@
 #'
 #' @export
 network_leiden <- function(data,
-                           hrvar,
+                           hrvar = "Organization",
                            bg_fill = "#000000",
                            font_col = "#FFFFFF",
                            algorithm = "mds",
@@ -49,7 +52,7 @@ network_leiden <- function(data,
                            node_alpha = 0.8,
                            res = 0.5,
                            desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-                           return){
+                           return = "plot-leiden"){
 
   ## Set variables
   TO_hrvar <- paste0("TieOrigin_", hrvar)

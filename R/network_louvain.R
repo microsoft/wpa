@@ -9,8 +9,10 @@
 #' Take a P2P network query and implement the Louvain community detection method. The
 #' **igraph** implementation of the Louvain method is used.
 #'
-#' @param data Data frame containing a Person to Person query.
+#' @param data Data frame containing a Person to Person Network query. Note that this function is
+#' computationally intensive and may take a noticeably longer time to process beyond 5000 rows.
 #' @param hrvar String containing the HR attribute to be matched in the dataset.
+#' Defaults to "Organization".
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
@@ -25,7 +27,8 @@
 #' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
 #' "describe" output. See `network_describe()`.
 #'
-#' @param return String specifying what output to return.Valid return options include:
+#' @param return String specifying what output to return. Defaults to "plot-louvain".
+#' Valid return options include:
 #'   - 'plot-louvain': return a network plot coloured by louvain communities, saving a PDF to `path`.
 #'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to `path`.
 #'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
@@ -39,14 +42,14 @@
 #'
 #' @export
 network_louvain <- function(data,
-                            hrvar,
+                            hrvar = "Organization",
                             bg_fill = "#000000",
                             font_col = "#FFFFFF",
                             node_alpha = 0.8,
                             algorithm = "mds",
                             path = "network_p2p_louvain",
                             desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-                            return){
+                            return = "plot-louvain"){
 
   ## Set variables
   TO_hrvar <- paste0("TieOrigin_", hrvar)
