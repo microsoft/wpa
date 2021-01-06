@@ -37,6 +37,9 @@ saving the plot output directly as a PDF in the specified path. To override this
 a plot object instead, you can pass \code{NULL} to \code{path}. What is passed to \code{path} makes no difference
 if returning anything other than "plot-louvain" or "plot-hrvar".}
 
+\item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
+"describe" output. See \code{network_describe()}.}
+
 \item{return}{String specifying what output to return.Valid return options include:
 \itemize{
 \item 'plot-louvain': return a network plot coloured by louvain communities.

@@ -22,6 +22,8 @@
 #' saving the plot output directly as a PDF in the specified path. To override this behaviour and return
 #' a plot object instead, you can pass `NULL` to `path`. What is passed to `path` makes no difference
 #' if returning anything other than "plot-louvain" or "plot-hrvar".
+#' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
+#' "describe" output. See `network_describe()`.
 #'
 #' @param return String specifying what output to return.Valid return options include:
 #'   - 'plot-louvain': return a network plot coloured by louvain communities.
@@ -62,12 +64,16 @@ network_louvain <- function(data,
     rbind(
       # TieOrigin
       edges %>%
+        select(from) %>% # Single column
+        unique() %>% # Remove duplications
         left_join(select(data, TieOrigin_PersonId, TO_hrvar),
                   by = c("from"  = "TieOrigin_PersonId")) %>%
         select(node = "from", !!sym(hrvar) := TO_hrvar),
 
       # TieDestination
       edges %>%
+        select(to) %>% # Single column
+        unique() %>% # Remove duplications
         left_join(select(data, TieDestination_PersonId, TD_hrvar),
                   by = c("to"  = "TieDestination_PersonId")) %>%
         select(node = "to", !!sym(hrvar) := TD_hrvar)

@@ -26,6 +26,8 @@
 #' See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full list of options.
 #'
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults to 0.5.
+#' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
+#' "describe" output. See `network_describe()`.
 #' @param return String specifying what output to return. Valid return options include:
 #'   - 'plot-leiden': return a network plot coloured by leiden communities.
 #'   - 'plot-hrvar': return a network plot coloured by HR attribute.
@@ -65,12 +67,16 @@ network_leiden <- function(data,
     rbind(
       # TieOrigin
       edges %>%
+        select(from) %>% # Single column
+        unique() %>% # Remove duplications
         left_join(select(data, TieOrigin_PersonId, TO_hrvar),
                   by = c("from"  = "TieOrigin_PersonId")) %>%
         select(node = "from", !!sym(hrvar) := TO_hrvar),
 
       # TieDestination
       edges %>%
+        select(to) %>% # Single column
+        unique() %>% # Remove duplications
         left_join(select(data, TieDestination_PersonId, TD_hrvar),
                   by = c("to"  = "TieDestination_PersonId")) %>%
         select(node = "to", !!sym(hrvar) := TD_hrvar)

@@ -40,6 +40,9 @@ if returning anything other than "plot-leiden" or "plot-hrvar".}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults to 0.5.}
 
+\item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
+"describe" output. See \code{network_describe()}.}
+
 \item{return}{String specifying what output to return. Valid return options include:
 \itemize{
 \item 'plot-leiden': return a network plot coloured by leiden communities.
