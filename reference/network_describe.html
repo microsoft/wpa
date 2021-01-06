@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform a pairwise count of words by id — pairwise_count • wpa</title>
+<title>Uncover HR attributes which best represent a population for a Person to Person query — network_describe • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,9 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Perform a pairwise count of words by id — pairwise_count" />
-<meta property="og:description" content="This is a data.table implementation that mimics the output of
-widyr::pairwise_count() to reduce package dependency. This is used internally
-within tm_cooc()." />
+<meta property="og:title" content="Uncover HR attributes which best represent a population for a Person to Person query — network_describe" />
+<meta property="og:description" content="Returns a data frame that gives a percentage of the group combinations that best represent
+the population provided. Uses a person to person query." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -192,48 +191,38 @@ within tm_cooc()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform a pairwise count of words by id</h1>
-    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/pairwise_count.R'><code>R/pairwise_count.R</code></a></small>
-    <div class="hidden name"><code>pairwise_count.Rd</code></div>
+    <h1>Uncover HR attributes which best represent a population for a Person to Person query</h1>
+    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/network_describe.R'><code>R/network_describe.R</code></a></small>
+    <div class="hidden name"><code>network_describe.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is a <strong>data.table</strong> implementation that mimics the output of
-<code>widyr::pairwise_count()</code> to reduce package dependency. This is used internally
-within <code><a href='tm_cooc.html'>tm_cooc()</a></code>.</p>
+    <p>Returns a data frame that gives a percentage of the group combinations that best represent
+the population provided. Uses a person to person query.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pairwise_count</span><span class='op'>(</span><span class='va'>data</span>, id <span class='op'>=</span> <span class='st'>"line"</span>, word <span class='op'>=</span> <span class='st'>"word"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>network_describe</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Organization"</span>, <span class='st'>"LevelDesignation"</span>, <span class='st'>"FunctionType"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Data frame output from <code><a href='tm_clean.html'>tm_clean()</a></code>.</p></td>
+      <td><p>Data frame for a person to person query.</p></td>
     </tr>
     <tr>
-      <th>id</th>
-      <td><p>String to represent the id variable. Defaults to "line".</p></td>
-    </tr>
-    <tr>
-      <th>word</th>
-      <td><p>String to represent the word variable. Defaults to "word".</p></td>
+      <th>hrvar</th>
+      <td><p>Character vector of length 3 containing the HR attributes to be used.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>line <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span><span class='op'>)</span>,
-                 word <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"work"</span>, <span class='st'>"meeting"</span>, <span class='st'>"catch"</span>, <span class='st'>"up"</span><span class='op'>)</span><span class='op'>)</span>
+    <p>Tannaz Sattari Tabrizi <a href='mailto:Tannaz.Sattari@microsoft.com'>Tannaz.Sattari@microsoft.com</a></p>
 
-<span class='fu'>pairwise_count</span><span class='op'>(</span><span class='va'>td</span>, id <span class='op'>=</span> <span class='st'>"line"</span>, word <span class='op'>=</span> <span class='st'>"word"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 3</span><span>
-#&gt;   item1 item2       n
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> work  meeting     1
-#&gt; </span><span style='color: #555555;'>2</span><span> catch up          1</div><div class='input'>
-</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
