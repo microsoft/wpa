@@ -52,6 +52,7 @@ Valid return options include:
 \item 'table': return a vertex summary table with counts in communities and HR attribute.
 \item 'data': return a vertex data file that matches vertices with communities and HR attributes.
 \item 'describe': returns a list of data frames which describe each of the identified communities.
+The first data frame is a summary table of all the communities.
 \item 'network': return igraph object.
 }}
 

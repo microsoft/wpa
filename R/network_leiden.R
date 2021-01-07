@@ -38,6 +38,7 @@
 #'   - 'table': return a vertex summary table with counts in communities and HR attribute.
 #'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
 #'   - 'describe': return a list of data frames which describe each of the identified communities.
+#'   The first data frame is a summary table of all the communities.
 #'   - 'network': return igraph object.
 #' @param size_threshold Numeric value representing the maximum number of edges before `network_leiden()`
 #' switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
@@ -321,13 +322,37 @@ network_leiden <- function(data,
       pull(cluster) %>%
       unique()
 
-    desc_str %>%
+    out_list <-
+      desc_str %>%
       purrr::map(function(x){
         describe_tb %>%
           filter(cluster == x) %>%
           network_describe(hrvar = desc_hrvar)
       }) %>%
       setNames(nm = desc_str)
+
+    summaryTable <-
+      list(i = out_list,
+         j = names(out_list)) %>%
+      purrr::pmap(function(i, j){
+        i %>%
+          arrange(desc(Percentage)) %>%
+          slice(1) %>%
+          mutate_at(vars(starts_with("feature_")), ~tidyr::replace_na(., "")) %>%
+          mutate(Community = j,
+                 `Attribute 1` = paste(feature_1, "=", feature_1_value),
+                 `Attribute 2` = paste(feature_2, "=", feature_2_value),
+                 `Attribute 3` = paste(feature_3, "=", feature_3_value)) %>%
+          select(Community,
+                 `Attribute 1`,
+                 `Attribute 2`,
+                 `Attribute 3`,
+                 PercentageExplained = "Percentage") %>%
+          mutate_at(vars(starts_with("Attribute")), ~ifelse(. == " = ", NA, .))
+      }) %>%
+      bind_rows()
+
+    c(list("summaryTable" = summaryTable), out_list)
 
   } else {
 
