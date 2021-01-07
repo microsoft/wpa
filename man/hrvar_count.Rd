@@ -10,7 +10,7 @@ hrvar_count(data, hrvar = "Organization", return = "plot")
 analysis_scope(data, hrvar = "Organization", return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "LevelDesignation".
@@ -38,6 +38,7 @@ Other General:
 \code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
 \code{\link{create_scatter}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},

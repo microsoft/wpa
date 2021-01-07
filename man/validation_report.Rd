@@ -9,6 +9,7 @@ validation_report(
   meeting_data = NULL,
   hrvar = "Organization",
   path = "validation report",
+  hrvar_threshold = 150,
   timestamp = TRUE
 )
 }
@@ -22,12 +23,16 @@ but accepts any character vector, e.g. "Organization"}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.}
 
+\item{hrvar_threshold}{Numeric value determining the maximum number of unique values
+to be allowed to qualify as a HR variable. This is passed directly to the \code{threshold}
+argument within \code{hrvar_count_all()}.}
+
 \item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
 Defaults to TRUE.}
 }
 \description{
 The function generates an interactive HTML report using
-Standard Query data as an input. The report contains a checks on
+Standard Person Query data as an input. The report contains a checks on
 Workplace Analytics query outputs, to provide diagnostic information
 for the Analyst pre-analysis.
 

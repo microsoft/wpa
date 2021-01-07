@@ -3,12 +3,12 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Run a summary of Key Metrics from the Standard Query data
+#' @title Run a summary of Key Metrics from the Standard Person Query data
 #'
 #' @description
 #' Returns a heatmapped table by default, with options to return a table.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, e.g. "Organization"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param metrics A character vector containing the variable names to calculate averages of.
@@ -74,34 +74,38 @@ keymetrics_scan <- function(data,
     mutate(variable = factor(variable)) %>%
     group_by(variable) %>%
     # Heatmap by row
-    mutate(value_rescaled = value/mean(value)) %>%
+    mutate(value_rescaled = maxmin(value)) %>%
     ungroup()
-
-  # Underscore to space
-  us_to_space <- function(x){
-    gsub(pattern = "_", replacement = " ", x = x)
-  }
-
 
   plot_object <-
     myTable_long %>%
     filter(variable != "Employee_Count") %>%
     ggplot(aes(x = group,
                y = stats::reorder(variable, desc(variable)))) +
-    geom_tile(aes(fill = value_rescaled)) +
+    geom_tile(aes(fill = value_rescaled),
+              colour = "#FFFFFF",
+              size = 2) +
     geom_text(aes(label=round(value, 1)), size = textsize) +
-    scale_fill_distiller(palette = "Blues",  direction = 1) +
+    # Fill is contingent on max-min scaling
+    scale_fill_gradient2(low = rgb2hex(7, 111, 161),
+                         mid = rgb2hex(241, 204, 158),
+                         high = rgb2hex(216, 24, 42),
+                         midpoint = 0.5,
+                         breaks = c(0, 0.5, 1),
+                         labels = c("Minimum", "", "Maximum"),
+                         limits = c(0, 1)) +
     scale_x_discrete(position = "top") +
     scale_y_discrete(labels = us_to_space) +
-    theme_light() +
-    labs(title = "Key Workplace Analytics metrics",
+    theme_wpa_basic() +
+    theme(axis.line = element_line(color = "#FFFFFF")) +
+    labs(title = "Key metrics",
          subtitle = paste("Weekly average by", camel_clean(hrvar)),
          y =" ",
          x =" ",
+         fill = " ",
          caption = extract_date_range(data, return = "text")) +
     theme(axis.text.x = element_text(angle = 90, hjust = 0),
-          plot.title = element_text(color="grey40", face="bold", size=20)) +
-    guides(fill=FALSE)
+          plot.title = element_text(color="grey40", face="bold", size=20))
 
 
   if(return == "table"){

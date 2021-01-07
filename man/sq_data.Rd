@@ -3,7 +3,7 @@
 \docType{data}
 \name{sq_data}
 \alias{sq_data}
-\title{Sample Standard Query dataset}
+\title{Sample Standard Person Query dataset}
 \format{
 A data frame with 13442 rows and 66 variables:
 \describe{
@@ -85,6 +85,6 @@ the last email or meeting for each day of the work week.}
 sq_data
 }
 \description{
-A dataset generated from a Standard Query from WpA.
+A dataset generated from a Standard Person Query from WpA.
 }
 \keyword{datasets}

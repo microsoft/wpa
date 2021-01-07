@@ -7,7 +7,7 @@
 mgrcoatt_dist(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
@@ -36,7 +36,6 @@ Other Managerial Relations:
 
 Other Meeting Culture: 
 \code{\link{meeting_dist}()},
-\code{\link{meeting_quality}()},
 \code{\link{mgrrel_matrix}()}
 }
 \concept{Managerial Relations}

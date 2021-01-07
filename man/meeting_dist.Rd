@@ -44,7 +44,6 @@ meeting_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 }
 \seealso{
 Other Meeting Culture: 
-\code{\link{meeting_quality}()},
 \code{\link{mgrcoatt_dist}()},
 \code{\link{mgrrel_matrix}()}
 }

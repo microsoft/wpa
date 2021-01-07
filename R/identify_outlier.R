@@ -12,7 +12,7 @@
 #' Time as a grouping variable can be overridden with the `group_var`
 #' argument.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param group_var A string with the name of the grouping variable.
 #' Defaults to `Date`.
 #' @param metric Character string containing the name of the metric,

@@ -7,14 +7,15 @@
 meeting_quality(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, e.g. "Organization"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
+but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
 \item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" or "table".}
+Valid inputs are "plot" and "table".}
 }
 \value{
 Returns a ggplot object by default, where 'plot' is passed in \code{return}.
@@ -24,10 +25,7 @@ When 'table' is passed, a summary table is returned as a data frame.
 Return an analysis of Meeting Quality with a bubble plot, using a Standard Person
 Query as an input.
 }
-\seealso{
-Other Meeting Culture: 
-\code{\link{meeting_dist}()},
-\code{\link{mgrcoatt_dist}()},
-\code{\link{mgrrel_matrix}()}
+\examples{
+meeting_quality(sq_data, return = "plot")
+
 }
-\concept{Meeting Culture}

@@ -1,7 +1,7 @@
 Package: wpa
 Type: Package
 Title: Tools for Analysing and Visualising Workplace Analytics data
-Version: 1.3.0
+Version: 1.3.1
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com"),
@@ -9,8 +9,10 @@ Authors@R: c(
     person(given = "Ainize", family = "Cidoncha", role = "ctb", email = "ainize.cidoncha@microsoft.com"),
     person(given = "Rosamary", family = "Ochoa Vargas", role = "ctb", email = "rosamary.ochoa@microsoft.com"),
     person(given = "Tannaz", family = "Sattari", role = "ctb", email = "tannaz.sattari@microsoft.com"),
-	person(given = "Lucas", family = "Hogner", role = "ctb", email = "lucas.hogner@microsoft.com"),
-	person(given = "Ellen", family = "Trinklein", role = "ctb")
+    person(given = "Lucas", family = "Hogner", role = "ctb", email = "lucas.hogner@microsoft.com"),
+    person(given = "Jasminder", family = "Thind", role = "ctb", email = "jasminder.thind@microsoft.com"),
+    person(given = "Simone", family = "Liebal", role = "ctb", email = "simone.liebal@microsoft.com"),
+    person(given = "Ellen", family = "Trinklein", role = "ctb")
 	)
 Description: Opinionated functions that enable easier and faster
     analysis of Workplace Analytics data. There are three main types of functions in wpa:
@@ -52,11 +54,8 @@ Imports:
     tidytext,
     ggraph,
     igraph,
-    widyr,
     proxy,
     rlang,
-    GGally,
-    network,
     ggwordcloud,
     methods,
     data.table
@@ -64,5 +63,6 @@ RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Suggests: 
-    extrafont
+    extrafont,
+    leiden
 Language: en-US

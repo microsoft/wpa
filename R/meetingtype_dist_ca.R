@@ -1,8 +1,8 @@
-#' @title Meeting Type Distribution (Collaboration Assessment Query)
+#' @title Meeting Type Distribution (Ways of Working Assessment Query)
 #'
 #' @description
 #' Calculate the hour distribution of internal meeting types,
-#' using a Collaboration Assessment Query with core WpA variables as an input.
+#' using a Ways of Working Assessment Query with core WpA variables as an input.
 #'
 #' @param data Meeting Query data frame. Must contain the variables `Attendee` and `DurationHours`
 #' @param hrvar Character string to specify the HR attribute to split the data by.
@@ -32,8 +32,7 @@ meetingtype_dist_ca <- function(data,
   mt_dist_str_clean <-
     mt_dist_str %>%
     gsub(pattern = "_meeting_hours", replacement = "", x = .) %>%
-    gsub(pattern = "_", replacement = " ", x = .)
-
+    us_to_space()
 
   ## Add dummy "Total" column if hrvar = NULL
   if(is.null(hrvar)){
@@ -53,7 +52,7 @@ meetingtype_dist_ca <- function(data,
       mutate(Prop = AttendeeMeetingHours / sum(AttendeeMeetingHours),
              Percent = paste(round(Prop * 100), "%")) %>%
       mutate(MeetingType = gsub(pattern = "_meeting_hours", replacement = "", x = MeetingType)) %>%
-      mutate(MeetingType = gsub(pattern = "_", replacement = " ", x = MeetingType))
+      mutate(MeetingType = us_to_space(MeetingType))
 
     ## Only for creating the bottom row data
     myResultsTableTotal <-
@@ -86,7 +85,7 @@ meetingtype_dist_ca <- function(data,
       mutate(Prop = AttendeeMeetingHours / sum(AttendeeMeetingHours),
              Percent = paste(round(Prop * 100), "%")) %>%
       mutate(MeetingType = gsub(pattern = "_meeting_hours", replacement = "", x = MeetingType)) %>%
-      mutate(MeetingType = gsub(pattern = "_", replacement = " ", x = MeetingType))
+      mutate(MeetingType = us_to_space(MeetingType))
 
     outputTable <-
       myResultsTable %>%

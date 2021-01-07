@@ -39,7 +39,7 @@
 #' title_list <- c("Workloads Summary - Plot", "Workloads Summary - Table")
 #' n_title <- length(title_list)
 #'
-#'# Step 3: Generate Report
+#' # Step 3: Generate Report
 #' generate_report(title = "My First Report",
 #'                 filename = "My First Report",
 #'                 outputs = output_list,

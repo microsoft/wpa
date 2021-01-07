@@ -7,7 +7,7 @@
 identify_nkw(data, collab_threshold = 5, return = "data_summary")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{collab_threshold}{The collaboration hours threshold that should be exceeded as an average for the entire analysis period for the employee to be categorized as a knowledge worker ("kw").
 Enter a positive number. Default is set to 5 collaboration hours.}

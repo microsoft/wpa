@@ -9,8 +9,11 @@ This is an R package for analyzing and visualizing data from [Microsoft Workplac
 ## With the **wpa** package, you can...
 
 1. **Run prebuilt analysis and visualizations** off Workplace Analytics data with settings for HR variables, privacy threshold, etc.
+
 2. **Generate prebuilt interactive HTML reports**, which cover specific areas e.g. collaboration, connectivity 
+
 3. Leverage **advanced analytics functions**, such as text mining and hierarchical clustering, which are built for Workplace Analytics metrics
+
 4. Integrate analysis of Workplace Analytics data with your R workflow seamlessly
 
 Here is an example of **wpa** in action:
@@ -19,53 +22,16 @@ Here is an example of **wpa** in action:
 
 ---
 
-## :rocket: Quick start guide - For users
+## :rocket: Users
 
-### Installing the package
+To get started with the package,  please see the following links: 
 
-You can install the GitHub version of **wpa** with the following in R: 
-```R
-# Check if devtools is installed, if not then install it
-if(!"devtools" %in% installed.packages()){
-  install.packages("devtools")
-}
-devtools::install_git(url = "https://github.com/microsoft/wpa.git")
-```
-Note that **wpa** is not yet released on CRAN, and therefore `install.packages()` will not work.
+- [Installation and Set-up](https://microsoft.github.io/wpa/analyst_guide_getting_started.html)
+- [Full function list](https://microsoft.github.io/wpa/reference/index.html)
 
-### Examples
+Also check out our package cheat sheet for a quick glimpse of what **wpa** offers:
 
-The package comes shipped with a sample Standard Query dataset (`sq_data`), so you can start exploring functions without having to read in any data. Most functions in **wpa** share a consistent API, and enable you to return results for both a **plot** or a **table** (data frame):
-
-```R
-collaboration_sum(sq_data, return = "plot")
-```
-<img src="man/figures/collaboration_sum2.jpg" align="center" width=80% />
-
-By passing 'table' to the `return` argument, the function will return a data frame with the relevant summary statistics. 
-
-The following illustrates the basic API of standard analysis functions:
-
-<img src="man/figures/api-demo.png" align="center" width=80% />
-
----
-
-## :package: Package Structure
-
-For information on the package structure, please see the relevant section in our [Analyst Guide](.github/analyst_guide.md).
-
-Also check out our package cheat sheet for more information:
-
-<a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet_20201116.png" align="center" width=50% /></a>
-
----
-
-## Vignette
-
-You can browse the vignette by running the following in R:
-```R
-vignette(topic = "intro-to-wpa", package = "wpa")
-```
+<a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet.png" align="center" width=50% /></a>
 
 ---
 
@@ -95,3 +61,15 @@ We would ask you to please read the [Microsoft Open Source Code of Conduct](http
 **Trademarks** 
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general). Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party's policies.
+
+---
+
+## Finding this project useful? 
+
+:star: Please star this repository to keep us going! 
+
+Contributors to the GitHub repo:
+
+![](https://raw.githubusercontent.com/microsoft/wpa/main/CONTRIBUTORS.svg)
+
+See full list [here](https://microsoft.github.io/wpa/authors.html).

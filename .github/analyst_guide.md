@@ -1,19 +1,43 @@
-# Analyst Guide
+# Introduction
 
-This is an analyst guide for the **wpa** package. Please use the links in the navigation bar above to access the individual sections.
+Welcome to the Analyst Guide of the **wpa** R package. This document will guide you through the installation process, explain the package functionality and structure, and get you comfortable with some common functions for analysis.
+
+## Before we begin...
+
+Make sure you have:
+1.  Analyst access to [Workplace Analytics](https://www.microsoft.com/en-us/microsoft-365/business/workplace-analytics)
+2.  [R](https://www.r-project.org/) installed in your local device. 
+
+An IDE is optional, but we recommend either [RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) or [VS Code](https://code.visualstudio.com/).
 
 ## Why use R for Workplace Analytics?
 
 There are multiple reasons:
 
-1. **Cutting edge data science**: R is an open-source language that is known for its **active user community** and a **wide range of packages** that together enable the quick and effective implementation of data science techniques
-2. **Reproducibility**: Code-based workflows help facilitate **reproducible analysis**, which is the notion that analysis should be built in a way that is replicable by others. R as a tool promotes this good practice. 
+1. **Cutting edge data science**: R is an open-source language that is known for its active user community and a wide range of packages that together enable the quick and effective implementation of data science techniques.
+2. **Reproducibility**: Code-based workflows help facilitate reproducible analysis, which is the notion that analysis should be built in a way that is replicable by others. R as a tool promotes this good practice. 
 3. **Efficiency / scalability**: R scales relatively well in the context of large datasets. The application of functions and automated processes also help cut down routine analysis time 
-4. **Integration**: If you already use R as part of your analysis toolkit, adopting the **wpa** package as part of the workflow will be seamless and easy
-5. **Go beyond basic reporting**: One of the most appealing feature of R is the access it offers to a wide range of packages. For instance, clustering and text mining can be done very easily as part of a R workflow – which are both available from the **wpa** package
+4. **Integration**: If you already use R as part of your analysis toolkit, adopting this package as part of the workflow will be seamless and easy
+5. **Extensibility**: One of the most appealing feature of R is the access it offers to a wide range of packages. For instance, clustering and text mining can be done very easily as part of a R workflow – which are both available in this package
 
+## Guide contents
 
+This guide is organized in five key sections:
 
-Also check out our package cheat sheet for more information:
+1. [**Getting Started**](analyst_guide_getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
+2. [**Summary Functions**](analyst_guide_summary.html): This section introduces functions that calculate averages and draw comparisons across groups.
+3. [**Distribution Functions**](analyst_guide_distribution.html): This section describes functions that help you explore distributions across groups.
+4. [**Trend Functions**](analyst_guide_trend.html): This section explains functions that explore time dyanmics across a wide range of metrics.
+5. [**Network Functions**](analyst_guide_network.html): This section explores functions that help you plot and analyse networks.
 
-<a href="https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet_20201116.pdf"><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/wpa%20cheatsheet_20201116.png" align="center" width=50% /></a>
+## Additional resources
+
+To get the most out of **wpa**, make sure to leaverage these additional resources: 
+
+1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet.pdf).
+2. A growing list of [articles](https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
+
+## Ready to go?
+
+Let's begin with the [**Getting Started**](analyst_guide_getting_started.html) section.
+

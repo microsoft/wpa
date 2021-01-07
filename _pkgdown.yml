@@ -26,13 +26,15 @@ navbar:
       menu:
       - text: Introduction
         href: analyst_guide.html
-      - text: Summary analysis
+      - text: Getting Started
+        href: analyst_guide_getting_started.html
+      - text: Summary Functions
         href: analyst_guide_summary.html
-      - text: Distribution analysis
-        href: analyst_guide_distribution.html  
-      - text: Trend analysis
+      - text: Distribution Functions
+        href: analyst_guide_distribution.html
+      - text: Trend Functions
         href: analyst_guide_trend.html
-      - text: Network analysis
+      - text: Network Functions
         href: analyst_guide_network.html
     reference:
       text: Reference
@@ -61,4 +63,8 @@ navbar:
         href: articles/intro-to-wpa.html
       - text: Text-mining Meeting Subject lines
         href: articles/text-mining-capabilities.html
+      - text: Best Practices when using wpa
+        href: articles/best-practices.html
+      - text: Introduction to Information Value
+        href: articles/IV-report.html
 

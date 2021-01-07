@@ -51,6 +51,7 @@ into the function.
 Other General: 
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
 \code{\link{create_scatter}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},

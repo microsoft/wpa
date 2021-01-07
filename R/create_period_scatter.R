@@ -15,7 +15,7 @@
 #' This is a general purpose function that powers all the functions
 #' in the package that produce faceted scatter plots.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector,
 #' defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param metric_x Character string containing the name of the metric,
@@ -143,8 +143,8 @@ create_period_scatter <- function(data,
           "to",
           daterange_2_end)
 
-  clean_x <- gsub(pattern = "_", replacement = " ", x = metric_x)
-  clean_y <- gsub(pattern = "_", replacement = " ", x = metric_y)
+  clean_x <- us_to_space(metric_x)
+  clean_y <- us_to_space(metric_y)
 
   plot_title <-
     paste(clean_x, "and", clean_y,

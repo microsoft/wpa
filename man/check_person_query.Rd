@@ -8,7 +8,7 @@ check_person_query(data, return)
 }
 \arguments{
 \item{data}{A person-level query in the form of a data frame, including the standard person query,
-collaboration assessment query, and the hourly collaboration query.}
+Ways of Working assessment query, and the hourly collaboration query.}
 
 \item{return}{Character string to specify whether to return a console message ("message"),
 a character string ("text"), or a data frame. Defaults to "message".}

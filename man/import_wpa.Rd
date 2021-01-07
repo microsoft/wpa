@@ -13,7 +13,7 @@ e.g. "/files/standard query.csv"}
 
 \item{standardise}{logical. If TRUE, \code{import_wpa()} runs \code{standardise_pq()} to make a Collaboration
 Assessment query's columns name standard and consistent with a Standard Person Query. Note that this
-will have no effect if the query being imported is not a Collaboration Assessment query. Defaults
+will have no effect if the query being imported is not a Ways of Working Assessment query. Defaults
 as FALSE.}
 }
 \description{

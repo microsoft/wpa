@@ -9,7 +9,7 @@
 #' This is used as part of data validation to check if there are extreme values
 #' in the dataset.
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric A character string specifying the metric to test.
 #' @param person A logical value to specify whether to calculate person-averages.
 #' Defaults to TRUE (person-averages calculated).
@@ -21,12 +21,15 @@
 #' @import dplyr
 #'
 #' @examples
-#' \dontrun{
 #' # The threshold values are intentionally set low to trigger messages.
 #' flag_extreme(sq_data, "Email_hours", threshold = 15)
+#'
+#' # Return a summary table
 #' flag_extreme(sq_data, "Email_hours", threshold = 15, return = "table")
+#'
+#' # Person-week level
 #' flag_extreme(sq_data, "Email_hours", person = FALSE, threshold = 15)
-#' }
+#'
 #'
 #' @export
 flag_extreme <- function(data,
@@ -54,8 +57,7 @@ flag_extreme <- function(data,
 
 
   ## Clean names for pretty printing
-  metric_nm <- gsub(pattern = "_", replacement = " ", x = metric)
-  metric_nm <- camel_clean(metric_nm)
+  metric_nm <- metric %>% us_to_space() %>% camel_clean()
 
   ## Define MessageLevel
   if(person == TRUE){

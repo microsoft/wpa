@@ -12,5 +12,9 @@
 ^\.github$
 ^man/figures/wpa cheatsheet_20201116.pdf$
 ^man/figures/wpa cheatsheet_20201116.png$
+^man/figures/wpa cheatsheet.pdf$
+^man/figures/wpa cheatsheet.png$
 ^vignettes/best-practices.Rmd$
 ^vignettes/text-mining-capabilities.Rmd$
+^vignettes/IV-report.Rmd$
+^CONTRIBUTORS.svg$

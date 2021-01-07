@@ -15,7 +15,7 @@ meetingtype_summary(
 meetingtype_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{Collaboration Assessment query in the form of a data frame. Requires the following variables:
+\item{data}{Ways of Working Assessment query in the form of a data frame. Requires the following variables:
 \itemize{
 \item \code{Bloated_meeting_hours}
 \item \code{Lengthy_meeting_hours}

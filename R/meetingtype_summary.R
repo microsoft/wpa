@@ -4,7 +4,7 @@
 #' This function creates a bar chart showing the percentage of meeting hours which are spent in
 #' long or large meetings.
 #'
-#' @param data Collaboration Assessment query in the form of a data frame. Requires the following variables:
+#' @param data Ways of Working Assessment query in the form of a data frame. Requires the following variables:
 #' - `Bloated_meeting_hours`
 #' - `Lengthy_meeting_hours`
 #' - `Workshop_meeting_hours`
@@ -43,7 +43,7 @@ meetingtype_summary <- function(data,
     summarise_at(vars(mt_dist_str), ~sum(., na.rm = TRUE)) %>%
     gather(MeetingType, AttendeeMeetingHours, -!!sym(hrvar)) %>%
     mutate(MeetingType = gsub(pattern = "_meeting_hours", replacement = "", x = MeetingType)) %>%
-    mutate(MeetingType = gsub(pattern = "_", replacement = " ", x = MeetingType)) %>%
+    mutate(MeetingType = us_to_space(MeetingType)) %>%
     group_by(!!sym(hrvar)) %>%
     mutate(AttendeeMeetingHours = AttendeeMeetingHours / sum(AttendeeMeetingHours)) %>%
     spread(MeetingType, AttendeeMeetingHours) %>%

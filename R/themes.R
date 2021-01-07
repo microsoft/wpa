@@ -83,18 +83,18 @@ theme_wpa_basic <- function(font_size = 12){
 
   text_small_dark <- element_text(size = font_size - 2, colour = text_colour, face = "plain")
   text_small_light <- element_text(size = font_size - 2, colour = "#FFFFFF", face = "plain")
-  text_normal <- element_text(size = font_size + 2, colour = text_colour, face = "plain")
-  text_italic <- element_text(size = font_size + 2, colour = text_colour, face = "italic")
+  text_normal <- element_text(size = font_size + 0, colour = text_colour, face = "plain")
+  text_italic <- element_text(size = font_size + 0, colour = text_colour, face = "italic")
 
-  text_bold <- element_text(size = font_size + 2, colour = text_colour, face = "bold")
-  text_title <- element_text(size = font_size + 8, colour = text_colour, face = "bold")
+  text_bold <- element_text(size = font_size + 0, colour = text_colour, face = "bold")
+  text_title <- element_text(size = font_size + 2, colour = text_colour, face = "bold")
 
   theme_minimal() +
     theme(plot.background = element_blank(),
           # plot.background = element_rect(fill = bg_colour),
           text = text_normal,
           plot.title = text_title,
-          plot.subtitle = text_italic,
+          plot.subtitle = text_normal,
 
           axis.title = text_normal,
           axis.text = text_small_dark,
@@ -106,7 +106,7 @@ theme_wpa_basic <- function(font_size = 12){
           axis.ticks = element_blank(),
 
           legend.position = "bottom",
-          legend.title = element_blank(),
+          # legend.title = element_blank(),
 
           panel.grid = element_blank(),
           strip.background = element_rect(fill = bg_colour2, colour = bg_colour2),

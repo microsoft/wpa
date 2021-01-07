@@ -19,6 +19,9 @@
 #' @param return A character vector specifying what to return.
 #' Valid values include "table" (default). Features are being considered for alternative return options but are currently
 #' unavailable.
+#' @param plot_mode Numeric vector to determine which plot mode to return:
+#'   1. Top and bottom five groups across the data population are highlighted
+#'   2. Top and bottom groups _per_ organizational attribute are highlighted
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -38,7 +41,8 @@ create_rank <- function(data,
                         metric,
                         hrvar = extract_hr(data),
                         mingroup = 5,
-                        return = "table"){
+                        return = "table",
+                        plot_mode = 1){
 
   results <-
     create_bar(data,
@@ -73,7 +77,115 @@ create_rank <- function(data,
     select(hrvar, everything())
 
   if(return == "table"){
+
     return(output)
+
+  } else if(return == "plot"){
+
+    # Company average
+    avg_ch <-
+      data %>%
+      create_bar(hrvar = NULL, metric = metric, return = "table") %>%
+      pull(metric)
+
+    if(plot_mode == 1){
+
+      # Main plot
+      output %>%
+        mutate(Rank = rev(rank(!!sym(metric), ties.method = "max"))) %>%
+        mutate(Group =
+                 case_when(Rank %in% 1:5 ~ "Top 5",
+                           Rank %in% nrow(.):(nrow(.) - 5) ~ "Bottom 5",
+                           TRUE ~ "Middle")) %>%
+        group_by(hrvar) %>%
+        mutate(OrgGroup =
+                 case_when(!!sym(metric) == max(!!sym(metric), na.rm = TRUE) ~ "Top",
+                           !!sym(metric) == min(!!sym(metric), na.rm = TRUE) ~ "Bottom",
+                           TRUE ~ "Middle")) %>%
+        mutate(top_group = max(!!sym(metric), na.rm = TRUE)) %>%
+        ungroup() %>%
+        ggplot(aes(x = !!sym(metric),
+                   y = reorder(hrvar, top_group))) + # Sort by top group
+        geom_point(aes(fill = Group,
+                       size = n),
+                   colour = "black",
+                   pch = 21,
+                   alpha = 0.8) +
+        labs(title = us_to_space(metric),
+             subtitle = "Lowest and highest values, by org. attribute",
+             y = "",
+             x = "") +
+        ggrepel::geom_text_repel(aes(x = !!sym(metric),
+                                     y = hrvar,
+                                     label = ifelse(Group %in% c("Top 5", "Bottom 5"), group, "")),
+                                 size = 3) +
+        scale_x_continuous(position = "top") +
+        scale_fill_manual(name = "Group",
+                          values = c(rgb2hex(68,151,169),
+                                     "white",
+                                     "#FE7F4F"),
+                          guide = "legend") +
+        theme_wpa_basic() +
+        scale_size(guide = "none", range = c(1, 15)) +
+        theme(
+          axis.line=element_blank(),
+		  panel.grid.major.x = element_blank(),
+          panel.grid.major.y = element_line(colour = "#D9E7F7", size = 3), # lightblue bar
+		  panel.grid.minor.x = element_line(color="gray"),
+          strip.placement = "outside",
+          strip.background = element_blank(),
+          strip.text = element_blank()
+        ) +
+        geom_vline(xintercept = avg_ch, colour = "red") 
+
+    } else if(plot_mode == 2){
+
+      output %>%
+        group_by(hrvar) %>%
+        mutate(OrgGroup =
+                 case_when(!!sym(metric) == max(!!sym(metric), na.rm = TRUE) ~ "Top",
+                           !!sym(metric) == min(!!sym(metric), na.rm = TRUE) ~ "Bottom",
+                           TRUE ~ "Middle")) %>%
+        mutate(top_group = max(!!sym(metric), na.rm = TRUE)) %>%
+        ungroup() %>%
+        ggplot(aes(x = !!sym(metric),
+                   y = reorder(hrvar, top_group))) + # Sort by top group
+        geom_point(aes(fill = OrgGroup,
+                       size = n),
+                   colour = "black",
+                   pch = 21,
+                   alpha = 0.8) +
+        labs(title = us_to_space(metric),
+             subtitle = "Group averages by organizational attribute",
+             y = "Organizational attributes",
+             x = us_to_space(metric)) +
+        ggrepel::geom_text_repel(aes(x = !!sym(metric),
+                                     y = hrvar,
+                                     label = ifelse(OrgGroup %in% c("Top", "Bottom"), group, "")),
+                                 size = 3) +
+        scale_x_continuous(position = "top") +
+        scale_fill_manual(name = "Group",
+                          values = c(rgb2hex(68,151,169),
+                                     "white",
+                                     "#FE7F4F"),
+                          guide = "legend") +
+        theme_wpa_basic() +
+        scale_size(guide = "none", range = c(1, 8)) +
+        theme(
+          panel.grid.major.x = element_blank(),
+          panel.grid.major.y = element_line(colour = "#D9E7F7", size = 3), # lightblue bar
+          strip.placement = "outside",
+          strip.background = element_blank(),
+          strip.text = element_blank()
+        ) +
+        geom_vline(xintercept = avg_ch, colour = "red")
+
+    } else {
+
+      stop("Invalid plot_mode argument.")
+
+    }
+
   } else {
     stop("Invalid `return` argument.")
   }

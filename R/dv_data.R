@@ -3,10 +3,10 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Sample Standard Query dataset for Data Validation
+#' @title Sample Standard Person Query dataset for Data Validation
 #'
 #' @description
-#' A dataset generated from a Standard Query from WpA.
+#' A dataset generated from a Standard Person Query from WpA.
 #'
 #' @format A data frame with 897 rows and 69 variables:
 #' \describe{

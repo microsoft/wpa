@@ -28,7 +28,7 @@
 #' and "abs".
 #' @param signals Character vector to specify which collaboration metrics to use:
 #' You may use "email" (default) for emails only, "IM" for Teams messages only,
-#' or a combination of the two `c("email", "IM")`.
+#' "unscheduled_calls" for Unscheduled Calls only, or a combination, such as `c("email", "IM")`.
 #' @param start_hour A character vector specifying starting hours,
 #' e.g. "0900"
 #' @param end_hour A character vector specifying starting hours,
@@ -49,10 +49,16 @@
 #'
 #' @examples
 #' \dontrun{
-#' workpatterns_hclust(em_data, k = 4, return = "plot", signals = c("IM", "email"))
+#' # Run clusters with all three signal types, return plot
+#' workpatterns_hclust(em_data,
+#'                     k = 4,
+#'                     return = "plot",
+#'                     signals = c("IM", "email", "unscheduled_calls"))
 #'
+#' # Run clusters, return raw data
 #' workpatterns_hclust(em_data, k = 4, return = "data")
 #'
+#' # Run clusters for instant messages only, return hclust object
 #' workpatterns_hclust(em_data, k = 4, return = "hclust", signals = c("IM"))
 #' }
 #'
@@ -68,63 +74,95 @@ workpatterns_hclust <- function(data,
                                 start_hour = "0900",
                                 end_hour = "1700"){
 
-  ## Select input variable names
-  if("email" %in% signals & "IM" %in% signals){
+  # Text replacement only for allowed values
 
-    ## Create 24 summed `Signals_sent` columns
-    signal_cols <-
-      purrr::map(0:23,
-                 ~combine_signals(data,
-                                  hr = .)) %>%
-      bind_cols()
+  if(any(signals %in% c("email", "IM", "unscheduled_calls"))){
 
-    ## Use names for matching
-    input_var <- names(signal_cols)
-
-    ## Average signals sent by Person
-    signals_df <-
-      data %>%
-      select(PersonId) %>%
-      cbind(signal_cols) %>%
-      group_by(PersonId) %>%
-      summarise_all(~mean(.))
-
-    ## Signal label
-    sig_label <- "Signals_sent"
-
-  } else if(signals == "IM"){
-
-    match_index <- grepl(pattern = "^IMs_sent", x = names(data))
-    input_var <- names(data)[match_index]
-
-    ## Average signals sent by Person
-    signals_df <-
-      data %>%
-      select(PersonId, all_of(input_var)) %>%
-      group_by(PersonId) %>%
-      summarise_all(~mean(.))
-
-    sig_label <- "IMs_sent"
-
-  } else if(signals == "email"){
-
-    match_index <- grepl(pattern = "^Emails_sent", x = names(data))
-    input_var <-names(data)[match_index]
-
-    ## Average signals sent by Person
-    signals_df <-
-      data %>%
-      select(PersonId, all_of(input_var)) %>%
-      group_by(PersonId) %>%
-      summarise_all(~mean(.))
-
-    sig_label <- "Emails_sent"
+    signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
+    signal_set <- gsub(pattern = "IM", replacement = "IMs_sent", x = signal_set)
+    signal_set <- gsub(pattern = "unscheduled_calls", replacement = "Unscheduled_calls", x = signal_set)
 
   } else {
 
     stop("Invalid input for `signals`.")
 
   }
+
+  ## Create 24 summed `Signals_sent` columns
+  signal_cols <- purrr::map(0:23, ~combine_signals(data, hr = ., signals = signal_set))
+  signal_cols <- bind_cols(signal_cols)
+
+  ## Use names for matching
+  input_var <- names(signal_cols)
+
+  ## Average signals sent by Person
+  signals_df <-
+    data %>%
+    select(PersonId) %>%
+    cbind(signal_cols) %>%
+    group_by(PersonId) %>%
+    summarise_all(~mean(.))
+
+  ## Signal label
+  sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
+
+  # ## Select input variable names
+  # if("email" %in% signals & "IM" %in% signals){
+  #
+  #   ## Create 24 summed `Signals_sent` columns
+  #   signal_cols <-
+  #     purrr::map(0:23,
+  #                ~combine_signals(data, hr = .,
+  #                                 signals = c("Emails_sent", "IMs_sent"))) %>%
+  #     bind_cols()
+  #
+  #   ## Use names for matching
+  #   input_var <- names(signal_cols)
+  #
+  #   ## Average signals sent by Person
+  #   signals_df <-
+  #     data %>%
+  #     select(PersonId) %>%
+  #     cbind(signal_cols) %>%
+  #     group_by(PersonId) %>%
+  #     summarise_all(~mean(.))
+  #
+  #   ## Signal label
+  #   sig_label <- "Signals_sent"
+  #
+  # } else if(signals == "IM"){
+  #
+  #   match_index <- grepl(pattern = "^IMs_sent", x = names(data))
+  #   input_var <- names(data)[match_index]
+  #
+  #   ## Average signals sent by Person
+  #   signals_df <-
+  #     data %>%
+  #     select(PersonId, all_of(input_var)) %>%
+  #     group_by(PersonId) %>%
+  #     summarise_all(~mean(.))
+  #
+  #   sig_label <- "IMs_sent"
+  #
+  # } else if(signals == "email"){
+  #
+  #   match_index <- grepl(pattern = "^Emails_sent", x = names(data))
+  #   input_var <-names(data)[match_index]
+  #
+  #   ## Average signals sent by Person
+  #   signals_df <-
+  #     data %>%
+  #     select(PersonId, all_of(input_var)) %>%
+  #     group_by(PersonId) %>%
+  #     summarise_all(~mean(.))
+  #
+  #   sig_label <- "Emails_sent"
+  #
+  # } else {
+  #
+  #   stop("Invalid input for `signals`.")
+  #
+  # }
 
   ## Normalised pattern data
   ptn_data_norm <-

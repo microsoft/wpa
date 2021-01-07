@@ -9,7 +9,7 @@
 #' Generate the Manager-Relationship 2x2 matrix, returning a ggplot object by default.
 #' Additional options available to return a "wide" or "long" summary table.
 #'
-#' @param data Standard Query data to pass through. Accepts a data frame.
+#' @param data Standard Person Query data to pass through. Accepts a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector,
 #' e.g. "Organization". Defaults to NULL.
 #' @param return A character vector specifying whether to return a matrix plot or a table.

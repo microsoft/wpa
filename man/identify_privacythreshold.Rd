@@ -12,7 +12,7 @@ identify_privacythreshold(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{A list of HR Variables to consider in the scan.
 Defaults to all HR attributes identified.}

@@ -21,7 +21,7 @@
 #' - `identify_nkw()`
 #' - `identify_inactiveweeks`
 #'
-#' @param data A Standard Query dataset in the form of a data frame.
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #'

@@ -13,7 +13,7 @@ hrvar_count_all(
 )
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{n_var}{number of HR variables to include in report as rows. Default is set to 10 HR variables.}
 
@@ -34,6 +34,11 @@ in the WpA Sources page.
 This function will return a summary table with the count of distinct fields per HR attribute and the percentage of
 employees with NAs for that attribute.
 See hrvar_count function for more detail on the specific HR attribute of interest.
+}
+\examples{
+# Return a summary table of all HR attributes
+hrvar_count_all(sq_data, return = "table")
+
 }
 \seealso{
 Other Data Validation: 

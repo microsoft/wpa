@@ -7,7 +7,7 @@
 flag_extreme(data, metric, person = TRUE, threshold, return = "message")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{metric}{A character string specifying the metric to test.}
 
@@ -23,12 +23,15 @@ This is used as part of data validation to check if there are extreme values
 in the dataset.
 }
 \examples{
-\dontrun{
 # The threshold values are intentionally set low to trigger messages.
 flag_extreme(sq_data, "Email_hours", threshold = 15)
+
+# Return a summary table
 flag_extreme(sq_data, "Email_hours", threshold = 15, return = "table")
+
+# Person-week level
 flag_extreme(sq_data, "Email_hours", person = FALSE, threshold = 15)
-}
+
 
 }
 \seealso{

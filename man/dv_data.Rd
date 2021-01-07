@@ -3,7 +3,7 @@
 \docType{data}
 \name{dv_data}
 \alias{dv_data}
-\title{Sample Standard Query dataset for Data Validation}
+\title{Sample Standard Person Query dataset for Data Validation}
 \format{
 A data frame with 897 rows and 69 variables:
 \describe{
@@ -87,6 +87,6 @@ A data frame with 897 rows and 69 variables:
 dv_data
 }
 \description{
-A dataset generated from a Standard Query from WpA.
+A dataset generated from a Standard Person Query from WpA.
 }
 \keyword{datasets}

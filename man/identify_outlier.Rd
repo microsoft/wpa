@@ -7,7 +7,7 @@
 identify_outlier(data, group_var = "Date", metric = "Collaboration_hours")
 }
 \arguments{
-\item{data}{A Standard Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{group_var}{A string with the name of the grouping variable.
 Defaults to \code{Date}.}
@@ -36,6 +36,7 @@ Other General:
 \code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
 \code{\link{create_scatter}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},

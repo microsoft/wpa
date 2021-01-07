@@ -10,11 +10,11 @@ standardise_pq(data)
 standardize_pq(data)
 }
 \arguments{
-\item{data}{A Collaboration Assessment query to pass through as a data frame.}
+\item{data}{A Ways of Working Assessment query to pass through as a data frame.}
 }
 \description{
 This function standardises the variable names to a Standard Person
-Query, where the standard use case is to pass a Collaboration Assessment
+Query, where the standard use case is to pass a Ways of Working Assessment
 Query to the function.
 }
 \details{
