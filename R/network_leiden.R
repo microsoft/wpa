@@ -151,7 +151,7 @@ network_leiden <- function(data,
         par(bg = bg_fill)
 
         plot(g,
-             layout = layout_with_mds,
+             layout = igraph::layout_with_mds,
              vertex.label = NA,
              vertex.size = 3,
              edge.arrow.mode = "-",
@@ -249,7 +249,7 @@ network_leiden <- function(data,
         par(bg = bg_fill)
 
         plot(g,
-             layout = layout_with_mds,
+             layout = igraph::layout_with_mds,
              vertex.label = NA,
              vertex.size = 3,
              edge.arrow.mode = "-",
