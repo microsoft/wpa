@@ -121,7 +121,7 @@ network_louvain <- function(data,
   ## Return
   if(return == "plot-louvain"){
 
-    if(igraph::ecount(g) > 5000){
+    if(igraph::ecount(g) > size_threshold){
 
       message("Using fast plot method due to large network size...")
 
@@ -206,7 +206,7 @@ network_louvain <- function(data,
 
   } else if(return == "plot-hrvar"){
 
-    if(igraph::ecount(g) > 5000){
+    if(igraph::ecount(g) > size_threshold){
 
       message("Using fast plot method due to large network size...")
 

@@ -124,7 +124,7 @@ network_leiden <- function(data,
   ## Return
   if(return == "plot-leiden"){
 
-    if(igraph::ecount(g) > 5000){
+    if(igraph::ecount(g) > size_threshold){
 
       message("Using fast plot method due to large network size...")
 
@@ -207,7 +207,7 @@ network_leiden <- function(data,
 
   } else if(return == "plot-hrvar"){
 
-    if(igraph::ecount(g) > 5000){
+    if(igraph::ecount(g) > size_threshold){
 
       message("Using fast plot method due to large network size...")
 
