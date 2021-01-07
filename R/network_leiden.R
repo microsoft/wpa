@@ -47,6 +47,7 @@
 #'
 #' @import dplyr
 #' @importFrom igraph plot.igraph
+#' @importFrom igraph layout_with_mds
 #'
 #' @export
 network_leiden <- function(data,
@@ -145,30 +146,45 @@ network_leiden <- function(data,
       igraph::V(g)$frame.color <- NA
       igraph::E(g)$width <- 1
 
-      grDevices::pdf(paste0(path, tstamp(), ".pdf"))
+      plot_cluster <- function(){
 
-      par(bg = bg_fill)
+        par(bg = bg_fill)
 
-      plot(g,
-           layout = layout_with_mds,
-           vertex.label = NA,
-           vertex.size = 3,
-           edge.arrow.mode = "-",
-           edge.color = "#adadad")
+        plot(g,
+             layout = layout_with_mds,
+             vertex.label = NA,
+             vertex.size = 3,
+             edge.arrow.mode = "-",
+             edge.color = "#adadad")
 
-      legend(x = -1.5,
-             y = 0.5,
-             legend = colour_tb$cluster,
-             pch = 21,
-             text.col = font_col,
-             col = "#777777",
-             pt.bg= colour_tb$colour,
-             pt.cex = 2,
-             cex = .8,
-             bty = "n",
-             ncol = 1)
+        legend(x = -1.5,
+               y = 0.5,
+               legend = colour_tb$cluster,
+               pch = 21,
+               text.col = font_col,
+               col = "#777777",
+               pt.bg= colour_tb$colour,
+               pt.cex = 2,
+               cex = .8,
+               bty = "n",
+               ncol = 1)
 
-      grDevices::dev.off()
+      }
+
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_cluster()
+
+      } else {
+
+        grDevices::pdf(out_path)
+
+        plot_cluster()
+
+        message(paste0("Saved to ", out_path, "."))
+
+      }
 
     } else {
 
@@ -201,10 +217,10 @@ network_leiden <- function(data,
                width = 16,
                height = 9)
 
+        message(paste0("Saved to ", out_path, "."))
+
       }
     }
-
-    message(paste0("Saved to ", out_path, "."))
 
   } else if(return == "plot-hrvar"){
 
@@ -228,30 +244,47 @@ network_leiden <- function(data,
       igraph::V(g)$frame.color <- NA
       igraph::E(g)$width <- 1
 
-      grDevices::pdf(paste0(path, tstamp(), ".pdf"))
+      plot_hrvar <- function(){
 
-      par(bg = bg_fill)
+        par(bg = bg_fill)
 
-      plot(g,
-           layout = layout_with_mds,
-           vertex.label = NA,
-           vertex.size = 3,
-           edge.arrow.mode = "-",
-           edge.color = "#adadad")
+        plot(g,
+             layout = layout_with_mds,
+             vertex.label = NA,
+             vertex.size = 3,
+             edge.arrow.mode = "-",
+             edge.color = "#adadad")
 
-      legend(x = -1.5,
-             y = 0.5,
-             legend = colour_tb[[hrvar]],
-             pch = 21,
-             text.col = font_col,
-             col = "#777777",
-             pt.bg = colour_tb$colour,
-             pt.cex = 2,
-             cex = .8,
-             bty = "n",
-             ncol = 1)
+        legend(x = -1.5,
+               y = 0.5,
+               legend = colour_tb[[hrvar]],
+               pch = 21,
+               text.col = font_col,
+               col = "#777777",
+               pt.bg = colour_tb$colour,
+               pt.cex = 2,
+               cex = .8,
+               bty = "n",
+               ncol = 1)
 
-      grDevices::dev.off()
+      }
+
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_hrvar()
+
+      } else {
+
+        grDevices::pdf(out_path)
+
+        plot_hrvar()
+
+        grDevices::dev.off()
+
+        message(paste0("Saved to ", out_path, "."))
+
+      }
 
     } else {
 
@@ -283,11 +316,11 @@ network_leiden <- function(data,
                width = 16,
                height = 9)
 
+        message(paste0("Saved to ", out_path, "."))
+
       }
 
     }
-
-    message(paste0("Saved to ", out_path, "."))
 
   } else if(return == "table"){
 
