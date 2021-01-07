@@ -118,6 +118,9 @@ network_leiden <- function(data,
     g %>%
     ggraph::ggraph(layout = "igraph", algorithm = algorithm)
 
+  ## Timestamped File Path
+  out_path <- paste0(path, tstamp(), ".pdf")
+
   ## Return
   if(return == "plot-leiden"){
 
@@ -200,6 +203,8 @@ network_leiden <- function(data,
       }
     }
 
+    message(paste0("Saved to ", out_path, "."))
+
   } else if(return == "plot-hrvar"){
 
     if(igraph::ecount(g) > 5000){
@@ -281,6 +286,8 @@ network_leiden <- function(data,
       }
 
     }
+
+    message(paste0("Saved to ", out_path, "."))
 
   } else if(return == "table"){
 

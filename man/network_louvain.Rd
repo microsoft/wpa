@@ -13,7 +13,8 @@ network_louvain(
   algorithm = "mds",
   path = "network_p2p_louvain",
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-  return = "plot-louvain"
+  return = "plot-louvain",
+  size_threshold = 5000
 )
 }
 \arguments{
@@ -53,6 +54,11 @@ Valid return options include:
 \item 'describe': returns a list of data frames which describe each of the identified communities.
 \item 'network': return igraph object.
 }}
+
+\item{size_threshold}{Numeric value representing the maximum number of edges before \code{network_leiden()}
+switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
+Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} to always use the default plotting
+method.}
 }
 \description{
 Take a P2P network query and implement the Louvain community detection method. The

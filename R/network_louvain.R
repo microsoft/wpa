@@ -36,9 +36,14 @@
 #'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
 #'   - 'describe': returns a list of data frames which describe each of the identified communities.
 #'   - 'network': return igraph object.
+#' @param size_threshold Numeric value representing the maximum number of edges before `network_leiden()`
+#' switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
+#' Set as `0` to co-erce to a fast plotting method every time, and `Inf` to always use the default plotting
+#' method.
 #'
 #' @import ggraph
 #' @import dplyr
+#' @importFrom igraph plot.igraph
 #'
 #' @export
 network_louvain <- function(data,
@@ -49,7 +54,8 @@ network_louvain <- function(data,
                             algorithm = "mds",
                             path = "network_p2p_louvain",
                             desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-                            return = "plot-louvain"){
+                            return = "plot-louvain",
+                            size_threshold = 5000){
 
   ## Set variables
   TO_hrvar <- paste0("TieOrigin_", hrvar)
@@ -109,72 +115,178 @@ network_louvain <- function(data,
     g %>%
     ggraph::ggraph(layout = "igraph", algorithm = algorithm)
 
+  ## Timestamped File Path
+  out_path <- paste0(path, tstamp(), ".pdf")
+
   ## Return
   if(return == "plot-louvain"){
 
-    plot_output <-
-      g_layout +
-      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = cluster),
-                              alpha = node_alpha,
-                              pch = 16) +
-      theme_void() +
-      theme(legend.position = "bottom",
-            legend.background = element_rect(fill = bg_fill),
-            plot.background = element_rect(fill = bg_fill),
-            text = element_text(colour = font_col),
-            axis.line = element_blank()) +
-      labs(title = "Person to person collaboration with Community Detection",
-           subtitle = "Based on Louvain algorithm and Strong Tie Score",
-           y = "",
-           x = "")
+    if(igraph::ecount(g) > 5000){
 
-    # Default PDF output unless NULL supplied to path
-    if(is.null(path)){
+      message("Using fast plot method due to large network size...")
 
-      plot_output
+      ## Set colours
+      colour_tb <-
+        tibble(cluster = unique(igraph::V(g)$cluster)) %>%
+        mutate(colour = rainbow(nrow(.)))
+
+      ## Colour vector
+      colour_v <-
+        tibble(cluster = igraph::V(g)$cluster) %>%
+        left_join(colour_tb, by = "cluster") %>%
+        pull(colour)
+
+
+      igraph::V(g)$color <- grDevices::adjustcolor(colour_v, alpha.f = node_alpha)
+      igraph::V(g)$frame.color <- NA
+      igraph::E(g)$width <- 1
+
+      grDevices::pdf(out_path)
+
+      par(bg = bg_fill)
+
+      plot(g,
+           layout = layout_with_mds,
+           vertex.label = NA,
+           vertex.size = 3,
+           edge.arrow.mode = "-",
+           edge.color = "#adadad")
+
+      legend(x = -1.5,
+             y = 0.5,
+             legend = colour_tb$cluster,
+             pch = 21,
+             text.col = font_col,
+             col = "#777777",
+             pt.bg= colour_tb$colour,
+             pt.cex = 2,
+             cex = .8,
+             bty = "n",
+             ncol = 1)
+
+      grDevices::dev.off()
 
     } else {
 
-      ggsave(paste0(path, tstamp(), ".pdf"),
-             plot = plot_output,
-             width = 16,
-             height = 9)
+      plot_output <-
+        g_layout +
+        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+        ggraph::geom_node_point(aes(colour = cluster),
+                                alpha = node_alpha,
+                                pch = 16) +
+        theme_void() +
+        theme(legend.position = "bottom",
+              legend.background = element_rect(fill = bg_fill),
+              plot.background = element_rect(fill = bg_fill),
+              text = element_text(colour = font_col),
+              axis.line = element_blank()) +
+        labs(title = "Person to person collaboration with Community Detection",
+             subtitle = "Based on Louvain algorithm and Strong Tie Score",
+             y = "",
+             x = "")
+
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_output
+
+      } else {
+
+        ggsave(out_path,
+               plot = plot_output,
+               width = 16,
+               height = 9)
+
+      }
 
     }
+
+    message(paste0("Saved to ", out_path, "."))
+
 
   } else if(return == "plot-hrvar"){
 
-    plot_output <-
-      g_layout +
-      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = !!sym(hrvar)),
-                              alpha = node_alpha,
-                              pch = 16) +
-      theme_void() +
-      theme(legend.position = "bottom",
-            legend.background = element_rect(fill = bg_fill),
-            plot.background = element_rect(fill = bg_fill),
-            text = element_text(colour = font_col),
-            axis.line = element_blank()) +
-      labs(title = "Person to person collaboration",
-           subtitle = paste0("Showing ", hrvar),
-           y = "",
-           x = "")
+    if(igraph::ecount(g) > 5000){
 
-    # Default PDF output unless NULL supplied to path
-    if(is.null(path)){
+      message("Using fast plot method due to large network size...")
 
-      plot_output
+      ## Set colours
+      colour_tb <-
+        tibble(!!sym(hrvar) := unique(igraph::get.vertex.attribute(g, name = hrvar))) %>%
+        mutate(colour = rainbow(nrow(.)))
+
+      ## Colour vector
+      colour_v <-
+        tibble(!!sym(hrvar) := igraph::get.vertex.attribute(g, name = hrvar)) %>%
+        left_join(colour_tb, by = hrvar) %>%
+        pull(colour)
+
+
+      igraph::V(g)$color <- grDevices::adjustcolor(colour_v, alpha.f = node_alpha)
+      igraph::V(g)$frame.color <- NA
+      igraph::E(g)$width <- 1
+
+      grDevices::pdf(out_path)
+
+      par(bg = bg_fill)
+
+      plot(g,
+           layout = layout_with_mds,
+           vertex.label = NA,
+           vertex.size = 3,
+           edge.arrow.mode = "-",
+           edge.color = "#adadad")
+
+      legend(x = -1.5,
+             y = 0.5,
+             legend = colour_tb[[hrvar]],
+             pch = 21,
+             text.col = font_col,
+             col = "#777777",
+             pt.bg = colour_tb$colour,
+             pt.cex = 2,
+             cex = .8,
+             bty = "n",
+             ncol = 1)
+
+      grDevices::dev.off()
 
     } else {
 
-      ggsave(paste0(path, tstamp(), ".pdf"),
-             plot = plot_output,
-             width = 16,
-             height = 9)
+      plot_output <-
+        g_layout +
+        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+        ggraph::geom_node_point(aes(colour = !!sym(hrvar)),
+                                alpha = node_alpha,
+                                pch = 16) +
+        theme_void() +
+        theme(legend.position = "bottom",
+              legend.background = element_rect(fill = bg_fill),
+              plot.background = element_rect(fill = bg_fill),
+              text = element_text(colour = font_col),
+              axis.line = element_blank()) +
+        labs(title = "Person to person collaboration",
+             subtitle = paste0("Showing ", hrvar),
+             y = "",
+             x = "")
+
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_output
+
+      } else {
+
+        ggsave(out_path,
+               plot = plot_output,
+               width = 16,
+               height = 9)
+
+      }
 
     }
+
+    message(paste0("Saved to ", out_path, "."))
 
   } else if(return == "table"){
 
