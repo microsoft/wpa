@@ -183,8 +183,8 @@ network_leiden <- function(data,
               plot.background = element_rect(fill = bg_fill),
               text = element_text(colour = font_col),
               axis.line = element_blank()) +
-        labs(title = "Person to person collaboration with Community Detection",
-             subtitle = "Based on Leiden algorithm and Strong Tie Score",
+        labs(caption = "Person to person collaboration with Community Detection
+             based on the Leiden algorithm.  ",
              y = "",
              x = "")
 
@@ -266,8 +266,7 @@ network_leiden <- function(data,
               plot.background = element_rect(fill = bg_fill),
               text = element_text(colour = font_col),
               axis.line = element_blank()) +
-        labs(title = "Person to person collaboration",
-             subtitle = paste0("Showing ", hrvar),
+        labs(caption = paste0("Person to person collaboration showing ", hrvar, ".  "), # spaces intentional
              y = "",
              x = "")
 
