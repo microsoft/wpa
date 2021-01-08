@@ -16,9 +16,13 @@
 #' @param paired Specify whether the dataset is paired or not. Defaults to TRUE.
 #'
 #' @import dplyr
-#' @import stats
+#'
+#' @details
+#' This function is a wrapper around `wilcox.test()` from {stats}.
 #'
 #' @examples
+#' # Simulate a binary variable X
+#' # Returns a single p-value
 #' sq_data %>%
 #'   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
 #'   p_test(outcome = "X", behavior = "External_network_size")
@@ -26,19 +30,20 @@
 
 
 
-p_test <- function(data, 
-                   outcome, 
+p_test <- function(data,
+                   outcome,
                    behavior,
                    paired = FALSE){
-  train <- data %>% 
+  train <- data %>%
     filter(!!sym(outcome) == 1 | !!sym(outcome) == 0) %>%
     select(!!sym(outcome), !!sym(behavior)) %>%
     mutate(outcome = as.character(!!sym(outcome))) %>%
     mutate(outcome = as.factor(!!sym(outcome)))
-  
-  pos <- train %>% filter(outcome == 1, na.rm=TRUE) %>% select(behavior) 
-  neg <- train %>% filter(outcome == 0, na.rm=TRUE) %>% select(behavior) 
-  
+
+  pos <- train %>% filter(outcome == 1, na.rm=TRUE) %>% select(behavior)
+  neg <- train %>% filter(outcome == 0, na.rm=TRUE) %>% select(behavior)
+
   s <- stats::wilcox.test(unlist(pos), unlist(neg), paired = paired)
+
   return(s$p.value)
 }

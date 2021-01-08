@@ -4,7 +4,7 @@
 \alias{p_test}
 \title{Calculate the p-value of the null hypothesis that two outcomes are from the same dataset}
 \usage{
-p_test(data, outcome, behavior)
+p_test(data, outcome, behavior, paired = FALSE)
 }
 \arguments{
 \item{data}{A Person Query dataset in the form of a data frame.}
@@ -13,8 +13,20 @@ p_test(data, outcome, behavior)
 the values 1 or 0. Used to group the two distributions.}
 
 \item{behavior}{A character vector specifying the column to be used as the behavior to test.}
+
+\item{paired}{Specify whether the dataset is paired or not. Defaults to TRUE.}
 }
 \description{
 Specify an outcome variable and return p-test outputs.
 All numeric variables in the dataset are used as predictor variables.
+}
+\details{
+This function is a wrapper around \code{wilcox.test()} from {stats}.
+}
+\examples{
+# Simulate a binary variable X
+# Returns a single p-value
+sq_data \%>\%
+  mutate(X = ifelse(Email_hours > 6, 1, 0)) \%>\%
+  p_test(outcome = "X", behavior = "External_network_size")
 }
