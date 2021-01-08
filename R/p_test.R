@@ -13,6 +13,7 @@
 #' @param outcome A string specifying a binary variable, i.e. can only contain
 #' the values 1 or 0. Used to group the two distributions.
 #' @param behavior A character vector specifying the column to be used as the behavior to test.
+#' @param paired Specify whether the dataset is paired or not. Defaults to TRUE.
 #'
 #' @import dplyr
 #' @import stats
@@ -27,7 +28,8 @@
 
 p_test <- function(data, 
                    outcome, 
-                   behavior){
+                   behavior,
+                   paired = FALSE){
   train <- data %>% 
     filter(!!sym(outcome) == 1 | !!sym(outcome) == 0) %>%
     select(!!sym(outcome), !!sym(behavior)) %>%
@@ -37,6 +39,6 @@ p_test <- function(data,
   pos <- train %>% filter(outcome == 1, na.rm=TRUE) %>% select(behavior) 
   neg <- train %>% filter(outcome == 0, na.rm=TRUE) %>% select(behavior) 
   
-  s <- stats::wilcox.test(unlist(pos), unlist(neg), paired = FALSE)
+  s <- stats::wilcox.test(unlist(pos), unlist(neg), paired = paired)
   return(s$p.value)
 }
