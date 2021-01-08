@@ -45,8 +45,8 @@ create_IV <- function(data,
                       bins = 5,
                       siglevel = 0.05,
                       return = "plot"){
-  
-  if(is.null(all_of(predictors))){
+
+  if(is.null(tidyselect::all_of(predictors))){
     train <-
       data %>%
       rename(outcome = outcome) %>%
@@ -59,29 +59,29 @@ create_IV <- function(data,
       select(tidyselect::all_of(predictors), outcome) %>%
       tidyr::drop_na()
   }
-  
+
   # Calculate Odds
   odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
   lnodds <- log(odds)
-  
-  
-  # Calculate p-value  
+
+
+  # Calculate p-value
   predictors <- data.frame(unlist(names(train)))
-  names(predictors) <- c("Variable") 
+  names(predictors) <- c("Variable")
   predictors <- predictors %>% filter(Variable != "outcome")
-  
+
   for (i in 1:(nrow(predictors))){
     predictors$pval[i] <- p_test(outcome, predictors$Variable[i])
   }
-  
+
   # Filter out variables whose p-value is above the significance level
   predictors <- predictors %>% filter(pval <= siglevel)
   train <- train %>% select(predictors$Variable, outcome)
-  
+
   # IV Analysis
   IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
   IV_names <- names(IV$Tables)
-  
+
   # Output list
   output_list <-
     IV_names %>%
@@ -91,12 +91,12 @@ create_IV <- function(data,
                PROB = ODDS / (ODDS + 1))
     }) %>%
     purrr::set_names(IV_names)
-  
-  
+
+
   IV_summary <- inner_join(IV$Summary, predictors, by = c("Variable"))
-  
-  
-  
+
+
+
   if(return == "summary"){
     IV_summary
   } else if(return == "plot"){
@@ -106,10 +106,10 @@ create_IV <- function(data,
                       bar_var = "IV",
                       title = "Information Value (IV)",
                       subtitle = "Showing top 12 only")
-    
+
   } else if(return == "plot-WOE"){
     Information::plot_infotables(IV, IV$Summary$Variable[], same_scale=TRUE) %>% grDevices::recordPlot()
-    
+
   } else if(return == "list"){
     output_list
   } else {

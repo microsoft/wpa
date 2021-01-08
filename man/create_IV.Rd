@@ -9,7 +9,7 @@ create_IV(
   predictors = NULL,
   outcome,
   bins = 5,
-  significance = 0.05,
+  siglevel = 0.05,
   return = "plot"
 )
 }
@@ -24,7 +24,7 @@ the values 1 or 0.}
 
 \item{bins}{Number of bins to use in \code{Information::create_infotables()}, defaults to 5.}
 
-\item{significance}{Significance level to use in comparing populations for the outcomes,
+\item{siglevel}{Significance level to use in comparing populations for the outcomes,
 defaults to 0.05}
 
 \item{return}{String specifying what output to return.
@@ -40,7 +40,7 @@ All numeric variables in the dataset are used as predictor variables.
 \dontrun{
 sq_data \%>\%
   mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) \%>\%
-  create_IV_cw(outcome = "X",
+  create_IV(outcome = "X",
             predictors = c("Email_hours", "Meeting_hours"),
             return = "list")
 }
