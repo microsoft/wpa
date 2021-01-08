@@ -26,6 +26,7 @@ This function is a wrapper around \code{wilcox.test()} from {stats}.
 \examples{
 # Simulate a binary variable X
 # Returns a single p-value
+library(dplyr)
 sq_data \%>\%
   mutate(X = ifelse(Email_hours > 6, 1, 0)) \%>\%
   p_test(outcome = "X", behavior = "External_network_size")
