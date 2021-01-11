@@ -205,7 +205,7 @@ which includes Python and <strong>reticulate</strong>.</p>
 
     <pre class="usage"><span class='fu'>network_leiden</span><span class='op'>(</span>
   <span class='va'>data</span>,
-  <span class='va'>hrvar</span>,
+  hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
   bg_fill <span class='op'>=</span> <span class='st'>"#000000"</span>,
   font_col <span class='op'>=</span> <span class='st'>"#FFFFFF"</span>,
   algorithm <span class='op'>=</span> <span class='st'>"mds"</span>,
@@ -213,7 +213,8 @@ which includes Python and <strong>reticulate</strong>.</p>
   node_alpha <span class='op'>=</span> <span class='fl'>0.8</span>,
   res <span class='op'>=</span> <span class='fl'>0.5</span>,
   desc_hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Organization"</span>, <span class='st'>"LevelDesignation"</span>, <span class='st'>"FunctionType"</span><span class='op'>)</span>,
-  <span class='va'>return</span>
+  return <span class='op'>=</span> <span class='st'>"plot-leiden"</span>,
+  size_threshold <span class='op'>=</span> <span class='fl'>5000</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -221,11 +222,13 @@ which includes Python and <strong>reticulate</strong>.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Data frame containing a Person to Person query.</p></td>
+      <td><p>Data frame containing a Person to Person Network query. Note that this function is
+computationally intensive and may take a noticeably longer time to process beyond 5000 rows.</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>String containing the HR attribute to be matched in the dataset.</p></td>
+      <td><p>String containing the HR attribute to be matched in the dataset.
+Defaults to "Organization".</p></td>
     </tr>
     <tr>
       <th>bg_fill</th>
@@ -264,15 +267,24 @@ if returning anything other than "plot-leiden" or "plot-hrvar".</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String specifying what output to return. Valid return options include:</p><ul>
-<li><p>'plot-leiden': return a network plot coloured by leiden communities.</p></li>
-<li><p>'plot-hrvar': return a network plot coloured by HR attribute.</p></li>
+      <td><p>String specifying what output to return. Defaults to "plot-leiden".
+Valid return options include:</p><ul>
+<li><p>'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to <code>path</code>.</p></li>
+<li><p>'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to <code>path</code>.</p></li>
 <li><p>'plot-sankey': return a sankey plot combining communities and HR attribute.</p></li>
 <li><p>'table': return a vertex summary table with counts in communities and HR attribute.</p></li>
 <li><p>'data': return a vertex data file that matches vertices with communities and HR attributes.</p></li>
-<li><p>'describe': return a list of data frames which describe each of the identified communities.</p></li>
+<li><p>'describe': return a list of data frames which describe each of the identified communities.
+The first data frame is a summary table of all the communities.</p></li>
 <li><p>'network': return igraph object.</p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>size_threshold</th>
+      <td><p>Numeric value representing the maximum number of edges before <code>network_leiden()</code>
+switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
+Set as <code>0</code> to co-erce to a fast plotting method every time, and <code>Inf</code> to always use the default plotting
+method.</p></td>
     </tr>
     </table>
 
