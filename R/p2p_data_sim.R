@@ -26,9 +26,9 @@ p2p_data_sim <- function(dim = 1,
                          p = 0.05){
 
   igraph::watts.strogatz.game(dim = dim,
-                              size = 300,
-                              nei = 5,
-                              p = 0.05) %>%
+                              size = size,
+                              nei = nei,
+                              p = p) %>%
     igraph::as_edgelist() %>%
     as.data.frame() %>%
     dplyr::rename(TieOrigin_PersonId = "V1",
