@@ -312,12 +312,11 @@ network_louvain <- function(data,
                width = 16,
                height = 9)
 
+        message(paste0("Saved to ", out_path, "."))
+
       }
 
-      message(paste0("Saved to ", out_path, "."))
-
     }
-
 
   } else if(return == "table"){
 
