@@ -6,6 +6,16 @@
 \usage{
 add_cat(x, type)
 }
+\arguments{
+\item{x}{Numeric vector to be assigned simulated organizational attributes}
+
+\item{type}{String with three valid options:
+\itemize{
+\item \code{Organization}
+\item \code{LevelDesignation}
+\item \code{City}
+}}
+}
 \description{
 Add organizational data to the simulated p2p data
 }

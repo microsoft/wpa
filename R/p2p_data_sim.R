@@ -45,7 +45,11 @@ p2p_data_sim <- function(dim = 1,
 }
 
 #' Add organizational data to the simulated p2p data
-
+#' @param x Numeric vector to be assigned simulated organizational attributes
+#' @param type String with three valid options:
+#'   - `Organization`
+#'   - `LevelDesignation`
+#'   - `City`
 add_cat <- function(x, type){
 
   if(type == "Organization"){
