@@ -42,11 +42,11 @@ network_describe <- function(data, hrvar = c("Organization", "LevelDesignation",
         features %>%
         group_by_at(.vars = vars(c)) %>%
         summarise(count = n(), .groups = "drop") %>%
-        mutate(percentage = count / sum(count, na.rm = TRUE))
+        # mutate(percentage = count / sum(count, na.rm = TRUE))
+        mutate(percentage = count)
 
       agg %>%
         arrange(desc(percentage)) %>%
-        slice(1) %>% # Extract first row
         mutate(feature_1 = c,
                feature_1_value = !!sym(c)) %>%
         select(feature_1, feature_1_value, Percentage = "percentage")
@@ -64,20 +64,20 @@ network_describe <- function(data, hrvar = c("Organization", "LevelDesignation",
         features %>%
         group_by_at(.vars=vars(c1, c2)) %>%
         summarise(count = n(), .groups = "drop") %>%
-        mutate(percentage = count / sum(count, na.rm = TRUE))
+        # mutate(percentage = count / sum(count, na.rm = TRUE))
+        mutate(percentage = count)
 
       agg %>%
         arrange(desc(percentage)) %>%
-        slice(1) %>% # Extract first row
         mutate(feature_1 = c1,
                feature_1_value = !!sym(as.character(c1)),
                feature_2 = c2,
                feature_2_value = !!sym(as.character(c2))) %>%
-      select(feature_1,
-             feature_1_value,
-             feature_2,
-             feature_2_value,
-             Percentage = "percentage")
+        select(feature_1,
+               feature_1_value,
+               feature_2,
+               feature_2_value,
+               Percentage = "percentage")
     }) %>%
     bind_rows()
 
@@ -96,11 +96,11 @@ network_describe <- function(data, hrvar = c("Organization", "LevelDesignation",
         features %>%
         group_by_at(.vars=vars(c1, c2, c3)) %>%
         summarise(count = n(), .groups = "drop") %>%
-        mutate(percentage = count / sum(count, na.rm = TRUE))
+        # mutate(percentage = count / sum(count, na.rm = TRUE))
+        mutate(percentage = count)
 
       agg %>%
         arrange(desc(percentage)) %>%
-        slice(1) %>% # Extract first row
         mutate(feature_1 = c1,
                feature_1_value = !!sym(c1),
                feature_2 = c2,
@@ -121,5 +121,7 @@ network_describe <- function(data, hrvar = c("Organization", "LevelDesignation",
        max_percentages_2f,
        max_percentages_3f) %>%
     bind_rows() %>%
-    select(starts_with("feature"), Percentage)
+    select(starts_with("feature"), Percentage) %>%
+    # Convert counts to percentage - description as % of community
+    mutate(Percentage = Percentage / nrow(filtered_Data))
 }
