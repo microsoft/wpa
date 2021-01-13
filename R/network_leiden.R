@@ -28,6 +28,7 @@
 #' See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full list of options.
 #'
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults to 0.5.
+#' @param seed Parameter to be passed to `leiden::leiden()` to ensure consistency. Defaults to 1.
 #' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
 #' "describe" output. See `network_describe()`.
 #' @param return String specifying what output to return. Defaults to "plot-leiden".
@@ -58,6 +59,7 @@ network_leiden <- function(data,
                            path = "network_p2p_leiden",
                            node_alpha = 0.8,
                            res = 0.5,
+                           seed = 1,
                            desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
                            return = "plot-leiden",
                            size_threshold = 5000){
@@ -101,7 +103,7 @@ network_leiden <- function(data,
 
   ## Return a numeric vector of partitions / clusters / modules
   ## Set a low resolution parameter to have fewer groups
-  ld <- leiden::leiden(g_raw, resolution_parameter = res) # create partitions
+  ld <- leiden::leiden(g_raw, resolution_parameter = res, seed = seed) # create partitions
 
   ## Add cluster
   g <-
