@@ -39,6 +39,8 @@
 #' @param palette Function for generating a colour palette with a single argument `n`. Uses "rainbow" by default.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults to 0.5.
+#' @param seed Seed for the random number generator passed to `leiden::leiden()` to ensure consistency. Only applicable
+#' when `display` is set to "leiden".
 #' @param algorithm String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
 #' algorithm of Fruchterman and Reingold. See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a
 #' full list of options.
@@ -107,6 +109,7 @@ network_p2p <- function(data,
                         palette = "rainbow",
                         node_alpha = 0.7,
                         res = 0.5,
+                        seed = 1,
                         algorithm = "mds",
                         size_threshold = 5000){
 
@@ -181,7 +184,7 @@ network_p2p <- function(data,
 
     ## Return a numeric vector of partitions / clusters / modules
     ## Set a low resolution parameter to have fewer groups
-    ld <- leiden::leiden(g_raw, resolution_parameter = res) # create partitions
+    ld <- leiden::leiden(g_raw, resolution_parameter = res, seed = seed) # create partitions
 
     ## Add cluster
     g <-

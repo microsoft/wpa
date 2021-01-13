@@ -17,6 +17,7 @@ network_p2p(
   palette = "rainbow",
   node_alpha = 0.7,
   res = 0.5,
+  seed = 1,
   algorithm = "mds",
   size_threshold = 5000
 )
@@ -66,6 +67,9 @@ detection method is selected at \code{display}.
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults to 0.5.}
+
+\item{seed}{Seed for the random number generator passed to \code{leiden::leiden()} to ensure consistency. Only applicable
+when \code{display} is set to "leiden".}
 
 \item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
 algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
