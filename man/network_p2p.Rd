@@ -6,15 +6,19 @@
 \usage{
 network_p2p(
   data,
-  hrvar,
-  return = "pdf",
+  hrvar = "Organization",
+  display = "hrvar",
+  return = "plot",
   path = "network_p2p",
+  desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
   bg_fill = "#000000",
   font_col = "#FFFFFF",
   legend_pos = "bottom",
   palette = "rainbow",
   node_alpha = 0.7,
-  algorithm = "fr"
+  res = 0.5,
+  algorithm = "mds",
+  size_threshold = 5000
 )
 }
 \arguments{
@@ -22,18 +26,34 @@ network_p2p(
 
 \item{hrvar}{String containing the label for the HR attribute.}
 
-\item{return}{Character vector specifying what to return, defaults to "pdf".
-Valid inputs are:
+\item{display}{String determining what output to return. Valid values include:
 \itemize{
-\item "pdf": saves the network plot as a PDF in the specified path. See \code{path}. This is the recommended
-output format as large networks can be slow in other formats.
-\item "plot": returns a ggplot object of the network plot. It is not recommended that you run this without
-assigning the output to an object as plotting to the R console can be slow for large networks.
-\item "table": returns the edgelist data frame used in the network.
-\item "network": returns the igraph object used to create the network plot.
+\item "hrvar" (default): compute analysis or visuals without computing communities.
+\item "louvain": compute analysis or visuals with community detection, using the Louvain
+algorithm.
+\item "leiden": compute analysis or visuals with community detection, using the Leiden algorithm.
+This requires all the pre-requisites of the \strong{leiden} package installed,
+which includes Python and \strong{reticulate}.
+}}
+
+\item{return}{String specifying what output to return. Defaults to "plot".
+Valid return options include:
+\itemize{
+\item 'plot': return a network plot.
+\item 'sankey': return a sankey plot combining communities and HR attribute. This is only valid if
+a community detection method is selected at \code{display}.
+\item 'table': return a vertex summary table with counts in communities and HR attribute.
+\item 'data': return a vertex data file that matches vertices with communities and HR attributes.
+\item 'describe': return a list of data frames which describe each of the identified communities.
+The first data frame is a summary table of all the communities. This is only valid if a community
+detection method is selected at \code{display}.
+\item 'network': return igraph object.
 }}
 
 \item{path}{File path for saving the PDF output. Defaults to "network_p2p".}
+
+\item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
+"describe" output. See \code{network_describe()}.}
 
 \item{bg_fill}{String to specify background fill colour.}
 
@@ -45,27 +65,61 @@ assigning the output to an object as plotting to the R console can be slow for l
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
 
+\item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults to 0.5.}
+
 \item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
 algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
 full list of options.}
+
+\item{size_threshold}{Numeric value representing the maximum number of edges before \code{network_leiden()}
+switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
+Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} to always use the default plotting
+method.}
 }
 \description{
-Pass a data frame containing a person-to-person query and save a network
-plot as a PDF file.
+Pass a data frame containing a person-to-person query and return a network visualization.
+Options are available for community detection using either the Louvain or the Leiden algorithms.
 }
 \examples{
-## Simulate simple P2P network
-sim_net <-
-  data.frame(TieOrigin_PersonId = sample(seq(1, 100), size = 100, replace = TRUE),
-             TieDestination_PersonId = sample(seq(1, 100), size = 100, replace = TRUE)) \%>\%
-  dplyr::mutate(TieOrigin_Organization = ifelse(TieOrigin_PersonId >= 50, "A", "B"),
-                TieDestination_Organization = ifelse(TieDestination_PersonId >= 50, "A", "B"),
-                StrongTieScore = rep(1, 100))
+## Simulate a small person-to-person dataset
+p2p_data <- p2p_data_sim(size = 50)
 
-## Run plot
-## ONLY return 'plot' instead of 'pdf' when data size is small
-network_p2p(data = sim_net,
-            hrvar = "Organization",
-            return = "plot")
+p2p_data \%>\%
+  network_p2p(display = "hrvar",
+              path = NULL,
+              return = "plot")
+
+\dontrun{
+## Return a network plot to console, coloured by Leiden communities
+## Requires python dependencies installed
+  p2p_data \%>\%
+    network_p2p(display = "leiden",
+                path = NULL,
+                return = "plot")
+}
+
+## Return a network plot to console, coloured by Louvain communities
+p2p_data \%>\%
+  network_p2p(display = "louvain",
+              path = NULL,
+              return = "plot")
+
+## Return a network plot to console
+## Coloured by Leiden communities
+## Using Fruchterman-Reingold force-directed layout algorithm
+## Force the use of fast plotting method
+p2p_data \%>\%
+  network_p2p(display = "hrvar",
+              path = NULL,
+              return = "plot",
+              algorithm = "lgl",
+              size_threshold = 0)
+
+## Return a data frame matching HR variable and communities to nodes
+## Using Louvain communities
+p2p_data \%>\%
+  network_p2p(display = "louvain",
+              return = "data",
+              algorithm = "fr")
 
 }
