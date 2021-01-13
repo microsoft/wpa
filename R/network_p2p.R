@@ -399,7 +399,7 @@ network_p2p <- function(data,
         purrr::pmap(function(i, j){
           i %>%
             arrange(desc(Percentage)) %>%
-            slice(1) %>%
+            # slice(1) %>%
             mutate_at(vars(starts_with("feature_")), ~tidyr::replace_na(., "")) %>%
             mutate(Community = j,
                    `Attribute 1` = paste(feature_1, "=", feature_1_value),
@@ -412,7 +412,13 @@ network_p2p <- function(data,
                    PercentageExplained = "Percentage") %>%
             mutate_at(vars(starts_with("Attribute")), ~ifelse(. == " = ", NA, .))
         }) %>%
-        bind_rows()
+        bind_rows() %>%
+        mutate(sum_na = select(., `Attribute 1`, `Attribute 2`, `Attribute 3`) %>%
+                 apply(1, function(x) sum(is.na(x)))) %>%
+        arrange(desc(PercentageExplained)) %>%
+        group_by(Community, sum_na) %>%
+        summarise_all(~first(.)) %>%
+        select(-sum_na)
 
       c(list("summaryTable" = summaryTable), out_list)
 
