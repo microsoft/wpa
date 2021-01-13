@@ -95,6 +95,8 @@
 #' @import ggplot2
 #' @import dplyr
 #' @importFrom grDevices rainbow
+#' @importFrom graphics legend
+#' @importFrom graphics par
 #'
 #' @export
 network_p2p <- function(data,
