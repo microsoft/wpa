@@ -30,7 +30,7 @@
 #'   The first data frame is a summary table of all the communities. This is only valid if a community
 #'   detection method is selected at `display`.
 #'   - 'network': return igraph object.
-#' @param path File path for saving the PDF output. Defaults to "network_p2p".
+#' @param path File path for saving the PDF output. Defaults to a timestamped path based on current parameters.
 #' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
 #' "describe" output. See `network_describe()`.
 #' @param bg_fill String to specify background fill colour.
@@ -99,7 +99,7 @@ network_p2p <- function(data,
                         hrvar = "Organization",
                         display = "hrvar",
                         return = "plot",
-                        path = "network_p2p",
+                        path = paste0("network_p2p_", display),
                         desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
                         bg_fill = "#000000",
                         font_col = "#FFFFFF",
@@ -214,7 +214,7 @@ network_p2p <- function(data,
     ggraph::ggraph(layout = "igraph", algorithm = algorithm)
 
   ## Timestamped File Path
-  out_path <- paste0(path, tstamp(), ".pdf")
+  out_path <- paste0(path, "_", tstamp(), ".pdf")
 
   # Return ------------------------------------------------------------------
 

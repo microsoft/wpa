@@ -9,7 +9,7 @@ network_p2p(
   hrvar = "Organization",
   display = "hrvar",
   return = "plot",
-  path = "network_p2p",
+  path = paste0("network_p2p_", display),
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
   bg_fill = "#000000",
   font_col = "#FFFFFF",
@@ -50,7 +50,7 @@ detection method is selected at \code{display}.
 \item 'network': return igraph object.
 }}
 
-\item{path}{File path for saving the PDF output. Defaults to "network_p2p".}
+\item{path}{File path for saving the PDF output. Defaults to a timestamped path based on current parameters.}
 
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
 "describe" output. See \code{network_describe()}.}
