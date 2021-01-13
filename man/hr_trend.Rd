@@ -22,10 +22,10 @@ employee count over time. Part of a data validation process to check
 for unusual license growth / declines over time.
 }
 \examples{
-\dontrun{
-hr_trend(sq_data)
+# Return a plot
 hr_trend(dv_data)
+
+# Return a table
 hr_trend(dv_data, return = "table")
-}
 
 }

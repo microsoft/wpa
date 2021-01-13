@@ -34,7 +34,6 @@
 #' @family After-Hours
 #'
 #' @examples
-#' \dontrun{
 #' ## Return a plot
 #' afterhours_dist(sq_data, hrvar = "Organization")
 #'
@@ -43,7 +42,6 @@
 #'
 #' ## Return result with a custom specified breaks
 #' afterhours_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
-#' }
 #' @export
 afterhours_dist <- function(data,
                             hrvar = "Organization",

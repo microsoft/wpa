@@ -33,13 +33,11 @@
 #' @family Flexible
 #'
 #' @examples
-#' \dontrun{
 #' sq_data %>% create_line(metric = "Email_hours", return = "plot")
 #'
 #' sq_data %>% create_line(metric = "Collaboration_hours", return = "plot")
 #'
 #' sq_data %>% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
-#' }
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
