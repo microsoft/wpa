@@ -13,6 +13,7 @@ network_leiden(
   path = "network_p2p_leiden",
   node_alpha = 0.8,
   res = 0.5,
+  seed = 1,
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
   return = "plot-leiden",
   size_threshold = 5000
@@ -42,6 +43,8 @@ if returning anything other than "plot-leiden" or "plot-hrvar".}
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults to 0.5.}
+
+\item{seed}{Parameter to be passed to \code{leiden::leiden()} to ensure consistency. Defaults to 1.}
 
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
 "describe" output. See \code{network_describe()}.}
