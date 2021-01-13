@@ -24,16 +24,12 @@
 #'
 #' @examples
 #' library(dplyr)
-#' # Add HireDate to sq_data - method #1
-#' sq_data2 <- sq_data %>% mutate(HireDate = as.Date("1/1/2015", format = "%m/%d/%Y" ))
+#' # Add HireDate to sq_data
+#' sq_data2 <-
+#'   sq_data %>%
+#'   mutate(HireDate = as.Date("1/1/2015", format = "%m/%d/%Y"))
+#'
 #' identify_tenure(sq_data2)
-#'
-#' # Add HireDate to sq_data - method #2
-#' sq_data$HireDate <-
-#'   rep(sample(seq(as.Date('1975/01/01'),
-#'                  as.Date('2019/11/01'), by="day"), 15119),2)
-#'
-#' identify_tenure(sq_data)
 #'
 #' @export
 identify_tenure <- function(data,
