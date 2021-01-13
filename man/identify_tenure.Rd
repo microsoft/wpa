@@ -33,7 +33,7 @@ This function calculates employee tenure based on different input dates.
 but also have flexibility to select a specific date, e.g. "1/1/2020".
 }
 \examples{
-\dontrun{
+library(dplyr)
 # Add HireDate to sq_data - method #1
 sq_data2 <- sq_data \%>\% mutate(HireDate = as.Date("1/1/2015", format = "\%m/\%d/\%Y" ))
 identify_tenure(sq_data2)
@@ -44,7 +44,6 @@ sq_data$HireDate <-
                  as.Date('2019/11/01'), by="day"), 15119),2)
 
 identify_tenure(sq_data)
-}
 
 }
 \seealso{

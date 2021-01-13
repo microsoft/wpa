@@ -19,14 +19,13 @@
 #' @family Data Validation
 #'
 #' @examples
-#' \dontrun{
 #' identify_query(sq_data) # Standard query
 #' identify_query(mt_data) # Meeting query
 #' identify_query(em_data) # Hourly collaboration query
+#' \dontrun{
 #' identify_query(iris) # Will return an error
 #' identify_query(mtcars) # Will return an error
 #' }
-#'
 #' @export
 identify_query <- function(data, threshold = 2){
 
