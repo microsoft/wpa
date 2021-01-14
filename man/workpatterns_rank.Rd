@@ -34,9 +34,6 @@ table of working patterns, ranked from the most common to the
 least.
 }
 \examples{
-\dontrun{
 workpatterns_rank(em_data)
 
-workpatterns_rank(em_data, signals = "email")
-}
 }
