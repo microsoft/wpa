@@ -49,8 +49,8 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Create a network plot with the person-to-person query — network_p2p" />
-<meta property="og:description" content="Pass a data frame containing a person-to-person query and save a network
-plot as a PDF file." />
+<meta property="og:description" content="Pass a data frame containing a person-to-person query and return a network visualization.
+Options are available for community detection using either the Louvain or the Leiden algorithms." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -197,21 +197,26 @@ plot as a PDF file." />
     </div>
 
     <div class="ref-description">
-    <p>Pass a data frame containing a person-to-person query and save a network
-plot as a PDF file.</p>
+    <p>Pass a data frame containing a person-to-person query and return a network visualization.
+Options are available for community detection using either the Louvain or the Leiden algorithms.</p>
     </div>
 
     <pre class="usage"><span class='fu'>network_p2p</span><span class='op'>(</span>
   <span class='va'>data</span>,
-  <span class='va'>hrvar</span>,
-  return <span class='op'>=</span> <span class='st'>"pdf"</span>,
-  path <span class='op'>=</span> <span class='st'>"network_p2p"</span>,
+  hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+  display <span class='op'>=</span> <span class='st'>"hrvar"</span>,
+  return <span class='op'>=</span> <span class='st'>"plot"</span>,
+  path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"network_p2p_"</span>, <span class='va'>display</span><span class='op'>)</span>,
+  desc_hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Organization"</span>, <span class='st'>"LevelDesignation"</span>, <span class='st'>"FunctionType"</span><span class='op'>)</span>,
   bg_fill <span class='op'>=</span> <span class='st'>"#000000"</span>,
   font_col <span class='op'>=</span> <span class='st'>"#FFFFFF"</span>,
   legend_pos <span class='op'>=</span> <span class='st'>"bottom"</span>,
   palette <span class='op'>=</span> <span class='st'>"rainbow"</span>,
   node_alpha <span class='op'>=</span> <span class='fl'>0.7</span>,
-  algorithm <span class='op'>=</span> <span class='st'>"fr"</span>
+  res <span class='op'>=</span> <span class='fl'>0.5</span>,
+  seed <span class='op'>=</span> <span class='fl'>1</span>,
+  algorithm <span class='op'>=</span> <span class='st'>"mds"</span>,
+  size_threshold <span class='op'>=</span> <span class='fl'>5000</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -226,20 +231,39 @@ plot as a PDF file.</p>
       <td><p>String containing the label for the HR attribute.</p></td>
     </tr>
     <tr>
+      <th>display</th>
+      <td><p>String determining what output to return. Valid values include:</p><ul>
+<li><p>"hrvar" (default): compute analysis or visuals without computing communities.</p></li>
+<li><p>"louvain": compute analysis or visuals with community detection, using the Louvain
+algorithm.</p></li>
+<li><p>"leiden": compute analysis or visuals with community detection, using the Leiden algorithm.
+This requires all the pre-requisites of the <strong>leiden</strong> package installed,
+which includes Python and <strong>reticulate</strong>.</p></li>
+</ul></td>
+    </tr>
+    <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "pdf".
-Valid inputs are:</p><ul>
-<li><p>"pdf": saves the network plot as a PDF in the specified path. See <code>path</code>. This is the recommended
-output format as large networks can be slow in other formats.</p></li>
-<li><p>"plot": returns a ggplot object of the network plot. It is not recommended that you run this without
-assigning the output to an object as plotting to the R console can be slow for large networks.</p></li>
-<li><p>"table": returns the edgelist data frame used in the network.</p></li>
-<li><p>"network": returns the igraph object used to create the network plot.</p></li>
+      <td><p>String specifying what output to return. Defaults to "plot".
+Valid return options include:</p><ul>
+<li><p>'plot': return a network plot.</p></li>
+<li><p>'sankey': return a sankey plot combining communities and HR attribute. This is only valid if
+a community detection method is selected at <code>display</code>.</p></li>
+<li><p>'table': return a vertex summary table with counts in communities and HR attribute.</p></li>
+<li><p>'data': return a vertex data file that matches vertices with communities and HR attributes.</p></li>
+<li><p>'describe': return a list of data frames which describe each of the identified communities.
+The first data frame is a summary table of all the communities. This is only valid if a community
+detection method is selected at <code>display</code>.</p></li>
+<li><p>'network': return igraph object.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>File path for saving the PDF output. Defaults to "network_p2p".</p></td>
+      <td><p>File path for saving the PDF output. Defaults to a timestamped path based on current parameters.</p></td>
+    </tr>
+    <tr>
+      <th>desc_hrvar</th>
+      <td><p>Character vector of length 3 containing the HR attributes to use when returning the
+"describe" output. See <code><a href='network_describe.html'>network_describe()</a></code>.</p></td>
     </tr>
     <tr>
       <th>bg_fill</th>
@@ -262,30 +286,86 @@ assigning the output to an object as plotting to the R console can be slow for l
       <td><p>A numeric value between 0 and 1 to specify the transparency of the nodes.</p></td>
     </tr>
     <tr>
+      <th>res</th>
+      <td><p>Resolution parameter to be passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code>. Defaults to 0.5.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>Seed for the random number generator passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code> to ensure consistency. Only applicable
+when <code>display</code> is set to "leiden".</p></td>
+    </tr>
+    <tr>
       <th>algorithm</th>
       <td><p>String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
 algorithm of Fruchterman and Reingold. See <a href='https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html'>https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a
 full list of options.</p></td>
     </tr>
+    <tr>
+      <th>size_threshold</th>
+      <td><p>Numeric value representing the maximum number of edges before <code><a href='network_leiden.html'>network_leiden()</a></code>
+switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
+Set as <code>0</code> to co-erce to a fast plotting method every time, and <code>Inf</code> to always use the default plotting
+method.</p></td>
+    </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Simulate simple P2P network</span>
-<span class='va'>sim_net</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>TieOrigin_PersonId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>100</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
-             TieDestination_PersonId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>100</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>TieOrigin_Organization <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>TieOrigin_PersonId</span> <span class='op'>&gt;=</span> <span class='fl'>50</span>, <span class='st'>"A"</span>, <span class='st'>"B"</span><span class='op'>)</span>,
-                TieDestination_Organization <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>TieDestination_PersonId</span> <span class='op'>&gt;=</span> <span class='fl'>50</span>, <span class='st'>"A"</span>, <span class='st'>"B"</span><span class='op'>)</span>,
-                StrongTieScore <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'>## Simulate a small person-to-person dataset</span>
+<span class='va'>p2p_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='p2p_data_sim.html'>p2p_data_sim</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
 
-<span class='co'>## Run plot</span>
-<span class='co'>## ONLY return 'plot' instead of 'pdf' when data size is small</span>
-<span class='fu'>network_p2p</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>sim_net</span>,
-            hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
-            return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+<span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>network_p2p</span><span class='op'>(</span>display <span class='op'>=</span> <span class='st'>"hrvar"</span>,
+              path <span class='op'>=</span> <span class='cn'>NULL</span>,
+              return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
 </div><div class='img'><img src='network_p2p-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'>## Return a network plot to console, coloured by Leiden communities</span>
+<span class='co'>## Requires python dependencies installed</span>
+  <span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>network_p2p</span><span class='op'>(</span>display <span class='op'>=</span> <span class='st'>"leiden"</span>,
+                path <span class='op'>=</span> <span class='cn'>NULL</span>,
+                return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## Return a network plot to console, coloured by Louvain communities</span>
+<span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>network_p2p</span><span class='op'>(</span>display <span class='op'>=</span> <span class='st'>"louvain"</span>,
+              path <span class='op'>=</span> <span class='cn'>NULL</span>,
+              return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+</div><div class='img'><img src='network_p2p-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'>## Return a network plot to console</span>
+<span class='co'>## Coloured by Leiden communities</span>
+<span class='co'>## Using Fruchterman-Reingold force-directed layout algorithm</span>
+<span class='co'>## Force the use of fast plotting method</span>
+<span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>network_p2p</span><span class='op'>(</span>display <span class='op'>=</span> <span class='st'>"hrvar"</span>,
+              path <span class='op'>=</span> <span class='cn'>NULL</span>,
+              return <span class='op'>=</span> <span class='st'>"plot"</span>,
+              algorithm <span class='op'>=</span> <span class='st'>"lgl"</span>,
+              size_threshold <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Using fast plot method due to large network size...</span></div><div class='img'><img src='network_p2p-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'>## Return a data frame matching HR variable and communities to nodes</span>
+<span class='co'>## Using Louvain communities</span>
+<span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>network_p2p</span><span class='op'>(</span>display <span class='op'>=</span> <span class='st'>"louvain"</span>,
+              return <span class='op'>=</span> <span class='st'>"data"</span>,
+              algorithm <span class='op'>=</span> <span class='st'>"fr"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 50 x 3</span><span>
+#&gt;    name      Organization cluster
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'> 1</span><span> SIM_ID_1  Org F        3      
+#&gt; </span><span style='color: #555555;'> 2</span><span> SIM_ID_2  Org F        3      
+#&gt; </span><span style='color: #555555;'> 3</span><span> SIM_ID_3  Org E        3      
+#&gt; </span><span style='color: #555555;'> 4</span><span> SIM_ID_4  Org D        3      
+#&gt; </span><span style='color: #555555;'> 5</span><span> SIM_ID_5  Org C        3      
+#&gt; </span><span style='color: #555555;'> 6</span><span> SIM_ID_6  Org B        1      
+#&gt; </span><span style='color: #555555;'> 7</span><span> SIM_ID_7  Org A        1      
+#&gt; </span><span style='color: #555555;'> 8</span><span> SIM_ID_8  Org D        1      
+#&gt; </span><span style='color: #555555;'> 9</span><span> SIM_ID_9  Org E        1      
+#&gt; </span><span style='color: #555555;'>10</span><span> SIM_ID_10 Org C        1      
+#&gt; </span><span style='color: #555555;'># … with 40 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
