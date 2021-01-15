@@ -6,20 +6,23 @@
 \usage{
 network_louvain(
   data,
-  hrvar,
+  hrvar = "Organization",
   bg_fill = "#000000",
   font_col = "#FFFFFF",
   node_alpha = 0.8,
   algorithm = "mds",
   path = "network_p2p_louvain",
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-  return
+  return = "plot-louvain",
+  size_threshold = 5000
 )
 }
 \arguments{
-\item{data}{Data frame containing a Person to Person query.}
+\item{data}{Data frame containing a Person to Person Network query. Note that this function is
+computationally intensive and may take a noticeably longer time to process beyond 5000 rows.}
 
-\item{hrvar}{String containing the HR attribute to be matched in the dataset.}
+\item{hrvar}{String containing the HR attribute to be matched in the dataset.
+Defaults to "Organization".}
 
 \item{bg_fill}{String to specify background fill colour.}
 
@@ -40,16 +43,23 @@ if returning anything other than "plot-louvain" or "plot-hrvar".}
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
 "describe" output. See \code{network_describe()}.}
 
-\item{return}{String specifying what output to return.Valid return options include:
+\item{return}{String specifying what output to return. Defaults to "plot-louvain".
+Valid return options include:
 \itemize{
-\item 'plot-louvain': return a network plot coloured by louvain communities.
-\item 'plot-hrvar': return a network plot coloured by HR attribute.
+\item 'plot-louvain': return a network plot coloured by louvain communities, saving a PDF to \code{path}.
+\item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to \code{path}.
 \item 'plot-sankey': return a sankey plot combining communities and HR attribute.
 \item 'table': return a vertex summary table with counts in communities and HR attribute.
 \item 'data': return a vertex data file that matches vertices with communities and HR attributes.
 \item 'describe': returns a list of data frames which describe each of the identified communities.
+The first data frame is a summary table of all the communities.
 \item 'network': return igraph object.
 }}
+
+\item{size_threshold}{Numeric value representing the maximum number of edges before \code{network_leiden()}
+switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
+Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} to always use the default plotting
+method.}
 }
 \description{
 Take a P2P network query and implement the Louvain community detection method. The

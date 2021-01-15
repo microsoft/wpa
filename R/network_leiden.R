@@ -10,8 +10,10 @@
 #' this function, you will require all the pre-requisites of the **leiden** package installed,
 #' which includes Python and **reticulate**.
 #'
-#' @param data Data frame containing a Person to Person query.
+#' @param data Data frame containing a Person to Person Network query. Note that this function is
+#' computationally intensive and may take a noticeably longer time to process beyond 5000 rows.
 #' @param hrvar String containing the HR attribute to be matched in the dataset.
+#' Defaults to "Organization".
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
@@ -26,30 +28,41 @@
 #' See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full list of options.
 #'
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults to 0.5.
+#' @param seed Parameter to be passed to `leiden::leiden()` to ensure consistency. Defaults to 1.
 #' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
 #' "describe" output. See `network_describe()`.
-#' @param return String specifying what output to return. Valid return options include:
-#'   - 'plot-leiden': return a network plot coloured by leiden communities.
-#'   - 'plot-hrvar': return a network plot coloured by HR attribute.
+#' @param return String specifying what output to return. Defaults to "plot-leiden".
+#' Valid return options include:
+#'   - 'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to `path`.
+#'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to `path`.
 #'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
 #'   - 'table': return a vertex summary table with counts in communities and HR attribute.
 #'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
 #'   - 'describe': return a list of data frames which describe each of the identified communities.
+#'   The first data frame is a summary table of all the communities.
 #'   - 'network': return igraph object.
+#' @param size_threshold Numeric value representing the maximum number of edges before `network_leiden()`
+#' switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
+#' Set as `0` to co-erce to a fast plotting method every time, and `Inf` to always use the default plotting
+#' method.
 #'
 #' @import dplyr
+#' @importFrom igraph plot.igraph
+#' @importFrom igraph layout_with_mds
 #'
 #' @export
 network_leiden <- function(data,
-                           hrvar,
+                           hrvar = "Organization",
                            bg_fill = "#000000",
                            font_col = "#FFFFFF",
                            algorithm = "mds",
                            path = "network_p2p_leiden",
                            node_alpha = 0.8,
                            res = 0.5,
+                           seed = 1,
                            desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-                           return){
+                           return = "plot-leiden",
+                           size_threshold = 5000){
 
   ## Set variables
   TO_hrvar <- paste0("TieOrigin_", hrvar)
@@ -90,7 +103,7 @@ network_leiden <- function(data,
 
   ## Return a numeric vector of partitions / clusters / modules
   ## Set a low resolution parameter to have fewer groups
-  ld <- leiden::leiden(g_raw, resolution_parameter = res) # create partitions
+  ld <- leiden::leiden(g_raw, resolution_parameter = res, seed = seed) # create partitions
 
   ## Add cluster
   g <-
@@ -109,70 +122,205 @@ network_leiden <- function(data,
     g %>%
     ggraph::ggraph(layout = "igraph", algorithm = algorithm)
 
+  ## Timestamped File Path
+  out_path <- paste0(path, tstamp(), ".pdf")
+
   ## Return
   if(return == "plot-leiden"){
 
-    plot_output <-
-      g_layout +
-      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = cluster),
-                              alpha = node_alpha,
-                              pch = 16) +
-      theme_void() +
-      theme(legend.position = "bottom",
-            legend.background = element_rect(fill = bg_fill),
-            plot.background = element_rect(fill = bg_fill),
-            text = element_text(colour = font_col),
-            axis.line = element_blank()) +
-      labs(title = "Person to person collaboration with Community Detection",
-           subtitle = "Based on Leiden algorithm and Strong Tie Score",
-           y = "",
-           x = "")
+    if(igraph::ecount(g) > size_threshold){
 
-    # Default PDF output unless NULL supplied to path
-    if(is.null(path)){
+      message("Using fast plot method due to large network size...")
 
-      plot_output
+      ## Set colours
+      colour_tb <-
+        tibble(cluster = unique(igraph::V(g)$cluster)) %>%
+        mutate(colour = rainbow(nrow(.)))
+
+      ## Colour vector
+      colour_v <-
+        tibble(cluster = igraph::V(g)$cluster) %>%
+        left_join(colour_tb, by = "cluster") %>%
+        pull(colour)
+
+
+      igraph::V(g)$color <- grDevices::adjustcolor(colour_v, alpha.f = node_alpha)
+      igraph::V(g)$frame.color <- NA
+      igraph::E(g)$width <- 1
+
+      plot_cluster <- function(){
+
+        par(bg = bg_fill)
+
+        plot(g,
+             layout = igraph::layout_with_mds,
+             vertex.label = NA,
+             vertex.size = 3,
+             edge.arrow.mode = "-",
+             edge.color = "#adadad")
+
+        legend(x = -1.5,
+               y = 0.5,
+               legend = colour_tb$cluster,
+               pch = 21,
+               text.col = font_col,
+               col = "#777777",
+               pt.bg= colour_tb$colour,
+               pt.cex = 2,
+               cex = .8,
+               bty = "n",
+               ncol = 1)
+
+      }
+
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_cluster()
+
+      } else {
+
+        grDevices::pdf(out_path)
+
+        plot_cluster()
+
+        message(paste0("Saved to ", out_path, "."))
+
+      }
 
     } else {
 
-     ggsave(paste0(path, tstamp(), ".pdf"),
-            plot = plot_output,
-            width = 16,
-            height = 9)
+      plot_output <-
+        g_layout +
+        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+        ggraph::geom_node_point(aes(colour = cluster),
+                                alpha = node_alpha,
+                                pch = 16) +
+        theme_void() +
+        theme(legend.position = "bottom",
+              legend.background = element_rect(fill = bg_fill),
+              plot.background = element_rect(fill = bg_fill),
+              text = element_text(colour = font_col),
+              axis.line = element_blank()) +
+        labs(caption = "Person to person collaboration with Community Detection
+             based on the Leiden algorithm.  ",
+             y = "",
+             x = "")
 
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_output
+
+      } else {
+
+        ggsave(paste0(path, tstamp(), ".pdf"),
+               plot = plot_output,
+               width = 16,
+               height = 9)
+
+        message(paste0("Saved to ", out_path, "."))
+
+      }
     }
 
   } else if(return == "plot-hrvar"){
 
-    plot_output <-
-      g_layout +
-      ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
-      ggraph::geom_node_point(aes(colour = !!sym(hrvar)),
-                              alpha = node_alpha,
-                              pch = 16) +
-      theme_void() +
-      theme(legend.position = "bottom",
-            legend.background = element_rect(fill = bg_fill),
-            plot.background = element_rect(fill = bg_fill),
-            text = element_text(colour = font_col),
-            axis.line = element_blank()) +
-      labs(title = "Person to person collaboration",
-           subtitle = paste0("Showing ", hrvar),
-           y = "",
-           x = "")
+    if(igraph::ecount(g) > size_threshold){
 
-    # Default PDF output unless NULL supplied to path
-    if(is.null(path)){
+      message("Using fast plot method due to large network size...")
 
-      plot_output
+      ## Set colours
+      colour_tb <-
+        tibble(!!sym(hrvar) := unique(igraph::get.vertex.attribute(g, name = hrvar))) %>%
+        mutate(colour = rainbow(nrow(.)))
+
+      ## Colour vector
+      colour_v <-
+        tibble(!!sym(hrvar) := igraph::get.vertex.attribute(g, name = hrvar)) %>%
+        left_join(colour_tb, by = hrvar) %>%
+        pull(colour)
+
+
+      igraph::V(g)$color <- grDevices::adjustcolor(colour_v, alpha.f = node_alpha)
+      igraph::V(g)$frame.color <- NA
+      igraph::E(g)$width <- 1
+
+      plot_hrvar <- function(){
+
+        par(bg = bg_fill)
+
+        plot(g,
+             layout = igraph::layout_with_mds,
+             vertex.label = NA,
+             vertex.size = 3,
+             edge.arrow.mode = "-",
+             edge.color = "#adadad")
+
+        legend(x = -1.5,
+               y = 0.5,
+               legend = colour_tb[[hrvar]],
+               pch = 21,
+               text.col = font_col,
+               col = "#777777",
+               pt.bg = colour_tb$colour,
+               pt.cex = 2,
+               cex = .8,
+               bty = "n",
+               ncol = 1)
+
+      }
+
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_hrvar()
+
+      } else {
+
+        grDevices::pdf(out_path)
+
+        plot_hrvar()
+
+        grDevices::dev.off()
+
+        message(paste0("Saved to ", out_path, "."))
+
+      }
 
     } else {
 
-      ggsave(paste0(path, tstamp(), ".pdf"),
-             plot = plot_output,
-             width = 16,
-             height = 9)
+      plot_output <-
+        g_layout +
+        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+        ggraph::geom_node_point(aes(colour = !!sym(hrvar)),
+                                alpha = node_alpha,
+                                pch = 16) +
+        theme_void() +
+        theme(legend.position = "bottom",
+              legend.background = element_rect(fill = bg_fill),
+              plot.background = element_rect(fill = bg_fill),
+              text = element_text(colour = font_col),
+              axis.line = element_blank()) +
+        labs(caption = paste0("Person to person collaboration showing ", hrvar, ".  "), # spaces intentional
+             y = "",
+             x = "")
+
+      # Default PDF output unless NULL supplied to path
+      if(is.null(path)){
+
+        plot_output
+
+      } else {
+
+        ggsave(paste0(path, tstamp(), ".pdf"),
+               plot = plot_output,
+               width = 16,
+               height = 9)
+
+        message(paste0("Saved to ", out_path, "."))
+
+      }
 
     }
 
@@ -209,13 +357,37 @@ network_leiden <- function(data,
       pull(cluster) %>%
       unique()
 
-    desc_str %>%
+    out_list <-
+      desc_str %>%
       purrr::map(function(x){
         describe_tb %>%
           filter(cluster == x) %>%
           network_describe(hrvar = desc_hrvar)
       }) %>%
       setNames(nm = desc_str)
+
+    summaryTable <-
+      list(i = out_list,
+         j = names(out_list)) %>%
+      purrr::pmap(function(i, j){
+        i %>%
+          arrange(desc(Percentage)) %>%
+          slice(1) %>%
+          mutate_at(vars(starts_with("feature_")), ~tidyr::replace_na(., "")) %>%
+          mutate(Community = j,
+                 `Attribute 1` = paste(feature_1, "=", feature_1_value),
+                 `Attribute 2` = paste(feature_2, "=", feature_2_value),
+                 `Attribute 3` = paste(feature_3, "=", feature_3_value)) %>%
+          select(Community,
+                 `Attribute 1`,
+                 `Attribute 2`,
+                 `Attribute 3`,
+                 PercentageExplained = "Percentage") %>%
+          mutate_at(vars(starts_with("Attribute")), ~ifelse(. == " = ", NA, .))
+      }) %>%
+      bind_rows()
+
+    c(list("summaryTable" = summaryTable), out_list)
 
   } else {
 
