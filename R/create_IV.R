@@ -26,16 +26,12 @@
 #'
 #' @examples
 #' \dontrun{
+#' ## Runs with all numeric variables
+#' ## Longer run time with larger dataset
 #' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>%
+#'   dplyr::mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>%
 #'   create_IV(outcome = "X")
-#' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>%
-#'   create_IV(outcome = "X",
-#'             predictors = c("Email_hours", "Meeting_hours"),
-#'             return = "list")
 #' }
-#'
 #' @export
 create_IV <- function(data,
                       predictors = NULL,
@@ -90,7 +86,7 @@ create_IV <- function(data,
   if (length(IV$Summary$Variable[]) >9) {
     Information::plot_infotables(IV, IV$Summary$Variable[1:9], same_scale=TRUE) %>% grDevices::recordPlot()
 	}
-	
+
 	else {
     Information::plot_infotables(IV, IV$Summary$Variable[], same_scale=TRUE) %>% grDevices::recordPlot()
 	}

@@ -21,13 +21,11 @@ and \emph{not} with "flat" data. This can be used in conjunction with \code{tota
 which is used to create a "Total" row in the data.
 }
 \examples{
-\dontrun{
 sq_data \%>\%
   totals_bind(target_col = "LevelDesignation",
               target_value = "Total") \%>\%
   collab_sum(hrvar = "LevelDesignation",
              return = "table") \%>\%
   totals_reorder(target_col = "group", target_value = "Total")
-}
 
 }

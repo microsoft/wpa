@@ -28,16 +28,12 @@ All numeric variables in the dataset are used as predictor variables.
 }
 \examples{
 \dontrun{
+## Runs with all numeric variables
+## Longer run time with larger dataset
 sq_data \%>\%
-  mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\%
+  dplyr::mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\%
   create_IV(outcome = "X")
-sq_data \%>\%
-  mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\%
-  create_IV(outcome = "X",
-            predictors = c("Email_hours", "Meeting_hours"),
-            return = "list")
 }
-
 }
 \seealso{
 Other Information Value: 
