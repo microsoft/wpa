@@ -50,14 +50,14 @@ network_louvain <- function(data,
 
   if(grepl(pattern = "plot-", x = return)){
 
-    return <- gsub(pattern = "-",
+    return <- gsub(pattern = "plot-",
                    replacement = "",
                    x = return)
 
     if(return %in% c("louvain", "hrvar")){
 
       display <- return # Either "louvain" or "hrvar"
-      return <- "network"
+      return <- "plot"
 
     }
 
