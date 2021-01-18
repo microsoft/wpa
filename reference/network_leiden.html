@@ -166,6 +166,9 @@ which includes Python and reticulate." />
     <li>
       <a href="../articles/IV-report.html">Introduction to Information Value</a>
     </li>
+    <li>
+      <a href="../articles/Change-over-time.html">Identifying changes over time</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -223,13 +226,11 @@ which includes Python and <strong>reticulate</strong>.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Data frame containing a Person to Person Network query. Note that this function is
-computationally intensive and may take a noticeably longer time to process beyond 5000 rows.</p></td>
+      <td><p>Data frame containing a person-to-person query.</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>String containing the HR attribute to be matched in the dataset.
-Defaults to "Organization".</p></td>
+      <td><p>String containing the label for the HR attribute.</p></td>
     </tr>
     <tr>
       <th>bg_fill</th>
@@ -241,17 +242,13 @@ Defaults to "Organization".</p></td>
     </tr>
     <tr>
       <th>algorithm</th>
-      <td><p>String to specify the node placement algorithm to be used. Defaults to "mds" to perform
-a multidimensional scaling of nodes using a shortest path, which is also a deterministic method.
-See <a href='https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html'>https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a full list of options.</p></td>
+      <td><p>String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+algorithm of Fruchterman and Reingold. See <a href='https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html'>https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a
+full list of options.</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>File path for saving the PDF output. Defaults to "network_p2p_leiden".
-Since the network outputs are computationally intensive, the default behaviour is to save time by
-saving the plot output directly as a PDF in the specified path. To override this behaviour and return
-a plot object instead, you can pass <code>NULL</code> to <code>path</code>. What is passed to <code>path</code> makes no difference
-if returning anything other than "plot-leiden" or "plot-hrvar".</p></td>
+      <td><p>File path for saving the PDF output. Defaults to a timestamped path based on current parameters.</p></td>
     </tr>
     <tr>
       <th>node_alpha</th>
@@ -263,7 +260,8 @@ if returning anything other than "plot-leiden" or "plot-hrvar".</p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>Parameter to be passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code> to ensure consistency. Defaults to 1.</p></td>
+      <td><p>Seed for the random number generator passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code> to ensure consistency. Only applicable
+when <code>display</code> is set to "leiden".</p></td>
     </tr>
     <tr>
       <th>desc_hrvar</th>
@@ -272,10 +270,9 @@ if returning anything other than "plot-leiden" or "plot-hrvar".</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String specifying what output to return. Defaults to "plot-leiden".
-Valid return options include:</p><ul>
-<li><p>'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to <code>path</code>.</p></li>
-<li><p>'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to <code>path</code>.</p></li>
+      <td><p>String specifying what output to return. Defaults to "plot-leiden". Valid return options include:</p><ul>
+<li><p>'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to path.</p></li>
+<li><p>'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.</p></li>
 <li><p>'plot-sankey': return a sankey plot combining communities and HR attribute.</p></li>
 <li><p>'table': return a vertex summary table with counts in communities and HR attribute.</p></li>
 <li><p>'data': return a vertex data file that matches vertices with communities and HR attributes.</p></li>
@@ -294,6 +291,19 @@ method.</p></td>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'>## Simulate a small person-to-person dataset</span>
+<span class='va'>p2p_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='p2p_data_sim.html'>p2p_data_sim</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
+
+<span class='co'>## Return leiden, console, plot</span>
+<span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>network_leiden</span><span class='op'>(</span>path <span class='op'>=</span> <span class='cn'>NULL</span>,
+                 return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

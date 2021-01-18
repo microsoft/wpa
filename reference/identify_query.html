@@ -166,6 +166,9 @@ matching to 'guess' the query type of the data frame." />
     <li>
       <a href="../articles/IV-report.html">Introduction to Information Value</a>
     </li>
+    <li>
+      <a href="../articles/Change-over-time.html">Identifying changes over time</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -243,14 +246,13 @@ guessing algorithm. Defaults to 2.</p></td>
 <code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span> <span class='co'># Standard query</span>
-<span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>mt_data</span><span class='op'>)</span> <span class='co'># Meeting query</span>
-<span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>em_data</span><span class='op'>)</span> <span class='co'># Hourly collaboration query</span>
+    <pre class="examples"><div class='input'><span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span> <span class='co'># Standard query</span>
+</div><div class='output co'>#&gt; [1] "Person Query"</div><div class='input'><span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>mt_data</span><span class='op'>)</span> <span class='co'># Meeting query</span>
+</div><div class='output co'>#&gt; [1] "Meeting Query"</div><div class='input'><span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>em_data</span><span class='op'>)</span> <span class='co'># Hourly collaboration query</span>
+</div><div class='output co'>#&gt; [1] "Hourly Collaboration Query"</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='co'># Will return an error</span>
 <span class='fu'>identify_query</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='co'># Will return an error</span>
 <span class='op'>}</span>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

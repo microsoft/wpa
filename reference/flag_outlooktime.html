@@ -165,6 +165,9 @@ start and end time of work day." />
     <li>
       <a href="../articles/IV-report.html">Introduction to Information Value</a>
     </li>
+    <li>
+      <a href="../articles/Change-over-time.html">Identifying changes over time</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -244,10 +247,9 @@ Valid options include "text" (default), "message", and "data".</p></td>
 <code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>dv_data</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>[Warning]  94.9% (832) of the person-date rows in the data have extreme Outlook settings.</span>
+#&gt; <span class='message'>0% (0)  have an Outlook workday shorter than 4 hours, while 94.9% (832) have a workday longer than 15 hours.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
