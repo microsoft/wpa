@@ -12,14 +12,12 @@
 #' which is used to create a "Total" row in the data.
 #'
 #' @examples
-#' \dontrun{
 #' sq_data %>%
 #'   totals_bind(target_col = "LevelDesignation",
 #'               target_value = "Total") %>%
 #'   collab_sum(hrvar = "LevelDesignation",
 #'              return = "table") %>%
 #'   totals_reorder(target_col = "group", target_value = "Total")
-#' }
 #'
 #' @param data Summary table in the form of a data frame.
 #' @param target_col Character value of the column in which to reorder
@@ -30,5 +28,5 @@ totals_reorder <- function(data, target_col, target_value = "Total"){
   tc <- unique(data[[target_col]])
   the_rest <- tc[tc != target_value]
   order <- c(target_value, the_rest)
-  slice(data, match(order, !!sym(target_col)))
+  dplyr::slice(data, match(order, !!sym(target_col)))
 }

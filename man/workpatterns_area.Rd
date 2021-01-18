@@ -42,13 +42,14 @@ Uses the Hourly Collaboration query to produce an area plot of
 Emails sent and IMs sent attended by hour of the day.
 }
 \examples{
-\dontrun{
+## Return visualization of percentage distribution
 workpatterns_area(em_data, return = "plot", values = "percent")
 
+## Return visualization of absolute values
 workpatterns_area(em_data, return = "plot", values = "abs")
 
+## Return a table
 workpatterns_area(em_data, return = "table")
-}
 
 }
 \seealso{

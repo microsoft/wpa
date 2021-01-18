@@ -20,9 +20,7 @@ This function flags unusual outlook calendar settings for
 start and end time of work day.
 }
 \examples{
-\dontrun{
-flag_outlooktime(sq_data)
-}
+flag_outlooktime(dv_data)
 }
 \seealso{
 Other Data Validation: 

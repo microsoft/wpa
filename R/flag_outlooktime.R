@@ -19,9 +19,7 @@
 #' @family Data Validation
 #'
 #' @examples
-#' \dontrun{
-#' flag_outlooktime(sq_data)
-#' }
+#' flag_outlooktime(dv_data)
 #' @export
 flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
 

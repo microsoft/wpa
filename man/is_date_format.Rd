@@ -15,8 +15,6 @@ a string is of the format "mdy", separated by "-", "/",
 or ".", returning a logical vector.
 }
 \examples{
-\dontrun{
 is_date_format("1/5/2020")
-}
 
 }

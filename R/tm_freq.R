@@ -31,10 +31,8 @@
 #' tm_freq(mt_data)
 #'
 #' @examples
-#' \dontrun{
 #' tm_freq(mt_data, token = "words")
 #' tm_freq(mt_data, token = "ngrams")
-#'}
 #'
 #' @family Text-mining
 #'

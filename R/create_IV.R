@@ -119,15 +119,29 @@ create_IV <- function(data,
                       subtitle = "Showing top 12 only")
 
   } else if(return == "plot-WOE"){
-    Information::plot_infotables(IV, IV$Summary$Variable[], same_scale=TRUE) %>% grDevices::recordPlot()
 
-  } else if(return == "list"){
+      if (length(IV$Summary$Variable[]) >9){
 
-    output_list
+        Information::plot_infotables(IV,
+                                     IV$Summary$Variable[1:9],
+                                     same_scale=TRUE) %>%
+          grDevices::recordPlot()
 
-  } else {
+      } else {
 
-    stop("Please enter a valid input for `return`.")
+        Information::plot_infotables(IV,
+                                     IV$Summary$Variable[],
+                                     same_scale=TRUE) %>%
+          grDevices::recordPlot()
+      }
 
-  }
+    } else if(return == "list"){
+
+      output_list
+
+    } else {
+
+      stop("Please enter a valid input for `return`.")
+
+    }
 }

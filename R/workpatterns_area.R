@@ -32,13 +32,14 @@
 #' @importFrom tidyr replace_na
 #'
 #' @examples
-#' \dontrun{
+#' ## Return visualization of percentage distribution
 #' workpatterns_area(em_data, return = "plot", values = "percent")
 #'
+#' ## Return visualization of absolute values
 #' workpatterns_area(em_data, return = "plot", values = "abs")
 #'
+#' ## Return a table
 #' workpatterns_area(em_data, return = "table")
-#' }
 #'
 #' @family Work Patterns
 #'

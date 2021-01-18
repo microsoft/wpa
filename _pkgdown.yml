@@ -67,4 +67,6 @@ navbar:
         href: articles/best-practices.html
       - text: Introduction to Information Value
         href: articles/IV-report.html
+      - text: Identifying changes over time
+        href: articles/Change-over-time.html
 

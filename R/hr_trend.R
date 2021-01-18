@@ -17,11 +17,11 @@
 #' @import ggplot2
 #'
 #' @examples
-#' \dontrun{
-#' hr_trend(sq_data)
+#' # Return a plot
 #' hr_trend(dv_data)
+#'
+#' # Return a table
 #' hr_trend(dv_data, return = "table")
-#' }
 #'
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.

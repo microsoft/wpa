@@ -20,12 +20,11 @@
 #' @examples
 #' flag_ch_ratio(sq_data)
 #'
-#' \dontrun{
-#'  tibble(PersonId = c("Alice", "Bob"),
-#'         Collaboration_hours = c(30, 0.5),
-#'         After_hours_collaboration_hours = c(0.5, 30)) %>%
-#'    flag_ch_ratio()
-#' }
+#'
+#' data.frame(PersonId = c("Alice", "Bob"),
+#'            Collaboration_hours = c(30, 0.5),
+#'            After_hours_collaboration_hours = c(0.5, 30)) %>%
+#'   flag_ch_ratio()
 #'
 #' @export
 flag_ch_ratio <- function(data, threshold = c(1, 30), return = "message"){

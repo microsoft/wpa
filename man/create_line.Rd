@@ -41,13 +41,11 @@ This is a general purpose function that powers all the functions
 in the package that produce faceted line plots.
 }
 \examples{
-\dontrun{
 sq_data \%>\% create_line(metric = "Email_hours", return = "plot")
 
 sq_data \%>\% create_line(metric = "Collaboration_hours", return = "plot")
 
 sq_data \%>\% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
-}
 }
 \seealso{
 Other Flexible: 

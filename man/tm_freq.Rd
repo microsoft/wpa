@@ -31,10 +31,8 @@ argument.
 \examples{
 tm_freq(mt_data)
 
-\dontrun{
 tm_freq(mt_data, token = "words")
 tm_freq(mt_data, token = "ngrams")
-}
 
 }
 \seealso{

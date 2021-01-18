@@ -20,14 +20,13 @@ query type as a string. This function uses variable name string
 matching to 'guess' the query type of the data frame.
 }
 \examples{
-\dontrun{
 identify_query(sq_data) # Standard query
 identify_query(mt_data) # Meeting query
 identify_query(em_data) # Hourly collaboration query
+\dontrun{
 identify_query(iris) # Will return an error
 identify_query(mtcars) # Will return an error
 }
-
 }
 \seealso{
 Other Data Validation: 
