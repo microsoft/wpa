@@ -237,10 +237,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
     <pre class="examples"><div class='input'><span class='co'># Simulate a p2p dataset with 800 edges</span>
 <span class='fu'>p2p_data_sim</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>200</span>, nei <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     TieOrigin_PersonId TieDestination_PersonId TieOrigin_Organization
-#&gt; 1             SIM_ID_1              SIM_ID_168                  Org F
+#&gt; 1             SIM_ID_1                SIM_ID_2                  Org F
 #&gt; 2             SIM_ID_2                SIM_ID_3                  Org F
-#&gt; 3             SIM_ID_4               SIM_ID_75                  Org D
-#&gt; 4             SIM_ID_4                SIM_ID_5                  Org D
+#&gt; 3             SIM_ID_3                SIM_ID_4                  Org E
+#&gt; 4             SIM_ID_5              SIM_ID_118                  Org C
 #&gt; 5             SIM_ID_5                SIM_ID_6                  Org C
 #&gt; 6             SIM_ID_6                SIM_ID_7                  Org B
 #&gt; 7             SIM_ID_7                SIM_ID_8                  Org A
@@ -254,12 +254,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 15           SIM_ID_15               SIM_ID_16                  Org C
 #&gt; 16           SIM_ID_16               SIM_ID_17                  Org D
 #&gt; 17           SIM_ID_17               SIM_ID_18                  Org F
-#&gt; 18           SIM_ID_18               SIM_ID_88                  Org B
-#&gt; 19           SIM_ID_20              SIM_ID_152                  Org C
+#&gt; 18           SIM_ID_18               SIM_ID_19                  Org B
+#&gt; 19           SIM_ID_19               SIM_ID_20                  Org F
 #&gt; 20           SIM_ID_20               SIM_ID_21                  Org C
 #&gt; 21           SIM_ID_21               SIM_ID_22                  Org A
 #&gt; 22           SIM_ID_22               SIM_ID_23                  Org F
-#&gt; 23           SIM_ID_23               SIM_ID_24                  Org F
+#&gt; 23           SIM_ID_24              SIM_ID_152                  Org B
 #&gt; 24           SIM_ID_24               SIM_ID_25                  Org B
 #&gt; 25           SIM_ID_25               SIM_ID_26                  Org C
 #&gt; 26           SIM_ID_26               SIM_ID_27                  Org F
@@ -267,7 +267,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 28           SIM_ID_28               SIM_ID_29                  Org A
 #&gt; 29           SIM_ID_29               SIM_ID_30                  Org F
 #&gt; 30           SIM_ID_30               SIM_ID_31                  Org B
-#&gt; 31           SIM_ID_31               SIM_ID_32                  Org F
+#&gt; 31           SIM_ID_31              SIM_ID_129                  Org F
 #&gt; 32           SIM_ID_32               SIM_ID_33                  Org D
 #&gt; 33           SIM_ID_33               SIM_ID_34                  Org E
 #&gt; 34           SIM_ID_34               SIM_ID_35                  Org F
@@ -275,19 +275,19 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 36           SIM_ID_36               SIM_ID_37                  Org B
 #&gt; 37           SIM_ID_37               SIM_ID_38                  Org F
 #&gt; 38           SIM_ID_38               SIM_ID_39                  Org F
-#&gt; 39           SIM_ID_39               SIM_ID_40                  Org E
+#&gt; 39           SIM_ID_39              SIM_ID_125                  Org E
 #&gt; 40           SIM_ID_40               SIM_ID_41                  Org C
 #&gt; 41           SIM_ID_41               SIM_ID_42                  Org F
 #&gt; 42           SIM_ID_42               SIM_ID_43                  Org A
-#&gt; 43           SIM_ID_43               SIM_ID_95                  Org F
+#&gt; 43           SIM_ID_43               SIM_ID_44                  Org F
 #&gt; 44           SIM_ID_44               SIM_ID_45                  Org D
 #&gt; 45           SIM_ID_45               SIM_ID_46                  Org C
 #&gt; 46           SIM_ID_46               SIM_ID_47                  Org F
 #&gt; 47           SIM_ID_47               SIM_ID_48                  Org F
 #&gt; 48           SIM_ID_48               SIM_ID_49                  Org B
-#&gt; 49           SIM_ID_49               SIM_ID_50                  Org A
+#&gt; 49            SIM_ID_3               SIM_ID_49                  Org E
 #&gt; 50           SIM_ID_50               SIM_ID_51                  Org C
-#&gt; 51           SIM_ID_51               SIM_ID_52                  Org E
+#&gt; 51           SIM_ID_16               SIM_ID_51                  Org D
 #&gt; 52           SIM_ID_52               SIM_ID_53                  Org D
 #&gt; 53           SIM_ID_53               SIM_ID_54                  Org F
 #&gt; 54           SIM_ID_54               SIM_ID_55                  Org B
@@ -299,12 +299,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 60           SIM_ID_60               SIM_ID_61                  Org B
 #&gt; 61           SIM_ID_61               SIM_ID_62                  Org F
 #&gt; 62           SIM_ID_62               SIM_ID_63                  Org F
-#&gt; 63           SIM_ID_63               SIM_ID_64                  Org A
-#&gt; 64           SIM_ID_56               SIM_ID_64                  Org A
+#&gt; 63           SIM_ID_12               SIM_ID_63                  Org B
+#&gt; 64           SIM_ID_64               SIM_ID_65                  Org D
 #&gt; 65           SIM_ID_65               SIM_ID_66                  Org C
 #&gt; 66           SIM_ID_66               SIM_ID_67                  Org B
 #&gt; 67           SIM_ID_67               SIM_ID_68                  Org F
-#&gt; 68           SIM_ID_68               SIM_ID_80                  Org D
+#&gt; 68           SIM_ID_68               SIM_ID_69                  Org D
 #&gt; 69           SIM_ID_69               SIM_ID_70                  Org E
 #&gt; 70           SIM_ID_70               SIM_ID_71                  Org A
 #&gt; 71           SIM_ID_71               SIM_ID_72                  Org F
@@ -313,7 +313,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 74           SIM_ID_74               SIM_ID_75                  Org F
 #&gt; 75           SIM_ID_75               SIM_ID_76                  Org C
 #&gt; 76           SIM_ID_76               SIM_ID_77                  Org D
-#&gt; 77           SIM_ID_77               SIM_ID_78                  Org A
+#&gt; 77           SIM_ID_60              SIM_ID_153                  Org B
 #&gt; 78           SIM_ID_78               SIM_ID_79                  Org B
 #&gt; 79           SIM_ID_79               SIM_ID_80                  Org F
 #&gt; 80           SIM_ID_80               SIM_ID_81                  Org C
@@ -323,10 +323,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 84           SIM_ID_84               SIM_ID_85                  Org A
 #&gt; 85           SIM_ID_85               SIM_ID_86                  Org C
 #&gt; 86           SIM_ID_86               SIM_ID_87                  Org F
-#&gt; 87           SIM_ID_87               SIM_ID_88                  Org E
+#&gt; 87           SIM_ID_50               SIM_ID_88                  Org C
 #&gt; 88           SIM_ID_88               SIM_ID_89                  Org D
 #&gt; 89           SIM_ID_89               SIM_ID_90                  Org F
-#&gt; 90           SIM_ID_64               SIM_ID_91                  Org D
+#&gt; 90           SIM_ID_34               SIM_ID_91                  Org F
 #&gt; 91           SIM_ID_91               SIM_ID_92                  Org A
 #&gt; 92           SIM_ID_92               SIM_ID_93                  Org D
 #&gt; 93           SIM_ID_93               SIM_ID_94                  Org E
@@ -337,10 +337,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 98           SIM_ID_98               SIM_ID_99                  Org A
 #&gt; 99           SIM_ID_99              SIM_ID_100                  Org E
 #&gt; 100         SIM_ID_100              SIM_ID_101                  Org C
-#&gt; 101         SIM_ID_102              SIM_ID_156                  Org B
+#&gt; 101         SIM_ID_101              SIM_ID_102                  Org H
 #&gt; 102         SIM_ID_102              SIM_ID_103                  Org B
 #&gt; 103         SIM_ID_103              SIM_ID_104                  Org H
-#&gt; 104         SIM_ID_104              SIM_ID_105                  Org D
+#&gt; 104         SIM_ID_105              SIM_ID_156                  Org A
 #&gt; 105         SIM_ID_105              SIM_ID_106                  Org A
 #&gt; 106         SIM_ID_106              SIM_ID_107                  Org G
 #&gt; 107         SIM_ID_107              SIM_ID_108                  Org H
@@ -350,14 +350,14 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 111         SIM_ID_111              SIM_ID_112                  Org E
 #&gt; 112         SIM_ID_112              SIM_ID_113                  Org A
 #&gt; 113         SIM_ID_113              SIM_ID_114                  Org H
-#&gt; 114           SIM_ID_7              SIM_ID_114                  Org A
-#&gt; 115          SIM_ID_16              SIM_ID_115                  Org D
+#&gt; 114         SIM_ID_114              SIM_ID_115                  Org B
+#&gt; 115         SIM_ID_115              SIM_ID_116                  Org C
 #&gt; 116         SIM_ID_116              SIM_ID_117                  Org D
 #&gt; 117         SIM_ID_117              SIM_ID_118                  Org E
-#&gt; 118         SIM_ID_119              SIM_ID_192                  Org A
+#&gt; 118         SIM_ID_118              SIM_ID_119                  Org G
 #&gt; 119         SIM_ID_119              SIM_ID_120                  Org A
 #&gt; 120         SIM_ID_120              SIM_ID_121                  Org B
-#&gt; 121         SIM_ID_121              SIM_ID_122                  Org H
+#&gt; 121         SIM_ID_122              SIM_ID_192                  Org G
 #&gt; 122         SIM_ID_122              SIM_ID_123                  Org G
 #&gt; 123         SIM_ID_123              SIM_ID_124                  Org E
 #&gt; 124         SIM_ID_124              SIM_ID_125                  Org D
@@ -370,7 +370,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 131         SIM_ID_131              SIM_ID_132                  Org H
 #&gt; 132         SIM_ID_132              SIM_ID_133                  Org B
 #&gt; 133         SIM_ID_133              SIM_ID_134                  Org A
-#&gt; 134         SIM_ID_134              SIM_ID_135                  Org G
+#&gt; 134         SIM_ID_134              SIM_ID_175                  Org G
 #&gt; 135         SIM_ID_135              SIM_ID_136                  Org C
 #&gt; 136         SIM_ID_136              SIM_ID_137                  Org D
 #&gt; 137         SIM_ID_137              SIM_ID_138                  Org H
@@ -382,7 +382,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 143         SIM_ID_143              SIM_ID_144                  Org H
 #&gt; 144         SIM_ID_144              SIM_ID_145                  Org B
 #&gt; 145         SIM_ID_145              SIM_ID_146                  Org C
-#&gt; 146         SIM_ID_114              SIM_ID_146                  Org B
+#&gt; 146         SIM_ID_146              SIM_ID_147                  Org G
 #&gt; 147         SIM_ID_147              SIM_ID_148                  Org A
 #&gt; 148         SIM_ID_148              SIM_ID_149                  Org D
 #&gt; 149         SIM_ID_149              SIM_ID_150                  Org H
@@ -395,21 +395,21 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 156         SIM_ID_156              SIM_ID_157                  Org B
 #&gt; 157         SIM_ID_157              SIM_ID_158                  Org H
 #&gt; 158         SIM_ID_158              SIM_ID_159                  Org G
-#&gt; 159         SIM_ID_159              SIM_ID_160                  Org E
+#&gt; 159         SIM_ID_160              SIM_ID_194                  Org C
 #&gt; 160         SIM_ID_160              SIM_ID_161                  Org C
 #&gt; 161         SIM_ID_161              SIM_ID_162                  Org A
 #&gt; 162         SIM_ID_162              SIM_ID_163                  Org B
-#&gt; 163         SIM_ID_163              SIM_ID_164                  Org H
-#&gt; 164          SIM_ID_41              SIM_ID_164                  Org F
+#&gt; 163          SIM_ID_18              SIM_ID_164                  Org B
+#&gt; 164         SIM_ID_164              SIM_ID_165                  Org D
 #&gt; 165         SIM_ID_165              SIM_ID_166                  Org C
-#&gt; 166         SIM_ID_117              SIM_ID_167                  Org E
+#&gt; 166         SIM_ID_166              SIM_ID_167                  Org G
 #&gt; 167         SIM_ID_167              SIM_ID_168                  Org H
 #&gt; 168         SIM_ID_168              SIM_ID_169                  Org A
 #&gt; 169         SIM_ID_169              SIM_ID_170                  Org H
-#&gt; 170         SIM_ID_170              SIM_ID_171                  Org C
+#&gt; 170         SIM_ID_120              SIM_ID_170                  Org B
 #&gt; 171         SIM_ID_171              SIM_ID_172                  Org E
 #&gt; 172         SIM_ID_172              SIM_ID_173                  Org D
-#&gt; 173         SIM_ID_173              SIM_ID_174                  Org H
+#&gt; 173         SIM_ID_173              SIM_ID_190                  Org H
 #&gt; 174         SIM_ID_174              SIM_ID_175                  Org B
 #&gt; 175         SIM_ID_175              SIM_ID_176                  Org A
 #&gt; 176         SIM_ID_176              SIM_ID_177                  Org D
@@ -419,76 +419,76 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 180         SIM_ID_180              SIM_ID_181                  Org B
 #&gt; 181         SIM_ID_181              SIM_ID_182                  Org H
 #&gt; 182         SIM_ID_182              SIM_ID_183                  Org A
-#&gt; 183          SIM_ID_89              SIM_ID_184                  Org F
-#&gt; 184         SIM_ID_184              SIM_ID_185                  Org D
+#&gt; 183         SIM_ID_183              SIM_ID_184                  Org E
+#&gt; 184          SIM_ID_38              SIM_ID_184                  Org F
 #&gt; 185         SIM_ID_185              SIM_ID_186                  Org C
-#&gt; 186          SIM_ID_52              SIM_ID_187                  Org D
+#&gt; 186         SIM_ID_186              SIM_ID_187                  Org B
 #&gt; 187         SIM_ID_187              SIM_ID_188                  Org H
 #&gt; 188         SIM_ID_188              SIM_ID_189                  Org D
 #&gt; 189         SIM_ID_189              SIM_ID_190                  Org A
 #&gt; 190         SIM_ID_190              SIM_ID_191                  Org C
 #&gt; 191         SIM_ID_191              SIM_ID_192                  Org H
 #&gt; 192         SIM_ID_192              SIM_ID_193                  Org B
-#&gt; 193         SIM_ID_193              SIM_ID_194                  Org H
-#&gt; 194         SIM_ID_154              SIM_ID_194                  Org A
+#&gt; 193          SIM_ID_47              SIM_ID_194                  Org F
+#&gt; 194         SIM_ID_194              SIM_ID_195                  Org G
 #&gt; 195         SIM_ID_195              SIM_ID_196                  Org C
 #&gt; 196         SIM_ID_196              SIM_ID_197                  Org A
 #&gt; 197         SIM_ID_197              SIM_ID_198                  Org H
 #&gt; 198         SIM_ID_198              SIM_ID_199                  Org B
 #&gt; 199         SIM_ID_199              SIM_ID_200                  Org H
-#&gt; 200         SIM_ID_157              SIM_ID_200                  Org H
+#&gt; 200           SIM_ID_1              SIM_ID_200                  Org F
 #&gt; 201           SIM_ID_1                SIM_ID_3                  Org F
 #&gt; 202           SIM_ID_1              SIM_ID_199                  Org F
 #&gt; 203           SIM_ID_1                SIM_ID_4                  Org F
 #&gt; 204           SIM_ID_1              SIM_ID_198                  Org F
-#&gt; 205           SIM_ID_5               SIM_ID_96                  Org C
-#&gt; 206           SIM_ID_1               SIM_ID_99                  Org F
+#&gt; 205           SIM_ID_1                SIM_ID_5                  Org F
+#&gt; 206           SIM_ID_1              SIM_ID_197                  Org F
 #&gt; 207           SIM_ID_2              SIM_ID_200                  Org F
 #&gt; 208           SIM_ID_2                SIM_ID_4                  Org F
 #&gt; 209           SIM_ID_2              SIM_ID_199                  Org F
 #&gt; 210           SIM_ID_2                SIM_ID_5                  Org F
 #&gt; 211           SIM_ID_2              SIM_ID_198                  Org F
 #&gt; 212           SIM_ID_2                SIM_ID_6                  Org F
-#&gt; 213           SIM_ID_3                SIM_ID_5                  Org E
+#&gt; 213           SIM_ID_3              SIM_ID_135                  Org E
 #&gt; 214           SIM_ID_3              SIM_ID_200                  Org E
 #&gt; 215           SIM_ID_3                SIM_ID_6                  Org E
 #&gt; 216           SIM_ID_3              SIM_ID_199                  Org E
 #&gt; 217           SIM_ID_3                SIM_ID_7                  Org E
-#&gt; 218           SIM_ID_4              SIM_ID_129                  Org D
+#&gt; 218           SIM_ID_4                SIM_ID_6                  Org D
 #&gt; 219           SIM_ID_4                SIM_ID_7                  Org D
 #&gt; 220           SIM_ID_4              SIM_ID_200                  Org D
 #&gt; 221           SIM_ID_4                SIM_ID_8                  Org D
 #&gt; 222           SIM_ID_5                SIM_ID_7                  Org C
 #&gt; 223           SIM_ID_5                SIM_ID_8                  Org C
 #&gt; 224           SIM_ID_5                SIM_ID_9                  Org C
-#&gt; 225           SIM_ID_6                SIM_ID_8                  Org B
+#&gt; 225           SIM_ID_8              SIM_ID_147                  Org D
 #&gt; 226           SIM_ID_6                SIM_ID_9                  Org B
 #&gt; 227           SIM_ID_6               SIM_ID_10                  Org B
 #&gt; 228           SIM_ID_7                SIM_ID_9                  Org A
 #&gt; 229           SIM_ID_7               SIM_ID_10                  Org A
-#&gt; 230           SIM_ID_7               SIM_ID_11                  Org A
+#&gt; 230           SIM_ID_7               SIM_ID_38                  Org A
 #&gt; 231           SIM_ID_8               SIM_ID_10                  Org D
 #&gt; 232           SIM_ID_8               SIM_ID_11                  Org D
 #&gt; 233           SIM_ID_8               SIM_ID_12                  Org D
 #&gt; 234           SIM_ID_9               SIM_ID_11                  Org E
-#&gt; 235           SIM_ID_9               SIM_ID_12                  Org E
-#&gt; 236          SIM_ID_13              SIM_ID_199                  Org F
+#&gt; 235           SIM_ID_9              SIM_ID_173                  Org E
+#&gt; 236           SIM_ID_9               SIM_ID_13                  Org E
 #&gt; 237          SIM_ID_10               SIM_ID_12                  Org C
 #&gt; 238          SIM_ID_10               SIM_ID_13                  Org C
 #&gt; 239          SIM_ID_10               SIM_ID_14                  Org C
 #&gt; 240          SIM_ID_11               SIM_ID_13                  Org F
 #&gt; 241          SIM_ID_11               SIM_ID_14                  Org F
 #&gt; 242          SIM_ID_11               SIM_ID_15                  Org F
-#&gt; 243          SIM_ID_12              SIM_ID_125                  Org B
+#&gt; 243          SIM_ID_12               SIM_ID_14                  Org B
 #&gt; 244          SIM_ID_12               SIM_ID_15                  Org B
 #&gt; 245          SIM_ID_12               SIM_ID_16                  Org B
 #&gt; 246          SIM_ID_13               SIM_ID_15                  Org F
 #&gt; 247          SIM_ID_13               SIM_ID_16                  Org F
-#&gt; 248          SIM_ID_13               SIM_ID_17                  Org F
+#&gt; 248          SIM_ID_17              SIM_ID_199                  Org F
 #&gt; 249          SIM_ID_14               SIM_ID_16                  Org A
 #&gt; 250          SIM_ID_14               SIM_ID_17                  Org A
 #&gt; 251          SIM_ID_14               SIM_ID_18                  Org A
-#&gt; 252          SIM_ID_17              SIM_ID_128                  Org F
+#&gt; 252          SIM_ID_15               SIM_ID_17                  Org C
 #&gt; 253          SIM_ID_15               SIM_ID_18                  Org C
 #&gt; 254          SIM_ID_15               SIM_ID_19                  Org C
 #&gt; 255          SIM_ID_16               SIM_ID_18                  Org D
@@ -496,9 +496,9 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 257          SIM_ID_16               SIM_ID_20                  Org D
 #&gt; 258          SIM_ID_17               SIM_ID_19                  Org F
 #&gt; 259          SIM_ID_17               SIM_ID_20                  Org F
-#&gt; 260          SIM_ID_21              SIM_ID_181                  Org A
+#&gt; 260          SIM_ID_17               SIM_ID_21                  Org F
 #&gt; 261          SIM_ID_18               SIM_ID_20                  Org B
-#&gt; 262          SIM_ID_18               SIM_ID_21                  Org B
+#&gt; 262          SIM_ID_21              SIM_ID_128                  Org A
 #&gt; 263          SIM_ID_18               SIM_ID_22                  Org B
 #&gt; 264          SIM_ID_19               SIM_ID_21                  Org F
 #&gt; 265          SIM_ID_19               SIM_ID_22                  Org F
@@ -509,13 +509,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 270          SIM_ID_21               SIM_ID_23                  Org A
 #&gt; 271          SIM_ID_21               SIM_ID_24                  Org A
 #&gt; 272          SIM_ID_21               SIM_ID_25                  Org A
-#&gt; 273           SIM_ID_3               SIM_ID_22                  Org E
-#&gt; 274           SIM_ID_6               SIM_ID_22                  Org B
+#&gt; 273          SIM_ID_22               SIM_ID_24                  Org F
+#&gt; 274          SIM_ID_22               SIM_ID_25                  Org F
 #&gt; 275          SIM_ID_22               SIM_ID_26                  Org F
-#&gt; 276          SIM_ID_23               SIM_ID_25                  Org F
+#&gt; 276          SIM_ID_25              SIM_ID_181                  Org C
 #&gt; 277          SIM_ID_23               SIM_ID_26                  Org F
 #&gt; 278          SIM_ID_23               SIM_ID_27                  Org F
-#&gt; 279          SIM_ID_16               SIM_ID_24                  Org D
+#&gt; 279          SIM_ID_24               SIM_ID_26                  Org B
 #&gt; 280          SIM_ID_24               SIM_ID_27                  Org B
 #&gt; 281          SIM_ID_24               SIM_ID_28                  Org B
 #&gt; 282          SIM_ID_25               SIM_ID_27                  Org C
@@ -527,12 +527,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 288          SIM_ID_27               SIM_ID_29                  Org E
 #&gt; 289          SIM_ID_27               SIM_ID_30                  Org E
 #&gt; 290          SIM_ID_27               SIM_ID_31                  Org E
-#&gt; 291          SIM_ID_30              SIM_ID_114                  Org B
-#&gt; 292          SIM_ID_28               SIM_ID_31                  Org A
+#&gt; 291          SIM_ID_28               SIM_ID_30                  Org A
+#&gt; 292          SIM_ID_28               SIM_ID_49                  Org A
 #&gt; 293          SIM_ID_28               SIM_ID_32                  Org A
 #&gt; 294          SIM_ID_29               SIM_ID_31                  Org F
 #&gt; 295          SIM_ID_29               SIM_ID_32                  Org F
-#&gt; 296          SIM_ID_29               SIM_ID_33                  Org F
+#&gt; 296          SIM_ID_33              SIM_ID_114                  Org E
 #&gt; 297          SIM_ID_30               SIM_ID_32                  Org B
 #&gt; 298          SIM_ID_30               SIM_ID_33                  Org B
 #&gt; 299          SIM_ID_30               SIM_ID_34                  Org B
@@ -551,7 +551,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 312          SIM_ID_35               SIM_ID_37                  Org A
 #&gt; 313          SIM_ID_35               SIM_ID_38                  Org A
 #&gt; 314          SIM_ID_35               SIM_ID_39                  Org A
-#&gt; 315          SIM_ID_12               SIM_ID_36                  Org B
+#&gt; 315          SIM_ID_36               SIM_ID_38                  Org B
 #&gt; 316          SIM_ID_36               SIM_ID_39                  Org B
 #&gt; 317          SIM_ID_36               SIM_ID_40                  Org B
 #&gt; 318          SIM_ID_37               SIM_ID_39                  Org F
@@ -561,20 +561,20 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 322          SIM_ID_38               SIM_ID_41                  Org F
 #&gt; 323          SIM_ID_38               SIM_ID_42                  Org F
 #&gt; 324          SIM_ID_39               SIM_ID_41                  Org E
-#&gt; 325          SIM_ID_42               SIM_ID_67                  Org A
+#&gt; 325          SIM_ID_39               SIM_ID_42                  Org E
 #&gt; 326          SIM_ID_39               SIM_ID_43                  Org E
-#&gt; 327          SIM_ID_42              SIM_ID_142                  Org A
+#&gt; 327          SIM_ID_40               SIM_ID_42                  Org C
 #&gt; 328          SIM_ID_40               SIM_ID_43                  Org C
-#&gt; 329          SIM_ID_40              SIM_ID_196                  Org C
+#&gt; 329          SIM_ID_40               SIM_ID_44                  Org C
 #&gt; 330          SIM_ID_41               SIM_ID_43                  Org F
 #&gt; 331          SIM_ID_41               SIM_ID_44                  Org F
 #&gt; 332          SIM_ID_41               SIM_ID_45                  Org F
 #&gt; 333          SIM_ID_42               SIM_ID_44                  Org A
-#&gt; 334          SIM_ID_42               SIM_ID_45                  Org A
+#&gt; 334          SIM_ID_45               SIM_ID_67                  Org C
 #&gt; 335          SIM_ID_42               SIM_ID_46                  Org A
-#&gt; 336          SIM_ID_45              SIM_ID_119                  Org C
+#&gt; 336          SIM_ID_45              SIM_ID_142                  Org C
 #&gt; 337          SIM_ID_43               SIM_ID_46                  Org F
-#&gt; 338          SIM_ID_43               SIM_ID_47                  Org F
+#&gt; 338          SIM_ID_47              SIM_ID_119                  Org F
 #&gt; 339          SIM_ID_44               SIM_ID_46                  Org D
 #&gt; 340          SIM_ID_44               SIM_ID_47                  Org D
 #&gt; 341          SIM_ID_44               SIM_ID_48                  Org D
@@ -583,17 +583,17 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 344          SIM_ID_45               SIM_ID_49                  Org C
 #&gt; 345          SIM_ID_46               SIM_ID_48                  Org F
 #&gt; 346          SIM_ID_46               SIM_ID_49                  Org F
-#&gt; 347          SIM_ID_46               SIM_ID_50                  Org F
+#&gt; 347          SIM_ID_46               SIM_ID_88                  Org F
 #&gt; 348          SIM_ID_47               SIM_ID_49                  Org F
 #&gt; 349          SIM_ID_47               SIM_ID_50                  Org F
 #&gt; 350          SIM_ID_47               SIM_ID_51                  Org F
 #&gt; 351          SIM_ID_48               SIM_ID_50                  Org B
 #&gt; 352          SIM_ID_48               SIM_ID_51                  Org B
 #&gt; 353          SIM_ID_48               SIM_ID_52                  Org B
-#&gt; 354          SIM_ID_49               SIM_ID_51                  Org A
+#&gt; 354           SIM_ID_6               SIM_ID_49                  Org B
 #&gt; 355          SIM_ID_49               SIM_ID_52                  Org A
 #&gt; 356          SIM_ID_49               SIM_ID_53                  Org A
-#&gt; 357          SIM_ID_50               SIM_ID_60                  Org C
+#&gt; 357          SIM_ID_50               SIM_ID_52                  Org C
 #&gt; 358          SIM_ID_50               SIM_ID_53                  Org C
 #&gt; 359          SIM_ID_50               SIM_ID_54                  Org C
 #&gt; 360          SIM_ID_51               SIM_ID_53                  Org E
@@ -602,16 +602,16 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 363          SIM_ID_52               SIM_ID_54                  Org D
 #&gt; 364          SIM_ID_52               SIM_ID_55                  Org D
 #&gt; 365          SIM_ID_52               SIM_ID_56                  Org D
-#&gt; 366          SIM_ID_55               SIM_ID_90                  Org C
+#&gt; 366          SIM_ID_53               SIM_ID_55                  Org F
 #&gt; 367          SIM_ID_53               SIM_ID_56                  Org F
-#&gt; 368          SIM_ID_53               SIM_ID_57                  Org F
+#&gt; 368          SIM_ID_57               SIM_ID_90                  Org E
 #&gt; 369          SIM_ID_54               SIM_ID_56                  Org B
 #&gt; 370          SIM_ID_54               SIM_ID_57                  Org B
 #&gt; 371          SIM_ID_54               SIM_ID_58                  Org B
 #&gt; 372          SIM_ID_55               SIM_ID_57                  Org C
 #&gt; 373          SIM_ID_55               SIM_ID_58                  Org C
 #&gt; 374          SIM_ID_55               SIM_ID_59                  Org C
-#&gt; 375          SIM_ID_58              SIM_ID_153                  Org F
+#&gt; 375          SIM_ID_56               SIM_ID_58                  Org A
 #&gt; 376          SIM_ID_56               SIM_ID_59                  Org A
 #&gt; 377          SIM_ID_56               SIM_ID_60                  Org A
 #&gt; 378          SIM_ID_57               SIM_ID_59                  Org E
@@ -629,7 +629,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 390          SIM_ID_61               SIM_ID_63                  Org F
 #&gt; 391          SIM_ID_61               SIM_ID_64                  Org F
 #&gt; 392          SIM_ID_61               SIM_ID_65                  Org F
-#&gt; 393           SIM_ID_9               SIM_ID_64                  Org E
+#&gt; 393          SIM_ID_62               SIM_ID_64                  Org F
 #&gt; 394          SIM_ID_62               SIM_ID_65                  Org F
 #&gt; 395          SIM_ID_62               SIM_ID_66                  Org F
 #&gt; 396          SIM_ID_63               SIM_ID_65                  Org A
@@ -638,18 +638,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 399          SIM_ID_64               SIM_ID_66                  Org D
 #&gt; 400          SIM_ID_64               SIM_ID_67                  Org D
 #&gt; 401          SIM_ID_64               SIM_ID_68                  Org D
-#&gt; 402          SIM_ID_65               SIM_ID_67                  Org C
+#&gt; 402           SIM_ID_9               SIM_ID_67                  Org E
 #&gt; 403          SIM_ID_65               SIM_ID_68                  Org C
 #&gt; 404          SIM_ID_65               SIM_ID_69                  Org C
 #&gt; 405          SIM_ID_66               SIM_ID_68                  Org B
 #&gt; 406          SIM_ID_66               SIM_ID_69                  Org B
 #&gt; 407          SIM_ID_66               SIM_ID_70                  Org B
 #&gt; 408          SIM_ID_67               SIM_ID_69                  Org F
-#&gt; 409          SIM_ID_67               SIM_ID_70                  Org F
+#&gt; 409          SIM_ID_67              SIM_ID_196                  Org F
 #&gt; 410          SIM_ID_67               SIM_ID_71                  Org F
 #&gt; 411          SIM_ID_68               SIM_ID_70                  Org D
 #&gt; 412          SIM_ID_68               SIM_ID_71                  Org D
-#&gt; 413          SIM_ID_68               SIM_ID_73                  Org D
+#&gt; 413          SIM_ID_68               SIM_ID_72                  Org D
 #&gt; 414          SIM_ID_69               SIM_ID_71                  Org E
 #&gt; 415          SIM_ID_69               SIM_ID_72                  Org E
 #&gt; 416          SIM_ID_69               SIM_ID_73                  Org E
@@ -658,7 +658,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 419          SIM_ID_70               SIM_ID_74                  Org A
 #&gt; 420          SIM_ID_71               SIM_ID_73                  Org F
 #&gt; 421          SIM_ID_71               SIM_ID_74                  Org F
-#&gt; 422          SIM_ID_71               SIM_ID_75                  Org F
+#&gt; 422          SIM_ID_71               SIM_ID_95                  Org F
 #&gt; 423          SIM_ID_72               SIM_ID_74                  Org B
 #&gt; 424          SIM_ID_72               SIM_ID_75                  Org B
 #&gt; 425          SIM_ID_72               SIM_ID_76                  Org B
@@ -673,9 +673,9 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 434          SIM_ID_75               SIM_ID_79                  Org C
 #&gt; 435          SIM_ID_76               SIM_ID_78                  Org D
 #&gt; 436          SIM_ID_76               SIM_ID_79                  Org D
-#&gt; 437          SIM_ID_76              SIM_ID_180                  Org D
+#&gt; 437          SIM_ID_76               SIM_ID_80                  Org D
 #&gt; 438          SIM_ID_77               SIM_ID_79                  Org A
-#&gt; 439          SIM_ID_59               SIM_ID_80                  Org F
+#&gt; 439          SIM_ID_77               SIM_ID_80                  Org A
 #&gt; 440          SIM_ID_77               SIM_ID_81                  Org A
 #&gt; 441          SIM_ID_78               SIM_ID_80                  Org B
 #&gt; 442          SIM_ID_78               SIM_ID_81                  Org B
@@ -684,18 +684,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 445          SIM_ID_79               SIM_ID_82                  Org F
 #&gt; 446          SIM_ID_79               SIM_ID_83                  Org F
 #&gt; 447          SIM_ID_80               SIM_ID_82                  Org C
-#&gt; 448          SIM_ID_80               SIM_ID_97                  Org C
+#&gt; 448          SIM_ID_59               SIM_ID_83                  Org F
 #&gt; 449          SIM_ID_80               SIM_ID_84                  Org C
-#&gt; 450          SIM_ID_60               SIM_ID_83                  Org B
+#&gt; 450          SIM_ID_81               SIM_ID_83                  Org E
 #&gt; 451          SIM_ID_81               SIM_ID_84                  Org E
 #&gt; 452          SIM_ID_81               SIM_ID_85                  Org E
 #&gt; 453          SIM_ID_82               SIM_ID_84                  Org F
 #&gt; 454          SIM_ID_82               SIM_ID_85                  Org F
 #&gt; 455          SIM_ID_82               SIM_ID_86                  Org F
 #&gt; 456          SIM_ID_83               SIM_ID_85                  Org F
-#&gt; 457          SIM_ID_76               SIM_ID_83                  Org D
+#&gt; 457          SIM_ID_83               SIM_ID_86                  Org F
 #&gt; 458          SIM_ID_83               SIM_ID_87                  Org F
-#&gt; 459          SIM_ID_50               SIM_ID_86                  Org C
+#&gt; 459          SIM_ID_60               SIM_ID_86                  Org B
 #&gt; 460          SIM_ID_84               SIM_ID_87                  Org A
 #&gt; 461          SIM_ID_84               SIM_ID_88                  Org A
 #&gt; 462          SIM_ID_85               SIM_ID_87                  Org C
@@ -704,12 +704,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 465          SIM_ID_86               SIM_ID_88                  Org F
 #&gt; 466          SIM_ID_86               SIM_ID_89                  Org F
 #&gt; 467          SIM_ID_86               SIM_ID_90                  Org F
-#&gt; 468          SIM_ID_34               SIM_ID_89                  Org F
+#&gt; 468          SIM_ID_87               SIM_ID_89                  Org E
 #&gt; 469          SIM_ID_87               SIM_ID_90                  Org E
 #&gt; 470          SIM_ID_87               SIM_ID_91                  Org E
 #&gt; 471          SIM_ID_88               SIM_ID_90                  Org D
 #&gt; 472          SIM_ID_88               SIM_ID_91                  Org D
-#&gt; 473          SIM_ID_88               SIM_ID_94                  Org D
+#&gt; 473          SIM_ID_88               SIM_ID_92                  Org D
 #&gt; 474          SIM_ID_89               SIM_ID_91                  Org F
 #&gt; 475          SIM_ID_89               SIM_ID_92                  Org F
 #&gt; 476          SIM_ID_89               SIM_ID_93                  Org F
@@ -717,23 +717,23 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 478          SIM_ID_90               SIM_ID_93                  Org B
 #&gt; 479          SIM_ID_90               SIM_ID_94                  Org B
 #&gt; 480          SIM_ID_91               SIM_ID_93                  Org A
-#&gt; 481          SIM_ID_91               SIM_ID_94                  Org A
-#&gt; 482          SIM_ID_36               SIM_ID_91                  Org B
-#&gt; 483          SIM_ID_94              SIM_ID_150                  Org F
-#&gt; 484          SIM_ID_95              SIM_ID_197                  Org C
-#&gt; 485          SIM_ID_92               SIM_ID_96                  Org D
+#&gt; 481          SIM_ID_64               SIM_ID_94                  Org D
+#&gt; 482          SIM_ID_91               SIM_ID_95                  Org A
+#&gt; 483          SIM_ID_92               SIM_ID_94                  Org D
+#&gt; 484          SIM_ID_92               SIM_ID_95                  Org D
+#&gt; 485          SIM_ID_56               SIM_ID_92                  Org A
 #&gt; 486          SIM_ID_93               SIM_ID_95                  Org E
 #&gt; 487          SIM_ID_93               SIM_ID_96                  Org E
 #&gt; 488          SIM_ID_93               SIM_ID_97                  Org E
-#&gt; 489          SIM_ID_94               SIM_ID_96                  Org F
-#&gt; 490          SIM_ID_94               SIM_ID_97                  Org F
-#&gt; 491          SIM_ID_94              SIM_ID_179                  Org F
-#&gt; 492          SIM_ID_97              SIM_ID_110                  Org F
-#&gt; 493          SIM_ID_95               SIM_ID_98                  Org C
-#&gt; 494          SIM_ID_95               SIM_ID_99                  Org C
+#&gt; 489          SIM_ID_96              SIM_ID_150                  Org B
+#&gt; 490          SIM_ID_97              SIM_ID_197                  Org F
+#&gt; 491          SIM_ID_94               SIM_ID_98                  Org F
+#&gt; 492          SIM_ID_95               SIM_ID_97                  Org C
+#&gt; 493          SIM_ID_73               SIM_ID_95                  Org F
+#&gt; 494          SIM_ID_99              SIM_ID_110                  Org E
 #&gt; 495          SIM_ID_96               SIM_ID_98                  Org B
 #&gt; 496          SIM_ID_96               SIM_ID_99                  Org B
-#&gt; 497          SIM_ID_96              SIM_ID_100                  Org B
+#&gt; 497          SIM_ID_80               SIM_ID_96                  Org C
 #&gt; 498          SIM_ID_97               SIM_ID_99                  Org F
 #&gt; 499          SIM_ID_97              SIM_ID_100                  Org F
 #&gt; 500          SIM_ID_97              SIM_ID_101                  Org F
@@ -741,7 +741,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 502          SIM_ID_98              SIM_ID_101                  Org A
 #&gt; 503          SIM_ID_98              SIM_ID_102                  Org A
 #&gt; 504          SIM_ID_99              SIM_ID_101                  Org E
-#&gt; 505         SIM_ID_102              SIM_ID_142                  Org B
+#&gt; 505          SIM_ID_99              SIM_ID_102                  Org E
 #&gt; 506          SIM_ID_99              SIM_ID_103                  Org E
 #&gt; 507         SIM_ID_100              SIM_ID_102                  Org C
 #&gt; 508         SIM_ID_100              SIM_ID_103                  Org C
@@ -750,10 +750,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 511         SIM_ID_101              SIM_ID_104                  Org H
 #&gt; 512         SIM_ID_101              SIM_ID_105                  Org H
 #&gt; 513         SIM_ID_102              SIM_ID_104                  Org B
-#&gt; 514         SIM_ID_102              SIM_ID_105                  Org B
+#&gt; 514         SIM_ID_105              SIM_ID_142                  Org A
 #&gt; 515         SIM_ID_102              SIM_ID_106                  Org B
 #&gt; 516         SIM_ID_103              SIM_ID_105                  Org H
-#&gt; 517         SIM_ID_103              SIM_ID_106                  Org H
+#&gt; 517         SIM_ID_103              SIM_ID_180                  Org H
 #&gt; 518         SIM_ID_103              SIM_ID_107                  Org H
 #&gt; 519         SIM_ID_104              SIM_ID_106                  Org D
 #&gt; 520         SIM_ID_104              SIM_ID_107                  Org D
@@ -764,7 +764,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 525         SIM_ID_106              SIM_ID_108                  Org G
 #&gt; 526         SIM_ID_106              SIM_ID_109                  Org G
 #&gt; 527         SIM_ID_106              SIM_ID_110                  Org G
-#&gt; 528         SIM_ID_107              SIM_ID_175                  Org H
+#&gt; 528          SIM_ID_97              SIM_ID_107                  Org F
 #&gt; 529         SIM_ID_107              SIM_ID_110                  Org H
 #&gt; 530         SIM_ID_107              SIM_ID_111                  Org H
 #&gt; 531         SIM_ID_108              SIM_ID_110                  Org B
@@ -772,13 +772,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 533         SIM_ID_108              SIM_ID_112                  Org B
 #&gt; 534         SIM_ID_109              SIM_ID_111                  Org H
 #&gt; 535         SIM_ID_109              SIM_ID_112                  Org H
-#&gt; 536         SIM_ID_109              SIM_ID_170                  Org H
-#&gt; 537         SIM_ID_112              SIM_ID_196                  Org A
+#&gt; 536         SIM_ID_109              SIM_ID_113                  Org H
+#&gt; 537          SIM_ID_76              SIM_ID_110                  Org D
 #&gt; 538         SIM_ID_110              SIM_ID_113                  Org C
 #&gt; 539         SIM_ID_110              SIM_ID_114                  Org C
 #&gt; 540         SIM_ID_111              SIM_ID_113                  Org E
 #&gt; 541         SIM_ID_111              SIM_ID_114                  Org E
-#&gt; 542          SIM_ID_77              SIM_ID_111                  Org A
+#&gt; 542         SIM_ID_115              SIM_ID_196                  Org C
 #&gt; 543         SIM_ID_112              SIM_ID_114                  Org A
 #&gt; 544         SIM_ID_112              SIM_ID_115                  Org A
 #&gt; 545         SIM_ID_112              SIM_ID_116                  Org A
@@ -789,28 +789,28 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 550         SIM_ID_114              SIM_ID_117                  Org B
 #&gt; 551         SIM_ID_114              SIM_ID_118                  Org B
 #&gt; 552         SIM_ID_115              SIM_ID_117                  Org C
-#&gt; 553         SIM_ID_115              SIM_ID_118                  Org C
+#&gt; 553          SIM_ID_94              SIM_ID_115                  Org F
 #&gt; 554         SIM_ID_115              SIM_ID_119                  Org C
 #&gt; 555         SIM_ID_116              SIM_ID_118                  Org D
 #&gt; 556         SIM_ID_116              SIM_ID_119                  Org D
 #&gt; 557         SIM_ID_116              SIM_ID_120                  Org D
 #&gt; 558         SIM_ID_117              SIM_ID_119                  Org E
-#&gt; 559          SIM_ID_46              SIM_ID_120                  Org F
+#&gt; 559         SIM_ID_117              SIM_ID_120                  Org E
 #&gt; 560         SIM_ID_117              SIM_ID_121                  Org E
 #&gt; 561         SIM_ID_118              SIM_ID_120                  Org G
-#&gt; 562         SIM_ID_118              SIM_ID_121                  Org G
+#&gt; 562          SIM_ID_36              SIM_ID_118                  Org B
 #&gt; 563         SIM_ID_118              SIM_ID_122                  Org G
 #&gt; 564         SIM_ID_119              SIM_ID_121                  Org A
 #&gt; 565         SIM_ID_119              SIM_ID_122                  Org A
 #&gt; 566         SIM_ID_119              SIM_ID_123                  Org A
 #&gt; 567         SIM_ID_120              SIM_ID_122                  Org B
-#&gt; 568         SIM_ID_120              SIM_ID_123                  Org B
+#&gt; 568          SIM_ID_46              SIM_ID_123                  Org F
 #&gt; 569         SIM_ID_120              SIM_ID_124                  Org B
 #&gt; 570         SIM_ID_121              SIM_ID_123                  Org H
-#&gt; 571         SIM_ID_121              SIM_ID_124                  Org H
+#&gt; 571         SIM_ID_121              SIM_ID_179                  Org H
 #&gt; 572         SIM_ID_121              SIM_ID_125                  Org H
 #&gt; 573         SIM_ID_122              SIM_ID_124                  Org G
-#&gt; 574          SIM_ID_25              SIM_ID_122                  Org C
+#&gt; 574         SIM_ID_122              SIM_ID_125                  Org G
 #&gt; 575         SIM_ID_122              SIM_ID_126                  Org G
 #&gt; 576         SIM_ID_123              SIM_ID_125                  Org E
 #&gt; 577         SIM_ID_123              SIM_ID_126                  Org E
@@ -852,13 +852,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 613         SIM_ID_135              SIM_ID_138                  Org C
 #&gt; 614         SIM_ID_135              SIM_ID_139                  Org C
 #&gt; 615         SIM_ID_136              SIM_ID_138                  Org D
-#&gt; 616         SIM_ID_136              SIM_ID_139                  Org D
+#&gt; 616         SIM_ID_136              SIM_ID_170                  Org D
 #&gt; 617         SIM_ID_136              SIM_ID_140                  Org D
 #&gt; 618         SIM_ID_137              SIM_ID_139                  Org H
 #&gt; 619         SIM_ID_137              SIM_ID_140                  Org H
 #&gt; 620         SIM_ID_137              SIM_ID_141                  Org H
 #&gt; 621         SIM_ID_138              SIM_ID_140                  Org B
-#&gt; 622         SIM_ID_138              SIM_ID_141                  Org B
+#&gt; 622          SIM_ID_77              SIM_ID_138                  Org A
 #&gt; 623         SIM_ID_138              SIM_ID_142                  Org B
 #&gt; 624         SIM_ID_139              SIM_ID_141                  Org H
 #&gt; 625         SIM_ID_139              SIM_ID_142                  Org H
@@ -869,18 +869,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 630         SIM_ID_141              SIM_ID_143                  Org E
 #&gt; 631         SIM_ID_141              SIM_ID_144                  Org E
 #&gt; 632         SIM_ID_141              SIM_ID_145                  Org E
-#&gt; 633         SIM_ID_142              SIM_ID_144                  Org G
+#&gt; 633         SIM_ID_137              SIM_ID_144                  Org H
 #&gt; 634         SIM_ID_142              SIM_ID_145                  Org G
-#&gt; 635         SIM_ID_142              SIM_ID_146                  Org G
-#&gt; 636         SIM_ID_143              SIM_ID_174                  Org H
+#&gt; 635           SIM_ID_7              SIM_ID_142                  Org A
+#&gt; 636         SIM_ID_143              SIM_ID_145                  Org H
 #&gt; 637         SIM_ID_143              SIM_ID_146                  Org H
-#&gt; 638         SIM_ID_143              SIM_ID_147                  Org H
+#&gt; 638          SIM_ID_16              SIM_ID_143                  Org D
 #&gt; 639         SIM_ID_144              SIM_ID_146                  Org B
 #&gt; 640         SIM_ID_144              SIM_ID_147                  Org B
 #&gt; 641         SIM_ID_144              SIM_ID_148                  Org B
 #&gt; 642         SIM_ID_145              SIM_ID_147                  Org C
 #&gt; 643         SIM_ID_145              SIM_ID_148                  Org C
-#&gt; 644          SIM_ID_96              SIM_ID_145                  Org B
+#&gt; 644         SIM_ID_145              SIM_ID_149                  Org C
 #&gt; 645         SIM_ID_146              SIM_ID_148                  Org G
 #&gt; 646         SIM_ID_146              SIM_ID_149                  Org G
 #&gt; 647         SIM_ID_146              SIM_ID_150                  Org G
@@ -890,7 +890,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 651         SIM_ID_148              SIM_ID_150                  Org D
 #&gt; 652         SIM_ID_148              SIM_ID_151                  Org D
 #&gt; 653         SIM_ID_148              SIM_ID_152                  Org D
-#&gt; 654         SIM_ID_149              SIM_ID_151                  Org H
+#&gt; 654          SIM_ID_25              SIM_ID_149                  Org C
 #&gt; 655         SIM_ID_149              SIM_ID_152                  Org H
 #&gt; 656         SIM_ID_149              SIM_ID_153                  Org H
 #&gt; 657         SIM_ID_150              SIM_ID_152                  Org B
@@ -905,10 +905,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 666         SIM_ID_153              SIM_ID_155                  Org E
 #&gt; 667         SIM_ID_153              SIM_ID_156                  Org E
 #&gt; 668         SIM_ID_153              SIM_ID_157                  Org E
-#&gt; 669          SIM_ID_12              SIM_ID_154                  Org B
+#&gt; 669         SIM_ID_154              SIM_ID_156                  Org A
 #&gt; 670         SIM_ID_154              SIM_ID_157                  Org A
 #&gt; 671         SIM_ID_154              SIM_ID_158                  Org A
-#&gt; 672         SIM_ID_157              SIM_ID_194                  Org H
+#&gt; 672         SIM_ID_155              SIM_ID_157                  Org C
 #&gt; 673         SIM_ID_155              SIM_ID_158                  Org C
 #&gt; 674         SIM_ID_155              SIM_ID_159                  Org C
 #&gt; 675         SIM_ID_156              SIM_ID_158                  Org B
@@ -920,7 +920,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 681         SIM_ID_158              SIM_ID_160                  Org G
 #&gt; 682         SIM_ID_158              SIM_ID_161                  Org G
 #&gt; 683         SIM_ID_158              SIM_ID_162                  Org G
-#&gt; 684          SIM_ID_18              SIM_ID_161                  Org B
+#&gt; 684         SIM_ID_159              SIM_ID_161                  Org E
 #&gt; 685         SIM_ID_159              SIM_ID_162                  Org E
 #&gt; 686         SIM_ID_159              SIM_ID_163                  Org E
 #&gt; 687         SIM_ID_160              SIM_ID_162                  Org C
@@ -937,7 +937,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 698         SIM_ID_163              SIM_ID_167                  Org H
 #&gt; 699         SIM_ID_164              SIM_ID_166                  Org D
 #&gt; 700         SIM_ID_164              SIM_ID_167                  Org D
-#&gt; 701          SIM_ID_38              SIM_ID_168                  Org F
+#&gt; 701         SIM_ID_164              SIM_ID_168                  Org D
 #&gt; 702         SIM_ID_165              SIM_ID_167                  Org C
 #&gt; 703         SIM_ID_165              SIM_ID_168                  Org C
 #&gt; 704         SIM_ID_165              SIM_ID_169                  Org C
@@ -950,16 +950,16 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 711         SIM_ID_168              SIM_ID_170                  Org A
 #&gt; 712         SIM_ID_168              SIM_ID_171                  Org A
 #&gt; 713         SIM_ID_168              SIM_ID_172                  Org A
-#&gt; 714         SIM_ID_169              SIM_ID_171                  Org H
+#&gt; 714         SIM_ID_117              SIM_ID_171                  Org E
 #&gt; 715         SIM_ID_169              SIM_ID_172                  Org H
 #&gt; 716         SIM_ID_169              SIM_ID_173                  Org H
-#&gt; 717         SIM_ID_170              SIM_ID_172                  Org C
+#&gt; 717          SIM_ID_38              SIM_ID_172                  Org F
 #&gt; 718         SIM_ID_170              SIM_ID_173                  Org C
 #&gt; 719         SIM_ID_170              SIM_ID_174                  Org C
 #&gt; 720         SIM_ID_171              SIM_ID_173                  Org E
 #&gt; 721         SIM_ID_171              SIM_ID_174                  Org E
 #&gt; 722         SIM_ID_171              SIM_ID_175                  Org E
-#&gt; 723          SIM_ID_78              SIM_ID_172                  Org B
+#&gt; 723         SIM_ID_172              SIM_ID_174                  Org D
 #&gt; 724         SIM_ID_172              SIM_ID_175                  Org D
 #&gt; 725         SIM_ID_172              SIM_ID_176                  Org D
 #&gt; 726         SIM_ID_173              SIM_ID_175                  Org H
@@ -969,10 +969,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 730         SIM_ID_174              SIM_ID_177                  Org B
 #&gt; 731         SIM_ID_174              SIM_ID_178                  Org B
 #&gt; 732         SIM_ID_175              SIM_ID_177                  Org A
-#&gt; 733         SIM_ID_138              SIM_ID_178                  Org B
+#&gt; 733         SIM_ID_175              SIM_ID_178                  Org A
 #&gt; 734         SIM_ID_175              SIM_ID_179                  Org A
 #&gt; 735         SIM_ID_176              SIM_ID_178                  Org D
-#&gt; 736         SIM_ID_176              SIM_ID_179                  Org D
+#&gt; 736          SIM_ID_44              SIM_ID_176                  Org D
 #&gt; 737         SIM_ID_176              SIM_ID_180                  Org D
 #&gt; 738         SIM_ID_177              SIM_ID_179                  Org E
 #&gt; 739         SIM_ID_177              SIM_ID_180                  Org E
@@ -980,11 +980,11 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 741         SIM_ID_178              SIM_ID_180                  Org G
 #&gt; 742         SIM_ID_178              SIM_ID_181                  Org G
 #&gt; 743         SIM_ID_178              SIM_ID_182                  Org G
-#&gt; 744         SIM_ID_179              SIM_ID_181                  Org H
-#&gt; 745         SIM_ID_179              SIM_ID_182                  Org H
+#&gt; 744           SIM_ID_6              SIM_ID_179                  Org B
+#&gt; 745         SIM_ID_138              SIM_ID_182                  Org B
 #&gt; 746         SIM_ID_179              SIM_ID_183                  Org H
 #&gt; 747         SIM_ID_180              SIM_ID_182                  Org B
-#&gt; 748         SIM_ID_138              SIM_ID_180                  Org B
+#&gt; 748         SIM_ID_180              SIM_ID_183                  Org B
 #&gt; 749         SIM_ID_180              SIM_ID_184                  Org B
 #&gt; 750         SIM_ID_181              SIM_ID_183                  Org H
 #&gt; 751         SIM_ID_181              SIM_ID_184                  Org H
@@ -992,56 +992,56 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 753         SIM_ID_182              SIM_ID_184                  Org A
 #&gt; 754         SIM_ID_182              SIM_ID_185                  Org A
 #&gt; 755         SIM_ID_182              SIM_ID_186                  Org A
-#&gt; 756         SIM_ID_183              SIM_ID_185                  Org E
+#&gt; 756          SIM_ID_25              SIM_ID_183                  Org C
 #&gt; 757         SIM_ID_183              SIM_ID_186                  Org E
-#&gt; 758         SIM_ID_164              SIM_ID_187                  Org D
+#&gt; 758         SIM_ID_183              SIM_ID_187                  Org E
 #&gt; 759         SIM_ID_184              SIM_ID_186                  Org D
 #&gt; 760         SIM_ID_184              SIM_ID_187                  Org D
 #&gt; 761         SIM_ID_184              SIM_ID_188                  Org D
 #&gt; 762         SIM_ID_185              SIM_ID_187                  Org C
 #&gt; 763         SIM_ID_185              SIM_ID_188                  Org C
-#&gt; 764          SIM_ID_17              SIM_ID_189                  Org F
-#&gt; 765           SIM_ID_7              SIM_ID_188                  Org A
+#&gt; 764          SIM_ID_89              SIM_ID_189                  Org F
+#&gt; 765         SIM_ID_186              SIM_ID_188                  Org B
 #&gt; 766         SIM_ID_186              SIM_ID_189                  Org B
 #&gt; 767         SIM_ID_186              SIM_ID_190                  Org B
 #&gt; 768         SIM_ID_187              SIM_ID_189                  Org H
 #&gt; 769         SIM_ID_187              SIM_ID_190                  Org H
 #&gt; 770         SIM_ID_187              SIM_ID_191                  Org H
-#&gt; 771          SIM_ID_47              SIM_ID_190                  Org F
+#&gt; 771         SIM_ID_188              SIM_ID_190                  Org D
 #&gt; 772         SIM_ID_188              SIM_ID_191                  Org D
-#&gt; 773         SIM_ID_188              SIM_ID_192                  Org D
+#&gt; 773           SIM_ID_7              SIM_ID_192                  Org A
 #&gt; 774         SIM_ID_189              SIM_ID_191                  Org A
-#&gt; 775         SIM_ID_189              SIM_ID_192                  Org A
+#&gt; 775          SIM_ID_52              SIM_ID_192                  Org D
 #&gt; 776         SIM_ID_189              SIM_ID_193                  Org A
-#&gt; 777         SIM_ID_190              SIM_ID_192                  Org C
+#&gt; 777         SIM_ID_164              SIM_ID_192                  Org D
 #&gt; 778         SIM_ID_190              SIM_ID_193                  Org C
 #&gt; 779         SIM_ID_190              SIM_ID_194                  Org C
 #&gt; 780         SIM_ID_191              SIM_ID_193                  Org H
-#&gt; 781         SIM_ID_191              SIM_ID_194                  Org H
+#&gt; 781          SIM_ID_17              SIM_ID_194                  Org F
 #&gt; 782         SIM_ID_191              SIM_ID_195                  Org H
-#&gt; 783         SIM_ID_192              SIM_ID_194                  Org B
+#&gt; 783          SIM_ID_97              SIM_ID_192                  Org F
 #&gt; 784         SIM_ID_192              SIM_ID_195                  Org B
 #&gt; 785         SIM_ID_192              SIM_ID_196                  Org B
-#&gt; 786         SIM_ID_193              SIM_ID_195                  Org H
-#&gt; 787         SIM_ID_193              SIM_ID_196                  Org H
+#&gt; 786         SIM_ID_193              SIM_ID_196                  Org H
+#&gt; 787         SIM_ID_193              SIM_ID_199                  Org H
 #&gt; 788         SIM_ID_193              SIM_ID_197                  Org H
 #&gt; 789         SIM_ID_194              SIM_ID_196                  Org G
-#&gt; 790          SIM_ID_84              SIM_ID_194                  Org A
+#&gt; 790         SIM_ID_194              SIM_ID_197                  Org G
 #&gt; 791         SIM_ID_194              SIM_ID_198                  Org G
-#&gt; 792          SIM_ID_31              SIM_ID_197                  Org F
+#&gt; 792         SIM_ID_195              SIM_ID_197                  Org C
 #&gt; 793         SIM_ID_195              SIM_ID_198                  Org C
-#&gt; 794         SIM_ID_195              SIM_ID_199                  Org C
+#&gt; 794          SIM_ID_48              SIM_ID_195                  Org B
 #&gt; 795         SIM_ID_196              SIM_ID_198                  Org A
 #&gt; 796         SIM_ID_196              SIM_ID_199                  Org A
 #&gt; 797         SIM_ID_196              SIM_ID_200                  Org A
 #&gt; 798         SIM_ID_197              SIM_ID_199                  Org H
-#&gt; 799         SIM_ID_197              SIM_ID_200                  Org H
+#&gt; 799          SIM_ID_31              SIM_ID_200                  Org F
 #&gt; 800         SIM_ID_198              SIM_ID_200                  Org B
 #&gt;     TieDestination_Organization TieOrigin_LevelDesignation
-#&gt; 1                         Org A                    Level 1
+#&gt; 1                         Org F                    Level 1
 #&gt; 2                         Org E                    Level 2
-#&gt; 3                         Org C                    Level 4
-#&gt; 4                         Org C                    Level 4
+#&gt; 3                         Org D                    Level 3
+#&gt; 4                         Org G                    Level 5
 #&gt; 5                         Org B                    Level 5
 #&gt; 6                         Org A                    Level 6
 #&gt; 7                         Org D                    Level 7
@@ -1055,12 +1055,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 15                        Org D                    Level 1
 #&gt; 16                        Org F                    Level 1
 #&gt; 17                        Org B                    Level 1
-#&gt; 18                        Org D                    Level 1
-#&gt; 19                        Org D                    Level 2
+#&gt; 18                        Org F                    Level 1
+#&gt; 19                        Org C                    Level 1
 #&gt; 20                        Org A                    Level 2
 #&gt; 21                        Org F                    Level 2
 #&gt; 22                        Org F                    Level 2
-#&gt; 23                        Org B                    Level 2
+#&gt; 23                        Org D                    Level 2
 #&gt; 24                        Org C                    Level 2
 #&gt; 25                        Org F                    Level 2
 #&gt; 26                        Org E                    Level 2
@@ -1068,7 +1068,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 28                        Org F                    Level 2
 #&gt; 29                        Org B                    Level 2
 #&gt; 30                        Org F                    Level 3
-#&gt; 31                        Org D                    Level 3
+#&gt; 31                        Org E                    Level 3
 #&gt; 32                        Org E                    Level 3
 #&gt; 33                        Org F                    Level 3
 #&gt; 34                        Org A                    Level 3
@@ -1080,15 +1080,15 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 40                        Org F                    Level 4
 #&gt; 41                        Org A                    Level 4
 #&gt; 42                        Org F                    Level 4
-#&gt; 43                        Org C                    Level 4
+#&gt; 43                        Org D                    Level 4
 #&gt; 44                        Org C                    Level 4
 #&gt; 45                        Org F                    Level 4
 #&gt; 46                        Org F                    Level 4
 #&gt; 47                        Org B                    Level 4
 #&gt; 48                        Org A                    Level 4
-#&gt; 49                        Org C                    Level 4
+#&gt; 49                        Org A                    Level 3
 #&gt; 50                        Org E                    Level 5
-#&gt; 51                        Org D                    Level 5
+#&gt; 51                        Org E                    Level 1
 #&gt; 52                        Org F                    Level 5
 #&gt; 53                        Org B                    Level 5
 #&gt; 54                        Org C                    Level 5
@@ -1100,12 +1100,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 60                        Org F                    Level 6
 #&gt; 61                        Org F                    Level 6
 #&gt; 62                        Org A                    Level 6
-#&gt; 63                        Org D                    Level 6
-#&gt; 64                        Org D                    Level 5
+#&gt; 63                        Org A                    Level 1
+#&gt; 64                        Org C                    Level 6
 #&gt; 65                        Org B                    Level 6
 #&gt; 66                        Org F                    Level 6
 #&gt; 67                        Org D                    Level 6
-#&gt; 68                        Org C                    Level 6
+#&gt; 68                        Org E                    Level 6
 #&gt; 69                        Org A                    Level 6
 #&gt; 70                        Org F                    Level 7
 #&gt; 71                        Org B                    Level 7
@@ -1114,7 +1114,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 74                        Org C                    Level 7
 #&gt; 75                        Org D                    Level 7
 #&gt; 76                        Org A                    Level 7
-#&gt; 77                        Org B                    Level 7
+#&gt; 77                        Org E                    Level 6
 #&gt; 78                        Org F                    Level 7
 #&gt; 79                        Org C                    Level 7
 #&gt; 80                        Org E                    Level 8
@@ -1124,10 +1124,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 84                        Org C                    Level 8
 #&gt; 85                        Org F                    Level 8
 #&gt; 86                        Org E                    Level 8
-#&gt; 87                        Org D                    Level 8
+#&gt; 87                        Org D                    Level 5
 #&gt; 88                        Org F                    Level 8
 #&gt; 89                        Org B                    Level 8
-#&gt; 90                        Org A                    Level 6
+#&gt; 90                        Org A                    Level 3
 #&gt; 91                        Org D                    Level 9
 #&gt; 92                        Org E                    Level 9
 #&gt; 93                        Org F                    Level 9
@@ -1141,7 +1141,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 101                       Org B                    Level 1
 #&gt; 102                       Org H                    Level 1
 #&gt; 103                       Org D                    Level 1
-#&gt; 104                       Org A                    Level 1
+#&gt; 104                       Org B                    Level 1
 #&gt; 105                       Org G                    Level 1
 #&gt; 106                       Org H                    Level 1
 #&gt; 107                       Org B                    Level 1
@@ -1151,14 +1151,14 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 111                       Org A                    Level 1
 #&gt; 112                       Org H                    Level 1
 #&gt; 113                       Org B                    Level 1
-#&gt; 114                       Org B                    Level 7
-#&gt; 115                       Org C                    Level 1
+#&gt; 114                       Org C                    Level 1
+#&gt; 115                       Org D                    Level 1
 #&gt; 116                       Org E                    Level 1
 #&gt; 117                       Org G                    Level 1
-#&gt; 118                       Org B                    Level 1
+#&gt; 118                       Org A                    Level 1
 #&gt; 119                       Org B                    Level 1
 #&gt; 120                       Org H                    Level 1
-#&gt; 121                       Org G                    Level 1
+#&gt; 121                       Org B                    Level 1
 #&gt; 122                       Org E                    Level 1
 #&gt; 123                       Org D                    Level 1
 #&gt; 124                       Org C                    Level 1
@@ -1171,7 +1171,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 131                       Org B                    Level 1
 #&gt; 132                       Org A                    Level 1
 #&gt; 133                       Org G                    Level 1
-#&gt; 134                       Org C                    Level 1
+#&gt; 134                       Org A                    Level 1
 #&gt; 135                       Org D                    Level 1
 #&gt; 136                       Org H                    Level 1
 #&gt; 137                       Org B                    Level 1
@@ -1183,7 +1183,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 143                       Org B                    Level 1
 #&gt; 144                       Org C                    Level 1
 #&gt; 145                       Org G                    Level 1
-#&gt; 146                       Org G                    Level 1
+#&gt; 146                       Org A                    Level 1
 #&gt; 147                       Org D                    Level 1
 #&gt; 148                       Org H                    Level 1
 #&gt; 149                       Org B                    Level 1
@@ -1196,21 +1196,21 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 156                       Org H                    Level 1
 #&gt; 157                       Org G                    Level 1
 #&gt; 158                       Org E                    Level 1
-#&gt; 159                       Org C                    Level 1
+#&gt; 159                       Org G                    Level 1
 #&gt; 160                       Org A                    Level 1
 #&gt; 161                       Org B                    Level 1
 #&gt; 162                       Org H                    Level 1
 #&gt; 163                       Org D                    Level 1
-#&gt; 164                       Org D                    Level 4
+#&gt; 164                       Org C                    Level 1
 #&gt; 165                       Org G                    Level 1
 #&gt; 166                       Org H                    Level 1
 #&gt; 167                       Org A                    Level 1
 #&gt; 168                       Org H                    Level 1
 #&gt; 169                       Org C                    Level 1
-#&gt; 170                       Org E                    Level 1
+#&gt; 170                       Org C                    Level 1
 #&gt; 171                       Org D                    Level 1
 #&gt; 172                       Org H                    Level 1
-#&gt; 173                       Org B                    Level 1
+#&gt; 173                       Org C                    Level 1
 #&gt; 174                       Org A                    Level 1
 #&gt; 175                       Org D                    Level 1
 #&gt; 176                       Org E                    Level 1
@@ -1220,18 +1220,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 180                       Org H                    Level 1
 #&gt; 181                       Org A                    Level 1
 #&gt; 182                       Org E                    Level 1
-#&gt; 183                       Org D                    Level 8
-#&gt; 184                       Org C                    Level 1
+#&gt; 183                       Org D                    Level 1
+#&gt; 184                       Org D                    Level 3
 #&gt; 185                       Org B                    Level 1
-#&gt; 186                       Org H                    Level 5
+#&gt; 186                       Org H                    Level 1
 #&gt; 187                       Org D                    Level 1
 #&gt; 188                       Org A                    Level 1
 #&gt; 189                       Org C                    Level 1
 #&gt; 190                       Org H                    Level 1
 #&gt; 191                       Org B                    Level 1
 #&gt; 192                       Org H                    Level 1
-#&gt; 193                       Org G                    Level 1
-#&gt; 194                       Org G                    Level 1
+#&gt; 193                       Org G                    Level 4
+#&gt; 194                       Org C                    Level 1
 #&gt; 195                       Org A                    Level 1
 #&gt; 196                       Org H                    Level 1
 #&gt; 197                       Org B                    Level 1
@@ -1242,8 +1242,8 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 202                       Org H                    Level 1
 #&gt; 203                       Org D                    Level 1
 #&gt; 204                       Org B                    Level 1
-#&gt; 205                       Org B                    Level 5
-#&gt; 206                       Org E                    Level 1
+#&gt; 205                       Org C                    Level 1
+#&gt; 206                       Org H                    Level 1
 #&gt; 207                       Org C                    Level 2
 #&gt; 208                       Org D                    Level 2
 #&gt; 209                       Org H                    Level 2
@@ -1255,14 +1255,14 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 215                       Org B                    Level 3
 #&gt; 216                       Org H                    Level 3
 #&gt; 217                       Org A                    Level 3
-#&gt; 218                       Org E                    Level 4
+#&gt; 218                       Org B                    Level 4
 #&gt; 219                       Org A                    Level 4
 #&gt; 220                       Org C                    Level 4
 #&gt; 221                       Org D                    Level 4
 #&gt; 222                       Org A                    Level 5
 #&gt; 223                       Org D                    Level 5
 #&gt; 224                       Org E                    Level 5
-#&gt; 225                       Org D                    Level 6
+#&gt; 225                       Org A                    Level 8
 #&gt; 226                       Org E                    Level 6
 #&gt; 227                       Org C                    Level 6
 #&gt; 228                       Org E                    Level 7
@@ -1272,24 +1272,24 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 232                       Org F                    Level 8
 #&gt; 233                       Org B                    Level 8
 #&gt; 234                       Org F                    Level 9
-#&gt; 235                       Org B                    Level 9
-#&gt; 236                       Org H                    Level 1
+#&gt; 235                       Org H                    Level 9
+#&gt; 236                       Org F                    Level 9
 #&gt; 237                       Org B                    Level 1
 #&gt; 238                       Org F                    Level 1
 #&gt; 239                       Org A                    Level 1
 #&gt; 240                       Org F                    Level 1
 #&gt; 241                       Org A                    Level 1
 #&gt; 242                       Org C                    Level 1
-#&gt; 243                       Org C                    Level 1
+#&gt; 243                       Org A                    Level 1
 #&gt; 244                       Org C                    Level 1
 #&gt; 245                       Org D                    Level 1
 #&gt; 246                       Org C                    Level 1
 #&gt; 247                       Org D                    Level 1
-#&gt; 248                       Org F                    Level 1
+#&gt; 248                       Org H                    Level 1
 #&gt; 249                       Org D                    Level 1
 #&gt; 250                       Org F                    Level 1
 #&gt; 251                       Org B                    Level 1
-#&gt; 252                       Org D                    Level 1
+#&gt; 252                       Org F                    Level 1
 #&gt; 253                       Org B                    Level 1
 #&gt; 254                       Org F                    Level 1
 #&gt; 255                       Org B                    Level 1
@@ -1297,9 +1297,9 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 257                       Org C                    Level 1
 #&gt; 258                       Org F                    Level 1
 #&gt; 259                       Org C                    Level 1
-#&gt; 260                       Org H                    Level 2
+#&gt; 260                       Org A                    Level 1
 #&gt; 261                       Org C                    Level 1
-#&gt; 262                       Org A                    Level 1
+#&gt; 262                       Org D                    Level 2
 #&gt; 263                       Org F                    Level 1
 #&gt; 264                       Org A                    Level 1
 #&gt; 265                       Org F                    Level 1
@@ -1310,13 +1310,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 270                       Org F                    Level 2
 #&gt; 271                       Org B                    Level 2
 #&gt; 272                       Org C                    Level 2
-#&gt; 273                       Org F                    Level 3
-#&gt; 274                       Org F                    Level 6
+#&gt; 273                       Org B                    Level 2
+#&gt; 274                       Org C                    Level 2
 #&gt; 275                       Org F                    Level 2
-#&gt; 276                       Org C                    Level 2
+#&gt; 276                       Org H                    Level 2
 #&gt; 277                       Org F                    Level 2
 #&gt; 278                       Org E                    Level 2
-#&gt; 279                       Org B                    Level 1
+#&gt; 279                       Org F                    Level 2
 #&gt; 280                       Org E                    Level 2
 #&gt; 281                       Org A                    Level 2
 #&gt; 282                       Org E                    Level 2
@@ -1328,12 +1328,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 288                       Org F                    Level 2
 #&gt; 289                       Org B                    Level 2
 #&gt; 290                       Org F                    Level 2
-#&gt; 291                       Org B                    Level 3
-#&gt; 292                       Org F                    Level 2
+#&gt; 291                       Org B                    Level 2
+#&gt; 292                       Org A                    Level 2
 #&gt; 293                       Org D                    Level 2
 #&gt; 294                       Org F                    Level 2
 #&gt; 295                       Org D                    Level 2
-#&gt; 296                       Org E                    Level 2
+#&gt; 296                       Org B                    Level 3
 #&gt; 297                       Org D                    Level 3
 #&gt; 298                       Org E                    Level 3
 #&gt; 299                       Org F                    Level 3
@@ -1352,7 +1352,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 312                       Org F                    Level 3
 #&gt; 313                       Org F                    Level 3
 #&gt; 314                       Org E                    Level 3
-#&gt; 315                       Org B                    Level 1
+#&gt; 315                       Org F                    Level 3
 #&gt; 316                       Org E                    Level 3
 #&gt; 317                       Org C                    Level 3
 #&gt; 318                       Org E                    Level 3
@@ -1362,20 +1362,20 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 322                       Org F                    Level 3
 #&gt; 323                       Org A                    Level 3
 #&gt; 324                       Org F                    Level 3
-#&gt; 325                       Org F                    Level 4
+#&gt; 325                       Org A                    Level 3
 #&gt; 326                       Org F                    Level 3
-#&gt; 327                       Org G                    Level 4
+#&gt; 327                       Org A                    Level 4
 #&gt; 328                       Org F                    Level 4
-#&gt; 329                       Org A                    Level 4
+#&gt; 329                       Org D                    Level 4
 #&gt; 330                       Org F                    Level 4
 #&gt; 331                       Org D                    Level 4
 #&gt; 332                       Org C                    Level 4
 #&gt; 333                       Org D                    Level 4
-#&gt; 334                       Org C                    Level 4
+#&gt; 334                       Org F                    Level 4
 #&gt; 335                       Org F                    Level 4
-#&gt; 336                       Org A                    Level 4
+#&gt; 336                       Org G                    Level 4
 #&gt; 337                       Org F                    Level 4
-#&gt; 338                       Org F                    Level 4
+#&gt; 338                       Org A                    Level 4
 #&gt; 339                       Org F                    Level 4
 #&gt; 340                       Org F                    Level 4
 #&gt; 341                       Org B                    Level 4
@@ -1384,17 +1384,17 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 344                       Org A                    Level 4
 #&gt; 345                       Org B                    Level 4
 #&gt; 346                       Org A                    Level 4
-#&gt; 347                       Org C                    Level 4
+#&gt; 347                       Org D                    Level 4
 #&gt; 348                       Org A                    Level 4
 #&gt; 349                       Org C                    Level 4
 #&gt; 350                       Org E                    Level 4
 #&gt; 351                       Org C                    Level 4
 #&gt; 352                       Org E                    Level 4
 #&gt; 353                       Org D                    Level 4
-#&gt; 354                       Org E                    Level 4
+#&gt; 354                       Org A                    Level 6
 #&gt; 355                       Org D                    Level 4
 #&gt; 356                       Org F                    Level 4
-#&gt; 357                       Org B                    Level 5
+#&gt; 357                       Org D                    Level 5
 #&gt; 358                       Org F                    Level 5
 #&gt; 359                       Org B                    Level 5
 #&gt; 360                       Org F                    Level 5
@@ -1403,16 +1403,16 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 363                       Org B                    Level 5
 #&gt; 364                       Org C                    Level 5
 #&gt; 365                       Org A                    Level 5
-#&gt; 366                       Org B                    Level 5
+#&gt; 366                       Org C                    Level 5
 #&gt; 367                       Org A                    Level 5
-#&gt; 368                       Org E                    Level 5
+#&gt; 368                       Org B                    Level 5
 #&gt; 369                       Org A                    Level 5
 #&gt; 370                       Org E                    Level 5
 #&gt; 371                       Org F                    Level 5
 #&gt; 372                       Org E                    Level 5
 #&gt; 373                       Org F                    Level 5
 #&gt; 374                       Org F                    Level 5
-#&gt; 375                       Org E                    Level 5
+#&gt; 375                       Org F                    Level 5
 #&gt; 376                       Org F                    Level 5
 #&gt; 377                       Org B                    Level 5
 #&gt; 378                       Org F                    Level 5
@@ -1430,7 +1430,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 390                       Org A                    Level 6
 #&gt; 391                       Org D                    Level 6
 #&gt; 392                       Org C                    Level 6
-#&gt; 393                       Org D                    Level 9
+#&gt; 393                       Org D                    Level 6
 #&gt; 394                       Org C                    Level 6
 #&gt; 395                       Org B                    Level 6
 #&gt; 396                       Org C                    Level 6
@@ -1439,7 +1439,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 399                       Org B                    Level 6
 #&gt; 400                       Org F                    Level 6
 #&gt; 401                       Org D                    Level 6
-#&gt; 402                       Org F                    Level 6
+#&gt; 402                       Org F                    Level 9
 #&gt; 403                       Org D                    Level 6
 #&gt; 404                       Org E                    Level 6
 #&gt; 405                       Org D                    Level 6
@@ -1450,7 +1450,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 410                       Org F                    Level 6
 #&gt; 411                       Org A                    Level 6
 #&gt; 412                       Org F                    Level 6
-#&gt; 413                       Org F                    Level 6
+#&gt; 413                       Org B                    Level 6
 #&gt; 414                       Org F                    Level 6
 #&gt; 415                       Org B                    Level 6
 #&gt; 416                       Org F                    Level 6
@@ -1474,9 +1474,9 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 434                       Org F                    Level 7
 #&gt; 435                       Org B                    Level 7
 #&gt; 436                       Org F                    Level 7
-#&gt; 437                       Org B                    Level 7
+#&gt; 437                       Org C                    Level 7
 #&gt; 438                       Org F                    Level 7
-#&gt; 439                       Org C                    Level 5
+#&gt; 439                       Org C                    Level 7
 #&gt; 440                       Org E                    Level 7
 #&gt; 441                       Org C                    Level 7
 #&gt; 442                       Org E                    Level 7
@@ -1485,18 +1485,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 445                       Org F                    Level 7
 #&gt; 446                       Org F                    Level 7
 #&gt; 447                       Org F                    Level 8
-#&gt; 448                       Org F                    Level 8
+#&gt; 448                       Org F                    Level 5
 #&gt; 449                       Org A                    Level 8
-#&gt; 450                       Org F                    Level 6
+#&gt; 450                       Org F                    Level 8
 #&gt; 451                       Org A                    Level 8
 #&gt; 452                       Org C                    Level 8
 #&gt; 453                       Org A                    Level 8
 #&gt; 454                       Org C                    Level 8
 #&gt; 455                       Org F                    Level 8
 #&gt; 456                       Org C                    Level 8
-#&gt; 457                       Org F                    Level 7
+#&gt; 457                       Org F                    Level 8
 #&gt; 458                       Org E                    Level 8
-#&gt; 459                       Org F                    Level 5
+#&gt; 459                       Org F                    Level 6
 #&gt; 460                       Org E                    Level 8
 #&gt; 461                       Org D                    Level 8
 #&gt; 462                       Org E                    Level 8
@@ -1505,12 +1505,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 465                       Org D                    Level 8
 #&gt; 466                       Org F                    Level 8
 #&gt; 467                       Org B                    Level 8
-#&gt; 468                       Org F                    Level 3
+#&gt; 468                       Org F                    Level 8
 #&gt; 469                       Org B                    Level 8
 #&gt; 470                       Org A                    Level 8
 #&gt; 471                       Org B                    Level 8
 #&gt; 472                       Org A                    Level 8
-#&gt; 473                       Org F                    Level 8
+#&gt; 473                       Org D                    Level 8
 #&gt; 474                       Org A                    Level 8
 #&gt; 475                       Org D                    Level 8
 #&gt; 476                       Org E                    Level 8
@@ -1518,23 +1518,23 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 478                       Org E                    Level 9
 #&gt; 479                       Org F                    Level 9
 #&gt; 480                       Org E                    Level 9
-#&gt; 481                       Org F                    Level 9
-#&gt; 482                       Org A                    Level 3
-#&gt; 483                       Org B                    Level 9
-#&gt; 484                       Org H                    Level 9
-#&gt; 485                       Org B                    Level 9
+#&gt; 481                       Org F                    Level 6
+#&gt; 482                       Org C                    Level 9
+#&gt; 483                       Org F                    Level 9
+#&gt; 484                       Org C                    Level 9
+#&gt; 485                       Org D                    Level 5
 #&gt; 486                       Org C                    Level 9
 #&gt; 487                       Org B                    Level 9
 #&gt; 488                       Org F                    Level 9
 #&gt; 489                       Org B                    Level 9
-#&gt; 490                       Org F                    Level 9
-#&gt; 491                       Org H                    Level 9
-#&gt; 492                       Org C                    Level 9
-#&gt; 493                       Org A                    Level 9
-#&gt; 494                       Org E                    Level 9
+#&gt; 490                       Org H                    Level 9
+#&gt; 491                       Org A                    Level 9
+#&gt; 492                       Org F                    Level 9
+#&gt; 493                       Org C                    Level 7
+#&gt; 494                       Org C                    Level 9
 #&gt; 495                       Org A                    Level 9
 #&gt; 496                       Org E                    Level 9
-#&gt; 497                       Org C                    Level 9
+#&gt; 497                       Org B                    Level 8
 #&gt; 498                       Org E                    Level 9
 #&gt; 499                       Org C                    Level 9
 #&gt; 500                       Org H                    Level 9
@@ -1542,7 +1542,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 502                       Org H                    Level 9
 #&gt; 503                       Org B                    Level 9
 #&gt; 504                       Org H                    Level 9
-#&gt; 505                       Org G                    Level 1
+#&gt; 505                       Org B                    Level 9
 #&gt; 506                       Org H                    Level 9
 #&gt; 507                       Org B                    Level 1
 #&gt; 508                       Org H                    Level 1
@@ -1551,10 +1551,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 511                       Org D                    Level 1
 #&gt; 512                       Org A                    Level 1
 #&gt; 513                       Org D                    Level 1
-#&gt; 514                       Org A                    Level 1
+#&gt; 514                       Org G                    Level 1
 #&gt; 515                       Org G                    Level 1
 #&gt; 516                       Org A                    Level 1
-#&gt; 517                       Org G                    Level 1
+#&gt; 517                       Org B                    Level 1
 #&gt; 518                       Org H                    Level 1
 #&gt; 519                       Org G                    Level 1
 #&gt; 520                       Org H                    Level 1
@@ -1565,7 +1565,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 525                       Org B                    Level 1
 #&gt; 526                       Org H                    Level 1
 #&gt; 527                       Org C                    Level 1
-#&gt; 528                       Org A                    Level 1
+#&gt; 528                       Org H                    Level 9
 #&gt; 529                       Org C                    Level 1
 #&gt; 530                       Org E                    Level 1
 #&gt; 531                       Org C                    Level 1
@@ -1573,13 +1573,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 533                       Org A                    Level 1
 #&gt; 534                       Org E                    Level 1
 #&gt; 535                       Org A                    Level 1
-#&gt; 536                       Org C                    Level 1
-#&gt; 537                       Org A                    Level 1
+#&gt; 536                       Org H                    Level 1
+#&gt; 537                       Org C                    Level 7
 #&gt; 538                       Org H                    Level 1
 #&gt; 539                       Org B                    Level 1
 #&gt; 540                       Org H                    Level 1
 #&gt; 541                       Org B                    Level 1
-#&gt; 542                       Org E                    Level 7
+#&gt; 542                       Org A                    Level 1
 #&gt; 543                       Org B                    Level 1
 #&gt; 544                       Org C                    Level 1
 #&gt; 545                       Org D                    Level 1
@@ -1590,28 +1590,28 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 550                       Org E                    Level 1
 #&gt; 551                       Org G                    Level 1
 #&gt; 552                       Org E                    Level 1
-#&gt; 553                       Org G                    Level 1
+#&gt; 553                       Org C                    Level 9
 #&gt; 554                       Org A                    Level 1
 #&gt; 555                       Org G                    Level 1
 #&gt; 556                       Org A                    Level 1
 #&gt; 557                       Org B                    Level 1
 #&gt; 558                       Org A                    Level 1
-#&gt; 559                       Org B                    Level 4
+#&gt; 559                       Org B                    Level 1
 #&gt; 560                       Org H                    Level 1
 #&gt; 561                       Org B                    Level 1
-#&gt; 562                       Org H                    Level 1
+#&gt; 562                       Org G                    Level 3
 #&gt; 563                       Org G                    Level 1
 #&gt; 564                       Org H                    Level 1
 #&gt; 565                       Org G                    Level 1
 #&gt; 566                       Org E                    Level 1
 #&gt; 567                       Org G                    Level 1
-#&gt; 568                       Org E                    Level 1
+#&gt; 568                       Org E                    Level 4
 #&gt; 569                       Org D                    Level 1
 #&gt; 570                       Org E                    Level 1
-#&gt; 571                       Org D                    Level 1
+#&gt; 571                       Org H                    Level 1
 #&gt; 572                       Org C                    Level 1
 #&gt; 573                       Org D                    Level 1
-#&gt; 574                       Org G                    Level 2
+#&gt; 574                       Org C                    Level 1
 #&gt; 575                       Org A                    Level 1
 #&gt; 576                       Org C                    Level 1
 #&gt; 577                       Org A                    Level 1
@@ -1653,13 +1653,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 613                       Org B                    Level 1
 #&gt; 614                       Org H                    Level 1
 #&gt; 615                       Org B                    Level 1
-#&gt; 616                       Org H                    Level 1
+#&gt; 616                       Org C                    Level 1
 #&gt; 617                       Org A                    Level 1
 #&gt; 618                       Org H                    Level 1
 #&gt; 619                       Org A                    Level 1
 #&gt; 620                       Org E                    Level 1
 #&gt; 621                       Org A                    Level 1
-#&gt; 622                       Org E                    Level 1
+#&gt; 622                       Org B                    Level 7
 #&gt; 623                       Org G                    Level 1
 #&gt; 624                       Org E                    Level 1
 #&gt; 625                       Org G                    Level 1
@@ -1672,16 +1672,16 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 632                       Org C                    Level 1
 #&gt; 633                       Org B                    Level 1
 #&gt; 634                       Org C                    Level 1
-#&gt; 635                       Org G                    Level 1
-#&gt; 636                       Org B                    Level 1
+#&gt; 635                       Org G                    Level 7
+#&gt; 636                       Org C                    Level 1
 #&gt; 637                       Org G                    Level 1
-#&gt; 638                       Org A                    Level 1
+#&gt; 638                       Org H                    Level 1
 #&gt; 639                       Org G                    Level 1
 #&gt; 640                       Org A                    Level 1
 #&gt; 641                       Org D                    Level 1
 #&gt; 642                       Org A                    Level 1
 #&gt; 643                       Org D                    Level 1
-#&gt; 644                       Org C                    Level 9
+#&gt; 644                       Org H                    Level 1
 #&gt; 645                       Org D                    Level 1
 #&gt; 646                       Org H                    Level 1
 #&gt; 647                       Org B                    Level 1
@@ -1691,7 +1691,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 651                       Org B                    Level 1
 #&gt; 652                       Org H                    Level 1
 #&gt; 653                       Org D                    Level 1
-#&gt; 654                       Org H                    Level 1
+#&gt; 654                       Org H                    Level 2
 #&gt; 655                       Org D                    Level 1
 #&gt; 656                       Org E                    Level 1
 #&gt; 657                       Org D                    Level 1
@@ -1706,10 +1706,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 666                       Org C                    Level 1
 #&gt; 667                       Org B                    Level 1
 #&gt; 668                       Org H                    Level 1
-#&gt; 669                       Org A                    Level 1
+#&gt; 669                       Org B                    Level 1
 #&gt; 670                       Org H                    Level 1
 #&gt; 671                       Org G                    Level 1
-#&gt; 672                       Org G                    Level 1
+#&gt; 672                       Org H                    Level 1
 #&gt; 673                       Org G                    Level 1
 #&gt; 674                       Org E                    Level 1
 #&gt; 675                       Org G                    Level 1
@@ -1738,7 +1738,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 698                       Org H                    Level 1
 #&gt; 699                       Org G                    Level 1
 #&gt; 700                       Org H                    Level 1
-#&gt; 701                       Org A                    Level 3
+#&gt; 701                       Org A                    Level 1
 #&gt; 702                       Org H                    Level 1
 #&gt; 703                       Org A                    Level 1
 #&gt; 704                       Org H                    Level 1
@@ -1754,13 +1754,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 714                       Org E                    Level 1
 #&gt; 715                       Org D                    Level 1
 #&gt; 716                       Org H                    Level 1
-#&gt; 717                       Org D                    Level 1
+#&gt; 717                       Org D                    Level 3
 #&gt; 718                       Org H                    Level 1
 #&gt; 719                       Org B                    Level 1
 #&gt; 720                       Org H                    Level 1
 #&gt; 721                       Org B                    Level 1
 #&gt; 722                       Org A                    Level 1
-#&gt; 723                       Org D                    Level 7
+#&gt; 723                       Org B                    Level 1
 #&gt; 724                       Org A                    Level 1
 #&gt; 725                       Org D                    Level 1
 #&gt; 726                       Org A                    Level 1
@@ -1773,7 +1773,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 733                       Org G                    Level 1
 #&gt; 734                       Org H                    Level 1
 #&gt; 735                       Org G                    Level 1
-#&gt; 736                       Org H                    Level 1
+#&gt; 736                       Org D                    Level 4
 #&gt; 737                       Org B                    Level 1
 #&gt; 738                       Org H                    Level 1
 #&gt; 739                       Org B                    Level 1
@@ -1781,11 +1781,11 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 741                       Org B                    Level 1
 #&gt; 742                       Org H                    Level 1
 #&gt; 743                       Org A                    Level 1
-#&gt; 744                       Org H                    Level 1
+#&gt; 744                       Org H                    Level 6
 #&gt; 745                       Org A                    Level 1
 #&gt; 746                       Org E                    Level 1
 #&gt; 747                       Org A                    Level 1
-#&gt; 748                       Org B                    Level 1
+#&gt; 748                       Org E                    Level 1
 #&gt; 749                       Org D                    Level 1
 #&gt; 750                       Org E                    Level 1
 #&gt; 751                       Org D                    Level 1
@@ -1793,7 +1793,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 753                       Org D                    Level 1
 #&gt; 754                       Org C                    Level 1
 #&gt; 755                       Org B                    Level 1
-#&gt; 756                       Org C                    Level 1
+#&gt; 756                       Org E                    Level 2
 #&gt; 757                       Org B                    Level 1
 #&gt; 758                       Org H                    Level 1
 #&gt; 759                       Org B                    Level 1
@@ -1801,18 +1801,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 761                       Org D                    Level 1
 #&gt; 762                       Org H                    Level 1
 #&gt; 763                       Org D                    Level 1
-#&gt; 764                       Org A                    Level 1
-#&gt; 765                       Org D                    Level 7
+#&gt; 764                       Org A                    Level 8
+#&gt; 765                       Org D                    Level 1
 #&gt; 766                       Org A                    Level 1
 #&gt; 767                       Org C                    Level 1
 #&gt; 768                       Org A                    Level 1
 #&gt; 769                       Org C                    Level 1
 #&gt; 770                       Org H                    Level 1
-#&gt; 771                       Org C                    Level 4
+#&gt; 771                       Org C                    Level 1
 #&gt; 772                       Org H                    Level 1
-#&gt; 773                       Org B                    Level 1
+#&gt; 773                       Org B                    Level 7
 #&gt; 774                       Org H                    Level 1
-#&gt; 775                       Org B                    Level 1
+#&gt; 775                       Org B                    Level 5
 #&gt; 776                       Org H                    Level 1
 #&gt; 777                       Org B                    Level 1
 #&gt; 778                       Org H                    Level 1
@@ -1820,29 +1820,29 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 780                       Org H                    Level 1
 #&gt; 781                       Org G                    Level 1
 #&gt; 782                       Org C                    Level 1
-#&gt; 783                       Org G                    Level 1
+#&gt; 783                       Org B                    Level 9
 #&gt; 784                       Org C                    Level 1
 #&gt; 785                       Org A                    Level 1
-#&gt; 786                       Org C                    Level 1
-#&gt; 787                       Org A                    Level 1
+#&gt; 786                       Org A                    Level 1
+#&gt; 787                       Org H                    Level 1
 #&gt; 788                       Org H                    Level 1
 #&gt; 789                       Org A                    Level 1
-#&gt; 790                       Org G                    Level 8
+#&gt; 790                       Org H                    Level 1
 #&gt; 791                       Org B                    Level 1
-#&gt; 792                       Org H                    Level 3
+#&gt; 792                       Org H                    Level 1
 #&gt; 793                       Org B                    Level 1
-#&gt; 794                       Org H                    Level 1
+#&gt; 794                       Org C                    Level 4
 #&gt; 795                       Org B                    Level 1
 #&gt; 796                       Org H                    Level 1
 #&gt; 797                       Org C                    Level 1
 #&gt; 798                       Org H                    Level 1
-#&gt; 799                       Org C                    Level 1
+#&gt; 799                       Org C                    Level 3
 #&gt; 800                       Org C                    Level 1
 #&gt;     TieDestination_LevelDesignation TieOrigin_City TieDestination_City
-#&gt; 1                           Level 1         City C              City A
+#&gt; 1                           Level 2         City C              City B
 #&gt; 2                           Level 3         City B              City A
-#&gt; 3                           Level 7         City B              City A
-#&gt; 4                           Level 5         City B              City C
+#&gt; 3                           Level 4         City A              City B
+#&gt; 4                           Level 1         City C              City B
 #&gt; 5                           Level 6         City C              City A
 #&gt; 6                           Level 7         City A              City C
 #&gt; 7                           Level 8         City C              City B
@@ -1856,12 +1856,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 15                          Level 1         City A              City B
 #&gt; 16                          Level 1         City B              City C
 #&gt; 17                          Level 1         City C              City A
-#&gt; 18                          Level 8         City A              City B
-#&gt; 19                          Level 1         City B              City B
+#&gt; 18                          Level 1         City A              City C
+#&gt; 19                          Level 2         City C              City B
 #&gt; 20                          Level 2         City B              City A
 #&gt; 21                          Level 2         City A              City B
 #&gt; 22                          Level 2         City B              City C
-#&gt; 23                          Level 2         City C              City A
+#&gt; 23                          Level 1         City A              City B
 #&gt; 24                          Level 2         City A              City C
 #&gt; 25                          Level 2         City C              City B
 #&gt; 26                          Level 2         City B              City A
@@ -1869,7 +1869,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 28                          Level 2         City B              City C
 #&gt; 29                          Level 3         City C              City A
 #&gt; 30                          Level 3         City A              City C
-#&gt; 31                          Level 3         City C              City B
+#&gt; 31                          Level 1         City C              City A
 #&gt; 32                          Level 3         City B              City A
 #&gt; 33                          Level 3         City A              City B
 #&gt; 34                          Level 3         City B              City C
@@ -1877,19 +1877,19 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 36                          Level 3         City A              City C
 #&gt; 37                          Level 3         City C              City B
 #&gt; 38                          Level 3         City B              City A
-#&gt; 39                          Level 4         City A              City B
+#&gt; 39                          Level 1         City A              City C
 #&gt; 40                          Level 4         City B              City C
 #&gt; 41                          Level 4         City C              City A
 #&gt; 42                          Level 4         City A              City C
-#&gt; 43                          Level 9         City C              City C
+#&gt; 43                          Level 4         City C              City B
 #&gt; 44                          Level 4         City B              City A
 #&gt; 45                          Level 4         City A              City B
 #&gt; 46                          Level 4         City B              City C
 #&gt; 47                          Level 4         City C              City A
 #&gt; 48                          Level 4         City A              City C
-#&gt; 49                          Level 5         City C              City B
+#&gt; 49                          Level 4         City A              City C
 #&gt; 50                          Level 5         City B              City A
-#&gt; 51                          Level 5         City A              City B
+#&gt; 51                          Level 5         City B              City A
 #&gt; 52                          Level 5         City B              City C
 #&gt; 53                          Level 5         City C              City A
 #&gt; 54                          Level 5         City A              City C
@@ -1901,12 +1901,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 60                          Level 6         City A              City C
 #&gt; 61                          Level 6         City C              City B
 #&gt; 62                          Level 6         City B              City A
-#&gt; 63                          Level 6         City A              City B
-#&gt; 64                          Level 6         City B              City B
+#&gt; 63                          Level 6         City A              City A
+#&gt; 64                          Level 6         City B              City C
 #&gt; 65                          Level 6         City C              City A
 #&gt; 66                          Level 6         City A              City C
 #&gt; 67                          Level 6         City C              City B
-#&gt; 68                          Level 8         City B              City B
+#&gt; 68                          Level 6         City B              City A
 #&gt; 69                          Level 7         City A              City B
 #&gt; 70                          Level 7         City B              City C
 #&gt; 71                          Level 7         City C              City A
@@ -1915,7 +1915,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 74                          Level 7         City B              City A
 #&gt; 75                          Level 7         City A              City B
 #&gt; 76                          Level 7         City B              City C
-#&gt; 77                          Level 7         City C              City A
+#&gt; 77                          Level 1         City A              City A
 #&gt; 78                          Level 7         City A              City C
 #&gt; 79                          Level 8         City C              City B
 #&gt; 80                          Level 8         City B              City A
@@ -1925,7 +1925,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 84                          Level 8         City A              City C
 #&gt; 85                          Level 8         City C              City B
 #&gt; 86                          Level 8         City B              City A
-#&gt; 87                          Level 8         City A              City B
+#&gt; 87                          Level 8         City B              City B
 #&gt; 88                          Level 8         City B              City C
 #&gt; 89                          Level 9         City C              City A
 #&gt; 90                          Level 9         City B              City C
@@ -1939,10 +1939,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 98                          Level 9         City B              City A
 #&gt; 99                          Level 1         City A              City B
 #&gt; 100                         Level 1         City B              City C
-#&gt; 101                         Level 1         City A              City A
+#&gt; 101                         Level 1         City C              City A
 #&gt; 102                         Level 1         City A              City C
 #&gt; 103                         Level 1         City C              City B
-#&gt; 104                         Level 1         City B              City A
+#&gt; 104                         Level 1         City A              City A
 #&gt; 105                         Level 1         City A              City B
 #&gt; 106                         Level 1         City B              City C
 #&gt; 107                         Level 1         City C              City A
@@ -1952,14 +1952,14 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 111                         Level 1         City A              City B
 #&gt; 112                         Level 1         City B              City C
 #&gt; 113                         Level 1         City C              City A
-#&gt; 114                         Level 1         City C              City A
-#&gt; 115                         Level 1         City B              City C
+#&gt; 114                         Level 1         City A              City C
+#&gt; 115                         Level 1         City C              City B
 #&gt; 116                         Level 1         City B              City A
 #&gt; 117                         Level 1         City A              City B
-#&gt; 118                         Level 1         City C              City A
+#&gt; 118                         Level 1         City B              City C
 #&gt; 119                         Level 1         City C              City A
 #&gt; 120                         Level 1         City A              City C
-#&gt; 121                         Level 1         City C              City B
+#&gt; 121                         Level 1         City B              City A
 #&gt; 122                         Level 1         City B              City A
 #&gt; 123                         Level 1         City A              City B
 #&gt; 124                         Level 1         City B              City C
@@ -1972,7 +1972,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 131                         Level 1         City C              City A
 #&gt; 132                         Level 1         City A              City C
 #&gt; 133                         Level 1         City C              City B
-#&gt; 134                         Level 1         City B              City A
+#&gt; 134                         Level 1         City B              City C
 #&gt; 135                         Level 1         City A              City B
 #&gt; 136                         Level 1         City B              City C
 #&gt; 137                         Level 1         City C              City A
@@ -1984,7 +1984,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 143                         Level 1         City C              City A
 #&gt; 144                         Level 1         City A              City C
 #&gt; 145                         Level 1         City C              City B
-#&gt; 146                         Level 1         City A              City B
+#&gt; 146                         Level 1         City B              City A
 #&gt; 147                         Level 1         City A              City B
 #&gt; 148                         Level 1         City B              City C
 #&gt; 149                         Level 1         City C              City A
@@ -1997,21 +1997,21 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 156                         Level 1         City A              City C
 #&gt; 157                         Level 1         City C              City B
 #&gt; 158                         Level 1         City B              City A
-#&gt; 159                         Level 1         City A              City B
+#&gt; 159                         Level 1         City B              City B
 #&gt; 160                         Level 1         City B              City C
 #&gt; 161                         Level 1         City C              City A
 #&gt; 162                         Level 1         City A              City C
-#&gt; 163                         Level 1         City C              City B
-#&gt; 164                         Level 1         City C              City B
+#&gt; 163                         Level 1         City A              City B
+#&gt; 164                         Level 1         City B              City A
 #&gt; 165                         Level 1         City A              City B
-#&gt; 166                         Level 1         City A              City C
+#&gt; 166                         Level 1         City B              City C
 #&gt; 167                         Level 1         City C              City A
 #&gt; 168                         Level 1         City A              City C
 #&gt; 169                         Level 1         City C              City B
-#&gt; 170                         Level 1         City B              City A
+#&gt; 170                         Level 1         City A              City B
 #&gt; 171                         Level 1         City A              City B
 #&gt; 172                         Level 1         City B              City C
-#&gt; 173                         Level 1         City C              City A
+#&gt; 173                         Level 1         City C              City B
 #&gt; 174                         Level 1         City A              City C
 #&gt; 175                         Level 1         City C              City B
 #&gt; 176                         Level 1         City B              City A
@@ -2021,10 +2021,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 180                         Level 1         City A              City C
 #&gt; 181                         Level 1         City C              City B
 #&gt; 182                         Level 1         City B              City A
-#&gt; 183                         Level 1         City C              City B
-#&gt; 184                         Level 1         City B              City C
+#&gt; 183                         Level 1         City A              City B
+#&gt; 184                         Level 1         City B              City B
 #&gt; 185                         Level 1         City C              City A
-#&gt; 186                         Level 1         City B              City C
+#&gt; 186                         Level 1         City A              City C
 #&gt; 187                         Level 1         City C              City B
 #&gt; 188                         Level 1         City B              City A
 #&gt; 189                         Level 1         City A              City B
@@ -2032,7 +2032,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 191                         Level 1         City C              City A
 #&gt; 192                         Level 1         City A              City C
 #&gt; 193                         Level 1         City C              City B
-#&gt; 194                         Level 1         City B              City B
+#&gt; 194                         Level 1         City B              City A
 #&gt; 195                         Level 1         City A              City B
 #&gt; 196                         Level 1         City B              City C
 #&gt; 197                         Level 1         City C              City A
@@ -2043,45 +2043,45 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 202                         Level 1         City C              City C
 #&gt; 203                         Level 4         City C              City B
 #&gt; 204                         Level 1         City C              City A
-#&gt; 205                         Level 9         City C              City A
-#&gt; 206                         Level 9         City C              City A
+#&gt; 205                         Level 5         City C              City C
+#&gt; 206                         Level 1         City C              City C
 #&gt; 207                         Level 2         City B              City B
 #&gt; 208                         Level 4         City B              City B
 #&gt; 209                         Level 1         City B              City C
 #&gt; 210                         Level 5         City B              City C
 #&gt; 211                         Level 1         City B              City A
 #&gt; 212                         Level 6         City B              City A
-#&gt; 213                         Level 5         City A              City C
+#&gt; 213                         Level 1         City A              City A
 #&gt; 214                         Level 2         City A              City B
 #&gt; 215                         Level 6         City A              City A
 #&gt; 216                         Level 1         City A              City C
 #&gt; 217                         Level 7         City A              City C
-#&gt; 218                         Level 1         City B              City A
+#&gt; 218                         Level 6         City B              City A
 #&gt; 219                         Level 7         City B              City C
 #&gt; 220                         Level 2         City B              City B
 #&gt; 221                         Level 8         City B              City B
 #&gt; 222                         Level 7         City C              City C
 #&gt; 223                         Level 8         City C              City B
 #&gt; 224                         Level 9         City C              City A
-#&gt; 225                         Level 8         City A              City B
+#&gt; 225                         Level 1         City B              City A
 #&gt; 226                         Level 9         City A              City A
 #&gt; 227                         Level 1         City A              City B
 #&gt; 228                         Level 9         City C              City A
 #&gt; 229                         Level 1         City C              City B
-#&gt; 230                         Level 1         City C              City C
+#&gt; 230                         Level 3         City C              City B
 #&gt; 231                         Level 1         City B              City B
 #&gt; 232                         Level 1         City B              City C
 #&gt; 233                         Level 1         City B              City A
 #&gt; 234                         Level 1         City A              City C
-#&gt; 235                         Level 1         City A              City A
-#&gt; 236                         Level 1         City C              City C
+#&gt; 235                         Level 1         City A              City C
+#&gt; 236                         Level 1         City A              City C
 #&gt; 237                         Level 1         City B              City A
 #&gt; 238                         Level 1         City B              City C
 #&gt; 239                         Level 1         City B              City B
 #&gt; 240                         Level 1         City C              City C
 #&gt; 241                         Level 1         City C              City B
 #&gt; 242                         Level 1         City C              City A
-#&gt; 243                         Level 1         City A              City C
+#&gt; 243                         Level 1         City A              City B
 #&gt; 244                         Level 1         City A              City A
 #&gt; 245                         Level 1         City A              City B
 #&gt; 246                         Level 1         City C              City A
@@ -2090,7 +2090,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 249                         Level 1         City B              City B
 #&gt; 250                         Level 1         City B              City C
 #&gt; 251                         Level 1         City B              City A
-#&gt; 252                         Level 1         City C              City B
+#&gt; 252                         Level 1         City A              City C
 #&gt; 253                         Level 1         City A              City A
 #&gt; 254                         Level 1         City A              City C
 #&gt; 255                         Level 1         City B              City A
@@ -2098,9 +2098,9 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 257                         Level 2         City B              City B
 #&gt; 258                         Level 1         City C              City C
 #&gt; 259                         Level 2         City C              City B
-#&gt; 260                         Level 1         City A              City C
+#&gt; 260                         Level 2         City C              City A
 #&gt; 261                         Level 2         City A              City B
-#&gt; 262                         Level 2         City A              City A
+#&gt; 262                         Level 1         City A              City B
 #&gt; 263                         Level 2         City A              City B
 #&gt; 264                         Level 2         City C              City A
 #&gt; 265                         Level 2         City C              City B
@@ -2111,13 +2111,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 270                         Level 2         City A              City C
 #&gt; 271                         Level 2         City A              City A
 #&gt; 272                         Level 2         City A              City C
-#&gt; 273                         Level 2         City A              City B
-#&gt; 274                         Level 2         City A              City B
+#&gt; 273                         Level 2         City B              City A
+#&gt; 274                         Level 2         City B              City C
 #&gt; 275                         Level 2         City B              City B
-#&gt; 276                         Level 2         City C              City C
+#&gt; 276                         Level 1         City C              City C
 #&gt; 277                         Level 2         City C              City B
 #&gt; 278                         Level 2         City C              City A
-#&gt; 279                         Level 2         City B              City A
+#&gt; 279                         Level 2         City A              City B
 #&gt; 280                         Level 2         City A              City A
 #&gt; 281                         Level 2         City A              City B
 #&gt; 282                         Level 2         City C              City A
@@ -2129,12 +2129,12 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 288                         Level 2         City A              City C
 #&gt; 289                         Level 3         City A              City A
 #&gt; 290                         Level 3         City A              City C
-#&gt; 291                         Level 1         City A              City A
-#&gt; 292                         Level 3         City B              City C
+#&gt; 291                         Level 3         City B              City A
+#&gt; 292                         Level 4         City B              City C
 #&gt; 293                         Level 3         City B              City B
 #&gt; 294                         Level 3         City C              City C
 #&gt; 295                         Level 3         City C              City B
-#&gt; 296                         Level 3         City C              City A
+#&gt; 296                         Level 1         City A              City A
 #&gt; 297                         Level 3         City A              City B
 #&gt; 298                         Level 3         City A              City A
 #&gt; 299                         Level 3         City A              City B
@@ -2153,7 +2153,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 312                         Level 3         City C              City C
 #&gt; 313                         Level 3         City C              City B
 #&gt; 314                         Level 3         City C              City A
-#&gt; 315                         Level 3         City A              City A
+#&gt; 315                         Level 3         City A              City B
 #&gt; 316                         Level 3         City A              City A
 #&gt; 317                         Level 4         City A              City B
 #&gt; 318                         Level 3         City C              City A
@@ -2163,20 +2163,20 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 322                         Level 4         City B              City C
 #&gt; 323                         Level 4         City B              City A
 #&gt; 324                         Level 4         City A              City C
-#&gt; 325                         Level 6         City A              City C
+#&gt; 325                         Level 4         City A              City A
 #&gt; 326                         Level 4         City A              City C
-#&gt; 327                         Level 1         City A              City B
+#&gt; 327                         Level 4         City B              City A
 #&gt; 328                         Level 4         City B              City C
-#&gt; 329                         Level 1         City B              City B
+#&gt; 329                         Level 4         City B              City B
 #&gt; 330                         Level 4         City C              City C
 #&gt; 331                         Level 4         City C              City B
 #&gt; 332                         Level 4         City C              City A
 #&gt; 333                         Level 4         City A              City B
-#&gt; 334                         Level 4         City A              City A
+#&gt; 334                         Level 6         City A              City C
 #&gt; 335                         Level 4         City A              City B
-#&gt; 336                         Level 1         City A              City C
+#&gt; 336                         Level 1         City A              City B
 #&gt; 337                         Level 4         City C              City B
-#&gt; 338                         Level 4         City C              City C
+#&gt; 338                         Level 1         City C              City C
 #&gt; 339                         Level 4         City B              City B
 #&gt; 340                         Level 4         City B              City C
 #&gt; 341                         Level 4         City B              City A
@@ -2185,17 +2185,17 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 344                         Level 4         City A              City C
 #&gt; 345                         Level 4         City B              City A
 #&gt; 346                         Level 4         City B              City C
-#&gt; 347                         Level 5         City B              City B
+#&gt; 347                         Level 8         City B              City B
 #&gt; 348                         Level 4         City C              City C
 #&gt; 349                         Level 5         City C              City B
 #&gt; 350                         Level 5         City C              City A
 #&gt; 351                         Level 5         City A              City B
 #&gt; 352                         Level 5         City A              City A
 #&gt; 353                         Level 5         City A              City B
-#&gt; 354                         Level 5         City C              City A
+#&gt; 354                         Level 4         City A              City C
 #&gt; 355                         Level 5         City C              City B
 #&gt; 356                         Level 5         City C              City C
-#&gt; 357                         Level 6         City B              City A
+#&gt; 357                         Level 5         City B              City B
 #&gt; 358                         Level 5         City B              City C
 #&gt; 359                         Level 5         City B              City A
 #&gt; 360                         Level 5         City A              City C
@@ -2204,16 +2204,16 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 363                         Level 5         City B              City A
 #&gt; 364                         Level 5         City B              City C
 #&gt; 365                         Level 5         City B              City B
-#&gt; 366                         Level 9         City C              City A
+#&gt; 366                         Level 5         City C              City C
 #&gt; 367                         Level 5         City C              City B
-#&gt; 368                         Level 5         City C              City A
+#&gt; 368                         Level 9         City A              City A
 #&gt; 369                         Level 5         City A              City B
 #&gt; 370                         Level 5         City A              City A
 #&gt; 371                         Level 5         City A              City B
 #&gt; 372                         Level 5         City C              City A
 #&gt; 373                         Level 5         City C              City B
 #&gt; 374                         Level 5         City C              City C
-#&gt; 375                         Level 1         City B              City A
+#&gt; 375                         Level 5         City B              City B
 #&gt; 376                         Level 5         City B              City C
 #&gt; 377                         Level 6         City B              City A
 #&gt; 378                         Level 5         City A              City C
@@ -2231,7 +2231,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 390                         Level 6         City C              City A
 #&gt; 391                         Level 6         City C              City B
 #&gt; 392                         Level 6         City C              City C
-#&gt; 393                         Level 6         City A              City B
+#&gt; 393                         Level 6         City B              City B
 #&gt; 394                         Level 6         City B              City C
 #&gt; 395                         Level 6         City B              City A
 #&gt; 396                         Level 6         City A              City C
@@ -2240,18 +2240,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 399                         Level 6         City B              City A
 #&gt; 400                         Level 6         City B              City C
 #&gt; 401                         Level 6         City B              City B
-#&gt; 402                         Level 6         City C              City C
+#&gt; 402                         Level 6         City A              City C
 #&gt; 403                         Level 6         City C              City B
 #&gt; 404                         Level 6         City C              City A
 #&gt; 405                         Level 6         City A              City B
 #&gt; 406                         Level 6         City A              City A
 #&gt; 407                         Level 7         City A              City B
 #&gt; 408                         Level 6         City C              City A
-#&gt; 409                         Level 7         City C              City B
+#&gt; 409                         Level 1         City C              City B
 #&gt; 410                         Level 7         City C              City C
 #&gt; 411                         Level 7         City B              City B
 #&gt; 412                         Level 7         City B              City C
-#&gt; 413                         Level 7         City B              City C
+#&gt; 413                         Level 7         City B              City A
 #&gt; 414                         Level 7         City A              City C
 #&gt; 415                         Level 7         City A              City A
 #&gt; 416                         Level 7         City A              City C
@@ -2260,7 +2260,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 419                         Level 7         City B              City B
 #&gt; 420                         Level 7         City C              City C
 #&gt; 421                         Level 7         City C              City B
-#&gt; 422                         Level 7         City C              City A
+#&gt; 422                         Level 9         City C              City C
 #&gt; 423                         Level 7         City A              City B
 #&gt; 424                         Level 7         City A              City A
 #&gt; 425                         Level 7         City A              City B
@@ -2275,7 +2275,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 434                         Level 7         City A              City C
 #&gt; 435                         Level 7         City B              City A
 #&gt; 436                         Level 7         City B              City C
-#&gt; 437                         Level 1         City B              City A
+#&gt; 437                         Level 8         City B              City B
 #&gt; 438                         Level 7         City C              City C
 #&gt; 439                         Level 8         City C              City B
 #&gt; 440                         Level 8         City C              City A
@@ -2286,7 +2286,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 445                         Level 8         City C              City B
 #&gt; 446                         Level 8         City C              City C
 #&gt; 447                         Level 8         City B              City B
-#&gt; 448                         Level 9         City B              City C
+#&gt; 448                         Level 8         City C              City C
 #&gt; 449                         Level 8         City B              City A
 #&gt; 450                         Level 8         City A              City C
 #&gt; 451                         Level 8         City A              City A
@@ -2295,9 +2295,9 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 454                         Level 8         City B              City C
 #&gt; 455                         Level 8         City B              City B
 #&gt; 456                         Level 8         City C              City C
-#&gt; 457                         Level 8         City B              City C
+#&gt; 457                         Level 8         City C              City B
 #&gt; 458                         Level 8         City C              City A
-#&gt; 459                         Level 8         City B              City B
+#&gt; 459                         Level 8         City A              City B
 #&gt; 460                         Level 8         City A              City A
 #&gt; 461                         Level 8         City A              City B
 #&gt; 462                         Level 8         City C              City A
@@ -2306,7 +2306,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 465                         Level 8         City B              City B
 #&gt; 466                         Level 8         City B              City C
 #&gt; 467                         Level 9         City B              City A
-#&gt; 468                         Level 8         City B              City C
+#&gt; 468                         Level 8         City A              City C
 #&gt; 469                         Level 9         City A              City A
 #&gt; 470                         Level 9         City A              City C
 #&gt; 471                         Level 9         City B              City A
@@ -2319,23 +2319,23 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 478                         Level 9         City A              City A
 #&gt; 479                         Level 9         City A              City B
 #&gt; 480                         Level 9         City C              City A
-#&gt; 481                         Level 9         City C              City B
-#&gt; 482                         Level 9         City A              City C
-#&gt; 483                         Level 1         City B              City A
-#&gt; 484                         Level 1         City C              City C
-#&gt; 485                         Level 9         City B              City A
+#&gt; 481                         Level 9         City B              City B
+#&gt; 482                         Level 9         City C              City C
+#&gt; 483                         Level 9         City B              City B
+#&gt; 484                         Level 9         City B              City C
+#&gt; 485                         Level 9         City B              City B
 #&gt; 486                         Level 9         City A              City C
 #&gt; 487                         Level 9         City A              City A
 #&gt; 488                         Level 9         City A              City C
-#&gt; 489                         Level 9         City B              City A
-#&gt; 490                         Level 9         City B              City C
-#&gt; 491                         Level 1         City B              City C
-#&gt; 492                         Level 1         City C              City B
-#&gt; 493                         Level 9         City C              City B
-#&gt; 494                         Level 9         City C              City A
+#&gt; 489                         Level 1         City A              City A
+#&gt; 490                         Level 1         City C              City C
+#&gt; 491                         Level 9         City B              City B
+#&gt; 492                         Level 9         City C              City C
+#&gt; 493                         Level 9         City C              City C
+#&gt; 494                         Level 1         City A              City B
 #&gt; 495                         Level 9         City A              City B
 #&gt; 496                         Level 9         City A              City A
-#&gt; 497                         Level 1         City A              City B
+#&gt; 497                         Level 9         City B              City A
 #&gt; 498                         Level 9         City C              City A
 #&gt; 499                         Level 1         City C              City B
 #&gt; 500                         Level 1         City C              City C
@@ -2343,7 +2343,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 502                         Level 1         City B              City C
 #&gt; 503                         Level 1         City B              City A
 #&gt; 504                         Level 1         City A              City C
-#&gt; 505                         Level 1         City A              City B
+#&gt; 505                         Level 1         City A              City A
 #&gt; 506                         Level 1         City A              City C
 #&gt; 507                         Level 1         City B              City A
 #&gt; 508                         Level 1         City B              City C
@@ -2352,10 +2352,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 511                         Level 1         City C              City B
 #&gt; 512                         Level 1         City C              City A
 #&gt; 513                         Level 1         City A              City B
-#&gt; 514                         Level 1         City A              City A
+#&gt; 514                         Level 1         City A              City B
 #&gt; 515                         Level 1         City A              City B
 #&gt; 516                         Level 1         City C              City A
-#&gt; 517                         Level 1         City C              City B
+#&gt; 517                         Level 1         City C              City A
 #&gt; 518                         Level 1         City C              City C
 #&gt; 519                         Level 1         City B              City B
 #&gt; 520                         Level 1         City B              City C
@@ -2374,13 +2374,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 533                         Level 1         City A              City B
 #&gt; 534                         Level 1         City C              City A
 #&gt; 535                         Level 1         City C              City B
-#&gt; 536                         Level 1         City C              City B
+#&gt; 536                         Level 1         City C              City C
 #&gt; 537                         Level 1         City B              City B
 #&gt; 538                         Level 1         City B              City C
 #&gt; 539                         Level 1         City B              City A
 #&gt; 540                         Level 1         City A              City C
 #&gt; 541                         Level 1         City A              City A
-#&gt; 542                         Level 1         City C              City A
+#&gt; 542                         Level 1         City C              City B
 #&gt; 543                         Level 1         City B              City A
 #&gt; 544                         Level 1         City B              City C
 #&gt; 545                         Level 1         City B              City B
@@ -2391,28 +2391,28 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 550                         Level 1         City A              City A
 #&gt; 551                         Level 1         City A              City B
 #&gt; 552                         Level 1         City C              City A
-#&gt; 553                         Level 1         City C              City B
+#&gt; 553                         Level 1         City B              City C
 #&gt; 554                         Level 1         City C              City C
 #&gt; 555                         Level 1         City B              City B
 #&gt; 556                         Level 1         City B              City C
 #&gt; 557                         Level 1         City B              City A
 #&gt; 558                         Level 1         City A              City C
-#&gt; 559                         Level 1         City B              City A
+#&gt; 559                         Level 1         City A              City A
 #&gt; 560                         Level 1         City A              City C
 #&gt; 561                         Level 1         City B              City A
-#&gt; 562                         Level 1         City B              City C
+#&gt; 562                         Level 1         City A              City B
 #&gt; 563                         Level 1         City B              City B
 #&gt; 564                         Level 1         City C              City C
 #&gt; 565                         Level 1         City C              City B
 #&gt; 566                         Level 1         City C              City A
 #&gt; 567                         Level 1         City A              City B
-#&gt; 568                         Level 1         City A              City A
+#&gt; 568                         Level 1         City B              City A
 #&gt; 569                         Level 1         City A              City B
 #&gt; 570                         Level 1         City C              City A
-#&gt; 571                         Level 1         City C              City B
+#&gt; 571                         Level 1         City C              City C
 #&gt; 572                         Level 1         City C              City C
 #&gt; 573                         Level 1         City B              City B
-#&gt; 574                         Level 1         City C              City B
+#&gt; 574                         Level 1         City B              City C
 #&gt; 575                         Level 1         City B              City A
 #&gt; 576                         Level 1         City A              City C
 #&gt; 577                         Level 1         City A              City A
@@ -2454,13 +2454,13 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 613                         Level 1         City A              City A
 #&gt; 614                         Level 1         City A              City C
 #&gt; 615                         Level 1         City B              City A
-#&gt; 616                         Level 1         City B              City C
+#&gt; 616                         Level 1         City B              City B
 #&gt; 617                         Level 1         City B              City B
 #&gt; 618                         Level 1         City C              City C
 #&gt; 619                         Level 1         City C              City B
 #&gt; 620                         Level 1         City C              City A
 #&gt; 621                         Level 1         City A              City B
-#&gt; 622                         Level 1         City A              City A
+#&gt; 622                         Level 1         City C              City A
 #&gt; 623                         Level 1         City A              City B
 #&gt; 624                         Level 1         City C              City A
 #&gt; 625                         Level 1         City C              City B
@@ -2471,18 +2471,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 630                         Level 1         City A              City C
 #&gt; 631                         Level 1         City A              City A
 #&gt; 632                         Level 1         City A              City C
-#&gt; 633                         Level 1         City B              City A
+#&gt; 633                         Level 1         City C              City A
 #&gt; 634                         Level 1         City B              City C
-#&gt; 635                         Level 1         City B              City B
-#&gt; 636                         Level 1         City C              City A
+#&gt; 635                         Level 1         City C              City B
+#&gt; 636                         Level 1         City C              City C
 #&gt; 637                         Level 1         City C              City B
-#&gt; 638                         Level 1         City C              City A
+#&gt; 638                         Level 1         City B              City C
 #&gt; 639                         Level 1         City A              City B
 #&gt; 640                         Level 1         City A              City A
 #&gt; 641                         Level 1         City A              City B
 #&gt; 642                         Level 1         City C              City A
 #&gt; 643                         Level 1         City C              City B
-#&gt; 644                         Level 1         City A              City C
+#&gt; 644                         Level 1         City C              City C
 #&gt; 645                         Level 1         City B              City B
 #&gt; 646                         Level 1         City B              City C
 #&gt; 647                         Level 1         City B              City A
@@ -2507,10 +2507,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 666                         Level 1         City A              City C
 #&gt; 667                         Level 1         City A              City A
 #&gt; 668                         Level 1         City A              City C
-#&gt; 669                         Level 1         City A              City B
+#&gt; 669                         Level 1         City B              City A
 #&gt; 670                         Level 1         City B              City C
 #&gt; 671                         Level 1         City B              City B
-#&gt; 672                         Level 1         City C              City B
+#&gt; 672                         Level 1         City C              City C
 #&gt; 673                         Level 1         City C              City B
 #&gt; 674                         Level 1         City C              City A
 #&gt; 675                         Level 1         City A              City B
@@ -2552,7 +2552,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 711                         Level 1         City A              City B
 #&gt; 712                         Level 1         City A              City A
 #&gt; 713                         Level 1         City A              City B
-#&gt; 714                         Level 1         City C              City A
+#&gt; 714                         Level 1         City A              City A
 #&gt; 715                         Level 1         City C              City B
 #&gt; 716                         Level 1         City C              City C
 #&gt; 717                         Level 1         City B              City B
@@ -2561,7 +2561,7 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 720                         Level 1         City A              City C
 #&gt; 721                         Level 1         City A              City A
 #&gt; 722                         Level 1         City A              City C
-#&gt; 723                         Level 1         City A              City B
+#&gt; 723                         Level 1         City B              City A
 #&gt; 724                         Level 1         City B              City C
 #&gt; 725                         Level 1         City B              City B
 #&gt; 726                         Level 1         City C              City C
@@ -2571,10 +2571,10 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 730                         Level 1         City A              City A
 #&gt; 731                         Level 1         City A              City B
 #&gt; 732                         Level 1         City C              City A
-#&gt; 733                         Level 1         City A              City B
+#&gt; 733                         Level 1         City C              City B
 #&gt; 734                         Level 1         City C              City C
 #&gt; 735                         Level 1         City B              City B
-#&gt; 736                         Level 1         City B              City C
+#&gt; 736                         Level 1         City B              City B
 #&gt; 737                         Level 1         City B              City A
 #&gt; 738                         Level 1         City A              City C
 #&gt; 739                         Level 1         City A              City A
@@ -2582,8 +2582,8 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 741                         Level 1         City B              City A
 #&gt; 742                         Level 1         City B              City C
 #&gt; 743                         Level 1         City B              City B
-#&gt; 744                         Level 1         City C              City C
-#&gt; 745                         Level 1         City C              City B
+#&gt; 744                         Level 1         City A              City C
+#&gt; 745                         Level 1         City A              City B
 #&gt; 746                         Level 1         City C              City A
 #&gt; 747                         Level 1         City A              City B
 #&gt; 748                         Level 1         City A              City A
@@ -2594,26 +2594,26 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 753                         Level 1         City B              City B
 #&gt; 754                         Level 1         City B              City C
 #&gt; 755                         Level 1         City B              City A
-#&gt; 756                         Level 1         City A              City C
+#&gt; 756                         Level 1         City C              City A
 #&gt; 757                         Level 1         City A              City A
-#&gt; 758                         Level 1         City B              City C
+#&gt; 758                         Level 1         City A              City C
 #&gt; 759                         Level 1         City B              City A
 #&gt; 760                         Level 1         City B              City C
 #&gt; 761                         Level 1         City B              City B
 #&gt; 762                         Level 1         City C              City C
 #&gt; 763                         Level 1         City C              City B
 #&gt; 764                         Level 1         City C              City A
-#&gt; 765                         Level 1         City C              City B
+#&gt; 765                         Level 1         City A              City B
 #&gt; 766                         Level 1         City A              City A
 #&gt; 767                         Level 1         City A              City B
 #&gt; 768                         Level 1         City C              City A
 #&gt; 769                         Level 1         City C              City B
 #&gt; 770                         Level 1         City C              City C
-#&gt; 771                         Level 1         City C              City B
+#&gt; 771                         Level 1         City B              City B
 #&gt; 772                         Level 1         City B              City C
-#&gt; 773                         Level 1         City B              City A
+#&gt; 773                         Level 1         City C              City A
 #&gt; 774                         Level 1         City A              City C
-#&gt; 775                         Level 1         City A              City A
+#&gt; 775                         Level 1         City B              City A
 #&gt; 776                         Level 1         City A              City C
 #&gt; 777                         Level 1         City B              City A
 #&gt; 778                         Level 1         City B              City C
@@ -2621,18 +2621,18 @@ network can be changing the arguments <code>size</code> and <code>nei</code>.</p
 #&gt; 780                         Level 1         City C              City C
 #&gt; 781                         Level 1         City C              City B
 #&gt; 782                         Level 1         City C              City A
-#&gt; 783                         Level 1         City A              City B
+#&gt; 783                         Level 1         City C              City A
 #&gt; 784                         Level 1         City A              City A
 #&gt; 785                         Level 1         City A              City B
-#&gt; 786                         Level 1         City C              City A
-#&gt; 787                         Level 1         City C              City B
+#&gt; 786                         Level 1         City C              City B
+#&gt; 787                         Level 1         City C              City C
 #&gt; 788                         Level 1         City C              City C
 #&gt; 789                         Level 1         City B              City B
-#&gt; 790                         Level 1         City A              City B
+#&gt; 790                         Level 1         City B              City C
 #&gt; 791                         Level 1         City B              City A
-#&gt; 792                         Level 1         City C              City C
+#&gt; 792                         Level 1         City A              City C
 #&gt; 793                         Level 1         City A              City A
-#&gt; 794                         Level 1         City A              City C
+#&gt; 794                         Level 1         City A              City A
 #&gt; 795                         Level 1         City B              City A
 #&gt; 796                         Level 1         City B              City C
 #&gt; 797                         Level 2         City B              City B

@@ -2,9 +2,10 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  Change-over-time: Change-over-time.html
   IV-report: IV-report.html
   best-practices: best-practices.html
   intro-to-wpa: intro-to-wpa.html
   text-mining-capabilities: text-mining-capabilities.html
-last_built: 2021-01-15T02:47Z
+last_built: 2021-01-18T16:19Z
 
