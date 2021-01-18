@@ -29,13 +29,21 @@ of agglomeration.
 }
 \examples{
 ## Return a plot
-personas_hclust(sq_data, metrics = c("Collaboration_hours", "Workweek_span"), k = 4)
+personas_hclust(sq_data,
+                metrics = c("Collaboration_hours", "Workweek_span"),
+                k = 4)
 
 ## Return summary table
-personas_hclust(sq_data, metrics = c("Collaboration_hours", "Workweek_span"), k = 4, return = "table")
+personas_hclust(sq_data,
+                metrics = c("Collaboration_hours", "Workweek_span"),
+                k = 4,
+                return = "table")
 
 ## Return data with clusters appended
-personas_hclust(sq_data, metrics = c("Collaboration_hours", "Workweek_span"), k = 4, return = "data")
+personas_hclust(sq_data,
+                metrics = c("Collaboration_hours", "Workweek_span"),
+                k = 4,
+                return = "data")
 
 
 }
