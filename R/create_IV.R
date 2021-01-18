@@ -28,16 +28,20 @@
 #'
 #' @examples
 #' \dontrun{
-# sq_data %>%
-#   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
-#   create_IV(outcome = "X", return = "summary")
+#' library(dplyr)
+#'
+#' ## Return a summary table of IV
+#' sq_data %>%
+#'   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
+#'   create_IV(outcome = "X", return = "summary")
+#'
+#' ## Return a plot
 #' sq_data %>%
 #'   mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
 #'   create_IV(outcome = "X",
 #'             predictors = c("Email_hours", "Meeting_hours"),
-#'             return = "list")
+#'             return = "plot")
 #' }
-#'
 #' @export
 create_IV <- function(data,
                       predictors = NULL,
@@ -47,17 +51,21 @@ create_IV <- function(data,
                       return = "plot"){
 
   if(is.null(tidyselect::all_of(predictors))){
+
     train <-
       data %>%
       rename(outcome = outcome) %>%
       select_if(is.numeric) %>%
       tidyr::drop_na()
+
   } else {
+
     train <-
       data %>%
       rename(outcome = outcome) %>%
       select(tidyselect::all_of(predictors), outcome) %>%
       tidyr::drop_na()
+
   }
 
   # Calculate Odds
@@ -66,16 +74,19 @@ create_IV <- function(data,
 
 
   # Calculate p-value
-  predictors <- data.frame(unlist(names(train)))
-  names(predictors) <- c("Variable")
-  predictors <- predictors %>% filter(Variable != "outcome")
+  predictors <- data.frame(Variable = unlist(names(train)))
+  predictors <-
+    predictors %>%
+    dplyr::filter(Variable != "outcome") %>%
+    mutate(Variable = as.character(Variable)) # Ensure not factor
 
   for (i in 1:(nrow(predictors))){
-    predictors$pval[i] <- p_test(outcome, predictors$Variable[i])
+     predictors$pval[i] <- p_test(train, outcome = "outcome", behavior = predictors$Variable[i])
   }
 
+
   # Filter out variables whose p-value is above the significance level
-  predictors <- predictors %>% filter(pval <= siglevel)
+  predictors <- predictors %>% dplyr::filter(pval <= siglevel)
   train <- train %>% select(predictors$Variable, outcome)
 
   # IV Analysis
@@ -111,8 +122,12 @@ create_IV <- function(data,
     Information::plot_infotables(IV, IV$Summary$Variable[], same_scale=TRUE) %>% grDevices::recordPlot()
 
   } else if(return == "list"){
+
     output_list
+
   } else {
+
     stop("Please enter a valid input for `return`.")
+
   }
 }

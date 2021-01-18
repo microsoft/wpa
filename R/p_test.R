@@ -28,9 +28,6 @@
 #'   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
 #'   p_test(outcome = "X", behavior = "External_network_size")
 #' @export
-
-
-
 p_test <- function(data,
                    outcome,
                    behavior,
