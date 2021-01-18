@@ -254,24 +254,24 @@ network_p2p <- function(data,
 
         layout_text <- paste0("igraph::layout_with_", algorithm)
 
-        plot(g,
-             layout = eval(parse(text = layout_text)),
-             vertex.label = NA,
-             vertex.size = 3,
-             edge.arrow.mode = "-",
-             edge.color = "#adadad")
+        graphics::plot(g,
+                       layout = eval(parse(text = layout_text)),
+                       vertex.label = NA,
+                       vertex.size = 3,
+                       edge.arrow.mode = "-",
+                       edge.color = "#adadad")
 
-        legend(x = -1.5,
-               y = 0.5,
-               legend = colour_tb[[v_attr]], # vertex attribute
-               pch = 21,
-               text.col = font_col,
-               col = "#777777",
-               pt.bg = colour_tb$colour,
-               pt.cex = 2,
-               cex = .8,
-               bty = "n",
-               ncol = 1)
+        graphics::legend(x = -1.5,
+                         y = 0.5,
+                         legend = colour_tb[[v_attr]], # vertex attribute
+                         pch = 21,
+                         text.col = font_col,
+                         col = "#777777",
+                         pt.bg = colour_tb$colour,
+                         pt.cex = 2,
+                         cex = .8,
+                         bty = "n",
+                         ncol = 1)
       }
 
       ## Default PDF output unless NULL supplied to path
