@@ -20,40 +20,34 @@ network_leiden(
 )
 }
 \arguments{
-\item{data}{Data frame containing a Person to Person Network query. Note that this function is
-computationally intensive and may take a noticeably longer time to process beyond 5000 rows.}
+\item{data}{Data frame containing a person-to-person query.}
 
-\item{hrvar}{String containing the HR attribute to be matched in the dataset.
-Defaults to "Organization".}
+\item{hrvar}{String containing the label for the HR attribute.}
 
 \item{bg_fill}{String to specify background fill colour.}
 
 \item{font_col}{String to specify font and link colour.}
 
-\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "mds" to perform
-a multidimensional scaling of nodes using a shortest path, which is also a deterministic method.
-See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full list of options.}
+\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
+full list of options.}
 
-\item{path}{File path for saving the PDF output. Defaults to "network_p2p_leiden".
-Since the network outputs are computationally intensive, the default behaviour is to save time by
-saving the plot output directly as a PDF in the specified path. To override this behaviour and return
-a plot object instead, you can pass \code{NULL} to \code{path}. What is passed to \code{path} makes no difference
-if returning anything other than "plot-leiden" or "plot-hrvar".}
+\item{path}{File path for saving the PDF output. Defaults to a timestamped path based on current parameters.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults to 0.5.}
 
-\item{seed}{Parameter to be passed to \code{leiden::leiden()} to ensure consistency. Defaults to 1.}
+\item{seed}{Seed for the random number generator passed to \code{leiden::leiden()} to ensure consistency. Only applicable
+when \code{display} is set to "leiden".}
 
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
 "describe" output. See \code{network_describe()}.}
 
-\item{return}{String specifying what output to return. Defaults to "plot-leiden".
-Valid return options include:
+\item{return}{String specifying what output to return. Defaults to "plot-leiden". Valid return options include:
 \itemize{
-\item 'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to \code{path}.
-\item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to \code{path}.
+\item 'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to path.
+\item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.
 \item 'plot-sankey': return a sankey plot combining communities and HR attribute.
 \item 'table': return a vertex summary table with counts in communities and HR attribute.
 \item 'data': return a vertex data file that matches vertices with communities and HR attributes.
@@ -71,4 +65,17 @@ method.}
 Take a P2P network query and implement the Leiden community detection method. To run
 this function, you will require all the pre-requisites of the \strong{leiden} package installed,
 which includes Python and \strong{reticulate}.
+}
+\examples{
+\dontrun{
+## Simulate a small person-to-person dataset
+p2p_data <- p2p_data_sim(size = 50)
+
+## Return leiden, console, plot
+p2p_data \%>\%
+  network_leiden(path = NULL,
+                 return = "plot")
+}
+
+
 }
