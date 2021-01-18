@@ -120,12 +120,20 @@ create_IV <- function(data,
 
   } else if(return == "plot-WOE"){
 
-    if (length(IV$Summary$Variable[]) >9) {
-      Information::plot_infotables(IV, IV$Summary$Variable[1:9], same_scale=TRUE) %>% grDevices::recordPlot()
-    }
+      if (length(IV$Summary$Variable[]) >9){
 
-    else {
-      Information::plot_infotables(IV, IV$Summary$Variable[], same_scale=TRUE) %>% grDevices::recordPlot()
+        Information::plot_infotables(IV,
+                                     IV$Summary$Variable[1:9],
+                                     same_scale=TRUE) %>%
+          grDevices::recordPlot()
+
+      } else {
+
+        Information::plot_infotables(IV,
+                                     IV$Summary$Variable[],
+                                     same_scale=TRUE) %>%
+          grDevices::recordPlot()
+      }
 
     } else if(return == "list"){
 
