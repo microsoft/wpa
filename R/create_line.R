@@ -127,7 +127,9 @@ create_line <- function(data,
                           camel_clean(hrvar))) +
     xlab("Date") +
     ylab("Weekly hours") +
-    labs(caption = extract_date_range(data, return = "text"))
+    labs(caption = extract_date_range(data, return = "text")) +
+    ylim(0, NA) # Set origin to zero
+
 
   if(return == "table"){
 
