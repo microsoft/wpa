@@ -2,7 +2,7 @@
 % Please edit documentation in R/identify_holidayweeks.R
 \name{identify_holidayweeks}
 \alias{identify_holidayweeks}
-\title{Identify Holiday Weeks}
+\title{Identify Holiday Weeks based on outliers}
 \usage{
 identify_holidayweeks(data, sd = 1, return = "message")
 }
@@ -18,7 +18,7 @@ Valid options are:
 \item When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
 \item When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
 \item when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
-\item when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.
+\item when 'plot' is passed, a plot with holiday weeks highlighted is returned as a dataframe.
 }}
 }
 \description{
