@@ -18,11 +18,9 @@ network_louvain(
 )
 }
 \arguments{
-\item{data}{Data frame containing a Person to Person Network query. Note that this function is
-computationally intensive and may take a noticeably longer time to process beyond 5000 rows.}
+\item{data}{Data frame containing a person-to-person query.}
 
-\item{hrvar}{String containing the HR attribute to be matched in the dataset.
-Defaults to "Organization".}
+\item{hrvar}{String containing the label for the HR attribute.}
 
 \item{bg_fill}{String to specify background fill colour.}
 
@@ -30,29 +28,26 @@ Defaults to "Organization".}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
 
-\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "mds" to perform
-a multidimensional scaling of nodes using a shortest path, which is also a deterministic method.
-See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full list of options.}
+\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
+algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
+full list of options.}
 
-\item{path}{File path for saving the PDF output. Defaults to "network_p2p_louvain".
-Since the network outputs are computationally intensive, the default behaviour is to save time by
-saving the plot output directly as a PDF in the specified path. To override this behaviour and return
-a plot object instead, you can pass \code{NULL} to \code{path}. What is passed to \code{path} makes no difference
-if returning anything other than "plot-louvain" or "plot-hrvar".}
+\item{path}{File path for saving the PDF output. Defaults to a timestamped path based on current parameters.}
 
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
 "describe" output. See \code{network_describe()}.}
 
-\item{return}{String specifying what output to return. Defaults to "plot-louvain".
+\item{return}{String specifying what output to return. Defaults to "plot".
 Valid return options include:
 \itemize{
-\item 'plot-louvain': return a network plot coloured by louvain communities, saving a PDF to \code{path}.
-\item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to \code{path}.
-\item 'plot-sankey': return a sankey plot combining communities and HR attribute.
+\item 'plot': return a network plot.
+\item 'sankey': return a sankey plot combining communities and HR attribute. This is only valid if
+a community detection method is selected at \code{display}.
 \item 'table': return a vertex summary table with counts in communities and HR attribute.
 \item 'data': return a vertex data file that matches vertices with communities and HR attributes.
-\item 'describe': returns a list of data frames which describe each of the identified communities.
-The first data frame is a summary table of all the communities.
+\item 'describe': return a list of data frames which describe each of the identified communities.
+The first data frame is a summary table of all the communities. This is only valid if a community
+detection method is selected at \code{display}.
 \item 'network': return igraph object.
 }}
 
@@ -64,4 +59,14 @@ method.}
 \description{
 Take a P2P network query and implement the Louvain community detection method. The
 \strong{igraph} implementation of the Louvain method is used.
+}
+\examples{
+## Simulate a small person-to-person dataset
+p2p_data <- p2p_data_sim(size = 50)
+
+## Return louvain, console, plot
+p2p_data \%>\%
+  network_louvain(path = NULL,
+                  return = "plot")
+
 }

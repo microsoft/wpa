@@ -53,7 +53,7 @@
 #' ## Simulate a small person-to-person dataset
 #' p2p_data <- p2p_data_sim(size = 50)
 #'
-## Return a network plot to console, coloured by hrvar
+#' ## Return a network plot to console, coloured by hrvar
 #' p2p_data %>%
 #'   network_p2p(display = "hrvar",
 #'               path = NULL,
