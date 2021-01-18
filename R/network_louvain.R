@@ -11,6 +11,17 @@
 #'
 #' @inheritParams network_p2p
 #'
+#' @param return
+#' String specifying what output to return. Defaults to "plot-louvain". Valid return options include:
+#'   - 'plot-louvain': return a network plot coloured by Louvain communities, saving a PDF to path.
+#'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.
+#'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
+#'   - 'table': return a vertex summary table with counts in communities and HR attribute.
+#'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
+#'   - 'describe': return a list of data frames which describe each of the identified communities.
+#'     The first data frame is a summary table of all the communities.
+#'   - 'network': return igraph object.
+#'
 #' @examples
 #' ## Simulate a small person-to-person dataset
 #' p2p_data <- p2p_data_sim(size = 50)

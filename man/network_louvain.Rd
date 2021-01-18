@@ -37,17 +37,15 @@ full list of options.}
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
 "describe" output. See \code{network_describe()}.}
 
-\item{return}{String specifying what output to return. Defaults to "plot".
-Valid return options include:
+\item{return}{String specifying what output to return. Defaults to "plot-louvain". Valid return options include:
 \itemize{
-\item 'plot': return a network plot.
-\item 'sankey': return a sankey plot combining communities and HR attribute. This is only valid if
-a community detection method is selected at \code{display}.
+\item 'plot-louvain': return a network plot coloured by Louvain communities, saving a PDF to path.
+\item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.
+\item 'plot-sankey': return a sankey plot combining communities and HR attribute.
 \item 'table': return a vertex summary table with counts in communities and HR attribute.
 \item 'data': return a vertex data file that matches vertices with communities and HR attributes.
 \item 'describe': return a list of data frames which describe each of the identified communities.
-The first data frame is a summary table of all the communities. This is only valid if a community
-detection method is selected at \code{display}.
+The first data frame is a summary table of all the communities.
 \item 'network': return igraph object.
 }}
 
