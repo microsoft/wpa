@@ -44,6 +44,7 @@ The summary table returned by \code{return == "table"} represent percentiles of 
 e.g. x\% of signals are sent by y hour of the day.
 }
 \description{
+\Sexpr[results=rd]{lifecycle::badge("experimental")}
 Apply hierarchical clustering to emails sent by hour of day.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.
