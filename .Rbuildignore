@@ -16,5 +16,8 @@
 # Ignore all figures
 ^man/figures
 
-# Ignore all vignettes
-^vignettes
+# Ignore vignettes
+^vignettes/best-practices.Rmd$
+^vignettes/Change-over-time.Rmd$
+^vignettes/IV-report.Rmd$
+^vignettes/text-mining-capabilities.Rmd$

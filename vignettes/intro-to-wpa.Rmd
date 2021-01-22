@@ -29,7 +29,6 @@ To start off using **wpa**, you'll have to load it by running `library(wpa)`. Fo
 ```{r message=FALSE, warning=FALSE}
 library(wpa)
 library(dplyr)
-library(tibble)
 library(tidyr)
 ```
 
