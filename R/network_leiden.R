@@ -6,6 +6,7 @@
 #' @title Implement the Leiden community detection on a Person to Person network query
 #'
 #' @description
+#' \Sexpr[results=rd]{lifecycle::badge("experimental")}
 #' Take a P2P network query and implement the Leiden community detection method. To run
 #' this function, you will require all the pre-requisites of the **leiden** package installed,
 #' which includes Python and **reticulate**.

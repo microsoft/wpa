@@ -55,6 +55,7 @@ Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} 
 method.}
 }
 \description{
+\Sexpr[results=rd]{lifecycle::badge("experimental")}
 Take a P2P network query and implement the Louvain community detection method. The
 \strong{igraph} implementation of the Louvain method is used.
 }

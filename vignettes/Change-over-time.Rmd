@@ -18,14 +18,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-## What has changed
+## What has changed?
 
 What has changed? 
+
 Business leaders often want to understand how their business is performing so they can make data-driven decisions about how to work more efficiently and effectively. Identifying what has changed, and why, can lead business leaders to update their operations and strategy to improve business results. This means that one of the most common analytical asks for Workplace Analytics analysts is, “What has changed?” The **wpa** package offers two techniques to identify significant changes in Workplace Analytics metrics over time: `period_change()` and `IV_by_period()`.
 
 For example, leaders at Contoso Corporation might be interested in how overall levels of digital collaboration are changing as they approach the end-of-year holidays. We can look at this question with the built-in `sq_data` dataset and the `Collaboration_hours` metric to show how an analyst could answer that.
 
-First, let's load the **wpa** package
+First, let's load the **wpa** package:
+
 ```{r message=FALSE, warning=FALSE}
 library(wpa)
 library(dplyr)
@@ -41,36 +43,40 @@ This chart provides us with a good starting point, as we can see a change in col
 
 ## `period_change()`
 
-**The `period_change()` function** returns a histogram of how many people changed a specific metric over two time periods, the `before` and `after` periods. It calculates the number or percentage of people whose metric changed by a particular percentage, and then helps us understand whether this overall change is statistically significant. 
+The `period_change()` function returns a histogram of how many people changed a specific metric over two time periods, the `before` and `after` periods. It calculates the number or percentage of people whose metric changed by a particular percentage, and then helps us understand whether this overall change is statistically significant. 
 
 In the scenario with Contoso, we can see that collaboration hours step down throughout November and December – but is this significant?
 
 First, let’s compare the change in collaboration for the first two weeks of November. 
 
 ```{r message=FALSE, warning=FALSE}
-sq_data %>% period_change(
-                          compvar = "Collaboration_hours",
-                          before_start = "2019-11-03",
-                          before_end = "2019-11-09",
-                          after_start = "2019-11-10",
-                          after_end = "2019-11-16")
+sq_data %>%
+  period_change(
+    compvar = "Collaboration_hours",
+    before_start = "2019-11-03",
+    before_end = "2019-11-09",
+    after_start = "2019-11-10",
+    after_end = "2019-11-16"
+    )
 ```
 
 This function compares the collaboration hours of the population between the `before` period (week of November 3) and the `after` period (week of November 10). It places each employee’s data into bins according to how much their collaboration time changed between the two periods. For example, we see in the figure above that 107 people had their collaboration hours decrease by between 0 and 10%. We also see that 67 had their collaboration hours increase by between 0 and 10%. These 174 people had a total collaboration time during the second week of November that was within 10% of their collaboration time during the first week of November (so, it was more or less stable). 
 
 In this way, we end up with a distribution of how employee collaboration hours have changed between the two periods. As the distribution appears relatively normal and centered on a mode of  30% to -20%, we see that most employees had their collaboration hours decrease, even though a spike of employees, seen in the bar at the far right, had their collaboration hours increase by at least 90 percent.
 
-We also get a ¬p-value (shown at the right of the image caption) that tells us whether the two samples are statistically significantly different. The smaller the value, the more significant the differences. Typically, we look for a significance level of less than 0.05, but the exact threshold you pick depends on how sure you need to be. In this case, the p-value of 0.0629 is too large for us to be sure at the 95% confidence level that there has been a change in collaboration activity between the first two weeks of November.
+We also get a _p-value_ (shown at the right of the image caption) that tells us whether the two samples are statistically significantly different. The smaller the value, the more significant the differences. Typically, we look for a significance level of less than 0.05, but the exact threshold you pick depends on how sure you need to be. In this case, the p-value of 0.0629 is too large for us to be sure at the 95% confidence level that there has been a change in collaboration activity between the first two weeks of November.
 
 However, if we compare November to December, we see a significant difference in collaboration hours:
 
 ```{r message=FALSE, warning=FALSE}
-sq_data %>% period_change(
-                          compvar = "Collaboration_hours",
-                          before_start = "2019-11-03",
-                          before_end = "2019-11-30",
-                          after_start = "2019-12-01",
-                          after_end = "2019-12-31")
+sq_data %>%
+  period_change(
+    compvar = "Collaboration_hours",
+    before_start = "2019-11-03",
+    before_end = "2019-11-30",
+    after_start = "2019-12-01",
+    after_end = "2019-12-31"
+    )
 ```
 
 The p-value here is close to zero. This change is unsurprising as we saw collaboration hours decrease sharply during the first week of December.
@@ -80,36 +86,39 @@ This analysis can be helpful because looking casually at how the mean has change
 
 ## `IV_by_period()`
 
-While `period_change()` is great for looking at a specific collaboration metric, we sometimes want to use **wpa** to tell us all the metrics that have changed significantly. The `IV_by_period()` function does just that by using the Information Value method (see more here: [How to identify potential predictors for survey results using information value] (https://microsoft.github.io/wpa/articles/IV-report.html). With over 60 metrics in the `sq_data` dataset, it might not be practical to look at each metric individually, and this is where the `IV_by_period()` function can be helpful.
+While `period_change()` is great for looking at a specific collaboration metric, we sometimes want to use **wpa** to tell us all the metrics that have changed significantly. The `IV_by_period()` function does just that by using the Information Value method (see more here: [How to identify potential predictors for survey results using information value](https://microsoft.github.io/wpa/articles/IV-report.html). With over 60 metrics in the `sq_data` dataset, it might not be practical to look at each metric individually, and this is where the `IV_by_period()` function can be helpful.
 
 Essentially, the `IV_by_period()` function tells us which metrics in the dataset best differentiate the `before` and `after` time periods. The higher the Information Value, the more different that metric is between the two periods (because it better explains the difference between those two groups).
 
 Looking at the change between the first two weeks of November, we see very small Information Values. This tells us that the collaboration activity is very similar between those two weeks.
 
 ```{r message=FALSE, warning=FALSE}
-sq_data %>% IV_by_period(
-                          before_start = "2019-11-03",
-                          before_end = "2019-11-09",
-                          after_start = "2019-11-10",
-                          after_end = "2019-11-16")
+sq_data %>%
+  IV_by_period(
+    before_start = "2019-11-03",
+    before_end = "2019-11-09",
+    after_start = "2019-11-10",
+    after_end = "2019-11-16"
+    )
 ```
 
 If we look at the differences between November and December, we see higher Information Values that reflect a big difference in collaboration activity. In this case we see that the Internal Network Size has an Information Value score of 0.28, which means that it is moderately predictive of the difference between the two months. We also see large values for Email and Instant Message activities. Although the Information Value does not tell us how these metrics changed, it provides a good starting point for further analysis to determine what changed in those metrics.
 
 ```{r message=FALSE, warning=FALSE}
-sq_data %>% IV_by_period(
-                        before_start = "2019-11-03",
-                        before_end = "2019-11-30",
-                        after_start = "2019-12-01",
-                        after_end = "2019-12-31")
+sq_data %>%
+  IV_by_period(
+    before_start = "2019-11-03",
+    before_end = "2019-11-30",
+    after_start = "2019-12-01",
+    after_end = "2019-12-31"
+    )
 ```
+
 We can use this method to answer the Contoso leadership’s question about how collaboration activity has changed. Now that we know the top metrics that have changed, we can look at each of them in more detail, including with the `period_change()` function, to more fully describe how collaboration differs going into the end of the year.
-
-
 
 ## Conclusion
 
-We’ve introduced two functions in the **wpa** package that help analysts identify changes in collaboration behavior over time. ‘period_change()’ can identify the changes in a specific metric, while ‘IV_by_period()’ will help the analyst find the metrics with the biggest changes.
+We’ve introduced two functions in the **wpa** package that help analysts identify changes in collaboration behavior over time. `period_change()` can identify the changes in a specific metric, while `IV_by_period()` will help the analyst find the metrics with the biggest changes.
 
 ---
 

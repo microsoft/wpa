@@ -6,6 +6,7 @@
 #' @title Create hierarchical clusters of selected metrics using a Person query
 #'
 #' @description
+#' \Sexpr[results=rd]{lifecycle::badge("questioning")}
 #' Apply hierarchical clustering to selected metrics. Person averages are computed prior to clustering.
 #' The hierarchical clustering uses cosine distance and the ward.D method
 #' of agglomeration.

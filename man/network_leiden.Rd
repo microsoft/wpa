@@ -62,6 +62,7 @@ Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} 
 method.}
 }
 \description{
+\Sexpr[results=rd]{lifecycle::badge("experimental")}
 Take a P2P network query and implement the Leiden community detection method. To run
 this function, you will require all the pre-requisites of the \strong{leiden} package installed,
 which includes Python and \strong{reticulate}.
