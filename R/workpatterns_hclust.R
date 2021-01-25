@@ -6,7 +6,7 @@
 #' @title Create a hierarchical clustering of email or IMs by hour of day
 #'
 #' @description
-#' \Sexpr[results=rd]{lifecycle::badge("experimental")}
+#' `r lifecycle::badge('experimental')`
 #' Apply hierarchical clustering to emails sent by hour of day.
 #' The hierarchical clustering uses cosine distance and the ward.D method
 #' of agglomeration.

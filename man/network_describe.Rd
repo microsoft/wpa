@@ -15,7 +15,7 @@ network_describe(
 \item{hrvar}{Character vector of length 3 containing the HR attributes to be used.}
 }
 \description{
-\Sexpr[results=rd]{lifecycle::badge("experimental")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 Returns a data frame that gives a percentage of the group combinations that best represent
 the population provided. Uses a person to person query.
 }

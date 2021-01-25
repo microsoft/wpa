@@ -41,6 +41,7 @@ that the variable has not changed, using a Wilcox signed-rank test.
 ## Run plot
 period_change(sq_data, compvar = "Workweek_span", before_end = "2019-11-16")
 
+\donttest{
 ## Run plot with more specific arguments
 period_change(sq_data,
               compvar = "Workweek_span",
@@ -49,7 +50,7 @@ period_change(sq_data,
               after_start = "2019-12-03",
               after_end = "2019-12-16",
               return = "percentage")
-
+}
 }
 \seealso{
 Other Flexible Input: 
