@@ -54,7 +54,12 @@ workpatterns_area(em_data, return = "table")
 }
 \seealso{
 Other Work Patterns: 
+\code{\link{flex_index}()},
 \code{\link{personas_hclust}()},
+\code{\link{plot_flex_index}()},
+\code{\link{workpatterns_classify_bw}()},
+\code{\link{workpatterns_classify_pav}()},
+\code{\link{workpatterns_classify}()},
 \code{\link{workpatterns_hclust}()}
 }
 \concept{Work Patterns}
