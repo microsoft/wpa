@@ -1,10 +1,10 @@
 # wpa <img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/logo2.png" align="right" width=15% />
 
-  [![R build status](https://github.com/microsoft/wpa/workflows/R-CMD-check/badge.svg)](https://github.com/microsoft/wpa/actions) [![CodeFactor](https://www.codefactor.io/repository/github/microsoft/wpa/badge)](https://www.codefactor.io/repository/github/microsoft/wpa) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+  [![R build status](https://github.com/microsoft/wpa/workflows/R-CMD-check/badge.svg)](https://github.com/microsoft/wpa/actions/) [![CodeFactor](https://www.codefactor.io/repository/github/microsoft/wpa/badge/)](https://www.codefactor.io/repository/github/microsoft/wpa/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT/) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 
 ## Analyze and Visualize Workplace Analytics data
 
-This is an R package for analyzing and visualizing data from [Microsoft Workplace Analytics](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics).
+This is an R package for analyzing and visualizing data from [Microsoft Workplace Analytics](https://docs.microsoft.com/en-us/workplace-analytics/).
 
 ## With the **wpa** package, you can...
 
@@ -28,6 +28,7 @@ To get started with the package,  please see the following links:
 
 - [Installation and Set-up](https://microsoft.github.io/wpa/analyst_guide_getting_started.html)
 - [Full function list](https://microsoft.github.io/wpa/reference/index.html)
+- [Analyst Guide](https://microsoft.github.io/wpa/analyst_guide.html)
 
 Also check out our package cheat sheet for a quick glimpse of what **wpa** offers:
 
@@ -55,12 +56,12 @@ See [NEWS.md](https://microsoft.github.io/wpa/news/index.html) for the package c
 
 ## Code of Conduct
 
-We would ask you to please read the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct) prior to engaging with this package.
+We would ask you to please read the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) prior to engaging with this package.
 
 
 **Trademarks** 
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general). Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party's policies.
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general/). Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party's policies.
 
 ---
 

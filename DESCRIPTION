@@ -23,8 +23,8 @@ Description: Opinionated functions that enable easier and faster
     This package adheres to tidyverse principles and works well with the pipe syntax.
     wpa is built with the beginner-to-intermediate R users in mind, and is optimised for
     simplicity. 
-URL: https://github.com/microsoft/wpa
-BugReports: https://github.com/microsoft/wpa/issues
+URL: https://github.com/microsoft/wpa/
+BugReports: https://github.com/microsoft/wpa/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
