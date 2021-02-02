@@ -85,6 +85,7 @@ workpatterns_hclust <- function(data,
     signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
     signal_set <- gsub(pattern = "IM", replacement = "IMs_sent", x = signal_set)
     signal_set <- gsub(pattern = "unscheduled_calls", replacement = "Unscheduled_calls", x = signal_set)
+    signal_set <- gsub(pattern = "meetings", replacement = "Meetings", x = signal_set)
 
   } else {
 
@@ -110,64 +111,6 @@ workpatterns_hclust <- function(data,
   ## Signal label
   sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
 
-  # ## Select input variable names
-  # if("email" %in% signals & "IM" %in% signals){
-  #
-  #   ## Create 24 summed `Signals_sent` columns
-  #   signal_cols <-
-  #     purrr::map(0:23,
-  #                ~combine_signals(data, hr = .,
-  #                                 signals = c("Emails_sent", "IMs_sent"))) %>%
-  #     bind_cols()
-  #
-  #   ## Use names for matching
-  #   input_var <- names(signal_cols)
-  #
-  #   ## Average signals sent by Person
-  #   signals_df <-
-  #     data %>%
-  #     select(PersonId) %>%
-  #     cbind(signal_cols) %>%
-  #     group_by(PersonId) %>%
-  #     summarise_all(~mean(.))
-  #
-  #   ## Signal label
-  #   sig_label <- "Signals_sent"
-  #
-  # } else if(signals == "IM"){
-  #
-  #   match_index <- grepl(pattern = "^IMs_sent", x = names(data))
-  #   input_var <- names(data)[match_index]
-  #
-  #   ## Average signals sent by Person
-  #   signals_df <-
-  #     data %>%
-  #     select(PersonId, all_of(input_var)) %>%
-  #     group_by(PersonId) %>%
-  #     summarise_all(~mean(.))
-  #
-  #   sig_label <- "IMs_sent"
-  #
-  # } else if(signals == "email"){
-  #
-  #   match_index <- grepl(pattern = "^Emails_sent", x = names(data))
-  #   input_var <-names(data)[match_index]
-  #
-  #   ## Average signals sent by Person
-  #   signals_df <-
-  #     data %>%
-  #     select(PersonId, all_of(input_var)) %>%
-  #     group_by(PersonId) %>%
-  #     summarise_all(~mean(.))
-  #
-  #   sig_label <- "Emails_sent"
-  #
-  # } else {
-  #
-  #   stop("Invalid input for `signals`.")
-  #
-  # }
-
   ## Normalised pattern data
   ptn_data_norm <-
     signals_df %>%
@@ -176,7 +119,6 @@ workpatterns_hclust <- function(data,
     filter(Signals_Total > 0) %>%
     select(PersonId, all_of(input_var)) %>%
     mutate_all(~tidyr::replace_na(., 0)) # Replace NAs with 0s
-
 
   ## Distance matrix
   dist_m <-
@@ -188,12 +130,6 @@ workpatterns_hclust <- function(data,
   h_clust <-
     dist_m %>%
     stats::hclust(method = "ward.D")
-
-  # Dendrogram
-  # plot(h_clust)
-  # rect.hclust(h_clust, k = 4)
-  # dendro_plot <- recordPlot()
-
 
   ## Cut tree
   cuts <- stats::cutree(h_clust, k = k)
@@ -383,10 +319,9 @@ plot_signal_clust <- function(data,
     ggplot(aes(x = Hours, y = !!sym(sig_label), colour = clusters)) +
     geom_line(size = 1) +
     geom_area(aes(fill = clusters), alpha = 0.2, position = 'identity') +
-    theme_minimal() +
+    theme_wpa_basic() +
     scale_x_continuous(labels = pad2) +
     scale_y_continuous(labels = round) +
-    theme_wpa_basic() +
     theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
     ggtitle(label = paste("Distribution of", metric_label, "by Hour"),
             subtitle = group_label) +
