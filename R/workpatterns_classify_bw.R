@@ -66,60 +66,91 @@ workpatterns_classify_bw <- function(data,
   end_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = end_hour))
 
   # Calculate hours within working hours
-  d <-(end_hour - start_hour)-1
+  d <- (end_hour - start_hour) - 1
 
-  ## Select input variable names
-  if("email" %in% signals & "IM" %in% signals){
+  # Text replacement only for allowed values
 
-    ## Create 24 summed `Signals_sent` columns
-    signal_cols <-
-      purrr::map(0:23, ~combine_signals(data2, hr = .)) %>%
-      dplyr::bind_cols()
+  if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
-    ## Use names for matching
-    input_var <- names(signal_cols)
-
-    ## Signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, c("PersonId", "Date")] %>%
-      cbind(signal_cols)
-
-    ## Signal label
-    sig_label <- "Signals_sent"
-
-  } else if(signals == "IM"){
-
-    match_index <- grepl(pattern = "^IMs_sent", x = names(data2))
-    input_var <- names(data2)[match_index]
-    input_var2 <- c("PersonId", "Date", input_var)
-
-    ## signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, ..input_var2]
-
-    sig_label <- "IMs_sent"
-
-
-  } else if(signals == "email"){
-
-    match_index <- grepl(pattern = "^Emails_sent", x = names(data2))
-    input_var <- names(data2)[match_index]
-    input_var2 <- c("PersonId", "Date", input_var)
-
-    ## signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, ..input_var2]
-
-    sig_label <- "Emails_sent"
+    signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
+    signal_set <- gsub(pattern = "IM", replacement = "IMs_sent", x = signal_set)
+    signal_set <- gsub(pattern = "unscheduled_calls", replacement = "Unscheduled_calls", x = signal_set)
+    signal_set <- gsub(pattern = "meetings", replacement = "Meetings", x = signal_set)
 
   } else {
 
     stop("Invalid input for `signals`.")
 
   }
+
+  ## Create 24 summed `Signals_sent` columns
+  signal_cols <- purrr::map(0:23, ~combine_signals(data, hr = ., signals = signal_set))
+  signal_cols <- bind_cols(signal_cols)
+
+  ## Use names for matching
+  input_var <- names(signal_cols)
+
+  ## Signals sent by Person and Date
+  signals_df <-
+    data2 %>%
+    .[, c("PersonId", "Date")] %>%
+    cbind(signal_cols)
+
+  ## Signal label
+  sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
+
+  # ## Select input variable names
+  # if("email" %in% signals & "IM" %in% signals){
+  #
+  #   ## Create 24 summed `Signals_sent` columns
+  #   signal_cols <-
+  #     purrr::map(0:23, ~combine_signals(data2, hr = .)) %>%
+  #     dplyr::bind_cols()
+  #
+  #   ## Use names for matching
+  #   input_var <- names(signal_cols)
+  #
+  #   ## Signals sent by Person and date
+  #   signals_df <-
+  #     data2 %>%
+  #     .[, c("PersonId", "Date")] %>%
+  #     cbind(signal_cols)
+  #
+  #   ## Signal label
+  #   sig_label <- "Signals_sent"
+  #
+  # } else if(signals == "IM"){
+  #
+  #   match_index <- grepl(pattern = "^IMs_sent", x = names(data2))
+  #   input_var <- names(data2)[match_index]
+  #   input_var2 <- c("PersonId", "Date", input_var)
+  #
+  #   ## signals sent by Person and date
+  #   signals_df <-
+  #     data2 %>%
+  #     .[, ..input_var2]
+  #
+  #   sig_label <- "IMs_sent"
+  #
+  #
+  # } else if(signals == "email"){
+  #
+  #   match_index <- grepl(pattern = "^Emails_sent", x = names(data2))
+  #   input_var <- names(data2)[match_index]
+  #   input_var2 <- c("PersonId", "Date", input_var)
+  #
+  #   ## signals sent by Person and date
+  #   signals_df <-
+  #     data2 %>%
+  #     .[, ..input_var2]
+  #
+  #   sig_label <- "Emails_sent"
+  #
+  # } else {
+  #
+  #   stop("Invalid input for `signals`.")
+  #
+  # }
 
 
   ## Create binary variable 0 or 1

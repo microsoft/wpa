@@ -29,8 +29,11 @@
 #' and "abs".
 #'
 #' @param signals Character vector to specify which collaboration metrics to use:
-#' You may use "email" (default) for emails only, "IM" for Teams messages only,
-#' or a combination of the two `c("email", "IM")`.
+#'   - "email" (default) for emails only
+#'   - "IM" for Teams messages only,
+#'   - "unscheduled_calls" for Unscheduled Calls only
+#'   - "meetings" for Meetings only
+#'   - or a combination of signals, such as `c("email", "IM")`
 #'
 #' @param start_hour A character vector specifying starting hours,
 #' e.g. "0900". Note that this currently only supports **hourly** increments.

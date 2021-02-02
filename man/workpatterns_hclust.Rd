@@ -30,8 +30,13 @@ or absolute values in "data" and "plot". Valid values are "percent" (default)
 and "abs".}
 
 \item{signals}{Character vector to specify which collaboration metrics to use:
-You may use "email" (default) for emails only, "IM" for Teams messages only,
-"unscheduled_calls" for Unscheduled Calls only, or a combination, such as \code{c("email", "IM")}.}
+\itemize{
+\item "email" (default) for emails only
+\item "IM" for Teams messages only,
+\item "unscheduled_calls" for Unscheduled Calls only
+\item "meetings" for Meetings only
+\item or a combination of signals, such as \code{c("email", "IM")}
+}}
 
 \item{start_hour}{A character vector specifying starting hours,
 e.g. "0900"}
