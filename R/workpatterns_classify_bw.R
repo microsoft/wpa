@@ -254,7 +254,12 @@ workpatterns_classify_bw <- function(data,
       dplyr::summarise(n = dplyr::n_distinct(PersonId)) %>%
       dplyr::mutate(per = n / sum(n)) %>%
       ggplot(aes(x=Date, y=per, fill=Personas)) +
-      geom_area()
+      geom_area() +
+      theme_wpa_basic() +
+      labs(title = "Distribution of Working Patterns over time",
+           y = "Percentage",
+           caption = extract_date_range(data2, return = "text")) +
+      theme(legend.position = "right")
   }
 
   return_table <- function(hrvar = hrvar_str){
