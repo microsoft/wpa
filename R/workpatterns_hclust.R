@@ -83,7 +83,7 @@ workpatterns_hclust <- function(data,
 
   # Text replacement only for allowed values
 
-  if(any(signals %in% c("email", "IM", "unscheduled_calls"))){
+  if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
     signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
     signal_set <- gsub(pattern = "IM", replacement = "IMs_sent", x = signal_set)
