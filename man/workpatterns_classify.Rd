@@ -46,6 +46,7 @@ Valid options include "plot" (default), "data", "table" and "plot-area".
 "plot" returns a bar plot, whilst "plot-area" returns an overlapping area plot.}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 Apply a rule based algorithm to emails or instant messages sent by hour of day.
 Uses a binary week-based (bw) method by default, with options to use the
 the person-average volume-based (pav) method.
@@ -54,12 +55,14 @@ the person-average volume-based (pav) method.
 This is a wrapper around \code{workpatterns_classify_bw()} and \code{workpatterns_classify_pav()}.
 }
 \examples{
-\dontrun{
-# Returns a plot by default
 
+# Returns a plot by default
 em_data \%>\% workpatterns_classify(method = "bw")
 
+# Return an area plot
 em_data \%>\% workpatterns_classify(method = "bw", return = "plot-area")
+
+\dontrun{
 
 em_data \%>\% workpatterns_classify(method = "bw", return = "table")
 

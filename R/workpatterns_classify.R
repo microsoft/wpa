@@ -1,6 +1,7 @@
 #' @title Classify working pattern personas using a rule based algorithm
 #'
 #' @description
+#' `r lifecycle::badge('experimental')`
 #' Apply a rule based algorithm to emails or instant messages sent by hour of day.
 #' Uses a binary week-based (bw) method by default, with options to use the
 #' the person-average volume-based (pav) method.
@@ -41,12 +42,14 @@
 #' @import ggplot2
 #'
 #' @examples
-#' \dontrun{
-#' # Returns a plot by default
 #'
+#' # Returns a plot by default
 #' em_data %>% workpatterns_classify(method = "bw")
 #'
+#' # Return an area plot
 #' em_data %>% workpatterns_classify(method = "bw", return = "plot-area")
+#'
+#' \dontrun{
 #'
 #' em_data %>% workpatterns_classify(method = "bw", return = "table")
 #'
