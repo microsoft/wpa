@@ -282,6 +282,8 @@ workpatterns_classify_bw <- function(data,
       dplyr::group_by(Date, Personas) %>%
       dplyr::summarise(n = dplyr::n_distinct(PersonId)) %>%
       dplyr::mutate(per = n / sum(n)) %>%
+      tidyr::complete(Date, Personas, fill = list(0)) %>%
+      mutate(per = tidyr::replace_na(per, 0)) %>%
       ggplot(aes(x=Date, y=per, fill=Personas)) +
       geom_area() +
       theme_wpa_basic() +
