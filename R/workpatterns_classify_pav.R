@@ -2,22 +2,29 @@
 #' the person-average volume-based (pav) method.
 #'
 #' @description
+#' `r lifecycle::badge('experimental')`
 #' Apply a rule based algorithm to emails or instant messages sent by hour of day.
 #' This uses a person-average volume-based (pav) method.
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
 #'
-#' @param return Character vector to specify what to return.
-#' Valid options include "plot" (default), "data", "table" and "plot-area".
-#' "plot" returns a bar plot, whilst "plot-area" returns an overlapping area plot.
+#' @param return Character vector to specify what to return. Valid options include:
+#'   - "plot": returns a bar plot of signal distribution by hour and archetypes (default)
+#'   - "data": returns the raw data with the classified archetypes
+#'   - "table": returns a summary table of the archetypes
+#'   - "plot-area": returns an overlapping area plot
 #'
 #' @param values Character vector to specify whether to return percentages
-#' or absolute values in "data" and "plot". Valid values are "percent" (default)
-#' and "abs".
+#' or absolute values in "data" and "plot". Valid values are:
+#'   - "percent": percentage of signals divided by total signals (default)
+#'   - "abs": absolute count of signals
 #'
 #' @param signals Character vector to specify which collaboration metrics to use:
-#' You may use "email" (default) for emails only, "IM" for Teams messages only,
-#' or a combination of the two `c("email", "IM")`.
+#'   - "email" (default) for emails only
+#'   - "IM" for Teams messages only,
+#'   - "unscheduled_calls" for Unscheduled Calls only
+#'   - "meetings" for Meetings only
+#'   - or a combination of signals, such as `c("email", "IM")`
 #'
 #' @param start_hour A character vector specifying starting hours,
 #' e.g. "0900"
@@ -29,13 +36,14 @@
 #' @import ggplot2
 #'
 #' @examples
-#' \dontrun{
-#' # Returns a plot by default
-#' workpatterns_classify(em_data)
+#' ## Returns a plot by default
+#' workpatterns_classify_pav(em_data)
 #'
-#' # Returning a table
-#' workpatterns_classify(em_data, return = "table")
-#' }
+#' ## Return a table
+#' workpatterns_classify_pav(em_data, return = "table")
+#'
+#' ## Return an area plot
+#' workpatterns_classify_pav(em_data, return = "plot-area")
 #'
 #' @family Work Patterns
 #'
@@ -81,65 +89,6 @@ workpatterns_classify_pav <- function(data,
 
   ## Signal label
   sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
-
-  # ## Select input variable names
-  # if("email" %in% signals & "IM" %in% signals){
-  #
-  #   ## Create 24 summed `Signals_sent` columns
-  #   signal_cols <-
-  #     purrr::map(0:23,
-  #                ~combine_signals(data,
-  #                                 hr = .)) %>%
-  #     bind_cols()
-  #
-  #   ## Use names for matching
-  #   input_var <- names(signal_cols)
-  #
-  #   ## Average signals sent by Person
-  #   signals_df <-
-  #     data %>%
-  #     select(PersonId) %>%
-  #     cbind(signal_cols) %>%
-  #     group_by(PersonId) %>%
-  #     summarise_all(~mean(.))
-  #
-  #   ## Signal label
-  #   sig_label <- "Signals_sent"
-  #
-  # } else if(signals == "IM"){
-  #
-  #   match_index <- grepl(pattern = "^IMs_sent", x = names(data))
-  #   input_var <-names(data)[match_index]
-  #
-  #   ## Average signals sent by Person
-  #   signals_df <-
-  #     data %>%
-  #     select(PersonId, all_of(input_var)) %>%
-  #     group_by(PersonId) %>%
-  #     summarise_all(~mean(.))
-  #
-  #   sig_label <- "IMs_sent"
-  #
-  # } else if(signals == "email"){
-  #
-  #   match_index <- grepl(pattern = "^Emails_sent", x = names(data))
-  #   input_var <-names(data)[match_index]
-  #
-  #   ## Average signals sent by Person
-  #   signals_df <-
-  #     data %>%
-  #     select(PersonId, all_of(input_var)) %>%
-  #     group_by(PersonId) %>%
-  #     summarise_all(~mean(.))
-  #
-  #   sig_label <- "Emails_sent"
-  #
-  # } else {
-  #
-  #   stop("Invalid input for `signals`.")
-  #
-  # }
-
 
   ## Normalised pattern data
   ptn_data_norm <-

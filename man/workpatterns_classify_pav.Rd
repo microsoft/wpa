@@ -18,12 +18,20 @@ workpatterns_classify_pav(
 \item{data}{A data frame containing data from the Hourly Collaboration query.}
 
 \item{values}{Character vector to specify whether to return percentages
-or absolute values in "data" and "plot". Valid values are "percent" (default)
-and "abs".}
+or absolute values in "data" and "plot". Valid values are:
+\itemize{
+\item "percent": percentage of signals divided by total signals (default)
+\item "abs": absolute count of signals
+}}
 
 \item{signals}{Character vector to specify which collaboration metrics to use:
-You may use "email" (default) for emails only, "IM" for Teams messages only,
-or a combination of the two \code{c("email", "IM")}.}
+\itemize{
+\item "email" (default) for emails only
+\item "IM" for Teams messages only,
+\item "unscheduled_calls" for Unscheduled Calls only
+\item "meetings" for Meetings only
+\item or a combination of signals, such as \code{c("email", "IM")}
+}}
 
 \item{start_hour}{A character vector specifying starting hours,
 e.g. "0900"}
@@ -31,22 +39,28 @@ e.g. "0900"}
 \item{end_hour}{A character vector specifying starting hours,
 e.g. "1700"}
 
-\item{return}{Character vector to specify what to return.
-Valid options include "plot" (default), "data", "table" and "plot-area".
-"plot" returns a bar plot, whilst "plot-area" returns an overlapping area plot.}
+\item{return}{Character vector to specify what to return. Valid options include:
+\itemize{
+\item "plot": returns a bar plot of signal distribution by hour and archetypes (default)
+\item "data": returns the raw data with the classified archetypes
+\item "table": returns a summary table of the archetypes
+\item "plot-area": returns an overlapping area plot
+}}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 Apply a rule based algorithm to emails or instant messages sent by hour of day.
 This uses a person-average volume-based (pav) method.
 }
 \examples{
-\dontrun{
-# Returns a plot by default
-workpatterns_classify(em_data)
+## Returns a plot by default
+workpatterns_classify_pav(em_data)
 
-# Returning a table
-workpatterns_classify(em_data, return = "table")
-}
+## Return a table
+workpatterns_classify_pav(em_data, return = "table")
+
+## Return an area plot
+workpatterns_classify_pav(em_data, return = "plot-area")
 
 }
 \seealso{

@@ -39,6 +39,7 @@ Valid options include "plot" (default), "data", "table" and "plot-area".
 "plot" returns a bar plot, whilst "plot-area" returns an overlapping area plot.}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 Apply a rule based algorithm to emails sent by hour of day,
 using the binary week-based (bw) method.
 }
