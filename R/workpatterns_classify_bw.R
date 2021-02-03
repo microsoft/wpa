@@ -24,8 +24,6 @@
 #' @import ggplot2
 #' @importFrom magrittr "%>%"
 #' @importFrom data.table ":=" "%like%" "%between%"
-#' @importFrom rlang "!!"
-#' @importFrom rlang sym
 #'
 #' @examples
 #' \dontrun{
