@@ -8,7 +8,7 @@
 #' @author Tannaz Sattari Tabrizi <Tannaz.Sattari@microsoft.com>
 #'
 #' @description
-#' \Sexpr[results=rd]{lifecycle::badge("experimental")}
+#' `r lifecycle::badge('experimental')`
 #' Returns a data frame that gives a percentage of the group combinations that best represent
 #' the population provided. Uses a person to person query.
 #'

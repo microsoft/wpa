@@ -81,7 +81,7 @@ Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} 
 method.}
 }
 \description{
-\Sexpr[results=rd]{lifecycle::badge("experimental")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 Pass a data frame containing a person-to-person query and return a network visualization.
 Options are available for community detection using either the Louvain or the Leiden algorithms.
 }

@@ -20,17 +20,15 @@ knitr::opts_chunk$set(
 
 ## Background
 
-This document walks through the **wpa** package, and provides some examples on how to use some of the functions. For our full online documentation for the package, please visit <https://microsoft.github.io/wpa>. For anything else related to Workplace Analytics, please visit <https://docs.microsoft.com/en-us/workplace-analytics/>.
+This document walks through the **wpa** package, and provides some examples on how to use some of the functions. For our full online documentation for the package, please visit <https://microsoft.github.io/wpa/>. For anything else related to Workplace Analytics, please visit <https://docs.microsoft.com/en-us/workplace-analytics/>.
 
 ### Setting up
 
-To start off using **wpa**, you'll have to load it by running `library(wpa)`. For the purpose of our examples, let's also loada few of the component packages of **tidyverse** (alternatively, you can just run `library(tidyverse)`:
+To start off using **wpa**, you'll have to load it by running `library(wpa)`. For the purpose of our examples, let's also load **dplyr** as a component package of **tidyverse** (alternatively, you can just run `library(tidyverse)`:
 
 ```{r message=FALSE, warning=FALSE}
 library(wpa)
 library(dplyr)
-library(tibble)
-library(tidyr)
 ```
 
 The package ships with a standard Person query dataset `sq_data`:
@@ -202,4 +200,4 @@ Running the function will open up a HTML report in your browser, summarising the
 
 ## Feedback
 
-Hope you found this useful! If you have any suggestions or feedback, please log them at <https://github.com/microsoft/wpa/issues>.
+Hope you found this useful! If you have any suggestions or feedback, please log them at <https://github.com/microsoft/wpa/issues/>.

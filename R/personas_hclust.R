@@ -6,7 +6,7 @@
 #' @title Create hierarchical clusters of selected metrics using a Person query
 #'
 #' @description
-#' \Sexpr[results=rd]{lifecycle::badge("questioning")}
+#' `r lifecycle::badge('questioning')`
 #' Apply hierarchical clustering to selected metrics. Person averages are computed prior to clustering.
 #' The hierarchical clustering uses cosine distance and the ward.D method
 #' of agglomeration.
@@ -43,12 +43,13 @@
 #'                 k = 4,
 #'                 return = "table")
 #'
+#' \donttest{
 #' ## Return data with clusters appended
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4,
 #'                 return = "data")
-#'
+#' }
 #'
 #' @family Work Patterns
 #'

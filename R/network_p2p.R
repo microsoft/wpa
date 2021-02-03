@@ -6,7 +6,7 @@
 #' @title Create a network plot with the person-to-person query
 #'
 #' @description
-#' \Sexpr[results=rd]{lifecycle::badge("experimental")}
+#' `r lifecycle::badge('experimental')`
 #' Pass a data frame containing a person-to-person query and return a network visualization.
 #' Options are available for community detection using either the Louvain or the Leiden algorithms.
 #'

@@ -23,19 +23,17 @@ Description: Opinionated functions that enable easier and faster
     This package adheres to tidyverse principles and works well with the pipe syntax.
     wpa is built with the beginner-to-intermediate R users in mind, and is optimised for
     simplicity. 
-URL: https://github.com/microsoft/wpa
-BugReports: https://github.com/microsoft/wpa/issues
+URL: https://github.com/microsoft/wpa/
+BugReports: https://github.com/microsoft/wpa/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 3.1.2)
 Imports: 
-    base,
     dplyr,
     stats,
     utils,
-    tibble,
     tidyr,
     tidyselect (>= 1.0.0),
     magrittr,
@@ -46,7 +44,6 @@ Imports:
     Information,
     scales,
     htmltools,
-    knitr,
     markdown,
     rmarkdown,
     networkD3,
@@ -55,15 +52,15 @@ Imports:
     ggraph,
     igraph,
     proxy,
-    rlang,
     ggwordcloud,
     methods,
-    data.table,
-    lifecycle
+    data.table
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Suggests: 
+    knitr,
     extrafont,
-    leiden
+    leiden,
+    lifecycle
 Language: en-US
