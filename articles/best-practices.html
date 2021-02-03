@@ -173,7 +173,7 @@
 <a href="#validate-your-data" class="anchor"></a>2. Validate your data!</h2>
 <p>Data validation is important - and with the R package, this is as simple as running <code><a href="../reference/validation_report.html">validation_report()</a></code> on the existing data.</p>
 <p>You would simply run it on the data frame containing the query:</p>
-<pre><code><a href="https://github.com/microsoft/wpa">library(wpa)
+<pre><code><a href="https://github.com/microsoft/wpa/">library(wpa)
 dv_data %&gt;% validation_report()</a></code></pre>
 </div>
 <div id="give-informative-names-to-your-queries" class="section level2">
@@ -209,7 +209,7 @@ dv_data %&gt;% validation_report()</a></code></pre>
 <a href="#use-person-level-averages" class="anchor"></a>5. Use person-level averages</h2>
 <p>It is recommended to use <em>person-level averages</em> where possible. What this means is that for any given metric, you would calculate an average for each employee before you would calculate it for the group. This effectively avoids people who may be represented by more person-weeks in the data (e.g. they have been in the company for longer) to have their results skew the data. In R, this can be replicated by grouping and summarising the data twice:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa">wpa</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
 <span class="va">spq</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">PersonId</span>, <span class="va">Organization</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>

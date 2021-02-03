@@ -49,7 +49,8 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Remove outliers from a person query across time — remove_outliers" />
-<meta property="og:description" content="This function takes in a selected metric and uses z-score (number of standard
+<meta property="og:description" content="
+This function takes in a selected metric and uses z-score (number of standard
 deviations) to identify and remove outlier weeks for individuals across time. There are applications
 in this for removing weeks with abnormally low collaboration
 activity, e.g. holidays. Retains metrics with z &amp;gt; -2.
@@ -205,7 +206,8 @@ has a longer runtime compared to identify_outlier()." />
     </div>
 
     <div class="ref-description">
-    <p>This function takes in a selected metric and uses z-score (number of standard
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>
+This function takes in a selected metric and uses z-score (number of standard
 deviations) to identify and remove outlier weeks for individuals across time. There are applications
 in this for removing weeks with abnormally low collaboration
 activity, e.g. holidays. Retains metrics with z &gt; -2.</p>
@@ -237,8 +239,7 @@ having removed the person-weeks that are below 2 standard
 deviations of each individual's collaboration activity.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is on an experimental lifecycle.
-For mature functions to remove common outliers, please see the following:</p><ul>
+    <p>For mature functions to remove common outliers, please see the following:</p><ul>
 <li><p><code><a href='identify_holidayweeks.html'>identify_holidayweeks()</a></code></p></li>
 <li><p><code><a href='identify_nkw.html'>identify_nkw()</a></code></p></li>
 <li><p><code>identify_inactiveweeks</code></p></li>

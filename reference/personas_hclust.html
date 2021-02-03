@@ -50,7 +50,6 @@
 
 <meta property="og:title" content="Create hierarchical clusters of selected metrics using a Person query — personas_hclust" />
 <meta property="og:description" content="
-
 Apply hierarchical clustering to selected metrics. Person averages are computed prior to clustering.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration." />
@@ -204,7 +203,6 @@ of agglomeration." />
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a>
-
 Apply hierarchical clustering to selected metrics. Person averages are computed prior to clustering.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.</p>
@@ -294,6 +292,7 @@ Valid options include:</p><ul>
 #&gt; </span><span style='color: #555555;'>#   Working_hours_collaboration_hours </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, After_hours_in_calls </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   Total_calls </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, Call_hours </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, Working_hours_in_calls </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   Layer </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, HourlyRate </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+<span class='co'># \donttest{</span>
 <span class='co'>## Return data with clusters appended</span>
 <span class='fu'>personas_hclust</span><span class='op'>(</span><span class='va'>sq_data</span>,
                 metrics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Collaboration_hours"</span>, <span class='st'>"Workweek_span"</span><span class='op'>)</span>,
@@ -42103,7 +42102,7 @@ Valid options include:</p><ul>
 #&gt; 1490 Pacific Standard Time         75       TRUE     TRUE
 #&gt; 1491 Pacific Standard Time         75       TRUE     TRUE
 #&gt; 1492 Pacific Standard Time         75       TRUE     TRUE
-#&gt;  [ reached 'max' / getOption("max.print") -- omitted 11950 rows ]</div><div class='input'>
+#&gt;  [ reached 'max' / getOption("max.print") -- omitted 11950 rows ]</div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>

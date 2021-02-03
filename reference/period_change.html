@@ -262,6 +262,7 @@ Valid inputs include "count" (default), "percentage", and "table".</p></td>
     <pre class="examples"><div class='input'><span class='co'>## Run plot</span>
 <span class='fu'>period_change</span><span class='op'>(</span><span class='va'>sq_data</span>, compvar <span class='op'>=</span> <span class='st'>"Workweek_span"</span>, before_end <span class='op'>=</span> <span class='st'>"2019-11-16"</span><span class='op'>)</span>
 </div><div class='img'><img src='period_change-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># \donttest{</span>
 <span class='co'>## Run plot with more specific arguments</span>
 <span class='fu'>period_change</span><span class='op'>(</span><span class='va'>sq_data</span>,
               compvar <span class='op'>=</span> <span class='st'>"Workweek_span"</span>,
@@ -270,7 +271,7 @@ Valid inputs include "count" (default), "percentage", and "table".</p></td>
               after_start <span class='op'>=</span> <span class='st'>"2019-12-03"</span>,
               after_end <span class='op'>=</span> <span class='st'>"2019-12-16"</span>,
               return <span class='op'>=</span> <span class='st'>"percentage"</span><span class='op'>)</span>
-</div><div class='img'><img src='period_change-2.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='period_change-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
