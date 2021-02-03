@@ -10,18 +10,31 @@
 #' Emails sent and IMs sent attended by hour of the day.
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
+#'
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector,
 #' defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
+#'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
-#' @param return Character vector to specify what to return.
-#' Valid options include "plot" (default) and "table".
-#' "plot" returns an overlapping area plot.
-#' "table" returns a summary table.
+#'
+#' @param signals Character vector to specify which collaboration metrics to use:
+#'   - "email" (default) for emails only
+#'   - "IM" for Teams messages only
+#'   - "unscheduled_calls" for Unscheduled Calls only
+#'   - "meetings" for Meetings only
+#'   - or a combination of signals, such as `c("email", "IM")`
+#'
+#' @param return Character vector to specify what to return. Valid options include:
+#'   - "plot": returns an overlapping area plot (default)
+#'   - "table": returns a summary table
+#'
 #' @param values Character vector to specify whether to return percentages
-#' or absolute values in "data" and "plot". Valid values are "percent" (default)
-#' and "abs".
+#' or absolute values in "data" and "plot". Valid values are:
+#'   - "percent": percentage of signals divided by total signals (default)
+#'   - "abs": absolute count of signals
+#'
 #' @param start_hour A character vector specifying starting hours,
 #' e.g. "0900"
+#'
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. "1700"
 #'
@@ -47,18 +60,45 @@
 workpatterns_area <- function(data,
                               hrvar = "Organization",
                               mingroup = 5,
+                              signals = c("email", "IM"),
                               return = "plot",
                               values = "percent",
                               start_hour = "0900",
                               end_hour = "1700"){
 
-  ## Match all relevant signal columns
-  match_index <- grepl(pattern = "^IMs_sent|^Emails_sent", x = names(data))
+  ## Remove case-sensitivity for signals
+  signals <- tolower(signals)
 
-  input_var <- names(data)[match_index]
+  ## Text replacement only for allowed values
+  if(any(signals %in% c("email", "im", "unscheduled_calls", "meetings"))){
 
-  input_var_im <- input_var[grepl("^IMs_sent", input_var)]
-  input_var_em <- input_var[grepl("^Emails_sent", input_var)]
+    signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
+    signal_set <- gsub(pattern = "im", replacement = "IMs_sent", x = signal_set)
+    signal_set <- gsub(pattern = "unscheduled_calls", replacement = "Unscheduled_calls", x = signal_set)
+    signal_set <- gsub(pattern = "meetings", replacement = "Meetings", x = signal_set)
+
+    total_signal_set <- paste0(signal_set, "_total")
+    search_set <- paste(paste0("^", signal_set, "_"), collapse = "|")
+
+  } else {
+
+    stop("Invalid input for `signals`.")
+
+  }
+
+  ## Get list of variable names
+  ## Size equivalent to size of `signal_set`
+  list_signal_set <-
+    signal_set %>%
+    purrr::map(function(signal_text){
+
+      names(data)[grep(pattern = signal_text, x = names(data))]
+
+    }) %>%
+    setNames(nm = total_signal_set) # Use total signals set
+
+  ## Convert as vector
+  input_var <- unlist(list_signal_set) %>% as.character()
 
   ## Date range data frame
   myPeriod <- extract_date_range(data)
@@ -78,16 +118,26 @@ workpatterns_area <- function(data,
               by = "group") %>%
     filter(Employee_Count >= mingroup)
 
+  ## Loop and create totals
+  ptn_data_norm <- signals_df
+
+  for(i in 1:length(list_signal_set)){
+
+    ## Name of signal
+    sig_name <- names(list_signal_set)[i]
+    sig_name_all <- list_signal_set[[i]] # individual var names
+
+
+    ptn_data_norm <-
+      ptn_data_norm %>%
+      mutate(!!sym(sig_name) := select(., all_of(sig_name_all)) %>% apply(1, sum)) %>%
+      mutate_at(vars(sig_name_all), ~./ !!sym(sig_name))
+
+  }
+
   ## Normalised pattern data
   ptn_data_norm <-
-    signals_df %>%
-    # Normalise IMs
-    mutate(IMs_Total = select(., all_of(input_var_im)) %>% apply(1, sum)) %>%
-    mutate_at(vars(input_var_im), ~./IMs_Total) %>%
-    # Normalise emails
-    mutate(Emails_Total = select(., all_of(input_var_em)) %>% apply(1, sum)) %>%
-    mutate_at(vars(input_var_em), ~./Emails_Total) %>%
-
+    ptn_data_norm %>%
     select(PersonId, group, all_of(input_var)) %>%
     mutate_all(~tidyr::replace_na(., 0)) # Replace NAs with 0s
 
@@ -116,7 +166,7 @@ workpatterns_area <- function(data,
     group_by(group) %>%
     summarise_at(vars(input_var), ~mean(.)) %>%
     gather(Signals, Value, -group) %>%
-    mutate(Hours = sub(pattern = "^IMs_sent_|^Emails_sent_", replacement = "", x = Signals)) %>%
+    mutate(Hours = sub(pattern = search_set, replacement = "", x = Signals)) %>%
     mutate(Hours = sub(pattern = "_.+", replacement = "", x = Hours)) %>%
     mutate(Hours = as.numeric(Hours)) %>%
     mutate(Signals = sub(pattern = "_\\d.+", replacement = "", x = Signals)) %>%
@@ -172,14 +222,6 @@ workpatterns_area <- function(data,
     summary_data %>%
       left_join(count_tb, by = "group") %>%
       return()
-
-  } else if(return == "hclust"){
-
-    return(h_clust)
-
-  } else if(return == "dist"){
-
-    return(dist_m)
 
   } else {
 

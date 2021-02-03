@@ -8,6 +8,7 @@ workpatterns_area(
   data,
   hrvar = "Organization",
   mingroup = 5,
+  signals = c("email", "IM"),
   return = "plot",
   values = "percent",
   start_hour = "0900",
@@ -22,14 +23,27 @@ defaults to "Organization" but accepts any character vector, e.g. "LevelDesignat
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character vector to specify what to return.
-Valid options include "plot" (default) and "table".
-"plot" returns an overlapping area plot.
-"table" returns a summary table.}
+\item{signals}{Character vector to specify which collaboration metrics to use:
+\itemize{
+\item "email" (default) for emails only
+\item "IM" for Teams messages only
+\item "unscheduled_calls" for Unscheduled Calls only
+\item "meetings" for Meetings only
+\item or a combination of signals, such as \code{c("email", "IM")}
+}}
+
+\item{return}{Character vector to specify what to return. Valid options include:
+\itemize{
+\item "plot": returns an overlapping area plot (default)
+\item "table": returns a summary table
+}}
 
 \item{values}{Character vector to specify whether to return percentages
-or absolute values in "data" and "plot". Valid values are "percent" (default)
-and "abs".}
+or absolute values in "data" and "plot". Valid values are:
+\itemize{
+\item "percent": percentage of signals divided by total signals (default)
+\item "abs": absolute count of signals
+}}
 
 \item{start_hour}{A character vector specifying starting hours,
 e.g. "0900"}
@@ -54,7 +68,12 @@ workpatterns_area(em_data, return = "table")
 }
 \seealso{
 Other Work Patterns: 
+\code{\link{flex_index}()},
 \code{\link{personas_hclust}()},
+\code{\link{plot_flex_index}()},
+\code{\link{workpatterns_classify_bw}()},
+\code{\link{workpatterns_classify_pav}()},
+\code{\link{workpatterns_classify}()},
 \code{\link{workpatterns_hclust}()}
 }
 \concept{Work Patterns}
