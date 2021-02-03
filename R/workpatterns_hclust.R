@@ -6,7 +6,7 @@
 #' @title Create a hierarchical clustering of email or IMs by hour of day
 #'
 #' @description
-#' \Sexpr[results=rd]{lifecycle::badge("experimental")}
+#' `r lifecycle::badge('experimental')`
 #' Apply hierarchical clustering to emails sent by hour of day.
 #' The hierarchical clustering uses cosine distance and the ward.D method
 #' of agglomeration.
@@ -303,8 +303,6 @@ workpatterns_hclust <- function(data,
 #'
 #' @import ggplot2
 #' @import dplyr
-#' @importFrom rlang sym
-#' @importFrom rlang "!!"
 #' @importFrom tidyselect all_of
 #' @importFrom tidyr gather
 #'
@@ -449,7 +447,7 @@ run_sum_hr <- function(data,
       mode_val <- uni[which.max(tabulate(match(hour_raw, uni)))]
 
 
-      tibble::tibble(cluster = x$cluster[1],
+      dplyr::tibble(cluster = x$cluster[1],
                      median_hour = median(hour_raw),
                      p5_hour = stats::quantile(hour_raw, .05),
                      p25_hour = stats::quantile(hour_raw, .25),

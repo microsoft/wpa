@@ -6,7 +6,7 @@
 #' @title Implement the Louvain community detection on a Person to Person network query
 #'
 #' @description
-#' \Sexpr[results=rd]{lifecycle::badge("experimental")}
+#' `r lifecycle::badge('experimental')`
 #' Take a P2P network query and implement the Louvain community detection method. The
 #' **igraph** implementation of the Louvain method is used.
 #'

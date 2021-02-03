@@ -23,7 +23,7 @@ Valid options include:
 }}
 }
 \description{
-\Sexpr[results=rd]{lifecycle::badge("questioning")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a>}}{\strong{Questioning}}
 Apply hierarchical clustering to selected metrics. Person averages are computed prior to clustering.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.
@@ -40,12 +40,13 @@ personas_hclust(sq_data,
                 k = 4,
                 return = "table")
 
+\donttest{
 ## Return data with clusters appended
 personas_hclust(sq_data,
                 metrics = c("Collaboration_hours", "Workweek_span"),
                 k = 4,
                 return = "data")
-
+}
 
 }
 \seealso{
