@@ -6,7 +6,7 @@
 #' @title Create a hierarchical clustering of email or IMs by hour of day
 #'
 #' @description
-#' \Sexpr[results=rd]{lifecycle::badge("experimental")}
+#' `r lifecycle::badge('experimental')`
 #' Apply hierarchical clustering to emails sent by hour of day.
 #' The hierarchical clustering uses cosine distance and the ward.D method
 #' of agglomeration.
@@ -29,7 +29,7 @@
 #' and "abs".
 #' @param signals Character vector to specify which collaboration metrics to use:
 #'   - "email" (default) for emails only
-#'   - "IM" for Teams messages only,
+#'   - "IM" for Teams messages only
 #'   - "unscheduled_calls" for Unscheduled Calls only
 #'   - "meetings" for Meetings only
 #'   - or a combination of signals, such as `c("email", "IM")`

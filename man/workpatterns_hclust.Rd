@@ -32,7 +32,7 @@ and "abs".}
 \item{signals}{Character vector to specify which collaboration metrics to use:
 \itemize{
 \item "email" (default) for emails only
-\item "IM" for Teams messages only,
+\item "IM" for Teams messages only
 \item "unscheduled_calls" for Unscheduled Calls only
 \item "meetings" for Meetings only
 \item or a combination of signals, such as \code{c("email", "IM")}
@@ -49,7 +49,7 @@ The summary table returned by \code{return == "table"} represent percentiles of 
 e.g. x\% of signals are sent by y hour of the day.
 }
 \description{
-\Sexpr[results=rd]{lifecycle::badge("experimental")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 Apply hierarchical clustering to emails sent by hour of day.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.
