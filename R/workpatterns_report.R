@@ -1,8 +1,9 @@
 #' @title Generate a report on working patterns in HTML
 #'
 #' @description
+#' `r lifecycle::badge('experimental')`
 #' This function takes a Hourly Collaboration query and generates a HTML report on
-#' working patterns archetypes.
+#' working patterns archetypes. Archetypes are created using the binary-week method.
 #'
 #' @param data A Hourly Collaboration Query dataset in the form of a data frame.
 #' @param hrvar String specifying HR attribute to cut by archetypes. Defaults to `Organization`.
@@ -98,19 +99,23 @@ workpatterns_report <- function(data,
 
   ## Set outputs
   output_list <-
-    list(data %>% wpa::check_query(return = "text"),
-	     data %>% workpatterns_rank(start_hour = start_hour, end_hour = end_hour,return = "plot"),
-         personas_plot,
-		 wp_list$table,
-         wp_list$plot_area,
-         plot_rank_list[[1]],
-         plot_rank_list[[2]],
-         plot_rank_list[[3]],
-         plot_rank_list[[4]],
-         plot_rank_list[[5]],
-         plot_rank_list[[6]],
-         plot_rank_list[[7]]) %>% # Expand objects to this list
-    purrr::map_if(is.data.frame, wpa::create_dt) %>%
+    list(
+      data %>% wpa::check_query(return = "text"),
+      data %>%
+        workpatterns_rank(start_hour = start_hour,
+                          end_hour = end_hour,
+                          return = "plot"),
+      personas_plot,
+      wp_list$table,
+      wp_list$plot_area,
+      plot_rank_list[[1]],
+      plot_rank_list[[2]],
+      plot_rank_list[[3]],
+      plot_rank_list[[4]],
+      plot_rank_list[[5]],
+      plot_rank_list[[6]],
+      plot_rank_list[[7]]) %>% # Expand objects to this list
+    purrr::map_if(is.data.frame, wpa::create_dt, rounding = 2) %>%
     purrr::map_if(is.character, md2html)
 
   ## Set header titles

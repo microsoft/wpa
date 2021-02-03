@@ -46,9 +46,13 @@ e.g. "1700". Note that this currently only supports \strong{hourly} increments.}
 By default, a binary week-based (bw) method is used, with options to use the
 the person-average volume-based (pav) method.}
 
-\item{return}{Character vector to specify what to return.
-Valid options include "plot" (default), "data", "table" and "plot-area".
-"plot" returns a bar plot, whilst "plot-area" returns an overlapping area plot.}
+\item{return}{Character vector to specify what to return. Valid options include:
+\itemize{
+\item "plot": returns a heatmap plot of signal distribution by hour and archetypes (default)
+\item "data": returns the raw data with the classified archetypes
+\item "table": returns a summary table of the archetypes
+\item "plot-area": returns an area plot of the percentages of archetypes shown over time
+}}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}

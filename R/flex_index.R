@@ -40,14 +40,15 @@
 #' em_data %>%
 #'   flex_index(return = "plot", plot_method = "time")
 #'
+#' # Return a summary table with the computed Flexibility Index
+#' em_data %>%
+#'   flex_index(hrvar = "Organization", return = "table")
+#'
 #' \dontrun{
 #' # Return the raw data with the computed Flexibility Index
 #' em_data %>%
 #'   flex_index(return = "data")
 #'
-#' # Return a summary table with the computed Flexibility Index
-#' em_data %>%
-#'   flex_index(return = "table")
 #'
 #' }
 #' @family Work Patterns
@@ -201,7 +202,7 @@ flex_index <- function(data,
     # hr_dt <- data2[, ..temp_str] # double dot prefix
 
     hr_dt <-
-      hr_dt %>%
+      data2 %>%
       as.data.frame() %>%
       select(temp_str)
   }

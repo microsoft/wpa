@@ -32,6 +32,7 @@ For example, "scope report".}
 Defaults to TRUE.}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 This function takes a Hourly Collaboration query and generates a HTML report on
-working patterns archetypes.
+working patterns archetypes. Archetypes are created using the binary-week method.
 }

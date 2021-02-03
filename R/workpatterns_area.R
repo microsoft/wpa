@@ -10,24 +10,31 @@
 #' Emails sent and IMs sent attended by hour of the day.
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
+#'
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector,
 #' defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
+#'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
+#'
 #' @param signals Character vector to specify which collaboration metrics to use:
 #'   - "email" (default) for emails only
 #'   - "IM" for Teams messages only
 #'   - "unscheduled_calls" for Unscheduled Calls only
 #'   - "meetings" for Meetings only
 #'   - or a combination of signals, such as `c("email", "IM")`
-#' @param return Character vector to specify what to return.
-#' Valid options include "plot" (default) and "table".
-#' "plot" returns an overlapping area plot.
-#' "table" returns a summary table.
+#'
+#' @param return Character vector to specify what to return. Valid options include:
+#'   - "plot": returns an overlapping area plot (default)
+#'   - "table": returns a summary table
+#'
 #' @param values Character vector to specify whether to return percentages
-#' or absolute values in "data" and "plot". Valid values are "percent" (default)
-#' and "abs".
+#' or absolute values in "data" and "plot". Valid values are:
+#'   - "percent": percentage of signals divided by total signals (default)
+#'   - "abs": absolute count of signals
+#'
 #' @param start_hour A character vector specifying starting hours,
 #' e.g. "0900"
+#'
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. "1700"
 #'
@@ -215,14 +222,6 @@ workpatterns_area <- function(data,
     summary_data %>%
       left_join(count_tb, by = "group") %>%
       return()
-
-  } else if(return == "hclust"){
-
-    return(h_clust)
-
-  } else if(return == "dist"){
-
-    return(dist_m)
 
   } else {
 

@@ -22,8 +22,13 @@ workpatterns_classify_bw(
 Defaults to NULL. This only affects the function when "table" is returned.}
 
 \item{signals}{Character vector to specify which collaboration metrics to use:
-You may use "email" for emails only, "IM" for Teams messages only,
-or a combination of the two \code{c("email", "IM")} (default).}
+\itemize{
+\item "email" (default) for emails only
+\item "IM" for Teams messages only,
+\item "unscheduled_calls" for Unscheduled Calls only
+\item "meetings" for Meetings only
+\item or a combination of signals, such as \code{c("email", "IM")}
+}}
 
 \item{start_hour}{A character vector specifying start hours,
 e.g. "0900"}
@@ -34,9 +39,13 @@ e.g. "1700"}
 \item{active_threshold}{A numeric value specifying the minimum number of signals to be greater than in
 order to qualify as \emph{active}. Defaults to 0.}
 
-\item{return}{Character vector to specify what to return.
-Valid options include "plot" (default), "data", "table" and "plot-area".
-"plot" returns a bar plot, whilst "plot-area" returns an overlapping area plot.}
+\item{return}{Character vector to specify what to return. Valid options include:
+\itemize{
+\item "plot": returns a heatmap plot of signal distribution by hour and archetypes (default)
+\item "data": returns the raw data with the classified archetypes
+\item "table": returns a summary table of the archetypes
+\item "plot-area": returns an area plot of the percentages of archetypes shown over time
+}}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}

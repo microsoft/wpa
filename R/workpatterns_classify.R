@@ -15,9 +15,11 @@
 #' Defaults to NULL. This only affects the function when "table" is returned,
 #' and is only applicable for method = "bw".
 #'
-#' @param return Character vector to specify what to return.
-#' Valid options include "plot" (default), "data", "table" and "plot-area".
-#' "plot" returns a bar plot, whilst "plot-area" returns an overlapping area plot.
+#' @param return Character vector to specify what to return. Valid options include:
+#'   - "plot": returns a heatmap plot of signal distribution by hour and archetypes (default)
+#'   - "data": returns the raw data with the classified archetypes
+#'   - "table": returns a summary table of the archetypes
+#'   - "plot-area": returns an area plot of the percentages of archetypes shown over time
 #'
 #' @param method String to pass through specifying which method to use for classification.
 #' By default, a binary week-based (bw) method is used, with options to use the

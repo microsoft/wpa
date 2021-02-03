@@ -32,14 +32,18 @@ defaults to "Organization" but accepts any character vector, e.g. "LevelDesignat
 \item or a combination of signals, such as \code{c("email", "IM")}
 }}
 
-\item{return}{Character vector to specify what to return.
-Valid options include "plot" (default) and "table".
-"plot" returns an overlapping area plot.
-"table" returns a summary table.}
+\item{return}{Character vector to specify what to return. Valid options include:
+\itemize{
+\item "plot": returns an overlapping area plot (default)
+\item "table": returns a summary table
+}}
 
 \item{values}{Character vector to specify whether to return percentages
-or absolute values in "data" and "plot". Valid values are "percent" (default)
-and "abs".}
+or absolute values in "data" and "plot". Valid values are:
+\itemize{
+\item "percent": percentage of signals divided by total signals (default)
+\item "abs": absolute count of signals
+}}
 
 \item{start_hour}{A character vector specifying starting hours,
 e.g. "0900"}
