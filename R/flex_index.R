@@ -67,6 +67,7 @@ flex_index <- function(data,
   ChangeHours <- NULL
   ControlHours <- NULL
   FlexibilityIndex <- NULL
+  Signals_Break_hours <- NULL
 
   ## Make sure data.table knows we know we're using it
   .datatable.aware = TRUE

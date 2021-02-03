@@ -112,7 +112,7 @@ workpatterns_classify_bw <- function(data,
 
   WpA_classify <-
     signals_df %>%
-    tidyr::gather(`!!`(sym(sig_label)), sent, -PersonId,-Date,-Signals_Total) %>%
+    tidyr::gather(!!sym(sig_label), sent, -PersonId,-Date,-Signals_Total) %>%
     data.table::as.data.table()
 
   WpA_classify[, StartEnd := gsub(pattern = "[^[:digit:]]", replacement = "", x = get(sig_label))]

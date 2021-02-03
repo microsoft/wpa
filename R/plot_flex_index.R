@@ -46,6 +46,12 @@ plot_flex_index <- function(data,
                             start_hour = 9,
                             end_hour = 17){
 
+  ## Bindings for variables
+  TakeBreaks <- NULL
+  ChangeHours <- NULL
+  ControlHours <- NULL
+  FlexibilityIndex <- NULL
+
   ## Avoid confusion
   sig_label_ <- sig_label
 

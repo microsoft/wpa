@@ -53,6 +53,7 @@ Apply a rule based algorithm to emails or instant messages sent by hour of day.
 This uses a person-average volume-based (pav) method.
 }
 \examples{
+\donttest{
 ## Returns a plot by default
 workpatterns_classify_pav(em_data)
 
@@ -61,6 +62,7 @@ workpatterns_classify_pav(em_data, return = "table")
 
 ## Return an area plot
 workpatterns_classify_pav(em_data, return = "plot-area")
+}
 
 }
 \seealso{

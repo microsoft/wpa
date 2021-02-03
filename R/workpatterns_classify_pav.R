@@ -36,6 +36,7 @@
 #' @import ggplot2
 #'
 #' @examples
+#' \donttest{
 #' ## Returns a plot by default
 #' workpatterns_classify_pav(em_data)
 #'
@@ -44,6 +45,7 @@
 #'
 #' ## Return an area plot
 #' workpatterns_classify_pav(em_data, return = "plot-area")
+#' }
 #'
 #' @family Work Patterns
 #'
