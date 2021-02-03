@@ -8,6 +8,7 @@ workpatterns_area(
   data,
   hrvar = "Organization",
   mingroup = 5,
+  signals = c("email", "IM"),
   return = "plot",
   values = "percent",
   start_hour = "0900",
@@ -21,6 +22,15 @@ workpatterns_area(
 defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
+
+\item{signals}{Character vector to specify which collaboration metrics to use:
+\itemize{
+\item "email" (default) for emails only
+\item "IM" for Teams messages only
+\item "unscheduled_calls" for Unscheduled Calls only
+\item "meetings" for Meetings only
+\item or a combination of signals, such as \code{c("email", "IM")}
+}}
 
 \item{return}{Character vector to specify what to return.
 Valid options include "plot" (default) and "table".
