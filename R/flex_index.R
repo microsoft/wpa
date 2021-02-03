@@ -27,7 +27,6 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
-#' \dontrun{
 #' # Examples of how to test the plotting options individually
 #' # Sample of 10 work patterns
 #' em_data %>%
@@ -41,6 +40,7 @@
 #' em_data %>%
 #'   flex_index(return = "plot", plot_method = "time")
 #'
+#' \dontrun{
 #' # Return the raw data with the computed Flexibility Index
 #' em_data %>%
 #'   flex_index(return = "data")
@@ -61,6 +61,12 @@ flex_index <- function(data,
                        end_hour = "1700",
                        return = "plot",
                        plot_method = "common"){
+
+  ## Bindings for variables
+  TakeBreaks <- NULL
+  ChangeHours <- NULL
+  ControlHours <- NULL
+  FlexibilityIndex <- NULL
 
   ## Make sure data.table knows we know we're using it
   .datatable.aware = TRUE
@@ -150,7 +156,7 @@ flex_index <- function(data,
 
   WpA_classify <-
     signals_df %>%
-    tidyr::gather(`!!`(sym(sig_label)), sent, -PersonId,-Date,-Signals_Total) %>%
+    tidyr::gather(!!sym(sig_label), sent, -PersonId, -Date, -Signals_Total) %>%
     data.table::as.data.table()
 
   WpA_classify[, StartEnd := gsub(pattern = "[^[:digit:]]", replacement = "", x = get(sig_label))]
@@ -191,8 +197,12 @@ flex_index <- function(data,
 
     temp_str <- c("PersonId", "Date", hrvar)
 
-    hr_dt <- data2[, ..temp_str] # double dot prefix
-    hr_dt <- as.data.frame(hr_dt)
+    # hr_dt <- data2[, ..temp_str] # double dot prefix
+
+    hr_dt <-
+      hr_dt %>%
+      as.data.frame() %>%
+      select(temp_str)
   }
 
 

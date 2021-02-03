@@ -48,7 +48,6 @@ working patterns; "time" plots the Flexibility Index for the group over time.}
 Pass an Hourly Collaboration query and compute a Flexibility Index for a group
 }
 \examples{
-\dontrun{
 # Examples of how to test the plotting options individually
 # Sample of 10 work patterns
 em_data \%>\%
@@ -62,6 +61,7 @@ em_data \%>\%
 em_data \%>\%
   flex_index(return = "plot", plot_method = "time")
 
+\dontrun{
 # Return the raw data with the computed Flexibility Index
 em_data \%>\%
   flex_index(return = "data")
