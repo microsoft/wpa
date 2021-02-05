@@ -239,8 +239,10 @@ e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>Character string specifying what to return. Valid inputs are:</p><ul>
+<li><p>"plot": ggplot object. A stacked bar plot for the metric.</p></li>
+<li><p>"table": data frame. A summary table for the metric.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>cut</th>
@@ -257,6 +259,13 @@ codes for the stacked bars.</p></td>
       <td><p>See <code><a href='cut_hour.html'>cut_hour()</a></code>.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul>
+<li><p>"plot": ggplot object. A stacked bar plot for the metric.</p></li>
+<li><p>"table": data frame. A summary table for the metric.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
