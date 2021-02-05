@@ -7,6 +7,7 @@
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
+#'
 #' Pass a data frame containing a person-to-person query and return a network visualization.
 #' Options are available for community detection using either the Louvain or the Leiden algorithms.
 #'
@@ -14,23 +15,25 @@
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
 #' @param display String determining what output to return. Valid values include:
-#'   - "hrvar" (default): compute analysis or visuals without computing communities.
-#'   - "louvain": compute analysis or visuals with community detection, using the Louvain
+#'   - `"hrvar"` (default): compute analysis or visuals without computing communities.
+#'   - `"louvain"`: compute analysis or visuals with community detection, using the Louvain
 #'   algorithm.
-#'   - "leiden": compute analysis or visuals with community detection, using the Leiden algorithm.
+#'   - `"leiden"`: compute analysis or visuals with community detection, using the Leiden algorithm.
 #'   This requires all the pre-requisites of the **leiden** package installed,
 #'   which includes Python and **reticulate**.
+#'
 #' @param return String specifying what output to return. Defaults to "plot".
 #' Valid return options include:
-#'   - 'plot': return a network plot.
-#'   - 'sankey': return a sankey plot combining communities and HR attribute. This is only valid if
+#'   - `'plot'`: return a network plot.
+#'   - `'sankey'`: return a sankey plot combining communities and HR attribute. This is only valid if
 #'   a community detection method is selected at `display`.
-#'   - 'table': return a vertex summary table with counts in communities and HR attribute.
-#'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
-#'   - 'describe': return a list of data frames which describe each of the identified communities.
+#'   - `'table'`: return a vertex summary table with counts in communities and HR attribute.
+#'   - `'data'`: return a vertex data file that matches vertices with communities and HR attributes.
+#'   - `'describe'`: return a list of data frames which describe each of the identified communities.
 #'   The first data frame is a summary table of all the communities. This is only valid if a community
 #'   detection method is selected at `display`.
-#'   - 'network': return igraph object.
+#'   - `'network'`: return igraph object.
+#'
 #' @param path File path for saving the PDF output. Defaults to a timestamped path based on current parameters.
 #' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
 #' "describe" output. See `network_describe()`.
