@@ -14,11 +14,9 @@
 #' Uses the metric \code{After_hours_collaboration_hours}.
 #' See `create_dist()` for applying the same analysis to a different metric.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @inheritParams create_dist
+#' @inherit create_dist return
+#'
 #' @param cut A vector specifying the cuts to use for the data,
 #' accepting "default" or "range-cut" as character vector,
 #' or a numeric value of length three to specify the exact breaks to use. e.g. c(1, 3, 5)

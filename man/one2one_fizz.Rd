@@ -13,8 +13,13 @@ one2one_fizz(data, hrvar = "Organization", mingroup = 5, return = "plot")
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 }
 \description{
 Analyze weekly Manager 1:1 Time distribution, and returns

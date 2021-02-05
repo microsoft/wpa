@@ -25,20 +25,28 @@ but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{bar_colour}{String to specify colour to use for bars.
-In-built accepted values include "default" (default), "alert" (red), and
-"darkblue". Otherwise, hex codes are also accepted. You can also supply
+In-built accepted values include \code{"default"} (default), \code{"alert"} (red), and
+\code{"darkblue"}. Otherwise, hex codes are also accepted. You can also supply
 RGB values via \code{rgb2hex()}.}
 
-\item{na.rm}{A logical value indicating whether NA values should be stripped
-before the computation proceeds. Defaults to FALSE.}
+\item{na.rm}{A logical value indicating whether \code{NA} should be stripped
+before the computation proceeds. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Provides an overview analysis of a selected metric by calculating a mean per metric.
