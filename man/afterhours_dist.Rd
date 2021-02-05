@@ -19,8 +19,11 @@ afterhours_dist(
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{Character string specifying what to return. Valid inputs are:
+\itemize{
+\item "plot": ggplot object. A stacked bar plot for the metric.
+\item "table": data frame. A summary table for the metric.
+}}
 
 \item{cut}{A vector specifying the cuts to use for the data,
 accepting "default" or "range-cut" as character vector,

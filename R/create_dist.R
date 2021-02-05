@@ -15,13 +15,21 @@
 #' e.g. "Collaboration_hours"
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#'
+#' @param return Character string specifying what to return. Valid inputs are:
+#'   - "plot": ggplot object. A stacked bar plot for the metric.
+#'   - "table": data frame. A summary table for the metric.
+#'
 #' @param cut A numeric vector of length three to specify the breaks for the distribution,
 #' e.g. c(10, 15, 20)
 #' @param dist_colours A character vector of length four to specify colour
 #' codes for the stacked bars.
 #' @param unit See `cut_hour()`.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - "plot": ggplot object. A stacked bar plot for the metric.
+#'   - "table": data frame. A summary table for the metric.
 #'
 #' @import dplyr
 #' @import ggplot2
