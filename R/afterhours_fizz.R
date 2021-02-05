@@ -15,10 +15,15 @@
 #' See `create_fizz()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_fizz
+#' @inherit create_fizz return
 #'
 #' @family After-Hours
 #'
 #' @examples
+#' ## Return a plot
+#' afterhours_fizz(sq_data, hrvar = "LevelDesignation", return = "plot")
+#'
+#' ## Return a table
 #' afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
 #' @export
 

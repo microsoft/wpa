@@ -21,6 +21,13 @@ afterhours_fizz(data, hrvar = "Organization", mingroup = 5, return = "plot")
 
 See \code{Value} for more information.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A jittered scatter plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
+}
 \description{
 Analyze weekly after-hours collaboration hours distribution, and returns
 a 'fizzy' scatter plot by default.
@@ -31,6 +38,10 @@ Uses the metric \code{After_hours_collaboration_hours}.
 See \code{create_fizz()} for applying the same analysis to a different metric.
 }
 \examples{
+## Return a plot
+afterhours_fizz(sq_data, hrvar = "LevelDesignation", return = "plot")
+
+## Return a table
 afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
