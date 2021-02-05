@@ -26,13 +26,24 @@ but accepts any character vector, e.g. "LevelDesignation"}
 See \code{Value} for more information.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Provides an overview analysis of Manager 1:1 Time.
 Returns a bar plot showing average weekly minutes of Manager 1:1 Time by default.
 Additional options available to return a summary table.
+}
+\examples{
+# Return a ggplot bar chart
+one2one_sum(sq_data, hrvar = "LevelDesignation")
+
+# Return a summary table
+one2one_sum(sq_data, hrvar = "LevelDesignation", return = "table")
+
 }
 \seealso{
 Other Managerial Relations: 

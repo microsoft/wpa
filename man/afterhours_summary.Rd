@@ -46,6 +46,7 @@ afterhours_summary(sq_data, hrvar = "LevelDesignation")
 
 # Return a summary table
 afterhours_summary(sq_data, hrvar = "LevelDesignation", return = "table")
+
 }
 \seealso{
 Other After-Hours: 

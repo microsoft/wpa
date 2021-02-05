@@ -24,6 +24,7 @@
 #'
 #' # Return a summary table
 #' afterhours_summary(sq_data, hrvar = "LevelDesignation", return = "table")
+#'
 #' @export
 afterhours_summary <- function(data,
                               hrvar = "Organization",
