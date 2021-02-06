@@ -11,11 +11,17 @@
 #' Additional options available to return a table with distribution elements.
 #'
 #' @inheritParams create_fizz
+#' @inherit create_fizz return
 #'
 #' @family Workloads
 #'
 #' @examples
-#' meeting_fizz(sq_data, hrvar = "Organization", return = "table")
+#' # Return a plot
+#' workloads_fizz(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' # Return a table
+#' workloads_fizz(sq_data, hrvar = "Organization", return = "table")
+#'
 #' @export
 
 workloads_fizz <- function(data,

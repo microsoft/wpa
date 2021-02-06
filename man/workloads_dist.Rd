@@ -30,13 +30,25 @@ See \code{Value} for more information.}
 \item{cut}{A numeric vector of length three to specify the breaks for the distribution,
 e.g. c(10, 15, 20)}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A stacked bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
+}
 \description{
 Analyze Work Week Span distribution.
 Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
+## Return a plot
+workloads_dist(sq_data, hrvar = "Organization", return = "plot")
+
+## Return a summary table
 workloads_dist(sq_data, hrvar = "Organization", return = "table")
+
 }
 \seealso{
 Other Workloads: 

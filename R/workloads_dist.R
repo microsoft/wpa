@@ -11,11 +11,17 @@
 #' Additional options available to return a table with distribution elements.
 #'
 #' @inheritParams create_dist
+#' @inherit create_dist return
 #'
 #' @family Workloads
 #'
 #' @examples
+#' ## Return a plot
+#' workloads_dist(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' ## Return a summary table
 #' workloads_dist(sq_data, hrvar = "Organization", return = "table")
+#'
 #' @export
 
 workloads_dist <- function(data,
