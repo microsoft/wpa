@@ -16,7 +16,7 @@
 #' @family Managerial Relations
 #'
 #' @examples
-#' # Return a plot
+#' # Return plot
 #' workloads_dist(sq_data, hrvar = "Organization", return = "plot")
 #'
 #' # Return summary table

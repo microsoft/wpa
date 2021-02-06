@@ -30,7 +30,7 @@
 #' afterhours_line(sq_data, hrvar = "LevelDesignation")
 #'
 #'
-#' # Return a table
+#' # Return summary table
 #' afterhours_line(sq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @return

@@ -29,7 +29,7 @@ The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.
 }
 \examples{
-# Return a plot
+# Return plot
 personas_hclust(sq_data,
                 metrics = c("Collaboration_hours", "Workweek_span"),
                 k = 4)

@@ -32,10 +32,10 @@
 #' @family After-Hours
 #'
 #' @examples
-#' # Return a plot
+#' # Return plot
 #' afterhours_dist(sq_data, hrvar = "Organization")
 #'
-#' # Return a table
+#' # Return summary table
 #' afterhours_dist(sq_data, hrvar = "Organization", return = "table")
 #'
 #' # Return result with a custom specified breaks

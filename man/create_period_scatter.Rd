@@ -60,7 +60,7 @@ This is a general purpose function that powers all the functions
 in the package that produce faceted scatter plots.
 }
 \examples{
-# Return a plot
+# Return plot
 create_period_scatter(sq_data,
                       hrvar = "LevelDesignation",
                       before_start = "2019-11-03",

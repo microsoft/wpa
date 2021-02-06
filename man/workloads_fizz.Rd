@@ -34,10 +34,10 @@ a 'fizzy' scatter plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
-# Return a plot
+# Return plot
 workloads_fizz(sq_data, hrvar = "Organization", return = "plot")
 
-# Return a table
+# Return summary table
 workloads_fizz(sq_data, hrvar = "Organization", return = "table")
 
 }

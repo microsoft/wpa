@@ -51,7 +51,7 @@
 #' # Return visualization of absolute values
 #' workpatterns_area(em_data, return = "plot", values = "abs")
 #'
-#' # Return a table
+#' # Return summary table
 #' workpatterns_area(em_data, return = "table")
 #'
 #' @family Work Patterns

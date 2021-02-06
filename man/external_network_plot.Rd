@@ -31,7 +31,7 @@ External Network Breadth as the vertical axis and External Network Size as the
 horizontal axis.
 }
 \examples{
-# Return a plot
+# Return plot
 sq_data \%>\% external_network_plot(return = "plot")
 
 }

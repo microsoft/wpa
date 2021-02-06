@@ -6,11 +6,18 @@
 #' Additional options available to return a table with distribution elements.
 #'
 #' @inheritParams create_fizz
+#' @inherit create_fizz return
 #'
 #' @family Emails
 #'
 #' @examples
+#'
+#' # Return plot
+#' email_fizz(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' # Return summary table
 #' email_fizz(sq_data, hrvar = "Organization", return = "table")
+#'
 #' @export
 
 email_fizz <- function(data,

@@ -17,10 +17,10 @@
 #' @import ggplot2
 #'
 #' @examples
-#' # Return a plot
+#' # Return plot
 #' hr_trend(dv_data)
 #'
-#' # Return a table
+#' # Return summary table
 #' hr_trend(dv_data, return = "table")
 #'
 #' @return

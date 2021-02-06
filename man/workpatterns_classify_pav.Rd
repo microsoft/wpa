@@ -57,7 +57,7 @@ This uses a person-average volume-based (pav) method.
 # Returns a plot by default
 workpatterns_classify_pav(em_data)
 
-# Return a table
+# Return summary table
 workpatterns_classify_pav(em_data, return = "table")
 
 # Return an area plot

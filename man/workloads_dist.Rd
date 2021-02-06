@@ -43,7 +43,7 @@ Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
-# Return a plot
+# Return plot
 workloads_dist(sq_data, hrvar = "Organization", return = "plot")
 
 # Return a summary table

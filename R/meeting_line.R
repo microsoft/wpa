@@ -21,7 +21,7 @@
 #' meeting_line(sq_data, hrvar = "LevelDesignation")
 #'
 #'
-#' # Return a table
+#' # Return summary table
 #' meeting_line(sq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @return

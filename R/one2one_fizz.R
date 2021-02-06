@@ -14,11 +14,17 @@
 #' Uses the metric `After_hours_collaboration_hours`.
 #'
 #' @inheritParams create_fizz
+#' @inherit create_fizz return
 #'
 #' @family Managerial Relations
 #'
 #' @examples
+#' # Return plot
+#' one2one_fizz(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' # Return a summary table
 #' one2one_fizz(sq_data, hrvar = "Organization", return = "table")
+#'
 #' @export
 
 one2one_fizz <- function(data,

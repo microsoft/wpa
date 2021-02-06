@@ -14,8 +14,13 @@ but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
 Returns a ggplot object by default, where 'plot' is passed in \code{return}.
@@ -37,7 +42,7 @@ See \code{create_line()} for applying the same analysis to a different metric.
 afterhours_line(sq_data, hrvar = "LevelDesignation")
 
 
-# Return a table
+# Return summary table
 afterhours_line(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

@@ -16,10 +16,10 @@
 #' @family Workloads
 #'
 #' @examples
-#' # Return a plot
+#' # Return plot
 #' workloads_fizz(sq_data, hrvar = "Organization", return = "plot")
 #'
-#' # Return a table
+#' # Return summary table
 #' workloads_fizz(sq_data, hrvar = "Organization", return = "table")
 #'
 #' @export

@@ -32,7 +32,7 @@
 #' @importFrom tidyr replace_na
 #'
 #' @examples
-#' # Return a plot
+#' # Return plot
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4)

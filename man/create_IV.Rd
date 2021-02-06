@@ -45,7 +45,7 @@ sq_data \%>\%
   mutate(X = ifelse(Email_hours > 6, 1, 0)) \%>\%
   create_IV(outcome = "X", return = "summary")
 
-# Return a plot
+# Return plot
 sq_data \%>\%
   mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) \%>\%
   create_IV(outcome = "X",

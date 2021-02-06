@@ -22,10 +22,10 @@ employee count over time. Part of a data validation process to check
 for unusual license growth / declines over time.
 }
 \examples{
-# Return a plot
+# Return plot
 hr_trend(dv_data)
 
-# Return a table
+# Return summary table
 hr_trend(dv_data, return = "table")
 
 }

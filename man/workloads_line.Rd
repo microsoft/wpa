@@ -33,7 +33,7 @@ Additional options available to return a summary table.
 workloads_line(sq_data, hrvar = "LevelDesignation")
 
 
-# Return a table
+# Return summary table
 workloads_line(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

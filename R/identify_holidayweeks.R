@@ -32,7 +32,7 @@
 #' # Return a message by default
 #' identify_holidayweeks(sq_data)
 #'
-#' # Return a plot
+#' # Return plot
 #' identify_holidayweeks(sq_data, return = "plot")
 #'
 #'

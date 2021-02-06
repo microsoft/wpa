@@ -54,10 +54,10 @@ Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
-# Return a plot
+# Return plot
 create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 
-# Return a table
+# Return summary table
 create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 }
 \seealso{

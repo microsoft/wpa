@@ -29,7 +29,7 @@
 #' # Heatmap plot is returned by default
 #' keymetrics_scan(sq_data)
 #'
-#' # Return a table
+#' # Return summary table
 #' keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
