@@ -44,10 +44,10 @@
 #' @family Flexible
 #'
 #' @examples
-#' ## Return a plot
+#' # Return a plot
 #' create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 #'
-#' ## Return a table
+#' # Return a table
 #' create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 #' @export
 

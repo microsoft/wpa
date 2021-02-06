@@ -17,10 +17,10 @@
 #' @family Collaboration
 #'
 #' @examples
-#' ## Return a plot
+#' # Return a plot
 #' collaboration_dist(sq_data, hrvar = "Organization")
 #'
-#' ## Return a table
+#' # Return a table
 #' collaboration_dist(sq_data, hrvar = "Organization", return = "table")
 #' @export
 

@@ -48,13 +48,13 @@ Uses the metric \code{After_hours_collaboration_hours}.
 See \code{create_dist()} for applying the same analysis to a different metric.
 }
 \examples{
-## Return a plot
+# Return a plot
 afterhours_dist(sq_data, hrvar = "Organization")
 
-## Return a table
+# Return a table
 afterhours_dist(sq_data, hrvar = "Organization", return = "table")
 
-## Return result with a custom specified breaks
+# Return result with a custom specified breaks
 afterhours_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 }
 \seealso{

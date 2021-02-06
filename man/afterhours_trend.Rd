@@ -30,10 +30,10 @@ Additional options available to return a summary table.
 Uses the metric \code{After_hours_collaboration_hours}.
 }
 \examples{
-## Run plot
+# Run plot
 afterhours_trend(sq_data)
 
-## Run table
+# Run table
 afterhours_trend(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

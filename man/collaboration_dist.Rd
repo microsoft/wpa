@@ -57,10 +57,10 @@ Additional options available to return a table with distribution elements.
 Uses the metric \code{Collaboration_hours}.
 }
 \examples{
-## Return a plot
+# Return a plot
 collaboration_dist(sq_data, hrvar = "Organization")
 
-## Return a table
+# Return a table
 collaboration_dist(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{

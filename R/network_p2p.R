@@ -54,34 +54,34 @@
 #' method.
 #'
 #' @examples
-#' ## Simulate a small person-to-person dataset
+#' # Simulate a small person-to-person dataset
 #' p2p_data <- p2p_data_sim(size = 50)
 #'
-#' ## Return a network plot to console, coloured by hrvar
+#' # Return a network plot to console, coloured by hrvar
 #' p2p_data %>%
 #'   network_p2p(display = "hrvar",
 #'               path = NULL,
 #'               return = "plot")
 #'
 #' \dontrun{
-#' ## Return a network plot to console, coloured by Leiden communities
-#' ## Requires python dependencies installed
+#' # Return a network plot to console, coloured by Leiden communities
+#' # Requires python dependencies installed
 #'   p2p_data %>%
 #'     network_p2p(display = "leiden",
 #'                 path = NULL,
 #'                 return = "plot")
 #' }
 #'
-#' ## Return a network plot to console, coloured by Louvain communities
+#' # Return a network plot to console, coloured by Louvain communities
 #' p2p_data %>%
 #'   network_p2p(display = "louvain",
 #'               path = NULL,
 #'               return = "plot")
 #'
-#' ## Return a network plot to console
-#' ## Coloured by Leiden communities
-#' ## Using Fruchterman-Reingold force-directed layout algorithm
-#' ## Force the use of fast plotting method
+#' # Return a network plot to console
+#' # Coloured by Leiden communities
+#' # Using Fruchterman-Reingold force-directed layout algorithm
+#' # Force the use of fast plotting method
 #' p2p_data %>%
 #'   network_p2p(display = "hrvar",
 #'               path = NULL,
@@ -89,8 +89,8 @@
 #'               algorithm = "lgl",
 #'               size_threshold = 0)
 #'
-#' ## Return a data frame matching HR variable and communities to nodes
-#' ## Using Louvain communities
+#' # Return a data frame matching HR variable and communities to nodes
+#' # Using Louvain communities
 #' p2p_data %>%
 #'   network_p2p(display = "louvain",
 #'               return = "data",

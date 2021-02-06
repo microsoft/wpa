@@ -20,10 +20,10 @@
 #' @family After-Hours
 #'
 #' @examples
-#' ## Return a plot
+#' # Return a plot
 #' afterhours_fizz(sq_data, hrvar = "LevelDesignation", return = "plot")
 #'
-#' ## Return a table
+#' # Return a table
 #' afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
 #' @export
 

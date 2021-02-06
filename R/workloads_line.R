@@ -27,11 +27,11 @@
 #'
 #' @examples
 #'
-#' ## Return a line plot
+#' # Return a line plot
 #' workloads_line(sq_data, hrvar = "LevelDesignation")
 #'
 #'
-#' ## Return a table
+#' # Return a table
 #' workloads_line(sq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @return

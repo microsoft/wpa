@@ -31,7 +31,7 @@ Internal Network Breadth as the vertical axis and Internal Network Size as the
 horizontal axis.
 }
 \examples{
-## Return a plot
+# Return a plot
 sq_data \%>\% internal_network_plot(return = "plot")
 
 }

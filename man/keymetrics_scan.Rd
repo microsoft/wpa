@@ -41,10 +41,10 @@ When 'table' is passed, a summary table is returned as a data frame.
 Returns a heatmapped table by default, with options to return a table.
 }
 \examples{
-## Heatmap plot is returned by default
+# Heatmap plot is returned by default
 keymetrics_scan(sq_data)
 
-## Return a table
+# Return a table
 keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

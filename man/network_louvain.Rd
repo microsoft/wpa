@@ -60,10 +60,10 @@ Take a P2P network query and implement the Louvain community detection method. T
 \strong{igraph} implementation of the Louvain method is used.
 }
 \examples{
-## Simulate a small person-to-person dataset
+# Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
 
-## Return louvain, console, plot
+# Return louvain, console, plot
 p2p_data \%>\%
   network_louvain(path = NULL,
                   return = "plot")

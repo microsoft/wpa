@@ -17,11 +17,11 @@
 #'
 #' @examples
 #'
-#' ## Return a line plot
+#' # Return a line plot
 #' meeting_line(sq_data, hrvar = "LevelDesignation")
 #'
 #'
-#' ## Return a table
+#' # Return a table
 #' meeting_line(sq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @return

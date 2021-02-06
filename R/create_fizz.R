@@ -39,13 +39,13 @@
 #' @family Flexible
 #'
 #' @examples
-#' ## Create a fizzy plot for Work Week Span by Level Designation
+#' # Create a fizzy plot for Work Week Span by Level Designation
 #' create_fizz(sq_data, metric = "Workweek_span", hrvar = "LevelDesignation", return = "plot")
 #'
-#' ## Create a summary statistics table for Work Week Span by Organization
+#' # Create a summary statistics table for Work Week Span by Organization
 #' create_fizz(sq_data, metric = "Workweek_span", hrvar = "Organization", return = "table")
 #'
-#' ## Create a fizzy plot for Collaboration Hours by Level Designation
+#' # Create a fizzy plot for Collaboration Hours by Level Designation
 #' create_fizz(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 #' @export
 

@@ -38,10 +38,10 @@ Uses the metric \code{After_hours_collaboration_hours}.
 See \code{create_fizz()} for applying the same analysis to a different metric.
 }
 \examples{
-## Return a plot
+# Return a plot
 afterhours_fizz(sq_data, hrvar = "LevelDesignation", return = "plot")
 
-## Return a table
+# Return a table
 afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{

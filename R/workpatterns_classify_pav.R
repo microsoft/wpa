@@ -37,13 +37,13 @@
 #'
 #' @examples
 #' \donttest{
-#' ## Returns a plot by default
+#' # Returns a plot by default
 #' workpatterns_classify_pav(em_data)
 #'
-#' ## Return a table
+#' # Return a table
 #' workpatterns_classify_pav(em_data, return = "table")
 #'
-#' ## Return an area plot
+#' # Return an area plot
 #' workpatterns_classify_pav(em_data, return = "plot-area")
 #' }
 #'

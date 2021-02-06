@@ -39,7 +39,7 @@
 #' @family Flexible
 #'
 #' @examples
-#' ## Return a plot
+#' # Return a plot
 #' create_period_scatter(sq_data,
 #'                       hrvar = "LevelDesignation",
 #'                       before_start = "2019-11-03",
@@ -47,7 +47,7 @@
 #'                       after_start = "2020-01-01",
 #'                       after_end = "2020-01-26")
 #'
-#' ## Return a summary table
+#' # Return a summary table
 #' create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
 #'
 #'

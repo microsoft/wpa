@@ -32,11 +32,11 @@ Uses the metric \code{Meeting_hours_with_manager_1_on_1}.
 }
 \examples{
 
-## Return a line plot
+# Return a line plot
 one2one_line(sq_data, hrvar = "LevelDesignation")
 
 
-## Return a table
+# Return a table
 one2one_line(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

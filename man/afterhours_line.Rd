@@ -33,11 +33,11 @@ See \code{create_line()} for applying the same analysis to a different metric.
 }
 \examples{
 
-## Return a line plot
+# Return a line plot
 afterhours_line(sq_data, hrvar = "LevelDesignation")
 
 
-## Return a table
+# Return a table
 afterhours_line(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

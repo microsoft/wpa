@@ -25,7 +25,7 @@
 #' @import dplyr
 #'
 #' @examples
-#' ## Return a network plot
+#' # Return a network plot
 #' g2g_data %>%
 #'   network_g2g(time_investor = "TimeInvestors_Organization",
 #'               collaborator = "Collaborators_Organization",

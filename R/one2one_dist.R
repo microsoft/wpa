@@ -16,10 +16,10 @@
 #' @family Managerial Relations
 #'
 #' @examples
-#' ## Return a plot
+#' # Return a plot
 #' workloads_dist(sq_data, hrvar = "Organization", return = "plot")
 #'
-#' ## Return summary table
+#' # Return summary table
 #' workloads_dist(sq_data, hrvar = "Organization", return = "table")
 #' @export
 

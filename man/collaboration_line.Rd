@@ -35,11 +35,11 @@ Uses the metric \code{Collaboration_hours}.
 }
 \examples{
 
-## Return a line plot
+# Return a line plot
 collaboration_line(sq_data, hrvar = "LevelDesignation")
 
 
-## Return a table
+# Return a table
 collaboration_line(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

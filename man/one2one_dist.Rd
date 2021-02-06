@@ -43,10 +43,10 @@ Returns a stacked bar plot of different buckets of 1:1 time.
 Additional options available to return a table with distribution elements.
 }
 \examples{
-## Return a plot
+# Return a plot
 workloads_dist(sq_data, hrvar = "Organization", return = "plot")
 
-## Return summary table
+# Return summary table
 workloads_dist(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{

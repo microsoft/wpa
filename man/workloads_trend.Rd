@@ -30,10 +30,10 @@ Additional options available to return a summary table.
 Uses the metric \code{Workweek_span}.
 }
 \examples{
-## Run plot
+# Run plot
 workloads_trend(sq_data)
 
-## Run table
+# Run table
 workloads_trend(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

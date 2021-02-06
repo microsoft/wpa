@@ -43,13 +43,13 @@ Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
-## Return a plot
+# Return a plot
 meeting_dist(sq_data, hrvar = "Organization")
 
-## Return a table
+# Return a table
 meeting_dist(sq_data, hrvar = "Organization", return = "table")
 
-## Return result with a custom specified breaks
+# Return result with a custom specified breaks
 meeting_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 
 }

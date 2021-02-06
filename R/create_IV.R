@@ -30,12 +30,12 @@
 #' \dontrun{
 #' library(dplyr)
 #'
-#' ## Return a summary table of IV
+#' # Return a summary table of IV
 #' sq_data %>%
 #'   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
 #'   create_IV(outcome = "X", return = "summary")
 #'
-#' ## Return a plot
+#' # Return a plot
 #' sq_data %>%
 #'   mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
 #'   create_IV(outcome = "X",
