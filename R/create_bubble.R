@@ -3,30 +3,31 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
-#' representing the number of employees in the group.
+#' @title Create a bubble plot with two selected Workplace Analytics metrics
+#'   (General Purpose), with size representing the number of employees in the
+#'   group.
 #'
-#' @description
-#' Returns a bubble plot of two selected metrics, using size to map the number of employees.
+#' @description Returns a bubble plot of two selected metrics, using size to map
+#'   the number of employees.
 #'
-#' @details
-#' This is a general purpose function that powers all the functions
-#' in the package that produce bubble plots.
+#' @details This is a general purpose function that powers all the functions in
+#'   the package that produce bubble plots.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param metric_x Character string containing the name of the metric,
-#' e.g. "Collaboration_hours"
-#' @param metric_y Character string containing the name of the metric,
-#' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
+#' @param metric_x Character string containing the name of the metric, e.g.
+#'   "Collaboration_hours"
+#' @param metric_y Character string containing the name of the metric, e.g.
+#'   "Collaboration_hours"
+#' @param hrvar HR Variable by which to split metrics, defaults to
+#'   "Organization" but accepts any character vector, e.g. "LevelDesignation"
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
 #'
-#' @param return String specifying what to return. This must be one of the following strings:
-#'   - `"plot"`
-#'   - `"table"`
+#' @param return String specifying what to return. This must be one of the
+#'   following strings: - `"plot"` - `"table"`
 #'
-#' @param bubble_size A numeric vector of length two to specify the size range of the bubbles
+#' @param bubble_size A numeric vector of length two to specify the size range
+#'   of the bubbles
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -45,10 +46,10 @@
 #' "Generated_workload_email_hours",
 #' "Organization", mingroup = 100, return = "plot")
 #'
-#' @return
-#' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A bubble plot for the metric.
-#'   - `"table"`: data frame. A summary table for the metric.
+#' @return A different output is returned depending on the value passed to the
+#' `return` argument:
+#'  - `"plot"`: ggplot object. A bubble plot for the metric.
+#'  - `"table"`: data frame. A summary table for the metric.
 #'
 #' @export
 create_bubble <- function(data,

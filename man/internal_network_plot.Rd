@@ -15,18 +15,17 @@ internal_network_plot(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to
+"Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{return}{String specifying what to return. This must be one of the following strings:
-\itemize{
-\item \code{"plot"}
-\item \code{"table"}
-}}
+\item{return}{String specifying what to return. This must be one of the
+following strings: - \code{"plot"} - \code{"table"}}
 
-\item{bubble_size}{A numeric vector of length two to specify the size range of the bubbles}
+\item{bubble_size}{A numeric vector of length two to specify the size range
+of the bubbles}
 }
 \description{
 Plot the internal network metrics for a HR variable as a scatter plot, showing

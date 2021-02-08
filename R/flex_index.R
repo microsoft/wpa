@@ -1,27 +1,76 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Compute a Flexibility Index based on the Hourly Collaboration Query
 #'
-#' @description Pass an Hourly Collaboration query and compute a Flexibility Index for a group
+#' @description
+#' `r lifecycle::badge('experimental')`
+#'
+#' Pass an Hourly Collaboration query and compute a Flexibility Index for the
+#' entire population. The Flexibility Index is a quantitative measure of the
+#' freedom for employees to work at a time of their choice.
+#'
+#' @details
+#' The **Flexibility Index** is a score between 0 and 1, and is calculated based
+#' on three component measures:
+#'
+#' - `ChangeHours`: this represents the freedom to define work start and end
+#' time. Teams that embrace flexibility allow members to start and end their
+#' workday at different times.
+#'
+#' - `TakeBreaks`: this represents the freedom define one's own schedule. In
+#' teams that embrace flexibility, some members will choose to organize / split
+#' their day in different ways (e.g. take a long lunch-break, disconnect in the
+#' afternoon and reconnect in the evening, etc.).
+#'
+#' - `ControlHours`: this represents the freedom to switch off. Members who
+#' choose alternative arrangements should be able to maintain a workload that is
+#' broadly equivalent to those that follow standard arrangements.
+#'
+#' The **Flexibility Index** returns with one single score for each person-week,
+#' plus the **three** sub-component binary variables (`TakeBreaks`,
+#' `ChangeHours`, `ControlHours`). At the person-week level, each score can only
+#' have the values 0, 0.33, 0.66, and 1. The Flexibility Index should only be
+#' interpreted as a **group** of person-weeks, e.g. the average Flexibility
+#' Index of a team of 6 over time, where the possible values would range from 0
+#' to 1.
+#'
+#'
+#'
+#' @section Context: The central feature of flexible working arrangements is
+#'   that it is the employee rather the employer who chooses the working
+#'   arrangement. _Observed flexibility_ serves as a proxy to assess whether a
+#'   flexible working arrangement are in place. The Flexibility Index is an
+#'   attempt to create such a proxy for quantifying and measuring flexibility,
+#'   using behavioural data from Workplace Analytics.
 #'
 #' @param data Hourly Collaboration query to be passed through as data frame.
+#'
 #' @param hrvar A string specifying the HR attribute to cut the data by.
-#' Defaults to NULL. This only affects the function when "table" is returned.
-#' @param signals Character vector to specify which collaboration metrics to use:
-#' You may use "email" for emails only, "IM" for Teams messages only,
-#' or a combination of the two `c("email", "IM")` (default).
-#' @param active_threshold A numeric value specifying the minimum number of signals to be greater than in
-#' order to qualify as _active_. Defaults to 0.
-#' @param start_hour A character vector specifying starting hours,
-#' e.g. "0900"
-#' @param end_hour A character vector specifying end hours,
-#' e.g. "1700"
-#' @param return Character vector to specify what to return.
-#' Valid options include "plot" (default), "data", and "table".
-#' When returning a plot, a random of ten working patterns are displayed, with diagnostic data and the Flexibility
-#' Index shown on the plot.
+#'   Defaults to NULL. This only affects the function when "table" is returned.
+#'
+#' @param signals Character vector to specify which collaboration metrics to
+#'   use: You may use "email" for emails only, "IM" for Teams messages only, or
+#'   a combination of the two `c("email", "IM")` (default).
+#'
+#' @param active_threshold A numeric value specifying the minimum number of
+#'   signals to be greater than in order to qualify as _active_. Defaults to 0.
+#'
+#' @param start_hour A character vector specifying starting hours, e.g. "0900"
+#'
+#' @param end_hour A character vector specifying end hours, e.g. "1700"
+#'
+#' @param return Character vector to specify what to return. Valid options
+#'   include "plot" (default), "data", and "table". When returning a plot, a
+#'   random of ten working patterns are displayed, with diagnostic data and the
+#'   Flexibility Index shown on the plot.
+#'
 #' @param plot_method Character string for determining which plot to return.
-#' Options include "sample", "common", and "time". "sample"
-#' plots a sample of ten working patterns; "common" plots the ten most common
-#' working patterns; "time" plots the Flexibility Index for the group over time.
+#'   Options include "sample", "common", and "time". "sample" plots a sample of
+#'   ten working patterns; "common" plots the ten most common working patterns;
+#'   "time" plots the Flexibility Index for the group over time.
 #'
 #' @import dplyr
 #' @importFrom data.table ":=" "%like%" "%between%"

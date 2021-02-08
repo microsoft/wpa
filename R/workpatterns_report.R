@@ -2,18 +2,21 @@
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
-#' This function takes a Hourly Collaboration query and generates a HTML report on
-#' working patterns archetypes. Archetypes are created using the binary-week method.
+#'
+#' This function takes a Hourly Collaboration query and generates a HTML report
+#' on working patterns archetypes. Archetypes are created using the binary-week
+#' method.
 #'
 #' @param data A Hourly Collaboration Query dataset in the form of a data frame.
-#' @param hrvar String specifying HR attribute to cut by archetypes. Defaults to `Organization`.
+#' @param hrvar String specifying HR attribute to cut by archetypes. Defaults to
+#'   `Organization`.
 #' @param signals See `workpatterns_classify()`.
 #' @param start_hour See `workpatterns_classify()`.
 #' @param end_hour See `workpatterns_classify()`.
-#' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' For example, "scope report".
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
-#' Defaults to TRUE.
+#' @param path Pass the file path and the desired file name, _excluding the file
+#'   extension_. For example, "scope report".
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to TRUE.
 #'
 #' @importFrom purrr map_if
 #' @importFrom methods is
