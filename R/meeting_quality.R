@@ -9,15 +9,16 @@
 #' Query as an input.
 #'
 #' @inheritParams create_bubble
+#' @inherit create_bubble return
 #'
 #' @import dplyr
 #'
 #' @examples
+#' # Return plot
 #' meeting_quality(sq_data, return = "plot")
 #'
-#' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
+#' # Return summary table
+#' meeting_quality(sq_data, return = "table")
 #'
 #' @export
 
