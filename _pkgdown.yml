@@ -37,7 +37,7 @@ navbar:
       - text: Network Functions
         href: analyst_guide_network.html
       - text: Reports
-        href: analyst_guide_report.html
+        href: analyst_guide_reports.html
     reference:
       text: Reference
       href: reference/index.html
