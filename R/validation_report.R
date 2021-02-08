@@ -23,6 +23,21 @@
 #' to the `data` argument, please also use `standardise_pq()` to make the variable names
 #' consistent with a Standard Person Query.
 #'
+#' @section Checking functions within `validation_report()`:
+#'   - `check_query()`
+#'   - `flag_ch_ratio()`
+#'   - `hrvar_count_all()`
+#'   - `identify_privacythreshold()`
+#'   - `identify_nkw()`
+#'   - `identify_holidayweeks()`
+#'   - `subject_validate()`
+#'   - `identify_tenure()`
+#'   - `flag_outlooktime()`
+#'   - `identify_shifts()`
+#'   - `track_HR_change()`
+#'
+#' You can browse each individual function for details on calculations.
+#'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param meeting_data An optional Meeting Query dataset in the form of a data frame.
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"

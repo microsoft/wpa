@@ -48,6 +48,25 @@ If you are passing a Ways of Working Assessment query instead of a Standard Pers
 to the \code{data} argument, please also use \code{standardise_pq()} to make the variable names
 consistent with a Standard Person Query.
 }
+\section{Checking functions within \code{validation_report()}}{
+
+\itemize{
+\item \code{check_query()}
+\item \code{flag_ch_ratio()}
+\item \code{hrvar_count_all()}
+\item \code{identify_privacythreshold()}
+\item \code{identify_nkw()}
+\item \code{identify_holidayweeks()}
+\item \code{subject_validate()}
+\item \code{identify_tenure()}
+\item \code{flag_outlooktime()}
+\item \code{identify_shifts()}
+\item \code{track_HR_change()}
+}
+
+You can browse each individual function for details on calculations.
+}
+
 \examples{
 \dontrun{
 validation_report(dv_data,
