@@ -15,21 +15,16 @@
 #' Uses the metric `Meeting_hours_with_manager_1_on_1`.
 #'
 #' @inheritParams create_line
+#' @inherit create_line return
 #'
 #' @family Managerial Relations
 #'
 #' @examples
-#'
 #' # Return a line plot
 #' one2one_line(sq_data, hrvar = "LevelDesignation")
 #'
-#'
 #' # Return summary table
 #' one2one_line(sq_data, hrvar = "LevelDesignation", return = "table")
-#'
-#' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @export
 one2one_line <- function(data,

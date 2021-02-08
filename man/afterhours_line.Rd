@@ -23,8 +23,11 @@ but accepts any character vector, e.g. "LevelDesignation"}
 See \code{Value} for more information.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A faceted line plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Provides a week by week view of after-hours collaboration time, visualized as line charts.
@@ -34,19 +37,18 @@ Additional options available to return a summary table.
 }
 \details{
 Uses the metric \code{After_hours_collaboration_hours}.
-See \code{create_line()} for applying the same analysis to a different metric.
 }
 \examples{
-
 # Return a line plot
 afterhours_line(sq_data, hrvar = "LevelDesignation")
-
 
 # Return summary table
 afterhours_line(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{
+\code{\link[=create_line]{create_line()}} for applying the same analysis to a different metric.
+
 Other After-Hours: 
 \code{\link{afterhours_dist}()},
 \code{\link{afterhours_fizz}()},

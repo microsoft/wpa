@@ -12,21 +12,16 @@
 #' Additional options available to return a summary table.
 #'
 #' @inheritParams create_line
+#' @inherit create_line return
 #'
 #' @family Meetings
 #'
 #' @examples
-#'
 #' # Return a line plot
 #' meeting_line(sq_data, hrvar = "LevelDesignation")
 #'
-#'
 #' # Return summary table
 #' meeting_line(sq_data, hrvar = "LevelDesignation", return = "table")
-#'
-#' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @export
 meeting_line <- function(data,

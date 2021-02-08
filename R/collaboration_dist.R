@@ -14,6 +14,8 @@
 #' Uses the metric `Collaboration_hours`.
 #'
 #' @inheritParams create_dist
+#' @inherit create_dist return
+#'
 #' @family Collaboration
 #'
 #' @examples
