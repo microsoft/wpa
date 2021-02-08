@@ -19,7 +19,15 @@
 #' @family Data Validation
 #'
 #' @examples
+#' # Demo with `dv_data`
 #' flag_outlooktime(dv_data)
+#'
+#' # Example where Outlook Start and End times are imputed
+#' spq_df <- sq_data
+#' spq_df$WorkingStartTimeSetInOutlook <- "6:30"
+#' spq_df$WorkingEndTimeSetInOutlook <- "23:30"
+#' flag_outlooktime(spq_df, threshold = c(5, 13))
+#'
 #' @export
 flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
 
