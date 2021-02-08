@@ -250,9 +250,18 @@ Valid options include "text" (default), "message", and "data".</p></td>
 <code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>dv_data</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># Demo with `dv_data`</span>
+<span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>dv_data</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>[Warning]  94.9% (832) of the person-date rows in the data have extreme Outlook settings.</span>
-#&gt; <span class='message'>0% (0)  have an Outlook workday shorter than 4 hours, while 94.9% (832) have a workday longer than 15 hours.</span></div></pre>
+#&gt; <span class='message'>0% (0)  have an Outlook workday shorter than 4 hours, while 94.9% (832) have a workday longer than 15 hours.</span></div><div class='input'>
+<span class='co'># Example where Outlook Start and End times are imputed</span>
+<span class='va'>spq_df</span> <span class='op'>&lt;-</span> <span class='va'>sq_data</span>
+<span class='va'>spq_df</span><span class='op'>$</span><span class='va'>WorkingStartTimeSetInOutlook</span> <span class='op'>&lt;-</span> <span class='st'>"6:30"</span>
+<span class='va'>spq_df</span><span class='op'>$</span><span class='va'>WorkingEndTimeSetInOutlook</span> <span class='op'>&lt;-</span> <span class='st'>"23:30"</span>
+<span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>spq_df</span>, threshold <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>13</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>[Warning]  100% (13442) of the person-date rows in the data have extreme Outlook settings.</span>
+#&gt; <span class='message'>0% (0)  have an Outlook workday shorter than 5 hours, while 100% (13442) have a workday longer than 13 hours.</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
