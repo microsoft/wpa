@@ -14,12 +14,14 @@ devtools::install_git(url = "https://github.com/microsoft/wpa.git")
 
 ```
 
-If you are prompted for a message to update your packages, we recommend the following:
+If you are prompted for a message to update your packages, we recommend either one of the following two:
 
-- Skip package updates for a **quick start**. This should not affect any functionality of the package.
-- If you are able to spend 10-15 minutes to do a full package library update, you should select update all CRAN packages (unless you are aware that there are any significant breaking changes in the new packages that would be updated). You should restart your R Session both **before** and **after** the package updates prior to re-running the above code. 
+1. Skip package updates for a **quick start**. This should not affect any functionalities of the package.
+2. If you are able to spend 10-15 minutes to do a full package library update, you should select update all CRAN packages (unless you are aware that there are any significant breaking changes in the new packages that would be updated). You should restart your R Session both **before** and **after** the package updates prior to re-running the above code. 
 
 **wpa** is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to proceed with a local installation, you can download a installation file [here](https://github.com/microsoft/wpa/releases). 
+
+### Troubleshooting installation
 
 If you encounter any issues with package installations, you can find the recommended troubleshooting flow below. Note that this process can take 10-15 minutes for a full package library update.
 
