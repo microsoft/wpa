@@ -19,7 +19,6 @@ one2one_dist(
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-
 \item{return}{String specifying what to return. This must be one of the following strings:
 \itemize{
 \item \code{"plot"}
@@ -27,7 +26,6 @@ one2one_dist(
 }
 
 See \code{Value} for more information.}
-
 
 \item{cut}{A numeric vector of length three to specify the breaks for the distribution,
 e.g. c(10, 15, 20)}
