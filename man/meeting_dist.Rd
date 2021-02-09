@@ -27,6 +27,7 @@ meeting_dist(
 
 See \code{Value} for more information.}
 
+
 \item{cut}{A numeric vector of length three to specify the breaks for the distribution,
 e.g. c(10, 15, 20)}
 }

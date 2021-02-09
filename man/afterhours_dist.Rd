@@ -19,6 +19,7 @@ afterhours_dist(
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
+
 \item{return}{String specifying what to return. This must be one of the following strings:
 \itemize{
 \item \code{"plot"}
