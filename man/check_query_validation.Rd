@@ -7,11 +7,23 @@
 check_query_validation(data, return)
 }
 \arguments{
-\item{data}{A person-level query in the form of a data frame, including the standard person query,
-Ways of Working assessment query, and the hourly collaboration query.}
+\item{data}{A person-level query in the form of a data frame. This includes:
+\itemize{
+\item Standard Person Query
+\item Ways of Working Assessment Query
+\item Hourly Collaboration Query
+}
 
-\item{return}{Character string to specify whether to return a console message ("message"),
-a character string ("text"), or a data frame. Defaults to "message".}
+All person-level query have a \code{PersonId} column and a \code{Date} column.}
+
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"message"} (default)
+\item \code{"text"}
+}
+
+See \code{Value} for more information.}
 }
 \description{
 Prints diagnostic data about the data query to the R console, with information

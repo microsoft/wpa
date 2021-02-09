@@ -3,15 +3,15 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Fizzy Drink / Jitter Scatter Plot for any metric
+#' @title Fizzy Drink / Jittered Scatter Plot for any metric
 #'
 #' @description
-#' Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
+#' Analyzes a selected metric and returns a 'fizzy' scatter plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
 #' @details
 #' This is a general purpose function that powers all the functions
-#' in the package that produce 'fizzy drink' / jitter scatter plots.
+#' in the package that produce 'fizzy drink' / jittered scatter plots.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,

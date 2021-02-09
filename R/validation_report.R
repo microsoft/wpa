@@ -61,6 +61,7 @@
 #' @importFrom dplyr `%>%`
 #'
 #' @family Reports
+#' @inherit generate_report return
 #'
 #' @export
 validation_report <- function(data,

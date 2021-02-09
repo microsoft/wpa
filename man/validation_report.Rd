@@ -30,6 +30,11 @@ argument within \code{hrvar_count_all()}.}
 \item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
 Defaults to TRUE.}
 }
+\value{
+An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.
+}
 \description{
 The function generates an interactive HTML report using
 Standard Person Query data as an input. The report contains checks on

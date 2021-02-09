@@ -15,8 +15,18 @@
 #' but accepts any character vector, e.g. "LevelDesignation".
 #' If a vector with more than one value is provided, the HR attributes are automatically
 #' concatenated.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object containing a bar plot.
+#'   - `"table"`: data frame containing a count table.
 #'
 #' @import ggplot2
 #' @import dplyr

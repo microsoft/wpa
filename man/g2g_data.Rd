@@ -25,6 +25,6 @@ A data frame with 3517 rows and 7 variables:
 g2g_data
 }
 \description{
-A dataset generated from a Group-to-Group Query from WpA.
+A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
 }
 \keyword{datasets}

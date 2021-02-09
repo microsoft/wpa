@@ -36,10 +36,13 @@
 #' @family Flexible
 #'
 #' @examples
+#' # Return plot of Email Hours
 #' sq_data %>% create_line(metric = "Email_hours", return = "plot")
 #'
+#' # Return plot of Collaboration Hours
 #' sq_data %>% create_line(metric = "Collaboration_hours", return = "plot")
 #'
+#' # Return plot of Work week span and cut by `LevelDesignation`
 #' sq_data %>% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
 #'
 #' @return

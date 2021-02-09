@@ -16,9 +16,12 @@ Assessment query's columns name standard and consistent with a Standard Person Q
 will have no effect if the query being imported is not a Ways of Working Assessment query. Defaults
 as FALSE.}
 }
+\value{
+A \code{tibble} is returned.
+}
 \description{
 Import a Workplace Analytics Query from a local CSV File, with variable classifications optimised
-for other \strong{wpa} functions.
+for other 'wpa' functions.
 }
 \details{
 \code{import_wpa()} uses \code{data.table::fread()} to import CSV files for speed,

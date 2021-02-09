@@ -27,9 +27,14 @@ whether to return percentages or absolute values in "data" and "plot".
 Valid values are "percent" (default) and "abs".}
 
 \item{signals}{Character vector to specify which collaboration metrics to
-use: - "email" (default) for emails only - "IM" for Teams messages only, -
-"unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-only - or a combination of signals, such as \code{c("email", "IM")}}
+use:
+\itemize{
+\item \code{"email"} (default) for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+\item or a combination of signals, such as \code{c("email", "IM")}
+}}
 
 \item{start_hour}{A character vector specifying starting hours, e.g. "0900".
 Note that this currently only supports \strong{hourly} increments.}
@@ -41,19 +46,35 @@ Note that this currently only supports \strong{hourly} increments.}
 classification. By default, a binary week-based (bw) method is used, with
 options to use the the person-average volume-based (pav) method.}
 
-\item{return}{Character vector to specify what to return. Valid options
-include: - "plot": returns a heatmap plot of signal distribution by hour
-and archetypes (default) - "data": returns the raw data with the classified
-archetypes - "table": returns a summary table of the archetypes -
-"plot-area": returns an area plot of the percentages of archetypes shown
-over time}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"data"}
+\item \code{"table"}
+\item \code{"plot-area"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+Character vector to specify what to return. Valid options
+include:
+\itemize{
+\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
+and archetypes (default)
+\item \code{"data"}: returns the raw data with the classified archetypes
+\item \code{"table"}: returns a summary table of the archetypes
+\item \code{"plot-area"}: returns an area plot of the percentages of archetypes
+shown over time
+}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 
 Apply a rule based algorithm to emails or instant messages sent by hour of
-day. Uses a binary week-based (bw) method by default, with options to use the
-the person-average volume-based (pav) method.
+day. Uses a binary week-based ('bw') method by default, with options to use the
+the person-average volume-based ('pav') method.
 }
 \details{
 This is a wrapper around \code{workpatterns_classify_bw()} and
@@ -69,25 +90,39 @@ implementations.
 
 
 This method classifies each \strong{person-week} into one of the seven
-archetypes: - 0 < 3 hours on - 1 Standard with breaks workday - 2 Standard
-continuous workday - 3 Standard flexible workday - 4 Long flexible workday
+archetypes:
 \itemize{
-\item 5 Long continuous workday - 6 Always on (13h+)
+\item 0 < 3 hours on
+\item 1 Standard with breaks workday
+\item 2 Standard continuous workday
+\item 3 Standard flexible workday
+\item 4 Long flexible workday
+\item 5 Long continuous workday
+\item 6 Always on (13h+)
 }
 
-This is the recommended method over \code{pav} for several reasons: 1. \code{bw}
-ignores \emph{volume effects}, where activity volume can still bias the results
-towards the 'standard working hours'. 2. It captures the intuition that
-each individual can have 'light' and 'heavy' weeks with respect to
-workload.
+This is the recommended method over \code{pav} for several reasons:
+\enumerate{
+\item \code{bw} ignores \emph{volume effects}, where activity volume can still bias the
+results towards the 'standard working hours'.
+\item It captures the intuition that each individual can have 'light' and
+'heavy' weeks with respect to workload.
+}
 }
 
 \section{Person Average method}{
 
 
 This method classifies each \strong{person} (based on unique \code{PersonId}) into
-one of the six archetypes: - Absent - Extended Hours - Morning - Extended
-Hours - Evening - Overnight workers - Standard Hours - Always On
+one of the six archetypes:
+\itemize{
+\item Absent
+\item Extended Hours - Morning
+\item Extended Hours - Evening
+\item Overnight workers
+\item Standard Hours
+\item Always On
+}
 }
 
 \section{Flexibility Index}{

@@ -19,10 +19,11 @@ meeting_tm_report(
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.
 For example, "meeting text mining report".}
 
-\item{stopwords}{A single-column data frame labelled 'word' containing custom stopwords to remove.}
+\item{stopwords}{A single-column data frame labelled 'word' containing custom
+stopwords to remove.}
 
-\item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.}
+\item{timestamp}{Logical vector specifying whether to include a timestamp in
+the file name. Defaults to TRUE.}
 
 \item{keep}{A numeric vector specifying maximum number of words to keep.}
 

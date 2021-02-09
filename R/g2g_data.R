@@ -6,7 +6,7 @@
 #' @title Sample Group-to-Group dataset
 #'
 #' @description
-#' A dataset generated from a Group-to-Group Query from WpA.
+#' A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
 #'
 #' @format A data frame with 3517 rows and 7 variables:
 #' \describe{

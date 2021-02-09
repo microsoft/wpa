@@ -14,7 +14,7 @@
 #' @param start_hour See `workpatterns_classify()`.
 #' @param end_hour See `workpatterns_classify()`.
 #' @param path Pass the file path and the desired file name, _excluding the file
-#'   extension_. For example, "scope report".
+#'   extension_. For example, `"scope report"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to TRUE.
 #'

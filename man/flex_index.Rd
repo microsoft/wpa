@@ -32,15 +32,34 @@ signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
 \item{end_hour}{A character vector specifying end hours, e.g. "1700"}
 
-\item{return}{Character vector to specify what to return. Valid options
-include "plot" (default), "data", and "table". When returning a plot, a
-random of ten working patterns are displayed, with diagnostic data and the
-Flexibility Index shown on the plot.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"data"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{plot_method}{Character string for determining which plot to return.
-Options include "sample", "common", and "time". "sample" plots a sample of
-ten working patterns; "common" plots the ten most common working patterns;
-"time" plots the Flexibility Index for the group over time.}
+\itemize{
+\item \code{"sample"} plots a sample of ten working pattern
+\item \code{"common"} plots the ten most common working patterns
+\item \code{"time"} plots the Flexibility Index for the group over time
+}}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A random of ten working patterns are displayed,
+with diagnostic data and the Flexibility Index shown on the plot.
+\item \code{"data"}: data frame. The original input data appended with the
+Flexibility Index and the component scores.
+\item \code{"table"}: data frame. A summary table for the metric.
+hen returning a plot,
+}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
@@ -74,7 +93,8 @@ Index of a team of 6 over time, where the possible values would range from 0
 to 1.
 }
 \section{Context}{
- The central feature of flexible working arrangements is
+
+The central feature of flexible working arrangements is
 that it is the employee rather the employer who chooses the working
 arrangement. \emph{Observed flexibility} serves as a proxy to assess whether a
 flexible working arrangement are in place. The Flexibility Index is an

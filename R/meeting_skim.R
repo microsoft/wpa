@@ -10,11 +10,22 @@
 #' when provided a standard query in the input.
 #'
 #' @param data A standard person query data in the form of a data frame.
-#' @param return A character string to specify whether to return a message
-#' or a text string. Defaults to "message". Valid options include "text" or
-#' "table".
+#'
+#' @param return String specifying what to return. This must be one of the following strings:
+#'   - `"message"`
+#'   - `"text"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"message"`: message in console.
+#'   - `"text"`: string.
+#'   - `"table"`: data frame.
 #'
 #' @import dplyr
+#'
 #' @examples
 #' meeting_skim(sq_data)
 #'

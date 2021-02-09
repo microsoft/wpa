@@ -27,7 +27,7 @@ workpatterns_report(
 \item{end_hour}{See \code{workpatterns_classify()}.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
-extension}. For example, "scope report".}
+extension}. For example, \code{"scope report"}.}
 
 \item{timestamp}{Logical vector specifying whether to include a timestamp in
 the file name. Defaults to TRUE.}

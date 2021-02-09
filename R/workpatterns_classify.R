@@ -8,8 +8,8 @@
 #' @description `r lifecycle::badge('experimental')`
 #'
 #' Apply a rule based algorithm to emails or instant messages sent by hour of
-#' day. Uses a binary week-based (bw) method by default, with options to use the
-#' the person-average volume-based (pav) method.
+#' day. Uses a binary week-based ('bw') method by default, with options to use the
+#' the person-average volume-based ('pav') method.
 #'
 #' @details This is a wrapper around `workpatterns_classify_bw()` and
 #' `workpatterns_classify_pav()`, and calls each function depending on what is
@@ -23,21 +23,31 @@
 #' @section Binary Week method:
 #'
 #'   This method classifies each **person-week** into one of the seven
-#'   archetypes: - 0 < 3 hours on - 1 Standard with breaks workday - 2 Standard
-#'   continuous workday - 3 Standard flexible workday - 4 Long flexible workday
-#'   - 5 Long continuous workday - 6 Always on (13h+)
+#'   archetypes:
+#'   - 0 < 3 hours on
+#'   - 1 Standard with breaks workday
+#'   - 2 Standard continuous workday
+#'   - 3 Standard flexible workday
+#'   - 4 Long flexible workday
+#'   - 5 Long continuous workday
+#'   - 6 Always on (13h+)
 #'
-#'   This is the recommended method over `pav` for several reasons: 1. `bw`
-#'   ignores _volume effects_, where activity volume can still bias the results
-#'   towards the 'standard working hours'. 2. It captures the intuition that
-#'   each individual can have 'light' and 'heavy' weeks with respect to
-#'   workload.
+#'   This is the recommended method over `pav` for several reasons:
+#'   1. `bw` ignores _volume effects_, where activity volume can still bias the
+#'   results towards the 'standard working hours'.
+#'   2. It captures the intuition that each individual can have 'light' and
+#'   'heavy' weeks with respect to workload.
 #'
 #' @section Person Average method:
 #'
 #'   This method classifies each **person** (based on unique `PersonId`) into
-#'   one of the six archetypes: - Absent - Extended Hours - Morning - Extended
-#'   Hours - Evening - Overnight workers - Standard Hours - Always On
+#'   one of the six archetypes:
+#'   - Absent
+#'   - Extended Hours - Morning
+#'   - Extended Hours - Evening
+#'   - Overnight workers
+#'   - Standard Hours
+#'   - Always On
 #'
 #' @section Flexibility Index: The Working Patterns archetypes as calculated
 #'   using the binary-week method shares many similarities with the Flexibility
@@ -52,12 +62,14 @@
 #'   Defaults to NULL. This only affects the function when "table" is returned,
 #'   and is only applicable for method = "bw".
 #'
-#' @param return Character vector to specify what to return. Valid options
-#'   include: - "plot": returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default) - "data": returns the raw data with the classified
-#'   archetypes - "table": returns a summary table of the archetypes -
-#'   "plot-area": returns an area plot of the percentages of archetypes shown
-#'   over time
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"data"`
+#'   - `"table"`
+#'   - `"plot-area"`
+#'
+#' See `Value` for more information.
 #'
 #' @param method String to pass through specifying which method to use for
 #'   classification. By default, a binary week-based (bw) method is used, with
@@ -68,9 +80,12 @@
 #'   Valid values are "percent" (default) and "abs".
 #'
 #' @param signals Character vector to specify which collaboration metrics to
-#'   use: - "email" (default) for emails only - "IM" for Teams messages only, -
-#'   "unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-#'   only - or a combination of signals, such as `c("email", "IM")`
+#'   use:
+#'   - `"email"` (default) for emails only
+#'   - `"IM"` for Teams messages only
+#'   - `"unscheduled_calls"` for Unscheduled Calls only
+#'   - `"meetings"` for Meetings only
+#'   - or a combination of signals, such as `c("email", "IM")`
 #'
 #' @param start_hour A character vector specifying starting hours, e.g. "0900".
 #'   Note that this currently only supports **hourly** increments.
@@ -80,6 +95,15 @@
 #' @import dplyr
 #' @import tidyselect
 #' @import ggplot2
+#'
+#' @return Character vector to specify what to return. Valid options
+#'   include:
+#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
+#'   and archetypes (default)
+#'   - `"data"`: returns the raw data with the classified archetypes
+#'   - `"table"`: returns a summary table of the archetypes
+#'   - `"plot-area"`: returns an area plot of the percentages of archetypes
+#'   shown over time
 #'
 #' @examples
 #'

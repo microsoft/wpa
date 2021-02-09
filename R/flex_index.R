@@ -37,9 +37,8 @@
 #' Index of a team of 6 over time, where the possible values would range from 0
 #' to 1.
 #'
-#'
-#'
-#' @section Context: The central feature of flexible working arrangements is
+#' @section Context:
+#'   The central feature of flexible working arrangements is
 #'   that it is the employee rather the employer who chooses the working
 #'   arrangement. _Observed flexibility_ serves as a proxy to assess whether a
 #'   flexible working arrangement are in place. The Flexibility Index is an
@@ -62,15 +61,28 @@
 #'
 #' @param end_hour A character vector specifying end hours, e.g. "1700"
 #'
-#' @param return Character vector to specify what to return. Valid options
-#'   include "plot" (default), "data", and "table". When returning a plot, a
-#'   random of ten working patterns are displayed, with diagnostic data and the
-#'   Flexibility Index shown on the plot.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"data"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
 #'
 #' @param plot_method Character string for determining which plot to return.
-#'   Options include "sample", "common", and "time". "sample" plots a sample of
-#'   ten working patterns; "common" plots the ten most common working patterns;
-#'   "time" plots the Flexibility Index for the group over time.
+#'   - `"sample"` plots a sample of ten working pattern
+#'   - `"common"` plots the ten most common working patterns
+#'   - `"time"` plots the Flexibility Index for the group over time
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A random of ten working patterns are displayed,
+#'   with diagnostic data and the Flexibility Index shown on the plot.
+#'   - `"data"`: data frame. The original input data appended with the
+#'   Flexibility Index and the component scores.
+#'   - `"table"`: data frame. A summary table for the metric.
+#' hen returning a plot,
 #'
 #' @import dplyr
 #' @importFrom data.table ":=" "%like%" "%between%"
@@ -279,8 +291,11 @@ flex_index <- function(data,
   returnTable <-
     calculated_data %>%
     group_by(!!sym(hrvar)) %>%
-    summarise_at(vars(TakeBreaks, ChangeHours, ControlHours), ~mean(.), .groups = "drop_last") %>%
-    mutate(FlexibilityIndex = select(., TakeBreaks, ChangeHours, ControlHours) %>% apply(1, mean))
+    summarise_at(vars(TakeBreaks, ChangeHours, ControlHours),
+                 ~mean(.), .groups = "drop_last") %>%
+    mutate(FlexibilityIndex =
+             select(., TakeBreaks, ChangeHours, ControlHours) %>%
+             apply(1, mean))
 
   ## Main plot
 
@@ -293,12 +308,16 @@ flex_index <- function(data,
                     method = plot_method)
 
   } else if(return == "data"){
+
     calculated_data
+
   } else if(return == "table"){
 
     returnTable
 
   } else {
+
     stop("Check input for `return`.")
+
   }
 }

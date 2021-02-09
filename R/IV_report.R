@@ -29,7 +29,8 @@
 #' \dontrun{
 #' sq_data %>%
 #'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>% # Simulate binary variable
-#'   IV_report(outcome =  "CH_binary", predictors = c("Email_hours", "Workweek_span"))
+#'   IV_report(outcome =  "CH_binary",
+#'             predictors = c("Email_hours", "Workweek_span"))
 #' }
 #'
 #' @family Reports

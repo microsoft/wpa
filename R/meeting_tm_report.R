@@ -6,9 +6,10 @@
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
 #' For example, "meeting text mining report".
-#' @param stopwords A single-column data frame labelled 'word' containing custom stopwords to remove.
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
-#' Defaults to TRUE.
+#' @param stopwords A single-column data frame labelled 'word' containing custom
+#'   stopwords to remove.
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to TRUE.
 #' @param keep A numeric vector specifying maximum number of words to keep.
 #' @param seed A numeric vector to set seed for random generation.
 #'

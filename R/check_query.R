@@ -5,21 +5,36 @@
 
 #' @title Check a query to ensure that it is suitable for analysis
 #'
-#' @description
-#' Prints diagnostic data about the data query to the R console, with information
-#' such as date range, number of employees, HR attributes identified, etc.
+#' @description Prints diagnostic data about the data query to the R console,
+#' with information such as date range, number of employees, HR attributes
+#' identified, etc.
 #'
-#' @details
-#' This can be used with any person-level query, such as the standard person query,
-#' Ways of Working assessment query, and the hourly collaboration query. When run,
-#' this prints diagnostic data to the R console.
+#' @details This can be used with any person-level query, such as the standard
+#' person query, Ways of Working assessment query, and the hourly collaboration
+#' query. When run, this prints diagnostic data to the R console.
 #'
-#' @param data A person-level query in the form of a data frame, including the standard person query,
-#' Ways of Working assessment query, and the hourly collaboration query.
-#' @param return Character string to specify whether to return a console message ("message"),
-#' a character string ("text"), or a data frame. Defaults to "message".
-#' @param validation Logical value to specify whether to return a check used by the `validation_report()`.
-#' Defaults to FALSE.
+#' @param data A person-level query in the form of a data frame. This includes:
+#'   - Standard Person Query
+#'   - Ways of Working Assessment Query
+#'   - Hourly Collaboration Query
+#'
+#' All person-level query have a `PersonId` column and a `Date` column.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"message"` (default)
+#'   - `"text"`
+#'
+#' See `Value` for more information.
+#'
+#' @param validation Logical value to specify whether to return a check used by
+#'   the `validation_report()`. Defaults to `FALSE`.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"message"`: a message is returned to the console.
+#'   - `"text"`: string containing the diagnostic message.
 #'
 #' @examples
 #' check_query(sq_data)

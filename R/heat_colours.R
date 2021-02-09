@@ -1,6 +1,10 @@
 #' @title
 #' Generate a vector of `n` contiguous colours, as a red-yellow-green palette.
 #'
+#' @description
+#' Takes a numeric value `n` and returns a character vector of colour HEX codes
+#' corresponding to the heat map palette.
+#'
 #' @param n the number of colors (>= 1) to be in the palette.
 #' @param alpha an alpha-transparency level in the range of 0 to 1
 #' (0 means transparent and 1 means opaque)
@@ -10,6 +14,10 @@
 #' barplot(rep(10, 50), col = heat_colours(n = 50), border = NA)
 #'
 #' barplot(rep(10, 50), col = heat_colours(n = 50, alpha = 0.5, rev = TRUE), border = NA)
+#'
+#' @return
+#' A character vector containing the HEX codes and the same length as `n` is
+#' returned.
 #'
 #' @export
 heat_colours <- function (n, alpha, rev = FALSE) {

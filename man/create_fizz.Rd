@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_fizz.R
 \name{create_fizz}
 \alias{create_fizz}
-\title{Fizzy Drink / Jitter Scatter Plot for any metric}
+\title{Fizzy Drink / Jittered Scatter Plot for any metric}
 \usage{
 create_fizz(
   data,
@@ -38,12 +38,12 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
-Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
+Analyzes a selected metric and returns a 'fizzy' scatter plot by default.
 Additional options available to return a table with distribution elements.
 }
 \details{
 This is a general purpose function that powers all the functions
-in the package that produce 'fizzy drink' / jitter scatter plots.
+in the package that produce 'fizzy drink' / jittered scatter plots.
 }
 \examples{
 # Create a fizzy plot for Work Week Span by Level Designation
