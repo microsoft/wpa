@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Distribution Functions • wpa</title>
+<title>Analysis Map • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -48,7 +48,7 @@
   
   <script src="extra.js"></script>
 
-<meta property="og:title" content="Distribution Functions" />
+<meta property="og:title" content="Analysis Map" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -198,100 +198,129 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>Distribution Functions</h1>
+      <h1>Analysis Map</h1>
     </div>
 
-<div id="distribution-functions" class="section level1">
+<div id="analysis-map" class="section level1">
 
-<p><strong>Distribution</strong> functions allow you to drill deeper into groups, to diagnose if the averages are truly representative of that group, or if they are hiding pockets of individuals with divergent behaviour (outliers).</p>
-<div id="grouping-individuals" class="section level2">
-<h2 class="hasAnchor">
-<a href="#grouping-individuals" class="anchor"></a>Grouping individuals</h2>
-<p>The <code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code> function produces a 100% stacked bar chart, with all individuals classified in pre-defined groups according to defined ranges of collaboration hours. This function uses a Standard Person Query as input:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
-<p>You can specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument, and what output to obtain (either “plot” or “table”) with the <code>return</code> argument.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span> </code></pre></div>
-<p><em>wpa</em> includes a wide range of equivalent functions, that create 100% stacked bar plots for specific metrics. These include:</p>
+<p>This page offers a ‘map’ for the Workplace Analytics analyst - a guide to what analyses or functions could be useful when exploring a particular area of Workplace Analytics. This map is divided into the following sections.</p>
 <ul>
-<li><code><a href="reference/email_dist.html">email_dist()</a></code></li>
-<li><code><a href="reference/meeting_dist.html">meeting_dist()</a></code></li>
+<li>Collaboration</li>
+<li>Capacity</li>
+<li>Coaching</li>
+<li>Connectivity</li>
+</ul>
+<div id="collaboration" class="section level2">
+<h2 class="hasAnchor">
+<a href="#collaboration" class="anchor"></a>Collaboration</h2>
+<div id="essentials" class="section level3">
+<h3 class="hasAnchor">
+<a href="#essentials" class="anchor"></a>Essentials</h3>
+<p>It is recommended that you start with running <code><a href="reference/keymetrics_scan.html">keymetrics_scan()</a></code> on a Standard Person Query, which returns a heat map table with an overview with all the key metrics in Workplace Analytics. For more detailed breakdowns, you may also run <code><a href="reference/collaboration_report.html">collaboration_report()</a></code> to establish the baseline of collaboration.</p>
+<p>Here are a list of other individual plots that you can run:</p>
+<ul>
+<li>Summary of metrics: <code><a href="reference/collaboration_sum.html">collab_sum()</a></code>, <code><a href="reference/workloads_summary.html">workloads_sum()</a></code>, <code><a href="reference/email_summary.html">email_sum()</a></code>, <code><a href="reference/meeting_summary.html">meeting_sum()</a></code>.</li>
+<li>Time dimension of metrics: <code><a href="reference/collaboration_area.html">collab_area()</a></code>, or any of the <code>*_dist()</code> or <code>*_trend()</code> functions.</li>
+</ul>
+</div>
+<div id="advanced" class="section level3">
+<h3 class="hasAnchor">
+<a href="#advanced" class="anchor"></a>Advanced</h3>
+<p>If the topic of interest is meetings:</p>
+<ul>
+<li>
+<code><a href="reference/meeting_skim.html">meeting_skim()</a></code> to understand the overall % of meetings which are low quality.</li>
+<li>
+<code><a href="reference/meetingtype_dist.html">meetingtype_dist()</a></code> to understand the distribution of long or large meetings.</li>
+<li>
+<strong>Meeting subject line text mining</strong>: <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> can reveal patterns underlying meeting subject lines.</li>
+</ul>
+</div>
+</div>
+<div id="capacity" class="section level2">
+<h2 class="hasAnchor">
+<a href="#capacity" class="anchor"></a>Capacity</h2>
+<div id="essentials-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#essentials-1" class="anchor"></a>Essentials</h3>
+<p>The key metrics in relation to <strong>capacity</strong> are <em>Work Week Span</em>, <em>Collaboration Hours</em>, and <em>After-hours collaboration hours</em>, which can be visualized in a number of ways. You can start with the <code><a href="reference/capacity_report.html">capacity_report()</a></code> which provides a baseline of this view.</p>
+<ul>
+<li>Rank all groups by their group average: the functions to use are <code><a href="reference/workloads_rank.html">workloads_rank()</a></code>, <code><a href="reference/collaboration_rank.html">collab_rank()</a></code>, and <code><a href="reference/afterhours_rank.html">afterhours_rank()</a></code>.</li>
+<li>Distribution of capacity metrics: <code>*_fizz()</code> functions offer a way of quickly visualizing the distribution of the capacity metrics. For the traditionalist, you can also use <code><a href="reference/create_boxplot.html">create_boxplot()</a></code> for the given metric to create boxplot views.</li>
+<li>Visualize hourly collaboration with <code><a href="reference/workpatterns_area.html">workpatterns_area()</a></code>
+</li>
+<li>Any of the <code>workloads_*</code>, <code>collab_*</code> and <code>afterhours_*</code> functions.</li>
+</ul>
+</div>
+<div id="advanced-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#advanced-1" class="anchor"></a>Advanced</h3>
+<ul>
+<li>Working patterns archetypes: you can classify person-weeks or persons into individual archetypes with <code><a href="reference/workpatterns_classify.html">workpatterns_classify()</a></code>, which reveals <em>break</em> patterns in employees’ weeks. If you are unsure with where to start, you can also run <code><a href="reference/workpatterns_report.html">workpatterns_report()</a></code> which combines a number of plots based on the classified archetypes. You will need an Hourly Collaboration query.</li>
+<li>Flexibility Index: <code><a href="reference/flex_index.html">flex_index()</a></code> computes a <strong>Flexibility Index</strong> which is a measure of how flexible teams are working, based on three components, i.e. (i) whether they take breaks during the week, (ii) whether they start their date at different times compared to the official time, and (iii) whether they keep their total working hours under control.</li>
+</ul>
+</div>
+</div>
+<div id="coaching" class="section level2">
+<h2 class="hasAnchor">
+<a href="#coaching" class="anchor"></a>Coaching</h2>
+<div id="essentials-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#essentials-2" class="anchor"></a>Essentials</h3>
+<p>You can start with the <code><a href="reference/coaching_report.html">coaching_report()</a></code> which provides a baseline of this view.</p>
+<ul>
+<li>
+<code><a href="reference/mgrrel_matrix.html">mgrrel_matrix()</a></code>: a two-by-two matrix describing manager relations styles experienced by the analysis group.</li>
+<li>Any of the functions in the <code>one2one_*()</code> family, i.e.:
+<ul>
 <li><code><a href="reference/one2one_dist.html">one2one_dist()</a></code></li>
-<li><code><a href="reference/afterhours_dist.html">afterhours_dist()</a></code></li>
-<li><code><a href="reference/workloads_dist.html">workloads_dist()</a></code></li>
-</ul>
-</div>
-<div id="fizzy-drink-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fizzy-drink-plots" class="anchor"></a>Fizzy Drink Plots</h2>
-<p>You can also explore distributions by using jittered (‘fizzy drink’) scatter plots. The <code><a href="reference/collaboration_fizz.html">collaboration_fizz()</a></code> function illustrates how different individuals fall in a common scale:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_fizz.html">email_fizz</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Fizzy drink plot</span></code></pre></div>
-<p>As usual, you to specify an HR attribute grouping variable and create a table with the <code>return</code> argument.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_fizz.html">collaboration_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
-<p>Other examples of distribution fizzy drink plots include:</p>
-<ul>
-<li><code><a href="reference/email_fizz.html">email_fizz()</a></code></li>
-<li><code><a href="reference/meeting_fizz.html">meeting_fizz()</a></code></li>
 <li><code><a href="reference/one2one_fizz.html">one2one_fizz()</a></code></li>
-<li><code><a href="reference/afterhours_fizz.html">afterhours_fizz()</a></code></li>
-<li><code><a href="reference/workloads_fizz.html">workloads_fizz()</a></code></li>
+<li><code><a href="reference/one2one_line.html">one2one_line()</a></code></li>
+<li><code><a href="reference/one2one_rank.html">one2one_rank()</a></code></li>
+</ul>
+</li>
 </ul>
 </div>
-<div id="custom-bar-charts-and-tables" class="section level2">
+<div id="advanced-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#advanced-2" class="anchor"></a>Advanced</h3>
+</div>
+</div>
+<div id="connectivity" class="section level2">
 <h2 class="hasAnchor">
-<a href="#custom-bar-charts-and-tables" class="anchor"></a>Custom bar charts and tables</h2>
-<p>Not all metrics include their own dist and fizz functions. However, you can obtain the equivalent graphs using the <code><a href="reference/create_dist.html">create_dist()</a></code> and <code><a href="reference/create_fizz.html">create_fizz()</a></code>. These functions requires you to include a character string containing the name of the metric you want to analyze. Additionall, the <code><a href="reference/create_boxplot.html">create_boxplot()</a></code> function allows you to create a box plot.</p>
-<p>For example, using “Generated_workload_email_hours”:</p>
-<pre><code>sq_data %&gt;% create_dist(metric = "Generated_workload_email_hours")
-
-sq_data %&gt;% create_fizz(metric = "Generated_workload_email_hours")
-
-sq_data %&gt;% create_boxplot(metric = "Generated_workload_email_hours")
-</code></pre>
+<a href="#connectivity" class="anchor"></a>Connectivity</h2>
+<div id="essentials-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#essentials-3" class="anchor"></a>Essentials</h3>
+<p>You can start with the <code><a href="reference/connectivity_report.html">connectivity_report()</a></code> which provides a baseline of this view.</p>
+<ul>
+<li>Visualize external and internal networks with <code><a href="reference/external_network_plot.html">external_network_plot()</a></code> and <code><a href="reference/internal_network_plot.html">internal_network_plot()</a></code>
+</li>
+</ul>
 </div>
-<div id="exploring-changes-over-time" class="section level2">
+<div id="advanced-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#advanced-3" class="anchor"></a>Advanced</h3>
+<ul>
+<li>Group-to-group network with <code><a href="reference/network_g2g.html">network_g2g()</a></code>
+</li>
+<li>Person-to-person network with <code><a href="reference/network_p2p.html">network_p2p()</a></code>
+</li>
+<li>Community detection with <code><a href="reference/network_p2p.html">network_p2p()</a></code>
+</li>
+</ul>
+</div>
+</div>
+<div id="special-topics" class="section level2">
 <h2 class="hasAnchor">
-<a href="#exploring-changes-over-time" class="anchor"></a>Exploring changes over time</h2>
-<p>In our next section, we will cover <a href="analyst_guide_trend.html"><strong>Trend Functions</strong></a> that are useful to explore time dyanmics across a wide range of metrics.</p>
-</div>
-<div id="gallery" class="section level2">
-<h2 class="hasAnchor">
-<a href="#gallery" class="anchor"></a>Gallery</h2>
-
-
-<style>
-div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-</style>
-<div class="gallery">
-<a target="_blank" href="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/email_dist.png"> <img src="https://raw.githubusercontent.com/microsoft/wpa/main/.github/gallery/email_dist.png" alt="Email Distribution Function" width="600" height="400"></a>
-<div class="desc">
-email_dist()
-</div>
-</div>
-
-
+<a href="#special-topics" class="anchor"></a>Special topics</h2>
+<ul>
+<li>Feature importance / Information Value</li>
+<li>Time series analysis</li>
+<li>Identifying related keywords in subject lines</li>
+<li>Churn / org movement analysis</li>
+</ul>
+<p><em>Coming soon…</em></p>
 </div>
 </div>
 
