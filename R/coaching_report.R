@@ -26,6 +26,8 @@
 #'
 #' @family Reports
 #'
+#' @inherit generate_report return
+#'
 #' @export
 coaching_report <- function(data,
                             hrvar = "LevelDesignation",

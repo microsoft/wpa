@@ -28,14 +28,31 @@ Defaults to TRUE.}
 
 \item{seed}{A numeric vector to set seed for random generation.}
 }
+\value{
+An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.
+}
 \description{
 Create a text mining report in HTML based on Meeting Subject Lines
 }
 \seealso{
 Other Text-mining: 
+\code{\link{subject_validate_report}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_cooc}()},
 \code{\link{tm_freq}()},
 \code{\link{tm_wordcloud}()}
+
+Other Reports: 
+\code{\link{IV_report}()},
+\code{\link{capacity_report}()},
+\code{\link{coaching_report}()},
+\code{\link{collaboration_report}()},
+\code{\link{connectivity_report}()},
+\code{\link{generate_report}()},
+\code{\link{subject_validate_report}()},
+\code{\link{validation_report}()}
 }
+\concept{Reports}
 \concept{Text-mining}

@@ -16,23 +16,33 @@ IV_report(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{predictors}{A character vector specifying the columns to be used as predictors.
-Defaults to NULL, where all numeric vectors in the data will be used as predictors.}
+\item{predictors}{A character vector specifying the columns to be used as
+predictors. Defaults to NULL, where all numeric vectors in the data will be
+used as predictors.}
 
 \item{outcome}{A string specifying a binary variable, i.e. can only contain
 the values 1 or 0.}
 
-\item{bins}{Number of bins to use in \code{Information::create_infotables()}, defaults to 10.}
+\item{bins}{Number of bins to use in \code{Information::create_infotables()},
+defaults to 10.}
 
-\item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.
-For example, "collaboration report".}
+\item{path}{Pass the file path and the desired file name, \emph{excluding the file
+extension}. For example, "collaboration report".}
 
-\item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.}
+\item{timestamp}{Logical vector specifying whether to include a timestamp in
+the file name. Defaults to TRUE.}
+}
+\value{
+An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.
 }
 \description{
-The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a full Information Value analysis,  a data exploration technique that helps determine which columns in a data set have predictive power or influence on the value of a specified dependent variable.
+The function generates an interactive HTML report using Standard Person Query
+data as an input. The report contains a full Information Value analysis,  a
+data exploration technique that helps determine which columns in a data set
+have predictive power or influence on the value of a specified dependent
+variable.
 }
 \examples{
 \dontrun{
@@ -49,6 +59,8 @@ Other Reports:
 \code{\link{collaboration_report}()},
 \code{\link{connectivity_report}()},
 \code{\link{generate_report}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{subject_validate_report}()},
 \code{\link{validation_report}()}
 
 Other Information Value: 

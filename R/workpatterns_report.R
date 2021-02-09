@@ -18,6 +18,8 @@
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to TRUE.
 #'
+#' @inherit generate_report return
+#'
 #' @importFrom purrr map_if
 #' @importFrom methods is
 #'

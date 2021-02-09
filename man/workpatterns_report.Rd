@@ -32,6 +32,11 @@ extension}. For example, "scope report".}
 \item{timestamp}{Logical vector specifying whether to include a timestamp in
 the file name. Defaults to TRUE.}
 }
+\value{
+An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.
+}
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 

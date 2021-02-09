@@ -13,6 +13,9 @@
 #' @param seed A numeric vector to set seed for random generation.
 #'
 #' @family Text-mining
+#' @family Reports
+#'
+#' @inherit generate_report return
 #'
 #' @export
 meeting_tm_report <- function(data,

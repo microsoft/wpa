@@ -83,6 +83,8 @@ Other Reports:
 \code{\link{coaching_report}()},
 \code{\link{collaboration_report}()},
 \code{\link{connectivity_report}()},
-\code{\link{generate_report}()}
+\code{\link{generate_report}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{subject_validate_report}()}
 }
 \concept{Reports}

@@ -26,19 +26,28 @@
 #'
 #' @family Reports
 #'
-#' @examples
-#' \dontrun{
+#' @section Creating a custom report:
+#'
+#' Below is an example on how to set up a custom report.
+#'
+#' The first step is to define the content that will go into a report and assign
+#' the outputs to a list.
+#' ```
 #' # Step 1: Define Content
 #' output_list <-
 #'   list(sq_data %>% workloads_summary(return = "plot"),
-#'        sq_data %>%
-#'          workloads_summary(return = "table")) %>%
+#'        sq_data %>% workloads_summary(return = "table")) %>%
 #'   purrr::map_if(is.data.frame, create_dt)
-#'
+#' ```
+#' The next step is to add a list of titles for each of the objects on the list:
+#' ```
 #' # Step 2: Add Corresponding Titles
 #' title_list <- c("Workloads Summary - Plot", "Workloads Summary - Table")
 #' n_title <- length(title_list)
-#'
+#' ```
+#' The final step is to run `generate_report()`. This can all be wrapped within
+#' a function such that the function can be used to generate a HTML report.
+#' ```
 #' # Step 3: Generate Report
 #' generate_report(title = "My First Report",
 #'                 filename = "My First Report",
@@ -46,8 +55,12 @@
 #'                 titles = title_list,
 #'                 subheaders = rep("", n_title),
 #'                 echos = rep(FALSE, n_title
+#' ```
+#' @return
+#' An HTML report with the same file name as specified in the arguments is
+#' generated in the working directory. No outputs are directly returned by the
+#' function.
 #'
-#' }
 #' @export
 generate_report <- function(title = "My minimal HTML generator",
                             filename = "minimal_html",
