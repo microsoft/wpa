@@ -18,8 +18,16 @@
 #' e.g. "Collaboration_hours"
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @param return String specifying what to return. This must be one of the following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"plot"`: ggplot object. A box plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -31,13 +39,13 @@
 #' @family General
 #'
 #' @examples
-#' ## Create a fizzy plot for Work Week Span by Level Designation
+#' # Create a fizzy plot for Work Week Span by Level Designation
 #' create_boxplot(sq_data, metric = "Workweek_span", hrvar = "LevelDesignation", return = "plot")
 #'
-#' ## Create a summary statistics table for Work Week Span by Organization
+#' # Create a summary statistics table for Work Week Span by Organization
 #' create_boxplot(sq_data, metric = "Workweek_span", hrvar = "Organization", return = "table")
 #'
-#' ## Create a fizzy plot for Collaboration Hours by Level Designation
+#' # Create a fizzy plot for Collaboration Hours by Level Designation
 #' create_boxplot(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 #' @export
 

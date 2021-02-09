@@ -1,3 +1,8 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Classify working pattern personas using a rule based algorithm, using
 #' the person-average volume-based (pav) method.
 #'
@@ -37,13 +42,13 @@
 #'
 #' @examples
 #' \donttest{
-#' ## Returns a plot by default
+#' # Returns a plot by default
 #' workpatterns_classify_pav(em_data)
 #'
-#' ## Return a table
+#' # Return summary table
 #' workpatterns_classify_pav(em_data, return = "table")
 #'
-#' ## Return an area plot
+#' # Return an area plot
 #' workpatterns_classify_pav(em_data, return = "plot-area")
 #' }
 #'

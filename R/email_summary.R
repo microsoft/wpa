@@ -11,13 +11,9 @@
 #' Additional options available to return a summary table.
 #'
 #' @inheritParams create_bar
-#'
+#' @inherit create_bar return
 #'
 #' @family Emails
-#'
-#' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
 #' # Return a ggplot bar chart
@@ -25,6 +21,7 @@
 #'
 #' # Return a summary table
 #' email_summary(sq_data, hrvar = "LevelDesignation", return = "table")
+#'
 #' @export
 
 email_summary <- function(data,

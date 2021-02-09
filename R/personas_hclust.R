@@ -32,19 +32,19 @@
 #' @importFrom tidyr replace_na
 #'
 #' @examples
-#' ## Return a plot
+#' # Return plot
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4)
 #'
-#' ## Return summary table
+#' # Return summary table
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4,
 #'                 return = "table")
 #'
 #' \donttest{
-#' ## Return data with clusters appended
+#' # Return data with clusters appended
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4,

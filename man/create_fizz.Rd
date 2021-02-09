@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_fizz.R
 \name{create_fizz}
 \alias{create_fizz}
-\title{Fizzy Drink / Jitter Scatter Plot for any metric}
+\title{Fizzy Drink / Jittered Scatter Plot for any metric}
 \usage{
 create_fizz(
   data,
@@ -22,25 +22,37 @@ e.g. "Collaboration_hours"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A jittered scatter plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
-Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
+Analyzes a selected metric and returns a 'fizzy' scatter plot by default.
 Additional options available to return a table with distribution elements.
 }
 \details{
 This is a general purpose function that powers all the functions
-in the package that produce 'fizzy drink' / jitter scatter plots.
+in the package that produce 'fizzy drink' / jittered scatter plots.
 }
 \examples{
-## Create a fizzy plot for Work Week Span by Level Designation
+# Create a fizzy plot for Work Week Span by Level Designation
 create_fizz(sq_data, metric = "Workweek_span", hrvar = "LevelDesignation", return = "plot")
 
-## Create a summary statistics table for Work Week Span by Organization
+# Create a summary statistics table for Work Week Span by Organization
 create_fizz(sq_data, metric = "Workweek_span", hrvar = "Organization", return = "table")
 
-## Create a fizzy plot for Collaboration Hours by Level Designation
+# Create a fizzy plot for Collaboration Hours by Level Designation
 create_fizz(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 }
 \seealso{

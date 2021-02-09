@@ -19,15 +19,24 @@ afterhours_dist(
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character string specifying what to return. Valid inputs are:
+\item{return}{String specifying what to return. This must be one of the following strings:
 \itemize{
-\item "plot": ggplot object. A stacked bar plot for the metric.
-\item "table": data frame. A summary table for the metric.
-}}
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{cut}{A vector specifying the cuts to use for the data,
 accepting "default" or "range-cut" as character vector,
 or a numeric value of length three to specify the exact breaks to use. e.g. c(1, 3, 5)}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A stacked bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Analyse the distribution of weekly after-hours collaboration time.
@@ -39,13 +48,13 @@ Uses the metric \code{After_hours_collaboration_hours}.
 See \code{create_dist()} for applying the same analysis to a different metric.
 }
 \examples{
-## Return a plot
+# Return plot
 afterhours_dist(sq_data, hrvar = "Organization")
 
-## Return a table
+# Return summary table
 afterhours_dist(sq_data, hrvar = "Organization", return = "table")
 
-## Return result with a custom specified breaks
+# Return result with a custom specified breaks
 afterhours_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 }
 \seealso{

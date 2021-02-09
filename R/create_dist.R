@@ -11,14 +11,16 @@
 #' Additional options available to return a table with distribution elements.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param metric Character string containing the name of the metric,
+#' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
 #'
-#' @param return Character string specifying what to return. Valid inputs are:
-#'   - "plot": ggplot object. A stacked bar plot for the metric.
-#'   - "table": data frame. A summary table for the metric.
+#' @param return String specifying what to return. This must be one of the following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
 #'
 #' @param cut A numeric vector of length three to specify the breaks for the distribution,
 #' e.g. c(10, 15, 20)
@@ -28,8 +30,8 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - "plot": ggplot object. A stacked bar plot for the metric.
-#'   - "table": data frame. A summary table for the metric.
+#'   - `"plot"`: ggplot object. A stacked bar plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -42,10 +44,10 @@
 #' @family Flexible
 #'
 #' @examples
-#' ## Return a plot
+#' # Return plot
 #' create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 #'
-#' ## Return a table
+#' # Return summary table
 #' create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 #' @export
 

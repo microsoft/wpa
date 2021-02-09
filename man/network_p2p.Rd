@@ -29,10 +29,10 @@ network_p2p(
 
 \item{display}{String determining what output to return. Valid values include:
 \itemize{
-\item "hrvar" (default): compute analysis or visuals without computing communities.
-\item "louvain": compute analysis or visuals with community detection, using the Louvain
+\item \code{"hrvar"} (default): compute analysis or visuals without computing communities.
+\item \code{"louvain"}: compute analysis or visuals with community detection, using the Louvain
 algorithm.
-\item "leiden": compute analysis or visuals with community detection, using the Leiden algorithm.
+\item \code{"leiden"}: compute analysis or visuals with community detection, using the Leiden algorithm.
 This requires all the pre-requisites of the \strong{leiden} package installed,
 which includes Python and \strong{reticulate}.
 }}
@@ -40,15 +40,15 @@ which includes Python and \strong{reticulate}.
 \item{return}{String specifying what output to return. Defaults to "plot".
 Valid return options include:
 \itemize{
-\item 'plot': return a network plot.
-\item 'sankey': return a sankey plot combining communities and HR attribute. This is only valid if
+\item \code{'plot'}: return a network plot.
+\item \code{'sankey'}: return a sankey plot combining communities and HR attribute. This is only valid if
 a community detection method is selected at \code{display}.
-\item 'table': return a vertex summary table with counts in communities and HR attribute.
-\item 'data': return a vertex data file that matches vertices with communities and HR attributes.
-\item 'describe': return a list of data frames which describe each of the identified communities.
+\item \code{'table'}: return a vertex summary table with counts in communities and HR attribute.
+\item \code{'data'}: return a vertex data file that matches vertices with communities and HR attributes.
+\item \code{'describe'}: return a list of data frames which describe each of the identified communities.
 The first data frame is a summary table of all the communities. This is only valid if a community
 detection method is selected at \code{display}.
-\item 'network': return igraph object.
+\item \code{'network'}: return igraph object.
 }}
 
 \item{path}{File path for saving the PDF output. Defaults to a timestamped path based on current parameters.}
@@ -82,38 +82,39 @@ method.}
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+
 Pass a data frame containing a person-to-person query and return a network visualization.
 Options are available for community detection using either the Louvain or the Leiden algorithms.
 }
 \examples{
-## Simulate a small person-to-person dataset
+# Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
 
-## Return a network plot to console, coloured by hrvar
+# Return a network plot to console, coloured by hrvar
 p2p_data \%>\%
   network_p2p(display = "hrvar",
               path = NULL,
               return = "plot")
 
 \dontrun{
-## Return a network plot to console, coloured by Leiden communities
-## Requires python dependencies installed
+# Return a network plot to console, coloured by Leiden communities
+# Requires python dependencies installed
   p2p_data \%>\%
     network_p2p(display = "leiden",
                 path = NULL,
                 return = "plot")
 }
 
-## Return a network plot to console, coloured by Louvain communities
+# Return a network plot to console, coloured by Louvain communities
 p2p_data \%>\%
   network_p2p(display = "louvain",
               path = NULL,
               return = "plot")
 
-## Return a network plot to console
-## Coloured by Leiden communities
-## Using Fruchterman-Reingold force-directed layout algorithm
-## Force the use of fast plotting method
+# Return a network plot to console
+# Coloured by Leiden communities
+# Using Fruchterman-Reingold force-directed layout algorithm
+# Force the use of fast plotting method
 p2p_data \%>\%
   network_p2p(display = "hrvar",
               path = NULL,
@@ -121,8 +122,8 @@ p2p_data \%>\%
               algorithm = "lgl",
               size_threshold = 0)
 
-## Return a data frame matching HR variable and communities to nodes
-## Using Louvain communities
+# Return a data frame matching HR variable and communities to nodes
+# Using Louvain communities
 p2p_data \%>\%
   network_p2p(display = "louvain",
               return = "data",

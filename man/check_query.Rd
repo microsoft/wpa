@@ -7,23 +7,44 @@
 check_query(data, return = "message", validation = FALSE)
 }
 \arguments{
-\item{data}{A person-level query in the form of a data frame, including the standard person query,
-Ways of Working assessment query, and the hourly collaboration query.}
+\item{data}{A person-level query in the form of a data frame. This includes:
+\itemize{
+\item Standard Person Query
+\item Ways of Working Assessment Query
+\item Hourly Collaboration Query
+}
 
-\item{return}{Character string to specify whether to return a console message ("message"),
-a character string ("text"), or a data frame. Defaults to "message".}
+All person-level query have a \code{PersonId} column and a \code{Date} column.}
 
-\item{validation}{Logical value to specify whether to return a check used by the \code{validation_report()}.
-Defaults to FALSE.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"message"} (default)
+\item \code{"text"}
+}
+
+See \code{Value} for more information.}
+
+\item{validation}{Logical value to specify whether to return a check used by
+the \code{validation_report()}. Defaults to \code{FALSE}.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"message"}: a message is returned to the console.
+\item \code{"text"}: string containing the diagnostic message.
+}
 }
 \description{
-Prints diagnostic data about the data query to the R console, with information
-such as date range, number of employees, HR attributes identified, etc.
+Prints diagnostic data about the data query to the R console,
+with information such as date range, number of employees, HR attributes
+identified, etc.
 }
 \details{
-This can be used with any person-level query, such as the standard person query,
-Ways of Working assessment query, and the hourly collaboration query. When run,
-this prints diagnostic data to the R console.
+This can be used with any person-level query, such as the standard
+person query, Ways of Working assessment query, and the hourly collaboration
+query. When run, this prints diagnostic data to the R console.
 }
 \examples{
 check_query(sq_data)
@@ -35,6 +56,7 @@ Other Data Validation:
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
 \code{\link{identify_holidayweeks}()},

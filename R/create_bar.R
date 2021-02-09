@@ -16,14 +16,24 @@
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
 #' but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#'
+#' @param return String specifying what to return. This must be one of the following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
 #' @param bar_colour String to specify colour to use for bars.
-#' In-built accepted values include "default" (default), "alert" (red), and
-#' "darkblue". Otherwise, hex codes are also accepted. You can also supply
+#' In-built accepted values include `"default"` (default), `"alert"` (red), and
+#' `"darkblue"`. Otherwise, hex codes are also accepted. You can also supply
 #' RGB values via `rgb2hex()`.
-#' @param na.rm A logical value indicating whether NA values should be stripped
-#' before the computation proceeds. Defaults to FALSE.
+#' @param na.rm A logical value indicating whether `NA` should be stripped
+#' before the computation proceeds. Defaults to `FALSE`.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"plot"`: ggplot object. A bar plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -32,10 +42,6 @@
 #' @importFrom stats reorder
 #'
 #' @family General
-#'
-#' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
 #' # Return a ggplot bar chart

@@ -11,10 +11,15 @@
 #' Additional options available to return a table with distribution elements.
 #'
 #' @inheritParams create_dist
+#' @inherit create_dist return
 #'
 #' @family Managerial Relations
 #'
 #' @examples
+#' # Return plot
+#' workloads_dist(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' # Return summary table
 #' workloads_dist(sq_data, hrvar = "Organization", return = "table")
 #' @export
 

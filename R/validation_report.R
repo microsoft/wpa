@@ -7,13 +7,36 @@
 #'
 #' @description
 #' The function generates an interactive HTML report using
-#' Standard Person Query data as an input. The report contains a checks on
-#' Workplace Analytics query outputs, to provide diagnostic information
-#' for the Analyst pre-analysis.
+#' Standard Person Query data as an input. The report contains checks on
+#' Workplace Analytics query outputs to provide diagnostic information
+#' for the Analyst prior to analysis.
 #'
-#' For your input data or meeting_data, please use the function `wpa::import_wpa()`
+#' An additional Standard Meeting Query can be provided to perform meeting subject line
+#' related checks. This is optional and the validation report can be run without it.
+#'
+#' @details
+#' For your input to `data` or `meeting_data`, please use the function `wpa::import_wpa()`
 #' to import your csv query files into R. This function will standardize format
 #' and prepare the data as input for this report.
+#'
+#' If you are passing a Ways of Working Assessment query instead of a Standard Person query
+#' to the `data` argument, please also use `standardise_pq()` to make the variable names
+#' consistent with a Standard Person Query.
+#'
+#' @section Checking functions within `validation_report()`:
+#'   - `check_query()`
+#'   - `flag_ch_ratio()`
+#'   - `hrvar_count_all()`
+#'   - `identify_privacythreshold()`
+#'   - `identify_nkw()`
+#'   - `identify_holidayweeks()`
+#'   - `subject_validate()`
+#'   - `identify_tenure()`
+#'   - `flag_outlooktime()`
+#'   - `identify_shifts()`
+#'   - `track_HR_change()`
+#'
+#' You can browse each individual function for details on calculations.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param meeting_data An optional Meeting Query dataset in the form of a data frame.
@@ -38,6 +61,7 @@
 #' @importFrom dplyr `%>%`
 #'
 #' @family Reports
+#' @inherit generate_report return
 #'
 #' @export
 validation_report <- function(data,

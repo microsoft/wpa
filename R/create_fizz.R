@@ -3,23 +3,31 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Fizzy Drink / Jitter Scatter Plot for any metric
+#' @title Fizzy Drink / Jittered Scatter Plot for any metric
 #'
 #' @description
-#' Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
+#' Analyzes a selected metric and returns a 'fizzy' scatter plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
 #' @details
 #' This is a general purpose function that powers all the functions
-#' in the package that produce 'fizzy drink' / jitter scatter plots.
+#' in the package that produce 'fizzy drink' / jittered scatter plots.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @param return String specifying what to return. This must be one of the following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"plot"`: ggplot object. A jittered scatter plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -31,13 +39,13 @@
 #' @family Flexible
 #'
 #' @examples
-#' ## Create a fizzy plot for Work Week Span by Level Designation
+#' # Create a fizzy plot for Work Week Span by Level Designation
 #' create_fizz(sq_data, metric = "Workweek_span", hrvar = "LevelDesignation", return = "plot")
 #'
-#' ## Create a summary statistics table for Work Week Span by Organization
+#' # Create a summary statistics table for Work Week Span by Organization
 #' create_fizz(sq_data, metric = "Workweek_span", hrvar = "Organization", return = "table")
 #'
-#' ## Create a fizzy plot for Collaboration Hours by Level Designation
+#' # Create a fizzy plot for Collaboration Hours by Level Designation
 #' create_fizz(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 #' @export
 

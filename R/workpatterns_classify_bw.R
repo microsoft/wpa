@@ -1,31 +1,34 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
 #' @title Classify working pattern week archetypes using a rule based algorithm,
-#' using the binary week-based (bw) method.
+#'   using the binary week-based (bw) method.
 #'
-#' @description
-#' `r lifecycle::badge('experimental')`
-#' Apply a rule based algorithm to emails sent by hour of day,
-#' using the binary week-based (bw) method.
+#' @description `r lifecycle::badge('experimental')` Apply a rule based
+#' algorithm to emails sent by hour of day, using the binary week-based (bw)
+#' method.
 #'
 #' @param data A data frame containing email by hours data.
 #'
 #' @param hrvar A string specifying the HR attribute to cut the data by.
-#' Defaults to NULL. This only affects the function when "table" is returned.
+#'   Defaults to NULL. This only affects the function when "table" is returned.
 #'
-#' @param return Character vector to specify what to return. Valid options include:
-#'   - "plot": returns a heatmap plot of signal distribution by hour and archetypes (default)
-#'   - "data": returns the raw data with the classified archetypes
-#'   - "table": returns a summary table of the archetypes
-#'   - "plot-area": returns an area plot of the percentages of archetypes shown over time
+#' @param return Character vector to specify what to return. Valid options
+#'   include: - "plot": returns a heatmap plot of signal distribution by hour
+#'   and archetypes (default) - "data": returns the raw data with the classified
+#'   archetypes - "table": returns a summary table of the archetypes -
+#'   "plot-area": returns an area plot of the percentages of archetypes shown
+#'   over time
 #'
-#' @param signals Character vector to specify which collaboration metrics to use:
-#'   - "email" (default) for emails only
-#'   - "IM" for Teams messages only,
-#'   - "unscheduled_calls" for Unscheduled Calls only
-#'   - "meetings" for Meetings only
-#'   - or a combination of signals, such as `c("email", "IM")`
+#' @param signals Character vector to specify which collaboration metrics to
+#'   use: - "email" (default) for emails only - "IM" for Teams messages only, -
+#'   "unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
+#'   only - or a combination of signals, such as `c("email", "IM")`
 #'
-#' @param active_threshold A numeric value specifying the minimum number of signals to be greater than in
-#' order to qualify as _active_. Defaults to 0.
+#' @param active_threshold A numeric value specifying the minimum number of
+#'   signals to be greater than in order to qualify as _active_. Defaults to 0.
 #'
 #' @param start_hour A character vector specifying start hours,
 #' e.g. "0900"

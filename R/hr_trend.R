@@ -10,22 +10,30 @@
 #' for unusual license growth / declines over time.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A line plot showing employee count over time.
+#'   - `"table"`: data frame containing a summary table.
 #'
 #' @import dplyr
 #' @import ggplot2
 #'
 #' @examples
-#' # Return a plot
+#' # Return plot
 #' hr_trend(dv_data)
 #'
-#' # Return a table
+#' # Return summary table
 #' hr_trend(dv_data, return = "table")
 #'
-#' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
+#' @family Data Validation
 #'
 #' @export
 hr_trend <- function(data, return = "plot"){

@@ -21,14 +21,10 @@ workpatterns_classify_bw(
 \item{hrvar}{A string specifying the HR attribute to cut the data by.
 Defaults to NULL. This only affects the function when "table" is returned.}
 
-\item{signals}{Character vector to specify which collaboration metrics to use:
-\itemize{
-\item "email" (default) for emails only
-\item "IM" for Teams messages only,
-\item "unscheduled_calls" for Unscheduled Calls only
-\item "meetings" for Meetings only
-\item or a combination of signals, such as \code{c("email", "IM")}
-}}
+\item{signals}{Character vector to specify which collaboration metrics to
+use: - "email" (default) for emails only - "IM" for Teams messages only, -
+"unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
+only - or a combination of signals, such as \code{c("email", "IM")}}
 
 \item{start_hour}{A character vector specifying start hours,
 e.g. "0900"}
@@ -36,21 +32,20 @@ e.g. "0900"}
 \item{end_hour}{A character vector specifying finish hours,
 e.g. "1700"}
 
-\item{active_threshold}{A numeric value specifying the minimum number of signals to be greater than in
-order to qualify as \emph{active}. Defaults to 0.}
+\item{active_threshold}{A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
-\item{return}{Character vector to specify what to return. Valid options include:
-\itemize{
-\item "plot": returns a heatmap plot of signal distribution by hour and archetypes (default)
-\item "data": returns the raw data with the classified archetypes
-\item "table": returns a summary table of the archetypes
-\item "plot-area": returns an area plot of the percentages of archetypes shown over time
-}}
+\item{return}{Character vector to specify what to return. Valid options
+include: - "plot": returns a heatmap plot of signal distribution by hour
+and archetypes (default) - "data": returns the raw data with the classified
+archetypes - "table": returns a summary table of the archetypes -
+"plot-area": returns an area plot of the percentages of archetypes shown
+over time}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
-Apply a rule based algorithm to emails sent by hour of day,
-using the binary week-based (bw) method.
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}} Apply a rule based
+algorithm to emails sent by hour of day, using the binary week-based (bw)
+method.
 }
 \examples{
 \dontrun{

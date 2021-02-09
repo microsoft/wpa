@@ -14,12 +14,9 @@
 #' Uses the metric \code{After_hours_collaboration_hours}.
 #'
 #' @inheritParams create_bar
+#' @inherit create_bar return
 #'
 #' @family After-Hours
-#'
-#' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
 #' # Return a ggplot bar chart
@@ -27,6 +24,7 @@
 #'
 #' # Return a summary table
 #' afterhours_summary(sq_data, hrvar = "LevelDesignation", return = "table")
+#'
 #' @export
 afterhours_summary <- function(data,
                               hrvar = "Organization",

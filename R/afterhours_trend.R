@@ -18,10 +18,10 @@
 #' @family After-Hours
 #'
 #' @examples
-#' ## Run plot
+#' # Run plot
 #' afterhours_trend(sq_data)
 #'
-#' ## Run table
+#' # Run table
 #' afterhours_trend(sq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @return

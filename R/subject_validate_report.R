@@ -10,6 +10,8 @@
 #' Returns a HTML report by default.
 #'
 #' @family Data Validation
+#' @family Text-mining
+#' @family Reports
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
@@ -19,8 +21,10 @@
 #' @param keep A numeric vector specifying maximum number of words to keep.
 #' @param seed A numeric vector to set seed for random generation.
 #'
+#'
+#' @inherit generate_report return
+#'
 #' @export
-
 subject_validate_report <- function(data,
                               path = "Subject Lines Validation Report",
                               timestamp = TRUE,

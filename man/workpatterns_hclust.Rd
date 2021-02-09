@@ -67,17 +67,17 @@ In other words, the clustering is applied on a dataset where the collaboration h
 are averaged by person and calculated as \% of total daily collaboration.
 }
 \examples{
-## Run clusters, returning plot
+# Run clusters, returning plot
 workpatterns_hclust(em_data, k = 5, return = "plot")
 
-## Run clusters, return raw data
+# Run clusters, return raw data
 workpatterns_hclust(em_data, k = 4, return = "data")
 
-## Run clusters for instant messages only, return hclust object
+# Run clusters for instant messages only, return hclust object
 workpatterns_hclust(em_data, k = 4, return = "hclust", signals = c("IM"))
 
 \dontrun{
-## Run clusters with all three signal types, return plot
+# Run clusters with all three signal types, return plot
 workpatterns_hclust(em_data,
                     k = 4,
                     return = "plot",

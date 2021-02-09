@@ -10,7 +10,7 @@
 #' the `hrvar` argument in functions.
 #'
 #' @examples
-#' ## Create a visual without HR attribute breaks
+#' # Create a visual without HR attribute breaks
 #' sq_data %>%
 #'   totals_col() %>%
 #'   collab_fizz(hrvar = "Total")

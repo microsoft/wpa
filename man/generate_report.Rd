@@ -37,33 +37,44 @@ E.g. "united", "default".}
 
 \item{preamble}{A preamble to appear at the beginning of the report, passed as a text string.}
 }
+\value{
+An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.
+}
 \description{
 This is a support function using a list-pmap workflow to
 create a HTML document, using RMarkdown as the engine.
 }
-\examples{
-\dontrun{
-# Step 1: Define Content
+\section{Creating a custom report}{
+
+
+Below is an example on how to set up a custom report.
+
+The first step is to define the content that will go into a report and assign
+the outputs to a list.\preformatted{# Step 1: Define Content
 output_list <-
   list(sq_data \%>\% workloads_summary(return = "plot"),
-       sq_data \%>\%
-         workloads_summary(return = "table")) \%>\%
+       sq_data \%>\% workloads_summary(return = "table")) \%>\%
   purrr::map_if(is.data.frame, create_dt)
+}
 
-# Step 2: Add Corresponding Titles
+The next step is to add a list of titles for each of the objects on the list:\preformatted{# Step 2: Add Corresponding Titles
 title_list <- c("Workloads Summary - Plot", "Workloads Summary - Table")
 n_title <- length(title_list)
+}
 
-# Step 3: Generate Report
+The final step is to run \code{generate_report()}. This can all be wrapped within
+a function such that the function can be used to generate a HTML report.\preformatted{# Step 3: Generate Report
 generate_report(title = "My First Report",
                 filename = "My First Report",
                 outputs = output_list,
                 titles = title_list,
                 subheaders = rep("", n_title),
                 echos = rep(FALSE, n_title
+}
+}
 
-}
-}
 \seealso{
 Other Reports: 
 \code{\link{IV_report}()},
@@ -71,6 +82,8 @@ Other Reports:
 \code{\link{coaching_report}()},
 \code{\link{collaboration_report}()},
 \code{\link{connectivity_report}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{subject_validate_report}()},
 \code{\link{validation_report}()}
 }
 \concept{Reports}

@@ -23,15 +23,15 @@
 #'
 #' @examples
 #'
-#' ## Return error message
+#' # Return error message
 #' \dontrun{
 #' check_inputs(iris, c("Sepal.Length", "mpg"))
 #' }
 #'
-#' #' ## Return warning message
+#' #' # Return warning message
 #' check_inputs(iris, c("Sepal.Length", "mpg"), return = "warning")
 #'
-#' ## Return variable names
+#' # Return variable names
 #' check_inputs(iris, c("Sepal.Length", "Sepal.Width", "RandomVariable"), return = "names")
 #'
 #' @export

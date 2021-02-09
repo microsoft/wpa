@@ -9,9 +9,22 @@ meeting_skim(data, return = "message")
 \arguments{
 \item{data}{A standard person query data in the form of a data frame.}
 
-\item{return}{A character string to specify whether to return a message
-or a text string. Defaults to "message". Valid options include "text" or
-"table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"message"}
+\item \code{"text"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"message"}: message in console.
+\item \code{"text"}: string.
+\item \code{"table"}: data frame.
+}
 }
 \description{
 This function returns a skim summary in the console

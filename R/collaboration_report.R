@@ -25,6 +25,8 @@
 #'
 #' @family Reports
 #'
+#' @inherit generate_report return
+#'
 #' @export
 collaboration_report <- function(data,
                                  hrvar = "Organization",

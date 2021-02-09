@@ -15,6 +15,8 @@
 #' See `create_dist()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_dist
+#' @inherit create_dist return
+#'
 #' @param cut A vector specifying the cuts to use for the data,
 #' accepting "default" or "range-cut" as character vector,
 #' or a numeric value of length three to specify the exact breaks to use. e.g. c(1, 3, 5)
@@ -30,13 +32,13 @@
 #' @family After-Hours
 #'
 #' @examples
-#' ## Return a plot
+#' # Return plot
 #' afterhours_dist(sq_data, hrvar = "Organization")
 #'
-#' ## Return a table
+#' # Return summary table
 #' afterhours_dist(sq_data, hrvar = "Organization", return = "table")
 #'
-#' ## Return result with a custom specified breaks
+#' # Return result with a custom specified breaks
 #' afterhours_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 #' @export
 afterhours_dist <- function(data,

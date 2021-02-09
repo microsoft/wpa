@@ -69,10 +69,10 @@ which includes Python and \strong{reticulate}.
 }
 \examples{
 \dontrun{
-## Simulate a small person-to-person dataset
+# Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
 
-## Return leiden, console, plot
+# Return leiden, console, plot
 p2p_data \%>\%
   network_leiden(path = NULL,
                  return = "plot")

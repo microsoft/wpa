@@ -9,9 +9,23 @@ flag_ch_ratio(data, threshold = c(1, 30), return = "message")
 \arguments{
 \item{data}{A data frame containing a Person Query.}
 
-\item{threshold}{Numeric value specifying the threshold for flagging. Defaults to 30.}
+\item{threshold}{Numeric value specifying the threshold for flagging.
+Defaults to 30.}
 
-\item{return}{String to specify what to return. Options include "message" for console return, and "text" for string return.}
+\item{return}{String to specify what to return. Options include:
+\itemize{
+\item \code{"message"}
+\item \code{"text"}
+\item \code{"data"}
+}}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"message"}: message in the console containing diagnotic summary
+\item \code{"text"}: string containing diagnotic summary
+\item \code{"data"}: data frame. Person-level data with flags on unusually high or low ratios
+}
 }
 \description{
 This function flags persons who have an unusual ratio
@@ -34,6 +48,7 @@ Other Data Validation:
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
 \code{\link{identify_holidayweeks}()},

@@ -11,19 +11,19 @@
 #' Additional options available to return a table with distribution elements.
 #'
 #' @inheritParams create_dist
+#' @inherit create_dist return
 #'
 #' @family Meeting Culture
 #'
 #' @examples
-#' ## Return a plot
+#' # Return plot
 #' meeting_dist(sq_data, hrvar = "Organization")
 #'
-#' ## Return a table
+#' # Return summary table
 #' meeting_dist(sq_data, hrvar = "Organization", return = "table")
 #'
-#' ## Return result with a custom specified breaks
+#' # Return result with a custom specified breaks
 #' meeting_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
-#'
 #'
 #' @export
 
