@@ -214,13 +214,23 @@ such as date range, number of employees, HR attributes identified, etc.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A person-level query in the form of a data frame, including the standard person query,
-Ways of Working assessment query, and the hourly collaboration query.</p></td>
+      <td><p>A person-level query in the form of a data frame. This includes:</p><ul>
+<li><p>Standard Person Query</p></li>
+<li><p>Ways of Working Assessment Query</p></li>
+<li><p>Hourly Collaboration Query</p></li>
+</ul>
+
+<p>All person-level query have a <code>PersonId</code> column and a <code>Date</code> column.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character string to specify whether to return a console message ("message"),
-a character string ("text"), or a data frame. Defaults to "message".</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"message"</code> (default)</p></li>
+<li><p><code>"text"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
 

@@ -229,7 +229,7 @@ Additional options available to return a table with distribution elements.</p>
     </tr>
     <tr>
       <th>metric</th>
-      <td><p>Character string containing the name of the metric,
+      <td><p>String containing the name of the metric,
 e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
@@ -242,10 +242,12 @@ e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character string specifying what to return. Valid inputs are:</p><ul>
-<li><p>"plot": ggplot object. A stacked bar plot for the metric.</p></li>
-<li><p>"table": data frame. A summary table for the metric.</p></li>
-</ul></td>
+      <td><p>String specifying what to return. This must be one of the following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     <tr>
       <th>cut</th>
@@ -266,8 +268,8 @@ codes for the stacked bars.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul>
-<li><p>"plot": ggplot object. A stacked bar plot for the metric.</p></li>
-<li><p>"table": data frame. A summary table for the metric.</p></li>
+<li><p><code>"plot"</code>: ggplot object. A stacked bar plot for the metric.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -282,10 +284,10 @@ codes for the stacked bars.</p></td>
 <code><a href='create_trend.html'>create_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Return a plot</span>
+    <pre class="examples"><div class='input'><span class='co'># Return plot</span>
 <span class='fu'>create_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
 </div><div class='img'><img src='create_dist-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Return a table</span>
+<span class='co'># Return summary table</span>
 <span class='fu'>create_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 6</span><span>
 #&gt;    group `&lt; 15 hours` `15 - 20 hours` `20 - 25 hours` `25+ hours` Employee_Count

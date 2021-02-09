@@ -50,12 +50,11 @@
 
 <meta property="og:title" content="Generate a Data Validation report in HTML — validation_report" />
 <meta property="og:description" content="The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a checks on
-Workplace Analytics query outputs, to provide diagnostic information
-for the Analyst pre-analysis.
-For your input data or meeting_data, please use the function wpa::import_wpa()
-to import your csv query files into R. This function will standardize format
-and prepare the data as input for this report." />
+Standard Person Query data as an input. The report contains checks on
+Workplace Analytics query outputs to provide diagnostic information
+for the Analyst prior to analysis.
+An additional Standard Meeting Query can be provided to perform meeting subject line
+related checks. This is optional and the validation report can be run without it." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -209,12 +208,11 @@ and prepare the data as input for this report." />
 
     <div class="ref-description">
     <p>The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a checks on
-Workplace Analytics query outputs, to provide diagnostic information
-for the Analyst pre-analysis.</p>
-<p>For your input data or meeting_data, please use the function <code><a href='import_wpa.html'>wpa::import_wpa()</a></code>
-to import your csv query files into R. This function will standardize format
-and prepare the data as input for this report.</p>
+Standard Person Query data as an input. The report contains checks on
+Workplace Analytics query outputs to provide diagnostic information
+for the Analyst prior to analysis.</p>
+<p>An additional Standard Meeting Query can be provided to perform meeting subject line
+related checks. This is optional and the validation report can be run without it.</p>
     </div>
 
     <pre class="usage"><span class='fu'>validation_report</span><span class='op'>(</span>
@@ -259,6 +257,38 @@ Defaults to TRUE.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>For your input to <code>data</code> or <code>meeting_data</code>, please use the function <code><a href='import_wpa.html'>wpa::import_wpa()</a></code>
+to import your csv query files into R. This function will standardize format
+and prepare the data as input for this report.</p>
+<p>If you are passing a Ways of Working Assessment query instead of a Standard Person query
+to the <code>data</code> argument, please also use <code><a href='standardise_pq.html'>standardise_pq()</a></code> to make the variable names
+consistent with a Standard Person Query.</p>
+    <h2 class="hasAnchor" id="checking-functions-within-validation-report-"><a class="anchor" href="#checking-functions-within-validation-report-"></a>Checking functions within <code>validation_report()</code></h2>
+
+    
+
+<ul>
+<li><p><code><a href='check_query.html'>check_query()</a></code></p></li>
+<li><p><code><a href='flag_ch_ratio.html'>flag_ch_ratio()</a></code></p></li>
+<li><p><code><a href='hrvar_count_all.html'>hrvar_count_all()</a></code></p></li>
+<li><p><code><a href='identify_privacythreshold.html'>identify_privacythreshold()</a></code></p></li>
+<li><p><code><a href='identify_nkw.html'>identify_nkw()</a></code></p></li>
+<li><p><code><a href='identify_holidayweeks.html'>identify_holidayweeks()</a></code></p></li>
+<li><p><code><a href='subject_validate.html'>subject_validate()</a></code></p></li>
+<li><p><code><a href='identify_tenure.html'>identify_tenure()</a></code></p></li>
+<li><p><code><a href='flag_outlooktime.html'>flag_outlooktime()</a></code></p></li>
+<li><p><code><a href='identify_shifts.html'>identify_shifts()</a></code></p></li>
+<li><p><code><a href='track_HR_change.html'>track_HR_change()</a></code></p></li>
+</ul>
+
+<p>You can browse each individual function for details on calculations.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Reports: 
@@ -267,7 +297,9 @@ Defaults to TRUE.</p></td>
 <code><a href='coaching_report.html'>coaching_report</a>()</code>,
 <code><a href='collaboration_report.html'>collaboration_report</a>()</code>,
 <code><a href='connectivity_report.html'>connectivity_report</a>()</code>,
-<code><a href='generate_report.html'>generate_report</a>()</code></p></div>
+<code><a href='generate_report.html'>generate_report</a>()</code>,
+<code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>

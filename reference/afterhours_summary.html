@@ -231,15 +231,22 @@ but accepts any character vector, e.g. "LevelDesignation"</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>String specifying what to return. This must be one of the following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a ggplot object by default, where 'plot' is passed in <code>return</code>.
-When 'table' is passed, a summary table is returned as a data frame.</p>
+    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A bar plot for the metric.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Uses the metric <code>After_hours_collaboration_hours</code>.</p>
@@ -266,7 +273,8 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 #&gt; </span><span style='color: #555555;'>3</span><span> Junior IC                            2.90   105
 #&gt; </span><span style='color: #555555;'>4</span><span> Manager                              3.17   333
 #&gt; </span><span style='color: #555555;'>5</span><span> Senior IC                            2.95   103
-#&gt; </span><span style='color: #555555;'>6</span><span> Support                              2.71   419</div></span></pre>
+#&gt; </span><span style='color: #555555;'>6</span><span> Support                              2.71   419</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

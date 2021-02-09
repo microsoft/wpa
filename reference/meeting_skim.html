@@ -218,11 +218,23 @@ when provided a standard query in the input.</p>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>A character string to specify whether to return a message
-or a text string. Defaults to "message". Valid options include "text" or
-"table".</p></td>
+      <td><p>String specifying what to return. This must be one of the following strings:</p><ul>
+<li><p><code>"message"</code></p></li>
+<li><p><code>"text"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul>
+<li><p><code>"message"</code>: message in console.</p></li>
+<li><p><code>"text"</code>: string.</p></li>
+<li><p><code>"table"</code>: data frame.</p></li>
+</ul>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

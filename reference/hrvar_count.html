@@ -229,10 +229,23 @@ concatenated.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object containing a bar plot.</p></li>
+<li><p><code>"table"</code>: data frame containing a count table.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -251,6 +264,7 @@ Valid inputs are "plot" and "table".</p></td>
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
 <code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,

@@ -49,7 +49,10 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Compute a Flexibility Index based on the Hourly Collaboration Query — flex_index" />
-<meta property="og:description" content="Pass an Hourly Collaboration query and compute a Flexibility Index for a group" />
+<meta property="og:description" content="
+Pass an Hourly Collaboration query and compute a Flexibility Index for the
+entire population. The Flexibility Index is a quantitative measure of the
+freedom for employees to work at a time of their choice." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -202,7 +205,10 @@
     </div>
 
     <div class="ref-description">
-    <p>Pass an Hourly Collaboration query and compute a Flexibility Index for a group</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p>Pass an Hourly Collaboration query and compute a Flexibility Index for the
+entire population. The Flexibility Index is a quantitative measure of the
+freedom for employees to work at a time of their choice.</p>
     </div>
 
     <pre class="usage"><span class='fu'>flex_index</span><span class='op'>(</span>
@@ -230,41 +236,89 @@ Defaults to NULL. This only affects the function when "table" is returned.</p></
     </tr>
     <tr>
       <th>signals</th>
-      <td><p>Character vector to specify which collaboration metrics to use:
-You may use "email" for emails only, "IM" for Teams messages only,
-or a combination of the two <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code> (default).</p></td>
+      <td><p>Character vector to specify which collaboration metrics to
+use: You may use "email" for emails only, "IM" for Teams messages only, or
+a combination of the two <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code> (default).</p></td>
     </tr>
     <tr>
       <th>active_threshold</th>
-      <td><p>A numeric value specifying the minimum number of signals to be greater than in
-order to qualify as <em>active</em>. Defaults to 0.</p></td>
+      <td><p>A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as <em>active</em>. Defaults to 0.</p></td>
     </tr>
     <tr>
       <th>start_hour</th>
-      <td><p>A character vector specifying starting hours,
-e.g. "0900"</p></td>
+      <td><p>A character vector specifying starting hours, e.g. "0900"</p></td>
     </tr>
     <tr>
       <th>end_hour</th>
-      <td><p>A character vector specifying end hours,
-e.g. "1700"</p></td>
+      <td><p>A character vector specifying end hours, e.g. "1700"</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector to specify what to return.
-Valid options include "plot" (default), "data", and "table".
-When returning a plot, a random of ten working patterns are displayed, with diagnostic data and the Flexibility
-Index shown on the plot.</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"data"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     <tr>
       <th>plot_method</th>
-      <td><p>Character string for determining which plot to return.
-Options include "sample", "common", and "time". "sample"
-plots a sample of ten working patterns; "common" plots the ten most common
-working patterns; "time" plots the Flexibility Index for the group over time.</p></td>
+      <td><p>Character string for determining which plot to return.</p><ul>
+<li><p><code>"sample"</code> plots a sample of ten working pattern</p></li>
+<li><p><code>"common"</code> plots the ten most common working patterns</p></li>
+<li><p><code>"time"</code> plots the Flexibility Index for the group over time</p></li>
+</ul></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A random of ten working patterns are displayed,
+with diagnostic data and the Flexibility Index shown on the plot.</p></li>
+<li><p><code>"data"</code>: data frame. The original input data appended with the
+Flexibility Index and the component scores.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric.
+hen returning a plot,</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The <strong>Flexibility Index</strong> is a score between 0 and 1, and is calculated based
+on three component measures:</p><ul>
+<li><p><code>ChangeHours</code>: this represents the freedom to define work start and end
+time. Teams that embrace flexibility allow members to start and end their
+workday at different times.</p></li>
+<li><p><code>TakeBreaks</code>: this represents the freedom define one's own schedule. In
+teams that embrace flexibility, some members will choose to organize / split
+their day in different ways (e.g. take a long lunch-break, disconnect in the
+afternoon and reconnect in the evening, etc.).</p></li>
+<li><p><code>ControlHours</code>: this represents the freedom to switch off. Members who
+choose alternative arrangements should be able to maintain a workload that is
+broadly equivalent to those that follow standard arrangements.</p></li>
+</ul>
+
+<p>The <strong>Flexibility Index</strong> returns with one single score for each person-week,
+plus the <strong>three</strong> sub-component binary variables (<code>TakeBreaks</code>,
+<code>ChangeHours</code>, <code>ControlHours</code>). At the person-week level, each score can only
+have the values 0, 0.33, 0.66, and 1. The Flexibility Index should only be
+interpreted as a <strong>group</strong> of person-weeks, e.g. the average Flexibility
+Index of a team of 6 over time, where the possible values would range from 0
+to 1.</p>
+    <h2 class="hasAnchor" id="context"><a class="anchor" href="#context"></a>Context</h2>
+
+    
+
+<p>The central feature of flexible working arrangements is
+that it is the employee rather the employer who chooses the working
+arrangement. <em>Observed flexibility</em> serves as a proxy to assess whether a
+flexible working arrangement are in place. The Flexibility Index is an
+attempt to create such a proxy for quantifying and measuring flexibility,
+using behavioural data from Workplace Analytics.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Work Patterns: 

@@ -220,13 +220,26 @@ Returns a character string by default.</p>
     </tr>
     <tr>
       <th>threshold</th>
-      <td><p>Numeric value specifying the threshold for flagging. Defaults to 30.</p></td>
+      <td><p>Numeric value specifying the threshold for flagging.
+Defaults to 30.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String to specify what to return. Options include "message" for console return, and "text" for string return.</p></td>
+      <td><p>String to specify what to return. Options include:</p><ul>
+<li><p><code>"message"</code></p></li>
+<li><p><code>"text"</code></p></li>
+<li><p><code>"data"</code></p></li>
+</ul></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul>
+<li><p><code>"message"</code>: message in the console containing diagnotic summary</p></li>
+<li><p><code>"text"</code>: string containing diagnotic summary</p></li>
+<li><p><code>"data"</code>: data frame. Person-level data with flags on unusually high or low ratios</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -235,6 +248,7 @@ Returns a character string by default.</p>
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
 <code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,

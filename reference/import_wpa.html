@@ -50,7 +50,7 @@
 
 <meta property="og:title" content="Import a Workplace Analytics Query — import_wpa" />
 <meta property="og:description" content="Import a Workplace Analytics Query from a local CSV File, with variable classifications optimised
-for other wpa functions." />
+for other 'wpa' functions." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -204,7 +204,7 @@ for other wpa functions." />
 
     <div class="ref-description">
     <p>Import a Workplace Analytics Query from a local CSV File, with variable classifications optimised
-for other <strong>wpa</strong> functions.</p>
+for other 'wpa' functions.</p>
     </div>
 
     <pre class="usage"><span class='fu'>import_wpa</span><span class='op'>(</span><span class='va'>x</span>, standardise <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -227,6 +227,9 @@ as FALSE.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A <code>tibble</code> is returned.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>import_wpa()</code> uses <code><a href='https://Rdatatable.gitlab.io/data.table/reference/fread.html'>data.table::fread()</a></code> to import CSV files for speed,

@@ -6,8 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
-representing the number of employees in the group. — create_bubble • wpa</title>
+<title>Create a bubble plot with two selected Workplace Analytics metrics
+(General Purpose), with size representing the number of employees in the
+group. — create_bubble • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -49,9 +50,11 @@ representing the number of employees in the group. — create_bubble • wpa</ti
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
-representing the number of employees in the group. — create_bubble" />
-<meta property="og:description" content="Returns a bubble plot of two selected metrics, using size to map the number of employees." />
+<meta property="og:title" content="Create a bubble plot with two selected Workplace Analytics metrics
+(General Purpose), with size representing the number of employees in the
+group. — create_bubble" />
+<meta property="og:description" content="Returns a bubble plot of two selected metrics, using size to map
+the number of employees." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -198,14 +201,16 @@ representing the number of employees in the group. — create_bubble" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
-representing the number of employees in the group.</h1>
+    <h1>Create a bubble plot with two selected Workplace Analytics metrics
+(General Purpose), with size representing the number of employees in the
+group.</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/create_bubble.R'><code>R/create_bubble.R</code></a></small>
     <div class="hidden name"><code>create_bubble.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns a bubble plot of two selected metrics, using size to map the number of employees.</p>
+    <p>Returns a bubble plot of two selected metrics, using size to map
+the number of employees.</p>
     </div>
 
     <pre class="usage"><span class='fu'>create_bubble</span><span class='op'>(</span>
@@ -227,42 +232,48 @@ representing the number of employees in the group.</h1>
     </tr>
     <tr>
       <th>metric_x</th>
-      <td><p>Character string containing the name of the metric,
-e.g. "Collaboration_hours"</p></td>
+      <td><p>Character string containing the name of the metric, e.g.
+"Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>metric_y</th>
-      <td><p>Character string containing the name of the metric,
-e.g. "Collaboration_hours"</p></td>
+      <td><p>Character string containing the name of the metric, e.g.
+"Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"</p></td>
+      <td><p>HR Variable by which to split metrics, defaults to
+"Organization" but accepts any character vector, e.g. "LevelDesignation"</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.</p></td>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings: - <code>"plot"</code> - <code>"table"</code></p></td>
     </tr>
     <tr>
       <th>bubble_size</th>
-      <td><p>A numeric vector of length two to specify the size range of the bubbles</p></td>
+      <td><p>A numeric vector of length two to specify the size range
+of the bubbles</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a ggplot object by default, where 'plot' is passed in <code>return</code>.
-When 'table' is passed, a summary table is returned as a data frame.</p>
+    <p>A different output is returned depending on the value passed to the
+<code>return</code> argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A bubble plot for the metric.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a general purpose function that powers all the functions
-in the package that produce bubble plots.</p>
+    <p>This is a general purpose function that powers all the functions in
+the package that produce bubble plots.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other General: 

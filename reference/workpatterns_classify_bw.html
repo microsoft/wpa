@@ -51,9 +51,9 @@ using the binary week-based (bw) method. — workpatterns_classify_bw • wpa</t
 
 <meta property="og:title" content="Classify working pattern week archetypes using a rule based algorithm,
 using the binary week-based (bw) method. — workpatterns_classify_bw" />
-<meta property="og:description" content="
-Apply a rule based algorithm to emails sent by hour of day,
-using the binary week-based (bw) method." />
+<meta property="og:description" content=" Apply a rule based
+algorithm to emails sent by hour of day, using the binary week-based (bw)
+method." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -207,9 +207,9 @@ using the binary week-based (bw) method.</h1>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>
-Apply a rule based algorithm to emails sent by hour of day,
-using the binary week-based (bw) method.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a> Apply a rule based
+algorithm to emails sent by hour of day, using the binary week-based (bw)
+method.</p>
     </div>
 
     <pre class="usage"><span class='fu'>workpatterns_classify_bw</span><span class='op'>(</span>
@@ -236,13 +236,10 @@ Defaults to NULL. This only affects the function when "table" is returned.</p></
     </tr>
     <tr>
       <th>signals</th>
-      <td><p>Character vector to specify which collaboration metrics to use:</p><ul>
-<li><p>"email" (default) for emails only</p></li>
-<li><p>"IM" for Teams messages only,</p></li>
-<li><p>"unscheduled_calls" for Unscheduled Calls only</p></li>
-<li><p>"meetings" for Meetings only</p></li>
-<li><p>or a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code></p></li>
-</ul></td>
+      <td><p>Character vector to specify which collaboration metrics to
+use: - "email" (default) for emails only - "IM" for Teams messages only, -
+"unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
+only - or a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code></p></td>
     </tr>
     <tr>
       <th>start_hour</th>
@@ -256,17 +253,17 @@ e.g. "1700"</p></td>
     </tr>
     <tr>
       <th>active_threshold</th>
-      <td><p>A numeric value specifying the minimum number of signals to be greater than in
-order to qualify as <em>active</em>. Defaults to 0.</p></td>
+      <td><p>A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as <em>active</em>. Defaults to 0.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector to specify what to return. Valid options include:</p><ul>
-<li><p>"plot": returns a heatmap plot of signal distribution by hour and archetypes (default)</p></li>
-<li><p>"data": returns the raw data with the classified archetypes</p></li>
-<li><p>"table": returns a summary table of the archetypes</p></li>
-<li><p>"plot-area": returns an area plot of the percentages of archetypes shown over time</p></li>
-</ul></td>
+      <td><p>Character vector to specify what to return. Valid options
+include: - "plot": returns a heatmap plot of signal distribution by hour
+and archetypes (default) - "data": returns the raw data with the classified
+archetypes - "table": returns a summary table of the archetypes -
+"plot-area": returns an area plot of the percentages of archetypes shown
+over time</p></td>
     </tr>
     </table>
 

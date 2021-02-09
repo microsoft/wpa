@@ -49,7 +49,8 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Generate a vector of n contiguous colours, as a red-yellow-green palette. — heat_colours" />
-<meta property="og:description" content="Generate a vector of n contiguous colours, as a red-yellow-green palette." />
+<meta property="og:description" content="Takes a numeric value n and returns a character vector of colour HEX codes
+corresponding to the heat map palette." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -202,7 +203,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Generate a vector of <code>n</code> contiguous colours, as a red-yellow-green palette.</p>
+    <p>Takes a numeric value <code>n</code> and returns a character vector of colour HEX codes
+corresponding to the heat map palette.</p>
     </div>
 
     <pre class="usage"><span class='fu'>heat_colours</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>alpha</span>, rev <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -225,6 +227,10 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A character vector containing the HEX codes and the same length as <code>n</code> is
+returned.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>50</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='fu'>heat_colours</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>, border <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>

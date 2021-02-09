@@ -49,8 +49,11 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Generate a Information Value HTML Report — IV_report" />
-<meta property="og:description" content="The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a full Information Value analysis,  a data exploration technique that helps determine which columns in a data set have predictive power or influence on the value of a specified dependent variable." />
+<meta property="og:description" content="The function generates an interactive HTML report using Standard Person Query
+data as an input. The report contains a full Information Value analysis,  a
+data exploration technique that helps determine which columns in a data set
+have predictive power or influence on the value of a specified dependent
+variable." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -203,8 +206,11 @@ Standard Person Query data as an input. The report contains a full Information V
     </div>
 
     <div class="ref-description">
-    <p>The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a full Information Value analysis,  a data exploration technique that helps determine which columns in a data set have predictive power or influence on the value of a specified dependent variable.</p>
+    <p>The function generates an interactive HTML report using Standard Person Query
+data as an input. The report contains a full Information Value analysis,  a
+data exploration technique that helps determine which columns in a data set
+have predictive power or influence on the value of a specified dependent
+variable.</p>
     </div>
 
     <pre class="usage"><span class='fu'>IV_report</span><span class='op'>(</span>
@@ -225,8 +231,9 @@ Standard Person Query data as an input. The report contains a full Information V
     </tr>
     <tr>
       <th>predictors</th>
-      <td><p>A character vector specifying the columns to be used as predictors.
-Defaults to NULL, where all numeric vectors in the data will be used as predictors.</p></td>
+      <td><p>A character vector specifying the columns to be used as
+predictors. Defaults to NULL, where all numeric vectors in the data will be
+used as predictors.</p></td>
     </tr>
     <tr>
       <th>outcome</th>
@@ -235,20 +242,26 @@ the values 1 or 0.</p></td>
     </tr>
     <tr>
       <th>bins</th>
-      <td><p>Number of bins to use in <code><a href='https://rdrr.io/pkg/Information/man/create_infotables.html'>Information::create_infotables()</a></code>, defaults to 10.</p></td>
+      <td><p>Number of bins to use in <code><a href='https://rdrr.io/pkg/Information/man/create_infotables.html'>Information::create_infotables()</a></code>,
+defaults to 10.</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>Pass the file path and the desired file name, <em>excluding the file extension</em>.
-For example, "collaboration report".</p></td>
+      <td><p>Pass the file path and the desired file name, <em>excluding the file
+extension</em>. For example, "collaboration report".</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
-      <td><p>Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.</p></td>
+      <td><p>Logical vector specifying whether to include a timestamp in
+the file name. Defaults to TRUE.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Reports: 
@@ -257,6 +270,8 @@ Defaults to TRUE.</p></td>
 <code><a href='collaboration_report.html'>collaboration_report</a>()</code>,
 <code><a href='connectivity_report.html'>connectivity_report</a>()</code>,
 <code><a href='generate_report.html'>generate_report</a>()</code>,
+<code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
 <code><a href='validation_report.html'>validation_report</a>()</code></p>
 <p>Other Information Value: 
 <code><a href='IV_by_period.html'>IV_by_period</a>()</code>,
@@ -266,7 +281,8 @@ Defaults to TRUE.</p></td>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'>mutate</span><span class='op'>(</span>X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Collaboration_hours</span> <span class='op'>&gt;</span> <span class='fl'>12</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Simulate binary variable</span>
-  <span class='fu'>IV_report</span><span class='op'>(</span>outcome <span class='op'>=</span>  <span class='st'>"CH_binary"</span>, predictors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Email_hours"</span>, <span class='st'>"Workweek_span"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'>IV_report</span><span class='op'>(</span>outcome <span class='op'>=</span>  <span class='st'>"CH_binary"</span>,
+            predictors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Email_hours"</span>, <span class='st'>"Workweek_span"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
 
 </div></pre>

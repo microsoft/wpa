@@ -237,10 +237,21 @@ e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>String specifying what to return. This must be one of the following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A box plot for the metric.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -259,10 +270,10 @@ in the package that produce box plots.</p>
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Create a fizzy plot for Work Week Span by Level Designation</span>
+    <pre class="examples"><div class='input'><span class='co'># Create a fizzy plot for Work Week Span by Level Designation</span>
 <span class='fu'>create_boxplot</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Workweek_span"</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
 </div><div class='img'><img src='create_boxplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Create a summary statistics table for Work Week Span by Organization</span>
+<span class='co'># Create a summary statistics table for Work Week Span by Organization</span>
 <span class='fu'>create_boxplot</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Workweek_span"</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 8</span><span>
 #&gt;    group                 mean median    sd   min   max range     n
@@ -282,7 +293,7 @@ in the package that produce box plots.</p>
 #&gt; </span><span style='color: #555555;'>13</span><span> Inventory Management  47.3   42.4  9.28  34.2  68.9  34.7    60
 #&gt; </span><span style='color: #555555;'>14</span><span> IT-Corporate          42.4   40.5  7.24  31.8  58.5  26.7    68
 #&gt; </span><span style='color: #555555;'>15</span><span> IT-East               40.3   39.9  4.84  32.6  56.4  23.7    62</div><div class='input'>
-<span class='co'>## Create a fizzy plot for Collaboration Hours by Level Designation</span>
+<span class='co'># Create a fizzy plot for Collaboration Hours by Level Designation</span>
 <span class='fu'>create_boxplot</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
 </div><div class='img'><img src='create_boxplot-2.png' alt='' width='700' height='433' /></div></span></pre>
   </div>
