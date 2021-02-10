@@ -2,10 +2,10 @@
 
 This page offers a 'map' for the Workplace Analytics analyst - a guide to what analyses or functions could be useful when exploring a particular area of Workplace Analytics. This map is divided into the following sections.
 
-- Collaboration
-- Capacity
-- Coaching
-- Connectivity
+- [Collaboration](#collaboration)
+- [Capacity](#capacity)
+- [Coaching](#coaching)
+- [Connectivity](#connectivity)
 
 ## Collaboration
 
@@ -16,7 +16,7 @@ It is recommended that you start with running `keymetrics_scan()` on a Standard 
 
 Here are a list of other individual plots that you can run:
 - Summary of metrics: `collab_sum()`, `workloads_sum()`, `email_sum()`, `meeting_sum()`.
-- Time dimension of metrics: `collab_area()`, or any of the `*_dist()` or `*_trend()` functions.
+- Time dimension of metrics: `collab_area()`, or any of the `*_line()` or `*_trend()` functions.
 
 ### Advanced
 
@@ -24,6 +24,8 @@ If the topic of interest is meetings:
 - `meeting_skim()` to understand the overall % of meetings which are low quality.
 - `meetingtype_dist()` to understand the distribution of long or large meetings.
 - **Meeting subject line text mining**: `meeting_tm_report()` can reveal patterns underlying meeting subject lines. 
+- To understand detailed changes in collaboration metrics over time, you can use `period_change()` to visualize the distribution across the population in a _before vs after_ comparison.
+- To understand what metrics have changed the most with respect to time, you can use `IV_by_period()`, which uses the _before vs after_ as an outcome variable to calculate which Workplace Analytics metrics have had the greatest impact according to Information Value. 
 
 ## Capacity
 
@@ -39,6 +41,7 @@ The key metrics in relation to **capacity** are _Work Week Span_, _Collaboration
 
 - Working patterns archetypes: you can classify person-weeks or persons into individual archetypes with `workpatterns_classify()`, which reveals _break_ patterns in employees' weeks. If you are unsure with where to start, you can also run `workpatterns_report()` which combines a number of plots based on the classified archetypes. You will need an Hourly Collaboration query.
 - Flexibility Index: `flex_index()` computes a **Flexibility Index** which is a measure of how flexible teams are working, based on three components, i.e. (i) whether they take breaks during the week, (ii) whether they start their date at different times compared to the official time, and (iii) whether they keep their total working hours under control. 
+- By filtering on email and meeting subject lines in a Person Query, it is possible to compute the employee-hours that have been invested into a particular business process. To identify the right keywords to use in the filter, you can run `meeting_tm_report()` or one of its component functions (`tm_cooc()`, `tm_freq()`, `tm_wordcloud()`) to examine what keywords are related to the business process you have in mind.
 
 ## Coaching
 
@@ -55,6 +58,12 @@ You can start with the `coaching_report()` which provides a baseline of this vie
 
 ### Advanced
 
+Good manager coaching is a key factor for employee engagement and retention. 
+
+- To compute feature importance, you can leverage `create_IV()` and `IV_report()` for calculating Information Value, using  Workplace Analytics metrics (including manager metrics) as predictor variables and employee sentiment scores as an outcome variable.
+- If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn't a function for modelling in **wpa**, but you can make use of capabilities in the wider R universe, such as **randomForest** and **tidymodels**. 
+- For more capabilities in calculating variable importance, you may reference the **rwa** and the **vip** packages.
+
 ## Connectivity
 
 ### Essentials
@@ -62,18 +71,12 @@ You can start with the `coaching_report()` which provides a baseline of this vie
 You can start with the `connectivity_report()` which provides a baseline of this view.
 
 - Visualize external and internal networks with `external_network_plot()` and `internal_network_plot()`
+- Visualize correlation between network metrics (e.g. network size) and organizational attributes, such as employee tenure, organization, and level. You can use `create_bar()` , `create_boxplot()`, or `create_fizz()`.
+- To visualize correlation between network metrics and another Workplace Analytics metric, you can use `create_scatter()` or `create_bubble()`.
 
 ### Advanced
 
 - Group-to-group network with `network_g2g()`
+- Use `create_sankey()` to create a Group to Group collaboration visual
 - Person-to-person network with `network_p2p()`
 - Community detection with `network_p2p()`
-
-## Special topics
-
-- Feature importance / Information Value
-- Time series analysis
-- Identifying related keywords in subject lines
-- Churn / org movement analysis
-
-_Coming soon..._
