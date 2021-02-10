@@ -82,7 +82,6 @@
 #'   - `"data"`: data frame. The original input data appended with the
 #'   Flexibility Index and the component scores.
 #'   - `"table"`: data frame. A summary table for the metric.
-#' hen returning a plot,
 #'
 #' @import dplyr
 #' @importFrom data.table ":=" "%like%" "%between%"
