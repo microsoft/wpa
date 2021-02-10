@@ -205,10 +205,10 @@
 
 <p>This page offers a ‘map’ for the Workplace Analytics analyst - a guide to what analyses or functions could be useful when exploring a particular area of Workplace Analytics. This map is divided into the following sections.</p>
 <ul>
-<li>Collaboration</li>
-<li>Capacity</li>
-<li>Coaching</li>
-<li>Connectivity</li>
+<li><a href="#collaboration">Collaboration</a></li>
+<li><a href="#capacity">Capacity</a></li>
+<li><a href="#coaching">Coaching</a></li>
+<li><a href="#connectivity">Connectivity</a></li>
 </ul>
 <div id="collaboration" class="section level2">
 <h2 class="hasAnchor">
@@ -220,7 +220,7 @@
 <p>Here are a list of other individual plots that you can run:</p>
 <ul>
 <li>Summary of metrics: <code><a href="reference/collaboration_sum.html">collab_sum()</a></code>, <code><a href="reference/workloads_summary.html">workloads_sum()</a></code>, <code><a href="reference/email_summary.html">email_sum()</a></code>, <code><a href="reference/meeting_summary.html">meeting_sum()</a></code>.</li>
-<li>Time dimension of metrics: <code><a href="reference/collaboration_area.html">collab_area()</a></code>, or any of the <code>*_dist()</code> or <code>*_trend()</code> functions.</li>
+<li>Time dimension of metrics: <code><a href="reference/collaboration_area.html">collab_area()</a></code>, or any of the <code>*_line()</code> or <code>*_trend()</code> functions.</li>
 </ul>
 </div>
 <div id="advanced" class="section level3">
@@ -234,6 +234,8 @@
 <code><a href="reference/meetingtype_dist.html">meetingtype_dist()</a></code> to understand the distribution of long or large meetings.</li>
 <li>
 <strong>Meeting subject line text mining</strong>: <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> can reveal patterns underlying meeting subject lines.</li>
+<li>To understand detailed changes in collaboration metrics over time, you can use <code><a href="reference/period_change.html">period_change()</a></code> to visualize the distribution across the population in a <em>before vs after</em> comparison.</li>
+<li>To understand what metrics have changed the most with respect to time, you can use <code><a href="reference/IV_by_period.html">IV_by_period()</a></code>, which uses the <em>before vs after</em> as an outcome variable to calculate which Workplace Analytics metrics have had the greatest impact according to Information Value.</li>
 </ul>
 </div>
 </div>
@@ -258,6 +260,7 @@
 <ul>
 <li>Working patterns archetypes: you can classify person-weeks or persons into individual archetypes with <code><a href="reference/workpatterns_classify.html">workpatterns_classify()</a></code>, which reveals <em>break</em> patterns in employees’ weeks. If you are unsure with where to start, you can also run <code><a href="reference/workpatterns_report.html">workpatterns_report()</a></code> which combines a number of plots based on the classified archetypes. You will need an Hourly Collaboration query.</li>
 <li>Flexibility Index: <code><a href="reference/flex_index.html">flex_index()</a></code> computes a <strong>Flexibility Index</strong> which is a measure of how flexible teams are working, based on three components, i.e. (i) whether they take breaks during the week, (ii) whether they start their date at different times compared to the official time, and (iii) whether they keep their total working hours under control.</li>
+<li>By filtering on email and meeting subject lines in a Person Query, it is possible to compute the employee-hours that have been invested into a particular business process. To identify the right keywords to use in the filter, you can run <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> or one of its component functions (<code><a href="reference/tm_cooc.html">tm_cooc()</a></code>, <code><a href="reference/tm_freq.html">tm_freq()</a></code>, <code><a href="reference/tm_wordcloud.html">tm_wordcloud()</a></code>) to examine what keywords are related to the business process you have in mind.</li>
 </ul>
 </div>
 </div>
@@ -284,6 +287,12 @@
 <div id="advanced-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#advanced-2" class="anchor"></a>Advanced</h3>
+<p>Good manager coaching is a key factor for employee engagement and retention.</p>
+<ul>
+<li>To compute feature importance, you can leverage <code><a href="reference/create_IV.html">create_IV()</a></code> and <code><a href="reference/IV_report.html">IV_report()</a></code> for calculating Information Value, using Workplace Analytics metrics (including manager metrics) as predictor variables and employee sentiment scores as an outcome variable.</li>
+<li>If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn’t a function for modelling in <strong>wpa</strong>, but you can make use of capabilities in the wider R universe, such as <strong>randomForest</strong> and <strong>tidymodels</strong>.</li>
+<li>For more capabilities in calculating variable importance, you may reference the <strong>rwa</strong> and the <strong>vip</strong> packages.</li>
+</ul>
 </div>
 </div>
 <div id="connectivity" class="section level2">
@@ -296,6 +305,8 @@
 <ul>
 <li>Visualize external and internal networks with <code><a href="reference/external_network_plot.html">external_network_plot()</a></code> and <code><a href="reference/internal_network_plot.html">internal_network_plot()</a></code>
 </li>
+<li>Visualize correlation between network metrics (e.g. network size) and organizational attributes, such as employee tenure, organization, and level. You can use <code><a href="reference/create_bar.html">create_bar()</a></code> , <code><a href="reference/create_boxplot.html">create_boxplot()</a></code>, or <code><a href="reference/create_fizz.html">create_fizz()</a></code>.</li>
+<li>To visualize correlation between network metrics and another Workplace Analytics metric, you can use <code><a href="reference/create_scatter.html">create_scatter()</a></code> or <code><a href="reference/create_bubble.html">create_bubble()</a></code>.</li>
 </ul>
 </div>
 <div id="advanced-3" class="section level3">
@@ -304,23 +315,13 @@
 <ul>
 <li>Group-to-group network with <code><a href="reference/network_g2g.html">network_g2g()</a></code>
 </li>
+<li>Use <code><a href="reference/create_sankey.html">create_sankey()</a></code> to create a Group to Group collaboration visual</li>
 <li>Person-to-person network with <code><a href="reference/network_p2p.html">network_p2p()</a></code>
 </li>
 <li>Community detection with <code><a href="reference/network_p2p.html">network_p2p()</a></code>
 </li>
 </ul>
 </div>
-</div>
-<div id="special-topics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#special-topics" class="anchor"></a>Special topics</h2>
-<ul>
-<li>Feature importance / Information Value</li>
-<li>Time series analysis</li>
-<li>Identifying related keywords in subject lines</li>
-<li>Churn / org movement analysis</li>
-</ul>
-<p><em>Coming soon…</em></p>
 </div>
 </div>
 
