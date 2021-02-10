@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Analysis Map • wpa</title>
+<title>Employee Experience Analysis Map • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -48,7 +48,7 @@
   
   <script src="extra.js"></script>
 
-<meta property="og:title" content="Analysis Map" />
+<meta property="og:title" content="Employee Experience Analysis Map" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -198,21 +198,22 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>Analysis Map</h1>
+      <h1>Employee Experience Analysis Map</h1>
     </div>
 
-<div id="analysis-map" class="section level1">
+<div id="employee-experience-analysis-map" class="section level1">
 
 <p>This page offers a ‘map’ for the Workplace Analytics analyst - a guide to what analyses or functions could be useful when exploring a particular area of Workplace Analytics. This map is divided into the following sections.</p>
 <ul>
-<li><a href="#collaboration">Collaboration</a></li>
-<li><a href="#capacity">Capacity</a></li>
-<li><a href="#coaching">Coaching</a></li>
-<li><a href="#connectivity">Connectivity</a></li>
+<li><a href="#ways-of-working">Ways of Working</a></li>
+<li><a href="#employee-wellbeing">Employee Wellbeing</a></li>
+<li><a href="#managerial-excellence">Managerial Excellence</a></li>
+<li><a href="#teaming-and-networks">Teaming and Networks</a></li>
 </ul>
-<div id="collaboration" class="section level2">
+<p>For each individual function, you can click into the linked documentation for more information on how to run them and what outputs are returned.</p>
+<div id="ways-of-working" class="section level2">
 <h2 class="hasAnchor">
-<a href="#collaboration" class="anchor"></a>Collaboration</h2>
+<a href="#ways-of-working" class="anchor"></a>Ways of Working</h2>
 <div id="essentials" class="section level3">
 <h3 class="hasAnchor">
 <a href="#essentials" class="anchor"></a>Essentials</h3>
@@ -226,26 +227,43 @@
 <div id="advanced" class="section level3">
 <h3 class="hasAnchor">
 <a href="#advanced" class="anchor"></a>Advanced</h3>
-<p>If the topic of interest is meetings:</p>
+<div id="meeting-efficiency" class="section level4">
+<h4 class="hasAnchor">
+<a href="#meeting-efficiency" class="anchor"></a>Meeting efficiency</h4>
+<p>One option to advance the analysis is to take a deep dive into meetings.</p>
 <ul>
 <li>
-<code><a href="reference/meeting_skim.html">meeting_skim()</a></code> to understand the overall % of meetings which are low quality.</li>
+<code><a href="reference/meeting_skim.html">meeting_skim()</a></code> can be used to understand the overall % of meetings which are low quality. Hours can be expressed in terms of number of FTE-weeks (or months), or even dollar values for greater impact.</li>
 <li>
-<code><a href="reference/meetingtype_dist.html">meetingtype_dist()</a></code> to understand the distribution of long or large meetings.</li>
+<code><a href="reference/meetingtype_dist.html">meetingtype_dist()</a></code> can be used to understand the distribution of long or large meetings.</li>
 <li>
-<strong>Meeting subject line text mining</strong>: <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> can reveal patterns underlying meeting subject lines.</li>
+<strong>Meeting subject line text mining</strong>: <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> can reveal patterns underlying meeting subject lines. The report is made of individual visualization functions, i.e.:
+<ul>
+<li><code><a href="reference/tm_cooc.html">tm_cooc()</a></code></li>
+<li><code><a href="reference/tm_freq.html">tm_freq()</a></code></li>
+<li>`tm_wordcloud()</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="collaboration-across-time" class="section level4">
+<h4 class="hasAnchor">
+<a href="#collaboration-across-time" class="anchor"></a>Collaboration across time</h4>
+<p>Another option is to analyse collaboration metrics across a time dimension.</p>
+<ul>
 <li>To understand detailed changes in collaboration metrics over time, you can use <code><a href="reference/period_change.html">period_change()</a></code> to visualize the distribution across the population in a <em>before vs after</em> comparison.</li>
 <li>To understand what metrics have changed the most with respect to time, you can use <code><a href="reference/IV_by_period.html">IV_by_period()</a></code>, which uses the <em>before vs after</em> as an outcome variable to calculate which Workplace Analytics metrics have had the greatest impact according to Information Value.</li>
 </ul>
 </div>
 </div>
-<div id="capacity" class="section level2">
+</div>
+<div id="employee-wellbeing" class="section level2">
 <h2 class="hasAnchor">
-<a href="#capacity" class="anchor"></a>Capacity</h2>
+<a href="#employee-wellbeing" class="anchor"></a>Employee Wellbeing</h2>
 <div id="essentials-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#essentials-1" class="anchor"></a>Essentials</h3>
-<p>The key metrics in relation to <strong>capacity</strong> are <em>Work Week Span</em>, <em>Collaboration Hours</em>, and <em>After-hours collaboration hours</em>, which can be visualized in a number of ways. You can start with the <code><a href="reference/capacity_report.html">capacity_report()</a></code> which provides a baseline of this view.</p>
+<p>The key metrics in relation to <strong>Employee Wellbeing</strong> are <em>Work Week Span</em>, <em>Collaboration Hours</em>, and <em>After-hours collaboration hours</em>, which can be visualized in a number of ways. You can start with the <code><a href="reference/capacity_report.html">capacity_report()</a></code> which provides a baseline of this view.</p>
 <ul>
 <li>Rank all groups by their group average: the functions to use are <code><a href="reference/workloads_rank.html">workloads_rank()</a></code>, <code><a href="reference/collaboration_rank.html">collab_rank()</a></code>, and <code><a href="reference/afterhours_rank.html">afterhours_rank()</a></code>.</li>
 <li>Distribution of capacity metrics: <code>*_fizz()</code> functions offer a way of quickly visualizing the distribution of the capacity metrics. For the traditionalist, you can also use <code><a href="reference/create_boxplot.html">create_boxplot()</a></code> for the given metric to create boxplot views.</li>
@@ -257,16 +275,31 @@
 <div id="advanced-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#advanced-1" class="anchor"></a>Advanced</h3>
+<div id="working-patterns-archetypes" class="section level4">
+<h4 class="hasAnchor">
+<a href="#working-patterns-archetypes" class="anchor"></a>Working patterns archetypes</h4>
+<p>You can classify person-weeks or persons into individual archetypes with <code><a href="reference/workpatterns_classify.html">workpatterns_classify()</a></code>, which reveals <em>break</em> patterns in employees’ weeks. If you are unsure with where to start, you can also run <code><a href="reference/workpatterns_report.html">workpatterns_report()</a></code> which combines a number of plots based on the classified archetypes. You will need an Hourly Collaboration query.</p>
+</div>
+<div id="flexibility-index" class="section level4">
+<h4 class="hasAnchor">
+<a href="#flexibility-index" class="anchor"></a>Flexibility Index</h4>
+<p><code><a href="reference/flex_index.html">flex_index()</a></code> computes a <strong>Flexibility Index</strong> which is a measure of how flexible teams are working, based on three components, i.e.:</p>
 <ul>
-<li>Working patterns archetypes: you can classify person-weeks or persons into individual archetypes with <code><a href="reference/workpatterns_classify.html">workpatterns_classify()</a></code>, which reveals <em>break</em> patterns in employees’ weeks. If you are unsure with where to start, you can also run <code><a href="reference/workpatterns_report.html">workpatterns_report()</a></code> which combines a number of plots based on the classified archetypes. You will need an Hourly Collaboration query.</li>
-<li>Flexibility Index: <code><a href="reference/flex_index.html">flex_index()</a></code> computes a <strong>Flexibility Index</strong> which is a measure of how flexible teams are working, based on three components, i.e. (i) whether they take breaks during the week, (ii) whether they start their date at different times compared to the official time, and (iii) whether they keep their total working hours under control.</li>
-<li>By filtering on email and meeting subject lines in a Person Query, it is possible to compute the employee-hours that have been invested into a particular business process. To identify the right keywords to use in the filter, you can run <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> or one of its component functions (<code><a href="reference/tm_cooc.html">tm_cooc()</a></code>, <code><a href="reference/tm_freq.html">tm_freq()</a></code>, <code><a href="reference/tm_wordcloud.html">tm_wordcloud()</a></code>) to examine what keywords are related to the business process you have in mind.</li>
+<li>(i) whether they take breaks during the week,</li>
+<li>(ii) whether they start their date at different times compared to the official time, and</li>
+<li>(iii) whether they keep their total working hours under control.</li>
 </ul>
 </div>
+<div id="analysing-costly-business-processes" class="section level4">
+<h4 class="hasAnchor">
+<a href="#analysing-costly-business-processes" class="anchor"></a>Analysing costly business processes</h4>
+<p>By filtering on email and meeting subject lines in a Person Query, it is possible to compute the employee-hours that have been invested into a particular business process. To identify the right keywords to use in the filter, you can run <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> or one of its component functions (<code><a href="reference/tm_cooc.html">tm_cooc()</a></code>, <code><a href="reference/tm_freq.html">tm_freq()</a></code>, <code><a href="reference/tm_wordcloud.html">tm_wordcloud()</a></code>) to examine what keywords are related to the business process you have in mind.</p>
 </div>
-<div id="coaching" class="section level2">
+</div>
+</div>
+<div id="managerial-excellence" class="section level2">
 <h2 class="hasAnchor">
-<a href="#coaching" class="anchor"></a>Coaching</h2>
+<a href="#managerial-excellence" class="anchor"></a>Managerial Excellence</h2>
 <div id="essentials-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#essentials-2" class="anchor"></a>Essentials</h3>
@@ -288,6 +321,7 @@
 <h3 class="hasAnchor">
 <a href="#advanced-2" class="anchor"></a>Advanced</h3>
 <p>Good manager coaching is a key factor for employee engagement and retention.</p>
+<p><strong>Employee sentiment analysis</strong></p>
 <ul>
 <li>To compute feature importance, you can leverage <code><a href="reference/create_IV.html">create_IV()</a></code> and <code><a href="reference/IV_report.html">IV_report()</a></code> for calculating Information Value, using Workplace Analytics metrics (including manager metrics) as predictor variables and employee sentiment scores as an outcome variable.</li>
 <li>If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn’t a function for modelling in <strong>wpa</strong>, but you can make use of capabilities in the wider R universe, such as <strong>randomForest</strong> and <strong>tidymodels</strong>.</li>
@@ -295,9 +329,9 @@
 </ul>
 </div>
 </div>
-<div id="connectivity" class="section level2">
+<div id="teaming-and-networks" class="section level2">
 <h2 class="hasAnchor">
-<a href="#connectivity" class="anchor"></a>Connectivity</h2>
+<a href="#teaming-and-networks" class="anchor"></a>Teaming and Networks</h2>
 <div id="essentials-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#essentials-3" class="anchor"></a>Essentials</h3>
@@ -312,15 +346,23 @@
 <div id="advanced-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#advanced-3" class="anchor"></a>Advanced</h3>
+<div id="network-visualization" class="section level4">
+<h4 class="hasAnchor">
+<a href="#network-visualization" class="anchor"></a>Network visualization</h4>
+<p>Collaboration can be visualized as a network in several ways.</p>
 <ul>
-<li>Group-to-group network with <code><a href="reference/network_g2g.html">network_g2g()</a></code>
-</li>
+<li>Group-to-group network with <code><a href="reference/network_g2g.html">network_g2g()</a></code>. There are <code>return</code> options for a simple network visualization or an interaction table.</li>
 <li>Use <code><a href="reference/create_sankey.html">create_sankey()</a></code> to create a Group to Group collaboration visual</li>
-<li>Person-to-person network with <code><a href="reference/network_p2p.html">network_p2p()</a></code>
-</li>
-<li>Community detection with <code><a href="reference/network_p2p.html">network_p2p()</a></code>
-</li>
+<li>Person-to-person network with <code><a href="reference/network_p2p.html">network_p2p()</a></code>.</li>
 </ul>
+</div>
+<div id="community-detection" class="section level4">
+<h4 class="hasAnchor">
+<a href="#community-detection" class="anchor"></a>Community Detection</h4>
+<ul>
+<li>Community detection can be performed with <code><a href="reference/network_p2p.html">network_p2p()</a></code>. See function documentation for more information on methodology and usage.</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
