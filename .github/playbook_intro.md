@@ -42,9 +42,14 @@ Another option is to analyse collaboration metrics across a time dimension.
 - To understand detailed changes in collaboration metrics over time, you can use `period_change()` to visualize the distribution across the population in a _before vs after_ comparison.
 - To understand what metrics have changed the most with respect to time, you can use `IV_by_period()`, which uses the _before vs after_ as an outcome variable to calculate which Workplace Analytics metrics have had the greatest impact according to Information Value. 
 
-### Onboarding and Training Experience
+#### Onboarding and Training Experience
 - The same baseline functions, such as `*_summary()`, `*_line()` or `*_trend()`,  can be run between _new hires_ and _existing employees_. The data can be wrangled to isolate the first `n` person-weeks and compare such weeks with onboarded weeks.
 - `identify_tenure()` can be used at the beginning for understanding the distribution of employee tenure, provided that a valid `HireDate` organizational variable is available.
+- Cumulative 1:1 hours with manager for the average employees can also be plotted against _Number of weeks employed_, and the impact compared for positive and neutral / negative onboarding survey responses. The _Number of weeks employed_ variable can be calculated by deducting the `HireDate` (or its equivalent) in a person query from `Date`.
+
+#### Top Performers
+- Top performers, based on sales outcomes or other performance metrics, can be identified and compared with the base population to understand what are the drivers of top performance.
+- A binary or categorical variable can be created with `dplyr::mutate()` and `dplyr::case_when()`, which can then be used in the `hrvar` argument in most functions. 
 
 ## Employee Wellbeing
 
@@ -52,7 +57,7 @@ Another option is to analyse collaboration metrics across a time dimension.
 The key metrics in relation to **Employee Wellbeing** are _Work Week Span_, _Collaboration Hours_, and _After-hours collaboration hours_, which can be visualized in a number of ways. You can start with the `capacity_report()` which provides a baseline of this view.
 
 - Rank all groups by their group average: the functions to use are `workloads_rank()`, `collab_rank()`, and `afterhours_rank()`.
-- Distribution of capacity metrics:`*_fizz()` functions offer a way of quickly visualizing the distribution of the capacity metrics. For the traditionalist, you can also use `create_boxplot()` for the given metric to create boxplot views.
+- **Distribution of capacity metrics**:`*_fizz()` functions offer a way of quickly visualizing the distribution of the capacity metrics. For the traditionalist, you can also use `create_boxplot()` for the given metric to create boxplot views. The distribution views are especially useful for identifying latent capacities.
 - Visualize hourly collaboration with `workpatterns_area()`. Interesting views include analysing _Sent emails by time of day_, which can illustrate whether employees are still highly active outside of work hours.
 - Any of the `workloads_*`, `collab_*` and `afterhours_*` functions.
 
@@ -95,7 +100,7 @@ You can start with the `coaching_report()` which provides a baseline of this vie
 
 #### Span of Control
 
-Moving an employee from an IC to a Manager typically 'costs' 6-8 collaboration hoursly weekly. Optimizing the organizational structure can save many hours of weekly collaboration across the organization. One view is to produce a two-by-two matrix of `Layer` vs `NumberOfDirectReports`, visualizing the values as Collaboration Hours. An example might be:
+Moving an employee from an IC to a Manager typically 'costs' 6-8 collaboration hours weekly. Optimizing the organizational structure can save many hours of weekly collaboration across the organization. One view is to produce a two-by-two matrix of `Layer` vs `NumberOfDirectReports`, visualizing the values as Collaboration Hours. An example might be:
 ```R
 library(wpa)
 library(dplyr)
@@ -107,6 +112,8 @@ sq_data %>%
 	pivot_wider(names_from = NumberOfDirectReports,
 				values_from = Collaboration_hours)
 ```
+
+Optimization by consolidating direct reports can lead to valuable savings in collaboration hours.
 
 ### Advanced
 
