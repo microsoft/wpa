@@ -1,6 +1,6 @@
-# Employee Experience Analysis Map
+# wpa R Playbook
 
-This page offers a 'map' for the Workplace Analytics analyst - a guide to what analyses or functions could be useful when exploring a particular area of Workplace Analytics. This map is divided into the following sections.
+This page offers a **playbook for the Workplace Analytics analyst**: a guide to what analyses or functions could be useful when exploring a particular area of Workplace Analytics. This map is divided into the following sections.
 
 - [Ways of Working](#ways-of-working)
 - [Employee Wellbeing](#employee-wellbeing)

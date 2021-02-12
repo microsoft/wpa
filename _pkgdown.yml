@@ -43,6 +43,9 @@ navbar:
     reference:
       text: Reference
       href: reference/index.html
+    playbook:
+      text: Playbook
+      href: playbook_intro.html
     contributing:
       text: Contribute
       menu:
