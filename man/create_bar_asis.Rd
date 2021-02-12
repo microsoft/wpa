@@ -14,7 +14,8 @@ create_bar_asis(
   ylab = group_var,
   xlab = bar_var,
   percent = FALSE,
-  bar_colour = "default"
+  bar_colour = "default",
+  rounding = 1
 )
 }
 \arguments{
@@ -42,6 +43,9 @@ percentage signs. Defaults to FALSE.}
 In-built accepted values include "default" (default), "alert" (red), and
 "darkblue". Otherwise, hex codes are also accepted. You can also supply
 RGB values via \code{rgb2hex()}.}
+
+\item{rounding}{Numeric value to specify number of digits to show in data
+labels}
 }
 \value{
 ggplot object. A horizontal bar plot.
@@ -65,7 +69,8 @@ sq_data \%>\%
                   title = "Total Meeting Hours over period",
                   subtitle = "By Organization",
                   caption = extract_date_range(sq_data, return = "text"),
-                  bar_colour = "darkblue")
+                  bar_colour = "darkblue",
+                  rounding = 0)
 
 }
 \seealso{

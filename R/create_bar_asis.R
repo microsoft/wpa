@@ -26,6 +26,8 @@
 #' In-built accepted values include "default" (default), "alert" (red), and
 #' "darkblue". Otherwise, hex codes are also accepted. You can also supply
 #' RGB values via `rgb2hex()`.
+#' @param rounding Numeric value to specify number of digits to show in data
+#'   labels
 #'
 #' @return
 #' ggplot object. A horizontal bar plot.
@@ -43,7 +45,8 @@
 #'                   title = "Total Meeting Hours over period",
 #'                   subtitle = "By Organization",
 #'                   caption = extract_date_range(sq_data, return = "text"),
-#'                   bar_colour = "darkblue")
+#'                   bar_colour = "darkblue",
+#'                   rounding = 0)
 #'
 #' @import ggplot2
 #' @import dplyr
@@ -60,7 +63,8 @@ create_bar_asis <- function(data,
                             ylab = group_var,
                             xlab = bar_var,
                             percent = FALSE,
-                            bar_colour = "default"){
+                            bar_colour = "default",
+                            rounding = 1){
 
   ## Colour bar override
   if(bar_colour == "default"){
@@ -84,7 +88,7 @@ create_bar_asis <- function(data,
       data %>%
       ggplot(aes(x = reorder(!!sym(group_var), !!sym(bar_var)), y = !!sym(bar_var))) +
       geom_col(fill = bar_colour) +
-      geom_text(aes(label = round(!!sym(bar_var), 2)),
+      geom_text(aes(label = round(!!sym(bar_var), digits = rounding)),
                 hjust = -0.25,
                 color = "#000000",
                 fontface = "bold",
@@ -94,7 +98,8 @@ create_bar_asis <- function(data,
       data %>%
       ggplot(aes(x = reorder(!!sym(group_var), !!sym(bar_var)), y = !!sym(bar_var))) +
       geom_col(fill = bar_colour) +
-      geom_text(aes(label = scales::percent(!!sym(bar_var), accuracy = 1)),
+      geom_text(aes(label = scales::percent(!!sym(bar_var),
+                                            accuracy = 10 ^ -rounding)),
                 hjust = -0.25,
                 color = "#000000",
                 fontface = "bold",
