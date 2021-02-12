@@ -6,24 +6,44 @@
 #' @title Create a bar chart without aggregation for any metric
 #'
 #' @description
-#' This function creates a bar chart directly from the aggregated / summarised data.
-#' Unlike `create_bar()` which performs a person-level aggregation, there is no
-#' calculation for `create_bar_asis()` and the values are rendered as they are passed
-#' into the function.
+#' This function creates a bar chart directly from the aggregated / summarised
+#' data. Unlike `create_bar()` which performs a person-level aggregation, there
+#' is no calculation for `create_bar_asis()` and the values are rendered as they
+#' are passed into the function.
 #'
 #' @param data Plotting data as a data frame.
 #' @param group_var String containing name of variable for the group.
-#' @param bar_var String containing name of variable representing the value of the bars.
+#' @param bar_var String containing name of variable representing the value of
+#'   the bars.
 #' @param title Title of the plot.
 #' @param subtitle Subtitle of the plot.
 #' @param caption Caption of the plot.
 #' @param ylab Y-axis label for the plot (group axis)
 #' @param xlab X-axis label of the plot (bar axis).
-#' @param percent Logical value to determine whether to show labels as percentage signs. Defaults to FALSE.
+#' @param percent Logical value to determine whether to show labels as
+#'   percentage signs. Defaults to FALSE.
 #' @param bar_colour String to specify colour to use for bars.
 #' In-built accepted values include "default" (default), "alert" (red), and
 #' "darkblue". Otherwise, hex codes are also accepted. You can also supply
 #' RGB values via `rgb2hex()`.
+#'
+#' @return
+#' ggplot object. A horizontal bar plot.
+#'
+#' @examples
+#' # Creating a custom bar plot without mean aggregation
+#' library(dplyr)
+#'
+#' sq_data %>%
+#'   group_by(Organization) %>%
+#'   summarise(across(.cols = Meeting_hours,
+#'                    .fns = ~sum(., na.rm = TRUE))) %>%
+#'   create_bar_asis(group_var = "Organization",
+#'                   bar_var = "Meeting_hours",
+#'                   title = "Total Meeting Hours over period",
+#'                   subtitle = "By Organization",
+#'                   caption = extract_date_range(sq_data, return = "text"),
+#'                   bar_colour = "darkblue")
 #'
 #' @import ggplot2
 #' @import dplyr

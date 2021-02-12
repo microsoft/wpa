@@ -22,7 +22,8 @@ create_bar_asis(
 
 \item{group_var}{String containing name of variable for the group.}
 
-\item{bar_var}{String containing name of variable representing the value of the bars.}
+\item{bar_var}{String containing name of variable representing the value of
+the bars.}
 
 \item{title}{Title of the plot.}
 
@@ -34,18 +35,38 @@ create_bar_asis(
 
 \item{xlab}{X-axis label of the plot (bar axis).}
 
-\item{percent}{Logical value to determine whether to show labels as percentage signs. Defaults to FALSE.}
+\item{percent}{Logical value to determine whether to show labels as
+percentage signs. Defaults to FALSE.}
 
 \item{bar_colour}{String to specify colour to use for bars.
 In-built accepted values include "default" (default), "alert" (red), and
 "darkblue". Otherwise, hex codes are also accepted. You can also supply
 RGB values via \code{rgb2hex()}.}
 }
+\value{
+ggplot object. A horizontal bar plot.
+}
 \description{
-This function creates a bar chart directly from the aggregated / summarised data.
-Unlike \code{create_bar()} which performs a person-level aggregation, there is no
-calculation for \code{create_bar_asis()} and the values are rendered as they are passed
-into the function.
+This function creates a bar chart directly from the aggregated / summarised
+data. Unlike \code{create_bar()} which performs a person-level aggregation, there
+is no calculation for \code{create_bar_asis()} and the values are rendered as they
+are passed into the function.
+}
+\examples{
+# Creating a custom bar plot without mean aggregation
+library(dplyr)
+
+sq_data \%>\%
+  group_by(Organization) \%>\%
+  summarise(across(.cols = Meeting_hours,
+                   .fns = ~sum(., na.rm = TRUE))) \%>\%
+  create_bar_asis(group_var = "Organization",
+                  bar_var = "Meeting_hours",
+                  title = "Total Meeting Hours over period",
+                  subtitle = "By Organization",
+                  caption = extract_date_range(sq_data, return = "text"),
+                  bar_colour = "darkblue")
+
 }
 \seealso{
 Other General: 
