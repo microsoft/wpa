@@ -81,7 +81,8 @@ Once the processes are identified, they can be visualized over time with `create
 
 Other ways of identifying solutions to improve employee experience include the following:
 
-- Meeting quality and effectiveness - see [Meeting Efficiency](#meeting-efficiency) . 
+- Meeting quality and effectiveness - see [Meeting Efficiency](#meeting-efficiency) 
+- Onboarding experience - see [Onboarding and Training Experience](#onboarding-and-training-experience)
 
   
 
