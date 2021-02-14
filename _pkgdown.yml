@@ -36,6 +36,8 @@ navbar:
         href: analyst_guide_trend.html
       - text: Network Functions
         href: analyst_guide_network.html
+      - text: Data Validation
+        href: analyst_guide_data_validation.html
       - text: Reports
         href: analyst_guide_reports.html
       - text: Analysis Map
