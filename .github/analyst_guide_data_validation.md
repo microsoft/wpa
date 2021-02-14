@@ -1,20 +1,74 @@
 # Data validation
-This section covers the topic of data validation before performing your analysis. Data Analytics is a powerful tool for gleaning knowledge from data. But before you can apply any functions to your data set and can start looking for new insights, **data validation** is an essential part of data handling whether you’re in the field collecting information, analyzing data, or preparing to present your data to stakeholders.
 
-## Why Validate?
+This section covers the topic of **how to validate Workplace Analytics data**. Before you can apply any functions to your data set and can start looking for new insights, it is essential to perform data validation regardless of whether you are only attempting to explore the data, establish a baseline, or perform advanced analytics.
 
-If your data isn’t accurate from the start, your results will lack of accuracy either. That’s why it’s necessary to verify and validate your data before it is used.
+## Why validate?
 
-## How to Perform Data Validation?
-Before you start you need to ensure data integrity (accuracy and consistency of data over its lifecycle). This can be done with certain base R functions:
+There are several reasons why you should validate your Workplace Analytics data.
 
-1. Data type, e.g. with `str()`
-2. Range e.g. with `str()`
-3. Uniqueness e.g. with `length(unique(sq_data$PersonId))`
-4. Consistent expressions
-5. No null values e.g. with `which(is.na(sq_data$PersonId))`
+1. There may be gaps, anomalies, or errors in the organizational data, such as missing data or excessive / insufficient granularity. This may require rectifying at source, or the resulting data should be interpreted differently, e.g. any biases caveated or accounted for. 
+2. Outliers may exist in Workplace Analytics data, and often for very legitimate reasons. For instance, collaboration hours for a particular week or employee may be significantly low due to public holidays or paid time off. If these outliers are not surfaced and addressed accordingly, the interpretation of the data may be incorrect.
+
+In a nutshell, it is good practice to have a comprehensive understanding of the data context and checks for common biases, errors, and anomalies prior to analysis, as otherwise we would risk the quality and the reliability of the analysis. 
+
+## Know what you are looking at
+
+Before you begin with data validation, it's helpful to know what data set you are looking at, which includes information such as: 
+
+  - What query type is loaded
+  - Number of unique employees in the dataset
+  - Date range of the dataset
+  - Organizational attributes int he dataset
+
+This can all be done with `check_query()`:
+
+```R
+library(wpa)
+check_query(sq_data)
+```
+
+The resulting output would look something like the following:
+
+```
+The data used is a Person Query.
+
+There are 1034 employees in this dataset.
+
+Date ranges from 2019-11-03 to 2020-01-26.
+
+There are 9 (estimated) HR attributes in the data:
+`Domain`, `FunctionType`, `LevelDesignation`, `Region`, `Organization`, `attainment`, `TimeZone`, `IsInternal`, `IsActive`
+
+There are 1034 active employees out of all in the dataset.
+
+Variable name check:
+
+`Collaboration_hours` is used instead of `Collaboration_hrs` in the data.
+
+`Instant_Message_hours` is used instead of `Instant_message_hours` in the data.
+```
+
+The below functions are also helpful for exploring your data:
+
+1. Get all column names, e.g. `names(sq_data)`
+2. Check object type, e.g. `class(sq_data$Date)`
+2. Get summary statistics, e.g. `summary(sq_data)`
+3. Compute number of unique values, e.g. `length(unique(sq_data$PersonId))`
+5. Get an overview of the data, e.g. `dplyr::glimpse(sq_data)`, or `skimr::skim(sq_data)`.
 
 Validating the structure of your data is just as important as validating the data itself. 
+
+## Data Validation Report
+
+The easiest way to perform data validation with the **wpa** package is to run the data validation report:
+
+```R
+ # `spq_df` is your Standard Person Query data
+validation_report(spq_df)
+```
+This generates an HTML report in your working directory which contains a number of checks against your data. You can supply an optional meeting query to include checks against meeting subject lines.
+
+## Breaking it down
 
 The **wpa** package provides additional data validation **functions** to be used prior to embarking on a new analysis:
 
