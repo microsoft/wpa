@@ -43,7 +43,6 @@ be present, e.g. maternity/paternity leave, Workplace Analytics license has been
 shift to a low-collaboration role (to the extent that he/she becomes inactive).
 }
 \examples{
-\dontrun{
 sq_data \%>\% identify_churn(n1 = 3, n2 = 3, return = "message")
-}
+
 }

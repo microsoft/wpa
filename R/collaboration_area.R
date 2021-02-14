@@ -17,11 +17,16 @@
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' A Ways of Working assessment dataset may also be provided, in which
 #' Unscheduled call hours would be included in the output.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @param hrvar HR Variable by which to split metrics, defaults to
+#'   "Organization" but accepts any character vector, e.g. "LevelDesignation"
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
 #'
+#' See `Value` for more information.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -34,8 +39,9 @@
 #' collaboration_area(sq_data)
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"plot"`: ggplot object. A stacked area plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @export
 

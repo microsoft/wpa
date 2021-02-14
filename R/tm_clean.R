@@ -48,7 +48,7 @@ tm_clean <- function(data,
   # Remove WPI custom irrelevant words
   if(!is.data.frame(stopwords)){
 
-    stopwords <- tibble::tibble(word = "")
+    stopwords <- dplyr::tibble(word = "")
 
   }
 

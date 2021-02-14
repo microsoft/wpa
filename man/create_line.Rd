@@ -23,12 +23,20 @@ but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A faceted line plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Provides a week by week view of a selected metric, visualised as line charts.
@@ -41,13 +49,15 @@ This is a general purpose function that powers all the functions
 in the package that produce faceted line plots.
 }
 \examples{
-\dontrun{
+# Return plot of Email Hours
 sq_data \%>\% create_line(metric = "Email_hours", return = "plot")
 
+# Return plot of Collaboration Hours
 sq_data \%>\% create_line(metric = "Collaboration_hours", return = "plot")
 
+# Return plot of Work week span and cut by `LevelDesignation`
 sq_data \%>\% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
-}
+
 }
 \seealso{
 Other Flexible: 

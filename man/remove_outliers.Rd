@@ -18,6 +18,7 @@ having removed the person-weeks that are below 2 standard
 deviations of each individual's collaboration activity.
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 This function takes in a selected metric and uses z-score (number of standard
 deviations) to identify and remove outlier weeks for individuals across time. There are applications
 in this for removing weeks with abnormally low collaboration
@@ -28,7 +29,6 @@ identified and removed \strong{with respect to each individual}, as opposed to t
 has a longer runtime compared to \code{identify_outlier()}.
 }
 \details{
-This function is on an experimental lifecycle.
 For mature functions to remove common outliers, please see the following:
 \itemize{
 \item \code{identify_holidayweeks()}
@@ -43,6 +43,7 @@ Other Data Validation:
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
 \code{\link{identify_holidayweeks}()},

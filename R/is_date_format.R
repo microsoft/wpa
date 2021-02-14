@@ -13,9 +13,7 @@
 #' @param string Character string to test whether is a date format.
 #'
 #' @examples
-#' \dontrun{
 #' is_date_format("1/5/2020")
-#' }
 #'
 #' @export
 is_date_format <- function(string){

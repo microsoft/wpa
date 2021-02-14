@@ -2,7 +2,7 @@
 % Please edit documentation in R/identify_holidayweeks.R
 \name{identify_holidayweeks}
 \alias{identify_holidayweeks}
-\title{Identify Holiday Weeks}
+\title{Identify Holiday Weeks based on outliers}
 \usage{
 identify_holidayweeks(data, sd = 1, return = "message")
 }
@@ -11,15 +11,15 @@ identify_holidayweeks(data, sd = 1, return = "message")
 
 \item{sd}{The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.}
 
-\item{return}{String to specify what to return}
-}
-\value{
-Returns a message by default (\code{return} = "message").
-When 'message' is passed, a message is printed identifying holiday weeks.
-When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
-When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
-when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
-when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.
+\item{return}{String to specify what to return. Returns a message by default (\code{return} = "message").
+Valid options are:
+\itemize{
+\item When 'message' is passed, a message is printed identifying holiday weeks.
+\item When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
+\item When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
+\item when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
+\item when 'plot' is passed, a plot with holiday weeks highlighted is returned as a dataframe.
+}}
 }
 \description{
 This function scans a standard query output for weeks where collaboration hours is far outside the mean.
@@ -28,6 +28,15 @@ By default, missing values are excluded.
 
 As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.
 }
+\examples{
+# Return a message by default
+identify_holidayweeks(sq_data)
+
+# Return plot
+identify_holidayweeks(sq_data, return = "plot")
+
+
+}
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
@@ -35,6 +44,7 @@ Other Data Validation:
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
 \code{\link{identify_inactiveweeks}()},

@@ -14,13 +14,15 @@
 #' Uses the metric `Collaboration_hours`.
 #'
 #' @inheritParams create_dist
+#' @inherit create_dist return
+#'
 #' @family Collaboration
 #'
 #' @examples
-#' ## Return a plot
+#' # Return plot
 #' collaboration_dist(sq_data, hrvar = "Organization")
 #'
-#' ## Return a table
+#' # Return summary table
 #' collaboration_dist(sq_data, hrvar = "Organization", return = "table")
 #' @export
 

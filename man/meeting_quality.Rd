@@ -9,23 +9,32 @@ meeting_quality(data, hrvar = "Organization", mingroup = 5, return = "plot")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to
+"Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the
+following strings: - \code{"plot"} - \code{"table"}}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the
+\code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bubble plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Return an analysis of Meeting Quality with a bubble plot, using a Standard Person
 Query as an input.
 }
 \examples{
+# Return plot
 meeting_quality(sq_data, return = "plot")
+
+# Return summary table
+meeting_quality(sq_data, return = "table")
 
 }

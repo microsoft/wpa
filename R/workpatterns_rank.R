@@ -24,11 +24,8 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
-#' \dontrun{
 #' workpatterns_rank(em_data)
 #'
-#' workpatterns_rank(em_data, signals = "email")
-#' }
 #' @export
 workpatterns_rank <- function(data,
                               signals = c("email", "IM"),

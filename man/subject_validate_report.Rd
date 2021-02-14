@@ -25,6 +25,11 @@ Defaults to TRUE.}
 
 \item{seed}{A numeric vector to set seed for random generation.}
 }
+\value{
+An HTML report with the same file name as specified in the arguments is
+generated in the working directory. No outputs are directly returned by the
+function.
+}
 \description{
 This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
 Returns a HTML report by default.
@@ -36,6 +41,7 @@ Other Data Validation:
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
 \code{\link{identify_holidayweeks}()},
@@ -48,5 +54,24 @@ Other Data Validation:
 \code{\link{remove_outliers}()},
 \code{\link{subject_validate}()},
 \code{\link{track_HR_change}()}
+
+Other Text-mining: 
+\code{\link{meeting_tm_report}()},
+\code{\link{tm_clean}()},
+\code{\link{tm_cooc}()},
+\code{\link{tm_freq}()},
+\code{\link{tm_wordcloud}()}
+
+Other Reports: 
+\code{\link{IV_report}()},
+\code{\link{capacity_report}()},
+\code{\link{coaching_report}()},
+\code{\link{collaboration_report}()},
+\code{\link{connectivity_report}()},
+\code{\link{generate_report}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}
+\concept{Reports}
+\concept{Text-mining}

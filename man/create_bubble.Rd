@@ -2,8 +2,9 @@
 % Please edit documentation in R/create_bubble.R
 \name{create_bubble}
 \alias{create_bubble}
-\title{Create a bubble plot with two selected Workplace Analytics metrics (General Purpose), with size
-representing the number of employees in the group.}
+\title{Create a bubble plot with two selected Workplace Analytics metrics
+(General Purpose), with size representing the number of employees in the
+group.}
 \usage{
 create_bubble(
   data,
@@ -18,32 +19,39 @@ create_bubble(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{metric_x}{Character string containing the name of the metric,
-e.g. "Collaboration_hours"}
+\item{metric_x}{Character string containing the name of the metric, e.g.
+"Collaboration_hours"}
 
-\item{metric_y}{Character string containing the name of the metric,
-e.g. "Collaboration_hours"}
+\item{metric_y}{Character string containing the name of the metric, e.g.
+"Collaboration_hours"}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to
+"Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the
+following strings: - \code{"plot"} - \code{"table"}}
 
-\item{bubble_size}{A numeric vector of length two to specify the size range of the bubbles}
+\item{bubble_size}{A numeric vector of length two to specify the size range
+of the bubbles}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the
+\code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bubble plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
-Returns a bubble plot of two selected metrics, using size to map the number of employees.
+Returns a bubble plot of two selected metrics, using size to map
+the number of employees.
 }
 \details{
-This is a general purpose function that powers all the functions
-in the package that produce bubble plots.
+This is a general purpose function that powers all the functions in
+the package that produce bubble plots.
 }
 \examples{
 create_bubble(sq_data,

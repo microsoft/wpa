@@ -14,12 +14,20 @@ but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A faceted line plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Provides a week by week view of meeting time, visualised as line charts.
@@ -28,12 +36,10 @@ with a separate panel per value in the HR attribute.
 Additional options available to return a summary table.
 }
 \examples{
-
-## Return a line plot
+# Return a line plot
 meeting_line(sq_data, hrvar = "LevelDesignation")
 
-
-## Return a table
+# Return summary table
 meeting_line(sq_data, hrvar = "LevelDesignation", return = "table")
 
 }

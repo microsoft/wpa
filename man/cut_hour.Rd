@@ -19,10 +19,10 @@ Supply a numeric variable, e.g. \code{Collaboration_hours},
 and the function returns a character vector
 }
 \examples{
-## Direct use
+# Direct use
 cut_hour(1:30, cuts = c(15, 20, 25))
 
-## Use on a query
+# Use on a query
 cut_hour(sq_data$Collaboration_hours, cuts = c(10, 15, 20))
 
 }

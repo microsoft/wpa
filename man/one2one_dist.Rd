@@ -19,11 +19,23 @@ one2one_dist(
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{cut}{A numeric vector of length three to specify the breaks for the distribution,
 e.g. c(10, 15, 20)}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A stacked bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Analyze Manager 1:1 Time distribution.
@@ -31,6 +43,10 @@ Returns a stacked bar plot of different buckets of 1:1 time.
 Additional options available to return a table with distribution elements.
 }
 \examples{
+# Return plot
+workloads_dist(sq_data, hrvar = "Organization", return = "plot")
+
+# Return summary table
 workloads_dist(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{

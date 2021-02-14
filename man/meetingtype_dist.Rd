@@ -26,7 +26,7 @@ This is a wrapper around \code{meetingtype_dist_mt()} and
 is passed as an input.
 }
 \examples{
-## Implementation using Standard Meeting Query
+# Implementation using Standard Meeting Query
 meetingtype_dist(mt_data)
 
 }

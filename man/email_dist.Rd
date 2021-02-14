@@ -19,11 +19,23 @@ email_dist(
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{cut}{A numeric vector of length three to specify the breaks for the distribution,
 e.g. c(10, 15, 20)}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A stacked bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 Analyze Email Hours distribution.
@@ -31,13 +43,13 @@ Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
-## Return a plot
+# Return plot
 email_dist(sq_data, hrvar = "Organization")
 
-## Return a table
+# Return summary table
 email_dist(sq_data, hrvar = "Organization", return = "table")
 
-## Return result with a custom specified breaks
+# Return result with a custom specified breaks
 email_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 
 }

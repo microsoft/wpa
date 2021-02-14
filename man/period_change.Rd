@@ -38,10 +38,11 @@ This function also presents the p-value for the null hypothesis
 that the variable has not changed, using a Wilcox signed-rank test.
 }
 \examples{
-## Run plot
+# Run plot
 period_change(sq_data, compvar = "Workweek_span", before_end = "2019-11-16")
 
-## Run plot with more specific arguments
+\donttest{
+# Run plot with more specific arguments
 period_change(sq_data,
               compvar = "Workweek_span",
               before_start = "2019-11-03",
@@ -49,7 +50,7 @@ period_change(sq_data,
               after_start = "2019-12-03",
               after_end = "2019-12-16",
               return = "percentage")
-
+}
 }
 \seealso{
 Other Flexible Input: 

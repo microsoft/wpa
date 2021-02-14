@@ -36,6 +36,10 @@ navbar:
         href: analyst_guide_trend.html
       - text: Network Functions
         href: analyst_guide_network.html
+      - text: Reports
+        href: analyst_guide_reports.html
+      - text: Analysis Map
+        href: analyst_guide_analysis_map.html
     reference:
       text: Reference
       href: reference/index.html
@@ -67,4 +71,6 @@ navbar:
         href: articles/best-practices.html
       - text: Introduction to Information Value
         href: articles/IV-report.html
+      - text: Identifying changes over time
+        href: articles/Change-over-time.html
 

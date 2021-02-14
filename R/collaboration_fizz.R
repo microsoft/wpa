@@ -14,11 +14,17 @@
 #' Uses the metric `Collaboration_hours`.
 #'
 #' @inheritParams create_fizz
+#' @inherit create_fizz return
 #'
 #' @family Collaboration
 #'
 #' @examples
+#' # Return plot
+#' collaboration_fizz(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' # Return summary table
 #' collaboration_fizz(sq_data, hrvar = "Organization", return = "table")
+#'
 #' @export
 
 collaboration_fizz <- function(data,

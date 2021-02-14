@@ -12,8 +12,7 @@ network_g2g(
   metric,
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
-  return = "plot",
-  ...
+  return = "plot"
 )
 
 g2g_network(
@@ -23,8 +22,7 @@ g2g_network(
   metric,
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
-  return = "plot",
-  ...
+  return = "plot"
 )
 }
 \arguments{
@@ -41,20 +39,22 @@ g2g_network(
 \item{subtitle}{String to override default plot subtitle.}
 
 \item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
-
-\item{...}{Additional arguments to pass to \code{GGally::ggnet2()}}
+Valid inputs include:
+\itemize{
+\item "plot": return a network plot.
+\item "table": return a raw data table used to plot the network.
+\item "network": return an \strong{igraph} object
+}}
 }
 \description{
 Pass a data frame containing a group-to-group query and return a network plot.
 Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
 }
 \examples{
-\dontrun{
+# Return a network plot
 g2g_data \%>\%
   network_g2g(time_investor = "TimeInvestors_Organization",
               collaborator = "Collaborators_Organization",
               metric = "Collaboration_hours")
-}
 
 }

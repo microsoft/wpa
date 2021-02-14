@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Identify Holiday Weeks
+#' @title Identify Holiday Weeks based on outliers
 #'
 #' @description
 #' This function scans a standard query output for weeks where collaboration hours is far outside the mean.
@@ -14,7 +14,13 @@
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param sd The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.
-#' @param return String to specify what to return
+#' @param return String to specify what to return. Returns a message by default (`return` = "message").
+#' Valid options are:
+#'   - When 'message' is passed, a message is printed identifying holiday weeks.
+#'   - When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
+#'   - When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
+#'   - when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
+#'   - when 'plot' is passed, a plot with holiday weeks highlighted is returned as a dataframe.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -22,13 +28,13 @@
 #'
 #' @family Data Validation
 #'
-#' @return
-#' Returns a message by default (`return` = "message").
-#' When 'message' is passed, a message is printed identifying holiday weeks.
-#' When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
-#' When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
-#' when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
-#' when 'plot' is passed, a pot with holiday weeks highlighted is returned as a dataframe.
+#' @examples
+#' # Return a message by default
+#' identify_holidayweeks(sq_data)
+#'
+#' # Return plot
+#' identify_holidayweeks(sq_data, return = "plot")
+#'
 #'
 #' @export
 identify_holidayweeks <- function(data, sd = 1, return = "message"){
@@ -80,27 +86,47 @@ identify_holidayweeks <- function(data, sd = 1, return = "message"){
     geom_line(colour = "grey40") +
     theme_wpa_basic() +
     geom_rect(data = myTable_plot_shade,
-              aes(xmin = min, xmax = max, ymin = ymin, ymax = ymax),
-              color="transparent", fill="steelblue", alpha=0.3) +
+              aes(xmin = min,
+                  xmax = max,
+                  ymin = ymin,
+                  ymax = ymax),
+              color = "transparent",
+              fill = "steelblue",
+              alpha = 0.3) +
     labs(title = "Holiday Weeks",
          subtitle = "Showing average collaboration hours over time")+
     ylab("Collaboration Hours") +
-    xlab("Date")
+    xlab("Date") +
+    ylim(0, NA) # Set origin to zero
 
   if(return == "text"){
+
     return(Message)
+
   } else if(return == "message"){
+
     message(Message)
-  }else if(return %in% c("data_clean", "data_cleaned")){
+
+  } else if(return %in% c("data_clean", "data_cleaned")){
+
     return(data %>% filter(!(Date %in% Outliers)) %>% data.frame())
+
   } else if(return == "data_dirty"){
+
     return(data %>% filter((Date %in% Outliers)) %>% data.frame())
+
   } else if(return == "data"){
+
     return(data %>% mutate(holidayweek = (Date %in% Outliers)) %>% data.frame())
+
   } else if(return == "plot"){
+
     return(plot)
+
   } else {
-    stop("Error: please check inputs for `return`")
+
+    stop("Invalid input for `return`.")
+
   }
 }
 

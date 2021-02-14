@@ -12,20 +12,29 @@
 #' @import dplyr
 #'
 #' @param data A data frame containing a Person Query.
-#' @param threshold Numeric value specifying the threshold for flagging. Defaults to 30.
-#' @param return String to specify what to return. Options include "message" for console return, and "text" for string return.
+#' @param threshold Numeric value specifying the threshold for flagging.
+#'   Defaults to 30.
+#' @param return String to specify what to return. Options include:
+#'   - `"message"`
+#'   - `"text"`
+#'   - `"data"`
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"message"`: message in the console containing diagnotic summary
+#'   - `"text"`: string containing diagnotic summary
+#'   - `"data"`: data frame. Person-level data with flags on unusually high or low ratios
 #'
 #' @family Data Validation
 #'
 #' @examples
 #' flag_ch_ratio(sq_data)
 #'
-#' \dontrun{
-#'  tibble(PersonId = c("Alice", "Bob"),
-#'         Collaboration_hours = c(30, 0.5),
-#'         After_hours_collaboration_hours = c(0.5, 30)) %>%
-#'    flag_ch_ratio()
-#' }
+#'
+#' data.frame(PersonId = c("Alice", "Bob"),
+#'            Collaboration_hours = c(30, 0.5),
+#'            After_hours_collaboration_hours = c(0.5, 30)) %>%
+#'   flag_ch_ratio()
 #'
 #' @export
 flag_ch_ratio <- function(data, threshold = c(1, 30), return = "message"){
@@ -77,9 +86,20 @@ flag_ch_ratio <- function(data, threshold = c(1, 30), return = "message"){
   ## Print diagnosis
   ## Should implement options to return the PersonIds or a full data frame
   if(return == "message"){
-    message(CHFlagMessage)
-  } else if(return == "text"){
-    CHFlagMessage
-  }
 
+    message(CHFlagMessage)
+
+  } else if(return == "text"){
+
+    CHFlagMessage
+
+  } else if(return == "data") {
+
+    ch_summary
+
+  } else {
+
+    stop("Invalid input for `return`.")
+
+  }
 }

@@ -29,13 +29,16 @@ There is an option to remove stopwords by passing a data frame into the \code{st
 argument.
 }
 \examples{
-\dontrun{
-tm_cooc(mt_data,lmult = 0.01)
-}
+# Demo using a subset of `mt_data`
+mt_data \%>\%
+  dplyr::slice(1:20) \%>\%
+  tm_cooc(lmult = 0.01)
+
 }
 \seealso{
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},
+\code{\link{subject_validate_report}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_freq}()},
 \code{\link{tm_wordcloud}()}

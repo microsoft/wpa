@@ -18,15 +18,20 @@ create_dist(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{metric}{Character string containing the name of the metric,
+\item{metric}{String containing the name of the metric,
 e.g. "Collaboration_hours"}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{cut}{A numeric vector of length three to specify the breaks for the distribution,
 e.g. c(10, 15, 20)}
@@ -36,16 +41,23 @@ codes for the stacked bars.}
 
 \item{unit}{See \code{cut_hour()}.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A stacked bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
+}
 \description{
 Provides an analysis of the distribution of a selected metric.
 Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
 \examples{
-## Return a plot
+# Return plot
 create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 
-## Return a table
+# Return summary table
 create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 }
 \seealso{

@@ -1,3 +1,4 @@
+^.gitignore$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^_data$
@@ -10,11 +11,14 @@
 ^_pkgdown\.yml$
 ^pkgdown$
 ^\.github$
-^man/figures/wpa cheatsheet_20201116.pdf$
-^man/figures/wpa cheatsheet_20201116.png$
-^man/figures/wpa cheatsheet.pdf$
-^man/figures/wpa cheatsheet.png$
-^vignettes/best-practices.Rmd$
-^vignettes/text-mining-capabilities.Rmd$
-^vignettes/IV-report.Rmd$
 ^CONTRIBUTORS.svg$
+
+# Ignore all figures
+^man/figures
+
+# Ignore vignettes
+^vignettes/best-practices.Rmd$
+^vignettes/Change-over-time.Rmd$
+^vignettes/IV-report.Rmd$
+^vignettes/text-mining-capabilities.Rmd$
+^Meta$

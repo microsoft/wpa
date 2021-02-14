@@ -26,6 +26,8 @@
 #'
 #' @family Reports
 #'
+#' @inherit generate_report return
+#'
 #' @export
 connectivity_report <- function(data,
                                 hrvar = "LevelDesignation",

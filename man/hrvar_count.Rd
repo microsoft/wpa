@@ -17,8 +17,22 @@ but accepts any character vector, e.g. "LevelDesignation".
 If a vector with more than one value is provided, the HR attributes are automatically
 concatenated.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object containing a bar plot.
+\item \code{"table"}: data frame containing a count table.
+}
 }
 \description{
 This function enables you to create a count of the distinct people
@@ -50,6 +64,7 @@ Other Data Validation:
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},

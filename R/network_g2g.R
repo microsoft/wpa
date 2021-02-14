@@ -15,21 +15,21 @@
 #' @param metric String containing the variable name for metric.
 #' @param exc_threshold Exclusion threshold to apply.
 #' @param subtitle String to override default plot subtitle.
-#' @param ... Additional arguments to pass to `GGally::ggnet2()`
 #' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
-#'
+#' Valid inputs include:
+#'   - "plot": return a network plot.
+#'   - "table": return a raw data table used to plot the network.
+#'   - "network": return an **igraph** object
 #'
 #' @import ggplot2
 #' @import dplyr
 #'
 #' @examples
-#' \dontrun{
+#' # Return a network plot
 #' g2g_data %>%
 #'   network_g2g(time_investor = "TimeInvestors_Organization",
 #'               collaborator = "Collaborators_Organization",
 #'               metric = "Collaboration_hours")
-#' }
 #'
 #' @export
 network_g2g <- function(data,
@@ -38,8 +38,7 @@ network_g2g <- function(data,
                         metric,
                         exc_threshold = 0.1,
                         subtitle = "Collaboration Across Organizations",
-                        return = "plot",
-                        ...){
+                        return = "plot"){
 
   plot_data <-
     data %>%
@@ -61,7 +60,7 @@ network_g2g <- function(data,
 
     plot_data
 
-  } else if(return == "plot"){
+  } else if(return %in% c("plot", "network")){
 
     ## Network object
     mynet_em <-
@@ -69,27 +68,32 @@ network_g2g <- function(data,
       filter(metric_prop > exc_threshold) %>%
       mutate_at(vars(TimeInvestorOrg, CollaboratorOrg), ~sub(pattern = " ", replacement = "\n", x = .)) %>%
       mutate(metric_prop = metric_prop * 10) %>%
-      network::network(matrix.type = "edgelist",
-                       ignore.eval = FALSE,
-                       names.eval = "weights")
+      igraph::graph_from_data_frame(directed = FALSE)
 
-    ## Plot object
-    mynet_em %>%
-      GGally::ggnet2(size = 12,
-                     color = "lightblue",
-                     label = TRUE,
-                     label.size = 4,
-                     label.color = "black",
-                     edge.size = "weights",
-                     edge.alpha = .5,
-                     ...) +
-      ggtitle("Group to Group Collaboration",
-              subtitle = subtitle) +
-      xlab(label = "") +
-      ylab(label = "") +
-      theme_wpa_basic() +
-      labs(caption = paste("Displays only collaboration above ", exc_threshold * 100, "% of node's total collaboration", sep = "")) +
-      theme(axis.line = element_blank())
+    if(return == "network"){
+
+      mynet_em # Return igraph object
+
+    } else {
+
+      ## Plot object
+      mynet_em %>%
+        ggraph::ggraph(layout = "fr") +
+        ggraph::geom_edge_link(aes(edge_width = metric_prop * 1), edge_alpha = 0.5, edge_colour = "grey") +
+        ggraph::geom_node_point(size = 20, colour = "lightblue") +
+        ggraph::geom_node_text(aes(label = name), size = 3, repel = FALSE) +
+        ggplot2::theme(panel.background = ggplot2::element_rect(fill = 'white'), legend.position = "none") +
+        theme_wpa_basic() +
+        labs(title = "Group to Group Collaboration",
+             subtitle = subtitle,
+             x = "",
+             y = "",
+             caption = paste("Displays only collaboration above ", exc_threshold * 100, "% of node's total collaboration", sep = "")) +
+        theme(axis.line = element_blank(),
+              axis.text = element_blank(),
+              legend.position = "none")
+
+    }
 
   } else {
 

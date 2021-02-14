@@ -5,7 +5,9 @@
 
 #' @title Remove outliers from a person query across time
 #'
-#' @description This function takes in a selected metric and uses z-score (number of standard
+#' @description
+#' `r lifecycle::badge('experimental')`
+#' This function takes in a selected metric and uses z-score (number of standard
 #' deviations) to identify and remove outlier weeks for individuals across time. There are applications
 #' in this for removing weeks with abnormally low collaboration
 #' activity, e.g. holidays. Retains metrics with z > -2.
@@ -15,7 +17,6 @@
 #' has a longer runtime compared to `identify_outlier()`.
 #'
 #' @details
-#' This function is on an experimental lifecycle.
 #' For mature functions to remove common outliers, please see the following:
 #' - `identify_holidayweeks()`
 #' - `identify_nkw()`

@@ -15,15 +15,17 @@ external_network_plot(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to
+"Organization" but accepts any character vector, e.g. "LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the
+following strings: - \code{"plot"} - \code{"table"}}
 
-\item{bubble_size}{A numeric vector of length two to specify the size range of the bubbles}
+\item{bubble_size}{A numeric vector of length two to specify the size range
+of the bubbles}
 }
 \description{
 Plot the external network metrics for a HR variable as a scatter plot, showing
@@ -31,7 +33,7 @@ External Network Breadth as the vertical axis and External Network Size as the
 horizontal axis.
 }
 \examples{
-## Return a plot
+# Return plot
 sq_data \%>\% external_network_plot(return = "plot")
 
 }

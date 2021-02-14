@@ -19,9 +19,15 @@
 #' @family Data Validation
 #'
 #' @examples
-#' \dontrun{
-#' flag_outlooktime(sq_data)
-#' }
+#' # Demo with `dv_data`
+#' flag_outlooktime(dv_data)
+#'
+#' # Example where Outlook Start and End times are imputed
+#' spq_df <- sq_data
+#' spq_df$WorkingStartTimeSetInOutlook <- "6:30"
+#' spq_df$WorkingEndTimeSetInOutlook <- "23:30"
+#' flag_outlooktime(spq_df, threshold = c(5, 13))
+#'
 #' @export
 flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
 
@@ -39,9 +45,39 @@ flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
   #
   # pad_times <- Vectorize(pad_times)
 
-  if(any(nchar(data$WorkingStartTimeSetInOutlook) != 5 | nchar(data$WorkingEndTimeSetInOutlook) != 5)){
+  ## Clean `WorkingStartTimeSetInOutlook`
+
+  if(any(grepl(pattern = "\\d{1}:\\d{1,2}", x = data$WorkingStartTimeSetInOutlook))){
+
+    # Pad two zeros and keep last five characters
+    data$WorkingStartTimeSetInOutlook <-
+      paste0("00", data$WorkingStartTimeSetInOutlook) %>%
+      substr(start = nchar(.) - 4, stop = nchar(.))
+
+  }
+
+  ## Clean `WorkingEndTimeSetInOutlook`
+
+  if(any(grepl(pattern = "\\d{1}:\\d{1,2}", x = data$WorkingEndTimeSetInOutlook))){
+
+    # Pad two zeros and keep last five characters
+    data$WorkingEndTimeSetInOutlook <-
+      paste0("00", data$WorkingEndTimeSetInOutlook) %>%
+      substr(start = nchar(.) - 4, stop = nchar(.))
+
+
+  }
+
+  if(
+      any(
+        !grepl(pattern = "\\d{1,2}:\\d{1,2}", x = data$WorkingStartTimeSetInOutlook) |
+        !grepl(pattern = "\\d{1,2}:\\d{1,2}", x = data$WorkingEndTimeSetInOutlook)
+      )
+    ){
+
     stop("Please check data format for `WorkingStartTimeSetInOutlook` or `WorkingEndTimeSetInOutlook.\n
          These variables must be character vectors, and have the format `%H:%M`, such as `07:30` or `23:00`.")
+
   }
 
   clean_times <- function(x){

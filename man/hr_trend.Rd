@@ -9,12 +9,22 @@ hr_trend(data, return = "plot")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A line plot showing employee count over time.
+\item \code{"table"}: data frame containing a summary table.
+}
 }
 \description{
 Returns a line chart showing the change in
@@ -22,10 +32,32 @@ employee count over time. Part of a data validation process to check
 for unusual license growth / declines over time.
 }
 \examples{
-\dontrun{
-hr_trend(sq_data)
+# Return plot
 hr_trend(dv_data)
+
+# Return summary table
 hr_trend(dv_data, return = "table")
-}
 
 }
+\seealso{
+Other Data Validation: 
+\code{\link{check_query}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
+\code{\link{hrvar_count_all}()},
+\code{\link{hrvar_count}()},
+\code{\link{identify_holidayweeks}()},
+\code{\link{identify_inactiveweeks}()},
+\code{\link{identify_nkw}()},
+\code{\link{identify_outlier}()},
+\code{\link{identify_privacythreshold}()},
+\code{\link{identify_query}()},
+\code{\link{identify_tenure}()},
+\code{\link{remove_outliers}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{track_HR_change}()}
+}
+\concept{Data Validation}

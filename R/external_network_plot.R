@@ -13,7 +13,7 @@
 #' @inheritParams create_bubble
 #'
 #' @examples
-#' ## Return a plot
+#' # Return plot
 #' sq_data %>% external_network_plot(return = "plot")
 #'
 #' @family Connectivity

@@ -7,7 +7,7 @@
 #'
 #' @description
 #' Import a Workplace Analytics Query from a local CSV File, with variable classifications optimised
-#' for other **wpa** functions.
+#' for other 'wpa' functions.
 #'
 #' @details
 #' `import_wpa()` uses `data.table::fread()` to import CSV files for speed,
@@ -21,6 +21,8 @@
 #' Assessment query's columns name standard and consistent with a Standard Person Query. Note that this
 #' will have no effect if the query being imported is not a Ways of Working Assessment query. Defaults
 #' as FALSE.
+#'
+#' @return A `tibble` is returned.
 #'
 #' @export
 import_wpa <- function(x, standardise = FALSE){

@@ -26,6 +26,10 @@
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
+#' # Heatmap plot is returned by default
+#' keymetrics_scan(sq_data)
+#'
+#' # Return summary table
 #' keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export

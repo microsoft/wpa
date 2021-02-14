@@ -7,15 +7,20 @@
 heat_colours(n, alpha, rev = FALSE)
 }
 \arguments{
-\item{n}{the number of colors (≥ 1) to be in the palette.}
+\item{n}{the number of colors (>= 1) to be in the palette.}
 
 \item{alpha}{an alpha-transparency level in the range of 0 to 1
 (0 means transparent and 1 means opaque)}
 
 \item{rev}{logical indicating whether the ordering of the colors should be reversed.}
 }
+\value{
+A character vector containing the HEX codes and the same length as \code{n} is
+returned.
+}
 \description{
-Generate a vector of \code{n} contiguous colours, as a red-yellow-green palette.
+Takes a numeric value \code{n} and returns a character vector of colour HEX codes
+corresponding to the heat map palette.
 }
 \examples{
 barplot(rep(10, 50), col = heat_colours(n = 50), border = NA)

@@ -20,7 +20,7 @@
 #' @importFrom stats setNames
 #'
 #' @examples
-#' ## Implementation using Standard Meeting Query
+#' # Implementation using Standard Meeting Query
 #' meetingtype_dist(mt_data)
 #'
 #' @export
