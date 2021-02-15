@@ -11,9 +11,12 @@
 #' "Other_collaborators" within query data.
 #'
 #' @param data Data frame containing a G2G query.
-#' @param time_investor String containing the variable name for the Time Investor column.
-#' @param collaborator String containing the variable name for the Collaborator column.
-#' @param metric String containing the variable name for metric.
+#' @param time_investor String containing the variable name for the Time
+#'   Investor column.
+#' @param collaborator String containing the variable name for the Collaborator
+#'   column.
+#' @param metric String containing the variable name for metric. Defaults to
+#'   `Collaboration_hours`.
 #' @param exc_threshold Exclusion threshold to apply.
 #' @param subtitle String to override default plot subtitle.
 #' @param return Character vector specifying what to return, defaults to "plot".
@@ -27,16 +30,20 @@
 #'
 #' @examples
 #' # Return a network plot
+#' g2g_data %>% network_g2g()
+#'
+#' # Return a network plot - Meeting hours and 5% threshold
 #' g2g_data %>%
 #'   network_g2g(time_investor = "TimeInvestors_Organization",
 #'               collaborator = "Collaborators_Organization",
-#'               metric = "Collaboration_hours")
+#'               metric = "Meeting_hours",
+#'               exc_threshold = 0.05)
 #'
 #' @export
 network_g2g <- function(data,
                         time_investor = NULL,
                         collaborator = NULL,
-                        metric,
+                        metric = "Collaboration_hours",
                         exc_threshold = 0.1,
                         subtitle = "Collaboration Across Organizations",
                         return = "plot"){
