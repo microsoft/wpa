@@ -1,6 +1,6 @@
 # wpa R Playbook
 
-This page offers a **playbook for the Workplace Analytics analyst**: a guide to what analyses or functions could be useful when exploring a particular area of Workplace Analytics. This map is divided into the following sections.
+The **Playbook for the Workplace Analytics analyst** is a guide for identifying the useful analyses or functions for exploring a particular area of Workplace Analytics. This guide is divided into the following sections.
 
 - [Ways of Working](#ways-of-working)
 - [Employee Wellbeing](#employee-wellbeing)
@@ -19,8 +19,15 @@ It is recommended that you start with running `keymetrics_scan()` on a Standard 
 `collaboration_report()` to establish the baseline of collaboration. 
 
 Here are a list of other individual plots that you can run:
-- Summary of metrics: `collab_sum()`, `workloads_sum()`, `email_sum()`, `meeting_sum()`.
-- Time dimension of metrics: `collab_area()`, or any of the `*_line()` or `*_trend()` functions. 
+- Summary of metrics: 
+  - `collab_sum()`
+  - `workloads_sum()`
+  - `email_sum()`
+  - `meeting_sum()`
+- Time dimension of metrics: 
+  - `collab_area()`
+  - any of the `*_line()` or `*_trend()` functions, which provide a view of metric change over time. Use `create_line()` or `create_trend()` to run the analysis for any metric.
+-  You can also run `collab_rank()` to view the top and bottom ranking values for each HR attribute for `Collaboration_hours`. `*_rank()` functions all come with multiple plot modes, and you can use `create_rank()` to run the analysis for any metric.
 
 ### Advanced
 
