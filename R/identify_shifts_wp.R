@@ -35,6 +35,8 @@
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
+#' @family Work Patterns
+#'
 #' @examples
 #' # Return plot
 #' em_data %>% identify_shifts_wp()
