@@ -9,7 +9,7 @@
 #' Pass a Standard Meeting Query and extract the top low engagement meetings.
 #'
 #' @param data Data frame containing a Standard Meeting Query to pass through.
-#' @param recurring_only. Logical value indicating whether to only filter by
+#' @param recurring_only Logical value indicating whether to only filter by
 #'   recurring meetings.
 #' @param top_n Numeric value for the top number of results to return in the
 #' output.

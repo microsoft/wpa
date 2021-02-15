@@ -16,6 +16,9 @@ meeting_extract(
 \arguments{
 \item{data}{Data frame containing a Standard Meeting Query to pass through.}
 
+\item{recurring_only}{Logical value indicating whether to only filter by
+recurring meetings.}
+
 \item{top_n}{Numeric value for the top number of results to return in the
 output.}
 
@@ -33,9 +36,6 @@ following strings:
 }
 
 See \code{Value} for more information.}
-
-\item{recurring_only.}{Logical value indicating whether to only filter by
-recurring meetings.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
