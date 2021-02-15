@@ -50,3 +50,10 @@ top \code{n} low engagement meetings
 \description{
 Pass a Standard Meeting Query and extract the top low engagement meetings.
 }
+\examples{
+meeting_extract(mt_data,
+                recurring_only = FALSE,
+                top_n = 10,
+                return = "table")
+
+}
