@@ -7,8 +7,8 @@
 \usage{
 network_g2g(
   data,
-  time_investor,
-  collaborator,
+  time_investor = NULL,
+  collaborator = NULL,
   metric,
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
@@ -17,8 +17,8 @@ network_g2g(
 
 g2g_network(
   data,
-  time_investor,
-  collaborator,
+  time_investor = NULL,
+  collaborator = NULL,
   metric,
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
@@ -47,8 +47,9 @@ Valid inputs include:
 }}
 }
 \description{
-Pass a data frame containing a group-to-group query and return a network plot.
-Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
+Pass a data frame containing a group-to-group query and return a network
+plot. Automatically handles "Collaborators_within_group" and
+"Other_collaborators" within query data.
 }
 \examples{
 # Return a network plot

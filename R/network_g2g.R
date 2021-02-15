@@ -6,8 +6,9 @@
 #' @title Create a network plot with the group-to-group query
 #'
 #' @description
-#' Pass a data frame containing a group-to-group query and return a network plot.
-#' Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
+#' Pass a data frame containing a group-to-group query and return a network
+#' plot. Automatically handles "Collaborators_within_group" and
+#' "Other_collaborators" within query data.
 #'
 #' @param data Data frame containing a G2G query.
 #' @param time_investor String containing the variable name for the Time Investor column.
@@ -33,12 +34,42 @@
 #'
 #' @export
 network_g2g <- function(data,
-                        time_investor,
-                        collaborator,
+                        time_investor = NULL,
+                        collaborator = NULL,
                         metric,
                         exc_threshold = 0.1,
                         subtitle = "Collaboration Across Organizations",
                         return = "plot"){
+
+  if(is.null(time_investor)){
+
+    # Only return first match
+    time_investor <-
+      names(data)[grepl(pattern = "^TimeInvestors_", names(data))][1]
+
+    message(
+      paste("`time_investor` field not provided.",
+            "Assuming", wrap(time_investor, wrapper = "`"),
+            "as the `time_investor` variable.")
+    )
+
+  }
+
+  if(is.null(collaborator)){
+
+    # Only return first match
+    collaborator <-
+      names(data)[grepl(pattern = "^Collaborators_", names(data))][1]
+
+    message(
+      paste("`collaborator` field not provided.",
+            "Assuming", wrap(collaborator, wrapper = "`"),
+            "as the `collaborator` variable.")
+      )
+
+  }
+
+
 
   plot_data <-
     data %>%
