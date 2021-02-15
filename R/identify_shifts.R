@@ -3,23 +3,42 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Identify shifts based on outlook time settings for work day start and end time
+#' @title
+#' Identify shifts based on outlook time settings for work day start and end
+#' time
 #'
 #' @description
-#' This function uses outlook calendar settings for start and end time of work day to identify
-#' work shifts. The relevant variables are `WorkingStartTimeSetInOutlook` and
-#' `WorkingEndTimeSetInOutlook`.
+#' This function uses outlook calendar settings for start and end time of work
+#' day to identify work shifts. The relevant variables are
+#' `WorkingStartTimeSetInOutlook` and `WorkingEndTimeSetInOutlook`.
+#'
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
 #'
-#' @param return Character vector to specify what to return.
-#' "table" (default) returns a summary table of the counts of shifts.
-#' "data" returns the original input data frame with the `Shifts` column appended.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A bar plot for the weekly count of shifts.
+#'   - `"table"`: data frame. A summary table for the count of shifts.
+#'   - `"data`: data frame. Input data appended with the following columns:
+#'     - `Shifts`
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
+#' # Return plot
 #' dv_data %>% identify_shifts()
+#'
+#' # Return summary table
+#' dv_data %>% identify_shifts(return = "table")
 #'
 #' @export
 identify_shifts <- function(data, return = "plot"){

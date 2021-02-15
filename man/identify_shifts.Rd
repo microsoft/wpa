@@ -2,23 +2,46 @@
 % Please edit documentation in R/identify_shifts.R
 \name{identify_shifts}
 \alias{identify_shifts}
-\title{Identify shifts based on outlook time settings for work day start and end time}
+\title{Identify shifts based on outlook time settings for work day start and end
+time}
 \usage{
 identify_shifts(data, return = "plot")
 }
 \arguments{
 \item{data}{A data frame containing data from the Hourly Collaboration query.}
 
-\item{return}{Character vector to specify what to return.
-"table" (default) returns a summary table of the counts of shifts.
-"data" returns the original input data frame with the \code{Shifts} column appended.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bar plot for the weekly count of shifts.
+\item \code{"table"}: data frame. A summary table for the count of shifts.
+\item \verb{"data}: data frame. Input data appended with the following columns:
+\itemize{
+\item \code{Shifts}
+}
+}
 }
 \description{
-This function uses outlook calendar settings for start and end time of work day to identify
-work shifts. The relevant variables are \code{WorkingStartTimeSetInOutlook} and
-\code{WorkingEndTimeSetInOutlook}.
+This function uses outlook calendar settings for start and end time of work
+day to identify work shifts. The relevant variables are
+\code{WorkingStartTimeSetInOutlook} and \code{WorkingEndTimeSetInOutlook}.
 }
 \examples{
+# Return plot
 dv_data \%>\% identify_shifts()
+
+# Return summary table
+dv_data \%>\% identify_shifts(return = "table")
 
 }
