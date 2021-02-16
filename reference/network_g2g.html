@@ -49,8 +49,9 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Create a network plot with the group-to-group query — network_g2g" />
-<meta property="og:description" content="Pass a data frame containing a group-to-group query and return a network plot.
-Automatically handles &quot;Collaborators_within_group&quot; and &quot;Other_collaborators&quot; within query data." />
+<meta property="og:description" content="Pass a data frame containing a group-to-group query and return a network
+plot. Automatically handles &quot;Collaborators_within_group&quot; and
+&quot;Other_collaborators&quot; within query data." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -209,15 +210,16 @@ Automatically handles &quot;Collaborators_within_group&quot; and &quot;Other_col
     </div>
 
     <div class="ref-description">
-    <p>Pass a data frame containing a group-to-group query and return a network plot.
-Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.</p>
+    <p>Pass a data frame containing a group-to-group query and return a network
+plot. Automatically handles "Collaborators_within_group" and
+"Other_collaborators" within query data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>network_g2g</span><span class='op'>(</span>
   <span class='va'>data</span>,
-  <span class='va'>time_investor</span>,
-  <span class='va'>collaborator</span>,
-  <span class='va'>metric</span>,
+  time_investor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  collaborator <span class='op'>=</span> <span class='cn'>NULL</span>,
+  metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>,
   exc_threshold <span class='op'>=</span> <span class='fl'>0.1</span>,
   subtitle <span class='op'>=</span> <span class='st'>"Collaboration Across Organizations"</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>
@@ -225,9 +227,9 @@ Automatically handles "Collaborators_within_group" and "Other_collaborators" wit
 
 <span class='fu'>g2g_network</span><span class='op'>(</span>
   <span class='va'>data</span>,
-  <span class='va'>time_investor</span>,
-  <span class='va'>collaborator</span>,
-  <span class='va'>metric</span>,
+  time_investor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  collaborator <span class='op'>=</span> <span class='cn'>NULL</span>,
+  metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>,
   exc_threshold <span class='op'>=</span> <span class='fl'>0.1</span>,
   subtitle <span class='op'>=</span> <span class='st'>"Collaboration Across Organizations"</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>
@@ -242,15 +244,18 @@ Automatically handles "Collaborators_within_group" and "Other_collaborators" wit
     </tr>
     <tr>
       <th>time_investor</th>
-      <td><p>String containing the variable name for the Time Investor column.</p></td>
+      <td><p>String containing the variable name for the Time
+Investor column.</p></td>
     </tr>
     <tr>
       <th>collaborator</th>
-      <td><p>String containing the variable name for the Collaborator column.</p></td>
+      <td><p>String containing the variable name for the Collaborator
+column.</p></td>
     </tr>
     <tr>
       <th>metric</th>
-      <td><p>String containing the variable name for metric.</p></td>
+      <td><p>String containing the variable name for metric. Defaults to
+<code>Collaboration_hours</code>.</p></td>
     </tr>
     <tr>
       <th>exc_threshold</th>
@@ -274,11 +279,15 @@ Valid inputs include:</p><ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Return a network plot</span>
+<span class='va'>g2g_data</span> <span class='op'>%&gt;%</span> <span class='fu'>network_g2g</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>`time_investor` field not provided. Assuming `TimeInvestors_Organization` as the `time_investor` variable.</span></div><div class='output co'>#&gt; <span class='message'>`collaborator` field not provided. Assuming `Collaborators_Organization` as the `collaborator` variable.</span></div><div class='img'><img src='network_g2g-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return a network plot - Meeting hours and 5% threshold</span>
 <span class='va'>g2g_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'>network_g2g</span><span class='op'>(</span>time_investor <span class='op'>=</span> <span class='st'>"TimeInvestors_Organization"</span>,
               collaborator <span class='op'>=</span> <span class='st'>"Collaborators_Organization"</span>,
-              metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span><span class='op'>)</span>
-</div><div class='img'><img src='network_g2g-1.png' alt='' width='700' height='433' /></div><div class='input'>
+              metric <span class='op'>=</span> <span class='st'>"Meeting_hours"</span>,
+              exc_threshold <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span>
+</div><div class='img'><img src='network_g2g-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

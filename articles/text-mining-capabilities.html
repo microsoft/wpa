@@ -217,16 +217,16 @@
 <span class="co">## # A tibble: 50 x 2</span>
 <span class="co">##    word        freq</span>
 <span class="co">##    &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">##  1 volometrix   119</span>
-<span class="co">##  2 update       117</span>
-<span class="co">##  3 weekly       103</span>
-<span class="co">##  4 meeting      102</span>
-<span class="co">##  5 plan          94</span>
-<span class="co">##  6 updated       94</span>
-<span class="co">##  7 discussion    91</span>
-<span class="co">##  8 product       91</span>
-<span class="co">##  9 training      88</span>
-<span class="co">## 10 team          87</span>
+<span class="co">##  1 weekly       165</span>
+<span class="co">##  2 update       151</span>
+<span class="co">##  3 updated      147</span>
+<span class="co">##  4 volometrix   137</span>
+<span class="co">##  5 interview    106</span>
+<span class="co">##  6 meeting      100</span>
+<span class="co">##  7 visit         98</span>
+<span class="co">##  8 review        92</span>
+<span class="co">##  9 messaging     85</span>
+<span class="co">## 10 volo          82</span>
 <span class="co">## # … with 40 more rows</span></code></pre></div>
 </div>
 <div id="co-occurrence-network-plot" class="section level2">
@@ -242,20 +242,20 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">## # A tibble: 1,666 x 3</span>
+<span class="co">## # A tibble: 539 x 3</span>
 <span class="co">##    item1      item2          n</span>
 <span class="co">##    &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">##  1 board      meeting       20</span>
-<span class="co">##  2 annual     report        17</span>
-<span class="co">##  3 sql        server        15</span>
-<span class="co">##  4 board      directors     14</span>
-<span class="co">##  5 volometrix plan          10</span>
-<span class="co">##  6 volometrix board          8</span>
-<span class="co">##  7 weekly     discussion     8</span>
-<span class="co">##  8 volometrix annual         7</span>
-<span class="co">##  9 global     meeting        7</span>
-<span class="co">## 10 volometrix meeting        7</span>
-<span class="co">## # … with 1,656 more rows</span></code></pre></div>
+<span class="co">##  1 board      meeting       24</span>
+<span class="co">##  2 annual     report        24</span>
+<span class="co">##  3 sql        server        20</span>
+<span class="co">##  4 board      directors     19</span>
+<span class="co">##  5 updated    interview     15</span>
+<span class="co">##  6 weekly     plan          13</span>
+<span class="co">##  7 volometrix interview     12</span>
+<span class="co">##  8 updated    discussion    12</span>
+<span class="co">##  9 weekly     messaging     10</span>
+<span class="co">## 10 weekly     meeting        9</span>
+<span class="co">## # … with 529 more rows</span></code></pre></div>
 </div>
 <div id="circular-bar-plot" class="section level2">
 <h2 class="hasAnchor">
@@ -277,20 +277,20 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">## # A tibble: 129 x 2</span>
-<span class="co">##    word                   n</span>
-<span class="co">##    &lt;chr&gt;              &lt;int&gt;</span>
-<span class="co">##  1 board of directors    14</span>
-<span class="co">##  2 the r d                8</span>
-<span class="co">##  3 the product and        7</span>
-<span class="co">##  4 the sql server         6</span>
-<span class="co">##  5 all europe up          5</span>
-<span class="co">##  6 and the plan           5</span>
-<span class="co">##  7 every project and      5</span>
-<span class="co">##  8 every training and     5</span>
-<span class="co">##  9 r d and                5</span>
-<span class="co">## 10 ryan and all           5</span>
-<span class="co">## # … with 119 more rows</span></code></pre></div>
+<span class="co">## # A tibble: 158 x 2</span>
+<span class="co">##    word                    n</span>
+<span class="co">##    &lt;chr&gt;               &lt;int&gt;</span>
+<span class="co">##  1 board of directors     19</span>
+<span class="co">##  2 and a status            6</span>
+<span class="co">##  3 r d and                 6</span>
+<span class="co">##  4 the sales and           6</span>
+<span class="co">##  5 the status and          6</span>
+<span class="co">##  6 a project and           5</span>
+<span class="co">##  7 a sales and             5</span>
+<span class="co">##  8 and every messaging     5</span>
+<span class="co">##  9 and every sales         5</span>
+<span class="co">## 10 the board meeting       5</span>
+<span class="co">## # … with 148 more rows</span></code></pre></div>
 </div>
 <div id="meeting-text-mining-report" class="section level2">
 <h2 class="hasAnchor">
@@ -306,7 +306,7 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/subject_validate.html">subject_validate</a></span><span class="op">(</span><span class="op">)</span> 
-<span class="co">## [1] "[Warning]   41  meetings ( 2.1% of  2000 ) require your attention as they contain common exclusion terms."</span></code></pre></div>
+<span class="co">## [1] "[Warning]   63  meetings ( 3.1% of  2001 ) require your attention as they contain common exclusion terms."</span></code></pre></div>
 <p>This does a check for common exlusion terms in subject lines, returning a string.</p>
 <p>To run a full report, you can do:</p>
 <pre><code>mt_data %&gt;% subject_validate_report() </code></pre>
