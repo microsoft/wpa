@@ -113,7 +113,7 @@ create_rank <- function(data,
                    pch = 21,
                    alpha = 0.8) +
         labs(title = us_to_space(metric),
-             subtitle = "Lowest and highest values, by org. attribute",
+             subtitle = "Lowest and highest group averages, by org. attribute",
              y = "",
              x = "") +
         ggrepel::geom_text_repel(aes(x = !!sym(metric),
