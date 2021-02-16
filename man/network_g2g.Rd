@@ -7,9 +7,9 @@
 \usage{
 network_g2g(
   data,
-  time_investor,
-  collaborator,
-  metric,
+  time_investor = NULL,
+  collaborator = NULL,
+  metric = "Collaboration_hours",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -17,9 +17,9 @@ network_g2g(
 
 g2g_network(
   data,
-  time_investor,
-  collaborator,
-  metric,
+  time_investor = NULL,
+  collaborator = NULL,
+  metric = "Collaboration_hours",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -28,11 +28,14 @@ g2g_network(
 \arguments{
 \item{data}{Data frame containing a G2G query.}
 
-\item{time_investor}{String containing the variable name for the Time Investor column.}
+\item{time_investor}{String containing the variable name for the Time
+Investor column.}
 
-\item{collaborator}{String containing the variable name for the Collaborator column.}
+\item{collaborator}{String containing the variable name for the Collaborator
+column.}
 
-\item{metric}{String containing the variable name for metric.}
+\item{metric}{String containing the variable name for metric. Defaults to
+\code{Collaboration_hours}.}
 
 \item{exc_threshold}{Exclusion threshold to apply.}
 
@@ -47,14 +50,19 @@ Valid inputs include:
 }}
 }
 \description{
-Pass a data frame containing a group-to-group query and return a network plot.
-Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
+Pass a data frame containing a group-to-group query and return a network
+plot. Automatically handles "Collaborators_within_group" and
+"Other_collaborators" within query data.
 }
 \examples{
 # Return a network plot
+g2g_data \%>\% network_g2g()
+
+# Return a network plot - Meeting hours and 5\% threshold
 g2g_data \%>\%
   network_g2g(time_investor = "TimeInvestors_Organization",
               collaborator = "Collaborators_Organization",
-              metric = "Collaboration_hours")
+              metric = "Meeting_hours",
+              exc_threshold = 0.05)
 
 }

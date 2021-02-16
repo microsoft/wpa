@@ -215,6 +215,21 @@ utils::globalVariables(
     "pval",
     "sum_na",
     "to",
-    "top_group"
+    "top_group",
+    "AttendanceRate",
+    "DurationHours",
+    "Emails_sent_during_meetings",
+    "Emails_sent_per_attendee_hour",
+    "Invitees",
+    "IsRecurring",
+    "Mean_AttendanceRate",
+    "Mean_Attendees",
+    "Mean_DurationHours",
+    "Mean_Emails_sent_per_attendee_hour",
+    "Mean_Invitees",
+    "MeetingId",
+    "NRecurring",
+    "Sum_Attendee_meeting_hours",
+    "Total_meeting_cost"
     )
 )

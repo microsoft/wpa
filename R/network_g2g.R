@@ -6,13 +6,17 @@
 #' @title Create a network plot with the group-to-group query
 #'
 #' @description
-#' Pass a data frame containing a group-to-group query and return a network plot.
-#' Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
+#' Pass a data frame containing a group-to-group query and return a network
+#' plot. Automatically handles "Collaborators_within_group" and
+#' "Other_collaborators" within query data.
 #'
 #' @param data Data frame containing a G2G query.
-#' @param time_investor String containing the variable name for the Time Investor column.
-#' @param collaborator String containing the variable name for the Collaborator column.
-#' @param metric String containing the variable name for metric.
+#' @param time_investor String containing the variable name for the Time
+#'   Investor column.
+#' @param collaborator String containing the variable name for the Collaborator
+#'   column.
+#' @param metric String containing the variable name for metric. Defaults to
+#'   `Collaboration_hours`.
 #' @param exc_threshold Exclusion threshold to apply.
 #' @param subtitle String to override default plot subtitle.
 #' @param return Character vector specifying what to return, defaults to "plot".
@@ -26,19 +30,53 @@
 #'
 #' @examples
 #' # Return a network plot
+#' g2g_data %>% network_g2g()
+#'
+#' # Return a network plot - Meeting hours and 5% threshold
 #' g2g_data %>%
 #'   network_g2g(time_investor = "TimeInvestors_Organization",
 #'               collaborator = "Collaborators_Organization",
-#'               metric = "Collaboration_hours")
+#'               metric = "Meeting_hours",
+#'               exc_threshold = 0.05)
 #'
 #' @export
 network_g2g <- function(data,
-                        time_investor,
-                        collaborator,
-                        metric,
+                        time_investor = NULL,
+                        collaborator = NULL,
+                        metric = "Collaboration_hours",
                         exc_threshold = 0.1,
                         subtitle = "Collaboration Across Organizations",
                         return = "plot"){
+
+  if(is.null(time_investor)){
+
+    # Only return first match
+    time_investor <-
+      names(data)[grepl(pattern = "^TimeInvestors_", names(data))][1]
+
+    message(
+      paste("`time_investor` field not provided.",
+            "Assuming", wrap(time_investor, wrapper = "`"),
+            "as the `time_investor` variable.")
+    )
+
+  }
+
+  if(is.null(collaborator)){
+
+    # Only return first match
+    collaborator <-
+      names(data)[grepl(pattern = "^Collaborators_", names(data))][1]
+
+    message(
+      paste("`collaborator` field not provided.",
+            "Assuming", wrap(collaborator, wrapper = "`"),
+            "as the `collaborator` variable.")
+      )
+
+  }
+
+
 
   plot_data <-
     data %>%
