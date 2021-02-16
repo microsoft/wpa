@@ -44,28 +44,40 @@ collaboration_report <- function(data,
   # Set outputs
   output_list <-
     list(data %>% check_query(return = "text") %>% md2html(),
-	
-	     md2html(text = read_preamble("collaboration_section.md")), # Header	 
-         data %>% keymetrics_scan(hrvar = hrvar, mingroup = mingroup, metrics = c("Collaboration_hours", "Meetings", "Meeting_hours", "Low_quality_meeting_hours", "Time_in_self_organized_meetings",  "Emails_sent", "Email_hours", "Generated_workload_email_hours", "Total_emails_sent_during_meeting", "Total_focus_hours"), textsize = 3, return = "plot"),
+
+         md2html(text = read_preamble("collaboration_section.md")), # Header
+         data %>% keymetrics_scan(hrvar = hrvar, mingroup = mingroup,
+                                  metrics = c("Collaboration_hours",
+                                              "Meetings",
+                                              "Meeting_hours",
+                                              "Low_quality_meeting_hours",
+                                              "Time_in_self_organized_meetings",
+                                              "Emails_sent",
+                                              "Email_hours",
+                                              "Generated_workload_email_hours",
+                                              "Total_emails_sent_during_meeting",
+                                              "Total_focus_hours"),
+                                  textsize = 3,
+                                  return = "plot"),
          data %>% collaboration_rank(mingroup = mingroup, return = "plot"),
          data %>% collaboration_rank(mingroup = mingroup, return = "table"),
          data %>% collaboration_sum(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% collaboration_sum(hrvar = hrvar, mingroup = mingroup, return = "table"),
          data %>% collab_area(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-		 
+
          md2html(text = read_preamble("meeting_section.md")), # Header
          data %>% meeting_rank(mingroup = mingroup, return = "plot"),
-		 data %>% meeting_rank(mingroup = mingroup, return = "table"),
-		 data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
+         data %>% meeting_rank(mingroup = mingroup, return = "table"),
+         data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
-		 data %>% mutate(Percentage_of_self_organized_meetings = replace_na(Time_in_self_organized_meetings / Meeting_hours,0))  %>%  create_bar(metric = "Percentage_of_self_organized_meetings", hrvar = hrvar, mingroup = mingroup, return = "plot"),
+         data %>% mutate(Percentage_of_self_organized_meetings = replace_na(Time_in_self_organized_meetings / Meeting_hours,0))  %>%  create_bar(metric = "Percentage_of_self_organized_meetings", hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% meeting_quality(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-		 data %>% meeting_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-		 
-		 md2html(text = read_preamble("email_section.md")), # Header
+         data %>% meeting_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
+
+         md2html(text = read_preamble("email_section.md")), # Header
          data %>% email_rank(mingroup = mingroup, return = "plot"),
-		 data %>% email_rank(mingroup = mingroup, return = "table"),
-		 data %>% email_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
+         data %>% email_rank(mingroup = mingroup, return = "table"),
+         data %>% email_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% email_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
          data %>% email_trend(hrvar = hrvar, mingroup = mingroup, return = "plot")) %>%
     purrr::map_if(is.data.frame, create_dt)
@@ -73,7 +85,7 @@ collaboration_report <- function(data,
   # Set header titles
   title_list <-
     c("Data Overview",
-	
+
 	  "Collaboration Time", # Section header
 	  "",
 	  "",
@@ -81,7 +93,7 @@ collaboration_report <- function(data,
       "",
       "",
       "",
-	  
+
       "Deep Dive: Meeting Hours", # Section header
       "",
       "",
@@ -90,7 +102,7 @@ collaboration_report <- function(data,
 	  "",
       "",
       "",
-	  
+
       "Deep Dive: Email Hours", # Section header
       "",
       "",
