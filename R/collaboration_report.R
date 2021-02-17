@@ -12,7 +12,7 @@
 #' metrics in Workplace Analytics,including email and meeting hours.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
+#' @param hrvar HR Variable by which to split metrics. Defaults to NULL - in this case the HR variable with most collaboration variance in selected.
 #'  but accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
@@ -29,7 +29,7 @@
 #'
 #' @export
 collaboration_report <- function(data,
-                                 hrvar = "Organization",
+                                 hrvar = NULL,
                                  mingroup = 5,
                                  path = "collaboration report",
                                  timestamp = TRUE){
@@ -40,6 +40,12 @@ collaboration_report <- function(data,
   } else {
     newpath <- path
   }
+
+  if(hrvar == NULL){
+  myrank <- data %>% collaboration_rank(mingroup = mingroup, return = "table")
+  hrvar <- myrank[[1,1]]
+  }
+
 
   # Set outputs
   output_list <-
