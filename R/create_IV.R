@@ -18,9 +18,11 @@
 #' @param siglevel Significance level to use in comparing populations for the outcomes,
 #' defaults to 0.05
 #' @param return String specifying what output to return.
-#' Defaults to "plot" that return a bar plot summarising the information value.
-#' "summary" returns a summary table, "list" returns a list of outputs for all the
-#' input variables, "plot-WOE" commpares distribution for top predictors.
+#'   - `"plot"`: returns a bar plot summarising the information value with a maximum of 12 variables.
+#'   - `"summary"` returns a summary table
+#'   - `"list"` returns a list of outputs for all the input variables
+#'   - `"plot-WOE"` commpares distribution for top predictors
+#'   - `"IV"` returns the original Information object returned by `Information`.
 #'
 #' @import dplyr
 #'
@@ -109,7 +111,13 @@ create_IV <- function(data,
 
 
   if(return == "summary"){
+
     IV_summary
+
+  } else if(return == "IV"){
+
+    IV
+
   } else if(return == "plot"){
     IV_summary %>%
       utils::head(12) %>%

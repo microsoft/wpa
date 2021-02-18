@@ -28,9 +28,13 @@ the values 1 or 0.}
 defaults to 0.05}
 
 \item{return}{String specifying what output to return.
-Defaults to "plot" that return a bar plot summarising the information value.
-"summary" returns a summary table, "list" returns a list of outputs for all the
-input variables, "plot-WOE" commpares distribution for top predictors.}
+\itemize{
+\item \code{"plot"}: returns a bar plot summarising the information value with a maximum of 12 variables.
+\item \code{"summary"} returns a summary table
+\item \code{"list"} returns a list of outputs for all the input variables
+\item \code{"plot-WOE"} commpares distribution for top predictors
+\item \code{"IV"} returns the original Information object returned by \code{Information}.
+}}
 }
 \description{
 Specify an outcome variable and return IV outputs.
