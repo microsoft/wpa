@@ -10,6 +10,7 @@ navbar:
     - intro
     - guide
     - reference
+    - playbook
     - contributing
     - articles
     - tutorials
@@ -38,8 +39,8 @@ navbar:
         href: analyst_guide_network.html
       - text: Reports
         href: analyst_guide_reports.html
-      - text: Analysis Map
-        href: analyst_guide_analysis_map.html
+      - text: FAQ
+        href: faq.html
     reference:
       text: Reference
       href: reference/index.html
