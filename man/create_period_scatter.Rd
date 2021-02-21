@@ -77,6 +77,7 @@ create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
 Other Flexible: 
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_hist}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_rank}()},
