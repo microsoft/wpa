@@ -168,7 +168,3 @@ create_dist <- function(data,
 
   }
 }
-
-#' @rdname collaboration_dist
-#' @export
-collaboration_distribution <- collaboration_dist
