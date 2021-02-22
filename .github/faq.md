@@ -1,16 +1,27 @@
 # Frequently Asked Questions
 
+## General
+
+### Why should I use R for Workplace Analytics?
+
+R is an open-source statistical programming language and one of the most popular toolkits for data analysis and data science. There are four key reasons why a Workplace Analytics analyst might choose to use R instead of other alternatives:
+
+1.	R has an **immense package eco-system** with over [17,000 packages](https://cran.r-project.org/web/packages/) for advanced applications from building random forest models to Organizational Network Analysis (ONA) graph visualizations. This enables analysts to perform specialized and more in-depth analysis for specific Workplace Analytics use cases, such as predicting employee churn by analyzing Workplace Analytics metrics. 
+2.	There are **no licensing costs** with R, which enables analysts to leverage the powerful functionality with no additional cost.  
+3.	R has a code-oriented workflow (as opposed to point-and-click), which promotes **reproducibility**. This is valuable for improving the quality of the analysis and for efficiently replicating analysis with different data samples.
+4.	R also has a **substantial user community**, which analysts can access to support and augment their analysis capabilities.
+
 ## Installation and Setup
 
 ### I cannot install the package with `install.packages()`. Why is that?
 
-The reason why `install.packages()` wil not work with **wpa** is because **wpa** is currently only available on GitHub and not on CRAN, and CRAN is where the function `install.packages()` downloads and installs R packages from. Instead, you should use `install_git()`:
+The reason why `install.packages()` will not work with **wpa** is because **wpa** is currently only available on GitHub and not on CRAN, and CRAN is where the function `install.packages()` downloads and installs R packages from. Instead, you should use `install_git()`:
 ```R
 remotes::install_git(url = "https://github.com/microsoft/wpa.git") 
 ```
 For more information regarding installation, please see our [Getting Started](https://microsoft.github.io/wpa/analyst_guide_getting_started.html) page.
 
-### I see warning message about the installation of Rtools. What do I do?
+### I see a warning message about the installation of Rtools. What should I do?
 
 You may see the following message during installation:
 ```
