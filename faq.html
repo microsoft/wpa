@@ -206,20 +206,36 @@
 
 <div id="frequently-asked-questions" class="section level1">
 
+<div id="general" class="section level2">
+<h2 class="hasAnchor">
+<a href="#general" class="anchor"></a>General</h2>
+<div id="why-should-i-use-r-for-workplace-analytics" class="section level3">
+<h3 class="hasAnchor">
+<a href="#why-should-i-use-r-for-workplace-analytics" class="anchor"></a>Why should I use R for Workplace Analytics?</h3>
+<p>R is an open-source statistical programming language and one of the most popular toolkits for data analysis and data science. There are four key reasons why a Workplace Analytics analyst might choose to use R instead of other alternatives:</p>
+<ol>
+<li>R has an <strong>immense package eco-system</strong> with over <a href="https://cran.r-project.org/web/packages/">17,000 packages</a> for advanced applications from building random forest models to Organizational Network Analysis (ONA) graph visualizations. This enables analysts to perform specialized and more in-depth analysis for specific Workplace Analytics use cases, such as predicting employee churn by analyzing Workplace Analytics metrics.</li>
+<li>There are <strong>no licensing costs</strong> with R, which enables analysts to leverage the powerful functionality with no additional cost.<br>
+</li>
+<li>R has a code-oriented workflow (as opposed to point-and-click), which promotes <strong>reproducibility</strong>. This is valuable for improving the quality of the analysis and for efficiently replicating analysis with different data samples.</li>
+<li>R also has a <strong>substantial user community</strong>, which analysts can access to support and augment their analysis capabilities.</li>
+</ol>
+</div>
+</div>
 <div id="installation-and-setup" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation-and-setup" class="anchor"></a>Installation and Setup</h2>
 <div id="i-cannot-install-the-package-with-installpackages-why-is-that" class="section level3">
 <h3 class="hasAnchor">
 <a href="#i-cannot-install-the-package-with-installpackages-why-is-that" class="anchor"></a>I cannot install the package with <code>install.packages()</code>. Why is that?</h3>
-<p>The reason why <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> wil not work with <strong>wpa</strong> is because <strong>wpa</strong> is currently only available on GitHub and not on CRAN, and CRAN is where the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> downloads and installs R packages from. Instead, you should use <code>install_git()</code>:</p>
+<p>The reason why <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work with <strong>wpa</strong> is because <strong>wpa</strong> is currently only available on GitHub and not on CRAN, and CRAN is where the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> downloads and installs R packages from. Instead, you should use <code>install_git()</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html">install_git</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span> </code></pre></div>
 <p>For more information regarding installation, please see our <a href="https://microsoft.github.io/wpa/analyst_guide_getting_started.html">Getting Started</a> page.</p>
 </div>
-<div id="i-see-warning-message-about-the-installation-of-rtools-what-do-i-do" class="section level3">
+<div id="i-see-a-warning-message-about-the-installation-of-rtools-what-should-i-do" class="section level3">
 <h3 class="hasAnchor">
-<a href="#i-see-warning-message-about-the-installation-of-rtools-what-do-i-do" class="anchor"></a>I see warning message about the installation of Rtools. What do I do?</h3>
+<a href="#i-see-a-warning-message-about-the-installation-of-rtools-what-should-i-do" class="anchor"></a>I see a warning message about the installation of Rtools. What should I do?</h3>
 <p>You may see the following message during installation:</p>
 <pre><code>WARNING: Rtools is required to build R packages, but is not currently installed.</code></pre>
 <p>This message appears when R is trying to install or update packages that require compilation from binaries, which requires the installation of Rtools. To get around this, we recommend selecting <code>No</code> when prompted the question <code>Do you want to install from sources the packages which needs compilation?</code> when updated the packages. Alternatively, you can also choose to install <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</p>
