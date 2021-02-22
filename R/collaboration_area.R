@@ -17,8 +17,9 @@
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' A Ways of Working assessment dataset may also be provided, in which
 #' Unscheduled call hours would be included in the output.
-#' @param hrvar HR Variable by which to split metrics, defaults to
-#'   "Organization" but accepts any character vector, e.g. "LevelDesignation"
+#' @param hrvar HR Variable by which to split metrics, defaults to `NULL`, but
+#'   accepts any character vector, e.g. "LevelDesignation". If `NULL` is passed,
+#'   the organizational attribute is automatically populated as "Total".
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #' @param return String specifying what to return. This must be one of the
@@ -36,7 +37,14 @@
 #' @family Collaboration
 #'
 #' @examples
+#' # Return plot with total (default)
 #' collaboration_area(sq_data)
+#'
+#' # Return plot with hrvar split
+#' collaboration_area(sq_data, hrvar = "Organization")
+#'
+#' # Return summary table
+#' collaboration_area(sq_data, return = "table")
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -46,9 +54,15 @@
 #' @export
 
 collaboration_area <- function(data,
-                               hrvar = "Organization",
+                               hrvar = NULL,
                                mingroup=5,
                                return = "plot"){
+
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
 
   ## Date cleaning
   data$Date <- as.Date(data$Date, format = "%m/%d/%Y")
@@ -73,8 +87,6 @@ collaboration_area <- function(data,
            replacement = "Unscheduled_Call_hours",
            x = names(data),
            ignore.case = TRUE) # Case-insensitive
-
-    data <- rename(data, Unscheduled_Call_hours = "Unscheduled_call_hours")
 
   }
 
