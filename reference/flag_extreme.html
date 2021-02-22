@@ -269,20 +269,20 @@ Defaults to TRUE (person-averages calculated).</p></td>
 </div><div class='output co'>#&gt; <span class='message'>[Warning] There are 58 persons where their average Email hours exceeds 15.</span></div><div class='input'>
 <span class='co'># Return a summary table</span>
 <span class='fu'>flag_extreme</span><span class='op'>(</span><span class='va'>sq_data</span>, <span class='st'>"Email_hours"</span>, threshold <span class='op'>=</span> <span class='fl'>15</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 58 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 58 x 2</span><span>
 #&gt;    PersonId                                                         Email_hours
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> 00368A5686BF3E6F5189540B9D1434DCDAB931A025E1DA3F73388C45A23B8814        15.1
-#&gt; </span><span style='color: #555555;'> 2</span><span> 05777AAC2F33DF19EB3CFFDB73E1ADE501D4ED9048B7CBF79E31BA545E972644        15.7
-#&gt; </span><span style='color: #555555;'> 3</span><span> 07C28A72D1A47C05D6929A0D724FD0A4C81D945306DBAEF494199E96094469CD        18.1
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0B865E56B2EF3182F39F73337D67B5384E048674C9C86622EAB501BB81201B33        15.5
-#&gt; </span><span style='color: #555555;'> 5</span><span> 10F20CF8E76802FCCF9C780A130D2A37874BAEAE1B1892365C9DB42E79C1D18A        17.0
-#&gt; </span><span style='color: #555555;'> 6</span><span> 1EE5750C86AB036EF7A5F3C948E9C7A4D4424BB366E3752D788A56494C8EB474        16.9
-#&gt; </span><span style='color: #555555;'> 7</span><span> 1EFA17977AB9136E0CD54D28775F058851CD89CFFB01C666E6A1170075DC4356        16.1
-#&gt; </span><span style='color: #555555;'> 8</span><span> 1F70108AAA964A8C2E88DA666B0BA15EBA0B0BC1970A1BE0575266611C0CE69C        15.6
-#&gt; </span><span style='color: #555555;'> 9</span><span> 2087D9D11ECC9B33440A36A702043B7F81913BA9572B3053F38DAA9C5FC52EDB        15.4
-#&gt; </span><span style='color: #555555;'>10</span><span> 24E9403ACF368A82EAE889DBAFF9785200C4D635DA7E034A3745FD72C6E1B3A9        19.7
-#&gt; </span><span style='color: #555555;'># … with 48 more rows</span><span></div><div class='input'>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                                  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 00368A5686BF3E6F5189540B9D1434DCDAB931A025E1DA3F73388C45A23B8814        15.1
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 05777AAC2F33DF19EB3CFFDB73E1ADE501D4ED9048B7CBF79E31BA545E972644        15.7
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 07C28A72D1A47C05D6929A0D724FD0A4C81D945306DBAEF494199E96094469CD        18.1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 0B865E56B2EF3182F39F73337D67B5384E048674C9C86622EAB501BB81201B33        15.5
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 10F20CF8E76802FCCF9C780A130D2A37874BAEAE1B1892365C9DB42E79C1D18A        17.0
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 1EE5750C86AB036EF7A5F3C948E9C7A4D4424BB366E3752D788A56494C8EB474        16.9
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 1EFA17977AB9136E0CD54D28775F058851CD89CFFB01C666E6A1170075DC4356        16.1
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 1F70108AAA964A8C2E88DA666B0BA15EBA0B0BC1970A1BE0575266611C0CE69C        15.6
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2087D9D11ECC9B33440A36A702043B7F81913BA9572B3053F38DAA9C5FC52EDB        15.4
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 24E9403ACF368A82EAE889DBAFF9785200C4D635DA7E034A3745FD72C6E1B3A9        19.7
+#&gt; </span><span style='color: #949494;'># … with 48 more rows</span><span></div><div class='input'>
 <span class='co'># Person-week level</span>
 <span class='fu'>flag_extreme</span><span class='op'>(</span><span class='va'>sq_data</span>, <span class='st'>"Email_hours"</span>, person <span class='op'>=</span> <span class='cn'>FALSE</span>, threshold <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>[Warning] There are 1641 rows where their value of Email hours exceeds 15.</span></div><div class='input'>

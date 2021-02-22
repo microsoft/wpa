@@ -188,19 +188,19 @@
 <span class="co"># Check what the first ten columns look like</span>
 <span class="va">sq_data</span> <span class="op">%&gt;%</span>
   <span class="va">.</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="fu"><a href="https://pillar.r-lib.org//reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 13,442</span>
 <span class="co">#&gt; Columns: 10</span>
-<span class="co">#&gt; $ PersonId                                       &lt;chr&gt; "93F763956FFC939A5DDE7…</span>
-<span class="co">#&gt; $ Date                                           &lt;chr&gt; "11/3/2019", "11/10/20…</span>
-<span class="co">#&gt; $ Workweek_span                                  &lt;dbl&gt; 42.50652, 39.78644, 42…</span>
-<span class="co">#&gt; $ Meetings_with_skip_level                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1…</span>
-<span class="co">#&gt; $ Meeting_hours_with_skip_level                  &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00…</span>
-<span class="co">#&gt; $ Generated_workload_email_hours                 &lt;dbl&gt; 12.283767, 11.890209, …</span>
-<span class="co">#&gt; $ Generated_workload_email_recipients            &lt;dbl&gt; 179, 171, 131, 108, 78…</span>
-<span class="co">#&gt; $ Generated_workload_instant_messages_hours      &lt;dbl&gt; 1.0815250, 1.1650000, …</span>
-<span class="co">#&gt; $ Generated_workload_instant_messages_recipients &lt;dbl&gt; 96, 94, 60, 61, 39, 64…</span>
-<span class="co">#&gt; $ Generated_workload_call_hours                  &lt;dbl&gt; 0.5000000, 0.0000000, …</span></code></pre></div>
+<span class="co">#&gt; $ PersonId                                       &lt;chr&gt; "93F763956FFC939A5DDE7D…</span>
+<span class="co">#&gt; $ Date                                           &lt;chr&gt; "11/3/2019", "11/10/201…</span>
+<span class="co">#&gt; $ Workweek_span                                  &lt;dbl&gt; 42.50652, 39.78644, 42.…</span>
+<span class="co">#&gt; $ Meetings_with_skip_level                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1,…</span>
+<span class="co">#&gt; $ Meeting_hours_with_skip_level                  &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00,…</span>
+<span class="co">#&gt; $ Generated_workload_email_hours                 &lt;dbl&gt; 12.283767, 11.890209, 9…</span>
+<span class="co">#&gt; $ Generated_workload_email_recipients            &lt;dbl&gt; 179, 171, 131, 108, 78,…</span>
+<span class="co">#&gt; $ Generated_workload_instant_messages_hours      &lt;dbl&gt; 1.0815250, 1.1650000, 0…</span>
+<span class="co">#&gt; $ Generated_workload_instant_messages_recipients &lt;dbl&gt; 96, 94, 60, 61, 39, 64,…</span>
+<span class="co">#&gt; $ Generated_workload_call_hours                  &lt;dbl&gt; 0.5000000, 0.0000000, 5…</span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -250,31 +250,31 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 19 x 16</span>
-<span class="co">#&gt;    variable `Biz Dev` `Customer Servi… Facilities `Finance-Corpor…</span>
-<span class="co">#&gt;    &lt;fct&gt;        &lt;dbl&gt;            &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Workwee…    37.2             41.3       43.1             39.5  </span>
-<span class="co">#&gt;  2 Collabo…    14.7             18.3       18.6             16.3  </span>
-<span class="co">#&gt;  3 After_h…     2.00             2.78       2.85             2.36 </span>
-<span class="co">#&gt;  4 Meetings     7.63             9.72       9.96             8.73 </span>
-<span class="co">#&gt;  5 Meeting…     7.02             8.78       9.39             8.16 </span>
-<span class="co">#&gt;  6 After_h…     0.722            1.20       1.21             0.959</span>
-<span class="co">#&gt;  7 Low_qua…     4.52             6.67       6.79             5.60 </span>
-<span class="co">#&gt;  8 Meeting…     0.237            0.354      0.255            0.241</span>
-<span class="co">#&gt;  9 Meeting…     3.60             5.10       5.53             4.44 </span>
-<span class="co">#&gt; 10 Emails_…    39.3             45.4       44.5             40.3  </span>
-<span class="co">#&gt; 11 Email_h…     7.72             9.49       9.20             8.13 </span>
-<span class="co">#&gt; 12 After_h…     1.27             1.58       1.64             1.40 </span>
-<span class="co">#&gt; 13 Generat…     7.98            10.0        9.53             8.34 </span>
-<span class="co">#&gt; 14 Total_f…    33.1             31.3       30.5             31.9  </span>
-<span class="co">#&gt; 15 Interna…    41.5             41.5       37.0             37.4  </span>
-<span class="co">#&gt; 16 Network…     3.47             3.53       3.21             3.31 </span>
-<span class="co">#&gt; 17 Externa…     4.07             4.40       6.19             4.80 </span>
-<span class="co">#&gt; 18 Network…     2.09             2.29       3.38             2.69 </span>
-<span class="co">#&gt; 19 Employe…    75               61         72               68    </span>
-<span class="co">#&gt; # … with 11 more variables: `Finance-East` &lt;dbl&gt;, `Finance-South` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Finance-West` &lt;dbl&gt;, `Financial Planning` &lt;dbl&gt;, `G&amp;A Central` &lt;dbl&gt;, `G&amp;A</span>
-<span class="co">#&gt; #   East` &lt;dbl&gt;, `G&amp;A South` &lt;dbl&gt;, `Human Resources` &lt;dbl&gt;, `Inventory</span>
-<span class="co">#&gt; #   Management` &lt;dbl&gt;, `IT-Corporate` &lt;dbl&gt;, `IT-East` &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;    variable             `Biz Dev` `Customer Servic… Facilities `Finance-Corpora…</span>
+<span class="co">#&gt;    &lt;fct&gt;                    &lt;dbl&gt;             &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Workweek_span           37.2              41.3       43.1              39.5  </span>
+<span class="co">#&gt;  2 Collaboration_hours     14.7              18.3       18.6              16.3  </span>
+<span class="co">#&gt;  3 After_hours_collabo…     2.00              2.78       2.85              2.36 </span>
+<span class="co">#&gt;  4 Meetings                 7.63              9.72       9.96              8.73 </span>
+<span class="co">#&gt;  5 Meeting_hours            7.02              8.78       9.39              8.16 </span>
+<span class="co">#&gt;  6 After_hours_meeting…     0.722             1.20       1.21              0.959</span>
+<span class="co">#&gt;  7 Low_quality_meeting…     4.52              6.67       6.79              5.60 </span>
+<span class="co">#&gt;  8 Meeting_hours_with_…     0.237             0.354      0.255             0.241</span>
+<span class="co">#&gt;  9 Meeting_hours_with_…     3.60              5.10       5.53              4.44 </span>
+<span class="co">#&gt; 10 Emails_sent             39.3              45.4       44.5              40.3  </span>
+<span class="co">#&gt; 11 Email_hours              7.72              9.49       9.20              8.13 </span>
+<span class="co">#&gt; 12 After_hours_email_h…     1.27              1.58       1.64              1.40 </span>
+<span class="co">#&gt; 13 Generated_workload_…     7.98             10.0        9.53              8.34 </span>
+<span class="co">#&gt; 14 Total_focus_hours       33.1              31.3       30.5              31.9  </span>
+<span class="co">#&gt; 15 Internal_network_si…    41.5              41.5       37.0              37.4  </span>
+<span class="co">#&gt; 16 Networking_outside_…     3.47              3.53       3.21              3.31 </span>
+<span class="co">#&gt; 17 External_network_si…     4.07              4.40       6.19              4.80 </span>
+<span class="co">#&gt; 18 Networking_outside_…     2.09              2.29       3.38              2.69 </span>
+<span class="co">#&gt; 19 Employee_Count          75                61         72                68    </span>
+<span class="co">#&gt; # … with 11 more variables: Finance-East &lt;dbl&gt;, Finance-South &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Finance-West &lt;dbl&gt;, Financial Planning &lt;dbl&gt;, G&amp;A Central &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   G&amp;A East &lt;dbl&gt;, G&amp;A South &lt;dbl&gt;, Human Resources &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Inventory Management &lt;dbl&gt;, IT-Corporate &lt;dbl&gt;, IT-East &lt;dbl&gt;</span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -354,28 +354,28 @@
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"chartdata"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 20 x 10</span>
-<span class="co">#&gt;    LevelDesignation mgr1on1 coattendande     n   perc   xmin  xmax   ymin  ymax</span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;        &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Director         &lt; 15 m… &lt;50%            45 0.662  -0.813 0     -0.813 0    </span>
-<span class="co">#&gt;  2 Director         &gt; 15 m… &lt;50%            23 0.338   0     0.582 -0.582 0    </span>
-<span class="co">#&gt;  3 Executive        &lt; 15 m… &lt;50%             4 0.667  -0.816 0     -0.816 0    </span>
-<span class="co">#&gt;  4 Executive        &gt; 15 m… &lt;50%             2 0.333   0     0.577 -0.577 0    </span>
-<span class="co">#&gt;  5 Junior IC        &lt; 15 m… &lt;50%            10 0.0952 -0.309 0     -0.309 0    </span>
-<span class="co">#&gt;  6 Junior IC        &lt; 15 m… &gt;50%            40 0.381  -0.617 0      0     0.617</span>
-<span class="co">#&gt;  7 Junior IC        &gt; 15 m… &lt;50%             4 0.0381  0     0.195 -0.195 0    </span>
-<span class="co">#&gt;  8 Junior IC        &gt; 15 m… &gt;50%            51 0.486   0     0.697  0     0.697</span>
-<span class="co">#&gt;  9 Manager          &lt; 15 m… &lt;50%           106 0.318  -0.564 0     -0.564 0    </span>
-<span class="co">#&gt; 10 Manager          &lt; 15 m… &gt;50%            78 0.234  -0.484 0      0     0.484</span>
-<span class="co">#&gt; 11 Manager          &gt; 15 m… &lt;50%            67 0.201   0     0.449 -0.449 0    </span>
-<span class="co">#&gt; 12 Manager          &gt; 15 m… &gt;50%            82 0.246   0     0.496  0     0.496</span>
-<span class="co">#&gt; 13 Senior IC        &lt; 15 m… &lt;50%            14 0.136  -0.369 0     -0.369 0    </span>
-<span class="co">#&gt; 14 Senior IC        &lt; 15 m… &gt;50%            31 0.301  -0.549 0      0     0.549</span>
-<span class="co">#&gt; 15 Senior IC        &gt; 15 m… &lt;50%            10 0.0971  0     0.312 -0.312 0    </span>
-<span class="co">#&gt; 16 Senior IC        &gt; 15 m… &gt;50%            48 0.466   0     0.683  0     0.683</span>
-<span class="co">#&gt; 17 Support          &lt; 15 m… &lt;50%            52 0.124  -0.352 0     -0.352 0    </span>
-<span class="co">#&gt; 18 Support          &lt; 15 m… &gt;50%           159 0.379  -0.616 0      0     0.616</span>
-<span class="co">#&gt; 19 Support          &gt; 15 m… &lt;50%            23 0.0549  0     0.234 -0.234 0    </span>
-<span class="co">#&gt; 20 Support          &gt; 15 m… &gt;50%           185 0.442   0     0.664  0     0.664</span>
+<span class="co">#&gt;    LevelDesignation mgr1on1  coattendande     n   perc   xmin  xmax   ymin  ymax</span>
+<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Director         &lt; 15 min &lt;50%            45 0.662  -0.813 0     -0.813 0    </span>
+<span class="co">#&gt;  2 Director         &gt; 15 min &lt;50%            23 0.338   0     0.582 -0.582 0    </span>
+<span class="co">#&gt;  3 Executive        &lt; 15 min &lt;50%             4 0.667  -0.816 0     -0.816 0    </span>
+<span class="co">#&gt;  4 Executive        &gt; 15 min &lt;50%             2 0.333   0     0.577 -0.577 0    </span>
+<span class="co">#&gt;  5 Junior IC        &lt; 15 min &lt;50%            10 0.0952 -0.309 0     -0.309 0    </span>
+<span class="co">#&gt;  6 Junior IC        &lt; 15 min &gt;50%            40 0.381  -0.617 0      0     0.617</span>
+<span class="co">#&gt;  7 Junior IC        &gt; 15 min &lt;50%             4 0.0381  0     0.195 -0.195 0    </span>
+<span class="co">#&gt;  8 Junior IC        &gt; 15 min &gt;50%            51 0.486   0     0.697  0     0.697</span>
+<span class="co">#&gt;  9 Manager          &lt; 15 min &lt;50%           106 0.318  -0.564 0     -0.564 0    </span>
+<span class="co">#&gt; 10 Manager          &lt; 15 min &gt;50%            78 0.234  -0.484 0      0     0.484</span>
+<span class="co">#&gt; 11 Manager          &gt; 15 min &lt;50%            67 0.201   0     0.449 -0.449 0    </span>
+<span class="co">#&gt; 12 Manager          &gt; 15 min &gt;50%            82 0.246   0     0.496  0     0.496</span>
+<span class="co">#&gt; 13 Senior IC        &lt; 15 min &lt;50%            14 0.136  -0.369 0     -0.369 0    </span>
+<span class="co">#&gt; 14 Senior IC        &lt; 15 min &gt;50%            31 0.301  -0.549 0      0     0.549</span>
+<span class="co">#&gt; 15 Senior IC        &gt; 15 min &lt;50%            10 0.0971  0     0.312 -0.312 0    </span>
+<span class="co">#&gt; 16 Senior IC        &gt; 15 min &gt;50%            48 0.466   0     0.683  0     0.683</span>
+<span class="co">#&gt; 17 Support          &lt; 15 min &lt;50%            52 0.124  -0.352 0     -0.352 0    </span>
+<span class="co">#&gt; 18 Support          &lt; 15 min &gt;50%           159 0.379  -0.616 0      0     0.616</span>
+<span class="co">#&gt; 19 Support          &gt; 15 min &lt;50%            23 0.0549  0     0.234 -0.234 0    </span>
+<span class="co">#&gt; 20 Support          &gt; 15 min &gt;50%           185 0.442   0     0.664  0     0.664</span>
 <span class="co">#&gt; # … with 1 more variable: mgrRel &lt;fct&gt;</span></code></pre></div>
 </div>
 <div id="distribution-of-time-spent-with-manager" class="section level3">

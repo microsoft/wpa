@@ -215,9 +215,9 @@ Returns an stacked area plot of Email and Meeting Hours by default.
 Additional options available to return a summary table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>collaboration_area</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>collaboration_area</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='cn'>NULL</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
 
-<span class='fu'>collab_area</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
+<span class='fu'>collab_area</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='cn'>NULL</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -230,8 +230,9 @@ Unscheduled call hours would be included in the output.</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>HR Variable by which to split metrics, defaults to
-"Organization" but accepts any character vector, e.g. "LevelDesignation"</p></td>
+      <td><p>HR Variable by which to split metrics, defaults to <code>NULL</code>, but
+accepts any character vector, e.g. "LevelDesignation". If <code>NULL</code> is passed,
+the organizational attribute is automatically populated as "Total".</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
@@ -272,9 +273,32 @@ and <code>Instant_Message_hours</code>.</p>
 <code><a href='collaboration_trend.html'>collaboration_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>collaboration_area</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># Return plot with total (default)</span>
+<span class='fu'>collaboration_area</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
 </div><div class='img'><img src='collaboration_area-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+<span class='co'># Return plot with hrvar split</span>
+<span class='fu'>collaboration_area</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
+</div><div class='img'><img src='collaboration_area-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return summary table</span>
+<span class='fu'>collaboration_area</span><span class='op'>(</span><span class='va'>sq_data</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13 x 7</span><span>
+#&gt;    Date       group Meeting_hours Email_hours Instant_Message_ho… Employee_Count
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2019-11-03 Total         11.0        11.3                0.696           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2019-11-10 Total         11.0        11.0                0.675           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2019-11-17 Total         10.2        10.1                0.610           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2019-11-24 Total          9.74        9.84               0.598           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2019-12-01 Total          6.71        6.11               0.371           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2019-12-08 Total          9.59        9.37               0.581           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2019-12-15 Total         10.2        10.1                0.609           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2019-12-22 Total         10.4        10.1                0.608           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2019-12-29 Total          9.97        9.45               0.579           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-01-05 Total          8.96        8.50               0.523           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> 2020-01-12 Total         11.3        11.3                0.690           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> 2020-01-19 Total         11.2        11.6                0.706           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> 2020-01-26 Total         10.0         9.99               0.610           </span><span style='text-decoration: underline;'>1</span><span>034
+#&gt; </span><span style='color: #949494;'># … with 1 more variable: Collaboration_hours &lt;dbl&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
