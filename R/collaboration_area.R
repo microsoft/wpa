@@ -50,34 +50,49 @@ collaboration_area <- function(data,
                                mingroup=5,
                                return = "plot"){
 
+  ## Date cleaning
   data$Date <- as.Date(data$Date, format = "%m/%d/%Y")
 
-  if("Instant_message_hours" %in% names(data)){
+  ## Lower case version of column names
+  lnames <- tolower(names(data))
 
-    data <- rename(data, Instant_Message_hours = "Instant_message_hours")
+  if("instant_message_hours" %in% lnames){
+
+    names(data) <-
+      gsub(pattern = "instant_message_hours",
+           replacement = "Instant_Message_hours",
+           x = names(data),
+           ignore.case = TRUE) # Case-insensitive
 
   }
 
-  if("Unscheduled_call_hours" %in% names(data)){
+  if("unscheduled_call_hours" %in% lnames){
+
+    names(data) <-
+      gsub(pattern = "unscheduled_call_hours",
+           replacement = "Unscheduled_Call_hours",
+           x = names(data),
+           ignore.case = TRUE) # Case-insensitive
 
     data <- rename(data, Unscheduled_Call_hours = "Unscheduled_call_hours")
 
   }
 
-  if("Unscheduled_Call_hours" %in% names(data)){
+  ## Exclude metrics if not available as a metric
 
-    main_vars <- c("Meeting_hours",
-                   "Email_hours",
-                   "Instant_Message_hours",
-                   "Unscheduled_Call_hours")
+  check_chr <- c("^Meeting_hours$",
+                 "^Email_hours$",
+                 "^Instant_Message_hours$",
+                 "^Unscheduled_Call_hours$")
 
-  } else {
+  main_vars <-
+    names(data)[
+    grepl(pattern = paste(check_chr, collapse = "|"),
+          x = lnames,
+          ignore.case = TRUE)
+  ]
 
-    main_vars <- c("Meeting_hours",
-                   "Email_hours",
-                   "Instant_Message_hours")
-
-  }
+  ## Analysis table
 
   myTable <-
     data %>%
