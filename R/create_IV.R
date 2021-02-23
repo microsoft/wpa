@@ -187,6 +187,13 @@ plot_WOE <- function(IV, predictor){
     IV$Tables[[predictor]] %>%
     mutate(labelpos = ifelse(WOE <= 0, 1.2, -1))
 
+  # Get range
+  WOE_range <-
+    IV_obj$Tables %>%
+    purrr::map(~pull(., WOE)) %>%
+    unlist() %>%
+    range()
+
   # Plot
   plot_table %>%
     mutate(!!sym(predictor) :=
@@ -206,6 +213,7 @@ plot_WOE <- function(IV, predictor){
          subtitle = "Weight of Evidence",
          x = us_to_space(predictor),
          y = "Weight of Evidence (WOE)") +
-    theme_wpa_basic()
+    theme_wpa_basic() +
+    ylim(WOE_range[1] * 1.1, WOE_range[2] * 1.1)
 
 }
