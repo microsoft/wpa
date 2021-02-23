@@ -76,8 +76,18 @@ network_g2g <- function(data,
 
   }
 
+  ## Warn if 'Collaborators Within Group' is not present in data
+  if(! "Collaborators Within Group" %in% unique(data[[collaborator]])){
+
+    warning(
+      "`Collaborators Within Group` is not found in the collaborator variable.
+      The analysis may be excluding in-group collaboration."
+      )
+
+  }
 
 
+  ## Run plot_data
   plot_data <-
     data %>%
     rename(TimeInvestorOrg = time_investor,
