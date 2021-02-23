@@ -47,6 +47,7 @@ following strings:
 \item \code{"plot"}
 \item \code{"table"}
 \item \code{"network"}
+\item \code{"data"}
 }
 
 See \code{Value} for more information.}
@@ -58,6 +59,7 @@ argument:
 \item \code{"plot"}: ggplot object. A group-to-group network plot.
 \item \code{"table"}: data frame. An interactive matrix of the network.
 \item \verb{"network}: igraph object used for creating the network plot.
+\item \code{"data"}: data frame. A long table of the underlying data.
 }
 }
 \description{
@@ -79,7 +81,7 @@ g2g_data \%>\%
 # Return an interaction matrix
 # Minimum arguments specified
 g2g_data \%>\%
-  network_g2g(return = "data")
+  network_g2g(return = "table")
 
 
 }

@@ -24,6 +24,7 @@
 #'   - `"plot"`
 #'   - `"table"`
 #'   - `"network"`
+#'   - `"data"`
 #'
 #' See `Value` for more information.
 #'
@@ -33,6 +34,7 @@
 #'   - `"plot"`: ggplot object. A group-to-group network plot.
 #'   - `"table"`: data frame. An interactive matrix of the network.
 #'   - `"network`: igraph object used for creating the network plot.
+#'   - `"data"`: data frame. A long table of the underlying data.
 #'
 #' @import ggplot2
 #' @import dplyr
@@ -51,7 +53,7 @@
 #' # Return an interaction matrix
 #' # Minimum arguments specified
 #' g2g_data %>%
-#'   network_g2g(return = "data")
+#'   network_g2g(return = "table")
 #'
 #'
 #' @export
@@ -125,6 +127,11 @@ network_g2g <- function(data,
     plot_data %>%
       tidyr::pivot_wider(names_from = CollaboratorOrg,
                          values_from = metric_prop)
+
+  } else if(return == "data"){
+
+    ## Return long table
+    plot_data
 
   } else if(return %in% c("plot", "network")){
 
