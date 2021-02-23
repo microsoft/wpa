@@ -128,20 +128,10 @@ create_IV <- function(data,
 
   } else if(return == "plot-WOE"){
 
-      if (length(IV$Summary$Variable[]) >9){
+    ## Return list of ggplots
 
-        Information::plot_infotables(IV,
-                                     IV$Summary$Variable[1:9],
-                                     same_scale=TRUE) %>%
-          grDevices::recordPlot()
-
-      } else {
-
-        Information::plot_infotables(IV,
-                                     IV$Summary$Variable[],
-                                     same_scale=TRUE) %>%
-          grDevices::recordPlot()
-      }
+    IV$Summary$Variable %>%
+      purrr::map(~plot_WOE(IV = IV, predictor = .))
 
     } else if(return == "list"){
 
@@ -152,4 +142,51 @@ create_IV <- function(data,
       stop("Please enter a valid input for `return`.")
 
     }
+}
+
+#' @title Plot WOE graphs with an IV object
+#'
+#' @description
+#' Internal function within `create_IV()` that plots WOE graphs using an IV
+#' object. Can also be used for plotting individual WOE graphs.
+#'
+#' @param IV IV object created with 'Information'.
+#' @param predictor String with the name of the predictor variable.
+#'
+#' @return
+#' ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
+#' variable as the horizontal axis.
+#'
+#' @import dplyr
+#' @import ggplot2
+#'
+#' @export
+plot_WOE <- function(IV, predictor){
+
+  # Identify right table
+  plot_table <-
+    IV$Tables[[predictor]] %>%
+    mutate(labelpos = ifelse(WOE <= 0, 1.2, -1))
+
+  # Plot
+  plot_table %>%
+    mutate(!!sym(predictor) :=
+             factor(!!sym(predictor),
+                    levels =
+                      pull(
+                        plot_table,
+                        predictor
+                      )
+             )) %>%
+    ggplot(aes(x = !!sym(predictor),
+               y = WOE)) +
+    geom_col(fill = rgb2hex(49,97,124)) +
+    geom_text(aes(label = round(WOE, 1),
+                  vjust = labelpos)) +
+    labs(title = us_to_space(predictor),
+         subtitle = "Weight of Evidence",
+         x = us_to_space(predictor),
+         y = "Weight of Evidence (WOE)") +
+    theme_wpa_basic()
+
 }

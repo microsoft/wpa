@@ -60,21 +60,43 @@ IV_report <- function(data,
              bins = bins,
              return = "list")
 
+ ## List of ggplot
+ plot_list <-
+   data %>%
+   create_IV(outcome = outcome,
+             predictors = predictors,
+             bins = bins,
+             return = "plot-WOE")
+
  table_names <- gsub("_", " ", x = names(table_list))
 
   output_list <-
     list(data %>% check_query(return = "text") %>% md2html(),
          data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins),
-         data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins, return="summary"),
-         data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins, return="plot-WOE")) %>%
+         data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins, return="summary")) %>%
+    c(plot_list) %>%
     c(table_list)  %>%
     purrr::map_if(is.data.frame, create_dt)
 
-  title_list <- c("Data Overview", "Top Predictors", "", "WOE Analysis", table_names)
+  title_list <-
+    c("Data Overview",
+      "Top Predictors",
+      "",
+      "WOE Analysis",
+      rep("", length(plot_list) - 1), # Minus the WOE header
+      table_names)
 
   n_title <- length(title_list)
 
-  title_levels <- c(2,2,4,2, rep(3, n_title-4))
+  title_levels <-
+    c(
+      2,
+      2,
+      4,
+      2,
+      rep(3, length(plot_list) - 1), # Minus the WOE header
+      rep(3, length(table_list))
+      )
 
   generate_report(title = "Information Value Report",
                   filename = newpath,
