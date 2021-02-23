@@ -235,8 +235,14 @@ e.g. "Organization". Defaults to NULL.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>A character vector specifying whether to return a matrix plot or a table.
-Defaults to the 2 by 2 matrix. Valid values are "plot", "table", and "chartdata".</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+<li><p><code>"data"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     <tr>
       <th>plot_colors</th>
@@ -248,6 +254,25 @@ Defaults to the 2 by 2 matrix. Valid values are "plot", "table", and "chartdata"
 Defaults to 15.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. When <code>NULL</code> is passed to <code>hrvar</code>, a two-by-two
+grid where the size of the grid represents total percentage of employees is
+returned. Otherwise, a horizontal stacked bar plot is returned.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table is returned.</p></li>
+<li><p><code>"data"</code>: data frame. A long table grouped at the <code>PersonId</code> level with
+the following columns:</p><ul>
+<li><p><code>PersonId</code></p></li>
+<li><p>HR variable supplied to <code>hrvar</code></p></li>
+<li><p><code>CoattendanceRate</code></p></li>
+<li><p><code>Meeting_hours_with_manager_1_on_1</code></p></li>
+<li><p><code>mgr1on1</code></p></li>
+<li><p><code>Type</code></p></li>
+</ul></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -264,8 +289,28 @@ Defaults to 15.</p></td>
 <code><a href='mgrcoatt_dist.html'>mgrcoatt_dist</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># Return matrix</span>
+<span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
 </div><div class='img'><img src='mgrrel_matrix-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return stacked bar plot</span>
+<span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
+</div><div class='img'><img src='mgrrel_matrix-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'>## Visualize coaching style types</span>
+<span class='co'># Ensure dplyr is loaded</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+
+<span class='co'># Extract PersonId and Coaching Type</span>
+<span class='va'>match_df</span> <span class='op'>&lt;-</span>
+  <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mgrrel_matrix</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>PersonId</span>, <span class='va'>Type</span><span class='op'>)</span>
+
+<span class='co'># Join and visualize baseline</span>
+<span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>match_df</span>, by <span class='op'>=</span> <span class='st'>"PersonId"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='keymetrics_scan.html'>keymetrics_scan</a></span><span class='op'>(</span>hrvar <span class='op'>=</span> <span class='st'>"Type"</span>,
+                  return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+</div><div class='img'><img src='mgrrel_matrix-3.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
