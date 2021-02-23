@@ -47,7 +47,6 @@ following strings:
 \item \code{"plot"}
 \item \code{"table"}
 \item \code{"network"}
-\item \code{"data"}
 }
 
 See \code{Value} for more information.}
@@ -57,9 +56,8 @@ A different output is returned depending on the value passed to the \code{return
 argument:
 \itemize{
 \item \code{"plot"}: ggplot object. A group-to-group network plot.
-\item \code{"table"}: data frame. A summary table for the metric.
+\item \code{"table"}: data frame. An interactive matrix of the network.
 \item \verb{"network}: igraph object used for creating the network plot.
-\item \verb{"data}: data frame. An interactive matrix of the network.
 }
 }
 \description{

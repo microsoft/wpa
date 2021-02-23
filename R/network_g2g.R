@@ -24,7 +24,6 @@
 #'   - `"plot"`
 #'   - `"table"`
 #'   - `"network"`
-#'   - `"data"`
 #'
 #' See `Value` for more information.
 #'
@@ -32,9 +31,8 @@
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
 #'   - `"plot"`: ggplot object. A group-to-group network plot.
-#'   - `"table"`: data frame. A summary table for the metric.
+#'   - `"table"`: data frame. An interactive matrix of the network.
 #'   - `"network`: igraph object used for creating the network plot.
-#'   - `"data`: data frame. An interactive matrix of the network.
 #'
 #' @import ggplot2
 #' @import dplyr
