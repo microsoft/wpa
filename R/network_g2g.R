@@ -19,11 +19,22 @@
 #'   `Collaboration_hours`.
 #' @param exc_threshold Exclusion threshold to apply.
 #' @param subtitle String to override default plot subtitle.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs include:
-#'   - "plot": return a network plot.
-#'   - "table": return a raw data table used to plot the network.
-#'   - "network": return an **igraph** object
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'   - `"network"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A group-to-group network plot.
+#'   - `"table"`: data frame. A summary table for the metric.
+#'   - `"network`: igraph object used for creating the network plot.
+#'   - `"data`: data frame. An interactive matrix of the network.
 #'
 #' @import ggplot2
 #' @import dplyr
@@ -38,6 +49,12 @@
 #'               collaborator = "Collaborators_Organization",
 #'               metric = "Meeting_hours",
 #'               exc_threshold = 0.05)
+#'
+#' # Return an interaction matrix
+#' # Minimum arguments specified
+#' g2g_data %>%
+#'   network_g2g(return = "data")
+#'
 #'
 #' @export
 network_g2g <- function(data,
@@ -106,7 +123,10 @@ network_g2g <- function(data,
 
   if(return == "table"){
 
-    plot_data
+    ## Return a 'tidy' matrix
+    plot_data %>%
+      tidyr::pivot_wider(names_from = CollaboratorOrg,
+                         values_from = metric_prop)
 
   } else if(return %in% c("plot", "network")){
 

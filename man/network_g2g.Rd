@@ -41,13 +41,26 @@ column.}
 
 \item{subtitle}{String to override default plot subtitle.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs include:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
-\item "plot": return a network plot.
-\item "table": return a raw data table used to plot the network.
-\item "network": return an \strong{igraph} object
-}}
+\item \code{"plot"}
+\item \code{"table"}
+\item \code{"network"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A group-to-group network plot.
+\item \code{"table"}: data frame. A summary table for the metric.
+\item \verb{"network}: igraph object used for creating the network plot.
+\item \verb{"data}: data frame. An interactive matrix of the network.
+}
 }
 \description{
 Pass a data frame containing a group-to-group query and return a network
@@ -64,5 +77,11 @@ g2g_data \%>\%
               collaborator = "Collaborators_Organization",
               metric = "Meeting_hours",
               exc_threshold = 0.05)
+
+# Return an interaction matrix
+# Minimum arguments specified
+g2g_data \%>\%
+  network_g2g(return = "data")
+
 
 }
