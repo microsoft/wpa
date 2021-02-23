@@ -74,7 +74,8 @@ create_rank <- function(data,
   output <-
     results %>%
     arrange(desc(get(metric))) %>%
-    select(hrvar, everything())
+    select(hrvar, everything()) %>%
+    mutate(group = as.character(group)) # text fails when not string
 
   if(return == "table"){
 
@@ -136,7 +137,7 @@ create_rank <- function(data,
           strip.background = element_blank(),
           strip.text = element_blank()
         ) +
-        geom_vline(xintercept = avg_ch, colour = "red") 
+        geom_vline(xintercept = avg_ch, colour = "red")
 
     } else if(plot_mode == 2){
 

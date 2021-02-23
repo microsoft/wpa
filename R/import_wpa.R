@@ -14,20 +14,30 @@
 #' and by default `stringsAsFactors` is set to FALSE.
 #' A data frame is returned by the function (not a `data.table`).
 #'
-#' @param x String containing the path to the Workplace Analytics query to be imported.
-#' The input file must be a CSV file, and the file extension must be explicitly entered,
-#' e.g. "/files/standard query.csv"
-#' @param standardise logical. If TRUE, `import_wpa()` runs `standardise_pq()` to make a Collaboration
-#' Assessment query's columns name standard and consistent with a Standard Person Query. Note that this
-#' will have no effect if the query being imported is not a Ways of Working Assessment query. Defaults
-#' as FALSE.
+#' @param x String containing the path to the Workplace Analytics query to be
+#'   imported. The input file must be a CSV file, and the file extension must be
+#'   explicitly entered, e.g. `"/files/standard query.csv"`
+#' @param standardise logical. If TRUE, `import_wpa()` runs `standardise_pq()`
+#'   to make a Collaboration Assessment query's columns name standard and
+#'   consistent with a Standard Person Query. Note that this will have no effect
+#'   if the query being imported is not a Ways of Working Assessment query.
+#'   Defaults as FALSE.
+#' @param encoding String to specify encoding to be used within
+#'   `data.table::fread()`. See `data.table::fread()` documentation for more
+#'   information. Defaults to `'UTF-8'`.
 #'
 #' @return A `tibble` is returned.
 #'
 #' @export
-import_wpa <- function(x, standardise = FALSE){
+import_wpa <- function(x,
+                       standardise = FALSE,
+                       encoding = 'UTF-8'){
 
-  return_data <- data.table::fread(x, stringsAsFactors = FALSE) %>% as.data.frame()
+  return_data <-
+    data.table::fread(x,
+                      stringsAsFactors = FALSE,
+                      encoding = encoding) %>%
+    as.data.frame()
 
   # Columns which are Dates
   dateCols <- sapply(return_data, function(x) all(is_date_format(x)))

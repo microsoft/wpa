@@ -5,7 +5,7 @@
 \alias{mt_data}
 \title{Sample Meeting Query dataset}
 \format{
-A data frame with 2000 rows and 30 variables:
+A data frame with 2001 rows and 30 variables:
 \describe{
 \item{MeetingId}{ }
 \item{StartDate}{ }
@@ -37,6 +37,13 @@ A data frame with 2000 rows and 30 variables:
 \item{TotalNoDoubleBooked}{ }
 \item{TotalNoAttendees}{ }
 \item{MeetingResources}{ }
+\item{Attendees_with_conflicting_meetings}{ }
+\item{Invitees}{ }
+\item{Emails_sent_during_meetings}{ }
+\item{Attendees_multitasking}{ }
+\item{Redundant_attendees}{ }
+\item{Total_meeting_cost}{ }
+\item{Total_redundant_hours}{ }
 
 ...
 }
