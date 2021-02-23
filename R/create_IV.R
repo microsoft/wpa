@@ -17,32 +17,49 @@
 #' @param bins Number of bins to use in `Information::create_infotables()`, defaults to 5.
 #' @param siglevel Significance level to use in comparing populations for the outcomes,
 #' defaults to 0.05
-#' @param return String specifying what output to return.
-#'   - `"plot"`: returns a bar plot summarising the information value with a maximum of 12 variables.
-#'   - `"summary"` returns a summary table
-#'   - `"list"` returns a list of outputs for all the input variables
-#'   - `"plot-WOE"` commpares distribution for top predictors
-#'   - `"IV"` returns the original Information object returned by `Information`.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"summary"`
+#'   - `"list"`
+#'   - `"plot-WOE"`
+#'   - `"IV"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A bar plot showing the IV value of the top
+#'   (maximum 12) variables.
+#'   - `"summary"`: data frame. A summary table for the metric.
+#'   - `"list"`: list. A list of outputs for all the input variables.
+#'   - `"plot-WOE"`: A list of ggplot objects that show the WOE for each
+#'   predictor used in the model.
+#'   - `"IV"` returns the original Information object returned by
+#'   `Information::create_infotables()`.
 #'
 #' @import dplyr
 #'
 #' @family Information Value
 #'
 #' @examples
-#' \dontrun{
-#' library(dplyr)
-#'
 #' # Return a summary table of IV
 #' sq_data %>%
-#'   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
-#'   create_IV(outcome = "X", return = "summary")
+#'   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) %>%
+#'   create_IV(outcome = "X",
+#'             predictors = c("Email_hours",
+#'                            "Meeting_hours",
+#'                            "Instant_Message_hours"),
+#'             return = "plot")
 #'
-#' # Return plot
+#' \donttest{
+#' # Return summary
 #' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
+#'   dplyr::mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
 #'   create_IV(outcome = "X",
 #'             predictors = c("Email_hours", "Meeting_hours"),
-#'             return = "plot")
+#'             return = "summary")
 #' }
 #' @export
 create_IV <- function(data,
@@ -108,8 +125,6 @@ create_IV <- function(data,
 
   IV_summary <- inner_join(IV$Summary, predictors, by = c("Variable"))
 
-
-
   if(return == "summary"){
 
     IV_summary
@@ -119,12 +134,16 @@ create_IV <- function(data,
     IV
 
   } else if(return == "plot"){
+
     IV_summary %>%
       utils::head(12) %>%
       create_bar_asis(group_var = "Variable",
                       bar_var = "IV",
                       title = "Information Value (IV)",
-                      subtitle = "Showing top 12 only")
+                      subtitle =
+                        paste("Showing top",
+                              nrow(IV_summary),
+                              "predictors"))
 
   } else if(return == "plot-WOE"){
 

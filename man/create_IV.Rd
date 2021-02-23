@@ -27,34 +27,53 @@ the values 1 or 0.}
 \item{siglevel}{Significance level to use in comparing populations for the outcomes,
 defaults to 0.05}
 
-\item{return}{String specifying what output to return.
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
-\item \code{"plot"}: returns a bar plot summarising the information value with a maximum of 12 variables.
-\item \code{"summary"} returns a summary table
-\item \code{"list"} returns a list of outputs for all the input variables
-\item \code{"plot-WOE"} commpares distribution for top predictors
-\item \code{"IV"} returns the original Information object returned by \code{Information}.
-}}
+\item \code{"plot"}
+\item \code{"summary"}
+\item \code{"list"}
+\item \code{"plot-WOE"}
+\item \code{"IV"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bar plot showing the IV value of the top
+(maximum 12) variables.
+\item \code{"summary"}: data frame. A summary table for the metric.
+\item \code{"list"}: list. A list of outputs for all the input variables.
+\item \code{"plot-WOE"}: A list of ggplot objects that show the WOE for each
+predictor used in the model.
+\item \code{"IV"} returns the original Information object returned by
+\code{Information::create_infotables()}.
+}
 }
 \description{
 Specify an outcome variable and return IV outputs.
 All numeric variables in the dataset are used as predictor variables.
 }
 \examples{
-\dontrun{
-library(dplyr)
-
 # Return a summary table of IV
 sq_data \%>\%
-  mutate(X = ifelse(Email_hours > 6, 1, 0)) \%>\%
-  create_IV(outcome = "X", return = "summary")
+  dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) \%>\%
+  create_IV(outcome = "X",
+            predictors = c("Email_hours",
+                           "Meeting_hours",
+                           "Instant_Message_hours"),
+            return = "plot")
 
-# Return plot
+\donttest{
+# Return summary
 sq_data \%>\%
-  mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) \%>\%
+  dplyr::mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) \%>\%
   create_IV(outcome = "X",
             predictors = c("Email_hours", "Meeting_hours"),
-            return = "plot")
+            return = "summary")
 }
 }
 \seealso{
