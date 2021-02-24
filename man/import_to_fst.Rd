@@ -24,8 +24,13 @@ read. The 'fst' package must be installed.
 The \href{https://www.fstpackage.org/}{fst} package provides a way to serialize
 data frames in R which makes loading data much faster than CSV.
 \code{import_to_fst()} converts a CSV file into a FST file in the specified
-directory. Once this FST file is created, it can be read into R using
-\code{fst::read_fst()}.
+directory.
+
+Once this FST file is created, it can be read into R using
+\code{fst::read_fst()}. Since \code{import_to_fst()} only does conversion but not
+loading, it should normally only be run once at the beginning of each piece
+of analysis, and \code{fst::read_fst()} should take over the job of data loading
+at the start of your analysis script.
 
 Internally, \code{import_to_fst()} uses \code{import_wpa()}, and additional arguments
 to \code{import_wpa()} can be passed with \code{...}.

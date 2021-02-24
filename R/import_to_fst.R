@@ -14,8 +14,13 @@
 #' The [fst](https://www.fstpackage.org/) package provides a way to serialize
 #' data frames in R which makes loading data much faster than CSV.
 #' `import_to_fst()` converts a CSV file into a FST file in the specified
-#' directory. Once this FST file is created, it can be read into R using
-#' `fst::read_fst()`.
+#' directory.
+#'
+#' Once this FST file is created, it can be read into R using
+#' `fst::read_fst()`. Since `import_to_fst()` only does conversion but not
+#' loading, it should normally only be run once at the beginning of each piece
+#' of analysis, and `fst::read_fst()` should take over the job of data loading
+#' at the start of your analysis script.
 #'
 #' Internally, `import_to_fst()` uses `import_wpa()`, and additional arguments
 #' to `import_wpa()` can be passed with `...`.
@@ -45,5 +50,7 @@ import_to_fst <- function(path, ...){
 
   fst::write_fst(temp_df, path_fst)
 
-  message("FST file sucessfully created at ", path_fst)
+  message("\nFST file sucessfully created at ", path_fst, ".")
+
+  message("\nYou can now load the FST file with `fst::read_fst()`.")
 }
