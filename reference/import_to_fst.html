@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • wpa</title>
+<title>Read a Workplace Analytics query in CSV using and create a FST file in
+the same directory for faster reading — import_to_fst • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +49,11 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Read a Workplace Analytics query in CSV using and create a FST file in
+the same directory for faster reading — import_to_fst" />
+<meta property="og:description" content="Uses import_wpa() to read a Workplace Analytics query in CSV
+and convert this into the serialized FST format which is much faster to
+read. The 'fst' package must be installed." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -68,7 +73,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -201,61 +206,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/microsoft/wpa/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Read a Workplace Analytics query in CSV using and create a FST file in
+the same directory for faster reading</h1>
+    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/import_to_fst.R'><code>R/import_to_fst.R</code></a></small>
+    <div class="hidden name"><code>import_to_fst.Rd</code></div>
     </div>
 
-    <div id="wpa-140" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.0">
-<a href="#wpa-140" class="anchor"></a>wpa 1.4.0</h1>
-<p>New functions, bug fixes, and performance improvements.</p>
-<p>New functions:</p>
-<ul>
-<li><code><a href="../reference/import_to_fst.html">import_to_fst()</a></code></li>
-</ul>
-</div>
-    <div id="wpa-131" class="section level1">
-<h1 class="page-header" data-toc-text="1.3.1">
-<a href="#wpa-131" class="anchor"></a>wpa 1.3.1</h1>
-<p>New functions, bug fixes, and performance improvements.</p>
-<p>Significant changes to existing functions:</p>
-<ul>
-<li>New plot visual is available for <code><a href="../reference/keymetrics_scan.html">keymetrics_scan()</a></code>
-</li>
-<li>
-<code><a href="../reference/combine_signals.html">combine_signals()</a></code> can now dynamically accept any metrics available in the Hourly Collaboration query.</li>
-<li>
-<code><a href="../reference/pairwise_count.html">pairwise_count()</a></code> now uses a <strong>data.table</strong> implementation, instead of dependent on <strong>widyr</strong>.</li>
-</ul>
-<p>New functions:</p>
-<ul>
-<li><code><a href="../reference/network_p2p.html">network_p2p()</a></code></li>
-<li><code><a href="../reference/network_leiden.html">network_leiden()</a></code></li>
-<li><code><a href="../reference/network_louvain.html">network_louvain()</a></code></li>
-<li><code><a href="../reference/network_describe.html">network_describe()</a></code></li>
-<li><code><a href="../reference/create_sankey.html">create_sankey()</a></code></li>
-<li><code><a href="../reference/totals_col.html">totals_col()</a></code></li>
-</ul>
-<p>Some package dependencies have been removed (see <a href='https://github.com/microsoft/wpa/issues/36'>#36</a>):</p>
-<ul>
-<li><strong>network</strong></li>
-<li><strong>GGally</strong></li>
-<li><strong>widyr</strong></li>
-</ul>
-</div>
-    <div id="wpa-130" class="section level1">
-<h1 class="page-header" data-toc-text="1.3.0">
-<a href="#wpa-130" class="anchor"></a>wpa 1.3.0</h1>
-<p>This is the first version of the <strong>wpa</strong> package to be released open-source on GitHub. If you have been using a previous developmental version, the main difference is that this release omits the more experimental <em>working patterns</em> family of functions. The experimental functions are currently available upon request via <a href="mailto:mac@microsoft.com" class="email">mac@microsoft.com</a>.</p>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Uses <code><a href='import_wpa.html'>import_wpa()</a></code> to read a Workplace Analytics query in CSV
+and convert this into the serialized FST format which is much faster to
+read. The 'fst' package must be installed.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>import_to_fst</span><span class='op'>(</span><span class='va'>path</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>path</th>
+      <td><p>String containing the path to the Workplace Analytics query to be
+imported. The input file must be a CSV file, and the file extension must be
+explicitly entered, e.g. <code>"/files/standard query.csv"</code>. The converted FST
+file will be saved in the same directory with a different file extension.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments to pass to <code><a href='import_wpa.html'>import_wpa()</a></code>.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The <a href='https://www.fstpackage.org/'>fst</a> package provides a way to serialize
+data frames in R which makes loading data much faster than CSV.
+<code>import_to_fst()</code> converts a CSV file into a FST file in the specified
+directory.</p>
+<p>Once this FST file is created, it can be read into R using
+<code><a href='http://www.fstpackage.org/reference/write_fst.html'>fst::read_fst()</a></code>. Since <code>import_to_fst()</code> only does conversion but not
+loading, it should normally only be run once at the beginning of each piece
+of analysis, and <code><a href='http://www.fstpackage.org/reference/write_fst.html'>fst::read_fst()</a></code> should take over the job of data loading
+at the start of your analysis script.</p>
+<p>Internally, <code>import_to_fst()</code> uses <code><a href='import_wpa.html'>import_wpa()</a></code>, and additional arguments
+to <code><a href='import_wpa.html'>import_wpa()</a></code> can be passed with <code>...</code>.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 
