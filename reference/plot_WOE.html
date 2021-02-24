@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate Information Value for a selected outcome variable — create_IV • wpa</title>
+<title>Plot WOE graphs with an IV object — plot_WOE • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,9 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Calculate Information Value for a selected outcome variable — create_IV" />
-<meta property="og:description" content="Specify an outcome variable and return IV outputs.
-All numeric variables in the dataset are used as predictor variables." />
+<meta property="og:title" content="Plot WOE graphs with an IV object — plot_WOE" />
+<meta property="og:description" content="Internal function within create_IV() that plots WOE graphs using an IV
+object. Can also be used for plotting individual WOE graphs." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -203,107 +203,36 @@ All numeric variables in the dataset are used as predictor variables." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate Information Value for a selected outcome variable</h1>
+    <h1>Plot WOE graphs with an IV object</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/create_IV.R'><code>R/create_IV.R</code></a></small>
-    <div class="hidden name"><code>create_IV.Rd</code></div>
+    <div class="hidden name"><code>plot_WOE.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Specify an outcome variable and return IV outputs.
-All numeric variables in the dataset are used as predictor variables.</p>
+    <p>Internal function within <code><a href='create_IV.html'>create_IV()</a></code> that plots WOE graphs using an IV
+object. Can also be used for plotting individual WOE graphs.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_IV</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  predictors <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>outcome</span>,
-  bins <span class='op'>=</span> <span class='fl'>5</span>,
-  siglevel <span class='op'>=</span> <span class='fl'>0.05</span>,
-  return <span class='op'>=</span> <span class='st'>"plot"</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>plot_WOE</span><span class='op'>(</span><span class='va'>IV</span>, <span class='va'>predictor</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>A Person Query dataset in the form of a data frame.</p></td>
+      <th>IV</th>
+      <td><p>IV object created with 'Information'.</p></td>
     </tr>
     <tr>
-      <th>predictors</th>
-      <td><p>A character vector specifying the columns to be used as predictors.
-Defaults to NULL, where all numeric vectors in the data will be used as predictors.</p></td>
-    </tr>
-    <tr>
-      <th>outcome</th>
-      <td><p>A string specifying a binary variable, i.e. can only contain
-the values 1 or 0.</p></td>
-    </tr>
-    <tr>
-      <th>bins</th>
-      <td><p>Number of bins to use in <code><a href='https://rdrr.io/pkg/Information/man/create_infotables.html'>Information::create_infotables()</a></code>, defaults to 5.</p></td>
-    </tr>
-    <tr>
-      <th>siglevel</th>
-      <td><p>Significance level to use in comparing populations for the outcomes,
-defaults to 0.05</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>String specifying what to return. This must be one of the
-following strings:</p><ul>
-<li><p><code>"plot"</code></p></li>
-<li><p><code>"summary"</code></p></li>
-<li><p><code>"list"</code></p></li>
-<li><p><code>"plot-WOE"</code></p></li>
-<li><p><code>"IV"</code></p></li>
-</ul>
-
-<p>See <code>Value</code> for more information.</p></td>
+      <th>predictor</th>
+      <td><p>String with the name of the predictor variable.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A different output is returned depending on the value passed to the <code>return</code>
-argument:</p><ul>
-<li><p><code>"plot"</code>: ggplot object. A bar plot showing the IV value of the top
-(maximum 12) variables.</p></li>
-<li><p><code>"summary"</code>: data frame. A summary table for the metric.</p></li>
-<li><p><code>"list"</code>: list. A list of outputs for all the input variables.</p></li>
-<li><p><code>"plot-WOE"</code>: A list of ggplot objects that show the WOE for each
-predictor used in the model.</p></li>
-<li><p><code>"IV"</code> returns the original Information object returned by
-<code><a href='https://rdrr.io/pkg/Information/man/create_infotables.html'>Information::create_infotables()</a></code>.</p></li>
-</ul>
+    <p>ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
+variable as the horizontal axis.</p>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Information Value: 
-<code><a href='IV_by_period.html'>IV_by_period</a>()</code>,
-<code><a href='IV_report.html'>IV_report</a>()</code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return a summary table of IV</span>
-<span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Workweek_span</span> <span class='op'>&gt;</span> <span class='fl'>40</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>create_IV</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='st'>"X"</span>,
-            predictors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Email_hours"</span>,
-                           <span class='st'>"Meeting_hours"</span>,
-                           <span class='st'>"Instant_Message_hours"</span><span class='op'>)</span>,
-            return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</div><div class='img'><img src='create_IV-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># \donttest{</span>
-<span class='co'># Return summary</span>
-<span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Collaboration_hours</span> <span class='op'>&gt;</span> <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>create_IV</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='st'>"X"</span>,
-            predictors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Email_hours"</span>, <span class='st'>"Meeting_hours"</span><span class='op'>)</span>,
-            return <span class='op'>=</span> <span class='st'>"summary"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;        Variable       IV       pval
-#&gt; 1 Meeting_hours 1.303955 0.01601973
-#&gt; 2   Email_hours 1.288803 0.01440754</div><div class='input'><span class='co'># }</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
