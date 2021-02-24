@@ -292,6 +292,56 @@
 <div id="analysis-and-visualization" class="section level2">
 <h2 class="hasAnchor">
 <a href="#analysis-and-visualization" class="anchor"></a>Analysis and Visualization</h2>
+<div id="how-do-i-filter-by-specific-date-ranges" class="section level3">
+<h3 class="hasAnchor">
+<a href="#how-do-i-filter-by-specific-date-ranges" class="anchor"></a>How do I filter by specific date ranges?</h3>
+<p>We recommend using <strong>dplyr</strong> (which is loaded in as part of <strong>tidyverse</strong>) for data manipulation. To filter down to a specific date range in a Person Query, you can run:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> <span class="co"># Or load dplyr</span>
+
+<span class="co"># Read Standard Person Query from local directory</span>
+<span class="co"># Assign it to `raw_spq`</span>
+<span class="va">raw_spq</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"data/standard person query.csv"</span><span class="op">)</span>
+
+<span class="co"># Assign filtered data frame to `clean_spq`</span>
+<span class="va">clean_spq</span> <span class="op">&lt;-</span>
+    <span class="va">raw_spq</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"08/30/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"12/19/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The above example filters the date range from the week commencing 30th of August 2020 to the week ending 19th of November 2020 inclusive. Note that the first date is a Sunday (beginning of the week) and the second date is a Saturday (end of the week). If you query is run by <strong>day</strong>, you should specify the <em>after</em> filter as the exact last day, rather than the Saturday of the week.</p>
+<p>In some scenarios, you may also want to exclude a particular week from the data. You can use a similar approach:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">clean_spq2</span> <span class="op">&lt;-</span>
+    <span class="va">clean_spq</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"11/22/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The above line of code excludes the week of 22nd of November 2020, using the operator <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code> to denote <em>not equal to</em>. Conversely, you can isolate that single week by replacing <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code> with <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>.</p>
+</div>
+<div id="how-do-i-create-a-custom-hr-variable" class="section level3">
+<h3 class="hasAnchor">
+<a href="#how-do-i-create-a-custom-hr-variable" class="anchor"></a>How do I create a custom HR variable?</h3>
+<p>The most common way to create a ‘custom HR variable’ is to create a categorical variable from one or more numeric variables. You may want to do this if you are trying to <em>bin</em> a numeric variable or create a custom rule-based segmentation with Workplace Analytics metrics.</p>
+<p>Here is an example of how to create a categorical variable (<code>N_DirectReports_NET</code>) with a numeric variable representing the number of direct reports, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> .</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> <span class="co"># Or load dplyr</span>
+
+<span class="va">clean_spq_with_new_var</span> <span class="op">&lt;-</span>
+  <span class="va">clean_spq</span> <span class="op">%&gt;%</span> <span class="co"># Standard Person Query</span>
+  <span class="fu">mutate</span><span class="op">(</span>N_DirectReports_NET <span class="op">=</span>
+         <span class="fu">case_when</span><span class="op">(</span><span class="va">NumberofDirectReports</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"0"</span>,
+                   <span class="va">NumberofDirectReports</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"1"</span>,
+                   <span class="va">NumberofDirectReports</span> <span class="op">&lt;=</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"2 to 5"</span>,
+                   <span class="va">NumberofDirectReports</span> <span class="op">&lt;=</span> <span class="fl">10</span> <span class="op">~</span> <span class="st">"6 to 10"</span>,
+                   <span class="va">NumberofDirectReports</span> <span class="op">&lt;=</span> <span class="fl">20</span> <span class="op">~</span> <span class="st">"Up to 20"</span>,
+                   <span class="va">NumberofDirectReports</span> <span class="op">&gt;=</span> <span class="fl">21</span> <span class="op">~</span> <span class="st">"21 +"</span>,
+                   <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Not classified"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> creates a new column, whereas <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> runs an if-else operation to classify numeric ranges to the right hand side of the <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> symbol. When the expression on the left hand side evaluates to <code>TRUE</code>, the value on the right hand side is assigned to the new column. At the end of the code, you will see that anything that doesn’t get classified gets an ‘error handling’ value. If a value ends up as “Not classified”, you should check whether there may be gaps in your <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> chunk that is not capturing all the values.</p>
+<p>Once you have created this new variable and checked that the classifications are correct, you can further your analysis by using it as an HR attribute, such as:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">clean_spq_with_new_var</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"N_DirectReports_NET"</span><span class="op">)</span></code></pre></div>
+</div>
 <div id="how-do-i-customize-a-visual-generated-from-a-wpa-function" class="section level3">
 <h3 class="hasAnchor">
 <a href="#how-do-i-customize-a-visual-generated-from-a-wpa-function" class="anchor"></a>How do I customize a visual generated from a {wpa} function?</h3>
@@ -301,7 +351,7 @@
 <h3 class="hasAnchor">
 <a href="#how-do-i-create-a-bar-chart-with-a-custom-metric" class="anchor"></a>How do I create a bar chart with a custom metric?</h3>
 <p>Sometimes you may wish to create an equivalent bar chart of <code><a href="reference/email_summary.html">email_sum()</a></code>, but for a custom metric or another Workplace Analytics metric that does not form part of the <code>*_sum()</code> family. This is where <strong>flexible functions</strong> are helpful, where you can use <code><a href="reference/create_bar.html">create_bar()</a></code> to produce the same visualization by supplying the custom metric name to the <code>metric</code> argument. For instance, a bar chart for <code>"Generate_workload_email_hours"</code> could be run with:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/create_bar.html">create_bar</a></span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Generate_workload_email_hours"</span><span class="op">)</span></code></pre></div>
 <p>The same person-average computation is used and the same minimum group threshold argument is also available with <code><a href="reference/create_bar.html">create_bar()</a></code>. The same is equivalent for the other visualizations:</p>
 <ul>
