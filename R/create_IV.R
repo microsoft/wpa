@@ -17,30 +17,49 @@
 #' @param bins Number of bins to use in `Information::create_infotables()`, defaults to 5.
 #' @param siglevel Significance level to use in comparing populations for the outcomes,
 #' defaults to 0.05
-#' @param return String specifying what output to return.
-#' Defaults to "plot" that return a bar plot summarising the information value.
-#' "summary" returns a summary table, "list" returns a list of outputs for all the
-#' input variables, "plot-WOE" commpares distribution for top predictors.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"summary"`
+#'   - `"list"`
+#'   - `"plot-WOE"`
+#'   - `"IV"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A bar plot showing the IV value of the top
+#'   (maximum 12) variables.
+#'   - `"summary"`: data frame. A summary table for the metric.
+#'   - `"list"`: list. A list of outputs for all the input variables.
+#'   - `"plot-WOE"`: A list of ggplot objects that show the WOE for each
+#'   predictor used in the model.
+#'   - `"IV"` returns the original Information object returned by
+#'   `Information::create_infotables()`.
 #'
 #' @import dplyr
 #'
 #' @family Information Value
 #'
 #' @examples
-#' \dontrun{
-#' library(dplyr)
-#'
 #' # Return a summary table of IV
 #' sq_data %>%
-#'   mutate(X = ifelse(Email_hours > 6, 1, 0)) %>%
-#'   create_IV(outcome = "X", return = "summary")
+#'   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) %>%
+#'   create_IV(outcome = "X",
+#'             predictors = c("Email_hours",
+#'                            "Meeting_hours",
+#'                            "Instant_Message_hours"),
+#'             return = "plot")
 #'
-#' # Return plot
+#' \donttest{
+#' # Return summary
 #' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
+#'   dplyr::mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
 #'   create_IV(outcome = "X",
 #'             predictors = c("Email_hours", "Meeting_hours"),
-#'             return = "plot")
+#'             return = "summary")
 #' }
 #' @export
 create_IV <- function(data,
@@ -106,34 +125,32 @@ create_IV <- function(data,
 
   IV_summary <- inner_join(IV$Summary, predictors, by = c("Variable"))
 
-
-
   if(return == "summary"){
+
     IV_summary
+
+  } else if(return == "IV"){
+
+    IV
+
   } else if(return == "plot"){
+
     IV_summary %>%
       utils::head(12) %>%
       create_bar_asis(group_var = "Variable",
                       bar_var = "IV",
                       title = "Information Value (IV)",
-                      subtitle = "Showing top 12 only")
+                      subtitle =
+                        paste("Showing top",
+                              nrow(IV_summary),
+                              "predictors"))
 
   } else if(return == "plot-WOE"){
 
-      if (length(IV$Summary$Variable[]) >9){
+    ## Return list of ggplots
 
-        Information::plot_infotables(IV,
-                                     IV$Summary$Variable[1:9],
-                                     same_scale=TRUE) %>%
-          grDevices::recordPlot()
-
-      } else {
-
-        Information::plot_infotables(IV,
-                                     IV$Summary$Variable[],
-                                     same_scale=TRUE) %>%
-          grDevices::recordPlot()
-      }
+    IV$Summary$Variable %>%
+      purrr::map(~plot_WOE(IV = IV, predictor = .))
 
     } else if(return == "list"){
 
@@ -144,4 +161,59 @@ create_IV <- function(data,
       stop("Please enter a valid input for `return`.")
 
     }
+}
+
+#' @title Plot WOE graphs with an IV object
+#'
+#' @description
+#' Internal function within `create_IV()` that plots WOE graphs using an IV
+#' object. Can also be used for plotting individual WOE graphs.
+#'
+#' @param IV IV object created with 'Information'.
+#' @param predictor String with the name of the predictor variable.
+#'
+#' @return
+#' ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
+#' variable as the horizontal axis.
+#'
+#' @import dplyr
+#' @import ggplot2
+#'
+#' @export
+plot_WOE <- function(IV, predictor){
+
+  # Identify right table
+  plot_table <-
+    IV$Tables[[predictor]] %>%
+    mutate(labelpos = ifelse(WOE <= 0, 1.2, -1))
+
+  # Get range
+  WOE_range <-
+    IV$Tables %>%
+    purrr::map(~pull(., WOE)) %>%
+    unlist() %>%
+    range()
+
+  # Plot
+  plot_table %>%
+    mutate(!!sym(predictor) :=
+             factor(!!sym(predictor),
+                    levels =
+                      pull(
+                        plot_table,
+                        predictor
+                      )
+             )) %>%
+    ggplot(aes(x = !!sym(predictor),
+               y = WOE)) +
+    geom_col(fill = rgb2hex(49,97,124)) +
+    geom_text(aes(label = round(WOE, 1),
+                  vjust = labelpos)) +
+    labs(title = us_to_space(predictor),
+         subtitle = "Weight of Evidence",
+         x = us_to_space(predictor),
+         y = "Weight of Evidence (WOE)") +
+    theme_wpa_basic() +
+    ylim(WOE_range[1] * 1.1, WOE_range[2] * 1.1)
+
 }
