@@ -189,7 +189,7 @@ plot_WOE <- function(IV, predictor){
 
   # Get range
   WOE_range <-
-    IV_obj$Tables %>%
+    IV$Tables %>%
     purrr::map(~pull(., WOE)) %>%
     unlist() %>%
     range()
