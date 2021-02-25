@@ -96,7 +96,7 @@ collaboration_report <- function(data,
  
   # Set header titles
   title_list <-
-    c("Data Overview",
+    c("Data Available",
 	  "",
 	  "Collaboration Time", # Section header
 	  "",
