@@ -52,6 +52,7 @@ personas_hclust(sq_data,
 \seealso{
 Other Work Patterns: 
 \code{\link{flex_index}()},
+\code{\link{identify_shifts_wp}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_bw}()},

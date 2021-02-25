@@ -55,6 +55,7 @@ em_data \%>\%
 \seealso{
 Other Work Patterns: 
 \code{\link{flex_index}()},
+\code{\link{identify_shifts_wp}()},
 \code{\link{personas_hclust}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_bw}()},

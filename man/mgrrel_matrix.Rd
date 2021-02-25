@@ -18,20 +18,67 @@ mgrrel_matrix(
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector,
 e.g. "Organization". Defaults to NULL.}
 
-\item{return}{A character vector specifying whether to return a matrix plot or a table.
-Defaults to the 2 by 2 matrix. Valid values are "plot", "table", and "chartdata".}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
 
 \item{plot_colors}{Pass a character vector of length 4 containing HEX codes to specify colors to use in plotting.}
 
 \item{threshold}{Specify a numeric value to determine threshold (in minutes) for 1:1 manager hours.
 Defaults to 15.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. When \code{NULL} is passed to \code{hrvar}, a two-by-two
+grid where the size of the grid represents total percentage of employees is
+returned. Otherwise, a horizontal stacked bar plot is returned.
+\item \code{"table"}: data frame. A summary table is returned.
+\item \code{"data"}: data frame. A long table grouped at the \code{PersonId} level with
+the following columns:
+\itemize{
+\item \code{PersonId}
+\item HR variable supplied to \code{hrvar}
+\item \code{CoattendanceRate}
+\item \code{Meeting_hours_with_manager_1_on_1}
+\item \code{mgr1on1}
+\item \code{Type}
+}
+}
+}
 \description{
 Generate the Manager-Relationship 2x2 matrix, returning a ggplot object by default.
 Additional options available to return a "wide" or "long" summary table.
 }
 \examples{
+# Return matrix
 mgrrel_matrix(sq_data)
+
+# Return stacked bar plot
+mgrrel_matrix(sq_data, hrvar = "Organization")
+
+## Visualize coaching style types
+# Ensure dplyr is loaded
+library(dplyr)
+
+# Extract PersonId and Coaching Type
+match_df <-
+  sq_data \%>\%
+  mgrrel_matrix(return = "data") \%>\%
+  select(PersonId, Type)
+
+# Join and visualize baseline
+sq_data \%>\%
+  left_join(match_df, by = "PersonId") \%>\%
+  keymetrics_scan(hrvar = "Type",
+                  return = "plot")
 
 }
 \seealso{

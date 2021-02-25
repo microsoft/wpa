@@ -1,3 +1,10 @@
+# wpa 1.4.0
+
+New functions, bug fixes, and performance improvements.
+
+New functions:
+- `import_to_fst()`
+
 # wpa 1.3.1
 
 New functions, bug fixes, and performance improvements.

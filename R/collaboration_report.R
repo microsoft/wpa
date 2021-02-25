@@ -12,8 +12,8 @@
 #' metrics in Workplace Analytics,including email and meeting hours.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
+#' @param hrvar HR Variable by which to split metrics. Defaults to AUTO - in this case the HR variable with most collaboration variance is automatically selected.
+#' Also accepts any character vector, e.g. "LevelDesignation"
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
 #' For example, "collaboration report".
@@ -29,7 +29,7 @@
 #'
 #' @export
 collaboration_report <- function(data,
-                                 hrvar = "Organization",
+                                 hrvar = "AUTO",
                                  mingroup = 5,
                                  path = "collaboration report",
                                  timestamp = TRUE){
@@ -41,82 +41,93 @@ collaboration_report <- function(data,
     newpath <- path
   }
 
+  if(hrvar == "AUTO"){
+  myrank <- data %>% collaboration_rank(mingroup = mingroup, return = "table")
+  hrvar <- myrank[[1,1]]
+  }
+  
   # Set outputs
   output_list <-
     list(data %>% check_query(return = "text") %>% md2html(),
-         md2html(text = read_preamble("collaboration_section.md")), # Header
+		 paste("---"),
+
+         md2html(text = read_preamble("collaboration_section.md")), # Collaboration Header 
+         data %>% collaboration_rank(mingroup = mingroup, return = "plot"),
+         data %>% collaboration_rank(mingroup = mingroup, return = "table"),
+		 data %>% keymetrics_scan(hrvar = hrvar, mingroup = mingroup,
+                                  metrics = c("Collaboration_hours",
+                                              "Meetings",
+                                              "Meeting_hours",
+                                              "Low_quality_meeting_hours",
+                                              "Time_in_self_organized_meetings",
+                                              "Emails_sent",
+                                              "Email_hours",
+                                              "Generated_workload_email_hours",
+                                              "Total_emails_sent_during_meeting",
+                                              "Total_focus_hours"),
+                                  textsize = 3,
+                                  return = "plot"),
+
          data %>% collaboration_sum(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% collaboration_sum(hrvar = hrvar, mingroup = mingroup, return = "table"),
+         data %>% collab_area(hrvar = hrvar, mingroup = mingroup, return = "plot"),
+		 paste("---"),
 
-         data %>% afterhours_sum(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% afterhours_sum(hrvar = hrvar, mingroup = mingroup, return = "table"),
+         md2html(text = read_preamble("meeting_section.md")), # Meeting Header 
+         data %>% meeting_rank(mingroup = mingroup, return = "plot"),
+         data %>% meeting_rank(mingroup = mingroup, return = "table"),
+         data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
+         data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
+         data %>% mutate(Percentage_of_self_organized_meetings = replace_na(Time_in_self_organized_meetings / Meeting_hours,0))  %>%  create_bar(metric = "Percentage_of_self_organized_meetings", hrvar = hrvar, mingroup = mingroup, return = "plot"),
+         data %>% meeting_quality(hrvar = hrvar, mingroup = mingroup, return = "plot"),
+         data %>% meeting_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
+		 paste("---"),
 
-         data %>% collaboration_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% collaboration_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
-         data %>% collaboration_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% collaboration_trend(hrvar = hrvar, mingroup = mingroup, return = "table"),
-         data %>% collaboration_line(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% collaboration_line(hrvar = hrvar, mingroup = mingroup, return = "table"),
-
-         md2html(text = read_preamble("email_section.md")), # Header
-         data %>% email_summary(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% email_summary(hrvar = hrvar, mingroup = mingroup, return = "table"),
+         md2html(text = read_preamble("email_section.md")), # Email Header
+         data %>% email_rank(mingroup = mingroup, return = "plot"),
+         data %>% email_rank(mingroup = mingroup, return = "table"),
          data %>% email_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% email_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
          data %>% email_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% email_trend(hrvar = hrvar, mingroup = mingroup, return = "table"),
-
-         md2html(text = read_preamble("meeting_section.md")), # Header
-         data %>% meeting_summary(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% meeting_summary(hrvar = hrvar, mingroup = mingroup, return = "table"),
-         data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
-         data %>% meeting_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% meeting_trend(hrvar = hrvar, mingroup = mingroup, return = "table"),
-         data %>% meeting_quality(hrvar = hrvar, mingroup = mingroup, return = "plot"),
-         data %>% meeting_quality(hrvar = hrvar, mingroup = mingroup, return = "table")) %>%
-    purrr::map_if(is.data.frame, create_dt)
-
+		 paste("---"),
+		 paste(">", "[Note] This report was generated on ", format(Sys.time(), "%b %d %Y"), ". Data is split by ", hrvar ,".")) %>%
+    purrr::map_if(is.data.frame, create_dt) %>%
+    purrr::map_if(is.character, md2html)
+ 
   # Set header titles
   title_list <-
     c("Data Overview",
-
-      "Collaboration", # Section header
-      "Collaboration Summary - Plot",
-      "Collaboration Summary - Table",
-
-      "Afterhours Summary - Plot",
-      "Afterhours Summary - Table",
-
-      "Collaboration Distribution - Plot",
-      "Collaboration Distribution - Table",
-      "Collaboration Trend - Plot",
-      "Collaboration Trend - Table",
-      "Collaboration over time - Plot",
-      "Collaboration over time - Table",
-
-      "Email", # Section header
-      "Email Summary - Plot",
-      "Email Summary - Table",
-      "Email Distribution - Plot",
-      "Email Distribution - Table",
-      "Email Trend - Plot",
-      "Email Trend - Table",
-
-      "Meeting", # Section header
-      "Meeting Summary - Plot",
-      "Meeting Summary - Table",
-      "Meeting Distribution - Plot",
-      "Meeting Distribution - Table",
-      "Meeting Trend - Plot",
-      "Meeting Trend - Table",
-      "Meeting Quality - Plot",
-      "Meeting Quality - Table")
+	  "",
+	  "Collaboration Time", # Section header
+	  "",
+	  "",
+      "",
+      "",
+      "",
+      "",
+	  "",
+      "Deep Dive: Meeting Hours", # Section header
+      "",
+      "",
+      "",
+      "",
+	  "",
+      "",
+      "",
+	  "",
+      "Deep Dive: Email Hours", # Section header
+      "",
+      "",
+      "",
+      "",
+      "",
+	  "",
+	  "")
 
   # Set header levels
   n_title <- length(title_list)
-  levels_list <- rep(3, n_title)
-  levels_list[c(1, 2, 13, 20)] <- 2 # Section header
+  levels_list <- rep(4, n_title)
+  levels_list[c(1, 3, 11, 20)] <- 2 # Section header
 
   # Generate report
   generate_report(title = "Collaboration Report",
