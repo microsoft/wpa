@@ -20,9 +20,10 @@
 #'   size, defaults to 5.
 #'
 #' @param binwidth Numeric value for setting `binwidth` argument within
-#'   `ggplot2::geom_histogram()`. Defaults to 5.
+#'   `ggplot2::geom_histogram()`. Defaults to 1.
 #'
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
 #'   - `"data"`
@@ -31,7 +32,8 @@
 #' See `Value` for more information.
 #'
 #' @return
-#' A different output is returned depending on the value passed to the `return` argument:
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
 #'   - `"plot"`: ggplot object. A faceted histogram for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'   - `"data"`: data frame. Data with calculated person averages.
@@ -66,7 +68,7 @@ create_hist <- function(data,
                         metric,
                         hrvar = "Organization",
                         mingroup = 5,
-                        binwidth = 5,
+                        binwidth = 1,
                         return = "plot") {
 
   ## Check inputs
@@ -115,7 +117,7 @@ create_hist <- function(data,
   plot_object <-
     plot_data %>%
     ggplot(aes(x = !!sym(metric), fill = group)) +
-    geom_histogram(binwidth = binwidth) +
+    geom_histogram(binwidth = binwidth, colour = "white") +
     facet_wrap(group ~ .) +
     theme_wpa_basic() +
     labs(title = clean_nm,

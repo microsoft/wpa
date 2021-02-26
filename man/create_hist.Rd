@@ -9,7 +9,7 @@ create_hist(
   metric,
   hrvar = "Organization",
   mingroup = 5,
-  binwidth = 5,
+  binwidth = 1,
   return = "plot"
 )
 }
@@ -27,9 +27,10 @@ vector, defaults to "Organization" but accepts any character vector, e.g.
 size, defaults to 5.}
 
 \item{binwidth}{Numeric value for setting \code{binwidth} argument within
-\code{ggplot2::geom_histogram()}. Defaults to 5.}
+\code{ggplot2::geom_histogram()}. Defaults to 1.}
 
-\item{return}{String specifying what to return. This must be one of the following strings:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
 \item \code{"plot"}
 \item \code{"table"}
@@ -40,7 +41,8 @@ size, defaults to 5.}
 See \code{Value} for more information.}
 }
 \value{
-A different output is returned depending on the value passed to the \code{return} argument:
+A different output is returned depending on the value passed to the \code{return}
+argument:
 \itemize{
 \item \code{"plot"}: ggplot object. A faceted histogram for the metric.
 \item \code{"table"}: data frame. A summary table for the metric.
