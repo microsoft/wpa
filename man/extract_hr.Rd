@@ -4,7 +4,7 @@
 \alias{extract_hr}
 \title{Extract HR attribute variables}
 \usage{
-extract_hr(data, max_unique = 50, return = "names")
+extract_hr(data, max_unique = 50, exclude_constants = TRUE, return = "names")
 }
 \arguments{
 \item{data}{A data frame to be passed through.}
@@ -12,10 +12,27 @@ extract_hr(data, max_unique = 50, return = "names")
 \item{max_unique}{A numeric value representing the maximum
 number of unique values to accept for an HR attribute. Defaults to 50.}
 
-\item{return}{Character string with values "names" (default)
-or "vars" to determine whether the function returns a character
-vector of variable names or a data frame containing the HR
-attributes.}
+\item{exclude_constants}{Logical value to specify whether single-value HR
+attributes are to be excluded. Defaults to \code{TRUE}.}
+
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"names"}
+\item \code{"vars"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"names"}: character vector identifying all the names of HR variables
+present in the data.
+\item \code{"vars"}: data frame containing all the columns of HR variables present
+in the data.
+}
 }
 \description{
 This function uses a combination of variable class,

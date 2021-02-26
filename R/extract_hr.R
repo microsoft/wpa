@@ -13,10 +13,23 @@
 #' @param data A data frame to be passed through.
 #' @param max_unique A numeric value representing the maximum
 #' number of unique values to accept for an HR attribute. Defaults to 50.
-#' @param return Character string with values "names" (default)
-#' or "vars" to determine whether the function returns a character
-#' vector of variable names or a data frame containing the HR
-#' attributes.
+#' @param exclude_constants Logical value to specify whether single-value HR
+#' attributes are to be excluded. Defaults to `TRUE`.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"names"`
+#'   - `"vars"`
+#'
+#' See `Value` for more information.
+
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"names"`: character vector identifying all the names of HR variables
+#'   present in the data.
+#'   - `"vars"`: data frame containing all the columns of HR variables present
+#'    in the data.
 #'
 #' @family General
 #'
@@ -28,12 +41,26 @@
 #' @export
 extract_hr <- function(data,
                        max_unique = 50,
+                       exclude_constants = TRUE,
                        return = "names"){
+
+
+  if(exclude_constants == TRUE){
+
+    min_unique = 1
+
+  } else if (exclude_constants == FALSE){
+
+    min_unique = 0
+
+  }
+
 
   hr_var <-
     data %>%
     dplyr::select_if(~(is.character(.) | is.logical(.) | is.factor(.))) %>%
     dplyr::select_if(~(dplyr::n_distinct(.) < max_unique)) %>%
+    dplyr::select_if(~(dplyr::n_distinct(.) > min_unique)) %>% # Exc constants
     dplyr::select_if(~!all(is_date_format(.))) %>%
     names() %>%
     .[.!= "WorkingStartTimeSetInOutlook"] %>%
