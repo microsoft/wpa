@@ -4,17 +4,22 @@
 \alias{import_wpa}
 \title{Import a Workplace Analytics Query}
 \usage{
-import_wpa(x, standardise = FALSE)
+import_wpa(x, standardise = FALSE, encoding = "UTF-8")
 }
 \arguments{
-\item{x}{String containing the path to the Workplace Analytics query to be imported.
-The input file must be a CSV file, and the file extension must be explicitly entered,
-e.g. "/files/standard query.csv"}
+\item{x}{String containing the path to the Workplace Analytics query to be
+imported. The input file must be a CSV file, and the file extension must be
+explicitly entered, e.g. \code{"/files/standard query.csv"}}
 
-\item{standardise}{logical. If TRUE, \code{import_wpa()} runs \code{standardise_pq()} to make a Collaboration
-Assessment query's columns name standard and consistent with a Standard Person Query. Note that this
-will have no effect if the query being imported is not a Ways of Working Assessment query. Defaults
-as FALSE.}
+\item{standardise}{logical. If TRUE, \code{import_wpa()} runs \code{standardise_pq()}
+to make a Collaboration Assessment query's columns name standard and
+consistent with a Standard Person Query. Note that this will have no effect
+if the query being imported is not a Ways of Working Assessment query.
+Defaults as FALSE.}
+
+\item{encoding}{String to specify encoding to be used within
+\code{data.table::fread()}. See \code{data.table::fread()} documentation for more
+information. Defaults to \code{'UTF-8'}.}
 }
 \value{
 A \code{tibble} is returned.

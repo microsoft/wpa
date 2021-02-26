@@ -4,13 +4,29 @@
 \alias{meeting_quality}
 \title{Run a meeting habits / meeting quality analysis}
 \usage{
-meeting_quality(data, hrvar = "Organization", mingroup = 5, return = "plot")
+meeting_quality(
+  data,
+  hrvar = "Organization",
+  metric_x = "Low_quality_meeting_hours",
+  mingroup = 5,
+  return = "plot"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to
 "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+
+\item{metric_x}{String specifying which variable to show in the x-axis when
+returning a plot. Must be one of the following:
+\itemize{
+\item \code{"Low_quality_meeting_hours"} (default)
+\item \code{"After_hours_meeting_hours"}
+\item \code{"Conflicting_meeting_hours"}
+\item \code{"Multitasking_meeting_hours"}
+\item Any \emph{meeting hour} variable that can be divided by \code{Meeting_hours}
+}}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -33,6 +49,11 @@ Query as an input.
 \examples{
 # Return plot
 meeting_quality(sq_data, return = "plot")
+
+# Return plot - showing multi-tasking \%
+meeting_quality(sq_data,
+                metric_x = "Multitasking_meeting_hours",
+                return = "plot")
 
 # Return summary table
 meeting_quality(sq_data, return = "table")

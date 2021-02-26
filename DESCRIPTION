@@ -63,5 +63,6 @@ Suggests:
     knitr,
     extrafont,
     leiden,
-    lifecycle
+    lifecycle,
+    fst
 Language: en-US

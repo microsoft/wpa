@@ -9,6 +9,14 @@
 #' Query as an input.
 #'
 #' @inheritParams create_bubble
+#' @param metric_x String specifying which variable to show in the x-axis when
+#' returning a plot. Must be one of the following:
+#'   - `"Low_quality_meeting_hours"` (default)
+#'   - `"After_hours_meeting_hours"`
+#'   - `"Conflicting_meeting_hours"`
+#'   - `"Multitasking_meeting_hours"`
+#'   - Any _meeting hour_ variable that can be divided by `Meeting_hours`
+#'
 #' @inherit create_bubble return
 #'
 #' @import dplyr
@@ -17,6 +25,11 @@
 #' # Return plot
 #' meeting_quality(sq_data, return = "plot")
 #'
+#' # Return plot - showing multi-tasking %
+#' meeting_quality(sq_data,
+#'                 metric_x = "Multitasking_meeting_hours",
+#'                 return = "plot")
+#'
 #' # Return summary table
 #' meeting_quality(sq_data, return = "table")
 #'
@@ -24,6 +37,7 @@
 
 meeting_quality <- function(data,
                             hrvar = "Organization",
+                            metric_x = "Low_quality_meeting_hours",
                             mingroup = 5,
                             return = "plot"){
 
@@ -36,7 +50,9 @@ meeting_quality <- function(data,
         "Conflicting_meeting_hours",
         "Multitasking_meeting_hours",
         "Meetings",
-        "Meeting_hours")
+        "Meeting_hours",
+        metric_x) %>%
+      unique()
 
 
     data %>%
@@ -50,11 +66,14 @@ meeting_quality <- function(data,
 
   } else {
 
+    percent_str <- NULL
+    percent_str <- paste0("Percentage_of_", metric_x)
+
     data %>%
-      mutate(Percentage_of_Low_quality_meeting_hours = Low_quality_meeting_hours / Meeting_hours) %>%
+      mutate(!!sym(percent_str) := !!sym(metric_x) / Meeting_hours) %>%
       create_bubble(hrvar = hrvar,
                     mingroup = mingroup,
-                    metric_x = "Percentage_of_Low_quality_meeting_hours",
+                    metric_x = percent_str,
                     metric_y = "Meeting_hours",
                     return = return)
   }

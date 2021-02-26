@@ -60,21 +60,54 @@ IV_report <- function(data,
              bins = bins,
              return = "list")
 
+ ## List of ggplot
+ plot_list <-
+   data %>%
+   create_IV(outcome = outcome,
+             predictors = predictors,
+             bins = bins,
+             return = "plot-WOE")
+
  table_names <- gsub("_", " ", x = names(table_list))
 
   output_list <-
-    list(data %>% check_query(return = "text") %>% md2html(),
-         data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins),
-         data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins, return="summary"),
-         data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins, return="plot-WOE")) %>%
+    list(
+      data %>% check_query(return = "text"),
+      data %>% create_IV(outcome = outcome, predictors=predictors, bins= bins),
+      data %>% create_IV(outcome = outcome,
+                         predictors = predictors,
+                         bins = bins,
+                         return="summary"),
+      read_preamble("blank.md") # Header for WOE Analysis
+         ) %>%
+    c(plot_list) %>%
+    c(list(read_preamble("blank.md"))) %>% # Header for Summary Tables
     c(table_list)  %>%
-    purrr::map_if(is.data.frame, create_dt)
+    purrr::map_if(is.data.frame, create_dt) %>%
+    purrr::map_if(is.character, md2html)
 
-  title_list <- c("Data Overview", "Top Predictors", "", "WOE Analysis", table_names)
+  title_list <-
+    c("Data Overview",
+      "Top Predictors",
+      "",
+      "WOE Analysis",
+      rep("", length(plot_list)),
+      "Summary - Predictors",
+      table_names)
+
 
   n_title <- length(title_list)
 
-  title_levels <- c(2,2,4,2, rep(3, n_title-4))
+  title_levels <-
+    c(
+      2,
+      2,
+      4,
+      2, # Header for WOE Analysis
+      rep(4, length(plot_list)),
+      2, # Header for WOE Analysis
+      rep(3, length(table_list))
+      )
 
   generate_report(title = "Information Value Report",
                   filename = newpath,

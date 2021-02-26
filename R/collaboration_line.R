@@ -30,11 +30,11 @@
 
 collaboration_line <- function(data,
                                 hrvar = "Organization",
-                                mingroup=5,
+                                mingroup = 5,
                                 return = "plot"){
 
   ## Inherit arguments
-  output <- create_line(data = data,
+  create_line(data = data,
               metric = "Collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,

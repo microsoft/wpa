@@ -7,9 +7,9 @@
 \usage{
 network_g2g(
   data,
-  time_investor,
-  collaborator,
-  metric,
+  time_investor = NULL,
+  collaborator = NULL,
+  metric = "Collaboration_hours",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -17,9 +17,9 @@ network_g2g(
 
 g2g_network(
   data,
-  time_investor,
-  collaborator,
-  metric,
+  time_investor = NULL,
+  collaborator = NULL,
+  metric = "Collaboration_hours",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -28,33 +28,60 @@ g2g_network(
 \arguments{
 \item{data}{Data frame containing a G2G query.}
 
-\item{time_investor}{String containing the variable name for the Time Investor column.}
+\item{time_investor}{String containing the variable name for the Time
+Investor column.}
 
-\item{collaborator}{String containing the variable name for the Collaborator column.}
+\item{collaborator}{String containing the variable name for the Collaborator
+column.}
 
-\item{metric}{String containing the variable name for metric.}
+\item{metric}{String containing the variable name for metric. Defaults to
+\code{Collaboration_hours}.}
 
 \item{exc_threshold}{Exclusion threshold to apply.}
 
 \item{subtitle}{String to override default plot subtitle.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs include:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
-\item "plot": return a network plot.
-\item "table": return a raw data table used to plot the network.
-\item "network": return an \strong{igraph} object
-}}
+\item \code{"plot"}
+\item \code{"table"}
+\item \code{"network"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A group-to-group network plot.
+\item \code{"table"}: data frame. An interactive matrix of the network.
+\item \verb{"network}: igraph object used for creating the network plot.
+\item \code{"data"}: data frame. A long table of the underlying data.
+}
 }
 \description{
-Pass a data frame containing a group-to-group query and return a network plot.
-Automatically handles "Collaborators_within_group" and "Other_collaborators" within query data.
+Pass a data frame containing a group-to-group query and return a network
+plot. Automatically handles "Collaborators_within_group" and
+"Other_collaborators" within query data.
 }
 \examples{
 # Return a network plot
+g2g_data \%>\% network_g2g()
+
+# Return a network plot - Meeting hours and 5\% threshold
 g2g_data \%>\%
   network_g2g(time_investor = "TimeInvestors_Organization",
               collaborator = "Collaborators_Organization",
-              metric = "Collaboration_hours")
+              metric = "Meeting_hours",
+              exc_threshold = 0.05)
+
+# Return an interaction matrix
+# Minimum arguments specified
+g2g_data \%>\%
+  network_g2g(return = "table")
+
 
 }

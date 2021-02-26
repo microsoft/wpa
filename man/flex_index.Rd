@@ -58,7 +58,6 @@ with diagnostic data and the Flexibility Index shown on the plot.
 \item \code{"data"}: data frame. The original input data appended with the
 Flexibility Index and the component scores.
 \item \code{"table"}: data frame. A summary table for the metric.
-hen returning a plot,
 }
 }
 \description{
@@ -130,6 +129,7 @@ em_data \%>\%
 }
 \seealso{
 Other Work Patterns: 
+\code{\link{identify_shifts_wp}()},
 \code{\link{personas_hclust}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},

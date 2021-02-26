@@ -8,7 +8,7 @@
 #' @description
 #' A dataset generated from a Meeting Query from WpA.
 #'
-#' @format A data frame with 2000 rows and 30 variables:
+#' @format A data frame with 2001 rows and 30 variables:
 #' \describe{
 #'   \item{MeetingId}{ }
 #'   \item{StartDate}{ }
@@ -40,6 +40,13 @@
 #'   \item{TotalNoDoubleBooked}{ }
 #'   \item{TotalNoAttendees}{ }
 #'   \item{MeetingResources}{ }
+#'   \item{Attendees_with_conflicting_meetings}{ }
+#'   \item{Invitees}{ }
+#'   \item{Emails_sent_during_meetings}{ }
+#'   \item{Attendees_multitasking}{ }
+#'   \item{Redundant_attendees}{ }
+#'   \item{Total_meeting_cost}{ }
+#'   \item{Total_redundant_hours}{ }
 #'
 #'   ...
 #' }
