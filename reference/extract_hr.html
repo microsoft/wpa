@@ -215,7 +215,7 @@ number of unique values, and regular expression matching
 to extract HR / organisational attributes from a data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extract_hr</span><span class='op'>(</span><span class='va'>data</span>, max_unique <span class='op'>=</span> <span class='fl'>50</span>, return <span class='op'>=</span> <span class='st'>"names"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>extract_hr</span><span class='op'>(</span><span class='va'>data</span>, max_unique <span class='op'>=</span> <span class='fl'>50</span>, exclude_constants <span class='op'>=</span> <span class='cn'>TRUE</span>, return <span class='op'>=</span> <span class='st'>"names"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -230,13 +230,31 @@ to extract HR / organisational attributes from a data frame.</p>
 number of unique values to accept for an HR attribute. Defaults to 50.</p></td>
     </tr>
     <tr>
+      <th>exclude_constants</th>
+      <td><p>Logical value to specify whether single-value HR
+attributes are to be excluded. Defaults to <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
       <th>return</th>
-      <td><p>Character string with values "names" (default)
-or "vars" to determine whether the function returns a character
-vector of variable names or a data frame containing the HR
-attributes.</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"names"</code></p></li>
+<li><p><code>"vars"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"names"</code>: character vector identifying all the names of HR variables
+present in the data.</p></li>
+<li><p><code>"vars"</code>: data frame containing all the columns of HR variables present
+in the data.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -252,25 +270,22 @@ attributes.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>sq_data</span> <span class='op'>%&gt;%</span> <span class='fu'>extract_hr</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"names"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Domain"           "FunctionType"     "LevelDesignation" "Region"          
-#&gt; [5] "Organization"     "attainment"       "TimeZone"         "IsInternal"      
-#&gt; [9] "IsActive"        </div><div class='input'>
+</div><div class='output co'>#&gt; [1] "FunctionType"     "LevelDesignation" "Organization"     "IsActive"        </div><div class='input'>
 <span class='va'>sq_data</span> <span class='op'>%&gt;%</span> <span class='fu'>extract_hr</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"vars"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,442 x 9</span><span>
-#&gt;    Domain  FunctionType LevelDesignation Region Organization attainment TimeZone
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> CONTOS… G_and_A      Junior IC        US     Customer Se… </span><span style='color: #BB0000;'>NA</span><span>         Pacific…
-#&gt; </span><span style='color: #949494;'># … with 13,432 more rows, and 2 more variables: IsInternal &lt;lgl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   IsActive &lt;lgl&gt;</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,442 x 4</span><span>
+#&gt;    FunctionType LevelDesignation Organization     IsActive
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G_and_A      Junior IC        Customer Service TRUE    
+#&gt; </span><span style='color: #949494;'># … with 13,432 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

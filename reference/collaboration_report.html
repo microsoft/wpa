@@ -219,7 +219,7 @@ metrics in Workplace Analytics,including email and meeting hours.</p>
 
     <pre class="usage"><span class='fu'>collaboration_report</span><span class='op'>(</span>
   <span class='va'>data</span>,
-  hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+  hrvar <span class='op'>=</span> <span class='st'>"AUTO"</span>,
   mingroup <span class='op'>=</span> <span class='fl'>5</span>,
   path <span class='op'>=</span> <span class='st'>"collaboration report"</span>,
   timestamp <span class='op'>=</span> <span class='cn'>TRUE</span>
@@ -234,22 +234,24 @@ metrics in Workplace Analytics,including email and meeting hours.</p>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"</p></td>
+      <td><p>HR Variable by which to split metrics. Defaults to <code>"AUTO"</code>,
+where the HR variable with most collaboration variance is automatically
+selected. Also accepts any character vector, e.g. "LevelDesignation"</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.</p></td>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>Pass the file path and the desired file name, <em>excluding the file extension</em>.
-For example, "collaboration report".</p></td>
+      <td><p>Pass the file path and the desired file name, <em>excluding the file
+extension</em>. For example, "collaboration report".</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
-      <td><p>Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.</p></td>
+      <td><p>Logical vector specifying whether to include a timestamp in
+the file name. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     </table>
 
