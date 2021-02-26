@@ -26,7 +26,8 @@ following strings:
 See \code{Value} for more information.}
 
 \item{validation}{Logical value to specify whether to return a check used by
-the \code{validation_report()}. Defaults to \code{FALSE}.}
+the \code{validation_report()}. Defaults to \code{FALSE}. To hide checks on variable
+names, set \code{validation} to \code{TRUE}.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
