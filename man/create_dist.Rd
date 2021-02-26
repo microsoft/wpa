@@ -21,9 +21,12 @@ create_dist(
 \item{metric}{String containing the name of the metric,
 e.g. "Collaboration_hours"}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics. Accepts a character
+vector, defaults to "Organization" but accepts any character vector, e.g.
+"LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size, defaults to 5.}
 
 \item{return}{String specifying what to return. This must be one of the following strings:
 \itemize{
@@ -39,7 +42,8 @@ e.g. c(10, 15, 20)}
 \item{dist_colours}{A character vector of length four to specify colour
 codes for the stacked bars.}
 
-\item{unit}{See \code{cut_hour()}.}
+\item{unit}{String to specify what units. This defaults to \code{"hours"} but can
+accept any custom string. See \code{cut_hour()} for more details.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:

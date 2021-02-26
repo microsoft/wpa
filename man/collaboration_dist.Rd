@@ -33,9 +33,12 @@ collaboration_distribution(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics. Accepts a character
+vector, defaults to "Organization" but accepts any character vector, e.g.
+"LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size, defaults to 5.}
 
 \item{return}{String specifying what to return. This must be one of the following strings:
 \itemize{

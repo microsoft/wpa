@@ -13,8 +13,11 @@
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
+#' @param hrvar HR Variable by which to split metrics. Accepts a character
+#'   vector, defaults to "Organization" but accepts any character vector, e.g.
+#'   "LevelDesignation"
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size, defaults to 5.
 #'
 #' @param return String specifying what to return. This must be one of the following strings:
 #'   - `"plot"`
@@ -26,7 +29,8 @@
 #' e.g. c(10, 15, 20)
 #' @param dist_colours A character vector of length four to specify colour
 #' codes for the stacked bars.
-#' @param unit See `cut_hour()`.
+#' @param unit String to specify what units. This defaults to `"hours"` but can
+#'   accept any custom string. See `cut_hour()` for more details.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
