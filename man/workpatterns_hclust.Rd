@@ -89,6 +89,7 @@ workpatterns_hclust(em_data,
 \seealso{
 Other Work Patterns: 
 \code{\link{flex_index}()},
+\code{\link{identify_shifts_wp}()},
 \code{\link{personas_hclust}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},

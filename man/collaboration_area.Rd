@@ -5,17 +5,18 @@
 \alias{collab_area}
 \title{Collaboration - Stacked Area Plot}
 \usage{
-collaboration_area(data, hrvar = "Organization", mingroup = 5, return = "plot")
+collaboration_area(data, hrvar = NULL, mingroup = 5, return = "plot")
 
-collab_area(data, hrvar = "Organization", mingroup = 5, return = "plot")
+collab_area(data, hrvar = NULL, mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.
 A Ways of Working assessment dataset may also be provided, in which
 Unscheduled call hours would be included in the output.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to
-"Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to \code{NULL}, but
+accepts any character vector, e.g. "LevelDesignation". If \code{NULL} is passed,
+the organizational attribute is automatically populated as "Total".}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -46,7 +47,14 @@ Uses the metrics \code{Meeting_hours}, \code{Email_hours}, \code{Unscheduled_Cal
 and \code{Instant_Message_hours}.
 }
 \examples{
+# Return plot with total (default)
 collaboration_area(sq_data)
+
+# Return plot with hrvar split
+collaboration_area(sq_data, hrvar = "Organization")
+
+# Return summary table
+collaboration_area(sq_data, return = "table")
 
 }
 \seealso{

@@ -19,11 +19,22 @@
 #'   `Collaboration_hours`.
 #' @param exc_threshold Exclusion threshold to apply.
 #' @param subtitle String to override default plot subtitle.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs include:
-#'   - "plot": return a network plot.
-#'   - "table": return a raw data table used to plot the network.
-#'   - "network": return an **igraph** object
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'   - `"network"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A group-to-group network plot.
+#'   - `"table"`: data frame. An interactive matrix of the network.
+#'   - `"network`: igraph object used for creating the network plot.
+#'   - `"data"`: data frame. A long table of the underlying data.
 #'
 #' @import ggplot2
 #' @import dplyr
@@ -38,6 +49,12 @@
 #'               collaborator = "Collaborators_Organization",
 #'               metric = "Meeting_hours",
 #'               exc_threshold = 0.05)
+#'
+#' # Return an interaction matrix
+#' # Minimum arguments specified
+#' g2g_data %>%
+#'   network_g2g(return = "table")
+#'
 #'
 #' @export
 network_g2g <- function(data,
@@ -76,8 +93,18 @@ network_g2g <- function(data,
 
   }
 
+  ## Warn if 'Collaborators Within Group' is not present in data
+  if(! "Collaborators Within Group" %in% unique(data[[collaborator]])){
+
+    warning(
+      "`Collaborators Within Group` is not found in the collaborator variable.
+      The analysis may be excluding in-group collaboration."
+      )
+
+  }
 
 
+  ## Run plot_data
   plot_data <-
     data %>%
     rename(TimeInvestorOrg = time_investor,
@@ -96,6 +123,14 @@ network_g2g <- function(data,
 
   if(return == "table"){
 
+    ## Return a 'tidy' matrix
+    plot_data %>%
+      tidyr::pivot_wider(names_from = CollaboratorOrg,
+                         values_from = metric_prop)
+
+  } else if(return == "data"){
+
+    ## Return long table
     plot_data
 
   } else if(return %in% c("plot", "network")){

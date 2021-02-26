@@ -1,16 +1,27 @@
 # Frequently Asked Questions
 
+## General
+
+### Why should I use R for Workplace Analytics?
+
+R is an open-source statistical programming language and one of the most popular toolkits for data analysis and data science. There are four key reasons why a Workplace Analytics analyst might choose to use R instead of other alternatives:
+
+1.	R has an **immense package eco-system** with over [17,000 packages](https://cran.r-project.org/web/packages/) for advanced applications from building random forest models to Organizational Network Analysis (ONA) graph visualizations. This enables analysts to perform specialized and more in-depth analysis for specific Workplace Analytics use cases, such as predicting employee churn by analyzing Workplace Analytics metrics. 
+2.	There are **no licensing costs** with R, which enables analysts to leverage the powerful functionality with no additional cost.  
+3.	R has a code-oriented workflow (as opposed to point-and-click), which promotes **reproducibility**. This is valuable for improving the quality of the analysis and for efficiently replicating analysis with different data samples.
+4.	R also has a **substantial user community**, which analysts can access to support and augment their analysis capabilities.
+
 ## Installation and Setup
 
 ### I cannot install the package with `install.packages()`. Why is that?
 
-The reason why `install.packages()` wil not work with **wpa** is because **wpa** is currently only available on GitHub and not on CRAN, and CRAN is where the function `install.packages()` downloads and installs R packages from. Instead, you should use `install_git()`:
+The reason why `install.packages()` will not work with **wpa** is because **wpa** is currently only available on GitHub and not on CRAN, and CRAN is where the function `install.packages()` downloads and installs R packages from. Instead, you should use `install_git()`:
 ```R
 remotes::install_git(url = "https://github.com/microsoft/wpa.git") 
 ```
 For more information regarding installation, please see our [Getting Started](https://microsoft.github.io/wpa/analyst_guide_getting_started.html) page.
 
-### I see warning message about the installation of Rtools. What do I do?
+### I see a warning message about the installation of Rtools. What should I do?
 
 You may see the following message during installation:
 ```
@@ -63,6 +74,68 @@ The `export()` function allows you to export the outputs of your analysis to Exc
 If you would like to export a _list_ of data frames to Excel where (i) each data frame in the list corresponds to a _Worksheet_ and (ii) the name of each list member corresponds to the _Sheet name_, you can use `writexl::write_xlsx()`.  **wpa** does not depend on functions from **writexl**, so you may need to load and install it separately. 
 
 ## Analysis and Visualization
+
+### How do I filter by specific date ranges?
+
+We recommend using **dplyr** (which is loaded in as part of **tidyverse**) for data manipulation. To filter down to a specific date range in a Person Query, you can run:
+
+```R
+library(wpa)
+library(tidyverse) # Or load dplyr
+
+# Read Standard Person Query from local directory
+# Assign it to `raw_spq`
+raw_spq <- import_wpa("data/standard person query.csv")
+
+# Assign filtered data frame to `clean_spq`
+clean_spq <-
+	raw_spq %>%
+	filter(Date >= as.Date("08/30/2020", "%m/%d/%Y")) %>%
+  	filter(Date <= as.Date("12/19/2020", "%m/%d/%Y"))
+```
+
+The above example filters the date range from the week commencing 30th of August 2020 to the week ending 19th of November 2020 inclusive. Note that the first date is a Sunday (beginning of the week) and the second date is a Saturday (end of the week). If you query is run by **day**, you should specify the _after_ filter as the exact last day, rather than the Saturday of the week. 
+
+In some scenarios, you may also want to exclude a particular week from the data. You can use a similar approach:
+
+```R
+clean_spq2 <-
+	clean_spq %>%
+	filter(Date != as.Date("11/22/2020", "%m/%d/%Y"))
+```
+
+The above line of code excludes the week of 22nd of November 2020, using the operator `!=` to denote _not equal to_. Conversely, you can isolate that single week by replacing `!=` with `==`.
+
+### How do I create a custom HR variable?
+
+The most common way to create a 'custom HR variable' is to create a categorical variable from one or more numeric variables. You may want to do this if you are trying to _bin_ a numeric variable or create a custom rule-based segmentation with Workplace Analytics metrics. 
+
+Here is an example of how to create a categorical variable (`N_DirectReports_NET`) with a numeric variable representing  the number of direct reports, using `dplyr::mutate()` and `dplyr::case_when()` .
+
+```R
+library(wpa)
+library(tidyverse) # Or load dplyr
+
+clean_spq_with_new_var <-
+  clean_spq %>% # Standard Person Query
+  mutate(N_DirectReports_NET =
+         case_when(NumberofDirectReports == 0 ~ "0",
+                   NumberofDirectReports == 1 ~ "1",
+                   NumberofDirectReports <= 5 ~ "2 to 5",
+                   NumberofDirectReports <= 10 ~ "6 to 10",
+                   NumberofDirectReports <= 20 ~ "Up to 20",
+                   NumberofDirectReports >= 21 ~ "21 +",
+                   TRUE ~ "Not classified"))
+```
+
+`dplyr::mutate()` creates a new column, whereas `dplyr::case_when()` runs an if-else operation to classify numeric ranges to the right hand side of the `~` symbol. When the expression on the left hand side evaluates to `TRUE`, the value on the right hand side is assigned to the new column. At the end of the code, you will see that anything that doesn't get classified gets an 'error handling' value. If a value ends up as "Not classified", you should check whether there may be gaps in your `dplyr::case_when()` chunk that is not capturing all the values. 
+
+Once you have created this new variable and checked that the classifications are correct, you can further your analysis by using it as an HR attribute, such as:
+
+```R
+clean_spq_with_new_var %>%
+	keymetrics_scan(hrvar = "N_DirectReports_NET")
+```
 
 ### How do I customize a visual generated from a {wpa} function?
 
