@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Uncover HR attributes which best represent a population for a Person to Person query — network_describe • wpa</title>
+<title>Create a histogram plot for any metric — create_hist • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,10 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Uncover HR attributes which best represent a population for a Person to Person query — network_describe" />
-<meta property="og:description" content="
-Returns a data frame that gives a percentage of the group combinations that best represent
-the population provided. Uses a person to person query." />
+<meta property="og:title" content="Create a histogram plot for any metric — create_hist" />
+<meta property="og:description" content="Provides an analysis of the distribution of a selected metric.
+Returns a faceted histogram by default.
+Additional options available to return the underlying frequency table." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -204,20 +204,24 @@ the population provided. Uses a person to person query." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Uncover HR attributes which best represent a population for a Person to Person query</h1>
-    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/network_describe.R'><code>R/network_describe.R</code></a></small>
-    <div class="hidden name"><code>network_describe.Rd</code></div>
+    <h1>Create a histogram plot for any metric</h1>
+    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/create_hist.R'><code>R/create_hist.R</code></a></small>
+    <div class="hidden name"><code>create_hist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a>
-Returns a data frame that gives a percentage of the group combinations that best represent
-the population provided. Uses a person to person query.</p>
+    <p>Provides an analysis of the distribution of a selected metric.
+Returns a faceted histogram by default.
+Additional options available to return the underlying frequency table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>network_describe</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>create_hist</span><span class='op'>(</span>
   <span class='va'>data</span>,
-  hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Organization"</span>, <span class='st'>"LevelDesignation"</span>, <span class='st'>"FunctionType"</span><span class='op'>)</span>
+  <span class='va'>metric</span>,
+  hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+  mingroup <span class='op'>=</span> <span class='fl'>5</span>,
+  binwidth <span class='op'>=</span> <span class='fl'>1</span>,
+  return <span class='op'>=</span> <span class='st'>"plot"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -225,18 +229,96 @@ the population provided. Uses a person to person query.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Data frame for a person to person query.</p></td>
+      <td><p>A Standard Person Query dataset in the form of a data frame.</p></td>
+    </tr>
+    <tr>
+      <th>metric</th>
+      <td><p>String containing the name of the metric,
+e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>Character vector of length 3 containing the HR attributes to be used.</p></td>
+      <td><p>HR Variable by which to split metrics. Accepts a character
+vector, defaults to "Organization" but accepts any character vector, e.g.
+"LevelDesignation"</p></td>
+    </tr>
+    <tr>
+      <th>mingroup</th>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size, defaults to 5.</p></td>
+    </tr>
+    <tr>
+      <th>binwidth</th>
+      <td><p>Numeric value for setting <code>binwidth</code> argument within
+<code><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>ggplot2::geom_histogram()</a></code>. Defaults to 1.</p></td>
+    </tr>
+    <tr>
+      <th>return</th>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+<li><p><code>"data"</code></p></li>
+<li><p><code>"frequency"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Tannaz Sattari Tabrizi <a href='mailto:Tannaz.Sattari@microsoft.com'>Tannaz.Sattari@microsoft.com</a></p>
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A faceted histogram for the metric.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
+<li><p><code>"data"</code>: data frame. Data with calculated person averages.</p></li>
+<li><p><code>"frequency</code>: list of data frames. Each data frame contains the
+frequencies used in each panel of the plotted histogram.</p></li>
+</ul>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Flexible: 
+<code><a href='create_dist.html'>create_dist</a>()</code>,
+<code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
+<code><a href='create_line.html'>create_line</a>()</code>,
+<code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_rank.html'>create_rank</a>()</code>,
+<code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_trend.html'>create_trend</a>()</code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Return plot for whole organization</span>
+<span class='fu'>create_hist</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>, hrvar <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+</div><div class='img'><img src='create_hist-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return plot</span>
+<span class='fu'>create_hist</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
+</div><div class='img'><img src='create_hist-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return summary table</span>
+<span class='fu'>create_hist</span><span class='op'>(</span><span class='va'>sq_data</span>,
+            metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>,
+            hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+            return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 6</span><span>
+#&gt;    group                 mean median   max   min Employee_Count
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz Dev               14.7   15.0  19.9  8.46             75
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Customer Service      18.3   16.9  35.6 10.4              61
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Facilities            18.6   17.3  27.1 10.9              72
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Finance-Corporate     16.3   15.2  27.6  9.10             68
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Finance-East          22.2   25.1  33.5  9.44             70
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Finance-South         18.6   15.8  32.8  9.34             81
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Finance-West          20.6   19.6  33.5 11.7              73
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Financial Planning    17.1   15.9  34.2  9.49             75
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A Central           18.9   16.5  30.5 10.1              57
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A East              16.2   16.0  23.7 11.0              65
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> G&amp;A South             23.1   24.2  37.9 11.1              76
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Human Resources       24.4   25.0  35.8 10.8              71
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Inventory Management  26.2   25.0  41.7 12.1              60
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> IT-Corporate          23.7   23.9  43.4  9.26             68
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> IT-East               20.6   21.8  35.5  9.87             62</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
