@@ -43,15 +43,15 @@ collaboration_report <- function(data,
     newpath <- path
   }
 
-  if(hrvar == "AUTO"){
-  myrank <- data %>% collaboration_rank(mingroup = mingroup, return = "table")
-  hrvar <- myrank[[1,1]]
+  if(hrvar %in% c("AUTO", "auto")){
+    myrank <- data %>% collaboration_rank(mingroup = mingroup, return = "table")
+    hrvar <- myrank[[1,1]]
   }
 
   # Set outputs
   output_list <-
     list(
-      data %>% check_query(return = "text") %>% md2html(),
+      data %>% check_query(return = "text"),
       paste("---"),
 
       # Collaboration Header
