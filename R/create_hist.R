@@ -3,35 +3,42 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Horizontal 100 percent stacked bar plot for any metric
+#' @title Create a histogram plot for any metric
 #'
 #' @description
 #' Provides an analysis of the distribution of a selected metric.
-#' Returns a stacked bar plot by default.
-#' Additional options available to return a table with distribution elements.
+#' Returns a faceted histogram by default.
+#' Additional options available to return the underlying frequency table.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
+#' @param hrvar HR Variable by which to split metrics. Accepts a character
+#'   vector, defaults to "Organization" but accepts any character vector, e.g.
+#'   "LevelDesignation"
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size, defaults to 5.
 #'
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param binwidth Numeric value for setting `binwidth` argument within
+#'   `ggplot2::geom_histogram()`. Defaults to 1.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
+#'   - `"data"`
+#'   - `"frequency"`
 #'
 #' See `Value` for more information.
 #'
-#' @param cut A numeric vector of length three to specify the breaks for the distribution,
-#' e.g. c(10, 15, 20)
-#' @param dist_colours A character vector of length four to specify colour
-#' codes for the stacked bars.
-#' @param unit See `cut_hour()`.
-#'
 #' @return
-#' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A stacked bar plot for the metric.
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A faceted histogram for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
+#'   - `"data"`: data frame. Data with calculated person averages.
+#'   - `"frequency`: list of data frames. Each data frame contains the
+#'   frequencies used in each panel of the plotted histogram.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -44,24 +51,25 @@
 #' @family Flexible
 #'
 #' @examples
+#' # Return plot for whole organization
+#' create_hist(sq_data, metric = "Collaboration_hours", hrvar = NULL)
+#'
 #' # Return plot
-#' create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
+#' create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 #'
 #' # Return summary table
-#' create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
+#' create_hist(sq_data,
+#'             metric = "Collaboration_hours",
+#'             hrvar = "Organization",
+#'             return = "table")
 #' @export
 
-create_dist <- function(data,
+create_hist <- function(data,
                         metric,
                         hrvar = "Organization",
                         mingroup = 5,
-                        return = "plot",
-                        cut = c(15, 20, 25),
-                        dist_colours = c("#facebc",
-                                         "#fcf0eb",
-                                         "#b4d5dd",
-                                         "#bfe5ee"),
-                        unit = "hours") {
+                        binwidth = 1,
+                        return = "plot") {
 
   ## Check inputs
   required_variables <- c("Date",
@@ -83,6 +91,7 @@ create_dist <- function(data,
   }
 
   ## Basic Data for bar plot
+  ## Calculate person-averages
   plot_data <-
     data %>%
     rename(group = !!sym(hrvar)) %>%
@@ -96,11 +105,6 @@ create_dist <- function(data,
               by = "group") %>%
     filter(Employee_Count >= mingroup)
 
-  ## Create buckets of collaboration hours
-  plot_data <-
-    plot_data %>%
-    mutate(bucket_hours = cut_hour(!!sym(metric), cuts = cut, unit = unit))
-
   ## Employee count / base size table
   plot_legend <-
     plot_data %>%
@@ -108,43 +112,30 @@ create_dist <- function(data,
     summarize(Employee_Count = first(Employee_Count)) %>%
     mutate(Employee_Count = paste("n=",Employee_Count))
 
-  ## Data for bar plot
-  plot_table <-
-    plot_data %>%
-    group_by(group, bucket_hours) %>%
-    summarize(Employees = n(),
-              Employee_Count = first(Employee_Count),
-              percent = Employees / Employee_Count ) %>%
-    arrange(group, desc(bucket_hours))
-
-  ## Table for annotation
-  annot_table <-
-    plot_legend %>%
-    dplyr::left_join(plot_table, by = "group")
-
   ## Bar plot
 
   plot_object <-
-    plot_table %>%
-    ggplot(aes(x = group, y=Employees, fill = bucket_hours)) +
-    geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
-    scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
-    coord_flip() +
-    annotate("text", x = plot_legend$group, y = -.05, label = plot_legend$Employee_Count ) +
-    scale_fill_manual(name="",
-                      values = rev(dist_colours)) +
+    plot_data %>%
+    ggplot(aes(x = !!sym(metric), fill = group)) +
+    geom_histogram(binwidth = binwidth, colour = "white") +
+    facet_wrap(group ~ .) +
     theme_wpa_basic() +
     labs(title = clean_nm,
          subtitle = paste("Distribution of", clean_nm, "by", camel_clean(hrvar))) +
-    xlab(camel_clean(hrvar)) +
-    ylab("Fraction of employees") +
+    xlab(clean_nm) +
+    ylab("Number of employees") +
     labs(caption = extract_date_range(data, return = "text"))
 
   ## Table to return
   return_table <-
-    plot_table %>%
-    select(group, bucket_hours, percent) %>%
-    spread(bucket_hours,  percent) %>%
+    plot_data %>%
+    group_by(group) %>%
+    summarise(
+      mean = mean(!!sym(metric), na.rm = TRUE),
+      median = median(!!sym(metric), na.rm = TRUE),
+      max = max(!!sym(metric), na.rm = TRUE),
+      min = min(!!sym(metric), na.rm = TRUE)
+    ) %>%
     left_join(data %>%
                 rename(group = !!sym(hrvar)) %>%
                 group_by(group) %>%
@@ -154,13 +145,26 @@ create_dist <- function(data,
 
   if(return == "table"){
 
-    return_table %>%
-      as_tibble() %>%
-      return()
+    return_table
 
   } else if(return == "plot"){
 
     return(plot_object)
+
+  } else if(return == "frequency"){
+
+    ggplot2::ggplot_build(plot_object)$data[[1]] %>%
+      select(group,
+             PANEL,
+             x,
+             xmin,
+             xmax,
+             y) %>%
+      group_split(group)
+
+  } else if(return == "data"){
+
+    plot_data
 
   } else {
 

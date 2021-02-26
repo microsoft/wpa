@@ -4,6 +4,7 @@ New functions, bug fixes, and performance improvements.
 
 New functions:
 - `import_to_fst()`
+- `create_hist()`
 
 # wpa 1.3.1
 

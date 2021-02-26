@@ -56,7 +56,7 @@ The summary table returned by \code{return == "table"} represent percentiles of 
 e.g. x\% of signals are sent by y hour of the day.
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 Apply hierarchical clustering to emails sent by hour of day.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.
