@@ -51,7 +51,7 @@ collaboration_report <- function(data,
   # Set outputs
   output_list <-
     list(
-      data %>% check_query(return = "text"),
+      data %>% check_query(return = "text", validation = TRUE),
       paste("---"),
 
       # Collaboration Header

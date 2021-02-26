@@ -43,14 +43,15 @@ connectivity_report <- function(data,
   }
 
   output_list <-
-    list(data %>% check_query(return = "text") %>% md2html(),
+    list(data %>% check_query(return = "text", validation = TRUE),
 
          data %>% external_network_plot(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% external_network_plot(hrvar = hrvar, mingroup = mingroup, return = "table"),
 
          data %>% internal_network_plot(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% internal_network_plot(hrvar = hrvar, mingroup = mingroup, return = "table")) %>%
-    purrr::map_if(is.data.frame, create_dt)
+    purrr::map_if(is.data.frame, create_dt) %>%
+    purrr::map_if(is.character, md2html)
 
   title_list <-
     c("Data Overview",

@@ -43,7 +43,7 @@ coaching_report <- function(data,
   }
 
   output_list <-
-    list(data %>% check_query(return = "text") %>% md2html(),
+    list(data %>% check_query(return = "text", validation = TRUE),
 
          data %>% mgrrel_matrix(hrvar = hrvar, return = "plot"), # no mingroup arg
          data %>% mgrrel_matrix(hrvar = hrvar, return = "table"), # no mingroup arg
@@ -54,7 +54,8 @@ coaching_report <- function(data,
          data %>% one2one_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
          data %>% one2one_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% one2one_trend(hrvar = hrvar, mingroup = mingroup, return = "table")) %>%
-    purrr::map_if(is.data.frame, create_dt)
+    purrr::map_if(is.data.frame, create_dt) %>%
+    purrr::map_if(is.character, md2html)
 
   title_list <-
     c("Data Overview",
