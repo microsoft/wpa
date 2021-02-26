@@ -6,7 +6,7 @@
 \usage{
 collaboration_report(
   data,
-  hrvar = "Organization",
+  hrvar = "AUTO",
   mingroup = 5,
   path = "collaboration report",
   timestamp = TRUE
@@ -15,16 +15,18 @@ collaboration_report(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics. Defaults to \code{"AUTO"},
+where the HR variable with most collaboration variance is automatically
+selected. Also accepts any character vector, e.g. "LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.
-For example, "collaboration report".}
+\item{path}{Pass the file path and the desired file name, \emph{excluding the file
+extension}. For example, "collaboration report".}
 
-\item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.}
+\item{timestamp}{Logical vector specifying whether to include a timestamp in
+the file name. Defaults to \code{TRUE}.}
 }
 \value{
 An HTML report with the same file name as specified in the arguments is
