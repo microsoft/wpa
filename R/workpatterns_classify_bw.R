@@ -40,7 +40,7 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' workpatterns_classify_bw(em_data)
 #' }
 #'

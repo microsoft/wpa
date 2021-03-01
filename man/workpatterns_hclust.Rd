@@ -90,7 +90,7 @@ workpatterns_hclust(em_data, k = 4, return = "data") \%>\% head()
 # Run clusters for instant messages only, return hclust object
 workpatterns_hclust(em_data, k = 4, return = "hclust", signals = c("IM"))
 
-\dontrun{
+\donttest{
 # Run clusters with all three signal types, return plot
 workpatterns_hclust(em_data,
                     k = 4,

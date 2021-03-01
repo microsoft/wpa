@@ -73,7 +73,7 @@ You can browse each individual function for details on calculations.
 }
 
 \examples{
-\dontrun{
+\donttest{
 validation_report(dv_data,
                   meeting_data = mt_data,
                   hrvar = "Organization")

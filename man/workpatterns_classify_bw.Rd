@@ -48,7 +48,7 @@ algorithm to emails sent by hour of day, using the binary week-based (bw)
 method.
 }
 \examples{
-\dontrun{
+\donttest{
 workpatterns_classify_bw(em_data)
 }
 

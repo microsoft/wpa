@@ -32,7 +32,7 @@ using the \code{data} output from \code{flex_index()}. This is used within \code
 as an internal function.
 }
 \examples{
-\dontrun{
+\donttest{
 # Examples of how to test the plotting options individually
 # Sample of 10 work patterns
 em_data \%>\%

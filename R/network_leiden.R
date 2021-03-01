@@ -25,7 +25,7 @@
 #'   - 'network': return igraph object.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Simulate a small person-to-person dataset
 #' p2p_data <- p2p_data_sim(size = 50)
 #'

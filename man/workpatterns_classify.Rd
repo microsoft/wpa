@@ -141,7 +141,7 @@ em_data \%>\% workpatterns_classify(method = "bw")
 # Return an area plot
 em_data \%>\% workpatterns_classify(method = "bw", return = "plot-area")
 
-\dontrun{
+\donttest{
 
 em_data \%>\% workpatterns_classify(method = "bw", return = "table")
 

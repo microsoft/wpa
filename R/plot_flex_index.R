@@ -20,7 +20,7 @@
 #' @family Work Patterns
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Examples of how to test the plotting options individually
 #' # Sample of 10 work patterns
 #' em_data %>%

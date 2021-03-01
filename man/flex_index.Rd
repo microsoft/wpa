@@ -119,7 +119,7 @@ em_data \%>\%
 em_data \%>\%
   flex_index(hrvar = "Organization", return = "table")
 
-\dontrun{
+\donttest{
 # Return the raw data with the computed Flexibility Index
 em_data \%>\%
   flex_index(return = "data")

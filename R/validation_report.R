@@ -50,7 +50,7 @@
 #' Defaults to TRUE.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' validation_report(dv_data,
 #'                   meeting_data = mt_data,
 #'                   hrvar = "Organization")

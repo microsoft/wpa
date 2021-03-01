@@ -45,7 +45,7 @@ have predictive power or influence on the value of a specified dependent
 variable.
 }
 \examples{
-\dontrun{
+\donttest{
 sq_data \%>\%
   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\% # Simulate binary variable
   IV_report(outcome =  "CH_binary",
