@@ -55,7 +55,8 @@ Imports:
     proxy,
     ggwordcloud,
     methods,
-    data.table
+    data.table,
+    withr
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
