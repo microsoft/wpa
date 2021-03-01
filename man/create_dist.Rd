@@ -67,6 +67,7 @@ create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ret
 \seealso{
 Other Flexible: 
 \code{\link{create_fizz}()},
+\code{\link{create_hist}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},

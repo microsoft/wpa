@@ -47,6 +47,7 @@ into the function. The only requirement is that a \code{date_var} is provided fo
 Other Flexible: 
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_hist}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
