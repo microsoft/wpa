@@ -81,7 +81,7 @@ IV_by_period <-
                                                        Period == 'After' ~ "1"))
 
     # Make the use of exponential notation less likely
-    options(scipen = 10)
+    withr::with_options(scipen = 10)
 
     # De-select character columns
     train <-

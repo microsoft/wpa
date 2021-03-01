@@ -38,7 +38,8 @@
 #' @export
 hr_trend <- function(data, return = "plot"){
 
-  options(dplyr.summarise.inform = FALSE)
+
+  withr::with_options(dplyr.summarise.inform = FALSE)
 
   data$Date <- as.Date(data$Date, format = "%m/%d/%Y")
 

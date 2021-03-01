@@ -27,7 +27,7 @@
 #' @export
 identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){
 
-  options(dplyr.summarise.inform = FALSE)
+  withr::with_options(dplyr.summarise.inform = FALSE)
 
   summary_byPersonId <-
     data %>%
