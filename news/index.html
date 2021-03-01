@@ -208,12 +208,39 @@
     <div id="wpa-140" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.0">
 <a href="#wpa-140" class="anchor"></a>wpa 1.4.0</h1>
-<p>New functions, bug fixes, and performance improvements.</p>
+<p>v1.4.0 is the version where the <strong>working patterns</strong> family of functions are released open source as part of <strong>wpa</strong> (<a href='https://github.com/microsoft/wpa/issues/55'>#55</a>). These functions include:</p>
+<ul>
+<li><code><a href="../reference/workpatterns_classify.html">workpatterns_classify()</a></code></li>
+<li><code><a href="../reference/flex_index.html">flex_index()</a></code></li>
+<li><code><a href="../reference/workpatterns_report.html">workpatterns_report()</a></code></li>
+<li><code><a href="../reference/plot_flex_index.html">plot_flex_index()</a></code></li>
+</ul>
+<p>In addition to the above, there are also some new functions, bug fixes, documentation, and performance improvements.</p>
 <p>New functions:</p>
 <ul>
-<li><code><a href="../reference/import_to_fst.html">import_to_fst()</a></code></li>
-<li><code><a href="../reference/create_hist.html">create_hist()</a></code></li>
+<li>
+<code><a href="../reference/import_to_fst.html">import_to_fst()</a></code> (<a href='https://github.com/microsoft/wpa/issues/86'>#86</a>)</li>
+<li>
+<code><a href="../reference/create_hist.html">create_hist()</a></code> (<a href='https://github.com/microsoft/wpa/issues/80'>#80</a>)</li>
+<li>
+<code><a href="../reference/identify_shifts_wp.html">identify_shifts_wp()</a></code> (<a href='https://github.com/microsoft/wpa/issues/66'>#66</a>)</li>
 </ul>
+<p>Significant changes to existing functions:</p>
+<ul>
+<li>
+<code><a href="../reference/collaboration_report.html">collaboration_report()</a></code>: visuals and structure are improved (<a href='https://github.com/microsoft/wpa/issues/69'>#69</a>)</li>
+<li>
+<code><a href="../reference/import_wpa.html">import_wpa()</a></code> can now specify encoding when reading in data, which now defaults to <code>UTF-8</code> (<a href='https://github.com/microsoft/wpa/issues/76'>#76</a>). This resolves a previous bug for reading in double-byte characters.</li>
+<li>
+<code><a href="../reference/network_g2g.html">network_g2g()</a></code>: now auto-detects columns for collaborators and time investors. Also, if the value <code>'Collaborators Within Group'</code> does not exist in the data, a warning message is returned.</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>
+<code><a href="../reference/collaboration_area.html">collab_area()</a></code> now has relaxed variable name checks which makes it less prone to fail when not all exact collaboration metrics are available or when cases do not match (<a href='https://github.com/microsoft/wpa/issues/81'>#81</a>).</li>
+<li>Resolved an issue of overly strict checks on <code><a href="../reference/flag_outlooktime.html">flag_outlooktime()</a></code>. Now it is possible to pass both <code>7:30</code> and <code>07:30</code> as inputs.</li>
+</ul>
+<p>Documentation changes have been implemented across the board to comply with CRAN and to improve the user experience (<a href='https://github.com/microsoft/wpa/issues/31'>#31</a>)</p>
 </div>
     <div id="wpa-131" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.1">
