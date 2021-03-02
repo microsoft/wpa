@@ -255,7 +255,7 @@ network_p2p <- function(data,
       plot_basic_graph <- function(){
 
         old_par <- par(no.readonly = TRUE)
-        on.exit(par(oldpar))
+        on.exit(par(old_par))
 
         par(bg = bg_fill)
 
