@@ -254,7 +254,10 @@ network_p2p <- function(data,
       ## Internal basic plotting function used inside `network_p2p()`
       plot_basic_graph <- function(){
 
-        withr::with_par(bg = bg_fill)
+        old_par <- par(no.readonly = TRUE)
+        on.exit(par(oldpar))
+
+        par(bg = bg_fill)
 
         layout_text <- paste0("igraph::layout_with_", algorithm)
 

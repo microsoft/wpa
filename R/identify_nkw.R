@@ -27,12 +27,10 @@
 #' @export
 identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){
 
-  withr::with_options(dplyr.summarise.inform = FALSE)
-
   summary_byPersonId <-
     data %>%
     group_by(PersonId, Organization) %>%
-    summarize(mean_collab = mean(Collaboration_hours))%>%
+    summarize(mean_collab = mean(Collaboration_hours), .groups = "drop")%>%
     mutate(flag_nkw = case_when(mean_collab > collab_threshold ~ "kw",
                                 TRUE ~ "nkw"))
 
@@ -43,7 +41,7 @@ identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){
   summary_byOrganization <-
     summary_byPersonId %>%
     group_by(Organization, flag_nkw)%>%
-    summarise(total = n())%>%
+    summarise(total = n(), .groups = "drop")%>%
     group_by(Organization)%>%
     mutate(perc = total/sum(total))%>% #need to format to %
     filter(flag_nkw == "nkw")%>%

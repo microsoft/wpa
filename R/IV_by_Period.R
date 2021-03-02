@@ -80,9 +80,6 @@ IV_by_period <-
       WpA_dataset_table %>% mutate(outcome = case_when(Period == "Before" ~ "0",
                                                        Period == 'After' ~ "1"))
 
-    # Make the use of exponential notation less likely
-    withr::with_options(scipen = 10)
-
     # De-select character columns
     train <-
       WpA_dataset_table %>%
