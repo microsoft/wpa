@@ -16,12 +16,13 @@
 #'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
 #'
-#' @param signals Character vector to specify which collaboration metrics to use:
-#'   - "email" (default) for emails only
-#'   - "IM" for Teams messages only
-#'   - "unscheduled_calls" for Unscheduled Calls only
-#'   - "meetings" for Meetings only
-#'   - or a combination of signals, such as `c("email", "IM")`
+#' @param signals Character vector to specify which collaboration metrics to
+#'   use:
+#'   - a combination of signals, such as `c("email", "IM")` (default)
+#'   - `"email"` for emails only
+#'   - `"IM"` for Teams messages only
+#'   - `"unscheduled_calls"` for Unscheduled Calls only
+#'   - `"meetings"` for Meetings only
 #'
 #' @param return Character vector to specify what to return. Valid options include:
 #'   - "plot": returns an overlapping area plot (default)

@@ -22,9 +22,14 @@ workpatterns_classify_bw(
 Defaults to NULL. This only affects the function when "table" is returned.}
 
 \item{signals}{Character vector to specify which collaboration metrics to
-use: - "email" (default) for emails only - "IM" for Teams messages only, -
-"unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-only - or a combination of signals, such as \code{c("email", "IM")}}
+use:
+\itemize{
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+}}
 
 \item{start_hour}{A character vector specifying start hours,
 e.g. "0900"}
@@ -43,7 +48,7 @@ archetypes - "table": returns a summary table of the archetypes -
 over time}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Apply a rule based
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}} Apply a rule based
 algorithm to emails sent by hour of day, using the binary week-based (bw)
 method.
 }
