@@ -11,6 +11,7 @@ workpatterns_classify(
   signals = "email",
   start_hour = "0900",
   end_hour = "1700",
+  active_threshold = 0,
   method = "bw",
   return = "plot"
 )
@@ -42,6 +43,10 @@ Note that this currently only supports \strong{hourly} increments.}
 \item{end_hour}{A character vector specifying starting hours, e.g. "1700".
 Note that this currently only supports \strong{hourly} increments.}
 
+\item{active_threshold}{A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as \emph{active}. Defaults to 0.
+Only applicable for the binary-week method.}
+
 \item{method}{String to pass through specifying which method to use for
 classification. By default, a binary week-based (bw) method is used, with
 options to use the the person-average volume-based (pav) method.}
@@ -70,7 +75,7 @@ shown over time
 }
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 
 Apply a rule based algorithm to emails or instant messages sent by hour of
 day. Uses a binary week-based ('bw') method by default, with options to use the
