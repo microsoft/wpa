@@ -9,7 +9,7 @@ one2one_freq(
   hrvar = "Organization",
   mingroup = 5,
   return = "plot",
-  mode = "sum"
+  mode = "dist"
 )
 }
 \arguments{
@@ -33,9 +33,9 @@ but accepts any character vector, e.g. "LevelDesignation"}
 }}
 }
 \description{
-Analyze Manager 1:1 cadance, by analysing the average number of weeks between 1:1 meetings between an employee and their manager.
-Returns a  bar plot of average cadence of 1:1 meetings.
-Additional options available to return distribution plot, tables, or a dataframe with a Cadence of 1 on 1 meetings metric.
+This function calculates the average number of weeks (cadence) between of 1:1 meetings between an employee and their manager.
+Returns a  distribution plot for typical cadence of 1:1 meetings.
+Additional options available to return a bar plot, tables, or a dataframe with a Cadence of 1 on 1 meetings metric.
 }
 \examples{
 # Return plot
