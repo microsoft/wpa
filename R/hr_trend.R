@@ -38,9 +38,6 @@
 #' @export
 hr_trend <- function(data, return = "plot"){
 
-
-  withr::with_options(dplyr.summarise.inform = FALSE)
-
   data$Date <- as.Date(data$Date, format = "%m/%d/%Y")
 
   ## Date range data frame
@@ -49,7 +46,7 @@ hr_trend <- function(data, return = "plot"){
   plot_data <-
     data %>%
     group_by(Date) %>%
-    summarise(n = n_distinct(PersonId)) %>%
+    summarise(n = n_distinct(PersonId), .groups = "drop_last") %>%
     ungroup()
 
   if(return == "plot"){

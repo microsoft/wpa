@@ -35,7 +35,7 @@
 import_to_fst <- function(path, ...){
 
   # Check if fst is installed
-  if(!"fst" %in% installed.packages()){
+  if(!"fst" %in% utils::installed.packages()){
 
     stop('`fst` is not installed.
          Run `install.packages("fst")` to install the package.')
