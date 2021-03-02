@@ -44,16 +44,17 @@ Additional options available to return a table with distribution elements.
 }
 \examples{
 # Return plot
-workloads_dist(sq_data, hrvar = "Organization", return = "plot")
+one2one_dist(sq_data, hrvar = "Organization", return = "plot")
 
 # Return summary table
-workloads_dist(sq_data, hrvar = "Organization", return = "table")
+one2one_dist(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
 Other Managerial Relations: 
 \code{\link{mgrcoatt_dist}()},
 \code{\link{mgrrel_matrix}()},
 \code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
 \code{\link{one2one_line}()},
 \code{\link{one2one_rank}()},
 \code{\link{one2one_sum}()},

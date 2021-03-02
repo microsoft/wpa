@@ -55,7 +55,7 @@ Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} 
 method.}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 Take a P2P network query and implement the Louvain community detection method. The
 \strong{igraph} implementation of the Louvain method is used.
 }

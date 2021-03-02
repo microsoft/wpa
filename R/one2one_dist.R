@@ -17,10 +17,10 @@
 #'
 #' @examples
 #' # Return plot
-#' workloads_dist(sq_data, hrvar = "Organization", return = "plot")
+#' one2one_dist(sq_data, hrvar = "Organization", return = "plot")
 #'
 #' # Return summary table
-#' workloads_dist(sq_data, hrvar = "Organization", return = "table")
+#' one2one_dist(sq_data, hrvar = "Organization", return = "table")
 #' @export
 
 one2one_dist <- function(data,
