@@ -16,6 +16,25 @@ identify_shifts_wp(
 \arguments{
 \item{data}{A data frame containing data from the Hourly Collaboration query.}
 
+\item{signals}{Character vector to specify which collaboration metrics to
+use:
+\itemize{
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+}}
+
+\item{active_threshold}{A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
+
+\item{start_hour}{A character vector specifying start hours,
+e.g. "0900"}
+
+\item{end_hour}{A character vector specifying finish hours,
+e.g. "1700"}
+
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
