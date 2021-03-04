@@ -12,3 +12,11 @@ rgb2hex(r, g, b)
 \description{
 Convert rgb to HEX code
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()}
+}
+\concept{Support}

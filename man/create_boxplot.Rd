@@ -18,11 +18,15 @@ create_boxplot(
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics. Accepts a character
+vector, defaults to "Organization" but accepts any character vector, e.g.
+"LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size, defaults to 5.}
 
-\item{return}{String specifying what to return. This must be one of the following strings:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
 \item \code{"plot"}
 \item \code{"table"}
@@ -38,7 +42,7 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
-Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
+Analyzes a selected metric and returns a box plot by default.
 Additional options available to return a table with distribution elements.
 }
 \details{
@@ -65,14 +69,56 @@ create_boxplot(sq_data,
                return = "plot")
 }
 \seealso{
-Other General: 
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
 \code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{hrvar_count}()}
+
+Other Flexible: 
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_hist}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()}
 }
-\concept{General}
+\concept{Flexible}
+\concept{Visualization}

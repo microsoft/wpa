@@ -21,7 +21,7 @@
 #' @param ylab Y-axis label for the plot (group axis)
 #' @param xlab X-axis label of the plot (bar axis).
 #' @param percent Logical value to determine whether to show labels as
-#'   percentage signs. Defaults to FALSE.
+#'   percentage signs. Defaults to `FALSE`.
 #' @param bar_colour String to specify colour to use for bars.
 #' In-built accepted values include "default" (default), "alert" (red), and
 #' "darkblue". Otherwise, hex codes are also accepted. You can also supply
@@ -51,7 +51,28 @@
 #' @import ggplot2
 #' @import dplyr
 #'
-#' @family General
+#' @family Visualization
+#' @family Flexible
+#'
+#' @examples
+#' library(dplyr)
+#'
+#' # Summarise Non-person-average median `Emails_sent`
+#' med_df <-
+#'   sq_data %>%
+#'   group_by(Organization) %>%
+#'   summarise(Emails_sent_median = median(Emails_sent))
+#'
+#' med_df %>%
+#'   create_bar_asis(
+#'     group_var = "Organization",
+#'     bar_var = "Emails_sent_median",
+#'     title = "Median Emails Sent by Organization",
+#'     subtitle = "Person Averaging Not Applied",
+#'     bar_colour = "darkblue",
+#'     caption = extract_date_range(sq_data, return = "text")
+#'   )
+#'
 #'
 #' @export
 create_bar_asis <- function(data,

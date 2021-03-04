@@ -19,3 +19,11 @@ of prettifying plot labels.
 camel_clean("NoteHowTheStringIsFormatted")
 
 }
+\seealso{
+Other Support: 
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{rgb2hex}()}
+}
+\concept{Support}

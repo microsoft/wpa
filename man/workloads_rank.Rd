@@ -15,9 +15,14 @@ Defaults to all HR attributes identified.}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
 Defaults to 5.}
 
-\item{return}{A character vector specifying what to return.
-Valid values include "table" (default). Features are being considered for alternative return options but are currently
-unavailable.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"table"} (default)
+\item \code{"plot"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
 When 'table' is passed in \code{return}, a summary table is returned as a data frame.

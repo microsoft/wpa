@@ -32,7 +32,7 @@
 #' @import dplyr
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
-#' @family General
+#' @family Visualization
 #' @family Data Validation
 #'
 #' @examples

@@ -16,6 +16,8 @@
 #' @import DT
 #' @importFrom dplyr mutate_if
 #'
+#' @family Import and Export
+#'
 #' @export
 create_dt <- function(x, rounding = 1, freeze = 2){
 

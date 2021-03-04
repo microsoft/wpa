@@ -25,33 +25,115 @@ Defaults to all HR attributes identified.}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
 Defaults to 5.}
 
-\item{return}{A character vector specifying what to return.
-Valid values include "table" (default). Features are being considered for alternative return options but are currently
-unavailable.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"table"} (default)
+\item \code{"plot"}
+}
 
-\item{plot_mode}{Numeric vector to determine which plot mode to return:
-\enumerate{
-\item Top and bottom five groups across the data population are highlighted
-\item Top and bottom groups \emph{per} organizational attribute are highlighted
+See \code{Value} for more information.}
+
+\item{plot_mode}{Numeric vector to determine which plot mode to return. Must
+be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
+\itemize{
+\item \code{1}: Top and bottom five groups across the data population are highlighted
+\item \code{2}: Top and bottom groups \emph{per} organizational attribute are highlighted
 }}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
+metric, the y-axis represents the HR attributes, and the size of the
+bubbles represent the size of the organizations.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
-This function scans a standard Person query output for groups with high levels of a given Workplace Analytics Metric.
-Returns a table with all groups (across multiple HR attributes) ranked by the specified metric.
+This function scans a standard Person query output for groups with high
+levels of a given Workplace Analytics Metric. Returns a table with all groups
+(across multiple HR attributes) ranked by the specified metric.
+}
+\examples{
+create_rank(
+  data = sq_data,
+  hrvar = c("FunctionType", "LevelDesignation"),
+  metric = "Emails_sent",
+  return = "plot",
+  plot_mode = 1
+)
+
+# Plot mode 2 - show top and bottom groups per HR variable
+create_rank(
+  data = sq_data,
+  hrvar = c("FunctionType", "LevelDesignation"),
+  metric = "Emails_sent",
+  return = "plot",
+  plot_mode = 2
+)
+
+# Return a table
+create_rank(
+  data = sq_data,
+  metric = "Emails_sent",
+  return = "table"
+)
+
+
 }
 \seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{hrvar_count}()}
+
 Other Flexible: 
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
 \code{\link{create_trend}()}
 }
 \concept{Flexible}
+\concept{Visualization}

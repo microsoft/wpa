@@ -30,7 +30,8 @@ size, defaults to 5.}
 
 See \code{Value} for more information.}
 
-\item{cut}{A numeric vector of length three to specify the breaks for the distribution,
+\item{cut}{A numeric vector of length three to specify the breaks for the
+distribution,
 e.g. c(10, 15, 20)}
 }
 \value{

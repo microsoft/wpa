@@ -20,3 +20,11 @@ Return a data frame with the start and end date
 of the query data by default. There are options to return a descriptive
 string, which is used in the caption of plots in this package.
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{rgb2hex}()}
+}
+\concept{Support}

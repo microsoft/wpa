@@ -87,6 +87,11 @@ A data frame with 897 rows and 69 variables:
 dv_data
 }
 \description{
-A dataset generated from a Standard Person Query from WpA.
+A dataset generated from a Standard Person Query from Workplace Analytics.
 }
+\seealso{
+Other Data: 
+\code{\link{em_data}}
+}
+\concept{Data}
 \keyword{datasets}

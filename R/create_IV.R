@@ -41,6 +41,7 @@
 #'
 #' @import dplyr
 #'
+#' @family Variable Association
 #' @family Information Value
 #'
 #' @examples

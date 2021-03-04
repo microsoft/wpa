@@ -16,6 +16,7 @@
 #' @inheritParams create_dist
 #' @inherit create_dist return
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @examples

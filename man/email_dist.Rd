@@ -30,7 +30,8 @@ size, defaults to 5.}
 
 See \code{Value} for more information.}
 
-\item{cut}{A numeric vector of length three to specify the breaks for the distribution,
+\item{cut}{A numeric vector of length three to specify the breaks for the
+distribution,
 e.g. c(10, 15, 20)}
 }
 \value{
@@ -57,6 +58,41 @@ email_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 
 }
 \seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{hrvar_count}()}
+
 Other Emails: 
 \code{\link{email_fizz}()},
 \code{\link{email_line}()},
@@ -65,3 +101,4 @@ Other Emails:
 \code{\link{email_trend}()}
 }
 \concept{Emails}
+\concept{Visualization}

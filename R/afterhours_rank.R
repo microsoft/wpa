@@ -21,7 +21,8 @@
 #' @import scales
 #' @importFrom stats reorder
 #'
-#' @family After-Hours
+#' @family Visualization
+#' @family After-hours Collaboration
 #'
 #' @return
 #' When 'table' is passed in `return`, a summary table is returned as a data frame.

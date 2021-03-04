@@ -41,16 +41,23 @@
 #' @importFrom scales wrap_format
 #' @importFrom stats reorder
 #'
-#' @family General
+#' @family Visualization
+#' @family Flexible
 #'
 #' @examples
 #' # Return a ggplot bar chart
 #' create_bar(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
-#' create_bar(sq_data, metric = "Generated_workload_email_hours")
-#' create_bar(sq_data, metric = "After_hours_collaboration_hours")
+#'
+#' # Change bar colour
+#' create_bar(sq_data,
+#'            metric = "After_hours_collaboration_hours",
+#'            bar_colour = "alert")
 #'
 #' # Return a summary table
-#' create_bar(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "table")
+#' create_bar(sq_data,
+#'            metric = "Collaboration_hours",
+#'            hrvar = "LevelDesignation",
+#'            return = "table")
 #' @export
 create_bar <- function(data,
                        metric,

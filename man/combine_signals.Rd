@@ -7,18 +7,19 @@
 combine_signals(data, hr, signals = c("Emails_sent", "IMs_sent"))
 }
 \arguments{
-\item{data}{Hourly Collaboration query containing signal variables (e.g. \code{Emails_sent_00_01})}
+\item{data}{Hourly Collaboration query containing signal variables (e.g.
+\code{Emails_sent_00_01})}
 
 \item{hr}{Numeric value between 0 to 23 to iterate through}
 
 \item{signals}{Character vector for specifying which signal types to combine.
-Defaults to c("Emails_sent", "IMs_sent"). Other valid values include "Unscheduled_calls" and
-"Meetings".}
+Defaults to \code{c("Emails_sent", "IMs_sent")}. Other valid values include
+\code{"Unscheduled_calls"} and \code{"Meetings"}.}
 }
 \description{
-Takes in an Hourly Collaboration Data, and for each hour sums and aggregates the
-signals (e.g.\code{Emails_sent} and \code{IMs_sent}) in \code{Signals_sent}. This is an internal
-function used in the Working Patterns functions.
+Takes in an Hourly Collaboration Data, and for each hour sums and aggregates
+the signals (e.g.\code{Emails_sent} and \code{IMs_sent}) in \code{Signals_sent}. This is an
+internal function used in the Working Patterns functions.
 }
 \details{
 \code{combine_signals} uses string matching to aggregate columns.
@@ -32,3 +33,11 @@ sim_data <-
 combine_signals(sim_data, hr = 9, signals = c("Emails_sent", "Unscheduled_calls"))
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{rgb2hex}()}
+}
+\concept{Support}

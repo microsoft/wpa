@@ -82,3 +82,4 @@ Other Information Value:
 \code{\link{IV_report}()}
 }
 \concept{Information Value}
+\concept{Variable Association}

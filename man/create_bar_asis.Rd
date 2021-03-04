@@ -37,7 +37,7 @@ the bars.}
 \item{xlab}{X-axis label of the plot (bar axis).}
 
 \item{percent}{Logical value to determine whether to show labels as
-percentage signs. Defaults to FALSE.}
+percentage signs. Defaults to \code{FALSE}.}
 
 \item{bar_colour}{String to specify colour to use for bars.
 In-built accepted values include "default" (default), "alert" (red), and
@@ -72,16 +72,77 @@ sq_data \%>\%
                   bar_colour = "darkblue",
                   rounding = 0)
 
+library(dplyr)
+
+# Summarise Non-person-average median `Emails_sent`
+med_df <-
+  sq_data \%>\%
+  group_by(Organization) \%>\%
+  summarise(Emails_sent_median = median(Emails_sent))
+
+med_df \%>\%
+  create_bar_asis(
+    group_var = "Organization",
+    bar_var = "Emails_sent_median",
+    title = "Median Emails Sent by Organization",
+    subtitle = "Person Averaging Not Applied",
+    bar_colour = "darkblue",
+    caption = extract_date_range(sq_data, return = "text")
+  )
+
+
 }
 \seealso{
-Other General: 
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{hrvar_count}()}
+
+Other Flexible: 
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_hist}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()}
 }
-\concept{General}
+\concept{Flexible}
+\concept{Visualization}

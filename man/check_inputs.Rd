@@ -13,12 +13,13 @@ check_inputs(input, requirements, return = "stop")
 
 \item{return}{A character string specifying what to return.
 The default value is "stop". Also accepts "names" and "warning".}
+
+\item{Support}{}
 }
 \value{
-The default behaviour is to return an error message,
-informing the user what variables are not included. When \code{return} is set
-to "names", a character vector containing the unmatched variable names
-is returned.
+The default behaviour is to return an error message, informing the
+user what variables are not included. When \code{return} is set to "names", a
+character vector containing the unmatched variable names is returned.
 }
 \description{
 Checks whether a data frame contains all the required variables.

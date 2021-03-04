@@ -19,7 +19,8 @@
 #' @inheritParams create_line
 #' @inherit create_line return
 #'
-#' @family After-Hours
+#' @family Visualization
+#' @family After-hours Collaboration
 #'
 #' @examples
 #' # Return a line plot

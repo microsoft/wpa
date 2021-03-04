@@ -33,14 +33,7 @@ identify_outlier(sq_data, metric = "Collaboration_hours")
 }
 \seealso{
 Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
-\code{\link{create_bubble}()},
-\code{\link{create_scatter}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
-\code{\link{hrvar_count}()}
+\code{\link{extract_hr}()}
 
 Other Data Validation: 
 \code{\link{check_query}()},

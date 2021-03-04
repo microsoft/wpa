@@ -16,7 +16,8 @@
 #' @inheritParams create_bar
 #' @inherit create_bar return
 #'
-#' @family After-Hours
+#' @family Visualization
+#' @family After-hours Collaboration
 #'
 #' @examples
 #' # Return a ggplot bar chart

@@ -25,7 +25,8 @@
 #'
 #' See `Value` for more information.
 #'
-#' @param cut A numeric vector of length three to specify the breaks for the distribution,
+#' @param cut A numeric vector of length three to specify the breaks for the
+#'   distribution,
 #' e.g. c(10, 15, 20)
 #' @param dist_colours A character vector of length four to specify colour
 #' codes for the stacked bars.
@@ -45,6 +46,7 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
+#' @family Visualization
 #' @family Flexible
 #'
 #' @examples

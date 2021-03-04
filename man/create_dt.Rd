@@ -17,3 +17,9 @@ which includes the row number column.}
 \description{
 See https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/ for more.
 }
+\seealso{
+Other Import and Export: 
+\code{\link{copy_df}()},
+\code{\link{export}()}
+}
+\concept{Import and Export}

@@ -15,6 +15,7 @@
 #'
 #' @inheritParams create_trend
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @return

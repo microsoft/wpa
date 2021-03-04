@@ -31,16 +31,56 @@ Returns a ggplot object by default, where 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{
-Provides a week by week view of a selected Workplace Analytics metric.
-By default returns a week by week heatmap bar plot, highlighting the points in time with most activity.
-Additional options available to return a summary table.
+Provides a week by week view of a selected Workplace Analytics metric. By
+default returns a week by week heatmap bar plot, highlighting the points in
+time with most activity. Additional options available to return a summary
+table.
 }
 \examples{
 create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 
 }
 \seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{hrvar_count}()}
+
 Other Flexible: 
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},
@@ -48,6 +88,15 @@ Other Flexible:
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
 \code{\link{create_stacked}()}
+
+Other Time-series: 
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()}
 }
 \concept{Flexible}
+\concept{Time-series}
+\concept{Visualization}
