@@ -80,7 +80,8 @@
 #'   - `"plot"`: ggplot object. A random of ten working patterns are displayed,
 #'   with diagnostic data and the Flexibility Index shown on the plot.
 #'   - `"data"`: data frame. The original input data appended with the
-#'   Flexibility Index and the component scores.
+#'   Flexibility Index and the component scores. Can be used with
+#'   `plot_flex_index()` to recreate visuals found in `flex_index()`.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
@@ -108,10 +109,9 @@
 #' # Return the raw data with the computed Flexibility Index
 #' em_data %>%
 #'   flex_index(return = "data")
-#'
-#'
 #' }
-#' @family Work Patterns
+#'
+#' @family Working Patterns
 #'
 #' @export
 flex_index <- function(data,

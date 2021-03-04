@@ -127,7 +127,7 @@
 #'
 #' }
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 #' @export
 workpatterns_classify <- function(data,

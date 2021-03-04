@@ -2,7 +2,8 @@
 % Please edit documentation in R/flag_ch_ratio.R
 \name{flag_ch_ratio}
 \alias{flag_ch_ratio}
-\title{Flag unusual high collaboration hours to after-hours collaboration hours ratio}
+\title{Flag unusual high collaboration hours to after-hours collaboration
+hours ratio}
 \usage{
 flag_ch_ratio(data, threshold = c(1, 30), return = "message")
 }
@@ -20,11 +21,13 @@ Defaults to 30.}
 }}
 }
 \value{
-A different output is returned depending on the value passed to the \code{return} argument:
+A different output is returned depending on the value passed to the \code{return}
+argument:
 \itemize{
 \item \code{"message"}: message in the console containing diagnotic summary
 \item \code{"text"}: string containing diagnotic summary
-\item \code{"data"}: data frame. Person-level data with flags on unusually high or low ratios
+\item \code{"data"}: data frame. Person-level data with flags on unusually high or
+low ratios
 }
 }
 \description{
@@ -45,6 +48,7 @@ data.frame(PersonId = c("Alice", "Bob"),
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},

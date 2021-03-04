@@ -76,7 +76,7 @@ em_data \%>\% identify_shifts_wp(return = "table")
 
 }
 \seealso{
-Other Work Patterns: 
+Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
@@ -85,4 +85,4 @@ Other Work Patterns:
 \code{\link{workpatterns_classify}()},
 \code{\link{workpatterns_hclust}()}
 }
-\concept{Work Patterns}
+\concept{Working Patterns}

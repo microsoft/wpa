@@ -66,7 +66,7 @@ workpatterns_classify_pav(em_data, return = "plot-area")
 
 }
 \seealso{
-Other Work Patterns: 
+Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
 \code{\link{plot_flex_index}()},
@@ -75,4 +75,4 @@ Other Work Patterns:
 \code{\link{workpatterns_classify}()},
 \code{\link{workpatterns_hclust}()}
 }
-\concept{Work Patterns}
+\concept{Working Patterns}

@@ -9,10 +9,26 @@ flag_em_ratio(data, threshold = 1, return = "text")
 \arguments{
 \item{data}{A data frame containing a Person Query.}
 
-\item{threshold}{Numeric value specifying the threshold for flagging. Defaults to 1.}
+\item{threshold}{Numeric value specifying the threshold for flagging.
+Defaults to 1.}
 
-\item{return}{Character vector specifying what to return. Defaults to "text", with
-valid options to return a data frame ("data").}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"text"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"text"}: string. A diagnostic message.
+\item \code{"data"}: data frame. Person-level data with those flagged with unusual
+ratios.
+}
 }
 \description{
 This function flags persons who have an unusual ratio
@@ -27,6 +43,7 @@ flag_em_ratio(sq_data)
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},

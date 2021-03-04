@@ -11,12 +11,30 @@ flag_extreme(data, metric, person = TRUE, threshold, return = "message")
 
 \item{metric}{A character string specifying the metric to test.}
 
-\item{person}{A logical value to specify whether to calculate person-averages.
-Defaults to TRUE (person-averages calculated).}
+\item{person}{A logical value to specify whether to calculate
+person-averages. Defaults to \code{TRUE} (person-averages calculated).}
 
 \item{threshold}{Numeric value specifying the threshold for flagging.}
 
-\item{return}{A character string specifying what to return.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"text"}
+\item \code{"message"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"text"}: string. A diagnostic message.
+\item \code{"message"}: message on console. A diagnostic message.
+\item \code{"table"}: data frame. A person-level table with \code{PersonId} and the
+extreme values of the selected metric.
+}
 }
 \description{
 This is used as part of data validation to check if there are extreme values
@@ -37,6 +55,7 @@ flag_extreme(sq_data, "Email_hours", person = FALSE, threshold = 15)
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_outlooktime}()},

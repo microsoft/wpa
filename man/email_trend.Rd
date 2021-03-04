@@ -63,6 +63,7 @@ Other Visualization:
 \code{\link{email_line}()},
 \code{\link{email_rank}()},
 \code{\link{email_summary}()},
+\code{\link{external_network_plot}()},
 \code{\link{hrvar_count}()}
 
 Other Emails: 

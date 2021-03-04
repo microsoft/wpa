@@ -18,6 +18,7 @@ Other Support:
 \code{\link{check_inputs}()},
 \code{\link{combine_signals}()},
 \code{\link{cut_hour}()},
-\code{\link{extract_date_range}()}
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()}
 }
 \concept{Support}

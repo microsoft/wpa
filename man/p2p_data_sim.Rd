@@ -18,16 +18,33 @@ the lattice will be connected.}
 }
 \description{
 Generate an person-to-person query / edgelist based on the graph
-according to the Watts-Strogatz small-world network model. Organizational data
-fields are also simulated for \code{Organization}, \code{LevelDesignation}, and \code{City}.
+according to the Watts-Strogatz small-world network model. Organizational
+data fields are also simulated for \code{Organization}, \code{LevelDesignation}, and
+\code{City}.
 }
 \details{
-This is a wrapper around \code{igraph::watts.strogatz.game()}. See igraph documentation
-for details on methodology. Loop edges and multiple edges are disabled. Size of the
-network can be changing the arguments \code{size} and \code{nei}.
+This is a wrapper around \code{igraph::watts.strogatz.game()}. See igraph
+documentation for details on methodology. Loop edges and multiple edges are
+disabled. Size of the network can be changing the arguments \code{size} and \code{nei}.
 }
 \examples{
 # Simulate a p2p dataset with 800 edges
 p2p_data_sim(size = 200, nei = 4)
 
 }
+\seealso{
+Other Data: 
+\code{\link{dv_data}},
+\code{\link{em_data}},
+\code{\link{g2g_data}}
+
+Other Network: 
+\code{\link{external_network_plot}()},
+\code{\link{g2g_data}},
+\code{\link{network_g2g}()},
+\code{\link{network_leiden}()},
+\code{\link{network_louvain}()},
+\code{\link{network_p2p}()}
+}
+\concept{Data}
+\concept{Network}

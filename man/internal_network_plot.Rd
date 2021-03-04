@@ -37,8 +37,4 @@ horizontal axis.
 sq_data \%>\% internal_network_plot(return = "plot")
 
 }
-\seealso{
-Other Connectivity: 
-\code{\link{external_network_plot}()}
-}
 \concept{Connectivity}

@@ -56,7 +56,8 @@ argument:
 \item \code{"plot"}: ggplot object. A random of ten working patterns are displayed,
 with diagnostic data and the Flexibility Index shown on the plot.
 \item \code{"data"}: data frame. The original input data appended with the
-Flexibility Index and the component scores.
+Flexibility Index and the component scores. Can be used with
+\code{plot_flex_index()} to recreate visuals found in \code{flex_index()}.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -123,12 +124,11 @@ em_data \%>\%
 # Return the raw data with the computed Flexibility Index
 em_data \%>\%
   flex_index(return = "data")
-
-
 }
+
 }
 \seealso{
-Other Work Patterns: 
+Other Working Patterns: 
 \code{\link{identify_shifts_wp}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
@@ -137,4 +137,4 @@ Other Work Patterns:
 \code{\link{workpatterns_classify}()},
 \code{\link{workpatterns_hclust}()}
 }
-\concept{Work Patterns}
+\concept{Working Patterns}

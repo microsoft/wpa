@@ -71,6 +71,7 @@ Other Visualization:
 \code{\link{email_rank}()},
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
 \code{\link{hrvar_count}()}
 
 Other After-hours Collaboration: 

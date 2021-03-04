@@ -55,7 +55,7 @@
 #' # Return summary table
 #' workpatterns_area(em_data, return = "table")
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 #' @export
 workpatterns_area <- function(data,

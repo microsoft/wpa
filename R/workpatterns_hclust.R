@@ -87,7 +87,7 @@
 #'
 #' }
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 #' @export
 workpatterns_hclust <- function(data,

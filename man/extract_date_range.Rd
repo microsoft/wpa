@@ -26,6 +26,7 @@ Other Support:
 \code{\link{check_inputs}()},
 \code{\link{combine_signals}()},
 \code{\link{cut_hour}()},
+\code{\link{extract_hr}()},
 \code{\link{rgb2hex}()}
 }
 \concept{Support}

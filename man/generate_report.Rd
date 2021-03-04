@@ -22,20 +22,26 @@ generate_report(
 \item{filename}{File name to be used in the exported HTML.}
 
 \item{outputs}{A list of outputs to be added to the HTML report.
-Note that \code{outputs}, \code{titles}, \code{echos}, and \code{levels} must have the same length}
+Note that \code{outputs}, \code{titles}, \code{echos}, and \code{levels} must have the same
+length}
 
-\item{titles}{A list/vector of character strings to specify the title of the chunks.}
+\item{titles}{A list/vector of character strings to specify the title of the
+chunks.}
 
-\item{subheaders}{A list/vector of character strings to specify the subheaders for each chunk.}
+\item{subheaders}{A list/vector of character strings to specify the
+subheaders for each chunk.}
 
-\item{echos}{A list/vector of logical values to specify whether to display code.}
+\item{echos}{A list/vector of logical values to specify whether to display
+code.}
 
-\item{levels}{A list/vector of numeric value to specify the header level of the chunk.}
+\item{levels}{A list/vector of numeric value to specify the header level of
+the chunk.}
 
 \item{theme}{Character vector to specify theme to be used for the report.
-E.g. "united", "default".}
+E.g. \code{"united"}, \code{"default"}.}
 
-\item{preamble}{A preamble to appear at the beginning of the report, passed as a text string.}
+\item{preamble}{A preamble to appear at the beginning of the report, passed
+as a text string.}
 }
 \value{
 An HTML report with the same file name as specified in the arguments is

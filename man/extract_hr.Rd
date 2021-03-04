@@ -46,7 +46,34 @@ sq_data \%>\% extract_hr(return = "vars")
 
 }
 \seealso{
-Other General: 
-\code{\link{identify_outlier}()}
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{rgb2hex}()}
+
+Other Data Validation: 
+\code{\link{check_query}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count_all}()},
+\code{\link{hrvar_count}()},
+\code{\link{identify_holidayweeks}()},
+\code{\link{identify_inactiveweeks}()},
+\code{\link{identify_nkw}()},
+\code{\link{identify_outlier}()},
+\code{\link{identify_privacythreshold}()},
+\code{\link{identify_query}()},
+\code{\link{identify_tenure}()},
+\code{\link{remove_outliers}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{track_HR_change}()}
 }
-\concept{General}
+\concept{Data Validation}
+\concept{Support}

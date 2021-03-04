@@ -52,7 +52,7 @@
 #' workpatterns_classify_pav(em_data, return = "plot-area")
 #' }
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 workpatterns_classify_pav <- function(data,
                                       values = "percent",

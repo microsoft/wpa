@@ -37,7 +37,7 @@
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 #' @examples
 #' # Return plot

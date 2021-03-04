@@ -26,34 +26,32 @@ working patterns; "time" plots the Flexibility Index for the group over time.}
 
 \item{end_hour}{See \code{flex_index()}.}
 }
+\value{
+ggplot object. See \code{method}.
+}
 \description{
-This is a helper function for plotting visualizations for the Flexibility Index
-using the \code{data} output from \code{flex_index()}. This is used within \code{flex_index()} itself
-as an internal function.
+This is a helper function for plotting visualizations for the
+Flexibility Index using the \code{data} output from \code{flex_index()}. This is used
+within \code{flex_index()} itself as an internal function.
 }
 \examples{
-\donttest{
+# Pre-calculate Flexibility Index
+fi_output <- flex_index(em_data, return = "data")
+
+
 # Examples of how to test the plotting options individually
 # Sample of 10 work patterns
-em_data \%>\%
-  flex_index(return = "data") \%>\%
-  plot_flex_index(method = "sample")
+plot_flex_index(fi_output, method = "sample")
 
 # 10 most common work patterns
-em_data \%>\%
-  flex_index(return = "data") \%>\%
-  plot_flex_index(method = "common")
+plot_flex_index(fi_output, method = "common")
 
 # Plot Flexibility Index over time
-em_data \%>\%
-  flex_index(return = "data") \%>\%
-  plot_flex_index(method = "time")
-
-}
+plot_flex_index(fi_output, method = "time")
 
 }
 \seealso{
-Other Work Patterns: 
+Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
 \code{\link{workpatterns_area}()},
@@ -62,4 +60,4 @@ Other Work Patterns:
 \code{\link{workpatterns_classify}()},
 \code{\link{workpatterns_hclust}()}
 }
-\concept{Work Patterns}
+\concept{Working Patterns}

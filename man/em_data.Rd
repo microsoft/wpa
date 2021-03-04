@@ -80,7 +80,9 @@ columns for both IMs sent and Emails sent.
 }
 \seealso{
 Other Data: 
-\code{\link{dv_data}}
+\code{\link{dv_data}},
+\code{\link{g2g_data}},
+\code{\link{p2p_data_sim}()}
 }
 \concept{Data}
 \keyword{datasets}

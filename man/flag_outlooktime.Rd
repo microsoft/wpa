@@ -9,11 +9,27 @@ flag_outlooktime(data, threshold = c(4, 15), return = "message")
 \arguments{
 \item{data}{A data frame containing a Person Query.}
 
-\item{threshold}{A numeric vector of length two, specifying the hour threshold for flagging.
-Defaults to c(4, 15).}
+\item{threshold}{A numeric vector of length two, specifying the hour
+threshold for flagging. Defaults to c(4, 15).}
 
-\item{return}{String to specify what to return.
-Valid options include "text" (default), "message", and "data".}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"text"} (default)
+\item \code{"message"}
+\item \code{"data"}
+}}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"text"}: string. A diagnostic message.
+\item \code{"message"}: message on console. A diagnostic message.
+\item \code{"data"}: data frame. Data where flag is present.
+}
+
+See \code{Value} for more information.
 }
 \description{
 This function flags unusual outlook calendar settings for
@@ -25,14 +41,22 @@ flag_outlooktime(dv_data)
 
 # Example where Outlook Start and End times are imputed
 spq_df <- sq_data
+
 spq_df$WorkingStartTimeSetInOutlook <- "6:30"
+
 spq_df$WorkingEndTimeSetInOutlook <- "23:30"
+
+# Return a message
 flag_outlooktime(spq_df, threshold = c(5, 13))
+
+# Return data
+flag_outlooktime(spq_df, threshold = c(5, 13), return = "data")
 
 }
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},

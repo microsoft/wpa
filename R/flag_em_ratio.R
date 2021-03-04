@@ -15,9 +15,22 @@
 #' @family Data Validation
 #'
 #' @param data A data frame containing a Person Query.
-#' @param threshold Numeric value specifying the threshold for flagging. Defaults to 1.
-#' @param return Character vector specifying what to return. Defaults to "text", with
-#' valid options to return a data frame ("data").
+#' @param threshold Numeric value specifying the threshold for flagging.
+#'   Defaults to 1.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"text"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"text"`: string. A diagnostic message.
+#'   - `"data"`: data frame. Person-level data with those flagged with unusual
+#'   ratios.
 #'
 #' @examples
 #' flag_em_ratio(sq_data)

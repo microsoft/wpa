@@ -48,7 +48,7 @@
 #' }
 #'
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 workpatterns_classify_bw <- function(data,
                                      hrvar = NULL,
