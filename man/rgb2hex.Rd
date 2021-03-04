@@ -15,6 +15,7 @@ Convert rgb to HEX code
 \seealso{
 Other Support: 
 \code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
 \code{\link{combine_signals}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()}

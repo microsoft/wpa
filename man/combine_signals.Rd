@@ -36,6 +36,7 @@ combine_signals(sim_data, hr = 9, signals = c("Emails_sent", "Unscheduled_calls"
 \seealso{
 Other Support: 
 \code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},
 \code{\link{rgb2hex}()}

@@ -20,7 +20,7 @@
 #'   user what variables are not included. When `return` is set to "names", a
 #'   character vector containing the unmatched variable names is returned.
 #'
-#' @param Support
+#' @family Support
 #'
 #' @examples
 #'

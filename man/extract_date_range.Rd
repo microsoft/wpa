@@ -23,6 +23,7 @@ string, which is used in the caption of plots in this package.
 \seealso{
 Other Support: 
 \code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
 \code{\link{combine_signals}()},
 \code{\link{cut_hour}()},
 \code{\link{rgb2hex}()}

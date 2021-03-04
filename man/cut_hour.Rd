@@ -32,6 +32,7 @@ cut_hour(sq_data$Collaboration_hours, cuts = c(10, 15, 20))
 \seealso{
 Other Support: 
 \code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
 \code{\link{combine_signals}()},
 \code{\link{extract_date_range}()},
 \code{\link{rgb2hex}()}

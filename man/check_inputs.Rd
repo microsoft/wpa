@@ -13,8 +13,6 @@ check_inputs(input, requirements, return = "stop")
 
 \item{return}{A character string specifying what to return.
 The default value is "stop". Also accepts "names" and "warning".}
-
-\item{Support}{}
 }
 \value{
 The default behaviour is to return an error message, informing the
@@ -40,3 +38,12 @@ check_inputs(iris, c("Sepal.Length", "mpg"), return = "warning")
 check_inputs(iris, c("Sepal.Length", "Sepal.Width", "RandomVariable"), return = "names")
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{rgb2hex}()}
+}
+\concept{Support}
