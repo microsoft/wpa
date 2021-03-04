@@ -212,16 +212,13 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>The latest stable version of <strong>wpa</strong> is available in Github. You can automatically download and install it in your local device, by running the following code in R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Check if devtools is installed, if not then install it</span>
-<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"devtools"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co"># Check if remotes is installed, if not then install it</span>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"remotes"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="op">}</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span></code></pre></div>
-<p>If you are prompted for a message to update your packages, we recommend either one of the following two:</p>
-<ol>
-<li>Skip package updates for a <strong>quick start</strong>. This should not affect any functionalities of the package.</li>
-<li>If you are able to spend 10-15 minutes to do a full package library update, you should select update all CRAN packages (unless you are aware that there are any significant breaking changes in the new packages that would be updated). You should restart your R Session both <strong>before</strong> and <strong>after</strong> the package updates prior to re-running the above code.</li>
-</ol>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html">install_git</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span>, upgrade <span class="op">=</span> <span class="st">"never"</span><span class="op">)</span></code></pre></div>
+<p>The above code will tell R not to update dependency packages, which speeds up the installation process. If you’d like to update all dependency packages, you can remove <code>upgrade = "never"</code> from the code. When prompted to update your packages, we recommend updating all CRAN packages.</p>
+<p>As best practice, you should restart your R Session both <strong>before</strong> and <strong>after</strong> running the above code.</p>
 <p><strong>wpa</strong> is not yet released on CRAN, and therefore <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work. If you prefer to proceed with a local installation, you can download a installation file <a href="https://github.com/microsoft/wpa/releases">here</a>.</p>
 <div id="troubleshooting-installation" class="section level3">
 <h3 class="hasAnchor">
