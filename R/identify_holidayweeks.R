@@ -21,7 +21,7 @@
 #'   should define an outlier week. Enter a positive number. Default is 1
 #'   standard deviation.
 #'
-#'#' @param return String specifying what to return. This must be one of the
+#' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"message"` (default)
 #'   - `"data"`

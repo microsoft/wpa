@@ -17,6 +17,9 @@ create_bar(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
+\item{metric}{Character string containing the name of the metric,
+e.g. "Collaboration_hours"}
+
 \item{hrvar}{String containing the name of the HR Variable by which to split
 metrics. Defaults to \code{"Organization"}. To run the analysis on the total
 instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}

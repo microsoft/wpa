@@ -14,7 +14,8 @@
 #' @template spq-params
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
-#'
+#' @param metric Character string containing the name of the metric,
+#' e.g. "Collaboration_hours"
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`

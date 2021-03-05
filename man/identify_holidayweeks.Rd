@@ -11,9 +11,9 @@ identify_holidayweeks(data, sd = 1, return = "message")
 
 \item{sd}{The standard deviation below the mean for collaboration hours that
 should define an outlier week. Enter a positive number. Default is 1
-standard deviation.
+standard deviation.}
 
-#' @param return String specifying what to return. This must be one of the
+\item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
 \item \code{"message"} (default)
