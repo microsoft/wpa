@@ -13,7 +13,8 @@
 #' @inheritParams create_dist
 #' @inherit create_dist return
 #'
-#' @family Workloads
+#' @family Visualization
+#' @family Workweek Span
 #'
 #' @examples
 #' # Return plot

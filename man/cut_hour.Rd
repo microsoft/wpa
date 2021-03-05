@@ -18,6 +18,9 @@ cut points required.}
 Supply a numeric variable, e.g. \code{Collaboration_hours},
 and the function returns a character vector
 }
+\details{
+This is used within \code{create_dist()} for numeric to categorical conversion.
+}
 \examples{
 # Direct use
 cut_hour(1:30, cuts = c(15, 20, 25))
@@ -27,14 +30,26 @@ cut_hour(sq_data$Collaboration_hours, cuts = c(10, 15, 20))
 
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
-\code{\link{create_bubble}()},
-\code{\link{create_scatter}()},
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{extract_date_range}()},
 \code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
 }
-\concept{General}
+\concept{Support}

@@ -2,7 +2,8 @@
 % Please edit documentation in R/network_louvain.R
 \name{network_louvain}
 \alias{network_louvain}
-\title{Implement the Louvain community detection on a Person to Person network query}
+\title{Implement the Louvain community detection on a Person to Person
+network query}
 \usage{
 network_louvain(
   data,
@@ -26,38 +27,54 @@ network_louvain(
 
 \item{font_col}{String to specify font and link colour.}
 
-\item{node_alpha}{A numeric value between 0 and 1 to specify the transparency of the nodes.}
+\item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
+of the nodes.}
 
-\item{algorithm}{String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
-algorithm of Fruchterman and Reingold. See \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a
-full list of options.}
+\item{algorithm}{String to specify the node placement algorithm to be used.
+Defaults to \code{"fr"} for the force-directed algorithm of Fruchterman and
+Reingold. See
+\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
+list of options.}
 
-\item{path}{File path for saving the PDF output. Defaults to a timestamped path based on current parameters.}
+\item{path}{File path for saving the PDF output. Defaults to a timestamped
+path based on current parameters.}
 
-\item{desc_hrvar}{Character vector of length 3 containing the HR attributes to use when returning the
-"describe" output. See \code{network_describe()}.}
+\item{desc_hrvar}{Character vector of length 3 containing the HR attributes
+to use when returning the \code{"describe"} output. See \code{network_describe()}.}
 
-\item{return}{String specifying what output to return. Defaults to "plot-louvain". Valid return options include:
+\item{return}{String specifying what output to return. Defaults to "plot-louvain". Valid
+return options include:
 \itemize{
-\item 'plot-louvain': return a network plot coloured by Louvain communities, saving a PDF to path.
-\item 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.
-\item 'plot-sankey': return a sankey plot combining communities and HR attribute.
-\item 'table': return a vertex summary table with counts in communities and HR attribute.
-\item 'data': return a vertex data file that matches vertices with communities and HR attributes.
-\item 'describe': return a list of data frames which describe each of the identified communities.
-The first data frame is a summary table of all the communities.
-\item 'network': return igraph object.
+\item \code{'plot-louvain'}: return a network plot coloured by Louvain communities,
+saving a PDF to path.
+\item \code{'plot-hrvar'}: return a network plot coloured by HR attribute, saving a
+PDF to path.
+\item \code{'plot-sankey'}: return a sankey plot combining communities and HR
+attribute.
+\item \code{'table'}: return a vertex summary table with counts in communities and
+HR attribute.
+\item \code{'data'}: return a vertex data file that matches vertices with
+communities and HR attributes.
+\item \code{'describe'}: return a list of data frames which describe each of the
+identified communities. The first data frame is a summary table of all the
+communities.
+\item \code{'network'}: return igraph object.
 }}
 
-\item{size_threshold}{Numeric value representing the maximum number of edges before \code{network_leiden()}
-switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
-Set as \code{0} to co-erce to a fast plotting method every time, and \code{Inf} to always use the default plotting
-method.}
+\item{size_threshold}{Numeric value representing the maximum number of edges
+before \code{network_leiden()} switches to use a more efficient, but less
+elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
+coerce to a fast plotting method every time, and \code{Inf} to always use the
+default plotting method.}
+}
+\value{
+See \code{return}.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-Take a P2P network query and implement the Louvain community detection method. The
-\strong{igraph} implementation of the Louvain method is used.
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+
+Take a P2P network query and implement the Louvain community detection
+method. The 'igraph' implementation of the Louvain method is used.
 }
 \examples{
 # Simulate a small person-to-person dataset
@@ -69,3 +86,15 @@ p2p_data \%>\%
                   return = "plot")
 
 }
+\seealso{
+Other Network: 
+\code{\link{external_network_plot}()},
+\code{\link{g2g_data}},
+\code{\link{internal_network_plot}()},
+\code{\link{network_describe}()},
+\code{\link{network_g2g}()},
+\code{\link{network_leiden}()},
+\code{\link{network_p2p}()},
+\code{\link{p2p_data_sim}()}
+}
+\concept{Network}

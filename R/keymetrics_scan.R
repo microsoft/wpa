@@ -8,12 +8,11 @@
 #' @description
 #' Returns a heatmapped table by default, with options to return a table.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, e.g. "Organization"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param metrics A character vector containing the variable names to calculate averages of.
+#' @template spq-params
+#' @param metrics A character vector containing the variable names to calculate
+#'   averages of.
 #' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#'   Valid inputs are "plot" and "table".
 #' @param textsize A numeric value specifying the text size to show in the plot.
 #'
 #' @import dplyr
@@ -24,6 +23,8 @@
 #' @return
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
+#'
+#' @family Visualization
 #'
 #' @examples
 #' # Heatmap plot is returned by default
@@ -57,6 +58,12 @@ keymetrics_scan <- function(data,
                                         "Networking_outside_company"),
                             return = "plot",
                             textsize = 2){
+
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
 
   myTable <-
     data %>%

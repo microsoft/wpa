@@ -6,7 +6,7 @@
 #' @title Box Plot for any metric
 #'
 #' @description
-#' Analyzes a selected metric and returns a a 'fizzy' scatter plot by default.
+#' Analyzes a selected metric and returns a box plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
 #' @details
@@ -16,9 +16,13 @@
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param hrvar HR Variable by which to split metrics. Accepts a character
+#'   vector, defaults to "Organization" but accepts any character vector, e.g.
+#'   "LevelDesignation"
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size, defaults to 5.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
 #'
@@ -36,17 +40,27 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
-#' @family General
+#' @family Visualization
+#' @family Flexible
 #'
 #' @examples
 #' # Create a fizzy plot for Work Week Span by Level Designation
-#' create_boxplot(sq_data, metric = "Workweek_span", hrvar = "LevelDesignation", return = "plot")
+#' create_boxplot(sq_data,
+#'                metric = "Workweek_span",
+#'                hrvar = "LevelDesignation",
+#'                return = "plot")
 #'
 #' # Create a summary statistics table for Work Week Span by Organization
-#' create_boxplot(sq_data, metric = "Workweek_span", hrvar = "Organization", return = "table")
+#' create_boxplot(sq_data,
+#'                metric = "Workweek_span",
+#'                hrvar = "Organization",
+#'                return = "table")
 #'
 #' # Create a fizzy plot for Collaboration Hours by Level Designation
-#' create_boxplot(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
+#' create_boxplot(sq_data,
+#'                metric = "Collaboration_hours",
+#'                hrvar = "LevelDesignation",
+#'                return = "plot")
 #' @export
 
 create_boxplot <- function(data,

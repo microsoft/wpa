@@ -10,8 +10,10 @@
 #' Additional options available to return a "wide" or "long" summary table.
 #'
 #' @param data Standard Person Query data to pass through. Accepts a data frame.
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector,
-#' e.g. "Organization". Defaults to NULL.
+#' @param hrvar HR Variable by which to split metrics. Accepts a character
+#'   vector, e.g. "Organization". Defaults to `NULL`.
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -21,8 +23,8 @@
 #'
 #' See `Value` for more information.
 #'
-#' @param plot_colors
-#' Pass a character vector of length 4 containing HEX codes to specify colors to use in plotting.
+#' @param plot_colors Pass a character vector of length 4 containing HEX codes
+#'   to specify colors to use in plotting.
 #' @param threshold
 #' Specify a numeric value to determine threshold (in minutes) for 1:1 manager hours.
 #' Defaults to 15.
@@ -48,8 +50,8 @@
 #' @import ggplot2
 #' @importFrom scales percent
 #'
+#' @family Visualization
 #' @family Managerial Relations
-#' @family Meeting Culture
 #'
 #' @examples
 #' # Return matrix
@@ -77,6 +79,7 @@
 #' @export
 mgrrel_matrix <- function(data,
                           hrvar = NULL,
+                          mingroup = 5,
                           return = "plot",
                           plot_colors = c("#fe7f4f", "#b4d5dd", "#facebc", "#fcf0eb"),
                           threshold = 15){
@@ -109,13 +112,15 @@ mgrrel_matrix <- function(data,
     mutate(coattendman_rate = Meeting_hours_with_manager / Meeting_hours) %>% # Coattendance Rate with Manager
     filter(!is.na(coattendman_rate)) %>%
     group_by(PersonId, !!sym(hrvar)) %>%
-    summarise_at(vars(Meeting_hours_with_manager,
-                      Meeting_hours,
-                      Meeting_hours_with_manager_1_on_1,
-                      coattendman_rate),
-                 ~mean(.)) %>%
-    ungroup()
-
+    summarise(
+      Meeting_hours_with_manager = mean(Meeting_hours_with_manager, na.rm = TRUE),
+      Meeting_hours = mean(Meeting_hours, na.rm = TRUE),
+      Meeting_hours_with_manager_1_on_1 =
+        mean(Meeting_hours_with_manager_1_on_1, na.rm = TRUE),
+      coattendman_rate = mean(coattendman_rate, na.rm = TRUE),
+      Employee_Count = n_distinct(PersonId),
+      .groups = "drop"
+    )
 
   ## Threshold
   thres_low_chr <- paste("<", threshold, "min")
@@ -130,10 +135,21 @@ mgrrel_matrix <- function(data,
                             thres_low_chr,
                             thres_top_chr))
 
+  ## Filter mingroup
+  valid_orgs <- NULL
+
+  valid_orgs <- # String with valid organizations
+    data2 %>%
+    hrvar_count(hrvar = hrvar,
+                return = "table") %>%
+    filter(n > mingroup) %>%
+    pull(!!sym(hrvar))
 
   ## Grouping variable split
   if(hrvar == "Total"){
-    data2 %>%
+
+    chart <-
+      data2 %>%
       count(mgr1on1, coattendande) %>%
       mutate(perc = n / sum(n)) %>% # Calculate percentages
       mutate(xmin = ifelse(mgr1on1 == thres_low_chr, -sqrt(perc), 0),
@@ -144,16 +160,18 @@ mgrrel_matrix <- function(data,
                                 mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
                                 mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
-      mutate_at("mgrRel", ~as.factor(.)) -> chart
+      mutate_at("mgrRel", ~as.factor(.))
 
-    chart %>%
+    clean_tb <-
+      chart %>%
       select(mgrRel, n, perc) %>%
       group_by(mgrRel) %>%
-      summarise_all(~sum(., na.rm = TRUE)) -> clean_tb
+      summarise_all(~sum(., na.rm = TRUE))
 
   } else if(hrvar != "Total"){
 
-    data2 %>%
+    chart <-
+      data2 %>%
       count(!!sym(hrvar), mgr1on1, coattendande) %>%
       group_by(!!sym(hrvar)) %>%
       mutate(perc = n / sum(n)) %>% # Calculate percentages
@@ -166,12 +184,14 @@ mgrrel_matrix <- function(data,
                                 mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
       ungroup() %>%
-      mutate_at("mgrRel", ~as.factor(.)) -> chart
+      mutate_at("mgrRel", ~as.factor(.)) %>%
+      filter(!!sym(hrvar) %in% valid_orgs)
 
-    chart %>%
+    clean_tb <-
+      chart %>%
       select(mgrRel, !!sym(hrvar), n, perc) %>%
       group_by(mgrRel, !!sym(hrvar)) %>%
-      summarise_all(~sum(., na.rm = TRUE)) -> clean_tb
+      summarise_all(~sum(., na.rm = TRUE))
 
   }
 
@@ -214,6 +234,7 @@ mgrrel_matrix <- function(data,
       labs(caption = extract_date_range(data, return = "text"))
 
   } else if(hrvar != "Total"){
+
     plot <-
       chart %>%
       mutate(Fill = case_when(mgrRel == "Co-attending" ~ rgb2hex(68,151,169),
@@ -236,10 +257,12 @@ mgrrel_matrix <- function(data,
                                      "Highly managed",
                                      "Under-coached"),
                           guide = "legend") +
+      scale_y_continuous(labels = scales::percent) +
       coord_flip() +
       theme_wpa_basic() +
       labs(title = "Distribution of types of \nmanager-direct relationship across organizations",
-           subtitle = "Based on manager 1:1 time and percentage of overall time spent with managers")
+           subtitle = "Based on manager 1:1 time and percentage of overall time spent with managers",
+           y = "Percentage")
   }
 
 
@@ -257,9 +280,11 @@ mgrrel_matrix <- function(data,
 
   } else if(return == "chartdata"){
 
-    chart %>%
-      as_tibble() %>%
-      return()
+    chart
+
+  } else if(return == "debug"){
+
+    data2
 
   } else if(return == "data"){
 

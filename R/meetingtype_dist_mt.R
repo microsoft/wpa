@@ -5,12 +5,21 @@
 #' using a Meeting Query with core WpA variables as an input.
 #'
 #' @param data Meeting Query data frame. Must contain the variables `Attendee` and `DurationHours`
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
 #'
 #' @import ggplot2
 #' @import dplyr
 #' @importFrom stats setNames
+#'
+#' @inherit meetingtype_dist return
+#'
+#' @family Visualization
+#' @family Meetings
 #'
 #' @export
 meetingtype_dist_mt <- function(data, return = "plot"){

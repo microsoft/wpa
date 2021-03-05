@@ -6,16 +6,35 @@
 #' @title Identify groups under privacy threshold
 #'
 #' @description
-#' This function scans a standard query output for groups with of employees under the privacy threshold.
-#' The method consists in reviewing each individual HR attribute, and count the distinct people within each group.
+#' This function scans a standard query output for groups with of employees
+#' under the privacy threshold. The method consists in reviewing each individual
+#' HR attribute, and count the distinct people within each group.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param hrvar A list of HR Variables to consider in the scan.
 #' Defaults to all HR attributes identified.
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size.
-#' Defaults to 5.
-#' @param return A character vector specifying what to return.
-#' Valid values include "table" (default) and "text" (text)
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"table"`
+#'   - `"text"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"table"`: data frame. A summary table of groups that fall below the
+#'   privacy threshold.
+#'   - `"text"`: string. A diagnostic message.
+#'
+#' @examples
+#' # Return a summary table
+#' dv_data %>% identify_privacythreshold(return = "table")
+#'
+#' # Return a diagnostic message
+#' dv_data %>% identify_privacythreshold(return = "text")
 #'
 #' @import dplyr
 #' @import ggplot2

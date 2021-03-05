@@ -3,29 +3,42 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Implement the Leiden community detection on a Person to Person network query
+#' @title Implement the Leiden community detection on a Person to Person network
+#'   query
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
-#' Take a P2P network query and implement the Leiden community detection method. To run
-#' this function, you will require all the pre-requisites of the **leiden** package installed,
-#' which includes Python and **reticulate**.
+#'
+#' Take a P2P network query and implement the Leiden community detection method.
+#' To run this function, you will require all the pre-requisites of the
+#' 'leiden' package installed, which includes Python and 'reticulate'.
 #'
 #' @inheritParams network_p2p
 #'
 #' @param return
-#' String specifying what output to return. Defaults to "plot-leiden". Valid return options include:
-#'   - 'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to path.
-#'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.
-#'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
-#'   - 'table': return a vertex summary table with counts in communities and HR attribute.
-#'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
-#'   - 'describe': return a list of data frames which describe each of the identified communities.
-#'     The first data frame is a summary table of all the communities.
-#'   - 'network': return igraph object.
+#' String specifying what output to return. Defaults to "plot-leiden". Valid
+#' return options include:
+#'   - `'plot-leiden'`: return a network plot coloured by leiden communities,
+#'   saving a PDF to path.
+#'   - `'plot-hrvar'`: return a network plot coloured by HR attribute, saving a
+#'   PDF to path.
+#'   - `'plot-sankey'`: return a sankey plot combining communities and HR
+#'   attribute.
+#'   - `'table'`: return a vertex summary table with counts in communities and
+#'   HR attribute.
+#'   - `'data'`: return a vertex data file that matches vertices with
+#'   communities and HR attributes.
+#'   - `'describe'`: return a list of data frames which describe each of the
+#'   identified communities. The first data frame is a summary table of all the
+#'   communities.
+#'   - `'network'`: return igraph object.
+#'
+#' @return See `return`.
+#'
+#' @family Network
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Simulate a small person-to-person dataset
 #' p2p_data <- p2p_data_sim(size = 50)
 #'

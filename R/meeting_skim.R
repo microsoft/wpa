@@ -26,6 +26,8 @@
 #'
 #' @import dplyr
 #'
+#' @family Meetings
+#'
 #' @examples
 #' meeting_skim(sq_data)
 #'
@@ -105,13 +107,21 @@ meeting_skim <- function(data, return = "message"){
           bracket(extract_prop("Multitasking_meeting_hours")))
 
   if(return == "message"){
+
     message(print_text)
+
     } else if(return == "text"){
+
       print_text <- gsub(pattern = ">>>", replacement = " - ", x = print_text)
       print_text
+
     } else if(return == "table"){
+
       key_output
+
     } else {
+
       stop("Please check `return`")
+
     }
 }

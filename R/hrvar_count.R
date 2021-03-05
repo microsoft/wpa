@@ -11,10 +11,10 @@
 #' bar chart as typically seen in 'Analysis Scope'.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#' but accepts any character vector, e.g. "LevelDesignation".
-#' If a vector with more than one value is provided, the HR attributes are automatically
-#' concatenated.
+#' @param hrvar HR Variable by which to split metrics, defaults to
+#'   "Organization" but accepts any character vector, e.g. "LevelDesignation".
+#'   If a vector with more than one value is provided, the HR attributes are
+#'   automatically concatenated.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -32,7 +32,7 @@
 #' @import dplyr
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
-#' @family General
+#' @family Visualization
 #' @family Data Validation
 #'
 #' @examples

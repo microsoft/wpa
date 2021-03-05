@@ -77,8 +77,15 @@ sq_data \%>\%
 }
 }
 \seealso{
+Other Variable Association: 
+\code{\link{IV_by_period}()},
+\code{\link{IV_report}()},
+\code{\link{plot_WOE}()}
+
 Other Information Value: 
 \code{\link{IV_by_period}()},
-\code{\link{IV_report}()}
+\code{\link{IV_report}()},
+\code{\link{plot_WOE}()}
 }
 \concept{Information Value}
+\concept{Variable Association}

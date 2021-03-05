@@ -15,7 +15,8 @@
 #'
 #' @inheritParams create_trend
 #'
-#' @family After-Hours
+#' @family Visualization
+#' @family After-hours Collaboration
 #'
 #' @examples
 #' # Run plot

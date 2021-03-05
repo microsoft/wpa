@@ -55,6 +55,15 @@ A data frame with 2001 rows and 30 variables:
 mt_data
 }
 \description{
-A dataset generated from a Meeting Query from WpA.
+A dataset generated from a Meeting Query from Workplace Analytics.
 }
+\seealso{
+Other Data: 
+\code{\link{dv_data}},
+\code{\link{em_data}},
+\code{\link{g2g_data}},
+\code{\link{p2p_data_sim}()},
+\code{\link{sq_data}}
+}
+\concept{Data}
 \keyword{datasets}

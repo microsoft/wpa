@@ -9,15 +9,21 @@
 #' This is a pipe-optimised function, that feeds into `wpa::export()`,
 #' but can be used as a stand-alone function.
 #'
-#' Based on the original function at https://www.github.com/martinctc/surveytoolbox.
+#' Based on the original function from
+#' <https://www.github.com/martinctc/surveytoolbox>.
 #'
-#' @param x Data frame to be passed through. Cannot contain list-columns or nested data frames.
-#' @param row.names A logical vector for specifying whether to allow row names. Defaults to FALSE.
-#' @param col.names A logical vector for specifying whether to allow column names. Defaults to FALSE.
+#' @param x Data frame to be passed through. Cannot contain list-columns or
+#'   nested data frames.
+#' @param row.names A logical vector for specifying whether to allow row names.
+#'   Defaults to `FALSE`.
+#' @param col.names A logical vector for specifying whether to allow column
+#'   names. Defaults to `FALSE`.
 #' @param quietly Set this to TRUE to not print data frame on console
 #' @param ... Additional arguments for write.table().
 #'
 #' @importFrom utils write.table
+#'
+#' @family Import and Export
 #'
 #' @export
 

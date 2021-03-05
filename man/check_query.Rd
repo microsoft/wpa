@@ -26,7 +26,8 @@ following strings:
 See \code{Value} for more information.}
 
 \item{validation}{Logical value to specify whether to return a check used by
-the \code{validation_report()}. Defaults to \code{FALSE}.}
+the \code{validation_report()}. Defaults to \code{FALSE}. To hide checks on variable
+names, set \code{validation} to \code{TRUE}.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
@@ -52,6 +53,7 @@ check_query(sq_data)
 }
 \seealso{
 Other Data Validation: 
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -59,16 +61,21 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

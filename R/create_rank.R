@@ -6,8 +6,9 @@
 #' @title Rank all groups across HR attributes on a selected Workplace Analytics metric
 #'
 #' @description
-#' This function scans a standard Person query output for groups with high levels of a given Workplace Analytics Metric.
-#' Returns a table with all groups (across multiple HR attributes) ranked by the specified metric.
+#' This function scans a standard Person query output for groups with high
+#' levels of a given Workplace Analytics Metric. Returns a table with all groups
+#' (across multiple HR attributes) ranked by the specified metric.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
@@ -16,12 +17,18 @@
 #' Defaults to all HR attributes identified.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size.
 #' Defaults to 5.
-#' @param return A character vector specifying what to return.
-#' Valid values include "table" (default). Features are being considered for alternative return options but are currently
-#' unavailable.
-#' @param plot_mode Numeric vector to determine which plot mode to return:
-#'   1. Top and bottom five groups across the data population are highlighted
-#'   2. Top and bottom groups _per_ organizational attribute are highlighted
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"table"` (default)
+#'   - `"plot"`
+#'
+#' See `Value` for more information.
+#'
+#' @param plot_mode Numeric vector to determine which plot mode to return. Must
+#' be either `1` or `2`, and is only used when `return = "plot"`.
+#'   - `1`: Top and bottom five groups across the data population are highlighted
+#'   - `2`: Top and bottom groups _per_ organizational attribute are highlighted
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -29,11 +36,43 @@
 #' @import scales
 #' @importFrom stats reorder
 #'
+#' @family Visualization
 #' @family Flexible
 #'
+#' @examples
+# Plot mode 1 - show top and bottom five groups
+#' create_rank(
+#'   data = sq_data,
+#'   hrvar = c("FunctionType", "LevelDesignation"),
+#'   metric = "Emails_sent",
+#'   return = "plot",
+#'   plot_mode = 1
+#' )
+#'
+#' # Plot mode 2 - show top and bottom groups per HR variable
+#' create_rank(
+#'   data = sq_data,
+#'   hrvar = c("FunctionType", "LevelDesignation"),
+#'   metric = "Emails_sent",
+#'   return = "plot",
+#'   plot_mode = 2
+#' )
+#'
+#' # Return a table
+#' create_rank(
+#'   data = sq_data,
+#'   metric = "Emails_sent",
+#'   return = "table"
+#' )
+#'
+#'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A bubble plot where the x-axis represents the
+#'   metric, the y-axis represents the HR attributes, and the size of the
+#'   bubbles represent the size of the organizations.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @export
 

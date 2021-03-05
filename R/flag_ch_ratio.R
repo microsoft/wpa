@@ -3,11 +3,14 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Flag unusual high collaboration hours to after-hours collaboration hours ratio
+#' @title Flag unusual high collaboration hours to after-hours collaboration
+#'   hours ratio
 #'
 #' @description This function flags persons who have an unusual ratio
 #' of collaboration hours to after-hours collaboration hours.
 #' Returns a character string by default.
+#'
+#' @template ch
 #'
 #' @import dplyr
 #'
@@ -20,10 +23,12 @@
 #'   - `"data"`
 #'
 #' @return
-#' A different output is returned depending on the value passed to the `return` argument:
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
 #'   - `"message"`: message in the console containing diagnotic summary
 #'   - `"text"`: string containing diagnotic summary
-#'   - `"data"`: data frame. Person-level data with flags on unusually high or low ratios
+#'   - `"data"`: data frame. Person-level data with flags on unusually high or
+#'   low ratios
 #'
 #' @family Data Validation
 #'

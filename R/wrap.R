@@ -11,6 +11,8 @@
 #' @param string Character string to be wrapped around
 #' @param wrapper Character to wrap around `string`
 #'
+#' @family Support
+#'
 #' @export
 wrap <- function(string, wrapper = '"'){
   paste0(wrapper, string, wrapper)

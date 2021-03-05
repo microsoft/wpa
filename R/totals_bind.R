@@ -16,10 +16,12 @@
 #'   collab_sum(hrvar = "LevelDesignation", return = "table")
 #'
 #' @param data data frame
-#' @param target_col Character value of the column in which to impute "Total".
-#' This is usually the intended grouping column.
-#' @param target_value Character value to impute in the new data frame to row-bind.
-#' Defaults to "Total".
+#' @param target_col Character value of the column in which to impute `"Total"`.
+#'   This is usually the intended grouping column.
+#' @param target_value Character value to impute in the new data frame to
+#'   row-bind. Defaults to `"Total"`.
+#'
+#' @family Support
 #'
 #' @export
 totals_bind <- function(data, target_col, target_value = "Total"){

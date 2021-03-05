@@ -6,9 +6,11 @@
 #' @title Sample Hourly Collaboration data with Email and IMs
 #'
 #' @description
-#' A sample dataset generated from an Hourly Collaboration query
-#' from the WpA demo tenant. The data is grouped by week and contains
+#' A sample dataset generated from an Hourly Collaboration query from the
+#' Workplace Analytics demo tenant. The data is grouped by week and contains
 #' columns for both IMs sent and Emails sent.
+#'
+#' @family Data
 #'
 #' @format A data frame with 41567 rows and 56 variables:
 #' \describe{

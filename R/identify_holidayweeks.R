@@ -6,21 +6,45 @@
 #' @title Identify Holiday Weeks based on outliers
 #'
 #' @description
-#' This function scans a standard query output for weeks where collaboration hours is far outside the mean.
-#' Returns a list of weeks that appear to be holiday weeks and optionally an edited dataframe with outliers removed.
-#' By default, missing values are excluded.
+#' This function scans a standard query output for weeks where collaboration
+#' hours is far outside the mean. Returns a list of weeks that appear to be
+#' holiday weeks and optionally an edited dataframe with outliers removed. By
+#' default, missing values are excluded.
 #'
-#' As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.
+#' As best practice, run this function prior to any analysis to remove atypical
+#' collaboration weeks from your dataset.
+#'
+#' @template ch
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param sd The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.
-#' @param return String to specify what to return. Returns a message by default (`return` = "message").
-#' Valid options are:
-#'   - When 'message' is passed, a message is printed identifying holiday weeks.
-#'   - When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
-#'   - When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
-#'   - when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
-#'   - when 'plot' is passed, a plot with holiday weeks highlighted is returned as a dataframe.
+#' @param sd The standard deviation below the mean for collaboration hours that
+#'   should define an outlier week. Enter a positive number. Default is 1
+#'   standard deviation.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"message"` (default)
+#'   - `"data"`
+#'   - `"data_cleaned"`
+#'   - `"data_dirty"`
+#'   - `"plot"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"message"`: message on console. a message is printed identifying holiday
+#'   weeks.
+#'   - `"data"`: data frame. A dataset with outlier weeks flagged in a new
+#'   column is returned as a dataframe.
+#'   - `"data_cleaned"`: data frame. A dataset with outlier weeks removed is
+#'   returned.
+#'   - `"data_dirty"`: data frame. A dataset with only outlier weeks is
+#'   returned.
+#'   - `"plot"`: ggplot object. A line plot of Collaboration Hours with holiday
+#'   weeks highlighted.
+#'
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -34,7 +58,6 @@
 #'
 #' # Return plot
 #' identify_holidayweeks(sq_data, return = "plot")
-#'
 #'
 #' @export
 identify_holidayweeks <- function(data, sd = 1, return = "message"){

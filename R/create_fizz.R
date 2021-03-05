@@ -36,6 +36,7 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
+#' @family Visualization
 #' @family Flexible
 #'
 #' @examples

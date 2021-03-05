@@ -26,6 +26,7 @@
 #' @import scales
 #' @importFrom stats reorder
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @return

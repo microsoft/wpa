@@ -29,7 +29,8 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
-#' @family After-Hours
+#' @family Visualization
+#' @family After-hours Collaboration
 #'
 #' @examples
 #' # Return plot

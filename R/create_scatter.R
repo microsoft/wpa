@@ -30,7 +30,8 @@
 #' @import ggplot2
 #' @import scales
 #'
-#' @family General
+#' @family Visualization
+#' @family Flexible
 #'
 #' @examples
 #' create_scatter(sq_data,

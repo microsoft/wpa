@@ -11,12 +11,12 @@
 #' with a separate panel per value in the HR attribute.
 #' Additional options available to return a summary table.
 #'
-#' @details
-#' Uses the metric `Collaboration_hours`.
+#' @template ch
 #'
 #' @inheritParams create_line
 #' @inherit create_line return
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @examples

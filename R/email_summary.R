@@ -13,6 +13,7 @@
 #' @inheritParams create_bar
 #' @inherit create_bar return
 #'
+#' @family Visualization
 #' @family Emails
 #'
 #' @examples
@@ -25,9 +26,10 @@
 #' @export
 
 email_summary <- function(data,
-                              hrvar = "Organization",
-                              mingroup = 5,
-                              return = "plot"){
+                          hrvar = "Organization",
+                          mingroup = 5,
+                          return = "plot"){
+
   create_bar(data = data,
              metric = "Email_hours",
              hrvar = hrvar,

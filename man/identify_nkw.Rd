@@ -2,31 +2,54 @@
 % Please edit documentation in R/identify_nkw.R
 \name{identify_nkw}
 \alias{identify_nkw}
-\title{Identify Non-Knowledge workers in a Person Query using Collaboration Hours}
+\title{Identify Non-Knowledge workers in a Person Query using Collaboration
+Hours}
 \usage{
 identify_nkw(data, collab_threshold = 5, return = "data_summary")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{collab_threshold}{The collaboration hours threshold that should be exceeded as an average for the entire analysis period for the employee to be categorized as a knowledge worker ("kw").
-Enter a positive number. Default is set to 5 collaboration hours.}
+\item{collab_threshold}{The collaboration hours threshold that should be
+exceeded as an average for the entire analysis period for the employee to
+be categorized as a knowledge worker ("kw"). Enter a positive number.
+Default is set to 5 collaboration hours.}
 
-\item{return}{String to specify what to return}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"text"}
+\item \code{"data_with_flag"}
+\item \code{"data_clean"}
+\item \code{"data_summary"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
-Returns an error message by default, where 'text' is passed in \code{return}.
-When 'data_with_flag' is passed, a copy of your original dataframe with an additional column containing the kw/nkw flag will be returned.
-When 'data_clean' is passed, a full dataframe excluding "nkw" employees will be returned.
-when 'data_summmary' is passed, a summary table by organization listing the number and \% of non-knowledge workers will be returned.
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"text"}: string. Returns a diagnostic message.
+\item \code{"data_with_flag"}: data frame. Original input data with an additional
+column containing the \code{kw}/\code{nkw} flag.
+\item \code{"data_clean"}: data frame. Data frame with non-knowledge workers
+excluded.
+\item \code{"data_summary"}: data frame. A summary table by organization listing
+the number and \% of non-knowledge workers.
+}
 }
 \description{
-This function scans a standard query output to identify employees with consistently low collaboration signals.
-Returns the \% of non-knowledge workers identified by Organization, and optionally an edited dataframe with non-knowledge workers removed, or the full dataframe with the kw/nkw flag added.
+This function scans a standard query output to identify employees with
+consistently low collaboration signals. Returns the \% of non-knowledge
+workers identified by Organization, and optionally an edited dataframe with
+non-knowledge workers removed, or the full dataframe with the kw/nkw flag
+added.
 }
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -34,15 +57,20 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}
