@@ -120,8 +120,7 @@ mgrrel_matrix <- function(data,
       coattendman_rate = mean(coattendman_rate, na.rm = TRUE),
       Employee_Count = n_distinct(PersonId),
       .groups = "drop"
-    ) %>%
-    filter(Employee_Count > mingroup) # Minimum group size
+    )
 
   ## Threshold
   thres_low_chr <- paste("<", threshold, "min")
@@ -136,10 +135,21 @@ mgrrel_matrix <- function(data,
                             thres_low_chr,
                             thres_top_chr))
 
+  ## Filter mingroup
+  valid_orgs <- NULL
+
+  valid_orgs <- # String with valid organizations
+    data2 %>%
+    hrvar_count(hrvar = hrvar,
+                return = "table") %>%
+    filter(n > mingroup) %>%
+    pull(!!sym(hrvar))
 
   ## Grouping variable split
   if(hrvar == "Total"){
-    data2 %>%
+
+    chart <-
+      data2 %>%
       count(mgr1on1, coattendande) %>%
       mutate(perc = n / sum(n)) %>% # Calculate percentages
       mutate(xmin = ifelse(mgr1on1 == thres_low_chr, -sqrt(perc), 0),
@@ -150,16 +160,18 @@ mgrrel_matrix <- function(data,
                                 mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
                                 mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
-      mutate_at("mgrRel", ~as.factor(.)) -> chart
+      mutate_at("mgrRel", ~as.factor(.))
 
-    chart %>%
+    clean_tb <-
+      chart %>%
       select(mgrRel, n, perc) %>%
       group_by(mgrRel) %>%
-      summarise_all(~sum(., na.rm = TRUE)) -> clean_tb
+      summarise_all(~sum(., na.rm = TRUE))
 
   } else if(hrvar != "Total"){
 
-    data2 %>%
+    chart <-
+      data2 %>%
       count(!!sym(hrvar), mgr1on1, coattendande) %>%
       group_by(!!sym(hrvar)) %>%
       mutate(perc = n / sum(n)) %>% # Calculate percentages
@@ -172,12 +184,14 @@ mgrrel_matrix <- function(data,
                                 mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
       ungroup() %>%
-      mutate_at("mgrRel", ~as.factor(.)) -> chart
+      mutate_at("mgrRel", ~as.factor(.)) %>%
+      filter(!!sym(hrvar) %in% valid_orgs)
 
-    chart %>%
+    clean_tb <-
+      chart %>%
       select(mgrRel, !!sym(hrvar), n, perc) %>%
       group_by(mgrRel, !!sym(hrvar)) %>%
-      summarise_all(~sum(., na.rm = TRUE)) -> clean_tb
+      summarise_all(~sum(., na.rm = TRUE))
 
   }
 
@@ -220,6 +234,7 @@ mgrrel_matrix <- function(data,
       labs(caption = extract_date_range(data, return = "text"))
 
   } else if(hrvar != "Total"){
+
     plot <-
       chart %>%
       mutate(Fill = case_when(mgrRel == "Co-attending" ~ rgb2hex(68,151,169),
@@ -242,10 +257,12 @@ mgrrel_matrix <- function(data,
                                      "Highly managed",
                                      "Under-coached"),
                           guide = "legend") +
+      scale_y_continuous(labels = scales::percent) +
       coord_flip() +
       theme_wpa_basic() +
       labs(title = "Distribution of types of \nmanager-direct relationship across organizations",
-           subtitle = "Based on manager 1:1 time and percentage of overall time spent with managers")
+           subtitle = "Based on manager 1:1 time and percentage of overall time spent with managers",
+           y = "Percentage")
   }
 
 
@@ -263,9 +280,11 @@ mgrrel_matrix <- function(data,
 
   } else if(return == "chartdata"){
 
-    chart %>%
-      as_tibble() %>%
-      return()
+    chart
+
+  } else if(return == "debug"){
+
+    data2
 
   } else if(return == "data"){
 
