@@ -53,8 +53,9 @@
 Standard Person Query data as an input. The report contains checks on
 Workplace Analytics query outputs to provide diagnostic information
 for the Analyst prior to analysis.
-An additional Standard Meeting Query can be provided to perform meeting subject line
-related checks. This is optional and the validation report can be run without it." />
+An additional Standard Meeting Query can be provided to perform meeting
+subject line related checks. This is optional and the validation report can
+be run without it." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -217,8 +218,9 @@ related checks. This is optional and the validation report can be run without it
 Standard Person Query data as an input. The report contains checks on
 Workplace Analytics query outputs to provide diagnostic information
 for the Analyst prior to analysis.</p>
-<p>An additional Standard Meeting Query can be provided to perform meeting subject line
-related checks. This is optional and the validation report can be run without it.</p>
+<p>An additional Standard Meeting Query can be provided to perform meeting
+subject line related checks. This is optional and the validation report can
+be run without it.</p>
     </div>
 
     <pre class="usage"><span class='fu'>validation_report</span><span class='op'>(</span>
@@ -239,7 +241,8 @@ related checks. This is optional and the validation report can be run without it
     </tr>
     <tr>
       <th>meeting_data</th>
-      <td><p>An optional Meeting Query dataset in the form of a data frame.</p></td>
+      <td><p>An optional Meeting Query dataset in the form of a data
+frame.</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
@@ -248,18 +251,19 @@ but accepts any character vector, e.g. "Organization"</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>Pass the file path and the desired file name, <em>excluding the file extension</em>.</p></td>
+      <td><p>Pass the file path and the desired file name, <em>excluding the file
+extension</em>.</p></td>
     </tr>
     <tr>
       <th>hrvar_threshold</th>
-      <td><p>Numeric value determining the maximum number of unique values
-to be allowed to qualify as a HR variable. This is passed directly to the <code>threshold</code>
-argument within <code><a href='hrvar_count_all.html'>hrvar_count_all()</a></code>.</p></td>
+      <td><p>Numeric value determining the maximum number of unique
+values to be allowed to qualify as a HR variable. This is passed directly
+to the <code>threshold</code> argument within <code><a href='hrvar_count_all.html'>hrvar_count_all()</a></code>.</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
-      <td><p>Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.</p></td>
+      <td><p>Logical vector specifying whether to include a timestamp in
+the file name. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     </table>
 
@@ -270,12 +274,12 @@ generated in the working directory. No outputs are directly returned by the
 function.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>For your input to <code>data</code> or <code>meeting_data</code>, please use the function <code><a href='import_wpa.html'>wpa::import_wpa()</a></code>
-to import your csv query files into R. This function will standardize format
-and prepare the data as input for this report.</p>
-<p>If you are passing a Ways of Working Assessment query instead of a Standard Person query
-to the <code>data</code> argument, please also use <code><a href='standardise_pq.html'>standardise_pq()</a></code> to make the variable names
-consistent with a Standard Person Query.</p>
+    <p>For your input to <code>data</code> or <code>meeting_data</code>, please use the function
+<code><a href='import_wpa.html'>wpa::import_wpa()</a></code> to import your csv query files into R. This function will
+standardize format and prepare the data as input for this report.</p>
+<p>If you are passing a Ways of Working Assessment query instead of a Standard
+Person query to the <code>data</code> argument, please also use <code><a href='standardise_pq.html'>standardise_pq()</a></code> to
+make the variable names consistent with a Standard Person Query.</p>
     <h2 class="hasAnchor" id="checking-functions-within-validation-report-"><a class="anchor" href="#checking-functions-within-validation-report-"></a>Checking functions within <code>validation_report()</code></h2>
 
     
@@ -305,15 +309,583 @@ consistent with a Standard Person Query.</p>
 <code><a href='connectivity_report.html'>connectivity_report</a>()</code>,
 <code><a href='generate_report.html'>generate_report</a>()</code>,
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
-<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code></p></div>
+<code><a href='read_preamble.html'>read_preamble</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p>
+<p>Other Data Validation: 
+<code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
+<code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
+<code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
+<code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
+<code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
+<code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
+<code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
+<code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
+<code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
+<code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
+<code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
+<code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
+<code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>validation_report</span><span class='op'>(</span><span class='va'>dv_data</span>,
                   meeting_data <span class='op'>=</span> <span class='va'>mt_data</span>,
                   hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
-
-<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>processing file: validation-report-20210305_160646.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |.                                                                     |   1%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.                                                                     |   2%
+#&gt; label: unnamed-chunk-1 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..                                                                    |   3%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...                                                                   |   4%
+#&gt; label: unnamed-chunk-2 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...                                                                   |   5%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |....                                                                  |   6%
+#&gt; label: unnamed-chunk-3 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt; 
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.....                                                                 |   7%
+#&gt; label: unnamed-chunk-4 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |......                                                                |   8%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |......                                                                |   9%
+#&gt; label: unnamed-chunk-5 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; </div><div class='output co'>#&gt;   |                                                                              |.......                                                               |  10%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |........                                                              |  11%
+#&gt; label: unnamed-chunk-6 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |........                                                              |  12%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.........                                                             |  13%
+#&gt; label: unnamed-chunk-7 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..........                                                            |  14%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..........                                                            |  15%
+#&gt; label: unnamed-chunk-8 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...........                                                           |  16%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |............                                                          |  17%
+#&gt; label: unnamed-chunk-9 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt; 
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.............                                                         |  18%
+#&gt; label: unnamed-chunk-10 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.............                                                         |  19%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..............                                                        |  20%
+#&gt; label: unnamed-chunk-11 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...............                                                       |  21%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...............                                                       |  22%
+#&gt; label: unnamed-chunk-12 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |................                                                      |  23%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.................                                                     |  24%
+#&gt; label: unnamed-chunk-13 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.................                                                     |  25%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..................                                                    |  26%
+#&gt; label: unnamed-chunk-14 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...................                                                   |  27%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...................                                                   |  28%
+#&gt; label: unnamed-chunk-15 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |....................                                                  |  28%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.....................                                                 |  29%
+#&gt; label: unnamed-chunk-16 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.....................                                                 |  30%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |......................                                                |  31%
+#&gt; label: unnamed-chunk-17 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |......................                                                |  32%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.......................                                               |  33%
+#&gt; label: unnamed-chunk-18 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |........................                                              |  34%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |........................                                              |  35%
+#&gt; label: unnamed-chunk-19 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.........................                                             |  36%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..........................                                            |  37%
+#&gt; label: unnamed-chunk-20 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..........................                                            |  38%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...........................                                           |  39%
+#&gt; label: unnamed-chunk-21 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |............................                                          |  39%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |............................                                          |  40%
+#&gt; label: unnamed-chunk-22 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; </div><div class='output co'>#&gt;   |                                                                              |.............................                                         |  41%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..............................                                        |  42%
+#&gt; label: unnamed-chunk-23 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..............................                                        |  43%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...............................                                       |  44%
+#&gt; label: unnamed-chunk-24 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...............................                                       |  45%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |................................                                      |  46%
+#&gt; label: unnamed-chunk-25 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.................................                                     |  47%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.................................                                     |  48%
+#&gt; label: unnamed-chunk-26 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..................................                                    |  49%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...................................                                   |  50%
+#&gt; label: unnamed-chunk-27 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt; 
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |....................................                                  |  51%
+#&gt; label: unnamed-chunk-28 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.....................................                                 |  52%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.....................................                                 |  53%
+#&gt; label: unnamed-chunk-29 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |......................................                                |  54%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.......................................                               |  55%
+#&gt; label: unnamed-chunk-30 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; </div><div class='output co'>#&gt;   |                                                                              |.......................................                               |  56%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |........................................                              |  57%
+#&gt; label: unnamed-chunk-31 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |........................................                              |  58%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.........................................                             |  59%
+#&gt; label: unnamed-chunk-32 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..........................................                            |  60%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..........................................                            |  61%
+#&gt; label: unnamed-chunk-33 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; </div><div class='output co'>#&gt;   |                                                                              |...........................................                           |  61%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |............................................                          |  62%
+#&gt; label: unnamed-chunk-34 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |............................................                          |  63%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.............................................                         |  64%
+#&gt; label: unnamed-chunk-35 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..............................................                        |  65%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..............................................                        |  66%
+#&gt; label: unnamed-chunk-36 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...............................................                       |  67%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |................................................                      |  68%
+#&gt; label: unnamed-chunk-37 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |................................................                      |  69%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.................................................                     |  70%
+#&gt; label: unnamed-chunk-38 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.................................................                     |  71%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..................................................                    |  72%
+#&gt; label: unnamed-chunk-39 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...................................................                   |  72%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...................................................                   |  73%
+#&gt; label: unnamed-chunk-40 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; </div><div class='output co'>#&gt;   |                                                                              |....................................................                  |  74%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.....................................................                 |  75%
+#&gt; label: unnamed-chunk-41 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.....................................................                 |  76%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |......................................................                |  77%
+#&gt; label: unnamed-chunk-42 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.......................................................               |  78%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.......................................................               |  79%
+#&gt; label: unnamed-chunk-43 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |........................................................              |  80%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |.........................................................             |  81%
+#&gt; label: unnamed-chunk-44 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.........................................................             |  82%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..........................................................            |  83%
+#&gt; label: unnamed-chunk-45 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt; 
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...........................................................           |  84%
+#&gt; label: unnamed-chunk-46 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |............................................................          |  85%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |............................................................          |  86%
+#&gt; label: unnamed-chunk-47 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.............................................................         |  87%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..............................................................        |  88%
+#&gt; label: unnamed-chunk-48 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..............................................................        |  89%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...............................................................       |  90%
+#&gt; label: unnamed-chunk-49 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |................................................................      |  91%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |................................................................      |  92%
+#&gt; label: unnamed-chunk-50 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |.................................................................     |  93%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..................................................................    |  94%
+#&gt; label: unnamed-chunk-51 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt; 
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...................................................................   |  95%
+#&gt; label: unnamed-chunk-52 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |...................................................................   |  96%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |....................................................................  |  97%
+#&gt; label: unnamed-chunk-53 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |..................................................................... |  98%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |..................................................................... |  99%
+#&gt; label: unnamed-chunk-54 (with options) 
+#&gt; List of 3
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 9
+#&gt;  $ fig.width : num 12
+#&gt; 
+#&gt;   |                                                                              |......................................................................| 100%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: validation-report-20210305_160646.knit.md</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS validation-report-20210305_160646.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output validation-report-20210305_160646.html --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 3 --variable toc_float=1 --variable toc_selectors=h1,h2,h3 --variable toc_smooth_scroll=1 --variable toc_print=1 --template /Users/runner/work/_temp/Library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable theme=cosmo --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp0jpUpi/rmarkdown-str9967d61d52d.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: validation-report-20210305_160646.html</span></div><div class='input'>
+<span class='co'># }</span>
 
 </div></pre>
   </div>

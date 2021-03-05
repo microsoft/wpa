@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Uncover HR attributes which best represent a population for a Person to Person query — network_describe • wpa</title>
+<title>Uncover HR attributes which best represent a population for a Person to
+Person query — network_describe • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +49,12 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Uncover HR attributes which best represent a population for a Person to Person query — network_describe" />
+<meta property="og:title" content="Uncover HR attributes which best represent a population for a Person to
+Person query — network_describe" />
 <meta property="og:description" content="
-Returns a data frame that gives a percentage of the group combinations that best represent
-the population provided. Uses a person to person query." />
+Returns a data frame that gives a percentage of the group combinations that
+best represent the population provided. Uses a person to person query. This
+is used internally within network_p2p()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -204,15 +207,17 @@ the population provided. Uses a person to person query." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Uncover HR attributes which best represent a population for a Person to Person query</h1>
+    <h1>Uncover HR attributes which best represent a population for a Person to
+Person query</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/network_describe.R'><code>R/network_describe.R</code></a></small>
     <div class="hidden name"><code>network_describe.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a>
-Returns a data frame that gives a percentage of the group combinations that best represent
-the population provided. Uses a person to person query.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p>Returns a data frame that gives a percentage of the group combinations that
+best represent the population provided. Uses a person to person query. This
+is used internally within <code><a href='network_p2p.html'>network_p2p()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>network_describe</span><span class='op'>(</span>
@@ -225,18 +230,78 @@ the population provided. Uses a person to person query.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Data frame for a person to person query.</p></td>
+      <td><p>Data frame containing a vertex table output from <code><a href='network_p2p.html'>network_p2p()</a></code>.</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>Character vector of length 3 containing the HR attributes to be used.</p></td>
+      <td><p>Character vector of length 3 containing the HR attributes to be
+used. Defaults to <code><a href='https://rdrr.io/r/base/c.html'>c("Organization", "LevelDesignation", "FunctionType")</a></code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data frame. A summary table giving the percentage of group
+combinations that best represent the provided data.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Network: 
+<code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
+<code><a href='g2g_data.html'>g2g_data</a></code>,
+<code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
+<code><a href='network_g2g.html'>network_g2g</a>()</code>,
+<code><a href='network_leiden.html'>network_leiden</a>()</code>,
+<code><a href='network_louvain.html'>network_louvain</a>()</code>,
+<code><a href='network_p2p.html'>network_p2p</a>()</code>,
+<code><a href='p2p_data_sim.html'>p2p_data_sim</a>()</code></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Tannaz Sattari Tabrizi <a href='mailto:Tannaz.Sattari@microsoft.com'>Tannaz.Sattari@microsoft.com</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Simulate a P2P edge list</span>
+<span class='va'>sim_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='p2p_data_sim.html'>p2p_data_sim</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='co'># Perform Louvain Community Detection and return vertices</span>
+<span class='va'>lc_df</span> <span class='op'>&lt;-</span>
+  <span class='va'>sim_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='network_p2p.html'>network_p2p</a></span><span class='op'>(</span>
+    display <span class='op'>=</span> <span class='st'>"louvain"</span>,
+    return <span class='op'>=</span> <span class='st'>"data"</span>
+  <span class='op'>)</span>
+
+<span class='co'># Join org data from input edge list</span>
+<span class='va'>joined_df</span> <span class='op'>&lt;-</span>
+  <span class='va'>lc_df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span>
+    <span class='va'>sim_data</span> <span class='op'>%&gt;%</span>
+      <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>TieOrigin_PersonId</span>,
+                    <span class='va'>TieOrigin_Organization</span>,
+                    <span class='va'>TieOrigin_LevelDesignation</span>,
+                    <span class='va'>TieOrigin_City</span><span class='op'>)</span>,
+    by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"name"</span> <span class='op'>=</span> <span class='st'>"TieOrigin_PersonId"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Describe cluster 2</span>
+<span class='va'>joined_df</span> <span class='op'>%&gt;%</span>
+  <span class='co'># dplyr::filter(cluster == "2") %&gt;%</span>
+  <span class='fu'>network_describe</span><span class='op'>(</span>
+    hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+      <span class='st'>"Organization"</span>,
+      <span class='st'>"LevelDesignation"</span>,
+      <span class='st'>"City"</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 679
+#&gt; Columns: 7
+#&gt; $ feature_1       <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "TieOrigin_Organization", "TieOrigin_Organization", "T…
+#&gt; $ feature_1_value </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "Org F", "Org A", "Org C", "Org D", "Org B", "Org E", …
+#&gt; $ feature_2       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+#&gt; $ feature_2_value </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+#&gt; $ feature_3       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+#&gt; $ feature_3_value </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+#&gt; $ Percentage      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 0.22077922, 0.20779221, 0.19480519, 0.11688312, 0.1038…</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

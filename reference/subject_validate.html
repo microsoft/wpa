@@ -49,9 +49,11 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Scan meeting subject and highlight items for review — subject_validate" />
-<meta property="og:description" content="This functions scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-Returns a summary in the console by default.
-Additional option to return the underlying data with a flag of items for review." />
+<meta property="og:description" content="This functions scans a meeting query and highlights meetings with subjects
+that include common exlusion terms. It is intended to be used by an analyst
+to validate raw data before conducting additional analysis. Returns a summary
+in the console by default. Additional option to return the underlying data
+with a flag of items for review." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -210,9 +212,11 @@ Additional option to return the underlying data with a flag of items for review.
     </div>
 
     <div class="ref-description">
-    <p>This functions scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-Returns a summary in the console by default.
-Additional option to return the underlying data with a flag of items for review.</p>
+    <p>This functions scans a meeting query and highlights meetings with subjects
+that include common exlusion terms. It is intended to be used by an analyst
+to validate raw data before conducting additional analysis. Returns a summary
+in the console by default. Additional option to return the underlying data
+with a flag of items for review.</p>
     </div>
 
     <pre class="usage"><span class='fu'>subject_validate</span><span class='op'>(</span><span class='va'>data</span>, return <span class='op'>=</span> <span class='st'>"text"</span><span class='op'>)</span></pre>
@@ -226,22 +230,25 @@ Additional option to return the underlying data with a flag of items for review.
     </tr>
     <tr>
       <th>return</th>
-      <td><p>A string specifying what to return.
-Returns a message in the console by default, where 'text' is passed in <code>return</code>.
-When 'table' is passed, a summary table with common terms found is printed.
-When 'data' is passed, a the original data with an additional flag column is returned as a data frame.</p></td>
+      <td><p>A string specifying what to return. Returns a message in the
+console by default, where <code>'text'</code> is passed in <code>return</code>. When <code>'table'</code> is
+passed, a summary table with common terms found is printed. When <code>'data'</code>
+is passed, a the original data with an additional flag column is returned
+as a data frame.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a message in the console by default, where 'text' is passed in <code>return</code>.
-When 'table' is passed, a summary table with common terms found is printed.
-When 'data' is passed, a the original data with an additional flag column is returned as a data frame.</p>
+    <p>Returns a message in the console by default, where <code>'text'</code> is passed
+in <code>return</code>. When <code>'table'</code> is passed, a summary table with common terms
+found is printed. When <code>'data'</code> is passed, a the original data with an
+additional flag column is returned as a data frame.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
@@ -249,16 +256,29 @@ When 'data' is passed, a the original data with an additional flag column is ret
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p>
+<p>Other Text-mining: 
+<code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='tm_clean.html'>tm_clean</a>()</code>,
+<code><a href='tm_cooc.html'>tm_cooc</a>()</code>,
+<code><a href='tm_freq.html'>tm_freq</a>()</code>,
+<code><a href='tm_wordcloud.html'>tm_wordcloud</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

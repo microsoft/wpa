@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create count of distinct fields and percentage of employees with NAs for all HR variables — hrvar_count_all • wpa</title>
+<title>Create count of distinct fields and percentage of employees with
+missing values for all HR variables — hrvar_count_all • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,12 +49,14 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Create count of distinct fields and percentage of employees with NAs for all HR variables — hrvar_count_all" />
-<meta property="og:description" content="This function enables you to create a summary table to validate organizational data. This table will provide a summary of the data found
-in the WpA Sources page.
-This function will return a summary table with the count of distinct fields per HR attribute and the percentage of
-employees with NAs for that attribute.
-See hrvar_count function for more detail on the specific HR attribute of interest." />
+<meta property="og:title" content="Create count of distinct fields and percentage of employees with
+missing values for all HR variables — hrvar_count_all" />
+<meta property="og:description" content="This function enables you to create a summary table to validate
+organizational data. This table will provide a summary of the data found in
+the Workplace Analytics Sources page. This function will return a summary
+table with the count of distinct fields per HR attribute and the percentage
+of employees with missing values for that attribute. See hrvar_count()
+function for more detail on the specific HR attribute of interest." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -206,17 +209,19 @@ See hrvar_count function for more detail on the specific HR attribute of interes
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create count of distinct fields and percentage of employees with NAs for all HR variables</h1>
+    <h1>Create count of distinct fields and percentage of employees with
+missing values for all HR variables</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/hrvar_count_all.R'><code>R/hrvar_count_all.R</code></a></small>
     <div class="hidden name"><code>hrvar_count_all.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function enables you to create a summary table to validate organizational data. This table will provide a summary of the data found
-in the WpA Sources page.
-This function will return a summary table with the count of distinct fields per HR attribute and the percentage of
-employees with NAs for that attribute.
-See hrvar_count function for more detail on the specific HR attribute of interest.</p>
+    <p>This function enables you to create a summary table to validate
+organizational data. This table will provide a summary of the data found in
+the Workplace Analytics Sources page. This function will return a summary
+table with the count of distinct fields per HR attribute and the percentage
+of employees with missing values for that attribute. See <code><a href='hrvar_count.html'>hrvar_count()</a></code>
+function for more detail on the specific HR attribute of interest.</p>
     </div>
 
     <pre class="usage"><span class='fu'>hrvar_count_all</span><span class='op'>(</span>
@@ -236,7 +241,8 @@ See hrvar_count function for more detail on the specific HR attribute of interes
     </tr>
     <tr>
       <th>n_var</th>
-      <td><p>number of HR variables to include in report as rows. Default is set to 10 HR variables.</p></td>
+      <td><p>number of HR variables to include in report as rows. Default is
+set to 50 HR variables.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -244,40 +250,53 @@ See hrvar_count function for more detail on the specific HR attribute of interes
     </tr>
     <tr>
       <th>threshold</th>
-      <td><p>The max number of unique values allowed for any attribute. Default is 100.</p></td>
+      <td><p>The max number of unique values allowed for any attribute.
+Default is 100.</p></td>
     </tr>
     <tr>
       <th>maxna</th>
-      <td><p>The max percentage of NAs allowable for any column. Default is 20.</p></td>
+      <td><p>The max percentage of NAs allowable for any column. Default is
+20.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns an error message by default, where 'text' is passed in <code>return</code>.
-When 'table' is passed, a summary table listing the number of distinct fields and percentage of NAs for the specified number of HR attributes will be returned.
-when 'message' is passed, outputs a message indicating which values are beyond the specified thresholds.</p>
+    <p>Returns an error message by default, where 'text' is passed in <code>return</code>.</p><ul>
+<li><p><code>'table'</code>: data frame. A summary table listing the number of distinct
+fields and percentage of missing values for the specified number of HR
+attributes will be returned.</p></li>
+<li><p><code>'message'</code>: outputs a message indicating which values are
+beyond the specified thresholds.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
 <code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Return a summary table of all HR attributes</span>

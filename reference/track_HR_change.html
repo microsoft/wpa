@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sankey chart of org between HR attributes (Defaults to Organization) and NA (outside company move) (Data Overview) — track_HR_change • wpa</title>
+<title>Sankey chart of organizational movement between HR attributes and
+missing values (outside company move) (Data Overview) — track_HR_change • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,14 +49,16 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Sankey chart of org between HR attributes (Defaults to Organization) and NA (outside company move) (Data Overview) — track_HR_change" />
+<meta property="og:title" content="Sankey chart of organizational movement between HR attributes and
+missing values (outside company move) (Data Overview) — track_HR_change" />
 <meta property="og:description" content="Creates a list of everyone at a specified start date and a specified end date
-then aggregates up people who have moved between orgs between this to points of time
-and visualiazes the move through a sankey chart.
+then aggregates up people who have moved between orgs between this to points
+of time and visualiazes the move through a sankey chart.
 Through this chart you can see:
 The HR attribute/orgs that have the highest move out
 The HR attribute/orgs that have the highest move in
-The number of people that do not have that HR attribute ot  they are no longer in the system
+The number of people that do not have that HR attribute ot  they are no
+longer in the system
 
 " />
 <meta property="og:image" content="/logo.png" />
@@ -210,19 +213,21 @@ The number of people that do not have that HR attribute ot  they are no longer i
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sankey chart of org between HR attributes (Defaults to Organization) and NA (outside company move) (Data Overview)</h1>
+    <h1>Sankey chart of organizational movement between HR attributes and
+missing values (outside company move) (Data Overview)</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/track_hr_change.R'><code>R/track_hr_change.R</code></a></small>
     <div class="hidden name"><code>track_HR_change.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Creates a list of everyone at a specified start date and a specified end date
-then aggregates up people who have moved between orgs between this to points of time
-and visualiazes the move through a sankey chart.
+then aggregates up people who have moved between orgs between this to points
+of time and visualiazes the move through a sankey chart.
 Through this chart you can see:</p><ul>
 <li><p>The HR attribute/orgs that have the highest move out</p></li>
 <li><p>The HR attribute/orgs that have the highest move in</p></li>
-<li><p>The number of people that do not have that HR attribute ot  they are no longer in the system</p></li>
+<li><p>The number of people that do not have that HR attribute ot  they are no
+longer in the system</p></li>
 </ul>
 
     </div>
@@ -254,31 +259,36 @@ Through this chart you can see:</p><ul>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>HR Variable by which to compare changes between, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"</p></td>
+      <td><p>HR Variable by which to compare changes between, defaults to
+<code>"Organization"</code> but accepts any character vector, e.g.
+<code>"LevelDesignation"</code></p></td>
     </tr>
     <tr>
       <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.</p></td>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>Character vector specifying what to return, defaults to
+<code>"plot"</code>. Valid inputs are <code>"plot"</code> and <code>"table"</code>.</p></td>
     </tr>
     <tr>
       <th>NA_replacement</th>
-      <td><p>Character replacement for NA defaults to "out of company"</p></td>
+      <td><p>Character replacement for NA defaults to "out of
+company"</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a NetworkD3 object by default, where 'plot' is passed in <code>return</code>.
+    <p>Returns a 'NetworkD3' object by default, where 'plot' is passed in <code>return</code>.
 When 'table' is passed, a summary table is returned as a data frame.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
@@ -286,16 +296,21 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
-<code><a href='subject_validate.html'>subject_validate</a>()</code></p></div>
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

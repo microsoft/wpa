@@ -49,11 +49,12 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Clean subject line text prior to analysis — tm_clean" />
-<meta property="og:description" content="This function processes the Subject column in a Meeting Query by
-applying tokenisation usingtidytext::unnest_tokens(), and removing
-any stopwords supplied in a data frame (using the argument stopwords).
-This is a sub-function that feeds into tm_freq(), tm_cooc(), and tm_wordcloud().
-The default is to return a data frame with tokenised counts of words or ngrams." />
+<meta property="og:description" content="This function processes the Subject column in a Meeting Query by applying
+tokenisation usingtidytext::unnest_tokens(), and removing any stopwords
+supplied in a data frame (using the argument stopwords). This is a
+sub-function that feeds into tm_freq(), tm_cooc(), and tm_wordcloud().
+The default is to return a data frame with tokenised counts of words or
+ngrams." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -212,11 +213,12 @@ The default is to return a data frame with tokenised counts of words or ngrams."
     </div>
 
     <div class="ref-description">
-    <p>This function processes the <code>Subject</code> column in a Meeting Query by
-applying tokenisation using<code><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>tidytext::unnest_tokens()</a></code>, and removing
-any stopwords supplied in a data frame (using the argument <code>stopwords</code>).
-This is a sub-function that feeds into <code><a href='tm_freq.html'>tm_freq()</a></code>, <code><a href='tm_cooc.html'>tm_cooc()</a></code>, and <code><a href='tm_wordcloud.html'>tm_wordcloud()</a></code>.
-The default is to return a data frame with tokenised counts of words or ngrams.</p>
+    <p>This function processes the <code>Subject</code> column in a Meeting Query by applying
+tokenisation using<code><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>tidytext::unnest_tokens()</a></code>, and removing any stopwords
+supplied in a data frame (using the argument <code>stopwords</code>). This is a
+sub-function that feeds into <code><a href='tm_freq.html'>tm_freq()</a></code>, <code><a href='tm_cooc.html'>tm_cooc()</a></code>, and <code><a href='tm_wordcloud.html'>tm_wordcloud()</a></code>.
+The default is to return a data frame with tokenised counts of words or
+ngrams.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tm_clean</span><span class='op'>(</span><span class='va'>data</span>, token <span class='op'>=</span> <span class='st'>"words"</span>, stopwords <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -230,12 +232,13 @@ The default is to return a data frame with tokenised counts of words or ngrams.<
     </tr>
     <tr>
       <th>token</th>
-      <td><p>A character vector accepting either "words" or "ngram", determining
-type of tokenisation to return.</p></td>
+      <td><p>A character vector accepting either <code>"words"</code> or <code>"ngram"</code>,
+determining type of tokenisation to return.</p></td>
     </tr>
     <tr>
       <th>stopwords</th>
-      <td><p>A single-column data frame labelled 'word' containing custom stopwords to remove.</p></td>
+      <td><p>A single-column data frame labelled <code>'word'</code> containing
+custom stopwords to remove.</p></td>
     </tr>
     </table>
 
@@ -243,7 +246,9 @@ type of tokenisation to return.</p></td>
 
     <div class='dont-index'><p>Other Text-mining: 
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
 <code><a href='tm_cooc.html'>tm_cooc</a>()</code>,
 <code><a href='tm_freq.html'>tm_freq</a>()</code>,
 <code><a href='tm_wordcloud.html'>tm_wordcloud</a>()</code></p></div>

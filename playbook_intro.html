@@ -252,7 +252,7 @@
 <li>
 <code><a href="reference/meeting_skim.html">meeting_skim()</a></code> can be used to understand the overall % of meetings which are low quality. Hours can be expressed in terms of number of FTE-weeks (or months), or even dollar values for greater impact. Typical assumptions used are 40 employee-hours per week and 180 per month.</li>
 <li>
-<code><a href="reference/meetingtype_dist.html">meetingtype_dist()</a></code> can be used to understand the distribution of long or large meetings.</li>
+<code><a href="reference/meetingtype_dist.html">meetingtype_dist()</a></code> can be used to understand the distribution of long or large meetings. Another alternative, <code><a href="reference/meetingtype_summary.html">meetingtype_summary()</a></code> can be used to visualize the proportion of long or large meetings as a bar plot (requires a Ways of Working Assessment query).</li>
 <li>
 <strong>Meeting subject line text mining</strong>: <code><a href="reference/meeting_tm_report.html">meeting_tm_report()</a></code> can reveal patterns underlying meeting subject lines. The report is made of individual visualization functions, i.e.:
 <ul>
@@ -389,7 +389,8 @@
 <p><strong>Employee sentiment analysis</strong></p>
 <ul>
 <li>To compute feature importance, you can leverage <code><a href="reference/create_IV.html">create_IV()</a></code> and <code><a href="reference/IV_report.html">IV_report()</a></code> for calculating Information Value, using Workplace Analytics metrics (including manager metrics) as predictor variables and employee sentiment scores as an outcome variable.</li>
-<li>If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn’t a function for modelling in <strong>wpa</strong>, but you can make use of capabilities in the wider R universe, such as <strong>randomForest</strong> and <strong>tidymodels</strong>.</li>
+<li>If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn’t a function for modelling in <strong>wpa</strong>, but you can make use of capabilities in the wider R universe, such as <strong>randomForest</strong> and <strong>tidymodels</strong>. The function <code><a href="reference/identify_churn.html">identify_churn()</a></code> can be used to identify employees who have churned from the dataset.<br>
+</li>
 <li>For more capabilities in calculating variable importance, you may reference the <strong>rwa</strong> and the <strong>vip</strong> packages.</li>
 </ul>
 </div>

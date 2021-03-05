@@ -51,12 +51,13 @@
 <meta property="og:title" content="Remove outliers from a person query across time — remove_outliers" />
 <meta property="og:description" content="
 This function takes in a selected metric and uses z-score (number of standard
-deviations) to identify and remove outlier weeks for individuals across time. There are applications
-in this for removing weeks with abnormally low collaboration
-activity, e.g. holidays. Retains metrics with z &amp;gt; -2.
-Function is based on identify_outlier(), but implements a more elaborate approach as the outliers are
-identified and removed with respect to each individual, as opposed to the group. Note that remove_outliers()
-has a longer runtime compared to identify_outlier()." />
+deviations) to identify and remove outlier weeks for individuals across time.
+There are applications in this for removing weeks with abnormally low
+collaboration activity, e.g. holidays. Retains metrics with z &amp;gt; -2.
+Function is based on identify_outlier(), but implements a more elaborate
+approach as the outliers are identified and removed with respect to each
+individual, as opposed to the group. Note that remove_outliers() has a
+longer runtime compared to identify_outlier()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -215,14 +216,15 @@ has a longer runtime compared to identify_outlier()." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a>
-This function takes in a selected metric and uses z-score (number of standard
-deviations) to identify and remove outlier weeks for individuals across time. There are applications
-in this for removing weeks with abnormally low collaboration
-activity, e.g. holidays. Retains metrics with z &gt; -2.</p>
-<p>Function is based on <code><a href='identify_outlier.html'>identify_outlier()</a></code>, but implements a more elaborate approach as the outliers are
-identified and removed <strong>with respect to each individual</strong>, as opposed to the group. Note that <code>remove_outliers()</code>
-has a longer runtime compared to <code><a href='identify_outlier.html'>identify_outlier()</a></code>.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p>This function takes in a selected metric and uses z-score (number of standard
+deviations) to identify and remove outlier weeks for individuals across time.
+There are applications in this for removing weeks with abnormally low
+collaboration activity, e.g. holidays. Retains metrics with z &gt; -2.</p>
+<p>Function is based on <code><a href='identify_outlier.html'>identify_outlier()</a></code>, but implements a more elaborate
+approach as the outliers are identified and removed <strong>with respect to each
+individual</strong>, as opposed to the group. Note that <code>remove_outliers()</code> has a
+longer runtime compared to <code><a href='identify_outlier.html'>identify_outlier()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>remove_outliers</span><span class='op'>(</span><span class='va'>data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span><span class='op'>)</span></pre>
@@ -258,6 +260,7 @@ deviations of each individual's collaboration activity.</p>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
@@ -265,16 +268,21 @@ deviations of each individual's collaboration activity.</p>
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

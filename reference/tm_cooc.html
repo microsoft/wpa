@@ -49,9 +49,8 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Analyse word co-occurrence in subject lines and return a network plot — tm_cooc" />
-<meta property="og:description" content="This function generates a word co-occurence network plot,
-with options to return a table.
-This is a sub-function that feeds into meeting_tm_report()." />
+<meta property="og:description" content="This function generates a word co-occurence network plot, with options to
+return a table. This is a sub-function that feeds into meeting_tm_report()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -210,9 +209,8 @@ This is a sub-function that feeds into meeting_tm_report()." />
     </div>
 
     <div class="ref-description">
-    <p>This function generates a word co-occurence network plot,
-with options to return a table.
-This is a sub-function that feeds into <code><a href='meeting_tm_report.html'>meeting_tm_report()</a></code>.</p>
+    <p>This function generates a word co-occurence network plot, with options to
+return a table. This is a sub-function that feeds into <code><a href='meeting_tm_report.html'>meeting_tm_report()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tm_cooc</span><span class='op'>(</span><span class='va'>data</span>, stopwords <span class='op'>=</span> <span class='cn'>NULL</span>, seed <span class='op'>=</span> <span class='fl'>100</span>, return <span class='op'>=</span> <span class='st'>"plot"</span>, lmult <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span></pre>
@@ -226,7 +224,8 @@ This is a sub-function that feeds into <code><a href='meeting_tm_report.html'>me
     </tr>
     <tr>
       <th>stopwords</th>
-      <td><p>A single-column data frame labelled 'word' containing custom stopwords to remove.</p></td>
+      <td><p>A single-column data frame labelled 'word' containing custom
+stopwords to remove.</p></td>
     </tr>
     <tr>
       <th>seed</th>
@@ -234,25 +233,28 @@ This is a sub-function that feeds into <code><a href='meeting_tm_report.html'>me
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>Character vector specifying what to return, defaults to
+<code>"plot"</code>. Valid inputs are <code>"plot"</code> and <code>"table"</code>.</p></td>
     </tr>
     <tr>
       <th>lmult</th>
-      <td><p>A multiplier to adjust the line width in the output plot. Defaults to 0.05.</p></td>
+      <td><p>A multiplier to adjust the line width in the output plot.
+Defaults to 0.05.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function uses <code><a href='tm_clean.html'>tm_clean()</a></code> as the underlying data wrangling function.
-There is an option to remove stopwords by passing a data frame into the <code>stopwords</code>
-argument.</p>
+There is an option to remove stopwords by passing a data frame into the
+<code>stopwords</code> argument.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Text-mining: 
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
 <code><a href='tm_clean.html'>tm_clean</a>()</code>,
 <code><a href='tm_freq.html'>tm_freq</a>()</code>,
 <code><a href='tm_wordcloud.html'>tm_wordcloud</a>()</code></p></div>

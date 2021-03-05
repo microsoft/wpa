@@ -49,10 +49,12 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Identify Holiday Weeks based on outliers — identify_holidayweeks" />
-<meta property="og:description" content="This function scans a standard query output for weeks where collaboration hours is far outside the mean.
-Returns a list of weeks that appear to be holiday weeks and optionally an edited dataframe with outliers removed.
-By default, missing values are excluded.
-As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset." />
+<meta property="og:description" content="This function scans a standard query output for weeks where collaboration
+hours is far outside the mean. Returns a list of weeks that appear to be
+holiday weeks and optionally an edited dataframe with outliers removed. By
+default, missing values are excluded.
+As best practice, run this function prior to any analysis to remove atypical
+collaboration weeks from your dataset." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -211,10 +213,12 @@ As best practice, run this function prior to any analysis to remove atypical col
     </div>
 
     <div class="ref-description">
-    <p>This function scans a standard query output for weeks where collaboration hours is far outside the mean.
-Returns a list of weeks that appear to be holiday weeks and optionally an edited dataframe with outliers removed.
-By default, missing values are excluded.</p>
-<p>As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.</p>
+    <p>This function scans a standard query output for weeks where collaboration
+hours is far outside the mean. Returns a list of weeks that appear to be
+holiday weeks and optionally an edited dataframe with outliers removed. By
+default, missing values are excluded.</p>
+<p>As best practice, run this function prior to any analysis to remove atypical
+collaboration weeks from your dataset.</p>
     </div>
 
     <pre class="usage"><span class='fu'>identify_holidayweeks</span><span class='op'>(</span><span class='va'>data</span>, sd <span class='op'>=</span> <span class='fl'>1</span>, return <span class='op'>=</span> <span class='st'>"message"</span><span class='op'>)</span></pre>
@@ -228,25 +232,52 @@ By default, missing values are excluded.</p>
     </tr>
     <tr>
       <th>sd</th>
-      <td><p>The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.</p></td>
+      <td><p>The standard deviation below the mean for collaboration hours that
+should define an outlier week. Enter a positive number. Default is 1
+standard deviation.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String to specify what to return. Returns a message by default (<code>return</code> = "message").
-Valid options are:</p><ul>
-<li><p>When 'message' is passed, a message is printed identifying holiday weeks.</p></li>
-<li><p>When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.</p></li>
-<li><p>When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.</p></li>
-<li><p>when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.</p></li>
-<li><p>when 'plot' is passed, a plot with holiday weeks highlighted is returned as a dataframe.</p></li>
-</ul></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"message"</code> (default)</p></li>
+<li><p><code>"data"</code></p></li>
+<li><p><code>"data_cleaned"</code></p></li>
+<li><p><code>"data_dirty"</code></p></li>
+<li><p><code>"plot"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"message"</code>: message on console. a message is printed identifying holiday
+weeks.</p></li>
+<li><p><code>"data"</code>: data frame. A dataset with outlier weeks flagged in a new
+column is returned as a dataframe.</p></li>
+<li><p><code>"data_cleaned"</code>: data frame. A dataset with outlier weeks removed is
+returned.</p></li>
+<li><p><code>"data_dirty"</code>: data frame. A dataset with only outlier weeks is
+returned.</p></li>
+<li><p><code>"plot"</code>: ggplot object. A line plot of Collaboration Hours with holiday
+weeks highlighted.</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="metrics-used"><a class="anchor" href="#metrics-used"></a>Metrics used</h2>
+
+    
+
+<p>The metric <code>Collaboration_hours</code> is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
@@ -254,16 +285,21 @@ Valid options are:</p><ul>
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Return a message by default</span>
@@ -273,7 +309,6 @@ Valid options are:</p><ul>
 <span class='co'># Return plot</span>
 <span class='fu'>identify_holidayweeks</span><span class='op'>(</span><span class='va'>sq_data</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
 </div><div class='img'><img src='identify_holidayweeks-1.png' alt='' width='700' height='433' /></div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

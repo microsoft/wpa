@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Identify shifts based on outlook time settings for work day start and end time — identify_shifts • wpa</title>
+<title>Identify shifts based on outlook time settings for work day start and end
+time — identify_shifts • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +49,11 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Identify shifts based on outlook time settings for work day start and end time — identify_shifts" />
-<meta property="og:description" content="This function uses outlook calendar settings for start and end time of work day to identify
-work shifts. The relevant variables are WorkingStartTimeSetInOutlook and
-WorkingEndTimeSetInOutlook." />
+<meta property="og:title" content="Identify shifts based on outlook time settings for work day start and end
+time — identify_shifts" />
+<meta property="og:description" content="This function uses outlook calendar settings for start and end time of work
+day to identify work shifts. The relevant variables are
+WorkingStartTimeSetInOutlook and WorkingEndTimeSetInOutlook." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -204,15 +206,16 @@ WorkingEndTimeSetInOutlook." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Identify shifts based on outlook time settings for work day start and end time</h1>
+    <h1>Identify shifts based on outlook time settings for work day start and end
+time</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/identify_shifts.R'><code>R/identify_shifts.R</code></a></small>
     <div class="hidden name"><code>identify_shifts.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function uses outlook calendar settings for start and end time of work day to identify
-work shifts. The relevant variables are <code>WorkingStartTimeSetInOutlook</code> and
-<code>WorkingEndTimeSetInOutlook</code>.</p>
+    <p>This function uses outlook calendar settings for start and end time of work
+day to identify work shifts. The relevant variables are
+<code>WorkingStartTimeSetInOutlook</code> and <code>WorkingEndTimeSetInOutlook</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>identify_shifts</span><span class='op'>(</span><span class='va'>data</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
@@ -226,17 +229,77 @@ work shifts. The relevant variables are <code>WorkingStartTimeSetInOutlook</code
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector to specify what to return.
-"table" (default) returns a summary table of the counts of shifts.
-"data" returns the original input data frame with the <code>Shifts</code> column appended.</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+<li><p><code>"data"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A bar plot for the weekly count of shifts.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the count of shifts.</p></li>
+<li><p><code>"data</code>: data frame. Input data appended with the <code>Shifts</code> columns.</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Data Validation: 
+<code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
+<code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
+<code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
+<code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
+<code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
+<code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
+<code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
+<code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
+<code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
+<code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
+<code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
+<code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p>
+<p>Other Working Patterns: 
+<code><a href='flex_index.html'>flex_index</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='plot_flex_index.html'>plot_flex_index</a>()</code>,
+<code><a href='workpatterns_area.html'>workpatterns_area</a>()</code>,
+<code><a href='workpatterns_classify_bw.html'>workpatterns_classify_bw</a>()</code>,
+<code><a href='workpatterns_classify_pav.html'>workpatterns_classify_pav</a>()</code>,
+<code><a href='workpatterns_classify.html'>workpatterns_classify</a>()</code>,
+<code><a href='workpatterns_hclust.html'>workpatterns_hclust</a>()</code>,
+<code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code>,
+<code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>dv_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># Return plot</span>
+<span class='va'>dv_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='identify_shifts-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+<span class='co'># Return summary table</span>
+<span class='va'>dv_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 3</span><span>
+#&gt;   Shifts      WeekCount PersonCount
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 07:00-23:00       832          64
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 06:00-18:00        45           5</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

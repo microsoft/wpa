@@ -49,8 +49,9 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Rank all groups across HR attributes on a selected Workplace Analytics metric — create_rank" />
-<meta property="og:description" content="This function scans a standard Person query output for groups with high levels of a given Workplace Analytics Metric.
-Returns a table with all groups (across multiple HR attributes) ranked by the specified metric." />
+<meta property="og:description" content="This function scans a standard Person query output for groups with high
+levels of a given Workplace Analytics Metric. Returns a table with all groups
+(across multiple HR attributes) ranked by the specified metric." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -209,8 +210,9 @@ Returns a table with all groups (across multiple HR attributes) ranked by the sp
     </div>
 
     <div class="ref-description">
-    <p>This function scans a standard Person query output for groups with high levels of a given Workplace Analytics Metric.
-Returns a table with all groups (across multiple HR attributes) ranked by the specified metric.</p>
+    <p>This function scans a standard Person query output for groups with high
+levels of a given Workplace Analytics Metric. Returns a table with all groups
+(across multiple HR attributes) ranked by the specified metric.</p>
     </div>
 
     <pre class="usage"><span class='fu'>create_rank</span><span class='op'>(</span>
@@ -246,35 +248,159 @@ Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>A character vector specifying what to return.
-Valid values include "table" (default). Features are being considered for alternative return options but are currently
-unavailable.</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"table"</code> (default)</p></li>
+<li><p><code>"plot"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     <tr>
       <th>plot_mode</th>
-      <td><p>Numeric vector to determine which plot mode to return:</p><ol>
-<li><p>Top and bottom five groups across the data population are highlighted</p></li>
-<li><p>Top and bottom groups <em>per</em> organizational attribute are highlighted</p></li>
-</ol></td>
+      <td><p>Numeric vector to determine which plot mode to return. Must
+be either <code>1</code> or <code>2</code>, and is only used when <code>return = "plot"</code>.</p><ul>
+<li><p><code>1</code>: Top and bottom five groups across the data population are highlighted</p></li>
+<li><p><code>2</code>: Top and bottom groups <em>per</em> organizational attribute are highlighted</p></li>
+</ul></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a ggplot object by default, where 'plot' is passed in <code>return</code>.
-When 'table' is passed, a summary table is returned as a data frame.</p>
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A bubble plot where the x-axis represents the
+metric, the y-axis represents the HR attributes, and the size of the
+bubbles represent the size of the organizations.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Flexible: 
+    <div class='dont-index'><p>Other Visualization: 
+<code><a href='afterhours_dist.html'>afterhours_dist</a>()</code>,
+<code><a href='afterhours_fizz.html'>afterhours_fizz</a>()</code>,
+<code><a href='afterhours_line.html'>afterhours_line</a>()</code>,
+<code><a href='afterhours_rank.html'>afterhours_rank</a>()</code>,
+<code><a href='afterhours_summary.html'>afterhours_summary</a>()</code>,
+<code><a href='afterhours_trend.html'>afterhours_trend</a>()</code>,
+<code><a href='collaboration_area.html'>collaboration_area</a>()</code>,
+<code><a href='collaboration_dist.html'>collaboration_dist</a>()</code>,
+<code><a href='collaboration_fizz.html'>collaboration_fizz</a>()</code>,
+<code><a href='collaboration_line.html'>collaboration_line</a>()</code>,
+<code><a href='collaboration_rank.html'>collaboration_rank</a>()</code>,
+<code><a href='collaboration_sum.html'>collaboration_sum</a>()</code>,
+<code><a href='collaboration_trend.html'>collaboration_trend</a>()</code>,
+<code><a href='create_bar_asis.html'>create_bar_asis</a>()</code>,
+<code><a href='create_bar.html'>create_bar</a>()</code>,
+<code><a href='create_boxplot.html'>create_boxplot</a>()</code>,
+<code><a href='create_bubble.html'>create_bubble</a>()</code>,
+<code><a href='create_dist.html'>create_dist</a>()</code>,
+<code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
+<code><a href='create_line.html'>create_line</a>()</code>,
+<code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_sankey.html'>create_sankey</a>()</code>,
+<code><a href='create_scatter.html'>create_scatter</a>()</code>,
+<code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_trend.html'>create_trend</a>()</code>,
+<code><a href='email_dist.html'>email_dist</a>()</code>,
+<code><a href='email_fizz.html'>email_fizz</a>()</code>,
+<code><a href='email_line.html'>email_line</a>()</code>,
+<code><a href='email_rank.html'>email_rank</a>()</code>,
+<code><a href='email_summary.html'>email_summary</a>()</code>,
+<code><a href='email_trend.html'>email_trend</a>()</code>,
+<code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
+<code><a href='keymetrics_scan.html'>keymetrics_scan</a>()</code>,
+<code><a href='meeting_dist.html'>meeting_dist</a>()</code>,
+<code><a href='meeting_fizz.html'>meeting_fizz</a>()</code>,
+<code><a href='meeting_line.html'>meeting_line</a>()</code>,
+<code><a href='meeting_quality.html'>meeting_quality</a>()</code>,
+<code><a href='meeting_rank.html'>meeting_rank</a>()</code>,
+<code><a href='meeting_summary.html'>meeting_summary</a>()</code>,
+<code><a href='meeting_trend.html'>meeting_trend</a>()</code>,
+<code><a href='meetingtype_dist_ca.html'>meetingtype_dist_ca</a>()</code>,
+<code><a href='meetingtype_dist_mt.html'>meetingtype_dist_mt</a>()</code>,
+<code><a href='meetingtype_dist.html'>meetingtype_dist</a>()</code>,
+<code><a href='meetingtype_summary.html'>meetingtype_summary</a>()</code>,
+<code><a href='mgrcoatt_dist.html'>mgrcoatt_dist</a>()</code>,
+<code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code>,
+<code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
+<code><a href='one2one_fizz.html'>one2one_fizz</a>()</code>,
+<code><a href='one2one_line.html'>one2one_line</a>()</code>,
+<code><a href='one2one_rank.html'>one2one_rank</a>()</code>,
+<code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
+<code><a href='one2one_trend.html'>one2one_trend</a>()</code>,
+<code><a href='period_change.html'>period_change</a>()</code>,
+<code><a href='workloads_dist.html'>workloads_dist</a>()</code>,
+<code><a href='workloads_fizz.html'>workloads_fizz</a>()</code>,
+<code><a href='workloads_line.html'>workloads_line</a>()</code>,
+<code><a href='workloads_rank.html'>workloads_rank</a>()</code>,
+<code><a href='workloads_summary.html'>workloads_summary</a>()</code>,
+<code><a href='workloads_trend.html'>workloads_trend</a>()</code>,
+<code><a href='workpatterns_area.html'>workpatterns_area</a>()</code>,
+<code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code></p>
+<p>Other Flexible: 
+<code><a href='create_bar_asis.html'>create_bar_asis</a>()</code>,
+<code><a href='create_bar.html'>create_bar</a>()</code>,
+<code><a href='create_boxplot.html'>create_boxplot</a>()</code>,
+<code><a href='create_bubble.html'>create_bubble</a>()</code>,
 <code><a href='create_dist.html'>create_dist</a>()</code>,
 <code><a href='create_fizz.html'>create_fizz</a>()</code>,
 <code><a href='create_hist.html'>create_hist</a>()</code>,
 <code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
 <code><a href='create_line.html'>create_line</a>()</code>,
 <code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_sankey.html'>create_sankey</a>()</code>,
+<code><a href='create_scatter.html'>create_scatter</a>()</code>,
 <code><a href='create_stacked.html'>create_stacked</a>()</code>,
-<code><a href='create_trend.html'>create_trend</a>()</code></p></div>
+<code><a href='create_trend.html'>create_trend</a>()</code>,
+<code><a href='period_change.html'>period_change</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>create_rank</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>sq_data</span>,
+  hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"FunctionType"</span>, <span class='st'>"LevelDesignation"</span><span class='op'>)</span>,
+  metric <span class='op'>=</span> <span class='st'>"Emails_sent"</span>,
+  return <span class='op'>=</span> <span class='st'>"plot"</span>,
+  plot_mode <span class='op'>=</span> <span class='fl'>1</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='create_rank-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Plot mode 2 - show top and bottom groups per HR variable</span>
+<span class='fu'>create_rank</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>sq_data</span>,
+  hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"FunctionType"</span>, <span class='st'>"LevelDesignation"</span><span class='op'>)</span>,
+  metric <span class='op'>=</span> <span class='st'>"Emails_sent"</span>,
+  return <span class='op'>=</span> <span class='st'>"plot"</span>,
+  plot_mode <span class='op'>=</span> <span class='fl'>2</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='create_rank-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return a table</span>
+<span class='fu'>create_rank</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>sq_data</span>,
+  metric <span class='op'>=</span> <span class='st'>"Emails_sent"</span>,
+  return <span class='op'>=</span> <span class='st'>"table"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 x 4</span><span>
+#&gt;    hrvar            group                Emails_sent     n
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> FunctionType     Sales                       59.8    82
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> FunctionType     Marketing                   56.3   207
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> LevelDesignation Director                    52.3    68
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Organization     Finance-East                50.4    70
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Organization     Finance-West                48.5    73
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Organization     Inventory Management        47.4    60
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Organization     G&amp;A Central                 46.7    57
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> LevelDesignation Manager                     46.6   333
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> LevelDesignation Executive                   46.3     6
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Organization     Human Resources             45.8    71
+#&gt; </span><span style='color: #949494;'># … with 20 more rows</span><span></div><div class='input'>
+
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

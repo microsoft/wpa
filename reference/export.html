@@ -236,16 +236,24 @@ the default behaviour is to export a PNG.</p>
     <tr>
       <th>method</th>
       <td><p>Character string specifying the method of export.
-Valid inputs include "clipboard" (default), "csv", "png", "svg", "jpeg", and "pdf".</p></td>
+Valid inputs include:</p><ul>
+<li><p><code>"clipboard"</code> (default if input is data frame)</p></li>
+<li><p><code>"csv"</code></p></li>
+<li><p><code>"png"</code> (default if input is ggplot object)</p></li>
+<li><p><code>"svg"</code></p></li>
+<li><p><code>"jpeg"</code></p></li>
+<li><p><code>"pdf"</code></p></li>
+</ul></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>If exporting a file, enter the path and the desired file name, <em>excluding the file extension</em>.
-For example, "Analysis/SQ Overview".</p></td>
+      <td><p>If exporting a file, enter the path and the desired file name,
+<em>excluding the file extension</em>. For example, <code>"Analysis/SQ Overview"</code>.</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
-      <td><p>Logical vector specifying whether to include a timestamp in the file name. Defaults to TRUE.</p></td>
+      <td><p>Logical vector specifying whether to include a timestamp in
+the file name. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -257,6 +265,26 @@ For example, "Analysis/SQ Overview".</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>method</code>
+argument:</p><ul>
+<li><p><code>"clipboard"</code>: no return - data frame is saved to clipboard.</p></li>
+<li><p><code>"csv"</code>: CSV file containing data frame is saved to specified path.</p></li>
+<li><p><code>"png"</code>: PNG file containing ggplot object is saved to specified path.</p></li>
+<li><p><code>"svg"</code>: SVG file containing ggplot object is saved to specified path.</p></li>
+<li><p><code>"jpeg"</code>: JPEG file containing ggplot object is saved to specified path.</p></li>
+<li><p><code>"pdf"</code>: PDF file containing ggplot object is saved to specified path.</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Import and Export: 
+<code><a href='copy_df.html'>copy_df</a>()</code>,
+<code><a href='create_dt.html'>create_dt</a>()</code>,
+<code><a href='import_to_fst.html'>import_to_fst</a>()</code>,
+<code><a href='import_wpa.html'>import_wpa</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

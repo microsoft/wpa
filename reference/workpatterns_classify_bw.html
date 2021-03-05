@@ -213,7 +213,7 @@ using the binary week-based (bw) method.</h1>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a> Apply a rule based
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a> Apply a rule based
 algorithm to emails sent by hour of day, using the binary week-based (bw)
 method.</p>
     </div>
@@ -243,9 +243,13 @@ Defaults to NULL. This only affects the function when "table" is returned.</p></
     <tr>
       <th>signals</th>
       <td><p>Character vector to specify which collaboration metrics to
-use: - "email" (default) for emails only - "IM" for Teams messages only, -
-"unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-only - or a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code></p></td>
+use:</p><ul>
+<li><p>a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code> (default)</p></li>
+<li><p><code>"email"</code> for emails only</p></li>
+<li><p><code>"IM"</code> for Teams messages only</p></li>
+<li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
+<li><p><code>"meetings"</code> for Meetings only</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>start_hour</th>
@@ -275,20 +279,22 @@ over time</p></td>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Work Patterns: 
+    <div class='dont-index'><p>Other Working Patterns: 
 <code><a href='flex_index.html'>flex_index</a>()</code>,
 <code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
-<code><a href='personas_hclust.html'>personas_hclust</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='plot_flex_index.html'>plot_flex_index</a>()</code>,
 <code><a href='workpatterns_area.html'>workpatterns_area</a>()</code>,
 <code><a href='workpatterns_classify_pav.html'>workpatterns_classify_pav</a>()</code>,
 <code><a href='workpatterns_classify.html'>workpatterns_classify</a>()</code>,
-<code><a href='workpatterns_hclust.html'>workpatterns_hclust</a>()</code></p></div>
+<code><a href='workpatterns_hclust.html'>workpatterns_hclust</a>()</code>,
+<code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code>,
+<code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>workpatterns_classify_bw</span><span class='op'>(</span><span class='va'>em_data</span><span class='op'>)</span>
-<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in workpatterns_classify_bw(em_data): could not find function "workpatterns_classify_bw"</span></div><div class='input'><span class='co'># }</span>
 
 
 </div></pre>

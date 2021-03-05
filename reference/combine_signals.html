@@ -49,9 +49,9 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Combine signals from the Hourly Collaboration query — combine_signals" />
-<meta property="og:description" content="Takes in an Hourly Collaboration Data, and for each hour sums and aggregates the
-signals (e.g.Emails_sent and IMs_sent) in Signals_sent. This is an internal
-function used in the Working Patterns functions." />
+<meta property="og:description" content="Takes in an Hourly Collaboration Data, and for each hour sums and aggregates
+the signals (e.g.Emails_sent and IMs_sent) in Signals_sent. This is an
+internal function used in the Working Patterns functions." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -210,9 +210,9 @@ function used in the Working Patterns functions." />
     </div>
 
     <div class="ref-description">
-    <p>Takes in an Hourly Collaboration Data, and for each hour sums and aggregates the
-signals (e.g.<code>Emails_sent</code> and <code>IMs_sent</code>) in <code>Signals_sent</code>. This is an internal
-function used in the Working Patterns functions.</p>
+    <p>Takes in an Hourly Collaboration Data, and for each hour sums and aggregates
+the signals (e.g.<code>Emails_sent</code> and <code>IMs_sent</code>) in <code>Signals_sent</code>. This is an
+internal function used in the Working Patterns functions.</p>
     </div>
 
     <pre class="usage"><span class='fu'>combine_signals</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>hr</span>, signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Emails_sent"</span>, <span class='st'>"IMs_sent"</span><span class='op'>)</span><span class='op'>)</span></pre>
@@ -222,7 +222,8 @@ function used in the Working Patterns functions.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Hourly Collaboration query containing signal variables (e.g. <code>Emails_sent_00_01</code>)</p></td>
+      <td><p>Hourly Collaboration query containing signal variables (e.g.
+<code>Emails_sent_00_01</code>)</p></td>
     </tr>
     <tr>
       <th>hr</th>
@@ -231,14 +232,37 @@ function used in the Working Patterns functions.</p>
     <tr>
       <th>signals</th>
       <td><p>Character vector for specifying which signal types to combine.
-Defaults to c("Emails_sent", "IMs_sent"). Other valid values include "Unscheduled_calls" and
-"Meetings".</p></td>
+Defaults to <code><a href='https://rdrr.io/r/base/c.html'>c("Emails_sent", "IMs_sent")</a></code>. Other valid values include
+<code>"Unscheduled_calls"</code> and <code>"Meetings"</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>combine_signals</code> uses string matching to aggregate columns.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Support: 
+<code><a href='camel_clean.html'>camel_clean</a>()</code>,
+<code><a href='check_inputs.html'>check_inputs</a>()</code>,
+<code><a href='cut_hour.html'>cut_hour</a>()</code>,
+<code><a href='extract_date_range.html'>extract_date_range</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='heat_colours.html'>heat_colours</a>()</code>,
+<code><a href='is_date_format.html'>is_date_format</a>()</code>,
+<code><a href='maxmin.html'>maxmin</a>()</code>,
+<code><a href='md2html.html'>md2html</a>()</code>,
+<code><a href='p_test.html'>p_test</a>()</code>,
+<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
+<code><a href='plot_WOE.html'>plot_WOE</a>()</code>,
+<code><a href='read_preamble.html'>read_preamble</a>()</code>,
+<code><a href='rgb2hex.html'>rgb2hex</a>()</code>,
+<code><a href='totals_bind.html'>totals_bind</a>()</code>,
+<code><a href='totals_col.html'>totals_col</a>()</code>,
+<code><a href='totals_reorder.html'>totals_reorder</a>()</code>,
+<code><a href='tstamp.html'>tstamp</a>()</code>,
+<code><a href='us_to_space.html'>us_to_space</a>()</code>,
+<code><a href='wrap.html'>wrap</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Demo using simulated variables</span>

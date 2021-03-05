@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Flag unusual high collaboration hours to after-hours collaboration hours ratio — flag_ch_ratio • wpa</title>
+<title>Flag unusual high collaboration hours to after-hours collaboration
+hours ratio — flag_ch_ratio • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +49,8 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Flag unusual high collaboration hours to after-hours collaboration hours ratio — flag_ch_ratio" />
+<meta property="og:title" content="Flag unusual high collaboration hours to after-hours collaboration
+hours ratio — flag_ch_ratio" />
 <meta property="og:description" content="This function flags persons who have an unusual ratio
 of collaboration hours to after-hours collaboration hours.
 Returns a character string by default." />
@@ -204,7 +206,8 @@ Returns a character string by default." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Flag unusual high collaboration hours to after-hours collaboration hours ratio</h1>
+    <h1>Flag unusual high collaboration hours to after-hours collaboration
+hours ratio</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/flag_ch_ratio.R'><code>R/flag_ch_ratio.R</code></a></small>
     <div class="hidden name"><code>flag_ch_ratio.Rd</code></div>
     </div>
@@ -241,33 +244,47 @@ Defaults to 30.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul>
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
 <li><p><code>"message"</code>: message in the console containing diagnotic summary</p></li>
 <li><p><code>"text"</code>: string containing diagnotic summary</p></li>
-<li><p><code>"data"</code>: data frame. Person-level data with flags on unusually high or low ratios</p></li>
+<li><p><code>"data"</code>: data frame. Person-level data with flags on unusually high or
+low ratios</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="metrics-used"><a class="anchor" href="#metrics-used"></a>Metrics used</h2>
+
+    
+
+<p>The metric <code>Collaboration_hours</code> is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
 <code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>flag_ch_ratio</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>

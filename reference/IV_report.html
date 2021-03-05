@@ -254,7 +254,7 @@ defaults to 10.</p></td>
     <tr>
       <th>path</th>
       <td><p>Pass the file path and the desired file name, <em>excluding the file
-extension</em>. For example, "collaboration report".</p></td>
+extension</em>. For example, <code>"IV report"</code>.</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
@@ -277,19 +277,26 @@ function.</p>
 <code><a href='connectivity_report.html'>connectivity_report</a>()</code>,
 <code><a href='generate_report.html'>generate_report</a>()</code>,
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='read_preamble.html'>read_preamble</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
-<code><a href='validation_report.html'>validation_report</a>()</code></p>
+<code><a href='validation_report.html'>validation_report</a>()</code>,
+<code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p>
+<p>Other Variable Association: 
+<code><a href='IV_by_period.html'>IV_by_period</a>()</code>,
+<code><a href='create_IV.html'>create_IV</a>()</code>,
+<code><a href='plot_WOE.html'>plot_WOE</a>()</code></p>
 <p>Other Information Value: 
 <code><a href='IV_by_period.html'>IV_by_period</a>()</code>,
-<code><a href='create_IV.html'>create_IV</a>()</code></p></div>
+<code><a href='create_IV.html'>create_IV</a>()</code>,
+<code><a href='plot_WOE.html'>plot_WOE</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Collaboration_hours</span> <span class='op'>&gt;</span> <span class='fl'>12</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Simulate binary variable</span>
   <span class='fu'>IV_report</span><span class='op'>(</span>outcome <span class='op'>=</span>  <span class='st'>"CH_binary"</span>,
             predictors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Email_hours"</span>, <span class='st'>"Workweek_span"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in mutate(., X = ifelse(Collaboration_hours &gt; 12, 1, 0)): could not find function "mutate"</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

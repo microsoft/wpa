@@ -236,6 +236,32 @@ be compared to gauge the accuracy of existing Outlook settings.</p>
       <td><p>A data frame containing data from the Hourly Collaboration query.</p></td>
     </tr>
     <tr>
+      <th>signals</th>
+      <td><p>Character vector to specify which collaboration metrics to
+use:</p><ul>
+<li><p>a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code> (default)</p></li>
+<li><p><code>"email"</code> for emails only</p></li>
+<li><p><code>"IM"</code> for Teams messages only</p></li>
+<li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
+<li><p><code>"meetings"</code> for Meetings only</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>active_threshold</th>
+      <td><p>A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as <em>active</em>. Defaults to 0.</p></td>
+    </tr>
+    <tr>
+      <th>start_hour</th>
+      <td><p>A character vector specifying start hours,
+e.g. "0900"</p></td>
+    </tr>
+    <tr>
+      <th>end_hour</th>
+      <td><p>A character vector specifying finish hours,
+e.g. "1700"</p></td>
+    </tr>
+    <tr>
       <th>return</th>
       <td><p>String specifying what to return. This must be one of the
 following strings:</p><ul>
@@ -264,15 +290,42 @@ argument:</p><ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Work Patterns: 
+    <div class='dont-index'><p>Other Data Validation: 
+<code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
+<code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
+<code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
+<code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
+<code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
+<code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
+<code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
+<code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
+<code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
+<code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
+<code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
+<code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
+<code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p>
+<p>Other Working Patterns: 
 <code><a href='flex_index.html'>flex_index</a>()</code>,
-<code><a href='personas_hclust.html'>personas_hclust</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='plot_flex_index.html'>plot_flex_index</a>()</code>,
 <code><a href='workpatterns_area.html'>workpatterns_area</a>()</code>,
 <code><a href='workpatterns_classify_bw.html'>workpatterns_classify_bw</a>()</code>,
 <code><a href='workpatterns_classify_pav.html'>workpatterns_classify_pav</a>()</code>,
 <code><a href='workpatterns_classify.html'>workpatterns_classify</a>()</code>,
-<code><a href='workpatterns_hclust.html'>workpatterns_hclust</a>()</code></p></div>
+<code><a href='workpatterns_hclust.html'>workpatterns_hclust</a>()</code>,
+<code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code>,
+<code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Return plot</span>

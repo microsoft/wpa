@@ -226,53 +226,138 @@ Additional options available to return a table with distribution elements.</p>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"</p></td>
+      <td><p>String containing the name of the HR Variable by which to split
+metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
+instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group size, defaults to 5.</p></td>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: ggplot object. A stacked bar plot showing the distribution of
+manager co-attendance time.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for manager co-attendance time.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Managerial Relations: 
+    <div class='dont-index'><p>Other Visualization: 
+<code><a href='afterhours_dist.html'>afterhours_dist</a>()</code>,
+<code><a href='afterhours_fizz.html'>afterhours_fizz</a>()</code>,
+<code><a href='afterhours_line.html'>afterhours_line</a>()</code>,
+<code><a href='afterhours_rank.html'>afterhours_rank</a>()</code>,
+<code><a href='afterhours_summary.html'>afterhours_summary</a>()</code>,
+<code><a href='afterhours_trend.html'>afterhours_trend</a>()</code>,
+<code><a href='collaboration_area.html'>collaboration_area</a>()</code>,
+<code><a href='collaboration_dist.html'>collaboration_dist</a>()</code>,
+<code><a href='collaboration_fizz.html'>collaboration_fizz</a>()</code>,
+<code><a href='collaboration_line.html'>collaboration_line</a>()</code>,
+<code><a href='collaboration_rank.html'>collaboration_rank</a>()</code>,
+<code><a href='collaboration_sum.html'>collaboration_sum</a>()</code>,
+<code><a href='collaboration_trend.html'>collaboration_trend</a>()</code>,
+<code><a href='create_bar_asis.html'>create_bar_asis</a>()</code>,
+<code><a href='create_bar.html'>create_bar</a>()</code>,
+<code><a href='create_boxplot.html'>create_boxplot</a>()</code>,
+<code><a href='create_bubble.html'>create_bubble</a>()</code>,
+<code><a href='create_dist.html'>create_dist</a>()</code>,
+<code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
+<code><a href='create_line.html'>create_line</a>()</code>,
+<code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_rank.html'>create_rank</a>()</code>,
+<code><a href='create_sankey.html'>create_sankey</a>()</code>,
+<code><a href='create_scatter.html'>create_scatter</a>()</code>,
+<code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_trend.html'>create_trend</a>()</code>,
+<code><a href='email_dist.html'>email_dist</a>()</code>,
+<code><a href='email_fizz.html'>email_fizz</a>()</code>,
+<code><a href='email_line.html'>email_line</a>()</code>,
+<code><a href='email_rank.html'>email_rank</a>()</code>,
+<code><a href='email_summary.html'>email_summary</a>()</code>,
+<code><a href='email_trend.html'>email_trend</a>()</code>,
+<code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
+<code><a href='keymetrics_scan.html'>keymetrics_scan</a>()</code>,
+<code><a href='meeting_dist.html'>meeting_dist</a>()</code>,
+<code><a href='meeting_fizz.html'>meeting_fizz</a>()</code>,
+<code><a href='meeting_line.html'>meeting_line</a>()</code>,
+<code><a href='meeting_quality.html'>meeting_quality</a>()</code>,
+<code><a href='meeting_rank.html'>meeting_rank</a>()</code>,
+<code><a href='meeting_summary.html'>meeting_summary</a>()</code>,
+<code><a href='meeting_trend.html'>meeting_trend</a>()</code>,
+<code><a href='meetingtype_dist_ca.html'>meetingtype_dist_ca</a>()</code>,
+<code><a href='meetingtype_dist_mt.html'>meetingtype_dist_mt</a>()</code>,
+<code><a href='meetingtype_dist.html'>meetingtype_dist</a>()</code>,
+<code><a href='meetingtype_summary.html'>meetingtype_summary</a>()</code>,
 <code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code>,
 <code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
 <code><a href='one2one_fizz.html'>one2one_fizz</a>()</code>,
 <code><a href='one2one_line.html'>one2one_line</a>()</code>,
 <code><a href='one2one_rank.html'>one2one_rank</a>()</code>,
 <code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
-<code><a href='one2one_trend.html'>one2one_trend</a>()</code></p>
-<p>Other Meeting Culture: 
-<code><a href='meeting_dist.html'>meeting_dist</a>()</code>,
-<code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code></p></div>
+<code><a href='one2one_trend.html'>one2one_trend</a>()</code>,
+<code><a href='period_change.html'>period_change</a>()</code>,
+<code><a href='workloads_dist.html'>workloads_dist</a>()</code>,
+<code><a href='workloads_fizz.html'>workloads_fizz</a>()</code>,
+<code><a href='workloads_line.html'>workloads_line</a>()</code>,
+<code><a href='workloads_rank.html'>workloads_rank</a>()</code>,
+<code><a href='workloads_summary.html'>workloads_summary</a>()</code>,
+<code><a href='workloads_trend.html'>workloads_trend</a>()</code>,
+<code><a href='workpatterns_area.html'>workpatterns_area</a>()</code>,
+<code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code></p>
+<p>Other Managerial Relations: 
+<code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code>,
+<code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
+<code><a href='one2one_fizz.html'>one2one_fizz</a>()</code>,
+<code><a href='one2one_line.html'>one2one_line</a>()</code>,
+<code><a href='one2one_rank.html'>one2one_rank</a>()</code>,
+<code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
+<code><a href='one2one_trend.html'>one2one_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='workloads_dist.html'>workloads_dist</a></span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 4</span><span>
-#&gt;    group                `30 - 45 hours` `45+ hours` Employee_Count
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz Dev                        1          </span><span style='color: #BB0000;'>NA</span><span>                 75
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Customer Service               0.836       0.164             61
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Facilities                     0.653       0.347             72
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Finance-Corporate              0.779       0.221             68
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Finance-East                   0.414       0.586             70
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Finance-South                  0.630       0.370             81
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Finance-West                   0.548       0.452             73
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Financial Planning             0.853       0.147             75
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A Central                    0.649       0.351             57
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A East                       1          </span><span style='color: #BB0000;'>NA</span><span>                 65
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> G&amp;A South                      0.776       0.224             76
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Human Resources                0.732       0.268             71
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Inventory Management           0.533       0.467             60
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> IT-Corporate                   0.75        0.25              68
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> IT-East                        0.887       0.113             62</div></span></pre>
+    <pre class="examples"><div class='input'><span class='co'># Return plot</span>
+<span class='fu'>mgrcoatt_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+</div><div class='img'><img src='mgrcoatt_dist-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return summary table</span>
+<span class='fu'>mgrcoatt_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 5</span><span>
+#&gt;    group                `0 - 20%` `20 - 40%` `40 - 60%` `60% +`
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz Dev                  0.213     </span><span style='color: #BB0000;'>NA</span><span>         0.32     0.467
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Customer Service         0.180     </span><span style='color: #BB0000;'>NA</span><span>         0.098</span><span style='text-decoration: underline;'>4</span><span>   0.721
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Facilities               0.194     </span><span style='color: #BB0000;'>NA</span><span>         0.083</span><span style='text-decoration: underline;'>3</span><span>   0.722
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Finance-Corporate        0.191     </span><span style='color: #BB0000;'>NA</span><span>         0.221    0.588
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Finance-East             0.243     </span><span style='color: #BB0000;'>NA</span><span>         0.028</span><span style='text-decoration: underline;'>6</span><span>   0.729
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Finance-South            0.210     </span><span style='color: #BB0000;'>NA</span><span>         0.111    0.679
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Finance-West             0.233     </span><span style='color: #BB0000;'>NA</span><span>         0.068</span><span style='text-decoration: underline;'>5</span><span>   0.699
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Financial Planning       0.187     </span><span style='color: #BB0000;'>NA</span><span>         0.16     0.653
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A Central              0.158     </span><span style='color: #BB0000;'>NA</span><span>         0.123    0.719
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A East                 0.246     </span><span style='color: #BB0000;'>NA</span><span>         0.169    0.585
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> G&amp;A South                0.197      0.224     0.237    0.342
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Human Resources          0.197      0.183     0.324    0.296
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Inventory Management     0.217      0.267     0.25     0.267
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> IT-Corporate             0.176      0.309     0.176    0.338
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> IT-East                  0.226      0.210     0.210    0.355</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

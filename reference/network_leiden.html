@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Implement the Leiden community detection on a Person to Person network query — network_leiden • wpa</title>
+<title>Implement the Leiden community detection on a Person to Person network
+query — network_leiden • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,11 +49,12 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Implement the Leiden community detection on a Person to Person network query — network_leiden" />
+<meta property="og:title" content="Implement the Leiden community detection on a Person to Person network
+query — network_leiden" />
 <meta property="og:description" content="
-Take a P2P network query and implement the Leiden community detection method. To run
-this function, you will require all the pre-requisites of the leiden package installed,
-which includes Python and reticulate." />
+Take a P2P network query and implement the Leiden community detection method.
+To run this function, you will require all the pre-requisites of the
+'leiden' package installed, which includes Python and 'reticulate'." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -205,16 +207,17 @@ which includes Python and reticulate." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Implement the Leiden community detection on a Person to Person network query</h1>
+    <h1>Implement the Leiden community detection on a Person to Person network
+query</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/network_leiden.R'><code>R/network_leiden.R</code></a></small>
     <div class="hidden name"><code>network_leiden.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a>
-Take a P2P network query and implement the Leiden community detection method. To run
-this function, you will require all the pre-requisites of the <strong>leiden</strong> package installed,
-which includes Python and <strong>reticulate</strong>.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+<p>Take a P2P network query and implement the Leiden community detection method.
+To run this function, you will require all the pre-requisites of the
+'leiden' package installed, which includes Python and 'reticulate'.</p>
     </div>
 
     <pre class="usage"><span class='fu'>network_leiden</span><span class='op'>(</span>
@@ -253,57 +256,84 @@ which includes Python and <strong>reticulate</strong>.</p>
     </tr>
     <tr>
       <th>algorithm</th>
-      <td><p>String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
-algorithm of Fruchterman and Reingold. See <a href='https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html'>https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a
-full list of options.</p></td>
+      <td><p>String to specify the node placement algorithm to be used.
+Defaults to <code>"fr"</code> for the force-directed algorithm of Fruchterman and
+Reingold. See
+<a href='https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html'>https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a full
+list of options.</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>File path for saving the PDF output. Defaults to a timestamped path based on current parameters.</p></td>
+      <td><p>File path for saving the PDF output. Defaults to a timestamped
+path based on current parameters.</p></td>
     </tr>
     <tr>
       <th>node_alpha</th>
-      <td><p>A numeric value between 0 and 1 to specify the transparency of the nodes.</p></td>
+      <td><p>A numeric value between 0 and 1 to specify the transparency
+of the nodes.</p></td>
     </tr>
     <tr>
       <th>res</th>
-      <td><p>Resolution parameter to be passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code>. Defaults to 0.5.</p></td>
+      <td><p>Resolution parameter to be passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code>. Defaults
+to 0.5.</p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>Seed for the random number generator passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code> to ensure consistency. Only applicable
-when <code>display</code> is set to "leiden".</p></td>
+      <td><p>Seed for the random number generator passed to <code><a href='https://rdrr.io/pkg/leiden/man/leiden.html'>leiden::leiden()</a></code>
+to ensure consistency. Only applicable when <code>display</code> is set to <code>"leiden"</code>.</p></td>
     </tr>
     <tr>
       <th>desc_hrvar</th>
-      <td><p>Character vector of length 3 containing the HR attributes to use when returning the
-"describe" output. See <code><a href='network_describe.html'>network_describe()</a></code>.</p></td>
+      <td><p>Character vector of length 3 containing the HR attributes
+to use when returning the <code>"describe"</code> output. See <code><a href='network_describe.html'>network_describe()</a></code>.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String specifying what output to return. Defaults to "plot-leiden". Valid return options include:</p><ul>
-<li><p>'plot-leiden': return a network plot coloured by leiden communities, saving a PDF to path.</p></li>
-<li><p>'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.</p></li>
-<li><p>'plot-sankey': return a sankey plot combining communities and HR attribute.</p></li>
-<li><p>'table': return a vertex summary table with counts in communities and HR attribute.</p></li>
-<li><p>'data': return a vertex data file that matches vertices with communities and HR attributes.</p></li>
-<li><p>'describe': return a list of data frames which describe each of the identified communities.
-The first data frame is a summary table of all the communities.</p></li>
-<li><p>'network': return igraph object.</p></li>
+      <td><p>String specifying what output to return. Defaults to "plot-leiden". Valid
+return options include:</p><ul>
+<li><p><code>'plot-leiden'</code>: return a network plot coloured by leiden communities,
+saving a PDF to path.</p></li>
+<li><p><code>'plot-hrvar'</code>: return a network plot coloured by HR attribute, saving a
+PDF to path.</p></li>
+<li><p><code>'plot-sankey'</code>: return a sankey plot combining communities and HR
+attribute.</p></li>
+<li><p><code>'table'</code>: return a vertex summary table with counts in communities and
+HR attribute.</p></li>
+<li><p><code>'data'</code>: return a vertex data file that matches vertices with
+communities and HR attributes.</p></li>
+<li><p><code>'describe'</code>: return a list of data frames which describe each of the
+identified communities. The first data frame is a summary table of all the
+communities.</p></li>
+<li><p><code>'network'</code>: return igraph object.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>size_threshold</th>
-      <td><p>Numeric value representing the maximum number of edges before <code>network_leiden()</code>
-switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
-Set as <code>0</code> to co-erce to a fast plotting method every time, and <code>Inf</code> to always use the default plotting
-method.</p></td>
+      <td><p>Numeric value representing the maximum number of edges
+before <code>network_leiden()</code> switches to use a more efficient, but less
+elegant plotting method (native igraph). Defaults to 5000. Set as <code>0</code> to
+coerce to a fast plotting method every time, and <code>Inf</code> to always use the
+default plotting method.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>See <code>return</code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Network: 
+<code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
+<code><a href='g2g_data.html'>g2g_data</a></code>,
+<code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
+<code><a href='network_describe.html'>network_describe</a>()</code>,
+<code><a href='network_g2g.html'>network_g2g</a>()</code>,
+<code><a href='network_louvain.html'>network_louvain</a>()</code>,
+<code><a href='network_p2p.html'>network_p2p</a>()</code>,
+<code><a href='p2p_data_sim.html'>p2p_data_sim</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># Simulate a small person-to-person dataset</span>
 <span class='va'>p2p_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='p2p_data_sim.html'>p2p_data_sim</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
 
@@ -311,7 +341,7 @@ method.</p></td>
 <span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'>network_leiden</span><span class='op'>(</span>path <span class='op'>=</span> <span class='cn'>NULL</span>,
                  return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: Error 1 occurred creating conda environment r-reticulate</span></div><div class='input'><span class='co'># }</span>
 
 
 </div></pre>

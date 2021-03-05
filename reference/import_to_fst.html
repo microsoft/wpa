@@ -53,7 +53,7 @@ the same directory for faster reading — import_to_fst • wpa</title>
 the same directory for faster reading — import_to_fst" />
 <meta property="og:description" content="Uses import_wpa() to read a Workplace Analytics query in CSV
 and convert this into the serialized FST format which is much faster to
-read. The 'fst' package must be installed." />
+read. The 'fst' package must be installed, or an error message is returned." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -215,7 +215,7 @@ the same directory for faster reading</h1>
     <div class="ref-description">
     <p>Uses <code><a href='import_wpa.html'>import_wpa()</a></code> to read a Workplace Analytics query in CSV
 and convert this into the serialized FST format which is much faster to
-read. The 'fst' package must be installed.</p>
+read. The 'fst' package must be installed, or an error message is returned.</p>
     </div>
 
     <pre class="usage"><span class='fu'>import_to_fst</span><span class='op'>(</span><span class='va'>path</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -249,6 +249,14 @@ of analysis, and <code><a href='http://www.fstpackage.org/reference/write_fst.ht
 at the start of your analysis script.</p>
 <p>Internally, <code>import_to_fst()</code> uses <code><a href='import_wpa.html'>import_wpa()</a></code>, and additional arguments
 to <code><a href='import_wpa.html'>import_wpa()</a></code> can be passed with <code>...</code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Import and Export: 
+<code><a href='copy_df.html'>copy_df</a>()</code>,
+<code><a href='create_dt.html'>create_dt</a>()</code>,
+<code><a href='export.html'>export</a>()</code>,
+<code><a href='import_wpa.html'>import_wpa</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

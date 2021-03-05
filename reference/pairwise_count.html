@@ -49,9 +49,9 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Perform a pairwise count of words by id — pairwise_count" />
-<meta property="og:description" content="This is a data.table implementation that mimics the output of
-widyr::pairwise_count() to reduce package dependency. This is used internally
-within tm_cooc()." />
+<meta property="og:description" content="This is a 'data.table' implementation that mimics the output
+of widyr::pairwise_count() to reduce package dependency. This is used
+internally within tm_cooc()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -210,9 +210,9 @@ within tm_cooc()." />
     </div>
 
     <div class="ref-description">
-    <p>This is a <strong>data.table</strong> implementation that mimics the output of
-<code>widyr::pairwise_count()</code> to reduce package dependency. This is used internally
-within <code><a href='tm_cooc.html'>tm_cooc()</a></code>.</p>
+    <p>This is a 'data.table' implementation that mimics the output
+of <code>widyr::pairwise_count()</code> to reduce package dependency. This is used
+internally within <code><a href='tm_cooc.html'>tm_cooc()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pairwise_count</span><span class='op'>(</span><span class='va'>data</span>, id <span class='op'>=</span> <span class='st'>"line"</span>, word <span class='op'>=</span> <span class='st'>"word"</span><span class='op'>)</span></pre>
@@ -226,14 +226,45 @@ within <code><a href='tm_cooc.html'>tm_cooc()</a></code>.</p>
     </tr>
     <tr>
       <th>id</th>
-      <td><p>String to represent the id variable. Defaults to "line".</p></td>
+      <td><p>String to represent the id variable. Defaults to <code>"line"</code>.</p></td>
     </tr>
     <tr>
       <th>word</th>
-      <td><p>String to represent the word variable. Defaults to "word".</p></td>
+      <td><p>String to represent the word variable. Defaults to <code>"word"</code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Support: 
+<code><a href='camel_clean.html'>camel_clean</a>()</code>,
+<code><a href='check_inputs.html'>check_inputs</a>()</code>,
+<code><a href='combine_signals.html'>combine_signals</a>()</code>,
+<code><a href='cut_hour.html'>cut_hour</a>()</code>,
+<code><a href='extract_date_range.html'>extract_date_range</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='heat_colours.html'>heat_colours</a>()</code>,
+<code><a href='is_date_format.html'>is_date_format</a>()</code>,
+<code><a href='maxmin.html'>maxmin</a>()</code>,
+<code><a href='md2html.html'>md2html</a>()</code>,
+<code><a href='p_test.html'>p_test</a>()</code>,
+<code><a href='plot_WOE.html'>plot_WOE</a>()</code>,
+<code><a href='read_preamble.html'>read_preamble</a>()</code>,
+<code><a href='rgb2hex.html'>rgb2hex</a>()</code>,
+<code><a href='totals_bind.html'>totals_bind</a>()</code>,
+<code><a href='totals_col.html'>totals_col</a>()</code>,
+<code><a href='totals_reorder.html'>totals_reorder</a>()</code>,
+<code><a href='tstamp.html'>tstamp</a>()</code>,
+<code><a href='us_to_space.html'>us_to_space</a>()</code>,
+<code><a href='wrap.html'>wrap</a>()</code></p>
+<p>Other Text-mining: 
+<code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
+<code><a href='tm_clean.html'>tm_clean</a>()</code>,
+<code><a href='tm_cooc.html'>tm_cooc</a>()</code>,
+<code><a href='tm_freq.html'>tm_freq</a>()</code>,
+<code><a href='tm_wordcloud.html'>tm_wordcloud</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>line <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span><span class='op'>)</span>,

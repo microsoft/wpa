@@ -231,41 +231,136 @@ that the variable has not changed, using a Wilcox signed-rank test.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Person Query as a dataframe including date column named "Date"
-This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.</p></td>
+      <td><p>Person Query as a dataframe including date column named <code>"Date"</code>
+This function assumes the data format is <code>MM/DD/YYYY</code> as is standard in a
+Workplace Analytics query output.</p></td>
     </tr>
     <tr>
       <th>compvar</th>
-      <td><p>WpA comparison variable to compare person change before and after
-For example, "Collaboration_hours"</p></td>
+      <td><p>WpA comparison variable to compare person change before and
+after For example, <code>"Collaboration_hours"</code></p></td>
     </tr>
     <tr>
       <th>before_start</th>
-      <td><p>Start date of "before" time period in YYYY-MM-DD</p></td>
+      <td><p>Start date of "before" time period in <code>YYYY-MM-DD</code></p></td>
     </tr>
     <tr>
       <th>before_end</th>
-      <td><p>End date of "before" time period in YYYY-MM-DD</p></td>
+      <td><p>End date of "before" time period in <code>YYYY-MM-DD</code></p></td>
     </tr>
     <tr>
       <th>after_start</th>
-      <td><p>Start date of "after" time period in YYYY-MM-DD</p></td>
+      <td><p>Start date of "after" time period in <code>YYYY-MM-DD</code></p></td>
     </tr>
     <tr>
       <th>after_end</th>
-      <td><p>End date of "after" time period in YYYY-MM-DD</p></td>
+      <td><p>End date of "after" time period in <code>YYYY-MM-DD</code></p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying whether to return plot as Count or Percentage of Employees
-Valid inputs include "count" (default), "percentage", and "table".</p></td>
+      <td><p>Character vector specifying whether to return plot as Count or
+Percentage of Employees. Valid inputs include:</p><ul>
+<li><p>"count" (default)</p></li>
+<li><p>"percentage"</p></li>
+<li><p>"table"</p></li>
+</ul></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>ggplot object showing a bar plot (histogram) of change for two time
+intervals.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Flexible Input: 
-<code><a href='IV_by_period.html'>IV_by_period</a>()</code></p></div>
+    <div class='dont-index'><p>Other Visualization: 
+<code><a href='afterhours_dist.html'>afterhours_dist</a>()</code>,
+<code><a href='afterhours_fizz.html'>afterhours_fizz</a>()</code>,
+<code><a href='afterhours_line.html'>afterhours_line</a>()</code>,
+<code><a href='afterhours_rank.html'>afterhours_rank</a>()</code>,
+<code><a href='afterhours_summary.html'>afterhours_summary</a>()</code>,
+<code><a href='afterhours_trend.html'>afterhours_trend</a>()</code>,
+<code><a href='collaboration_area.html'>collaboration_area</a>()</code>,
+<code><a href='collaboration_dist.html'>collaboration_dist</a>()</code>,
+<code><a href='collaboration_fizz.html'>collaboration_fizz</a>()</code>,
+<code><a href='collaboration_line.html'>collaboration_line</a>()</code>,
+<code><a href='collaboration_rank.html'>collaboration_rank</a>()</code>,
+<code><a href='collaboration_sum.html'>collaboration_sum</a>()</code>,
+<code><a href='collaboration_trend.html'>collaboration_trend</a>()</code>,
+<code><a href='create_bar_asis.html'>create_bar_asis</a>()</code>,
+<code><a href='create_bar.html'>create_bar</a>()</code>,
+<code><a href='create_boxplot.html'>create_boxplot</a>()</code>,
+<code><a href='create_bubble.html'>create_bubble</a>()</code>,
+<code><a href='create_dist.html'>create_dist</a>()</code>,
+<code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
+<code><a href='create_line.html'>create_line</a>()</code>,
+<code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_rank.html'>create_rank</a>()</code>,
+<code><a href='create_sankey.html'>create_sankey</a>()</code>,
+<code><a href='create_scatter.html'>create_scatter</a>()</code>,
+<code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_trend.html'>create_trend</a>()</code>,
+<code><a href='email_dist.html'>email_dist</a>()</code>,
+<code><a href='email_fizz.html'>email_fizz</a>()</code>,
+<code><a href='email_line.html'>email_line</a>()</code>,
+<code><a href='email_rank.html'>email_rank</a>()</code>,
+<code><a href='email_summary.html'>email_summary</a>()</code>,
+<code><a href='email_trend.html'>email_trend</a>()</code>,
+<code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
+<code><a href='keymetrics_scan.html'>keymetrics_scan</a>()</code>,
+<code><a href='meeting_dist.html'>meeting_dist</a>()</code>,
+<code><a href='meeting_fizz.html'>meeting_fizz</a>()</code>,
+<code><a href='meeting_line.html'>meeting_line</a>()</code>,
+<code><a href='meeting_quality.html'>meeting_quality</a>()</code>,
+<code><a href='meeting_rank.html'>meeting_rank</a>()</code>,
+<code><a href='meeting_summary.html'>meeting_summary</a>()</code>,
+<code><a href='meeting_trend.html'>meeting_trend</a>()</code>,
+<code><a href='meetingtype_dist_ca.html'>meetingtype_dist_ca</a>()</code>,
+<code><a href='meetingtype_dist_mt.html'>meetingtype_dist_mt</a>()</code>,
+<code><a href='meetingtype_dist.html'>meetingtype_dist</a>()</code>,
+<code><a href='meetingtype_summary.html'>meetingtype_summary</a>()</code>,
+<code><a href='mgrcoatt_dist.html'>mgrcoatt_dist</a>()</code>,
+<code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code>,
+<code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
+<code><a href='one2one_fizz.html'>one2one_fizz</a>()</code>,
+<code><a href='one2one_line.html'>one2one_line</a>()</code>,
+<code><a href='one2one_rank.html'>one2one_rank</a>()</code>,
+<code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
+<code><a href='one2one_trend.html'>one2one_trend</a>()</code>,
+<code><a href='workloads_dist.html'>workloads_dist</a>()</code>,
+<code><a href='workloads_fizz.html'>workloads_fizz</a>()</code>,
+<code><a href='workloads_line.html'>workloads_line</a>()</code>,
+<code><a href='workloads_rank.html'>workloads_rank</a>()</code>,
+<code><a href='workloads_summary.html'>workloads_summary</a>()</code>,
+<code><a href='workloads_trend.html'>workloads_trend</a>()</code>,
+<code><a href='workpatterns_area.html'>workpatterns_area</a>()</code>,
+<code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code></p>
+<p>Other Time-series: 
+<code><a href='IV_by_period.html'>IV_by_period</a>()</code>,
+<code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
+<code><a href='create_line.html'>create_line</a>()</code>,
+<code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_trend.html'>create_trend</a>()</code></p>
+<p>Other Flexible: 
+<code><a href='create_bar_asis.html'>create_bar_asis</a>()</code>,
+<code><a href='create_bar.html'>create_bar</a>()</code>,
+<code><a href='create_boxplot.html'>create_boxplot</a>()</code>,
+<code><a href='create_bubble.html'>create_bubble</a>()</code>,
+<code><a href='create_dist.html'>create_dist</a>()</code>,
+<code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_hist.html'>create_hist</a>()</code>,
+<code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
+<code><a href='create_line.html'>create_line</a>()</code>,
+<code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
+<code><a href='create_rank.html'>create_rank</a>()</code>,
+<code><a href='create_sankey.html'>create_sankey</a>()</code>,
+<code><a href='create_scatter.html'>create_scatter</a>()</code>,
+<code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_trend.html'>create_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Run plot</span>

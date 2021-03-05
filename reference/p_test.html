@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate the p-value of the null hypothesis that two outcomes are from the same dataset — p_test • wpa</title>
+<title>Calculate the p-value of the null hypothesis that two outcomes are from the
+same dataset — p_test • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +49,8 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Calculate the p-value of the null hypothesis that two outcomes are from the same dataset — p_test" />
+<meta property="og:title" content="Calculate the p-value of the null hypothesis that two outcomes are from the
+same dataset — p_test" />
 <meta property="og:description" content="Specify an outcome variable and return p-test outputs.
 All numeric variables in the dataset are used as predictor variables." />
 <meta property="og:image" content="/logo.png" />
@@ -203,7 +205,8 @@ All numeric variables in the dataset are used as predictor variables." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate the p-value of the null hypothesis that two outcomes are from the same dataset</h1>
+    <h1>Calculate the p-value of the null hypothesis that two outcomes are from the
+same dataset</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/p_test.R'><code>R/p_test.R</code></a></small>
     <div class="hidden name"><code>p_test.Rd</code></div>
     </div>
@@ -224,22 +227,47 @@ All numeric variables in the dataset are used as predictor variables.</p>
     </tr>
     <tr>
       <th>outcome</th>
-      <td><p>A string specifying a binary variable, i.e. can only contain
-the values 1 or 0. Used to group the two distributions.</p></td>
+      <td><p>A string specifying the name of a binary variable, i.e. can
+only contain the values 1 or 0. Used to group the two distributions.</p></td>
     </tr>
     <tr>
       <th>behavior</th>
-      <td><p>A character vector specifying the column to be used as the behavior to test.</p></td>
+      <td><p>A character vector specifying the column to be used as the
+behavior to test.</p></td>
     </tr>
     <tr>
       <th>paired</th>
-      <td><p>Specify whether the dataset is paired or not. Defaults to TRUE.</p></td>
+      <td><p>Specify whether the dataset is paired or not. Defaults to
+<code>TRUE</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function is a wrapper around <code><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test()</a></code> from stats.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Support: 
+<code><a href='camel_clean.html'>camel_clean</a>()</code>,
+<code><a href='check_inputs.html'>check_inputs</a>()</code>,
+<code><a href='combine_signals.html'>combine_signals</a>()</code>,
+<code><a href='cut_hour.html'>cut_hour</a>()</code>,
+<code><a href='extract_date_range.html'>extract_date_range</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='heat_colours.html'>heat_colours</a>()</code>,
+<code><a href='is_date_format.html'>is_date_format</a>()</code>,
+<code><a href='maxmin.html'>maxmin</a>()</code>,
+<code><a href='md2html.html'>md2html</a>()</code>,
+<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
+<code><a href='plot_WOE.html'>plot_WOE</a>()</code>,
+<code><a href='read_preamble.html'>read_preamble</a>()</code>,
+<code><a href='rgb2hex.html'>rgb2hex</a>()</code>,
+<code><a href='totals_bind.html'>totals_bind</a>()</code>,
+<code><a href='totals_col.html'>totals_col</a>()</code>,
+<code><a href='totals_reorder.html'>totals_reorder</a>()</code>,
+<code><a href='tstamp.html'>tstamp</a>()</code>,
+<code><a href='us_to_space.html'>us_to_space</a>()</code>,
+<code><a href='wrap.html'>wrap</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Simulate a binary variable X</span>
@@ -248,7 +276,8 @@ the values 1 or 0. Used to group the two distributions.</p></td>
 <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Email_hours</span> <span class='op'>&gt;</span> <span class='fl'>6</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>p_test</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='st'>"X"</span>, behavior <span class='op'>=</span> <span class='st'>"External_network_size"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 4.847578e-82</div></pre>
+</div><div class='output co'>#&gt; [1] 4.847578e-82</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

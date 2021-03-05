@@ -49,8 +49,11 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Generate Meeting Text Mining report in HTML for Common Exclusion Terms — subject_validate_report" />
-<meta property="og:description" content="This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-Returns a HTML report by default." />
+<meta property="og:description" content="This functions creates a text mining report in HTML based on
+Meeting Subject Lines for data validation. It scans a meeting query and
+highlights meetings with subjects that include common exlusion terms. It is
+intended to be used by an analyst to validate raw data before conducting
+additional analysis. Returns a HTML report by default." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -209,8 +212,11 @@ Returns a HTML report by default." />
     </div>
 
     <div class="ref-description">
-    <p>This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-Returns a HTML report by default.</p>
+    <p>This functions creates a text mining report in HTML based on
+Meeting Subject Lines for data validation. It scans a meeting query and
+highlights meetings with subjects that include common exlusion terms. It is
+intended to be used by an analyst to validate raw data before conducting
+additional analysis. Returns a HTML report by default.</p>
     </div>
 
     <pre class="usage"><span class='fu'>subject_validate_report</span><span class='op'>(</span>
@@ -230,13 +236,13 @@ Returns a HTML report by default.</p>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>Pass the file path and the desired file name, <em>excluding the file extension</em>.
-For example, "meeting text mining report".</p></td>
+      <td><p>Pass the file path and the desired file name, <em>excluding the file
+extension</em>. For example, <code>"meeting text mining report"</code>.</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
-      <td><p>Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.</p></td>
+      <td><p>Logical vector specifying whether to include a timestamp in
+the file name. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>keep</th>
@@ -257,6 +263,7 @@ function.</p>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
@@ -264,18 +271,25 @@ function.</p>
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p>
 <p>Other Text-mining: 
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
 <code><a href='tm_clean.html'>tm_clean</a>()</code>,
 <code><a href='tm_cooc.html'>tm_cooc</a>()</code>,
 <code><a href='tm_freq.html'>tm_freq</a>()</code>,
@@ -288,7 +302,9 @@ function.</p>
 <code><a href='connectivity_report.html'>connectivity_report</a>()</code>,
 <code><a href='generate_report.html'>generate_report</a>()</code>,
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
-<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
+<code><a href='read_preamble.html'>read_preamble</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code>,
+<code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

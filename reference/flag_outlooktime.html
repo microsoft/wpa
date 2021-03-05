@@ -224,37 +224,57 @@ start and end time of work day.</p>
     </tr>
     <tr>
       <th>threshold</th>
-      <td><p>A numeric vector of length two, specifying the hour threshold for flagging.
-Defaults to c(4, 15).</p></td>
+      <td><p>A numeric vector of length two, specifying the hour
+threshold for flagging. Defaults to c(4, 15).</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String to specify what to return.
-Valid options include "text" (default), "message", and "data".</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"text"</code> (default)</p></li>
+<li><p><code>"message"</code></p></li>
+<li><p><code>"data"</code></p></li>
+</ul></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"text"</code>: string. A diagnostic message.</p></li>
+<li><p><code>"message"</code>: message on console. A diagnostic message.</p></li>
+<li><p><code>"data"</code>: data frame. Data where flag is present.</p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Demo with `dv_data`</span>
@@ -263,12 +283,32 @@ Valid options include "text" (default), "message", and "data".</p></td>
 #&gt; <span class='message'>0% (0)  have an Outlook workday shorter than 4 hours, while 94.9% (832) have a workday longer than 15 hours.</span></div><div class='input'>
 <span class='co'># Example where Outlook Start and End times are imputed</span>
 <span class='va'>spq_df</span> <span class='op'>&lt;-</span> <span class='va'>sq_data</span>
+
 <span class='va'>spq_df</span><span class='op'>$</span><span class='va'>WorkingStartTimeSetInOutlook</span> <span class='op'>&lt;-</span> <span class='st'>"6:30"</span>
+
 <span class='va'>spq_df</span><span class='op'>$</span><span class='va'>WorkingEndTimeSetInOutlook</span> <span class='op'>&lt;-</span> <span class='st'>"23:30"</span>
+
+<span class='co'># Return a message</span>
 <span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>spq_df</span>, threshold <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>13</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>[Warning]  100% (13442) of the person-date rows in the data have extreme Outlook settings.</span>
 #&gt; <span class='message'>0% (0)  have an Outlook workday shorter than 5 hours, while 100% (13442) have a workday longer than 13 hours.</span></div><div class='input'>
-</div></pre>
+<span class='co'># Return data</span>
+<span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>spq_df</span>, threshold <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>13</span><span class='op'>)</span>, return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,442 x 5</span><span>
+#&gt;    PersonId                   WorkdayRange WorkdayFlag WorkdayFlag1 WorkdayFlag2
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        
+#&gt; </span><span style='color: #949494;'># … with 13,432 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

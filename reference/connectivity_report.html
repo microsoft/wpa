@@ -49,11 +49,10 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Generate a Connectivity report in HTML — connectivity_report" />
-<meta property="og:description" content="The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a series
-of summary analysis and visualisations relating to key connectivity
-metrics in Workplace Analytics, including external/internal network size
-vs breadth." />
+<meta property="og:description" content="The function generates an interactive HTML report using Standard Person Query
+data as an input. The report contains a series of summary analysis and
+visualisations relating to key connectivity metrics in Workplace
+Analytics, including external/internal network size vs breadth." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -212,11 +211,10 @@ vs breadth." />
     </div>
 
     <div class="ref-description">
-    <p>The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a series
-of summary analysis and visualisations relating to key <strong>connectivity</strong>
-metrics in Workplace Analytics, including external/internal network size
-vs breadth.</p>
+    <p>The function generates an interactive HTML report using Standard Person Query
+data as an input. The report contains a series of summary analysis and
+visualisations relating to key <strong>connectivity</strong> metrics in Workplace
+Analytics, including external/internal network size vs breadth.</p>
     </div>
 
     <pre class="usage"><span class='fu'>connectivity_report</span><span class='op'>(</span>
@@ -236,22 +234,24 @@ vs breadth.</p>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"</p></td>
+      <td><p>String containing the name of the HR Variable by which to split
+metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
+instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.</p></td>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>Pass the file path and the desired file name, <em>excluding the file extension</em>.
-For example, "collaboration report".</p></td>
+      <td><p>Pass the file path and the desired file name, <em>excluding the file
+extension</em>. For example, <code>"connectivity report"</code>.</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
-      <td><p>Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.</p></td>
+      <td><p>Logical vector specifying whether to include a timestamp in
+the file name. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     </table>
 
@@ -269,8 +269,10 @@ function.</p>
 <code><a href='collaboration_report.html'>collaboration_report</a>()</code>,
 <code><a href='generate_report.html'>generate_report</a>()</code>,
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='read_preamble.html'>read_preamble</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
-<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
+<code><a href='validation_report.html'>validation_report</a>()</code>,
+<code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

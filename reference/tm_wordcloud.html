@@ -231,7 +231,8 @@ This is a sub-function that feeds into <code><a href='meeting_tm_report.html'>me
     </tr>
     <tr>
       <th>stopwords</th>
-      <td><p>A single-column data frame labelled 'word' containing custom stopwords to remove.</p></td>
+      <td><p>A single-column data frame labelled <code>'word'</code> containing
+custom stopwords to remove.</p></td>
     </tr>
     <tr>
       <th>seed</th>
@@ -244,11 +245,13 @@ This is a sub-function that feeds into <code><a href='meeting_tm_report.html'>me
     <tr>
       <th>return</th>
       <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table". A "table" returns the data used to generate the wordcloud.</p></td>
+Valid inputs are "plot" and "table". A "table" returns the data used to
+generate the wordcloud.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional parameters to be passed to <code><a href='https://lepennec.github.io/ggwordcloud/reference/geom_text_wordcloud.html'>ggwordcloud::geom_text_wordcloud()</a></code>#'</p></td>
+      <td><p>Additional parameters to be passed to
+<code><a href='https://lepennec.github.io/ggwordcloud/reference/geom_text_wordcloud.html'>ggwordcloud::geom_text_wordcloud()</a></code></p></td>
     </tr>
     </table>
 
@@ -259,13 +262,15 @@ returning a ggplot. Additional layers can be added onto the plot using
 a ggplot <code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code> syntax.
 The recommendation is not to return over 100 words in a word cloud.</p>
 <p>This function uses <code><a href='tm_clean.html'>tm_clean()</a></code> as the underlying data wrangling function.
-There is an option to remove stopwords by passing a data frame into the <code>stopwords</code>
-argument.</p>
+There is an option to remove stopwords by passing a data frame into the
+<code>stopwords</code> argument.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Text-mining: 
 <code><a href='meeting_tm_report.html'>meeting_tm_report</a>()</code>,
+<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
 <code><a href='tm_clean.html'>tm_clean</a>()</code>,
 <code><a href='tm_cooc.html'>tm_cooc</a>()</code>,
 <code><a href='tm_freq.html'>tm_freq</a>()</code></p></div>

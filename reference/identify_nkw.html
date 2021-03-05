@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Identify Non-Knowledge workers in a Person Query using Collaboration Hours — identify_nkw • wpa</title>
+<title>Identify Non-Knowledge workers in a Person Query using Collaboration
+Hours — identify_nkw • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +49,13 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Identify Non-Knowledge workers in a Person Query using Collaboration Hours — identify_nkw" />
-<meta property="og:description" content="This function scans a standard query output to identify employees with consistently low collaboration signals.
-Returns the % of non-knowledge workers identified by Organization, and optionally an edited dataframe with non-knowledge workers removed, or the full dataframe with the kw/nkw flag added." />
+<meta property="og:title" content="Identify Non-Knowledge workers in a Person Query using Collaboration
+Hours — identify_nkw" />
+<meta property="og:description" content="This function scans a standard query output to identify employees with
+consistently low collaboration signals. Returns the % of non-knowledge
+workers identified by Organization, and optionally an edited dataframe with
+non-knowledge workers removed, or the full dataframe with the kw/nkw flag
+added." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -203,14 +208,18 @@ Returns the % of non-knowledge workers identified by Organization, and optionall
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Identify Non-Knowledge workers in a Person Query using Collaboration Hours</h1>
+    <h1>Identify Non-Knowledge workers in a Person Query using Collaboration
+Hours</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/identify_nkw.R'><code>R/identify_nkw.R</code></a></small>
     <div class="hidden name"><code>identify_nkw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function scans a standard query output to identify employees with consistently low collaboration signals.
-Returns the % of non-knowledge workers identified by Organization, and optionally an edited dataframe with non-knowledge workers removed, or the full dataframe with the kw/nkw flag added.</p>
+    <p>This function scans a standard query output to identify employees with
+consistently low collaboration signals. Returns the % of non-knowledge
+workers identified by Organization, and optionally an edited dataframe with
+non-knowledge workers removed, or the full dataframe with the kw/nkw flag
+added.</p>
     </div>
 
     <pre class="usage"><span class='fu'>identify_nkw</span><span class='op'>(</span><span class='va'>data</span>, collab_threshold <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"data_summary"</span><span class='op'>)</span></pre>
@@ -224,25 +233,43 @@ Returns the % of non-knowledge workers identified by Organization, and optionall
     </tr>
     <tr>
       <th>collab_threshold</th>
-      <td><p>The collaboration hours threshold that should be exceeded as an average for the entire analysis period for the employee to be categorized as a knowledge worker ("kw").
-Enter a positive number. Default is set to 5 collaboration hours.</p></td>
+      <td><p>The collaboration hours threshold that should be
+exceeded as an average for the entire analysis period for the employee to
+be categorized as a knowledge worker ("kw"). Enter a positive number.
+Default is set to 5 collaboration hours.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String to specify what to return</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"text"</code></p></li>
+<li><p><code>"data_with_flag"</code></p></li>
+<li><p><code>"data_clean"</code></p></li>
+<li><p><code>"data_summary"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns an error message by default, where 'text' is passed in <code>return</code>.
-When 'data_with_flag' is passed, a copy of your original dataframe with an additional column containing the kw/nkw flag will be returned.
-When 'data_clean' is passed, a full dataframe excluding "nkw" employees will be returned.
-when 'data_summmary' is passed, a summary table by organization listing the number and % of non-knowledge workers will be returned.</p>
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"text"</code>: string. Returns a diagnostic message.</p></li>
+<li><p><code>"data_with_flag"</code>: data frame. Original input data with an additional
+column containing the <code>kw</code>/<code>nkw</code> flag.</p></li>
+<li><p><code>"data_clean"</code>: data frame. Data frame with non-knowledge workers
+excluded.</p></li>
+<li><p><code>"data_summary"</code>: data frame. A summary table by organization listing
+the number and % of non-knowledge workers.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Data Validation: 
 <code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
 <code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
 <code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
 <code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
@@ -250,16 +277,21 @@ when 'data_summmary' is passed, a summary table by organization listing the numb
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
 <code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
 <code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
 <code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
 <code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
 <code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
 <code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
 <code><a href='subject_validate.html'>subject_validate</a>()</code>,
-<code><a href='track_HR_change.html'>track_HR_change</a>()</code></p></div>
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
