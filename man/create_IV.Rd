@@ -58,6 +58,7 @@ Specify an outcome variable and return IV outputs.
 All numeric variables in the dataset are used as predictor variables.
 }
 \examples{
+\donttest{
 # Return a summary table of IV
 sq_data \%>\%
   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) \%>\%
@@ -67,7 +68,7 @@ sq_data \%>\%
                            "Instant_Message_hours"),
             return = "plot")
 
-\donttest{
+
 # Return summary
 sq_data \%>\%
   dplyr::mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) \%>\%

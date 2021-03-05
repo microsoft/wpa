@@ -10,7 +10,7 @@
 #' but can be used as a stand-alone function.
 #'
 #' Based on the original function from
-#' <https://www.github.com/martinctc/surveytoolbox>.
+#' <https://github.com/martinctc/surveytoolbox>.
 #'
 #' @param x Data frame to be passed through. Cannot contain list-columns or
 #'   nested data frames.

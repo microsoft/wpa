@@ -45,6 +45,7 @@
 #' @family Information Value
 #'
 #' @examples
+#' \donttest{
 #' # Return a summary table of IV
 #' sq_data %>%
 #'   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) %>%
@@ -54,7 +55,7 @@
 #'                            "Instant_Message_hours"),
 #'             return = "plot")
 #'
-#' \donttest{
+#'
 #' # Return summary
 #' sq_data %>%
 #'   dplyr::mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%

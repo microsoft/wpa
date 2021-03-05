@@ -25,7 +25,7 @@ This is a pipe-optimised function, that feeds into \code{wpa::export()},
 but can be used as a stand-alone function.
 
 Based on the original function from
-\url{https://www.github.com/martinctc/surveytoolbox}.
+\url{https://github.com/martinctc/surveytoolbox}.
 }
 \seealso{
 Other Import and Export: 
