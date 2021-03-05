@@ -137,7 +137,22 @@ Other Visualization:
 \code{\link{meetingtype_dist_mt}()},
 \code{\link{meetingtype_dist}()},
 \code{\link{meetingtype_summary}()},
-\code{\link{mgrcoatt_dist}()}
+\code{\link{mgrcoatt_dist}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_rank}()}
 
 Other Managerial Relations: 
 \code{\link{mgrcoatt_dist}()},

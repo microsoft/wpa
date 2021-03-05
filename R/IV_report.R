@@ -21,7 +21,7 @@
 #' @param bins Number of bins to use in `Information::create_infotables()`,
 #'   defaults to 10.
 #' @param path Pass the file path and the desired file name, _excluding the file
-#'   extension_. For example, "collaboration report".
+#'   extension_. For example, `"IV report"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to TRUE.
 #'

@@ -12,12 +12,9 @@
 #' metrics in Workplace Analytics,including length of week and
 #' time in after-hours collaboration.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
+#' @template spq-params
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' For example, "capacity report".
+#' For example, `"capacity report"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
 #' Defaults to TRUE.
 #'

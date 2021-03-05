@@ -25,13 +25,14 @@ This is a pipe-optimised function, that feeds into \code{wpa::export()},
 but can be used as a stand-alone function.
 
 Based on the original function from
-https://www.github.com/martinctc/surveytoolbox.
+\url{https://www.github.com/martinctc/surveytoolbox}.
 }
 \seealso{
 Other Import and Export: 
 \code{\link{create_dt}()},
 \code{\link{export}()},
 \code{\link{import_to_fst}()},
-\code{\link{import_wpa}()}
+\code{\link{import_wpa}()},
+\code{\link{standardise_pq}()}
 }
 \concept{Import and Export}

@@ -87,6 +87,7 @@
 #'
 #' }
 #'
+#' @family Clustering
 #' @family Working Patterns
 #'
 #' @export

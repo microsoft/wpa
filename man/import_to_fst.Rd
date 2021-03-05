@@ -40,6 +40,7 @@ Other Import and Export:
 \code{\link{copy_df}()},
 \code{\link{create_dt}()},
 \code{\link{export}()},
-\code{\link{import_wpa}()}
+\code{\link{import_wpa}()},
+\code{\link{standardise_pq}()}
 }
 \concept{Import and Export}

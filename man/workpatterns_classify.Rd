@@ -78,8 +78,8 @@ shown over time
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 
 Apply a rule based algorithm to emails or instant messages sent by hour of
-day. Uses a binary week-based ('bw') method by default, with options to use the
-the person-average volume-based ('pav') method.
+day. Uses a binary week-based ('bw') method by default, with options to use
+the the person-average volume-based ('pav') method.
 }
 \details{
 This is a wrapper around \code{workpatterns_classify_bw()} and
@@ -158,6 +158,10 @@ em_data \%>\% workpatterns_classify(method = "pav", return = "plot-area")
 
 }
 \seealso{
+Other Clustering: 
+\code{\link{personas_hclust}()},
+\code{\link{workpatterns_hclust}()}
+
 Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
@@ -166,6 +170,9 @@ Other Working Patterns:
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify_pav}()},
-\code{\link{workpatterns_hclust}()}
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
+\concept{Clustering}
 \concept{Working Patterns}

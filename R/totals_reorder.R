@@ -5,11 +5,11 @@
 
 #' @title Reorder a value to the top of the summary table
 #'
-#' @description For a given data frame, reorder a row to the first row
-#' of that data frame through matching a _value_ of a _variable_. The intended
-#' usage of this function is to be used for reordering the "Total" row,
-#' and _not_ with "flat" data. This can be used in conjunction with `totals_bind()`,
-#' which is used to create a "Total" row in the data.
+#' @description For a given data frame, reorder a row to the first row of that
+#'   data frame through matching a _value_ of a _variable_. The intended usage
+#'   of this function is to be used for reordering the "Total" row, and _not_
+#'   with "flat" data. This can be used in conjunction with `totals_bind()`,
+#'   which is used to create a "Total" row in the data.
 #'
 #' @examples
 #' sq_data %>%
@@ -22,6 +22,8 @@
 #' @param data Summary table in the form of a data frame.
 #' @param target_col Character value of the column in which to reorder
 #' @param target_value Character value of the value in `target_col` to match
+#'
+#' @family Support
 #'
 #' @export
 totals_reorder <- function(data, target_col, target_value = "Total"){

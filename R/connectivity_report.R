@@ -6,20 +6,16 @@
 #' @title Generate a Connectivity report in HTML
 #'
 #' @description
-#' The function generates an interactive HTML report using
-#' Standard Person Query data as an input. The report contains a series
-#' of summary analysis and visualisations relating to key **connectivity**
-#' metrics in Workplace Analytics, including external/internal network size
-#' vs breadth.
+#' The function generates an interactive HTML report using Standard Person Query
+#' data as an input. The report contains a series of summary analysis and
+#' visualisations relating to key **connectivity** metrics in Workplace
+#' Analytics, including external/internal network size vs breadth.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' For example, "collaboration report".
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
-#' Defaults to TRUE.
+#' @template spq-params
+#' @param path Pass the file path and the desired file name, _excluding the file
+#'   extension_. For example, `"connectivity report"`.
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to `TRUE`.
 #'
 #' @importFrom purrr map_if
 #' @importFrom dplyr `%>%`

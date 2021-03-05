@@ -6,7 +6,9 @@
 #' @title Sample Meeting Query dataset
 #'
 #' @description
-#' A dataset generated from a Meeting Query from WpA.
+#' A dataset generated from a Meeting Query from Workplace Analytics.
+#'
+#' @family Data
 #'
 #' @format A data frame with 2001 rows and 30 variables:
 #' \describe{

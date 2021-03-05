@@ -6,20 +6,17 @@
 #' @title Generate a Coaching report in HTML
 #'
 #' @description
-#' The function generates an interactive HTML report using
-#' Standard Person Query data as an input. The report contains a series
-#' of summary analysis and visualisations relating to key **coaching**
-#' metrics in Workplace Analytics, specifically relating to the time
-#' spent between managers and their direct reports.
+#' The function generates an interactive HTML report using Standard Person Query
+#' data as an input. The report contains a series of summary analysis and
+#' visualisations relating to key **coaching** metrics in Workplace Analytics,
+#' specifically relating to the time spent between managers and their direct
+#' reports.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "LevelDesignation"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' For example, "collaboration report".
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
-#' Defaults to TRUE.
+#' @template spq-params
+#' @param path Pass the file path and the desired file name, _excluding the file
+#'   extension_. For example, `"coaching report"`.
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to `TRUE`.
 #'
 #' @importFrom purrr map_if
 #' @importFrom dplyr `%>%`

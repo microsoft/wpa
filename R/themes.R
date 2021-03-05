@@ -14,13 +14,14 @@
 #' base font size. Defaults to 12.
 #'
 #' @param font_family Character value specifying the font family
-#' to be used in the plot. The default value is "Segoe UI". To ensure
+#' to be used in the plot. The default value is `"Segoe UI"`. To ensure
 #' you can use this font, install and load {extrafont} prior to
 #' plotting. There is an initialisation process that is described by:
-#' https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2
+#' <https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2>
 #'
 #' @import ggplot2
 #'
+#' @family Themes
 #'
 #' @export
 theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
@@ -73,6 +74,7 @@ theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
 #'
 #' @import ggplot2
 #'
+#' @family Themes
 #'
 #' @export
 theme_wpa_basic <- function(font_size = 12){

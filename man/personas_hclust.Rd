@@ -66,3 +66,9 @@ personas_hclust(sq_data,
 
 
 }
+\seealso{
+Other Clustering: 
+\code{\link{workpatterns_classify}()},
+\code{\link{workpatterns_hclust}()}
+}
+\concept{Clustering}

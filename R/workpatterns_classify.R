@@ -8,8 +8,8 @@
 #' @description `r lifecycle::badge('experimental')`
 #'
 #' Apply a rule based algorithm to emails or instant messages sent by hour of
-#' day. Uses a binary week-based ('bw') method by default, with options to use the
-#' the person-average volume-based ('pav') method.
+#' day. Uses a binary week-based ('bw') method by default, with options to use
+#' the the person-average volume-based ('pav') method.
 #'
 #' @details This is a wrapper around `workpatterns_classify_bw()` and
 #' `workpatterns_classify_pav()`, and calls each function depending on what is
@@ -127,6 +127,7 @@
 #'
 #' }
 #'
+#' @family Clustering
 #' @family Working Patterns
 #'
 #' @export

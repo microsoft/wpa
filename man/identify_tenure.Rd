@@ -66,8 +66,10 @@ Other Data Validation:
 \code{\link{identify_shifts_wp}()},
 \code{\link{identify_shifts}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

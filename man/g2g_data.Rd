@@ -31,11 +31,14 @@ A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
 Other Data: 
 \code{\link{dv_data}},
 \code{\link{em_data}},
-\code{\link{p2p_data_sim}()}
+\code{\link{mt_data}},
+\code{\link{p2p_data_sim}()},
+\code{\link{sq_data}}
 
 Other Network: 
 \code{\link{external_network_plot}()},
 \code{\link{internal_network_plot}()},
+\code{\link{network_describe}()},
 \code{\link{network_g2g}()},
 \code{\link{network_leiden}()},
 \code{\link{network_louvain}()},

@@ -185,6 +185,9 @@ generate_chunks <- function(level = 3,
 #'
 #' @param path Text string containing the path for the appropriate Markdown file.
 #'
+#' @family Support
+#' @family Reports
+#'
 #' @export
 read_preamble <- function(path){
 
@@ -209,6 +212,8 @@ read_preamble <- function(path){
 #' @importFrom markdown markdownToHTML
 #'
 #' @param text Character vector containing Markdown text
+#'
+#' @family Support
 #'
 md2html <- function(text){
 

@@ -17,16 +17,19 @@
 #'
 #' @details
 #' This function uses `tm_clean()` as the underlying data wrangling function.
-#' There is an option to remove stopwords by passing a data frame into the `stopwords`
-#' argument.
+#' There is an option to remove stopwords by passing a data frame into the
+#' `stopwords` argument.
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param stopwords A single-column data frame labelled 'word' containing custom stopwords to remove.
+#' @param stopwords A single-column data frame labelled `'word'` containing
+#'   custom stopwords to remove.
 #' @param seed A numeric vector to set seed for random generation.
 #' @param keep A numeric vector specifying maximum number of words to keep.
 #' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table". A "table" returns the data used to generate the wordcloud.
-#' @param ... Additional parameters to be passed to `ggwordcloud::geom_text_wordcloud()`#'
+#'   Valid inputs are "plot" and "table". A "table" returns the data used to
+#'   generate the wordcloud.
+#' @param ... Additional parameters to be passed to
+#'   `ggwordcloud::geom_text_wordcloud()`
 #'
 #' @import dplyr
 #' @examples

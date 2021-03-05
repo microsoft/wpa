@@ -5,10 +5,11 @@
 
 #' @title Run a meeting habits / meeting quality analysis
 #'
-#' @description Return an analysis of Meeting Quality with a bubble plot, using a Standard Person
-#' Query as an input.
+#' @description Return an analysis of Meeting Quality with a bubble plot, using
+#'   a Standard Person Query as an input.
 #'
 #' @inheritParams create_bubble
+#'
 #' @param metric_x String specifying which variable to show in the x-axis when
 #' returning a plot. Must be one of the following:
 #'   - `"Low_quality_meeting_hours"` (default)
@@ -20,6 +21,9 @@
 #' @inherit create_bubble return
 #'
 #' @import dplyr
+#'
+#' @family Visualization
+#' @family Meetings
 #'
 #' @examples
 #' # Return plot

@@ -177,6 +177,10 @@ create_IV <- function(data,
 #' ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
 #' variable as the horizontal axis.
 #'
+#' @family Support
+#' @family Variable Association
+#' @family Information Value
+#'
 #' @import dplyr
 #' @import ggplot2
 #'

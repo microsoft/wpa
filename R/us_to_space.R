@@ -4,6 +4,8 @@
 #'
 #' @param x String to replace all occurrences of `_` with a single space
 #'
+#' @family Support
+#'
 #' @examples
 #' us_to_space("Meeting_hours_with_manager_1_on_1")
 #'

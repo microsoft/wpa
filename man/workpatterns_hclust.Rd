@@ -101,6 +101,10 @@ workpatterns_hclust(em_data,
 
 }
 \seealso{
+Other Clustering: 
+\code{\link{personas_hclust}()},
+\code{\link{workpatterns_classify}()}
+
 Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
@@ -109,6 +113,9 @@ Other Working Patterns:
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify_pav}()},
-\code{\link{workpatterns_classify}()}
+\code{\link{workpatterns_classify}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
+\concept{Clustering}
 \concept{Working Patterns}

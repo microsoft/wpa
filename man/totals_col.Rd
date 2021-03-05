@@ -9,14 +9,15 @@ totals_col(data, total_value = "Total")
 \arguments{
 \item{data}{data frame}
 
-\item{total_value}{Character value defining the name and the value of the "Total" column.
-Defaults to "Total". An error is returned if an existing variable has the same name as the
-supplied value.}
+\item{total_value}{Character value defining the name and the value of the
+\code{"Total"} column. Defaults to \code{"Total"}. An error is returned if an
+existing variable has the same name as the supplied value.}
 }
 \description{
-Create a 'Total' column of character type comprising exactly of one unique value.
-This is a convenience function for returning a no-HR attribute view when NULL is supplied to
-the \code{hrvar} argument in functions.
+Create a 'Total' column of character type comprising exactly of
+one unique value. This is a convenience function for returning a no-HR
+attribute view when \code{NULL} is supplied to the \code{hrvar} argument in
+functions.
 }
 \examples{
 # Create a visual without HR attribute breaks
@@ -25,3 +26,27 @@ sq_data \%>\%
   collab_fizz(hrvar = "Total")
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+}
+\concept{Support}

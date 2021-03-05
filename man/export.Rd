@@ -28,7 +28,7 @@ Valid inputs include:
 }}
 
 \item{path}{If exporting a file, enter the path and the desired file name,
-\emph{excluding the file extension}. For example, "Analysis/SQ Overview".}
+\emph{excluding the file extension}. For example, \code{"Analysis/SQ Overview"}.}
 
 \item{timestamp}{Logical vector specifying whether to include a timestamp in
 the file name. Defaults to \code{TRUE}.}
@@ -60,6 +60,7 @@ Other Import and Export:
 \code{\link{copy_df}()},
 \code{\link{create_dt}()},
 \code{\link{import_to_fst}()},
-\code{\link{import_wpa}()}
+\code{\link{import_wpa}()},
+\code{\link{standardise_pq}()}
 }
 \concept{Import and Export}

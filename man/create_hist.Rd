@@ -84,6 +84,7 @@ Other Flexible:
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
-\code{\link{create_trend}()}
+\code{\link{create_trend}()},
+\code{\link{period_change}()}
 }
 \concept{Flexible}

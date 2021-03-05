@@ -63,17 +63,20 @@ which Workplace Analytics metrics are most explained by the change in dates.
 \seealso{
 Other Variable Association: 
 \code{\link{IV_report}()},
-\code{\link{create_IV}()}
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
 
 Other Information Value: 
 \code{\link{IV_report}()},
-\code{\link{create_IV}()}
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
 
 Other Time-series: 
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
-\code{\link{create_trend}()}
+\code{\link{create_trend}()},
+\code{\link{period_change}()}
 }
 \concept{Information Value}
 \concept{Time-series}

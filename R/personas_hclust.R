@@ -45,6 +45,8 @@
 #' @importFrom stats cutree
 #' @importFrom tidyr replace_na
 #'
+#' @family Clustering
+#'
 #' @examples
 #' # Return plot
 #' personas_hclust(sq_data,

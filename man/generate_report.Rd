@@ -89,7 +89,9 @@ Other Reports:
 \code{\link{collaboration_report}()},
 \code{\link{connectivity_report}()},
 \code{\link{meeting_tm_report}()},
+\code{\link{read_preamble}()},
 \code{\link{subject_validate_report}()},
-\code{\link{validation_report}()}
+\code{\link{validation_report}()},
+\code{\link{workpatterns_report}()}
 }
 \concept{Reports}

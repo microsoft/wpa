@@ -24,6 +24,8 @@
 #' Returns a ggplot object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
+#' @family Visualization
+#'
 #' @examples
 #' # Heatmap plot is returned by default
 #' keymetrics_scan(sq_data)

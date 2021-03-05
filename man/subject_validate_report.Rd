@@ -15,11 +15,11 @@ subject_validate_report(
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
-\item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.
-For example, "meeting text mining report".}
+\item{path}{Pass the file path and the desired file name, \emph{excluding the file
+extension}. For example, \code{"meeting text mining report"}.}
 
-\item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.}
+\item{timestamp}{Logical vector specifying whether to include a timestamp in
+the file name. Defaults to \code{TRUE}.}
 
 \item{keep}{A numeric vector specifying maximum number of words to keep.}
 
@@ -31,8 +31,11 @@ generated in the working directory. No outputs are directly returned by the
 function.
 }
 \description{
-This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-Returns a HTML report by default.
+This functions creates a text mining report in HTML based on
+Meeting Subject Lines for data validation. It scans a meeting query and
+highlights meetings with subjects that include common exlusion terms. It is
+intended to be used by an analyst to validate raw data before conducting
+additional analysis. Returns a HTML report by default.
 }
 \seealso{
 Other Data Validation: 
@@ -56,11 +59,15 @@ Other Data Validation:
 \code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},
+\code{\link{pairwise_count}()},
+\code{\link{subject_validate}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_cooc}()},
 \code{\link{tm_freq}()},
@@ -74,7 +81,9 @@ Other Reports:
 \code{\link{connectivity_report}()},
 \code{\link{generate_report}()},
 \code{\link{meeting_tm_report}()},
-\code{\link{validation_report}()}
+\code{\link{read_preamble}()},
+\code{\link{validation_report}()},
+\code{\link{workpatterns_report}()}
 }
 \concept{Data Validation}
 \concept{Reports}

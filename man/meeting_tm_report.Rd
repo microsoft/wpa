@@ -16,11 +16,11 @@ meeting_tm_report(
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
-\item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.
-For example, "meeting text mining report".}
+\item{path}{Pass the file path and the desired file name, \emph{excluding the file
+extension}. For example, \code{"meeting text mining report"}.}
 
-\item{stopwords}{A single-column data frame labelled 'word' containing custom
-stopwords to remove.}
+\item{stopwords}{A single-column data frame labelled \code{'word'} containing
+custom stopwords to remove.}
 
 \item{timestamp}{Logical vector specifying whether to include a timestamp in
 the file name. Defaults to TRUE.}
@@ -38,13 +38,6 @@ function.
 Create a text mining report in HTML based on Meeting Subject Lines
 }
 \seealso{
-Other Text-mining: 
-\code{\link{subject_validate_report}()},
-\code{\link{tm_clean}()},
-\code{\link{tm_cooc}()},
-\code{\link{tm_freq}()},
-\code{\link{tm_wordcloud}()}
-
 Other Reports: 
 \code{\link{IV_report}()},
 \code{\link{capacity_report}()},
@@ -52,8 +45,35 @@ Other Reports:
 \code{\link{collaboration_report}()},
 \code{\link{connectivity_report}()},
 \code{\link{generate_report}()},
+\code{\link{read_preamble}()},
 \code{\link{subject_validate_report}()},
-\code{\link{validation_report}()}
+\code{\link{validation_report}()},
+\code{\link{workpatterns_report}()}
+
+Other Meetings: 
+\code{\link{meeting_dist}()},
+\code{\link{meeting_extract}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_skim}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()}
+
+Other Text-mining: 
+\code{\link{pairwise_count}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{tm_clean}()},
+\code{\link{tm_cooc}()},
+\code{\link{tm_freq}()},
+\code{\link{tm_wordcloud}()}
 }
+\concept{Meetings}
 \concept{Reports}
 \concept{Text-mining}

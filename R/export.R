@@ -21,7 +21,7 @@
 #'   - `"jpeg"`
 #'   - `"pdf"`
 #' @param path If exporting a file, enter the path and the desired file name,
-#'   _excluding the file extension_. For example, "Analysis/SQ Overview".
+#'   _excluding the file extension_. For example, `"Analysis/SQ Overview"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to `TRUE`.
 #' @param width Width of the plot

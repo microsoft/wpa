@@ -6,19 +6,14 @@
 #' @title Generate a Collaboration Report in HTML
 #'
 #' @description
-#' The function generates an interactive HTML report using
-#' Standard Person Query data as an input. The report contains a series
-#' of summary analysis and visualisations relating to key **collaboration**
-#' metrics in Workplace Analytics,including email and meeting hours.
+#' The function generates an interactive HTML report using Standard Person Query
+#' data as an input. The report contains a series of summary analysis and
+#' visualisations relating to key **collaboration** metrics in Workplace
+#' Analytics,including email and meeting hours.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics. Defaults to `"AUTO"`,
-#'   where the HR variable with most collaboration variance is automatically
-#'   selected. Also accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group
-#'   size. Defaults to 5.
+#' @template spq-params
 #' @param path Pass the file path and the desired file name, _excluding the file
-#'   extension_. For example, "collaboration report".
+#'   extension_. For example, `"collaboration report"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to `TRUE`.
 #'

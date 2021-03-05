@@ -36,12 +36,15 @@ p2p_data_sim(size = 200, nei = 4)
 Other Data: 
 \code{\link{dv_data}},
 \code{\link{em_data}},
-\code{\link{g2g_data}}
+\code{\link{g2g_data}},
+\code{\link{mt_data}},
+\code{\link{sq_data}}
 
 Other Network: 
 \code{\link{external_network_plot}()},
 \code{\link{g2g_data}},
 \code{\link{internal_network_plot}()},
+\code{\link{network_describe}()},
 \code{\link{network_g2g}()},
 \code{\link{network_leiden}()},
 \code{\link{network_louvain}()},
