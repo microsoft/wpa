@@ -80,7 +80,7 @@
 #'               path = NULL,
 #'               return = "plot")
 #'
-#' \dontrun{
+#' \donttest{
 #' # Return a network plot to console, coloured by Leiden communities
 #' # Requires python dependencies installed
 #'   p2p_data %>%
