@@ -7,7 +7,7 @@
 mgrrel_matrix(
   data,
   hrvar = NULL,
-  mingroup,
+  mingroup = 5,
   return = "plot",
   plot_colors = c("#fe7f4f", "#b4d5dd", "#facebc", "#fcf0eb"),
   threshold = 15
