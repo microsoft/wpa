@@ -118,18 +118,10 @@ mgrrel_matrix <- function(data,
       Meeting_hours_with_manager_1_on_1 =
         mean(Meeting_hours_with_manager_1_on_1, na.rm = TRUE),
       coattendman_rate = mean(coattendman_rate, na.rm = TRUE),
-      Employee_Count = n_distinct(PersonId)
+      Employee_Count = n_distinct(PersonId),
+      .groups = "drop"
     ) %>%
     filter(Employee_Count > mingroup) # Minimum group size
-
-
-    summarise_at(vars(Meeting_hours_with_manager,
-                      Meeting_hours,
-                      Meeting_hours_with_manager_1_on_1,
-                      coattendman_rate),
-                 ~mean(.)) %>%
-    ungroup()
-
 
   ## Threshold
   thres_low_chr <- paste("<", threshold, "min")
