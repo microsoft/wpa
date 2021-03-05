@@ -129,7 +129,7 @@ Good manager coaching is a key factor for employee engagement and retention.
 
 **Employee sentiment analysis**
 - To compute feature importance, you can leverage `create_IV()` and `IV_report()` for calculating Information Value, using  Workplace Analytics metrics (including manager metrics) as predictor variables and employee sentiment scores as an outcome variable.
-- If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn't a function for modelling in **wpa**, but you can make use of capabilities in the wider R universe, such as **randomForest** and **tidymodels**. 
+- If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn't a function for modelling in **wpa**, but you can make use of capabilities in the wider R universe, such as **randomForest** and **tidymodels**. The function `identify_churn()` can be used to identify employees who have churned from the dataset.  
 - For more capabilities in calculating variable importance, you may reference the **rwa** and the **vip** packages.
 
 ## Teaming and Networks
