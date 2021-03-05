@@ -33,6 +33,7 @@
 #' # Return summary table
 #' hr_trend(dv_data, return = "table")
 #'
+#' @family Visualization
 #' @family Data Validation
 #'
 #' @export

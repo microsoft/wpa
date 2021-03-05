@@ -36,6 +36,8 @@ Other Support:
 \code{\link{combine_signals}()},
 \code{\link{extract_date_range}()},
 \code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
 \code{\link{rgb2hex}()}
 }
 \concept{Support}

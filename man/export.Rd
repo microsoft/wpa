@@ -58,6 +58,8 @@ the default behaviour is to export a PNG.
 \seealso{
 Other Import and Export: 
 \code{\link{copy_df}()},
-\code{\link{create_dt}()}
+\code{\link{create_dt}()},
+\code{\link{import_to_fst}()},
+\code{\link{import_wpa}()}
 }
 \concept{Import and Export}

@@ -6,18 +6,17 @@
 #' @title Mean Bar Plot for any metric
 #'
 #' @description
-#' Provides an overview analysis of a selected metric by calculating a mean per metric.
+#' Provides an overview analysis of a selected metric by calculating a mean per
+#' metric.
 #' Returns a bar plot showing the average of a selected metric by default.
 #' Additional options available to return a summary table.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param metric Character string containing the name of the metric,
-#' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#' but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
+#' @template spq-params
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
 #'
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
 #'

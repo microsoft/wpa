@@ -20,6 +20,8 @@ See https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-w
 \seealso{
 Other Import and Export: 
 \code{\link{copy_df}()},
-\code{\link{export}()}
+\code{\link{export}()},
+\code{\link{import_to_fst}()},
+\code{\link{import_wpa}()}
 }
 \concept{Import and Export}

@@ -10,6 +10,8 @@
 #' of collaboration hours to after-hours collaboration hours.
 #' Returns a character string by default.
 #'
+#' @template ch
+#'
 #' @import dplyr
 #'
 #' @param data A data frame containing a Person Query.

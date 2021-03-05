@@ -13,10 +13,12 @@
 #' @param data A Workplace Analytics dataset in the form of a data frame.
 #' If the data is not identified as a Workplace Analytics dataset, the function
 #' will return an error.
-#' @param threshold Debugging use only. Increase to raise the 'strictness' of the
-#' guessing algorithm. Defaults to 2.
+#' @param threshold Debugging use only. Increase to raise the 'strictness' of
+#'   the guessing algorithm. Defaults to 2.
 #'
 #' @family Data Validation
+#'
+#' @return String. A diagnostic message is returned.
 #'
 #' @examples
 #' identify_query(sq_data) # Standard query
@@ -64,11 +66,17 @@ identify_query <- function(data, threshold = 2){
   f_guess <- qlabels[which.min(total_check_vec)]
 
   if(total_check_n == 0){
+
     stop("Error: please check if query data is properly formatted query data.")
+
   } else if(min_nm > threshold){
+
     stop("Column mismatches: please check if query data is properly formatted query data.")
+
   } else {
+
     f_guess
+
   }
 }
 

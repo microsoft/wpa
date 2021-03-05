@@ -30,6 +30,8 @@ https://www.github.com/martinctc/surveytoolbox.
 \seealso{
 Other Import and Export: 
 \code{\link{create_dt}()},
-\code{\link{export}()}
+\code{\link{export}()},
+\code{\link{import_to_fst}()},
+\code{\link{import_wpa}()}
 }
 \concept{Import and Export}

@@ -31,9 +31,12 @@ Provides a week by week view of collaboration time.
 By default returns a week by week heatmap, highlighting the points in time with most activity.
 Additional options available to return a summary table.
 }
-\details{
-Uses the metric \code{Collaboration_hours}.
+\section{Metrics used}{
+
+The metric \code{Collaboration_hours} is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.
 }
+
 \seealso{
 Other Visualization: 
 \code{\link{afterhours_dist}()},
@@ -69,7 +72,9 @@ Other Visualization:
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
 \code{\link{external_network_plot}()},
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()}
 
 Other Collaboration: 
 \code{\link{collaboration_area}()},

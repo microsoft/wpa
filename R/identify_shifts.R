@@ -28,10 +28,12 @@
 #' argument:
 #'   - `"plot"`: ggplot object. A bar plot for the weekly count of shifts.
 #'   - `"table"`: data frame. A summary table for the count of shifts.
-#'   - `"data`: data frame. Input data appended with the following columns:
-#'     - `Shifts`
+#'   - `"data`: data frame. Input data appended with the `Shifts` columns.
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
+#'
+#' @family Data Validation
+#' @family Working Patterns
 #'
 #' @examples
 #' # Return plot

@@ -75,7 +75,9 @@ Other Visualization:
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
 \code{\link{external_network_plot}()},
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()}
 
 Other Flexible: 
 \code{\link{create_bar_asis}()},
@@ -94,6 +96,7 @@ Other Flexible:
 \code{\link{create_stacked}()}
 
 Other Time-series: 
+\code{\link{IV_by_period}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()}

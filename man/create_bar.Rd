@@ -17,15 +17,15 @@ create_bar(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{metric}{Character string containing the name of the metric,
-e.g. "Collaboration_hours"}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
-
-\item{return}{String specifying what to return. This must be one of the following strings:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
 \item \code{"plot"}
 \item \code{"table"}
@@ -49,7 +49,8 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
-Provides an overview analysis of a selected metric by calculating a mean per metric.
+Provides an overview analysis of a selected metric by calculating a mean per
+metric.
 Returns a bar plot showing the average of a selected metric by default.
 Additional options available to return a summary table.
 }
@@ -103,7 +104,9 @@ Other Visualization:
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
 \code{\link{external_network_plot}()},
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()}
 
 Other Flexible: 
 \code{\link{create_bar_asis}()},

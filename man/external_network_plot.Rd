@@ -75,10 +75,13 @@ Other Visualization:
 \code{\link{email_rank}()},
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()}
 
 Other Network: 
 \code{\link{g2g_data}},
+\code{\link{internal_network_plot}()},
 \code{\link{network_g2g}()},
 \code{\link{network_leiden}()},
 \code{\link{network_louvain}()},

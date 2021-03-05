@@ -35,6 +35,12 @@ This function flags persons who have an unusual ratio
 of collaboration hours to after-hours collaboration hours.
 Returns a character string by default.
 }
+\section{Metrics used}{
+
+The metric \code{Collaboration_hours} is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.
+}
+
 \examples{
 flag_ch_ratio(sq_data)
 
@@ -55,12 +61,15 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
 \code{\link{subject_validate_report}()},

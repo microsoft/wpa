@@ -55,9 +55,12 @@ Analyze the distribution of Collaboration Hours.
 Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
 }
-\details{
-Uses the metric \code{Collaboration_hours}.
+\section{Metrics used}{
+
+The metric \code{Collaboration_hours} is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.
 }
+
 \examples{
 # Return plot
 collaboration_dist(sq_data, hrvar = "Organization")
@@ -100,7 +103,9 @@ Other Visualization:
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
 \code{\link{external_network_plot}()},
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()}
 
 Other Collaboration: 
 \code{\link{collaboration_area}()},

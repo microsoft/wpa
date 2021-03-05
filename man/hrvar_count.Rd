@@ -12,10 +12,10 @@ analysis_scope(data, hrvar = "Organization", return = "plot")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation".
-If a vector with more than one value is provided, the HR attributes are automatically
-concatenated.}
+\item{hrvar}{HR Variable by which to split metrics, defaults to
+"Organization" but accepts any character vector, e.g. "LevelDesignation".
+If a vector with more than one value is provided, the HR attributes are
+automatically concatenated.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -82,7 +82,9 @@ Other Visualization:
 \code{\link{email_rank}()},
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
-\code{\link{external_network_plot}()}
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{internal_network_plot}()}
 
 Other Data Validation: 
 \code{\link{check_query}()},
@@ -93,12 +95,15 @@ Other Data Validation:
 \code{\link{flag_outlooktime}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
 \code{\link{subject_validate_report}()},

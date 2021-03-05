@@ -34,6 +34,7 @@
 #' }
 #'
 #' @family Reports
+#' @family Variable Association
 #' @family Information Value
 #'
 #' @inherit generate_report return

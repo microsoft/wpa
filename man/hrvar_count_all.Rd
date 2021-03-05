@@ -2,7 +2,8 @@
 % Please edit documentation in R/hrvar_count_all.R
 \name{hrvar_count_all}
 \alias{hrvar_count_all}
-\title{Create count of distinct fields and percentage of employees with NAs for all HR variables}
+\title{Create count of distinct fields and percentage of employees with
+missing values for all HR variables}
 \usage{
 hrvar_count_all(
   data,
@@ -15,25 +16,34 @@ hrvar_count_all(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{n_var}{number of HR variables to include in report as rows. Default is set to 10 HR variables.}
+\item{n_var}{number of HR variables to include in report as rows. Default is
+set to 50 HR variables.}
 
 \item{return}{String to specify what to return}
 
-\item{threshold}{The max number of unique values allowed for any attribute. Default is 100.}
+\item{threshold}{The max number of unique values allowed for any attribute.
+Default is 100.}
 
-\item{maxna}{The max percentage of NAs allowable for any column. Default is 20.}
+\item{maxna}{The max percentage of NAs allowable for any column. Default is
+20.}
 }
 \value{
 Returns an error message by default, where 'text' is passed in \code{return}.
-When 'table' is passed, a summary table listing the number of distinct fields and percentage of NAs for the specified number of HR attributes will be returned.
-when 'message' is passed, outputs a message indicating which values are beyond the specified thresholds.
+\itemize{
+\item \code{'table'}: data frame. A summary table listing the number of distinct
+fields and percentage of missing values for the specified number of HR
+attributes will be returned.
+\item \code{'message'}: outputs a message indicating which values are
+beyond the specified thresholds.
+}
 }
 \description{
-This function enables you to create a summary table to validate organizational data. This table will provide a summary of the data found
-in the WpA Sources page.
-This function will return a summary table with the count of distinct fields per HR attribute and the percentage of
-employees with NAs for that attribute.
-See hrvar_count function for more detail on the specific HR attribute of interest.
+This function enables you to create a summary table to validate
+organizational data. This table will provide a summary of the data found in
+the Workplace Analytics Sources page. This function will return a summary
+table with the count of distinct fields per HR attribute and the percentage
+of employees with missing values for that attribute. See \code{hrvar_count()}
+function for more detail on the specific HR attribute of interest.
 }
 \examples{
 # Return a summary table of all HR attributes
@@ -50,12 +60,15 @@ Other Data Validation:
 \code{\link{flag_outlooktime}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
 \code{\link{subject_validate_report}()},

@@ -37,6 +37,7 @@
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
+#' @family Data Validation
 #' @family Working Patterns
 #'
 #' @examples

@@ -27,6 +27,8 @@ Other Support:
 \code{\link{combine_signals}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
 \code{\link{rgb2hex}()}
 }
 \concept{Support}

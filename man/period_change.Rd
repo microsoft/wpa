@@ -52,8 +52,4 @@ period_change(sq_data,
               return = "percentage")
 }
 }
-\seealso{
-Other Flexible Input: 
-\code{\link{IV_by_period}()}
-}
 \concept{Flexible Input}

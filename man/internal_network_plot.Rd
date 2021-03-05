@@ -28,13 +28,69 @@ following strings: - \code{"plot"} - \code{"table"}}
 of the bubbles}
 }
 \description{
-Plot the internal network metrics for a HR variable as a scatter plot, showing
-Internal Network Breadth as the vertical axis and Internal Network Size as the
-horizontal axis.
+Plot the internal network metrics for a HR variable as a scatter plot,
+showing Internal Network Breadth as the vertical axis and Internal Network
+Size as the horizontal axis.
+}
+\details{
+Uses the metrics \code{Internal_network_size} and
+\code{Networking_outside_organization}.
 }
 \examples{
 # Return plot
 sq_data \%>\% internal_network_plot(return = "plot")
 
+# Return summary table
+sq_data \%>\% internal_network_plot(return = "table")
+
 }
-\concept{Connectivity}
+\seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()}
+
+Other Network: 
+\code{\link{external_network_plot}()},
+\code{\link{g2g_data}},
+\code{\link{network_g2g}()},
+\code{\link{network_leiden}()},
+\code{\link{network_louvain}()},
+\code{\link{network_p2p}()},
+\code{\link{p2p_data_sim}()}
+}
+\concept{Network}
+\concept{Visualization}

@@ -8,7 +8,7 @@
 #'
 #' @description Uses `import_wpa()` to read a Workplace Analytics query in CSV
 #'   and convert this into the serialized FST format which is much faster to
-#'   read. The 'fst' package must be installed.
+#'   read. The 'fst' package must be installed, or an error message is returned.
 #'
 #' @details
 #' The [fst](https://www.fstpackage.org/) package provides a way to serialize
@@ -30,6 +30,8 @@
 #'   explicitly entered, e.g. `"/files/standard query.csv"`. The converted FST
 #'   file will be saved in the same directory with a different file extension.
 #' @param ... Additional arguments to pass to `import_wpa()`.
+#'
+#' @family Import and Export
 #'
 #' @export
 import_to_fst <- function(path, ...){

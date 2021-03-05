@@ -9,12 +9,27 @@ is_date_format(string)
 \arguments{
 \item{string}{Character string to test whether is a date format.}
 }
+\value{
+logical value indicating whether the string is a date format.
+}
 \description{
-This function uses regular expression to determine whether
-a string is of the format "mdy", separated by "-", "/",
-or ".", returning a logical vector.
+This function uses regular expression to determine whether a string is of the
+format \code{"mdy"}, separated by \code{"-"}, \code{"/"}, or \code{"."}, returning a logical
+vector.
 }
 \examples{
 is_date_format("1/5/2020")
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{rgb2hex}()}
+}
+\concept{Support}

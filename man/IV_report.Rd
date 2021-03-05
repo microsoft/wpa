@@ -64,9 +64,14 @@ Other Reports:
 \code{\link{subject_validate_report}()},
 \code{\link{validation_report}()}
 
+Other Variable Association: 
+\code{\link{IV_by_period}()},
+\code{\link{create_IV}()}
+
 Other Information Value: 
 \code{\link{IV_by_period}()},
 \code{\link{create_IV}()}
 }
 \concept{Information Value}
 \concept{Reports}
+\concept{Variable Association}

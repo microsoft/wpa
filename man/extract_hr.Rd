@@ -52,6 +52,8 @@ Other Support:
 \code{\link{combine_signals}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
 \code{\link{rgb2hex}()}
 
 Other Data Validation: 
@@ -63,12 +65,15 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
 \code{\link{subject_validate_report}()},

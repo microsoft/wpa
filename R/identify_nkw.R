@@ -3,26 +3,44 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Identify Non-Knowledge workers in a Person Query using Collaboration Hours
+#' @title Identify Non-Knowledge workers in a Person Query using Collaboration
+#'   Hours
 #'
 #' @description
-#' This function scans a standard query output to identify employees with consistently low collaboration signals.
-#' Returns the % of non-knowledge workers identified by Organization, and optionally an edited dataframe with non-knowledge workers removed, or the full dataframe with the kw/nkw flag added.
+#' This function scans a standard query output to identify employees with
+#' consistently low collaboration signals. Returns the % of non-knowledge
+#' workers identified by Organization, and optionally an edited dataframe with
+#' non-knowledge workers removed, or the full dataframe with the kw/nkw flag
+#' added.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param collab_threshold The collaboration hours threshold that should be exceeded as an average for the entire analysis period for the employee to be categorized as a knowledge worker ("kw").
-#' Enter a positive number. Default is set to 5 collaboration hours.
-#' @param return String to specify what to return
+#' @param collab_threshold The collaboration hours threshold that should be
+#'   exceeded as an average for the entire analysis period for the employee to
+#'   be categorized as a knowledge worker ("kw"). Enter a positive number.
+#'   Default is set to 5 collaboration hours.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"text"`
+#'   - `"data_with_flag"`
+#'   - `"data_clean"`
+#'   - `"data_summary"`
+#'
+#' See `Value` for more information.
 #'
 #' @import dplyr
 #'
 #' @family Data Validation
 #'
 #' @return
-#' Returns an error message by default, where 'text' is passed in `return`.
-#' When 'data_with_flag' is passed, a copy of your original dataframe with an additional column containing the kw/nkw flag will be returned.
-#' When 'data_clean' is passed, a full dataframe excluding "nkw" employees will be returned.
-#' when 'data_summmary' is passed, a summary table by organization listing the number and % of non-knowledge workers will be returned.
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"text"`: string. Returns a diagnostic message.
+#'   - `"data_with_flag"`: data frame. Original input data with an additional
+#'   column containing the `kw`/`nkw` flag.
+#'   - `"data_clean"`: data frame. Data frame with non-knowledge workers
+#'   excluded.
+#'   - `"data_summary"`: data frame. A summary table by organization listing
+#'   the number and % of non-knowledge workers.
 #'
 #' @export
 identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){

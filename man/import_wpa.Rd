@@ -25,11 +25,19 @@ information. Defaults to \code{'UTF-8'}.}
 A \code{tibble} is returned.
 }
 \description{
-Import a Workplace Analytics Query from a local CSV File, with variable classifications optimised
-for other 'wpa' functions.
+Import a Workplace Analytics Query from a local CSV File, with variable
+classifications optimised for other 'wpa' functions.
 }
 \details{
 \code{import_wpa()} uses \code{data.table::fread()} to import CSV files for speed,
 and by default \code{stringsAsFactors} is set to FALSE.
 A data frame is returned by the function (not a \code{data.table}).
 }
+\seealso{
+Other Import and Export: 
+\code{\link{copy_df}()},
+\code{\link{create_dt}()},
+\code{\link{export}()},
+\code{\link{import_to_fst}()}
+}
+\concept{Import and Export}

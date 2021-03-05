@@ -2,9 +2,12 @@
 % Please edit documentation in R/heat_colours.R
 \name{heat_colours}
 \alias{heat_colours}
+\alias{heat_colors}
 \title{Generate a vector of \code{n} contiguous colours, as a red-yellow-green palette.}
 \usage{
 heat_colours(n, alpha, rev = FALSE)
+
+heat_colors(n, alpha, rev = FALSE)
 }
 \arguments{
 \item{n}{the number of colors (>= 1) to be in the palette.}
@@ -12,7 +15,8 @@ heat_colours(n, alpha, rev = FALSE)
 \item{alpha}{an alpha-transparency level in the range of 0 to 1
 (0 means transparent and 1 means opaque)}
 
-\item{rev}{logical indicating whether the ordering of the colors should be reversed.}
+\item{rev}{logical indicating whether the ordering of the colors should be
+reversed.}
 }
 \value{
 A character vector containing the HEX codes and the same length as \code{n} is
@@ -25,6 +29,19 @@ corresponding to the heat map palette.
 \examples{
 barplot(rep(10, 50), col = heat_colours(n = 50), border = NA)
 
-barplot(rep(10, 50), col = heat_colours(n = 50, alpha = 0.5, rev = TRUE), border = NA)
+barplot(rep(10, 50), col = heat_colours(n = 50, alpha = 0.5, rev = TRUE),
+border = NA)
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{is_date_format}()},
+\code{\link{rgb2hex}()}
+}
+\concept{Support}

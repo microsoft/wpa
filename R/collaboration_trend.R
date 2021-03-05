@@ -10,8 +10,7 @@
 #' By default returns a week by week heatmap, highlighting the points in time with most activity.
 #' Additional options available to return a summary table.
 #'
-#' @details
-#' Uses the metric `Collaboration_hours`.
+#' @template ch
 #'
 #' @inheritParams create_trend
 #'

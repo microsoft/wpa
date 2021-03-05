@@ -38,9 +38,12 @@ By default returns a line chart for collaboration hours,
 with a separate panel per value in the HR attribute.
 Additional options available to return a summary table.
 }
-\details{
-Uses the metric \code{Collaboration_hours}.
+\section{Metrics used}{
+
+The metric \code{Collaboration_hours} is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.
 }
+
 \examples{
 # Return a line plot
 collaboration_line(sq_data, hrvar = "LevelDesignation")
@@ -84,7 +87,9 @@ Other Visualization:
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
 \code{\link{external_network_plot}()},
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()}
 
 Other Collaboration: 
 \code{\link{collaboration_area}()},

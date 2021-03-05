@@ -89,6 +89,7 @@ g2g_data \%>\%
 Other Network: 
 \code{\link{external_network_plot}()},
 \code{\link{g2g_data}},
+\code{\link{internal_network_plot}()},
 \code{\link{network_leiden}()},
 \code{\link{network_louvain}()},
 \code{\link{network_p2p}()},

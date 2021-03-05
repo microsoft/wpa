@@ -2,7 +2,8 @@
 % Please edit documentation in R/identify_tenure.R
 \name{identify_tenure}
 \alias{identify_tenure}
-\title{Tenure calculation based on different input dates, returns data summary table or histogram}
+\title{Tenure calculation based on different input dates, returns data
+summary table or histogram}
 \usage{
 identify_tenure(
   data,
@@ -15,9 +16,11 @@ identify_tenure(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{end_date}{A string specifying the name of the date variable representing the latest date. Defaults to "Date".}
+\item{end_date}{A string specifying the name of the date variable
+representing the latest date. Defaults to "Date".}
 
-\item{beg_date}{A string specifying the name of the date variable representing the hire date. Defaults to "HireDate".}
+\item{beg_date}{A string specifying the name of the date variable
+representing the hire date. Defaults to "HireDate".}
 
 \item{maxten}{A numeric value representing the maximum tenure.
 If the tenure exceeds this threshold, it would be accounted for in the flag message.}
@@ -53,12 +56,15 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{remove_outliers}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},

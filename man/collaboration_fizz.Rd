@@ -36,9 +36,12 @@ Analyze weekly collaboration hours distribution, and returns
 a 'fizzy' scatter plot by default.
 Additional options available to return a table with distribution elements.
 }
-\details{
-Uses the metric \code{Collaboration_hours}.
+\section{Metrics used}{
+
+The metric \code{Collaboration_hours} is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.
 }
+
 \examples{
 # Return plot
 collaboration_fizz(sq_data, hrvar = "Organization", return = "plot")
@@ -82,7 +85,9 @@ Other Visualization:
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
 \code{\link{external_network_plot}()},
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()}
 
 Other Collaboration: 
 \code{\link{collaboration_area}()},

@@ -10,8 +10,7 @@
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
-#' @details
-#' Uses the metric `Collaboration_hours`.
+#' @template ch
 #'
 #' @inheritParams create_dist
 #' @inherit create_dist return
