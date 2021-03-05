@@ -36,7 +36,7 @@ Here are a list of other individual plots that you can run:
 One option to advance the analysis is to take a deep dive into meetings.
 
 - `meeting_skim()` can be used to understand the overall % of meetings which are low quality. Hours can be expressed in terms of number of FTE-weeks (or months), or even dollar values for greater impact. Typical assumptions used are 40 employee-hours per week and 180 per month.
-- `meetingtype_dist()` can be used to understand the distribution of long or large meetings.
+- `meetingtype_dist()` can be used to understand the distribution of long or large meetings. Another alternative, `meetingtype_summary()` can be used to visualize the proportion of long or large meetings as a bar plot (requires a Ways of Working Assessment query).
 - **Meeting subject line text mining**: `meeting_tm_report()` can reveal patterns underlying meeting subject lines. The report is made of individual visualization functions, i.e.:
 	- `tm_cooc()`
 	- `tm_freq()`
