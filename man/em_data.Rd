@@ -82,6 +82,7 @@ columns for both IMs sent and Emails sent.
 Other Data: 
 \code{\link{dv_data}},
 \code{\link{g2g_data}},
+\code{\link{mt_data}},
 \code{\link{p2p_data_sim}()}
 }
 \concept{Data}

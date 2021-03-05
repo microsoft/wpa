@@ -93,6 +93,7 @@ A dataset generated from a Standard Person Query from Workplace Analytics.
 Other Data: 
 \code{\link{em_data}},
 \code{\link{g2g_data}},
+\code{\link{mt_data}},
 \code{\link{p2p_data_sim}()}
 }
 \concept{Data}
