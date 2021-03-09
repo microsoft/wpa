@@ -140,6 +140,7 @@ Other Visualization:
 \code{\link{mgrcoatt_dist}()},
 \code{\link{one2one_dist}()},
 \code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
 \code{\link{one2one_line}()},
 \code{\link{one2one_rank}()},
 \code{\link{one2one_sum}()},

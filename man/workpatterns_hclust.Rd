@@ -69,6 +69,7 @@ are shown, e.g. x\% of signals are sent by y hour of the day.
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+
 Apply hierarchical clustering to emails sent by hour of day.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.

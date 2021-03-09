@@ -19,6 +19,7 @@ deviations of each individual's collaboration activity.
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+
 This function takes in a selected metric and uses z-score (number of standard
 deviations) to identify and remove outlier weeks for individuals across time.
 There are applications in this for removing weeks with abnormally low

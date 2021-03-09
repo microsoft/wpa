@@ -98,6 +98,7 @@ Other Visualization:
 \code{\link{mgrrel_matrix}()},
 \code{\link{one2one_dist}()},
 \code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
 \code{\link{one2one_line}()},
 \code{\link{one2one_sum}()},
 \code{\link{one2one_trend}()},

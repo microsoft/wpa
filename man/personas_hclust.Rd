@@ -39,6 +39,7 @@ of the clusters as per \code{keymetrics_scan()}.
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a>}}{\strong{Questioning}}
+
 Apply hierarchical clustering to selected metrics. Person averages are computed prior to clustering.
 The hierarchical clustering uses cosine distance and the ward.D method
 of agglomeration.
