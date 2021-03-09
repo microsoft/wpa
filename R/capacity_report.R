@@ -12,12 +12,9 @@
 #' metrics in Workplace Analytics,including length of week and
 #' time in after-hours collaboration.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
+#' @template spq-params
 #' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' For example, "capacity report".
+#' For example, `"capacity report"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
 #' Defaults to TRUE.
 #'
@@ -44,8 +41,8 @@ capacity_report <- function(data,
 
   # Set outputs
   output_list <-
-    list(data %>% check_query(return = "text") %>% md2html(),
-         md2html(text = read_preamble("workloads_section.md")), # Header
+    list(data %>% check_query(return = "text", validation = TRUE),
+         read_preamble("workloads_section.md"), # Header
          data %>% workloads_summary(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% workloads_summary(hrvar = hrvar, mingroup = mingroup, return = "table"),
          data %>% workloads_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
@@ -55,14 +52,15 @@ capacity_report <- function(data,
          data %>% workloads_line(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% workloads_line(hrvar = hrvar, mingroup = mingroup, return = "table"),
 
-         md2html(text = read_preamble("afterhours_section.md")), # Header
+         read_preamble("afterhours_section.md"), # Header
          data %>% afterhours_summary(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% afterhours_summary(hrvar = hrvar, mingroup = mingroup, return = "table"),
          data %>% afterhours_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% afterhours_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
          data %>% afterhours_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% afterhours_trend(hrvar = hrvar, mingroup = mingroup, return = "table")) %>%
-    purrr::map_if(is.data.frame, create_dt)
+    purrr::map_if(is.data.frame, create_dt) %>%
+    purrr::map_if(is.character, md2html)
 
   # Set header titles
   title_list <-

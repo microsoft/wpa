@@ -10,7 +10,8 @@ standardise_pq(data)
 standardize_pq(data)
 }
 \arguments{
-\item{data}{A Ways of Working Assessment query to pass through as a data frame.}
+\item{data}{A Ways of Working Assessment query to pass through as a data
+frame.}
 }
 \description{
 This function standardises the variable names to a Standard Person
@@ -24,3 +25,39 @@ The following standardisation steps are taken:
 \item \code{Instant_message_hours} -> \code{Instant_Message_hours}
 }
 }
+\seealso{
+Other Data Validation: 
+\code{\link{check_query}()},
+\code{\link{extract_hr}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count_all}()},
+\code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
+\code{\link{identify_holidayweeks}()},
+\code{\link{identify_inactiveweeks}()},
+\code{\link{identify_nkw}()},
+\code{\link{identify_outlier}()},
+\code{\link{identify_privacythreshold}()},
+\code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
+\code{\link{identify_tenure}()},
+\code{\link{remove_outliers}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
+
+Other Import and Export: 
+\code{\link{copy_df}()},
+\code{\link{create_dt}()},
+\code{\link{export}()},
+\code{\link{import_to_fst}()},
+\code{\link{import_wpa}()}
+}
+\concept{Data Validation}
+\concept{Import and Export}

@@ -8,50 +8,67 @@
 #' @description
 #' `r lifecycle::badge('experimental')`
 #'
-#' Pass a data frame containing a person-to-person query and return a network visualization.
-#' Options are available for community detection using either the Louvain or the Leiden algorithms.
+#' Pass a data frame containing a person-to-person query and return a network
+#' visualization. Options are available for community detection using either the
+#' Louvain or the Leiden algorithms.
 #'
 #'
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
-#' @param display String determining what output to return. Valid values include:
-#'   - `"hrvar"` (default): compute analysis or visuals without computing communities.
-#'   - `"louvain"`: compute analysis or visuals with community detection, using the Louvain
-#'   algorithm.
-#'   - `"leiden"`: compute analysis or visuals with community detection, using the Leiden algorithm.
-#'   This requires all the pre-requisites of the **leiden** package installed,
-#'   which includes Python and **reticulate**.
+#' @param display String determining what output to return. Valid values
+#'   include:
+#'   - `"hrvar"` (default): compute analysis or visuals without computing
+#'   communities.
+#'   - `"louvain"`: compute analysis or visuals with community detection, using
+#'   the Louvain algorithm.
+#'   - `"leiden"`: compute analysis or visuals with community detection, using
+#'   the Leiden algorithm. This requires all the pre-requisites of the
+#'   **leiden** package installed, which includes Python and **reticulate**.
 #'
 #' @param return String specifying what output to return. Defaults to "plot".
 #' Valid return options include:
 #'   - `'plot'`: return a network plot.
-#'   - `'sankey'`: return a sankey plot combining communities and HR attribute. This is only valid if
-#'   a community detection method is selected at `display`.
-#'   - `'table'`: return a vertex summary table with counts in communities and HR attribute.
-#'   - `'data'`: return a vertex data file that matches vertices with communities and HR attributes.
-#'   - `'describe'`: return a list of data frames which describe each of the identified communities.
-#'   The first data frame is a summary table of all the communities. This is only valid if a community
-#'   detection method is selected at `display`.
+#'   - `'sankey'`: return a sankey plot combining communities and HR attribute.
+#'   This is only valid if a community detection method is selected at
+#'   `display`.
+#'   - `'table'`: return a vertex summary table with counts in communities and
+#'   HR attribute.
+#'   - `'data'`: return a vertex data file that matches vertices with
+#'   communities and HR attributes.
+#'   - `'describe'`: return a list of data frames which describe each of the
+#'   identified communities. The first data frame is a summary table of all the
+#'   communities. This is only valid if a community detection method is selected
+#'   at `display`.
 #'   - `'network'`: return igraph object.
 #'
-#' @param path File path for saving the PDF output. Defaults to a timestamped path based on current parameters.
-#' @param desc_hrvar Character vector of length 3 containing the HR attributes to use when returning the
-#' "describe" output. See `network_describe()`.
+#' @param path File path for saving the PDF output. Defaults to a timestamped
+#'   path based on current parameters.
+#' @param desc_hrvar Character vector of length 3 containing the HR attributes
+#'   to use when returning the `"describe"` output. See `network_describe()`.
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
-#' @param legend_pos String to specify position of legend. Defaults to "bottom". See `ggplot2::theme()`.
-#' @param palette Function for generating a colour palette with a single argument `n`. Uses "rainbow" by default.
-#' @param node_alpha A numeric value between 0 and 1 to specify the transparency of the nodes.
-#' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults to 0.5.
-#' @param seed Seed for the random number generator passed to `leiden::leiden()` to ensure consistency. Only applicable
-#' when `display` is set to "leiden".
-#' @param algorithm String to specify the node placement algorithm to be used. Defaults to "fr" for the force-directed
-#' algorithm of Fruchterman and Reingold. See <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a
-#' full list of options.
-#' @param size_threshold Numeric value representing the maximum number of edges before `network_leiden()`
-#' switches to use a more efficient, but less elegant plotting method (native igraph). Defaults to 5000.
-#' Set as `0` to co-erce to a fast plotting method every time, and `Inf` to always use the default plotting
-#' method.
+#' @param legend_pos String to specify position of legend. Defaults to
+#'   `"bottom"`. See `ggplot2::theme()`.
+#' @param palette Function for generating a colour palette with a single
+#'   argument `n`. Uses "rainbow" by default.
+#' @param node_alpha A numeric value between 0 and 1 to specify the transparency
+#'   of the nodes.
+#' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults
+#'   to 0.5.
+#' @param seed Seed for the random number generator passed to `leiden::leiden()`
+#'   to ensure consistency. Only applicable when `display` is set to `"leiden"`.
+#' @param algorithm String to specify the node placement algorithm to be used.
+#'   Defaults to `"fr"` for the force-directed algorithm of Fruchterman and
+#'   Reingold. See
+#'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
+#'   list of options.
+#' @param size_threshold Numeric value representing the maximum number of edges
+#'   before `network_leiden()` switches to use a more efficient, but less
+#'   elegant plotting method (native igraph). Defaults to 5000. Set as `0` to
+#'   coerce to a fast plotting method every time, and `Inf` to always use the
+#'   default plotting method.
+#'
+#' @family Network
 #'
 #' @examples
 #' # Simulate a small person-to-person dataset
@@ -63,7 +80,7 @@
 #'               path = NULL,
 #'               return = "plot")
 #'
-#' \dontrun{
+#' \donttest{
 #' # Return a network plot to console, coloured by Leiden communities
 #' # Requires python dependencies installed
 #'   p2p_data %>%
@@ -254,6 +271,9 @@ network_p2p <- function(data,
       ## Internal basic plotting function used inside `network_p2p()`
       plot_basic_graph <- function(){
 
+        old_par <- par(no.readonly = TRUE)
+        on.exit(par(old_par))
+
         par(bg = bg_fill)
 
         layout_text <- paste0("igraph::layout_with_", algorithm)
@@ -299,7 +319,7 @@ network_p2p <- function(data,
 
       plot_output <-
         g_layout +
-        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.01, alpha = 0.15) +
+        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.05, alpha = 0.15) +
         ggraph::geom_node_point(aes(colour = !!sym(v_attr)),
                                 alpha = node_alpha,
                                 pch = 16) +

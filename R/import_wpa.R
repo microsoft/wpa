@@ -6,8 +6,8 @@
 #' @title Import a Workplace Analytics Query
 #'
 #' @description
-#' Import a Workplace Analytics Query from a local CSV File, with variable classifications optimised
-#' for other 'wpa' functions.
+#' Import a Workplace Analytics Query from a local CSV File, with variable
+#' classifications optimised for other 'wpa' functions.
 #'
 #' @details
 #' `import_wpa()` uses `data.table::fread()` to import CSV files for speed,
@@ -27,6 +27,8 @@
 #'   information. Defaults to `'UTF-8'`.
 #'
 #' @return A `tibble` is returned.
+#'
+#' @family Import and Export
 #'
 #' @export
 import_wpa <- function(x,

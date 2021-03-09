@@ -10,22 +10,34 @@
 #' This function also presents the p-value for the null hypothesis
 #'  that the variable has not changed, using a Wilcox signed-rank test.
 #'
-#' @param data Person Query as a dataframe including date column named "Date"
-#' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.
-#' @param compvar WpA comparison variable to compare person change before and after
-#'  For example, "Collaboration_hours"
-#' @param before_start Start date of "before" time period in YYYY-MM-DD
-#' @param before_end End date of "before" time period in YYYY-MM-DD
-#' @param after_start Start date of "after" time period in YYYY-MM-DD
-#' @param after_end End date of "after" time period in YYYY-MM-DD
-#' @param return Character vector specifying whether to return plot as Count or Percentage of Employees
-#' Valid inputs include "count" (default), "percentage", and "table".
+#' @param data Person Query as a dataframe including date column named `"Date"`
+#'   This function assumes the data format is `MM/DD/YYYY` as is standard in a
+#'   Workplace Analytics query output.
+#' @param compvar WpA comparison variable to compare person change before and
+#'   after For example, `"Collaboration_hours"`
+#' @param before_start Start date of "before" time period in `YYYY-MM-DD`
+#' @param before_end End date of "before" time period in `YYYY-MM-DD`
+#' @param after_start Start date of "after" time period in `YYYY-MM-DD`
+#' @param after_end End date of "after" time period in `YYYY-MM-DD`
+#' @param return Character vector specifying whether to return plot as Count or
+#'   Percentage of Employees. Valid inputs include:
+#'    - "count" (default)
+#'    - "percentage"
+#'    - "table"
+#'
+#' @return
+#' ggplot object showing a bar plot (histogram) of change for two time
+#' intervals.
 #'
 #' @import dplyr
 #' @import reshape2
 #' @import ggplot2
 #' @import scales
 #' @importFrom stats wilcox.test
+#'
+#' @family Visualization
+#' @family Time-series
+#' @family Flexible
 #'
 #' @examples
 #' # Run plot

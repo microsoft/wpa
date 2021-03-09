@@ -11,24 +11,23 @@
 #'
 #' @details
 #' This function uses `tm_clean()` as the underlying data wrangling function.
-#' There is an option to remove stopwords by passing a data frame into the `stopwords`
-#' argument.
+#' There is an option to remove stopwords by passing a data frame into the
+#' `stopwords` argument.
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param token A character vector accepting either "words" or "ngram", determining
-#' type of tokenisation to return.
-#' @param stopwords A single-column data frame labelled 'word' containing custom stopwords to remove.
+#' @param token A character vector accepting either `"words"` or `"ngram"`,
+#'   determining type of tokenisation to return.
+#' @param stopwords A single-column data frame labelled `'word'` containing
+#'   custom stopwords to remove.
 #' @param keep A numeric vector specifying maximum number of words to keep.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @param return Character vector specifying what to return, defaults to
+#'   `"plot"`. Valid inputs are `"plot"` and `"table"`.
 #'
 #' @import dplyr
 #' @import ggplot2
 #' @importFrom tidytext unnest_tokens
 #' @importFrom stats na.omit
 #'
-#' @examples
-#' tm_freq(mt_data)
 #'
 #' @examples
 #' tm_freq(mt_data, token = "words")

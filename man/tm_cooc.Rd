@@ -9,24 +9,25 @@ tm_cooc(data, stopwords = NULL, seed = 100, return = "plot", lmult = 0.05)
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
-\item{stopwords}{A single-column data frame labelled 'word' containing custom stopwords to remove.}
+\item{stopwords}{A single-column data frame labelled 'word' containing custom
+stopwords to remove.}
 
 \item{seed}{A numeric vector to set seed for random generation.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{Character vector specifying what to return, defaults to
+\code{"plot"}. Valid inputs are \code{"plot"} and \code{"table"}.}
 
-\item{lmult}{A multiplier to adjust the line width in the output plot. Defaults to 0.05.}
+\item{lmult}{A multiplier to adjust the line width in the output plot.
+Defaults to 0.05.}
 }
 \description{
-This function generates a word co-occurence network plot,
-with options to return a table.
-This is a sub-function that feeds into \code{meeting_tm_report()}.
+This function generates a word co-occurence network plot, with options to
+return a table. This is a sub-function that feeds into \code{meeting_tm_report()}.
 }
 \details{
 This function uses \code{tm_clean()} as the underlying data wrangling function.
-There is an option to remove stopwords by passing a data frame into the \code{stopwords}
-argument.
+There is an option to remove stopwords by passing a data frame into the
+\code{stopwords} argument.
 }
 \examples{
 # Demo using a subset of `mt_data`
@@ -38,7 +39,9 @@ mt_data \%>\%
 \seealso{
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},
+\code{\link{pairwise_count}()},
 \code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_freq}()},
 \code{\link{tm_wordcloud}()}

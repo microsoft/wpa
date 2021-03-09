@@ -6,36 +6,56 @@
 #' @title Identify employees who have churned from the dataset
 #'
 #' @description
-#' This function identifies and counts the number of employees who have churned from
-#' the dataset by measuring whether an employee who is present in the first `n` (n1) weeks
-#' of the data is present in the last `n` (n2) weeks of the data.
+#' This function identifies and counts the number of employees who have churned
+#' from the dataset by measuring whether an employee who is present in the first
+#' `n` (n1) weeks of the data is present in the last `n` (n2) weeks of the data.
 #'
 #' @details
-#' An additional use case of this function is the ability to identify "new-joiners" by using
-#' the argument `flip`.
+#' An additional use case of this function is the ability to identify
+#' "new-joiners" by using the argument `flip`.
 #'
 #' @param data A Person Query as a data frame. Must contain a `PersonId`.
-#' @param n1 A numeric value specifying the number of weeks at the beginning of the period
-#' that defines the measured employee set. Defaults to 6.
-#' @param n2 A numeric value specifying the number of weeks at the end of the period
-#' to calculate whether employees have churned from the data. Defaults to 6.
-#' @param return String specifying what to return. Defaults to "message", with options to
-#' return a character string ("text") or the `PersonId` of employees who have been identified
-#' as churned ("data").
-#' @param flip Logical, defaults to FALSE. This determines whether to reverse the logic of identifying the
-#' non-overlapping set. If set to `TRUE`, this effectively identifies new-joiners, or those
-#' who were not present in the first n weeks of the data but were present in the final n weeks.
+#' @param n1 A numeric value specifying the number of weeks at the beginning of
+#'   the period that defines the measured employee set. Defaults to 6.
+#' @param n2 A numeric value specifying the number of weeks at the end of the
+#'   period to calculate whether employees have churned from the data. Defaults
+#'   to 6.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"message"` (default)
+#'   - `"text"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+#'
+#' @param flip Logical, defaults to FALSE. This determines whether to reverse
+#'   the logic of identifying the non-overlapping set. If set to `TRUE`, this
+#'   effectively identifies new-joiners, or those who were not present in the
+#'   first n weeks of the data but were present in the final n weeks.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"message"`: Message on console. A diagnostic message.
+#'   - `"text"`: String. A diagnostic message.
+#'   - `"data"`: Character vector containing the the `PersonId` of
+#'   employees who have been identified as churned.
 #'
 #' @details
-#' If an employee is present in the first `n` weeks of the data but not present in the last
-#' `n` weeks of the data, the function considers the employee as churned. As the measurement period
-#' is defined by the number of weeks from the start and the end of the passed data frame, you
-#' may consider filtering the dates accordingly before running this function.
+#' If an employee is present in the first `n` weeks of the data but not present
+#' in the last `n` weeks of the data, the function considers the employee as
+#' churned. As the measurement period is defined by the number of weeks from the
+#' start and the end of the passed data frame, you may consider filtering the
+#' dates accordingly before running this function.
 #'
-#' Another assumption that is in place is that any employee whose `PersonId` is not available in the
-#' data has churned. Note that there may be other reasons why an employee's `PersonId` may not
-#' be present, e.g. maternity/paternity leave, Workplace Analytics license has been removed,
-#' shift to a low-collaboration role (to the extent that he/she becomes inactive).
+#' Another assumption that is in place is that any employee whose `PersonId` is
+#' not available in the data has churned. Note that there may be other reasons
+#' why an employee's `PersonId` may not be present, e.g. maternity/paternity
+#' leave, Workplace Analytics license has been removed, shift to a
+#' low-collaboration role (to the extent that he/she becomes inactive).
+#'
+#' @family Data Validation
+#'
 #' @examples
 #' sq_data %>% identify_churn(n1 = 3, n2 = 3, return = "message")
 #'
@@ -100,18 +120,27 @@ identify_churn <- function(data,
              " (", n1, " weeks).")
 
   } else {
+
     stop("Invalid argument for `flip`")
+
   }
 
 
 
   if(return == "message"){
+
     message(printMessage)
+
   } else if(return == "text"){
+
     printMessage
+
   } else if(return == "data"){
+
     churner_id
+
   } else {
+
     stop("Invalid `return`")
   }
 }

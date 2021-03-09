@@ -11,6 +11,7 @@ workpatterns_classify(
   signals = "email",
   start_hour = "0900",
   end_hour = "1700",
+  active_threshold = 0,
   method = "bw",
   return = "plot"
 )
@@ -41,6 +42,10 @@ Note that this currently only supports \strong{hourly} increments.}
 
 \item{end_hour}{A character vector specifying starting hours, e.g. "1700".
 Note that this currently only supports \strong{hourly} increments.}
+
+\item{active_threshold}{A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as \emph{active}. Defaults to 0.
+Only applicable for the binary-week method.}
 
 \item{method}{String to pass through specifying which method to use for
 classification. By default, a binary week-based (bw) method is used, with
@@ -73,8 +78,8 @@ shown over time
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 
 Apply a rule based algorithm to emails or instant messages sent by hour of
-day. Uses a binary week-based ('bw') method by default, with options to use the
-the person-average volume-based ('pav') method.
+day. Uses a binary week-based ('bw') method by default, with options to use
+the the person-average volume-based ('pav') method.
 }
 \details{
 This is a wrapper around \code{workpatterns_classify_bw()} and
@@ -141,7 +146,7 @@ em_data \%>\% workpatterns_classify(method = "bw")
 # Return an area plot
 em_data \%>\% workpatterns_classify(method = "bw", return = "plot-area")
 
-\dontrun{
+\donttest{
 
 em_data \%>\% workpatterns_classify(method = "bw", return = "table")
 
@@ -153,14 +158,21 @@ em_data \%>\% workpatterns_classify(method = "pav", return = "plot-area")
 
 }
 \seealso{
-Other Work Patterns: 
+Other Clustering: 
+\code{\link{personas_hclust}()},
+\code{\link{workpatterns_hclust}()}
+
+Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
-\code{\link{personas_hclust}()},
+\code{\link{identify_shifts}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify_pav}()},
-\code{\link{workpatterns_hclust}()}
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
-\concept{Work Patterns}
+\concept{Clustering}
+\concept{Working Patterns}

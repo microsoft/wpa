@@ -14,7 +14,8 @@ create_bar_asis(
   ylab = group_var,
   xlab = bar_var,
   percent = FALSE,
-  bar_colour = "default"
+  bar_colour = "default",
+  rounding = 1
 )
 }
 \arguments{
@@ -22,7 +23,8 @@ create_bar_asis(
 
 \item{group_var}{String containing name of variable for the group.}
 
-\item{bar_var}{String containing name of variable representing the value of the bars.}
+\item{bar_var}{String containing name of variable representing the value of
+the bars.}
 
 \item{title}{Title of the plot.}
 
@@ -34,28 +36,146 @@ create_bar_asis(
 
 \item{xlab}{X-axis label of the plot (bar axis).}
 
-\item{percent}{Logical value to determine whether to show labels as percentage signs. Defaults to FALSE.}
+\item{percent}{Logical value to determine whether to show labels as
+percentage signs. Defaults to \code{FALSE}.}
 
 \item{bar_colour}{String to specify colour to use for bars.
 In-built accepted values include "default" (default), "alert" (red), and
 "darkblue". Otherwise, hex codes are also accepted. You can also supply
 RGB values via \code{rgb2hex()}.}
+
+\item{rounding}{Numeric value to specify number of digits to show in data
+labels}
+}
+\value{
+ggplot object. A horizontal bar plot.
 }
 \description{
-This function creates a bar chart directly from the aggregated / summarised data.
-Unlike \code{create_bar()} which performs a person-level aggregation, there is no
-calculation for \code{create_bar_asis()} and the values are rendered as they are passed
-into the function.
+This function creates a bar chart directly from the aggregated / summarised
+data. Unlike \code{create_bar()} which performs a person-level aggregation, there
+is no calculation for \code{create_bar_asis()} and the values are rendered as they
+are passed into the function.
+}
+\examples{
+# Creating a custom bar plot without mean aggregation
+library(dplyr)
+
+sq_data \%>\%
+  group_by(Organization) \%>\%
+  summarise(across(.cols = Meeting_hours,
+                   .fns = ~sum(., na.rm = TRUE))) \%>\%
+  create_bar_asis(group_var = "Organization",
+                  bar_var = "Meeting_hours",
+                  title = "Total Meeting Hours over period",
+                  subtitle = "By Organization",
+                  caption = extract_date_range(sq_data, return = "text"),
+                  bar_colour = "darkblue",
+                  rounding = 0)
+
+library(dplyr)
+
+# Summarise Non-person-average median `Emails_sent`
+med_df <-
+  sq_data \%>\%
+  group_by(Organization) \%>\%
+  summarise(Emails_sent_median = median(Emails_sent))
+
+med_df \%>\%
+  create_bar_asis(
+    group_var = "Organization",
+    bar_var = "Emails_sent_median",
+    title = "Median Emails Sent by Organization",
+    subtitle = "Person Averaging Not Applied",
+    bar_colour = "darkblue",
+    caption = extract_date_range(sq_data, return = "text")
+  )
+
+
 }
 \seealso{
-Other General: 
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_hr}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{mgrrel_matrix}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_rank}()}
+
+Other Flexible: 
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_hist}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{period_change}()}
 }
-\concept{General}
+\concept{Flexible}
+\concept{Visualization}

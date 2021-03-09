@@ -46,14 +46,53 @@ sq_data \%>\% extract_hr(return = "vars")
 
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
-\code{\link{create_bubble}()},
-\code{\link{create_scatter}()},
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
 \code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+
+Other Data Validation: 
+\code{\link{check_query}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{identify_churn}()},
+\code{\link{identify_holidayweeks}()},
+\code{\link{identify_inactiveweeks}()},
+\code{\link{identify_nkw}()},
+\code{\link{identify_outlier}()},
+\code{\link{identify_privacythreshold}()},
+\code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
+\code{\link{identify_tenure}()},
+\code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
-\concept{General}
+\concept{Data Validation}
+\concept{Support}

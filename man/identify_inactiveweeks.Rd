@@ -9,24 +9,39 @@ identify_inactiveweeks(data, sd = 2, return = "text")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{sd}{The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.}
+\item{sd}{The standard deviation below the mean for collaboration hours that
+should define an outlier week. Enter a positive number. Default is 1
+standard deviation.}
 
-\item{return}{String to specify what to return.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"text"}
+\item \code{"data_cleaned"}
+\item \code{"data_dirty"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
-Returns an error message by default, where 'text' is returned.
-When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
-When 'data_dirty' is passed, a dataset with outlier weeks is returned as a dataframe.
+Returns an error message by default, where \code{'text'} is returned. When
+\code{'data_cleaned'} is passed, a dataset with outlier weeks removed is returned
+as a dataframe. When \code{'data_dirty'} is passed, a dataset with outlier weeks
+is returned as a dataframe.
 }
 \description{
-This function scans a standard query output for weeks where collaboration hours is far outside the mean for any individual person in the dataset.
-Returns a list of weeks that appear to be inactive weeks and optionally an edited dataframe with outliers removed.
+This function scans a standard query output for weeks where collaboration
+hours is far outside the mean for any individual person in the dataset.
+Returns a list of weeks that appear to be inactive weeks and optionally an
+edited dataframe with outliers removed.
 
-As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.
+As best practice, run this function prior to any analysis to remove atypical
+collaboration weeks from your dataset.
 }
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -34,15 +49,20 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

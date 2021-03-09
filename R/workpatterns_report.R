@@ -20,6 +20,9 @@
 #'
 #' @inherit generate_report return
 #'
+#' @family Reports
+#' @family Working Patterns
+#'
 #' @importFrom purrr map_if
 #' @importFrom methods is
 #'

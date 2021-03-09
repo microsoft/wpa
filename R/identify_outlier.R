@@ -27,7 +27,6 @@
 #' Returns a data frame with `Date` (if grouping variable is not set),
 #' the metric, and the corresponding z-score.
 #'
-#' @family General
 #' @family Data Validation
 #'
 #' @export

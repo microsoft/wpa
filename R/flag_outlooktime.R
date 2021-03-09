@@ -11,10 +11,22 @@
 #' @import dplyr
 #'
 #' @param data A data frame containing a Person Query.
-#' @param threshold A numeric vector of length two, specifying the hour threshold for flagging.
-#' Defaults to c(4, 15).
-#' @param return String to specify what to return.
-#' Valid options include "text" (default), "message", and "data".
+#' @param threshold A numeric vector of length two, specifying the hour
+#'   threshold for flagging. Defaults to c(4, 15).
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"text"` (default)
+#'   - `"message"`
+#'   - `"data"`
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"text"`: string. A diagnostic message.
+#'   - `"message"`: message on console. A diagnostic message.
+#'   - `"data"`: data frame. Data where flag is present.
+#'
+#' See `Value` for more information.
 #'
 #' @family Data Validation
 #'
@@ -24,9 +36,16 @@
 #'
 #' # Example where Outlook Start and End times are imputed
 #' spq_df <- sq_data
+#'
 #' spq_df$WorkingStartTimeSetInOutlook <- "6:30"
+#'
 #' spq_df$WorkingEndTimeSetInOutlook <- "23:30"
+#'
+#' # Return a message
 #' flag_outlooktime(spq_df, threshold = c(5, 13))
+#'
+#' # Return data
+#' flag_outlooktime(spq_df, threshold = c(5, 13), return = "data")
 #'
 #' @export
 flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
@@ -133,13 +152,21 @@ flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
   ## Print diagnosis
   ## Should implement options to return the PersonIds or a full data frame
   if(return == "text"){
+
     FlagMessage
+
   } else if(return == "message"){
+
     message(FlagMessage)
+
   } else if(return == "data"){
+
     flagged_data[flagged_data$WorkdayFlag == TRUE,]
+
   } else {
+
     stop("Error: please check inputs for `return`")
+
   }
 }
 

@@ -36,7 +36,9 @@
 #' @import dplyr
 #' @import ggplot2
 #'
+#' @family Visualization
 #' @family Flexible
+#' @family Time-series
 #'
 #' @examples
 #' # Return plot

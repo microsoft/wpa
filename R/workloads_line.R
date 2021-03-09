@@ -14,7 +14,8 @@
 #' @inheritParams create_line
 #' @inherit create_line return
 #'
-#' @family Workloads
+#' @family Visualization
+#' @family Workweek Span
 #'
 #' @examples
 #' # Return a line plot

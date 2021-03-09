@@ -7,8 +7,8 @@
 #'
 #' @description
 #' Creates a sum total calculation using selected metrics,
-#' where the typical use case is to create different definitions
-#' of collaboration hours.
+#' where the typical use case is to create different definitions of
+#' collaboration hours.
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a summary table.
 #'
@@ -32,6 +32,7 @@
 #' @import scales
 #' @importFrom stats reorder
 #'
+#' @family Visualization
 #' @family Flexible
 #'
 #' @return

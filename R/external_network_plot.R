@@ -6,9 +6,12 @@
 #' @title Plot External Network Breadth and Size as a scatter plot
 #'
 #' @description
-#' Plot the external network metrics for a HR variable as a scatter plot, showing
-#' External Network Breadth as the vertical axis and External Network Size as the
-#' horizontal axis.
+#' Plot the external network metrics for a HR variable as a scatter plot,
+#' showing 'External Network Breadth' as the vertical axis and 'External Network
+#' Size' as the horizontal axis.
+#'
+#' @details
+#' Uses the metrics `External_network_size` and `Networking_outside_company`.
 #'
 #' @inheritParams create_bubble
 #'
@@ -16,7 +19,8 @@
 #' # Return plot
 #' sq_data %>% external_network_plot(return = "plot")
 #'
-#' @family Connectivity
+#' @family Visualization
+#' @family Network
 #'
 #' @export
 

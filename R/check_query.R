@@ -28,7 +28,8 @@
 #' See `Value` for more information.
 #'
 #' @param validation Logical value to specify whether to return a check used by
-#'   the `validation_report()`. Defaults to `FALSE`.
+#'   the `validation_report()`. Defaults to `FALSE`. To hide checks on variable
+#'   names, set `validation` to `TRUE`.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return`

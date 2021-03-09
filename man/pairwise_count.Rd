@@ -9,14 +9,14 @@ pairwise_count(data, id = "line", word = "word")
 \arguments{
 \item{data}{Data frame output from \code{tm_clean()}.}
 
-\item{id}{String to represent the id variable. Defaults to "line".}
+\item{id}{String to represent the id variable. Defaults to \code{"line"}.}
 
-\item{word}{String to represent the word variable. Defaults to "word".}
+\item{word}{String to represent the word variable. Defaults to \code{"word"}.}
 }
 \description{
-This is a \strong{data.table} implementation that mimics the output of
-\code{widyr::pairwise_count()} to reduce package dependency. This is used internally
-within \code{tm_cooc()}.
+This is a 'data.table' implementation that mimics the output
+of \code{widyr::pairwise_count()} to reduce package dependency. This is used
+internally within \code{tm_cooc()}.
 }
 \examples{
 td <- data.frame(line = c(1, 1, 2, 2),
@@ -25,3 +25,37 @@ td <- data.frame(line = c(1, 1, 2, 2),
 pairwise_count(td, id = "line", word = "word")
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+
+Other Text-mining: 
+\code{\link{meeting_tm_report}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{tm_clean}()},
+\code{\link{tm_cooc}()},
+\code{\link{tm_freq}()},
+\code{\link{tm_wordcloud}()}
+}
+\concept{Support}
+\concept{Text-mining}

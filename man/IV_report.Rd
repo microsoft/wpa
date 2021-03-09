@@ -27,7 +27,7 @@ the values 1 or 0.}
 defaults to 10.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
-extension}. For example, "collaboration report".}
+extension}. For example, \code{"IV report"}.}
 
 \item{timestamp}{Logical vector specifying whether to include a timestamp in
 the file name. Defaults to TRUE.}
@@ -45,7 +45,7 @@ have predictive power or influence on the value of a specified dependent
 variable.
 }
 \examples{
-\dontrun{
+\donttest{
 sq_data \%>\%
   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\% # Simulate binary variable
   IV_report(outcome =  "CH_binary",
@@ -61,12 +61,21 @@ Other Reports:
 \code{\link{connectivity_report}()},
 \code{\link{generate_report}()},
 \code{\link{meeting_tm_report}()},
+\code{\link{read_preamble}()},
 \code{\link{subject_validate_report}()},
-\code{\link{validation_report}()}
+\code{\link{validation_report}()},
+\code{\link{workpatterns_report}()}
+
+Other Variable Association: 
+\code{\link{IV_by_period}()},
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
 
 Other Information Value: 
 \code{\link{IV_by_period}()},
-\code{\link{create_IV}()}
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
 }
 \concept{Information Value}
 \concept{Reports}
+\concept{Variable Association}

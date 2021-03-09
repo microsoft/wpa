@@ -15,6 +15,7 @@
 #'
 #' @inheritParams create_rank
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @return

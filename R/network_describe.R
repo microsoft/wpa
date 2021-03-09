@@ -3,23 +3,71 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Uncover HR attributes which best represent a population for a Person to Person query
+#' @title
+#' Uncover HR attributes which best represent a population for a Person to
+#' Person query
 #'
 #' @author Tannaz Sattari Tabrizi <Tannaz.Sattari@microsoft.com>
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
-#' Returns a data frame that gives a percentage of the group combinations that best represent
-#' the population provided. Uses a person to person query.
 #'
-#' @param data Data frame for a person to person query.
-#' @param hrvar Character vector of length 3 containing the HR attributes to be used.
+#' Returns a data frame that gives a percentage of the group combinations that
+#' best represent the population provided. Uses a person to person query. This
+#' is used internally within `network_p2p()`.
+#'
+#' @param data Data frame containing a vertex table output from `network_p2p()`.
+#' @param hrvar Character vector of length 3 containing the HR attributes to be
+#'   used. Defaults to `c("Organization", "LevelDesignation", "FunctionType")`.
 #'
 #' @import dplyr
 #' @import tidyr
 #'
+#' @family Network
+#'
+#' @return data frame. A summary table giving the percentage of group
+#' combinations that best represent the provided data.
+#'
+#' @examples
+#' # Simulate a P2P edge list
+#' sim_data <- p2p_data_sim()
+#'
+#' # Perform Louvain Community Detection and return vertices
+#' lc_df <-
+#'   sim_data %>%
+#'   network_p2p(
+#'     display = "louvain",
+#'     return = "data"
+#'   )
+#'
+#' # Join org data from input edge list
+#' joined_df <-
+#'   lc_df %>%
+#'   dplyr::left_join(
+#'     sim_data %>%
+#'       dplyr::select(TieOrigin_PersonId,
+#'                     TieOrigin_Organization,
+#'                     TieOrigin_LevelDesignation,
+#'                     TieOrigin_City),
+#'     by = c("name" = "TieOrigin_PersonId"))
+#'
+#' # Describe cluster 2
+#' joined_df %>%
+#'   # dplyr::filter(cluster == "2") %>%
+#'   network_describe(
+#'     hrvar = c(
+#'       "Organization",
+#'       "LevelDesignation",
+#'       "City"
+#'     )
+#'   ) %>%
+#'   dplyr::glimpse()
+#'
 #' @export
-network_describe <- function(data, hrvar = c("Organization", "LevelDesignation", "FunctionType")){
+network_describe <- function(data,
+                             hrvar = c("Organization",
+                                       "LevelDesignation",
+                                       "FunctionType")){
 
   if(length(hrvar) != 3){
 

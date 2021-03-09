@@ -6,7 +6,7 @@
 #' @title Create a sankey chart from a two-column count table
 #'
 #' @description
-#' Create a networkD3 style sankey chart based on a long count table
+#' Create a 'networkD3' style sankey chart based on a long count table
 #' with two variables. The input data should have three columns, where
 #' each row is a unique group:
 #'   1. Variable 1
@@ -14,11 +14,17 @@
 #'   3. Count
 #'
 #' @param data Data frame of the long count table.
-#' @param var1 String containing the name of the variable to be shown on the left.
-#' @param var2 String containing the name of the variable to be shown on the right.
+#' @param var1 String containing the name of the variable to be shown on the
+#'   left.
+#' @param var2 String containing the name of the variable to be shown on the
+#'   right.
 #' @param count String containing the name of the count variable.
 #'
 #' @import dplyr
+#'
+#' @return A 'sankeyNetwork' and 'htmlwidget' object containing a two-tier
+#'  sankey plot. The output can be saved locally with
+#'  `htmlwidgets::saveWidget()`.
 #'
 #' @examples
 #' \donttest{
@@ -26,6 +32,9 @@
 #'   dplyr::count(Organization, FunctionType) %>%
 #'   create_sankey(var1 = "Organization", var2 = "FunctionType")
 #' }
+#'
+#' @family Visualization
+#' @family Flexible
 #'
 #' @export
 create_sankey <- function(data, var1, var2, count = "n"){

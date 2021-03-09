@@ -9,12 +9,15 @@
 #' Supply a numeric variable, e.g. `Collaboration_hours`,
 #' and the function returns a character vector
 #'
+#' @details
+#' This is used within `create_dist()` for numeric to categorical conversion.
+#'
 #' @param metric A numeric variable representing hours.
 #' @param cuts A numeric variable of minimum length 3 to represent the
 #' cut points required.
 #' @param unit String to specify the unit of the labels. Defaults to "hours".
 #'
-#' @family General
+#' @family Support
 #'
 #' @examples
 #' # Direct use

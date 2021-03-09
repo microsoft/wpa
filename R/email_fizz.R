@@ -8,6 +8,7 @@
 #' @inheritParams create_fizz
 #' @inherit create_fizz return
 #'
+#' @family Visualization
 #' @family Emails
 #'
 #' @examples

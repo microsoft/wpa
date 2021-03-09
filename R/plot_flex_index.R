@@ -1,8 +1,8 @@
 #' @title Plot a Sample of Working Patterns using Flexibility Index output
 #'
-#' @description This is a helper function for plotting visualizations for the Flexibility Index
-#' using the `data` output from `flex_index()`. This is used within `flex_index()` itself
-#' as an internal function.
+#' @description This is a helper function for plotting visualizations for the
+#'   Flexibility Index using the `data` output from `flex_index()`. This is used
+#'   within `flex_index()` itself as an internal function.
 #'
 #' @param data Data frame. Direct data output from `flex_index()`.
 #' @param sig_label Character string for identifying signal labels.
@@ -17,27 +17,24 @@
 #' @import ggplot2
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 #' @examples
-#' \dontrun{
+#' # Pre-calculate Flexibility Index
+#' fi_output <- flex_index(em_data, return = "data")
+#'
+#'
 #' # Examples of how to test the plotting options individually
 #' # Sample of 10 work patterns
-#' em_data %>%
-#'   flex_index(return = "data") %>%
-#'   plot_flex_index(method = "sample")
+#' plot_flex_index(fi_output, method = "sample")
 #'
 #' # 10 most common work patterns
-#' em_data %>%
-#'   flex_index(return = "data") %>%
-#'   plot_flex_index(method = "common")
+#' plot_flex_index(fi_output, method = "common")
 #'
 #' # Plot Flexibility Index over time
-#' em_data %>%
-#'   flex_index(return = "data") %>%
-#'   plot_flex_index(method = "time")
+#' plot_flex_index(fi_output, method = "time")
 #'
-#' }
+#' @return ggplot object. See `method`.
 #'
 #' @export
 plot_flex_index <- function(data,

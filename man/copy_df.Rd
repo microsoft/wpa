@@ -7,11 +7,14 @@
 copy_df(x, row.names = FALSE, col.names = TRUE, quietly = FALSE, ...)
 }
 \arguments{
-\item{x}{Data frame to be passed through. Cannot contain list-columns or nested data frames.}
+\item{x}{Data frame to be passed through. Cannot contain list-columns or
+nested data frames.}
 
-\item{row.names}{A logical vector for specifying whether to allow row names. Defaults to FALSE.}
+\item{row.names}{A logical vector for specifying whether to allow row names.
+Defaults to \code{FALSE}.}
 
-\item{col.names}{A logical vector for specifying whether to allow column names. Defaults to FALSE.}
+\item{col.names}{A logical vector for specifying whether to allow column
+names. Defaults to \code{FALSE}.}
 
 \item{quietly}{Set this to TRUE to not print data frame on console}
 
@@ -21,5 +24,15 @@ copy_df(x, row.names = FALSE, col.names = TRUE, quietly = FALSE, ...)
 This is a pipe-optimised function, that feeds into \code{wpa::export()},
 but can be used as a stand-alone function.
 
-Based on the original function at https://www.github.com/martinctc/surveytoolbox.
+Based on the original function from
+\url{https://github.com/martinctc/surveytoolbox}.
 }
+\seealso{
+Other Import and Export: 
+\code{\link{create_dt}()},
+\code{\link{export}()},
+\code{\link{import_to_fst}()},
+\code{\link{import_wpa}()},
+\code{\link{standardise_pq}()}
+}
+\concept{Import and Export}
