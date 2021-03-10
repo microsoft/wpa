@@ -10,6 +10,7 @@ network_g2g(
   time_investor = NULL,
   collaborator = NULL,
   metric = "Collaboration_hours",
+  algorithm = "fr",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -20,6 +21,7 @@ g2g_network(
   time_investor = NULL,
   collaborator = NULL,
   metric = "Collaboration_hours",
+  algorithm = "fr",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -36,6 +38,12 @@ column.}
 
 \item{metric}{String containing the variable name for metric. Defaults to
 \code{Collaboration_hours}.}
+
+\item{algorithm}{String to specify the node placement algorithm to be used.
+Defaults to \code{"fr"} for the force-directed algorithm of Fruchterman and
+Reingold. See
+\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
+list of options.}
 
 \item{exc_threshold}{Exclusion threshold to apply.}
 
@@ -77,6 +85,9 @@ g2g_data \%>\%
               collaborator = "Collaborators_Organization",
               metric = "Meeting_hours",
               exc_threshold = 0.05)
+
+# Return a network plot with circle layout
+g2g_data \%>\% network_g2g(algorithm = "circle")
 
 # Return an interaction matrix
 # Minimum arguments specified

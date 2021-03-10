@@ -17,6 +17,11 @@
 #'   column.
 #' @param metric String containing the variable name for metric. Defaults to
 #'   `Collaboration_hours`.
+#' @param algorithm String to specify the node placement algorithm to be used.
+#'   Defaults to `"fr"` for the force-directed algorithm of Fruchterman and
+#'   Reingold. See
+#'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
+#'   list of options.
 #' @param exc_threshold Exclusion threshold to apply.
 #' @param subtitle String to override default plot subtitle.
 #' @param return String specifying what to return. This must be one of the
@@ -52,6 +57,9 @@
 #'               metric = "Meeting_hours",
 #'               exc_threshold = 0.05)
 #'
+#' # Return a network plot with circle layout
+#' g2g_data %>% network_g2g(algorithm = "circle")
+#'
 #' # Return an interaction matrix
 #' # Minimum arguments specified
 #' g2g_data %>%
@@ -63,6 +71,7 @@ network_g2g <- function(data,
                         time_investor = NULL,
                         collaborator = NULL,
                         metric = "Collaboration_hours",
+                        algorithm = "fr",
                         exc_threshold = 0.1,
                         subtitle = "Collaboration Across Organizations",
                         return = "plot"){
@@ -153,7 +162,7 @@ network_g2g <- function(data,
 
       ## Plot object
       mynet_em %>%
-        ggraph::ggraph(layout = "fr") +
+        ggraph::ggraph(layout = algorithm) +
         ggraph::geom_edge_link(aes(edge_width = metric_prop * 1), edge_alpha = 0.5, edge_colour = "grey") +
         ggraph::geom_node_point(size = 20, colour = "lightblue") +
         ggraph::geom_node_text(aes(label = name), size = 3, repel = FALSE) +
