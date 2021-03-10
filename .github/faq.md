@@ -17,7 +17,7 @@ R is an open-source statistical programming language and one of the most popular
 
 The reason why `install.packages()` will not work with **wpa** is because **wpa** is currently only available on GitHub and not on CRAN, and CRAN is where the function `install.packages()` downloads and installs R packages from. Instead, you should use `install_git()`:
 ```R
-remotes::install_git(url = "https://github.com/microsoft/wpa.git") 
+remotes::install_git(url = "https://github.com/microsoft/wpa.git", upgrade = "never") 
 ```
 For more information regarding installation, please see our [Getting Started](https://microsoft.github.io/wpa/analyst_guide_getting_started.html) page.
 
