@@ -11,6 +11,7 @@ network_g2g(
   collaborator = NULL,
   metric = "Collaboration_hours",
   algorithm = "fr",
+  node_colour = "lightblue",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -22,6 +23,7 @@ g2g_network(
   collaborator = NULL,
   metric = "Collaboration_hours",
   algorithm = "fr",
+  node_colour = "lightblue",
   exc_threshold = 0.1,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
@@ -44,6 +46,10 @@ Defaults to \code{"fr"} for the force-directed algorithm of Fruchterman and
 Reingold. See
 \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
 list of options.}
+
+\item{node_colour}{String to specify the colour to be used for displaying
+nodes. Defaults to \code{"lightblue"}. If \code{"vary"} is supplied, a different colour
+is shown for each node at random.}
 
 \item{exc_threshold}{Exclusion threshold to apply.}
 
@@ -87,7 +93,10 @@ g2g_data \%>\%
               exc_threshold = 0.05)
 
 # Return a network plot with circle layout
-g2g_data \%>\% network_g2g(algorithm = "circle")
+# Vary node colours
+g2g_data \%>\%
+  network_g2g(algorithm = "circle",
+              node_colour = "vary")
 
 # Return an interaction matrix
 # Minimum arguments specified

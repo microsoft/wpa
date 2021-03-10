@@ -22,6 +22,9 @@
 #'   Reingold. See
 #'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
 #'   list of options.
+#' @param node_colour String to specify the colour to be used for displaying
+#' nodes. Defaults to `"lightblue"`. If `"vary"` is supplied, a different colour
+#' is shown for each node at random.
 #' @param exc_threshold Exclusion threshold to apply.
 #' @param subtitle String to override default plot subtitle.
 #' @param return String specifying what to return. This must be one of the
@@ -58,7 +61,10 @@
 #'               exc_threshold = 0.05)
 #'
 #' # Return a network plot with circle layout
-#' g2g_data %>% network_g2g(algorithm = "circle")
+#' # Vary node colours
+#' g2g_data %>%
+#'   network_g2g(algorithm = "circle",
+#'               node_colour = "vary")
 #'
 #' # Return an interaction matrix
 #' # Minimum arguments specified
@@ -72,6 +78,7 @@ network_g2g <- function(data,
                         collaborator = NULL,
                         metric = "Collaboration_hours",
                         algorithm = "fr",
+                        node_colour = "lightblue",
                         exc_threshold = 0.1,
                         subtitle = "Collaboration Across Organizations",
                         return = "plot"){
@@ -161,12 +168,36 @@ network_g2g <- function(data,
     } else {
 
       ## Plot object
-      mynet_em %>%
+      plot_obj <-
+        mynet_em %>%
         ggraph::ggraph(layout = algorithm) +
-        ggraph::geom_edge_link(aes(edge_width = metric_prop * 1), edge_alpha = 0.5, edge_colour = "grey") +
-        ggraph::geom_node_point(size = 20, colour = "lightblue") +
+        ggraph::geom_edge_link(aes(edge_width = metric_prop * 1),
+                               edge_alpha = 0.5,
+                               edge_colour = "grey")
+
+      if(node_colour == "vary"){
+
+        plot_obj <-
+          plot_obj +
+          ggraph::geom_node_point(
+            aes(color = name),
+            size = 20)
+
+      } else {
+
+        plot_obj <-
+          plot_obj +
+          ggraph::geom_node_point(
+            size = 20,
+            colour = node_colour)
+
+      }
+
+      plot_obj +
         ggraph::geom_node_text(aes(label = name), size = 3, repel = FALSE) +
-        ggplot2::theme(panel.background = ggplot2::element_rect(fill = 'white'), legend.position = "none") +
+        ggplot2::theme(
+          panel.background = ggplot2::element_rect(fill = 'white'),
+          legend.position = "none") +
         theme_wpa_basic() +
         labs(title = "Group to Group Collaboration",
              subtitle = subtitle,
