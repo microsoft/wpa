@@ -13,7 +13,8 @@
 #' @inheritParams create_fizz
 #' @inherit create_fizz return
 #'
-#' @family Workloads
+#' @family Visualization
+#' @family Workweek Span
 #'
 #' @examples
 #' # Return plot

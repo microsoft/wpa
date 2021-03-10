@@ -39,6 +39,8 @@
 #' @import ggplot2
 #' @import dplyr
 #'
+#' @family Network
+#'
 #' @examples
 #' # Return a network plot
 #' g2g_data %>% network_g2g()

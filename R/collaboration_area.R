@@ -34,6 +34,7 @@
 #' @import reshape2
 #' @import scales
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @examples

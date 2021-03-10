@@ -14,6 +14,7 @@
 #' @inheritParams create_line
 #' @inherit create_line return
 #'
+#' @family Visualization
 #' @family Meetings
 #'
 #' @examples
@@ -25,9 +26,10 @@
 #'
 #' @export
 meeting_line <- function(data,
-                       hrvar = "Organization",
-                       mingroup = 5,
-                       return = "plot"){
+                         hrvar = "Organization",
+                         mingroup = 5,
+                         return = "plot"){
+
   ## Inherit arguments
   create_line(data = data,
               metric = "Meeting_hours",

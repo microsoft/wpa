@@ -16,19 +16,21 @@ validation_report(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{meeting_data}{An optional Meeting Query dataset in the form of a data frame.}
+\item{meeting_data}{An optional Meeting Query dataset in the form of a data
+frame.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "Organization"}
 
-\item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.}
+\item{path}{Pass the file path and the desired file name, \emph{excluding the file
+extension}.}
 
-\item{hrvar_threshold}{Numeric value determining the maximum number of unique values
-to be allowed to qualify as a HR variable. This is passed directly to the \code{threshold}
-argument within \code{hrvar_count_all()}.}
+\item{hrvar_threshold}{Numeric value determining the maximum number of unique
+values to be allowed to qualify as a HR variable. This is passed directly
+to the \code{threshold} argument within \code{hrvar_count_all()}.}
 
-\item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.}
+\item{timestamp}{Logical vector specifying whether to include a timestamp in
+the file name. Defaults to \code{TRUE}.}
 }
 \value{
 An HTML report with the same file name as specified in the arguments is
@@ -41,17 +43,18 @@ Standard Person Query data as an input. The report contains checks on
 Workplace Analytics query outputs to provide diagnostic information
 for the Analyst prior to analysis.
 
-An additional Standard Meeting Query can be provided to perform meeting subject line
-related checks. This is optional and the validation report can be run without it.
+An additional Standard Meeting Query can be provided to perform meeting
+subject line related checks. This is optional and the validation report can
+be run without it.
 }
 \details{
-For your input to \code{data} or \code{meeting_data}, please use the function \code{wpa::import_wpa()}
-to import your csv query files into R. This function will standardize format
-and prepare the data as input for this report.
+For your input to \code{data} or \code{meeting_data}, please use the function
+\code{wpa::import_wpa()} to import your csv query files into R. This function will
+standardize format and prepare the data as input for this report.
 
-If you are passing a Ways of Working Assessment query instead of a Standard Person query
-to the \code{data} argument, please also use \code{standardise_pq()} to make the variable names
-consistent with a Standard Person Query.
+If you are passing a Ways of Working Assessment query instead of a Standard
+Person query to the \code{data} argument, please also use \code{standardise_pq()} to
+make the variable names consistent with a Standard Person Query.
 }
 \section{Checking functions within \code{validation_report()}}{
 
@@ -73,7 +76,7 @@ You can browse each individual function for details on calculations.
 }
 
 \examples{
-\dontrun{
+\donttest{
 validation_report(dv_data,
                   meeting_data = mt_data,
                   hrvar = "Organization")
@@ -90,6 +93,35 @@ Other Reports:
 \code{\link{connectivity_report}()},
 \code{\link{generate_report}()},
 \code{\link{meeting_tm_report}()},
-\code{\link{subject_validate_report}()}
+\code{\link{read_preamble}()},
+\code{\link{subject_validate_report}()},
+\code{\link{workpatterns_report}()}
+
+Other Data Validation: 
+\code{\link{check_query}()},
+\code{\link{extract_hr}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count_all}()},
+\code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
+\code{\link{identify_holidayweeks}()},
+\code{\link{identify_inactiveweeks}()},
+\code{\link{identify_nkw}()},
+\code{\link{identify_outlier}()},
+\code{\link{identify_privacythreshold}()},
+\code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
+\code{\link{identify_tenure}()},
+\code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{track_HR_change}()}
 }
+\concept{Data Validation}
 \concept{Reports}

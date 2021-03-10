@@ -6,23 +6,27 @@
 #' @title Scan meeting subject and highlight items for review
 #'
 #' @description
-#' This functions scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-#' Returns a summary in the console by default.
-#' Additional option to return the underlying data with a flag of items for review.
+#' This functions scans a meeting query and highlights meetings with subjects
+#' that include common exlusion terms. It is intended to be used by an analyst
+#' to validate raw data before conducting additional analysis. Returns a summary
+#' in the console by default. Additional option to return the underlying data
+#' with a flag of items for review.
 #'
 #'
 #' @family Data Validation
+#' @family Text-mining
 #'
 #' @param data A meeting query in the form of a data frame.
-#' @param return A string specifying what to return.
-#' Returns a message in the console by default, where 'text' is passed in `return`.
-#' When 'table' is passed, a summary table with common terms found is printed.
-#' When 'data' is passed, a the original data with an additional flag column is returned as a data frame.
+#' @param return A string specifying what to return. Returns a message in the
+#'   console by default, where `'text'` is passed in `return`. When `'table'` is
+#'   passed, a summary table with common terms found is printed. When `'data'`
+#'   is passed, a the original data with an additional flag column is returned
+#'   as a data frame.
 #'
-#' @return
-#' Returns a message in the console by default, where 'text' is passed in `return`.
-#' When 'table' is passed, a summary table with common terms found is printed.
-#' When 'data' is passed, a the original data with an additional flag column is returned as a data frame.
+#' @return Returns a message in the console by default, where `'text'` is passed
+#' in `return`. When `'table'` is passed, a summary table with common terms
+#' found is printed. When `'data'` is passed, a the original data with an
+#' additional flag column is returned as a data frame.
 #'
 #' @export
 

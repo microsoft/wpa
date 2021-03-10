@@ -6,9 +6,10 @@
 #' @title Heat mapped horizontal bar plot over time for any metric
 #'
 #' @description
-#' Provides a week by week view of a selected Workplace Analytics metric.
-#' By default returns a week by week heatmap bar plot, highlighting the points in time with most activity.
-#' Additional options available to return a summary table.
+#' Provides a week by week view of a selected Workplace Analytics metric. By
+#' default returns a week by week heatmap bar plot, highlighting the points in
+#' time with most activity. Additional options available to return a summary
+#' table.
 #'
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
@@ -25,7 +26,9 @@
 #' @import reshape2
 #' @import scales
 #'
+#' @family Visualization
 #' @family Flexible
+#' @family Time-series
 #'
 #' @examples
 #' create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")

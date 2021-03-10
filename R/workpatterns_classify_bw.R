@@ -23,9 +23,12 @@
 #'   over time
 #'
 #' @param signals Character vector to specify which collaboration metrics to
-#'   use: - "email" (default) for emails only - "IM" for Teams messages only, -
-#'   "unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-#'   only - or a combination of signals, such as `c("email", "IM")`
+#'   use:
+#'   - a combination of signals, such as `c("email", "IM")` (default)
+#'   - `"email"` for emails only
+#'   - `"IM"` for Teams messages only
+#'   - `"unscheduled_calls"` for Unscheduled Calls only
+#'   - `"meetings"` for Meetings only
 #'
 #' @param active_threshold A numeric value specifying the minimum number of
 #'   signals to be greater than in order to qualify as _active_. Defaults to 0.
@@ -40,12 +43,12 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' workpatterns_classify_bw(em_data)
 #' }
 #'
 #'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 workpatterns_classify_bw <- function(data,
                                      hrvar = NULL,

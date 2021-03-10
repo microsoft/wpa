@@ -7,14 +7,16 @@
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
-#' This function takes in a selected metric and uses z-score (number of standard
-#' deviations) to identify and remove outlier weeks for individuals across time. There are applications
-#' in this for removing weeks with abnormally low collaboration
-#' activity, e.g. holidays. Retains metrics with z > -2.
 #'
-#' Function is based on `identify_outlier()`, but implements a more elaborate approach as the outliers are
-#' identified and removed **with respect to each individual**, as opposed to the group. Note that `remove_outliers()`
-#' has a longer runtime compared to `identify_outlier()`.
+#' This function takes in a selected metric and uses z-score (number of standard
+#' deviations) to identify and remove outlier weeks for individuals across time.
+#' There are applications in this for removing weeks with abnormally low
+#' collaboration activity, e.g. holidays. Retains metrics with z > -2.
+#'
+#' Function is based on `identify_outlier()`, but implements a more elaborate
+#' approach as the outliers are identified and removed **with respect to each
+#' individual**, as opposed to the group. Note that `remove_outliers()` has a
+#' longer runtime compared to `identify_outlier()`.
 #'
 #' @details
 #' For mature functions to remove common outliers, please see the following:
@@ -27,6 +29,7 @@
 #' e.g. "Collaboration_hours"
 #'
 #' @import dplyr
+#'
 #' @family Data Validation
 #'
 #' @return

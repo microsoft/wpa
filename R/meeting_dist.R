@@ -13,7 +13,8 @@
 #' @inheritParams create_dist
 #' @inherit create_dist return
 #'
-#' @family Meeting Culture
+#' @family Visualization
+#' @family Meetings
 #'
 #' @examples
 #' # Return plot

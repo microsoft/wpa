@@ -10,12 +10,10 @@
 #' a 'fizzy' scatter plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
-#' @details
-#' Uses the metric `After_hours_collaboration_hours`.
-#'
 #' @inheritParams create_fizz
 #' @inherit create_fizz return
 #'
+#' @family Visualization
 #' @family Managerial Relations
 #'
 #' @examples

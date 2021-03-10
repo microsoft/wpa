@@ -2,7 +2,8 @@
 % Please edit documentation in R/network_describe.R
 \name{network_describe}
 \alias{network_describe}
-\title{Uncover HR attributes which best represent a population for a Person to Person query}
+\title{Uncover HR attributes which best represent a population for a Person to
+Person query}
 \usage{
 network_describe(
   data,
@@ -10,15 +11,70 @@ network_describe(
 )
 }
 \arguments{
-\item{data}{Data frame for a person to person query.}
+\item{data}{Data frame containing a vertex table output from \code{network_p2p()}.}
 
-\item{hrvar}{Character vector of length 3 containing the HR attributes to be used.}
+\item{hrvar}{Character vector of length 3 containing the HR attributes to be
+used. Defaults to \code{c("Organization", "LevelDesignation", "FunctionType")}.}
+}
+\value{
+data frame. A summary table giving the percentage of group
+combinations that best represent the provided data.
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
-Returns a data frame that gives a percentage of the group combinations that best represent
-the population provided. Uses a person to person query.
+
+Returns a data frame that gives a percentage of the group combinations that
+best represent the population provided. Uses a person to person query. This
+is used internally within \code{network_p2p()}.
+}
+\examples{
+# Simulate a P2P edge list
+sim_data <- p2p_data_sim()
+
+# Perform Louvain Community Detection and return vertices
+lc_df <-
+  sim_data \%>\%
+  network_p2p(
+    display = "louvain",
+    return = "data"
+  )
+
+# Join org data from input edge list
+joined_df <-
+  lc_df \%>\%
+  dplyr::left_join(
+    sim_data \%>\%
+      dplyr::select(TieOrigin_PersonId,
+                    TieOrigin_Organization,
+                    TieOrigin_LevelDesignation,
+                    TieOrigin_City),
+    by = c("name" = "TieOrigin_PersonId"))
+
+# Describe cluster 2
+joined_df \%>\%
+  # dplyr::filter(cluster == "2") \%>\%
+  network_describe(
+    hrvar = c(
+      "Organization",
+      "LevelDesignation",
+      "City"
+    )
+  ) \%>\%
+  dplyr::glimpse()
+
+}
+\seealso{
+Other Network: 
+\code{\link{external_network_plot}()},
+\code{\link{g2g_data}},
+\code{\link{internal_network_plot}()},
+\code{\link{network_g2g}()},
+\code{\link{network_leiden}()},
+\code{\link{network_louvain}()},
+\code{\link{network_p2p}()},
+\code{\link{p2p_data_sim}()}
 }
 \author{
 Tannaz Sattari Tabrizi \href{mailto:Tannaz.Sattari@microsoft.com}{Tannaz.Sattari@microsoft.com}
 }
+\concept{Network}

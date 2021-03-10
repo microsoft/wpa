@@ -17,7 +17,8 @@
 #' @inheritParams create_fizz
 #' @inherit create_fizz return
 #'
-#' @family After-Hours
+#' @family Visualization
+#' @family After-hours Collaboration
 #'
 #' @examples
 #' # Return plot

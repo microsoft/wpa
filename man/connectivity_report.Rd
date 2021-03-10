@@ -15,16 +15,18 @@ connectivity_report(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{path}{Pass the file path and the desired file name, \emph{excluding the file extension}.
-For example, "collaboration report".}
+\item{path}{Pass the file path and the desired file name, \emph{excluding the file
+extension}. For example, \code{"connectivity report"}.}
 
-\item{timestamp}{Logical vector specifying whether to include a timestamp in the file name.
-Defaults to TRUE.}
+\item{timestamp}{Logical vector specifying whether to include a timestamp in
+the file name. Defaults to \code{TRUE}.}
 }
 \value{
 An HTML report with the same file name as specified in the arguments is
@@ -32,11 +34,10 @@ generated in the working directory. No outputs are directly returned by the
 function.
 }
 \description{
-The function generates an interactive HTML report using
-Standard Person Query data as an input. The report contains a series
-of summary analysis and visualisations relating to key \strong{connectivity}
-metrics in Workplace Analytics, including external/internal network size
-vs breadth.
+The function generates an interactive HTML report using Standard Person Query
+data as an input. The report contains a series of summary analysis and
+visualisations relating to key \strong{connectivity} metrics in Workplace
+Analytics, including external/internal network size vs breadth.
 }
 \seealso{
 Other Reports: 
@@ -46,7 +47,9 @@ Other Reports:
 \code{\link{collaboration_report}()},
 \code{\link{generate_report}()},
 \code{\link{meeting_tm_report}()},
+\code{\link{read_preamble}()},
 \code{\link{subject_validate_report}()},
-\code{\link{validation_report}()}
+\code{\link{validation_report}()},
+\code{\link{workpatterns_report}()}
 }
 \concept{Reports}

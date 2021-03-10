@@ -36,7 +36,7 @@ Here are a list of other individual plots that you can run:
 One option to advance the analysis is to take a deep dive into meetings.
 
 - `meeting_skim()` can be used to understand the overall % of meetings which are low quality. Hours can be expressed in terms of number of FTE-weeks (or months), or even dollar values for greater impact. Typical assumptions used are 40 employee-hours per week and 180 per month.
-- `meetingtype_dist()` can be used to understand the distribution of long or large meetings.
+- `meetingtype_dist()` can be used to understand the distribution of long or large meetings. Another alternative, `meetingtype_summary()` can be used to visualize the proportion of long or large meetings as a bar plot (requires a Ways of Working Assessment query).
 - **Meeting subject line text mining**: `meeting_tm_report()` can reveal patterns underlying meeting subject lines. The report is made of individual visualization functions, i.e.:
 	- `tm_cooc()`
 	- `tm_freq()`
@@ -129,7 +129,7 @@ Good manager coaching is a key factor for employee engagement and retention.
 
 **Employee sentiment analysis**
 - To compute feature importance, you can leverage `create_IV()` and `IV_report()` for calculating Information Value, using  Workplace Analytics metrics (including manager metrics) as predictor variables and employee sentiment scores as an outcome variable.
-- If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn't a function for modelling in **wpa**, but you can make use of capabilities in the wider R universe, such as **randomForest** and **tidymodels**. 
+- If employee churn and sentiment data is available, you can also use Workplace Analytics to build a model for understanding the most important reasons for churn. There currently isn't a function for modelling in **wpa**, but you can make use of capabilities in the wider R universe, such as **randomForest** and **tidymodels**. The function `identify_churn()` can be used to identify employees who have churned from the dataset.  
 - For more capabilities in calculating variable importance, you may reference the **rwa** and the **vip** packages.
 
 ## Teaming and Networks

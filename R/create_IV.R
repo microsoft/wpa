@@ -41,9 +41,11 @@
 #'
 #' @import dplyr
 #'
+#' @family Variable Association
 #' @family Information Value
 #'
 #' @examples
+#' \donttest{
 #' # Return a summary table of IV
 #' sq_data %>%
 #'   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) %>%
@@ -53,7 +55,7 @@
 #'                            "Instant_Message_hours"),
 #'             return = "plot")
 #'
-#' \donttest{
+#'
 #' # Return summary
 #' sq_data %>%
 #'   dplyr::mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) %>%
@@ -175,6 +177,10 @@ create_IV <- function(data,
 #' @return
 #' ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
 #' variable as the horizontal axis.
+#'
+#' @family Support
+#' @family Variable Association
+#' @family Information Value
 #'
 #' @import dplyr
 #' @import ggplot2

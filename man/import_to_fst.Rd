@@ -18,7 +18,7 @@ file will be saved in the same directory with a different file extension.}
 \description{
 Uses \code{import_wpa()} to read a Workplace Analytics query in CSV
 and convert this into the serialized FST format which is much faster to
-read. The 'fst' package must be installed.
+read. The 'fst' package must be installed, or an error message is returned.
 }
 \details{
 The \href{https://www.fstpackage.org/}{fst} package provides a way to serialize
@@ -35,3 +35,12 @@ at the start of your analysis script.
 Internally, \code{import_to_fst()} uses \code{import_wpa()}, and additional arguments
 to \code{import_wpa()} can be passed with \code{...}.
 }
+\seealso{
+Other Import and Export: 
+\code{\link{copy_df}()},
+\code{\link{create_dt}()},
+\code{\link{export}()},
+\code{\link{import_wpa}()},
+\code{\link{standardise_pq}()}
+}
+\concept{Import and Export}

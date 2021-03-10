@@ -19,3 +19,39 @@ variable as the horizontal axis.
 Internal function within \code{create_IV()} that plots WOE graphs using an IV
 object. Can also be used for plotting individual WOE graphs.
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+
+Other Variable Association: 
+\code{\link{IV_by_period}()},
+\code{\link{IV_report}()},
+\code{\link{create_IV}()}
+
+Other Information Value: 
+\code{\link{IV_by_period}()},
+\code{\link{IV_report}()},
+\code{\link{create_IV}()}
+}
+\concept{Information Value}
+\concept{Support}
+\concept{Variable Association}

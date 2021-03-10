@@ -17,23 +17,47 @@ identify_privacythreshold(
 \item{hrvar}{A list of HR Variables to consider in the scan.
 Defaults to all HR attributes identified.}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
-Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{return}{A character vector specifying what to return.
-Valid values include "table" (default) and "text" (text)}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"table"}
+\item \code{"text"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"table"}: data frame. A summary table of groups that fall below the
+privacy threshold.
+\item \code{"text"}: string. A diagnostic message.
+}
+
 Returns a ggplot object by default, where 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{
-This function scans a standard query output for groups with of employees under the privacy threshold.
-The method consists in reviewing each individual HR attribute, and count the distinct people within each group.
+This function scans a standard query output for groups with of employees
+under the privacy threshold. The method consists in reviewing each individual
+HR attribute, and count the distinct people within each group.
+}
+\examples{
+# Return a summary table
+dv_data \%>\% identify_privacythreshold(return = "table")
+
+# Return a diagnostic message
+dv_data \%>\% identify_privacythreshold(return = "text")
+
 }
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -41,15 +65,20 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

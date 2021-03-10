@@ -15,3 +15,8 @@ base font size. Defaults to 12.}
 A theme function applied to ggplot visualisations in {wpa}.
 Based on \code{theme_wpa()} but has no font requirements.
 }
+\seealso{
+Other Themes: 
+\code{\link{theme_wpa}()}
+}
+\concept{Themes}

@@ -12,14 +12,20 @@
 #' @param title Character string to specify the title of the chunk.
 #' @param filename File name to be used in the exported HTML.
 #' @param outputs A list of outputs to be added to the HTML report.
-#' Note that `outputs`, `titles`, `echos`, and `levels` must have the same length
-#' @param titles A list/vector of character strings to specify the title of the chunks.
-#' @param subheaders A list/vector of character strings to specify the subheaders for each chunk.
-#' @param echos A list/vector of logical values to specify whether to display code.
-#' @param levels A list/vector of numeric value to specify the header level of the chunk.
+#' Note that `outputs`, `titles`, `echos`, and `levels` must have the same
+#' length
+#' @param titles A list/vector of character strings to specify the title of the
+#'   chunks.
+#' @param subheaders A list/vector of character strings to specify the
+#'   subheaders for each chunk.
+#' @param echos A list/vector of logical values to specify whether to display
+#'   code.
+#' @param levels A list/vector of numeric value to specify the header level of
+#'   the chunk.
 #' @param theme Character vector to specify theme to be used for the report.
-#' E.g. "united", "default".
-#' @param preamble A preamble to appear at the beginning of the report, passed as a text string.
+#' E.g. `"united"`, `"default"`.
+#' @param preamble A preamble to appear at the beginning of the report, passed
+#'   as a text string.
 #'
 #' @importFrom purrr pmap
 #' @importFrom purrr reduce
@@ -32,6 +38,7 @@
 #'
 #' The first step is to define the content that will go into a report and assign
 #' the outputs to a list.
+#'
 #' ```
 #' # Step 1: Define Content
 #' output_list <-
@@ -39,7 +46,9 @@
 #'        sq_data %>% workloads_summary(return = "table")) %>%
 #'   purrr::map_if(is.data.frame, create_dt)
 #' ```
+#'
 #' The next step is to add a list of titles for each of the objects on the list:
+#'
 #' ```
 #' # Step 2: Add Corresponding Titles
 #' title_list <- c("Workloads Summary - Plot", "Workloads Summary - Table")
@@ -176,6 +185,9 @@ generate_chunks <- function(level = 3,
 #'
 #' @param path Text string containing the path for the appropriate Markdown file.
 #'
+#' @family Support
+#' @family Reports
+#'
 #' @export
 read_preamble <- function(path){
 
@@ -200,6 +212,8 @@ read_preamble <- function(path){
 #' @importFrom markdown markdownToHTML
 #'
 #' @param text Character vector containing Markdown text
+#'
+#' @family Support
 #'
 md2html <- function(text){
 

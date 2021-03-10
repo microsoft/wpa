@@ -33,7 +33,9 @@
 #' @import scales
 #' @importFrom tidyselect all_of
 #'
+#' @family Visualization
 #' @family Flexible
+#' @family Time-series
 #'
 #' @examples
 #' # Return plot of Email Hours

@@ -22,6 +22,8 @@
 #'
 #' See `Value` for more information.
 #'
+#' @inheritParams workpatterns_classify_bw
+#'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
@@ -35,7 +37,8 @@
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
-#' @family Work Patterns
+#' @family Data Validation
+#' @family Working Patterns
 #'
 #' @examples
 #' # Return plot

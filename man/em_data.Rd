@@ -74,8 +74,17 @@ A data frame with 41567 rows and 56 variables:
 em_data
 }
 \description{
-A sample dataset generated from an Hourly Collaboration query
-from the WpA demo tenant. The data is grouped by week and contains
+A sample dataset generated from an Hourly Collaboration query from the
+Workplace Analytics demo tenant. The data is grouped by week and contains
 columns for both IMs sent and Emails sent.
 }
+\seealso{
+Other Data: 
+\code{\link{dv_data}},
+\code{\link{g2g_data}},
+\code{\link{mt_data}},
+\code{\link{p2p_data_sim}()},
+\code{\link{sq_data}}
+}
+\concept{Data}
 \keyword{datasets}

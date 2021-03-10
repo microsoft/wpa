@@ -14,10 +14,10 @@ totals_reorder(data, target_col, target_value = "Total")
 \item{target_value}{Character value of the value in \code{target_col} to match}
 }
 \description{
-For a given data frame, reorder a row to the first row
-of that data frame through matching a \emph{value} of a \emph{variable}. The intended
-usage of this function is to be used for reordering the "Total" row,
-and \emph{not} with "flat" data. This can be used in conjunction with \code{totals_bind()},
+For a given data frame, reorder a row to the first row of that
+data frame through matching a \emph{value} of a \emph{variable}. The intended usage
+of this function is to be used for reordering the "Total" row, and \emph{not}
+with "flat" data. This can be used in conjunction with \code{totals_bind()},
 which is used to create a "Total" row in the data.
 }
 \examples{
@@ -29,3 +29,27 @@ sq_data \%>\%
   totals_reorder(target_col = "group", target_value = "Total")
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+}
+\concept{Support}

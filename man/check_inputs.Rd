@@ -15,10 +15,9 @@ check_inputs(input, requirements, return = "stop")
 The default value is "stop". Also accepts "names" and "warning".}
 }
 \value{
-The default behaviour is to return an error message,
-informing the user what variables are not included. When \code{return} is set
-to "names", a character vector containing the unmatched variable names
-is returned.
+The default behaviour is to return an error message, informing the
+user what variables are not included. When \code{return} is set to "names", a
+character vector containing the unmatched variable names is returned.
 }
 \description{
 Checks whether a data frame contains all the required variables.
@@ -39,3 +38,27 @@ check_inputs(iris, c("Sepal.Length", "mpg"), return = "warning")
 check_inputs(iris, c("Sepal.Length", "Sepal.Width", "RandomVariable"), return = "names")
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+}
+\concept{Support}

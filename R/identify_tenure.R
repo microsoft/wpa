@@ -3,7 +3,8 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Tenure calculation based on different input dates, returns data summary table or histogram
+#' @title Tenure calculation based on different input dates, returns data
+#'   summary table or histogram
 #'
 #' @description
 #' This function calculates employee tenure based on different input dates.
@@ -13,8 +14,10 @@
 #' @family Data Validation
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param end_date A string specifying the name of the date variable representing the latest date. Defaults to "Date".
-#' @param beg_date A string specifying the name of the date variable representing the hire date. Defaults to "HireDate".
+#' @param end_date A string specifying the name of the date variable
+#'   representing the latest date. Defaults to "Date".
+#' @param beg_date A string specifying the name of the date variable
+#'   representing the hire date. Defaults to "HireDate".
 #' @param maxten A numeric value representing the maximum tenure.
 #' If the tenure exceeds this threshold, it would be accounted for in the flag message.
 #' @param return String to specify what to return.
@@ -95,9 +98,11 @@ identify_tenure <- function(data,
     )
 
   } else if(return == "data_cleaned"){
+
     return(data %>% filter(!(PersonId %in% oddpeople$PersonId)) %>% data.frame())
 
   } else if(return == "data_dirty"){
+
     return(data %>% filter((PersonId %in% oddpeople$PersonId)) %>% data.frame())
 
   } else if(return == "data"){
@@ -108,7 +113,9 @@ identify_tenure <- function(data,
       select(PersonId, TenureYear)
 
   } else {
+
     stop("Error: please check inputs for `return`")
+
   }
 
 }

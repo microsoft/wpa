@@ -33,12 +33,11 @@
 #' # Return summary table
 #' hr_trend(dv_data, return = "table")
 #'
+#' @family Visualization
 #' @family Data Validation
 #'
 #' @export
 hr_trend <- function(data, return = "plot"){
-
-  options(dplyr.summarise.inform = FALSE)
 
   data$Date <- as.Date(data$Date, format = "%m/%d/%Y")
 
@@ -48,7 +47,7 @@ hr_trend <- function(data, return = "plot"){
   plot_data <-
     data %>%
     group_by(Date) %>%
-    summarise(n = n_distinct(PersonId)) %>%
+    summarise(n = n_distinct(PersonId), .groups = "drop_last") %>%
     ungroup()
 
   if(return == "plot"){

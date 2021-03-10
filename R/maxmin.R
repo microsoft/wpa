@@ -1,16 +1,22 @@
 #' @title Max-Min Scaling Function
 #'
-#' @description This function allows you to scale vectors or an entire data frame using the max-min scaling method
-#' A numeric vector is always returned. Originally implemented in https://github.com/martinctc/surveytoolbox.
+#' @description This function allows you to scale vectors or an entire data
+#'   frame using the max-min scaling method A numeric vector is always returned.
+#'   Originally implemented in <https://github.com/martinctc/surveytoolbox>.
 #'
-#' @details This is used within `keymetrics_scan()` to enable row-wise heatmapping.
+#' @details This is used within `keymetrics_scan()` to enable row-wise
+#'   heatmapping.
 #'
-#' @param x Pass a vector or the required columns of a data frame through this argument.
+#' @param x Pass a vector or the required columns of a data frame through this
+#'   argument.
 #' @keywords max-min
-#' @export
+#'
+#' @family Support
+#'
 #' @examples
 #' numbers <- c(15, 40, 10, 2)
 #' maxmin(numbers)
+#'
 #' @export
 
 maxmin <- function(x){

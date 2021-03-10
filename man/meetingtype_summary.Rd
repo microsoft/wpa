@@ -3,7 +3,8 @@
 \name{meetingtype_summary}
 \alias{meetingtype_summary}
 \alias{meetingtype_sum}
-\title{Create a summary bar chart of the proportion of Meeting Hours spent in Long or Large Meetings}
+\title{Create a summary bar chart of the proportion of Meeting Hours spent in
+Long or Large Meetings}
 \usage{
 meetingtype_summary(
   data,
@@ -15,7 +16,8 @@ meetingtype_summary(
 meetingtype_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{Ways of Working Assessment query in the form of a data frame. Requires the following variables:
+\item{data}{Ways of Working Assessment query in the form of a data frame.
+Requires the following variables:
 \itemize{
 \item \code{Bloated_meeting_hours}
 \item \code{Lengthy_meeting_hours}
@@ -29,21 +31,104 @@ meetingtype_sum(data, hrvar = "Organization", mingroup = 5, return = "plot")
 \item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "LevelDesignation"}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 }
 \description{
-This function creates a bar chart showing the percentage of meeting hours which are spent in
-long or large meetings.
+This function creates a bar chart showing the percentage of meeting hours
+which are spent in long or large meetings.
 }
 \seealso{
-Other Meetings: 
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
 \code{\link{meeting_fizz}()},
 \code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
 \code{\link{meeting_rank}()},
 \code{\link{meeting_summary}()},
-\code{\link{meeting_trend}()}
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{mgrrel_matrix}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_rank}()}
+
+Other Meetings: 
+\code{\link{meeting_dist}()},
+\code{\link{meeting_extract}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_skim}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()}
 }
 \concept{Meetings}
+\concept{Visualization}

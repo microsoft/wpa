@@ -13,6 +13,7 @@
 #' @inheritParams create_bar
 #' @inherit create_bar return
 #'
+#' @family Visualization
 #' @family Meetings
 #'
 #' @examples

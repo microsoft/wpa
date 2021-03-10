@@ -19,14 +19,16 @@ deviations of each individual's collaboration activity.
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
-This function takes in a selected metric and uses z-score (number of standard
-deviations) to identify and remove outlier weeks for individuals across time. There are applications
-in this for removing weeks with abnormally low collaboration
-activity, e.g. holidays. Retains metrics with z > -2.
 
-Function is based on \code{identify_outlier()}, but implements a more elaborate approach as the outliers are
-identified and removed \strong{with respect to each individual}, as opposed to the group. Note that \code{remove_outliers()}
-has a longer runtime compared to \code{identify_outlier()}.
+This function takes in a selected metric and uses z-score (number of standard
+deviations) to identify and remove outlier weeks for individuals across time.
+There are applications in this for removing weeks with abnormally low
+collaboration activity, e.g. holidays. Retains metrics with z > -2.
+
+Function is based on \code{identify_outlier()}, but implements a more elaborate
+approach as the outliers are identified and removed \strong{with respect to each
+individual}, as opposed to the group. Note that \code{remove_outliers()} has a
+longer runtime compared to \code{identify_outlier()}.
 }
 \details{
 For mature functions to remove common outliers, please see the following:
@@ -39,6 +41,7 @@ For mature functions to remove common outliers, please see the following:
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -46,15 +49,20 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

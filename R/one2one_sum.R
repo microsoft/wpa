@@ -6,13 +6,14 @@
 #' @title Manager 1:1 Time Summary
 #'
 #' @description
-#' Provides an overview analysis of Manager 1:1 Time.
-#' Returns a bar plot showing average weekly minutes of Manager 1:1 Time by default.
-#' Additional options available to return a summary table.
+#' Provides an overview analysis of Manager 1:1 Time. Returns a bar plot showing
+#' average weekly minutes of Manager 1:1 Time by default. Additional options
+#' available to return a summary table.
 #'
 #' @inheritParams create_bar
 #' @inherit create_bar return
 #'
+#' @family Visualization
 #' @family Managerial Relations
 #'
 #' @examples

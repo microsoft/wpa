@@ -22,9 +22,14 @@ workpatterns_classify_bw(
 Defaults to NULL. This only affects the function when "table" is returned.}
 
 \item{signals}{Character vector to specify which collaboration metrics to
-use: - "email" (default) for emails only - "IM" for Teams messages only, -
-"unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-only - or a combination of signals, such as \code{c("email", "IM")}}
+use:
+\itemize{
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+}}
 
 \item{start_hour}{A character vector specifying start hours,
 e.g. "0900"}
@@ -48,21 +53,23 @@ algorithm to emails sent by hour of day, using the binary week-based (bw)
 method.
 }
 \examples{
-\dontrun{
+\donttest{
 workpatterns_classify_bw(em_data)
 }
 
 
 }
 \seealso{
-Other Work Patterns: 
+Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
-\code{\link{personas_hclust}()},
+\code{\link{identify_shifts}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_pav}()},
 \code{\link{workpatterns_classify}()},
-\code{\link{workpatterns_hclust}()}
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
-\concept{Work Patterns}
+\concept{Working Patterns}

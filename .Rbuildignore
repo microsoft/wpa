@@ -12,6 +12,7 @@
 ^pkgdown$
 ^\.github$
 ^CONTRIBUTORS.svg$
+man-roxygen
 
 # Ignore all figures
 ^man/figures

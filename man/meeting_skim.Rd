@@ -34,3 +34,20 @@ when provided a standard query in the input.
 meeting_skim(sq_data)
 
 }
+\seealso{
+Other Meetings: 
+\code{\link{meeting_dist}()},
+\code{\link{meeting_extract}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()}
+}
+\concept{Meetings}

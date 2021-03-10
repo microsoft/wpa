@@ -7,26 +7,131 @@
 meetingtype_dist(data, hrvar = NULL, mingroup = 5, return = "plot")
 }
 \arguments{
-\item{data}{Data frame. If a meeting query, must contain the variables \code{Attendee} and \code{DurationHours}.}
+\item{data}{Data frame. If a meeting query, must contain the variables
+\code{Attendee} and \code{DurationHours}.}
 
-\item{hrvar}{Character string to specify the HR attribute to split the data by.
-Note that this is only applicable if a Ways of Working Assessment query is passed to the function. If a Meeting Query
-is passed instead, this argument is ignored.}
+\item{hrvar}{Character string to specify the HR attribute to split the data
+by. Note that this is only applicable if a Ways of Working Assessment query
+is passed to the function. If a Meeting Query is passed instead, this
+argument is ignored.}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-Only applicable when using a Ways of Working Assessment query.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5. Only applicable when using a Ways of Working
+Assessment query.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table".}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A matrix of meeting types with duration and the
+number of attendees. If using a Ways of Working Assessment query with
+\code{meetingtype_dist_ca()} and an HR attribute with more than one unique value
+is passed to \code{hrvar}, a stacked bar plot is returned.
+\item \code{"table"}: data frame. A summary table.
+}
 }
 \description{
-Calculate the hour distribution of internal meeting types.
-This is a wrapper around \code{meetingtype_dist_mt()} and
-\code{meetingtype_dist_ca()}, depending on whether a Meeting Query or a Ways of Working Assessment Query
-is passed as an input.
+Calculate the hour distribution of internal meeting types. This
+is a wrapper around \code{meetingtype_dist_mt()} and \code{meetingtype_dist_ca()},
+depending on whether a Meeting Query or a Ways of Working Assessment Query is
+passed as an input.
 }
 \examples{
 # Implementation using Standard Meeting Query
 meetingtype_dist(mt_data)
 
 }
+\seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_summary}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{mgrrel_matrix}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_rank}()}
+
+Other Meetings: 
+\code{\link{meeting_dist}()},
+\code{\link{meeting_extract}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_skim}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_summary}()}
+}
+\concept{Meetings}
+\concept{Visualization}

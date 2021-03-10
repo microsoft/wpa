@@ -9,11 +9,11 @@ totals_bind(data, target_col, target_value = "Total")
 \arguments{
 \item{data}{data frame}
 
-\item{target_col}{Character value of the column in which to impute "Total".
+\item{target_col}{Character value of the column in which to impute \code{"Total"}.
 This is usually the intended grouping column.}
 
-\item{target_value}{Character value to impute in the new data frame to row-bind.
-Defaults to "Total".}
+\item{target_value}{Character value to impute in the new data frame to
+row-bind. Defaults to \code{"Total"}.}
 }
 \description{
 Row-bind an identical data frame and impute a specific
@@ -27,3 +27,27 @@ sq_data \%>\%
   collab_sum(hrvar = "LevelDesignation", return = "table")
 
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{md2html}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+}
+\concept{Support}

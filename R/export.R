@@ -13,14 +13,33 @@
 #'
 #' @param x Data frame or ggplot object to be passed through.
 #' @param method Character string specifying the method of export.
-#' Valid inputs include "clipboard" (default), "csv", "png", "svg", "jpeg", and "pdf".
-#' @param path If exporting a file, enter the path and the desired file name, _excluding the file extension_.
-#' For example, "Analysis/SQ Overview".
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name. Defaults to TRUE.
+#' Valid inputs include:
+#'   - `"clipboard"` (default if input is data frame)
+#'   - `"csv"`
+#'   - `"png"` (default if input is ggplot object)
+#'   - `"svg"`
+#'   - `"jpeg"`
+#'   - `"pdf"`
+#' @param path If exporting a file, enter the path and the desired file name,
+#'   _excluding the file extension_. For example, `"Analysis/SQ Overview"`.
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to `TRUE`.
 #' @param width Width of the plot
 #' @param height Height of the plot
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `method`
+#' argument:
+#'   - `"clipboard"`: no return - data frame is saved to clipboard.
+#'   - `"csv"`: CSV file containing data frame is saved to specified path.
+#'   - `"png"`: PNG file containing ggplot object is saved to specified path.
+#'   - `"svg"`: SVG file containing ggplot object is saved to specified path.
+#'   - `"jpeg"`: JPEG file containing ggplot object is saved to specified path.
+#'   - `"pdf"`: PDF file containing ggplot object is saved to specified path.
+#'
 #' @importFrom utils write.csv
+#'
+#' @family Import and Export
 #'
 #' @export
 

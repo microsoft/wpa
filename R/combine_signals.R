@@ -6,18 +6,21 @@
 #' @title Combine signals from the Hourly Collaboration query
 #'
 #' @description
-#' Takes in an Hourly Collaboration Data, and for each hour sums and aggregates the
-#' signals (e.g.`Emails_sent` and `IMs_sent`) in `Signals_sent`. This is an internal
-#' function used in the Working Patterns functions.
+#' Takes in an Hourly Collaboration Data, and for each hour sums and aggregates
+#' the signals (e.g.`Emails_sent` and `IMs_sent`) in `Signals_sent`. This is an
+#' internal function used in the Working Patterns functions.
 #'
-#' @param data Hourly Collaboration query containing signal variables (e.g. `Emails_sent_00_01`)
+#' @param data Hourly Collaboration query containing signal variables (e.g.
+#'   `Emails_sent_00_01`)
 #' @param hr Numeric value between 0 to 23 to iterate through
 #' @param signals Character vector for specifying which signal types to combine.
-#' Defaults to c("Emails_sent", "IMs_sent"). Other valid values include "Unscheduled_calls" and
-#' "Meetings".
+#'   Defaults to `c("Emails_sent", "IMs_sent")`. Other valid values include
+#'   `"Unscheduled_calls"` and `"Meetings"`.
 #'
 #' @details
 #' `combine_signals` uses string matching to aggregate columns.
+#'
+#' @family Support
 #'
 #' @examples
 #' # Demo using simulated variables

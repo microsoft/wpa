@@ -11,13 +11,13 @@
 #' least.
 #'
 #' @param data A data frame containing hourly collaboration data.
-#' @param signals Character vector to specify which collaboration metrics to use:
-#' You may use "email" (default) for emails only, "IM" for Teams messages only,
-#' or a combination of the two `c("email", "IM")`.
+#' @param signals Character vector to specify which collaboration metrics to
+#'   use: You may use `"email"` (default) for emails only, `"IM"` for Teams
+#'   messages only, or a combination of the two `c("email", "IM")`.
 #' @param start_hour A character vector specifying starting hours,
-#' e.g. "0900"
+#' e.g. "`0900"`
 #' @param end_hour A character vector specifying starting hours,
-#' e.g. "1700"
+#' e.g. `"1700"`
 #' @param return String specifying what to return. Defaults to "plot",
 #' with options to return a summary table ("table").
 #'
@@ -25,6 +25,9 @@
 #'
 #' @examples
 #' workpatterns_rank(em_data)
+#'
+#' @family Visualization
+#' @family Working Patterns
 #'
 #' @export
 workpatterns_rank <- function(data,

@@ -18,31 +18,34 @@ workpatterns_area(
 \arguments{
 \item{data}{A data frame containing data from the Hourly Collaboration query.}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character vector,
-defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics. Accepts a character
+vector, defaults to \code{"Organization"} but accepts any character vector, e.g.
+\code{"LevelDesignation"}}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size, defaults to 5.}
 
-\item{signals}{Character vector to specify which collaboration metrics to use:
+\item{signals}{Character vector to specify which collaboration metrics to
+use:
 \itemize{
-\item "email" (default) for emails only
-\item "IM" for Teams messages only
-\item "unscheduled_calls" for Unscheduled Calls only
-\item "meetings" for Meetings only
-\item or a combination of signals, such as \code{c("email", "IM")}
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
 }}
 
 \item{return}{Character vector to specify what to return. Valid options include:
 \itemize{
-\item "plot": returns an overlapping area plot (default)
-\item "table": returns a summary table
+\item \code{"plot"}: returns an overlapping area plot (default)
+\item \code{"table"}: returns a summary table
 }}
 
 \item{values}{Character vector to specify whether to return percentages
 or absolute values in "data" and "plot". Valid values are:
 \itemize{
-\item "percent": percentage of signals divided by total signals (default)
-\item "abs": absolute count of signals
+\item \code{"percent"}: percentage of signals divided by total signals (default)
+\item \code{"abs"}: absolute count of signals
 }}
 
 \item{start_hour}{A character vector specifying starting hours,
@@ -67,14 +70,96 @@ workpatterns_area(em_data, return = "table")
 
 }
 \seealso{
-Other Work Patterns: 
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{mgrrel_matrix}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_rank}()}
+
+Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
-\code{\link{personas_hclust}()},
+\code{\link{identify_shifts}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify_pav}()},
 \code{\link{workpatterns_classify}()},
-\code{\link{workpatterns_hclust}()}
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
+
+Other Working Patterns: 
+\code{\link{flex_index}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
+\code{\link{plot_flex_index}()},
+\code{\link{workpatterns_classify_bw}()},
+\code{\link{workpatterns_classify_pav}()},
+\code{\link{workpatterns_classify}()},
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
-\concept{Work Patterns}
+\concept{Visualization}
+\concept{Working Patterns}

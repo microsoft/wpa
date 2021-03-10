@@ -3,20 +3,25 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create count of distinct fields and percentage of employees with NAs for all HR variables
+#' @title Create count of distinct fields and percentage of employees with
+#'   missing values for all HR variables
 #'
 #' @description
-#' This function enables you to create a summary table to validate organizational data. This table will provide a summary of the data found
-#' in the WpA Sources page.
-#' This function will return a summary table with the count of distinct fields per HR attribute and the percentage of
-#' employees with NAs for that attribute.
-#' See hrvar_count function for more detail on the specific HR attribute of interest.
+#' This function enables you to create a summary table to validate
+#' organizational data. This table will provide a summary of the data found in
+#' the Workplace Analytics Sources page. This function will return a summary
+#' table with the count of distinct fields per HR attribute and the percentage
+#' of employees with missing values for that attribute. See `hrvar_count()`
+#' function for more detail on the specific HR attribute of interest.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param n_var number of HR variables to include in report as rows. Default is set to 10 HR variables.
+#' @param n_var number of HR variables to include in report as rows. Default is
+#'   set to 50 HR variables.
 #' @param return String to specify what to return
-#' @param threshold The max number of unique values allowed for any attribute. Default is 100.
-#' @param maxna The max percentage of NAs allowable for any column. Default is 20.
+#' @param threshold The max number of unique values allowed for any attribute.
+#'   Default is 100.
+#' @param maxna The max percentage of NAs allowable for any column. Default is
+#'   20.
 #'
 #' @import dplyr
 #'
@@ -28,8 +33,11 @@
 #'
 #' @return
 #' Returns an error message by default, where 'text' is passed in `return`.
-#' When 'table' is passed, a summary table listing the number of distinct fields and percentage of NAs for the specified number of HR attributes will be returned.
-#' when 'message' is passed, outputs a message indicating which values are beyond the specified thresholds.
+#'   - `'table'`: data frame. A summary table listing the number of distinct
+#' fields and percentage of missing values for the specified number of HR
+#' attributes will be returned.
+#'   - `'message'`: outputs a message indicating which values are
+#' beyond the specified thresholds.
 #'
 #' @export
 hrvar_count_all <- function(data,

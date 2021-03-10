@@ -16,10 +16,11 @@
 #' The default value is "stop". Also accepts "names" and "warning".
 #'
 #'
-#' @return The default behaviour is to return an error message,
-#' informing the user what variables are not included. When `return` is set
-#' to "names", a character vector containing the unmatched variable names
-#' is returned.
+#' @return The default behaviour is to return an error message, informing the
+#'   user what variables are not included. When `return` is set to "names", a
+#'   character vector containing the unmatched variable names is returned.
+#'
+#' @family Support
 #'
 #' @examples
 #'
@@ -86,6 +87,8 @@ check_inputs <- function(input, requirements, return = "stop"){
 #'
 #' @param string A string vector in 'CamelCase' format to format
 #'
+#' @family Support
+#'
 #' @examples
 #' camel_clean("NoteHowTheStringIsFormatted")
 #'
@@ -99,6 +102,8 @@ camel_clean <- function(string){
 #' @title Convert rgb to HEX code
 #'
 #' @param r,g,b Values that correspond to the three RGB parameters
+#'
+#' @family Support
 #'
 #' @export
 rgb2hex <- function(r,g,b){
@@ -119,6 +124,8 @@ rgb2hex <- function(r,g,b){
 #' @param return String specifying what output to return.
 #' Returns a table by default ("table"), but allows returning
 #' a descriptive string ("text").
+#'
+#' @family Support
 #'
 #' @export
 extract_date_range <- function(data, return = "table"){
