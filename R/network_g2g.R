@@ -26,6 +26,14 @@
 #' nodes. Defaults to `"lightblue"`. If `"vary"` is supplied, a different colour
 #' is shown for each node at random.
 #' @param exc_threshold Exclusion threshold to apply.
+#' @param org_count Optional data frame to provide the size of each organization
+#' in the `collaborator` attribute. The data frame should contain only two
+#' columns:
+#'   - Name of the `collaborator` attribute excluding any prefixes, e.g.
+#'   `"Organization"`. Must be of character or factor type.
+#'   - `"n"`. Must be of numeric type.
+#' Defaults to `NULL`, where node sizes will be fixed.
+#'
 #' @param subtitle String to override default plot subtitle.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -61,10 +69,16 @@
 #'               exc_threshold = 0.05)
 #'
 #' # Return a network plot with circle layout
-#' # Vary node colours
+#' # Vary node colours and add org sizes
 #' g2g_data %>%
 #'   network_g2g(algorithm = "circle",
-#'               node_colour = "vary")
+#'               node_colour = "vary",
+#'               org_count =
+#'                 hrvar_count(
+#'                   sq_data,
+#'                   hrvar = "Organization",
+#'                   return = "table"
+#'                 ))
 #'
 #' # Return an interaction matrix
 #' # Minimum arguments specified
@@ -80,6 +94,7 @@ network_g2g <- function(data,
                         algorithm = "fr",
                         node_colour = "lightblue",
                         exc_threshold = 0.1,
+                        org_count = NULL,
                         subtitle = "Collaboration Across Organizations",
                         return = "plot"){
 
@@ -110,6 +125,11 @@ network_g2g <- function(data,
       )
 
   }
+
+  ## Get string of HR variable
+  hrvar_string <- gsub(pattern = "Collaborators_",
+                       replacement = "",
+                       x = collaborator)
 
   ## Warn if 'Collaborators Within Group' is not present in data
   if(! "Collaborators Within Group" %in% unique(data[[collaborator]])){
@@ -161,35 +181,60 @@ network_g2g <- function(data,
       mutate(metric_prop = metric_prop * 10) %>%
       igraph::graph_from_data_frame(directed = FALSE)
 
+    # Org count vary by size -------------------------------------------
+
+    if(!is.null(org_count)){
+
+      igraph::V(mynet_em)$org_size <-
+        tibble(id = igraph::get.vertex.attribute(mynet_em)$name) %>%
+        mutate(id = gsub(pattern = "\n", replacement = " ", x = id)) %>%
+        left_join(org_count, by = c("id" = hrvar_string)) %>%
+        pull(n)
+
+    } else {
+
+      # Imputed size if not specified
+      igraph::V(mynet_em)$org_size <-
+        tibble(id = igraph::get.vertex.attribute(mynet_em)$name) %>%
+        mutate(id = gsub(pattern = "\n", replacement = " ", x = id)) %>%
+        mutate(n = 20) %>%
+        pull(n)
+    }
+
+    ## Plot object
+    plot_obj <-
+      mynet_em %>%
+      ggraph::ggraph(layout = algorithm) +
+      ggraph::geom_edge_link(aes(edge_width = metric_prop * 1),
+                             edge_alpha = 0.5,
+                             edge_colour = "grey")
+
     if(return == "network"){
 
       mynet_em # Return igraph object
 
     } else {
 
-      ## Plot object
-      plot_obj <-
-        mynet_em %>%
-        ggraph::ggraph(layout = algorithm) +
-        ggraph::geom_edge_link(aes(edge_width = metric_prop * 1),
-                               edge_alpha = 0.5,
-                               edge_colour = "grey")
-
+      # Custom node colours ----------------------------------------------
       if(node_colour == "vary"){
 
         plot_obj <-
           plot_obj +
           ggraph::geom_node_point(
-            aes(color = name),
-            size = 20)
+            aes(color = name,
+                size = org_size),
+            alpha = 0.9
+            )
 
       } else {
 
         plot_obj <-
           plot_obj +
           ggraph::geom_node_point(
-            size = 20,
-            colour = node_colour)
+            aes(size = org_size),
+            colour = node_colour,
+            alpha = 0.9
+            )
 
       }
 
@@ -199,6 +244,7 @@ network_g2g <- function(data,
           panel.background = ggplot2::element_rect(fill = 'white'),
           legend.position = "none") +
         theme_wpa_basic() +
+        scale_size(range = c(1, 30)) +
         labs(title = "Group to Group Collaboration",
              subtitle = subtitle,
              x = "",

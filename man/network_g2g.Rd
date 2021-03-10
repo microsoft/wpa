@@ -13,6 +13,7 @@ network_g2g(
   algorithm = "fr",
   node_colour = "lightblue",
   exc_threshold = 0.1,
+  org_count = NULL,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
 )
@@ -25,6 +26,7 @@ g2g_network(
   algorithm = "fr",
   node_colour = "lightblue",
   exc_threshold = 0.1,
+  org_count = NULL,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
 )
@@ -52,6 +54,16 @@ nodes. Defaults to \code{"lightblue"}. If \code{"vary"} is supplied, a different
 is shown for each node at random.}
 
 \item{exc_threshold}{Exclusion threshold to apply.}
+
+\item{org_count}{Optional data frame to provide the size of each organization
+in the \code{collaborator} attribute. The data frame should contain only two
+columns:
+\itemize{
+\item Name of the \code{collaborator} attribute excluding any prefixes, e.g.
+\code{"Organization"}. Must be of character or factor type.
+\item \code{"n"}. Must be of numeric type.
+Defaults to \code{NULL}, where node sizes will be fixed.
+}}
 
 \item{subtitle}{String to override default plot subtitle.}
 
@@ -93,10 +105,16 @@ g2g_data \%>\%
               exc_threshold = 0.05)
 
 # Return a network plot with circle layout
-# Vary node colours
+# Vary node colours and add org sizes
 g2g_data \%>\%
   network_g2g(algorithm = "circle",
-              node_colour = "vary")
+              node_colour = "vary",
+              org_count =
+                hrvar_count(
+                  sq_data,
+                  hrvar = "Organization",
+                  return = "table"
+                ))
 
 # Return an interaction matrix
 # Minimum arguments specified
