@@ -71,6 +71,11 @@ create_IV <- function(data,
                       siglevel = 0.05,
                       return = "plot"){
 
+  # Preserve string
+  pred_chr <- NULL
+  pred_chr <- predictors
+
+
   if(is.null(tidyselect::all_of(predictors))){
 
     train <-
@@ -102,7 +107,12 @@ create_IV <- function(data,
     mutate(Variable = as.character(Variable)) # Ensure not factor
 
   for (i in 1:(nrow(predictors))){
-     predictors$pval[i] <- p_test(train, outcome = "outcome", behavior = predictors$Variable[i])
+
+     predictors$pval[i] <-
+       p_test(train,
+              outcome = "outcome",
+              behavior = predictors$Variable[i])
+
   }
 
 
@@ -111,7 +121,14 @@ create_IV <- function(data,
   train <- train %>% select(predictors$Variable, outcome)
 
   # IV Analysis
-  IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
+  # IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
+
+  IV <- map_IV(data = train,
+               predictors = pred_chr,
+               outcome = "outcome", # string not variable
+               bins = bins)
+
+
   IV_names <- names(IV$Tables)
 
   # Output list
@@ -152,6 +169,7 @@ create_IV <- function(data,
     ## Return list of ggplots
 
     IV$Summary$Variable %>%
+      as.character() %>%
       purrr::map(~plot_WOE(IV = IV, predictor = .))
 
     } else if(return == "list"){
