@@ -40,7 +40,6 @@
 #'
 #' @examples
 #' # Returns a data frame
-#' \donttest{
 #'   sq_data %>%
 #'     IV_by_period(
 #'       before_start = "2019-11-03",
@@ -48,7 +47,6 @@
 #'       after_start = "2019-11-10",
 #'       after_end = "2019-11-16"
 #'     )
-#' }
 #'
 #' @export
 
@@ -60,6 +58,7 @@ IV_by_period <-
            after_end = max(as.Date(data$Date, "%m/%d/%Y")),
            mybins = 10,
            return = "table") {
+
     ## Check inputs
     required_variables <- c("Date",
                             "PersonId")
@@ -127,7 +126,11 @@ IV_by_period <-
     lnodds <- log(odds)
 
     # IV Analysis
-    IV <- create_infotables(data = train, y = "Outcome", bins = mybins)
+    # IV <- create_infotables(data = train, y = "Outcome", bins = mybins)
+    IV <- map_IV(data = train,
+                 outcome = "Outcome",
+                 bins = mybins)
+
 
     # if(return == "detailed"){
     #   # Ranking variables using  IV
