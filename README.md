@@ -29,6 +29,7 @@ To get started with the package,  please see the following links:
 - [Installation and Set-up](https://microsoft.github.io/wpa/analyst_guide_getting_started.html)
 - [Full function list](https://microsoft.github.io/wpa/reference/index.html)
 - [Analyst Guide](https://microsoft.github.io/wpa/analyst_guide.html)
+- [FAQ](https://microsoft.github.io/wpa/faq.html)
 
 Also check out our package cheat sheet for a quick glimpse of what **wpa** offers:
 
