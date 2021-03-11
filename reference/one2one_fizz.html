@@ -84,7 +84,7 @@ Additional options available to return a table with distribution elements." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -305,6 +305,7 @@ Additional options available to return a table with distribution elements.</p>
 <code><a href='mgrcoatt_dist.html'>mgrcoatt_dist</a>()</code>,
 <code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code>,
 <code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
+<code><a href='one2one_freq.html'>one2one_freq</a>()</code>,
 <code><a href='one2one_line.html'>one2one_line</a>()</code>,
 <code><a href='one2one_rank.html'>one2one_rank</a>()</code>,
 <code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
@@ -322,6 +323,7 @@ Additional options available to return a table with distribution elements.</p>
 <code><a href='mgrcoatt_dist.html'>mgrcoatt_dist</a>()</code>,
 <code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code>,
 <code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
+<code><a href='one2one_freq.html'>one2one_freq</a>()</code>,
 <code><a href='one2one_line.html'>one2one_line</a>()</code>,
 <code><a href='one2one_rank.html'>one2one_rank</a>()</code>,
 <code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
@@ -330,7 +332,7 @@ Additional options available to return a table with distribution elements.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Return plot</span>
 <span class='fu'>one2one_fizz</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 30 rows containing missing values (geom_point).</span></div><div class='img'><img src='one2one_fizz-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 33 rows containing missing values (geom_point).</span></div><div class='img'><img src='one2one_fizz-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return a summary table</span>
 <span class='fu'>one2one_fizz</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 8</span><span>
