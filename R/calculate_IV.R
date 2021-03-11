@@ -35,6 +35,16 @@ calculate_IV <- function(data,
   pred_var <- data[[predictor]]
   outc_var <- data[[outcome]]
 
+  # Check inputs
+  if(sum(is.na(outc_var)) > 0){
+
+    stop(
+      glue::glue(
+        "dependent variable {outcome} has missing values in the input training data frame"
+      )
+      )
+  }
+
   # Compute q
   q <- quantile(pred_var,
                 probs = c(1:(bins - 1) / bins),
@@ -76,9 +86,13 @@ calculate_IV <- function(data,
     mutate(percentage = n / sum(n)) %>%
     select(!!sym(predictor), intervals, n, percentage)
 
+  # Create variables that are double
+  cut_table_1 <- as.numeric(cut_table$`1`)
+  cut_table_0 <- as.numeric(cut_table$`0`)
+
   # Non-events in group
-  n_non_event <- cut_table$`1`*sum(cut_table$`0`) # t$y_1*sum_y_0
-  n_yes_event <- cut_table$`0`*sum(cut_table$`1`) # t$y_0*sum_y_1
+  n_non_event <- cut_table_1 * sum(cut_table_0) # t$y_1*sum_y_0
+  n_yes_event <- cut_table_0 * sum(cut_table_1) # t$y_0*sum_y_1
 
   # Compute WOE
 
