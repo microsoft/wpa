@@ -97,7 +97,6 @@ create_IV <- function(data,
   odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
   lnodds <- log(odds)
 
-
   # Calculate p-value
   predictors <- data.frame(Variable = unlist(names(train)))
   predictors <-
@@ -130,17 +129,6 @@ create_IV <- function(data,
 
   IV_names <- names(IV$Tables)
 
-  # Output list
-  output_list <-
-    IV_names %>%
-    purrr::map(function(x){
-      IV$Tables[[x]] %>%
-        mutate(ODDS = exp(WOE + lnodds),
-               PROB = ODDS / (ODDS + 1))
-    }) %>%
-    purrr::set_names(IV_names)
-
-
   IV_summary <- inner_join(IV$Summary, predictors, by = c("Variable"))
 
   if(return == "summary"){
@@ -149,18 +137,26 @@ create_IV <- function(data,
 
   } else if(return == "IV"){
 
-    IV
+    c(
+      IV,
+      list("lnodds" = lnodds)
+      )
 
   } else if(return == "plot"){
 
+    top_n <-
+      min(
+        c(12, nrow(IV_summary))
+      )
+
     IV_summary %>%
-      utils::head(12) %>%
+      utils::head(top_n) %>%
       create_bar_asis(group_var = "Variable",
                       bar_var = "IV",
                       title = "Information Value (IV)",
                       subtitle =
                         paste("Showing top",
-                              nrow(IV_summary),
+                              top_n,
                               "predictors"))
 
   } else if(return == "plot-WOE"){
@@ -172,6 +168,16 @@ create_IV <- function(data,
       purrr::map(~plot_WOE(IV = IV, predictor = .))
 
     } else if(return == "list"){
+
+      # Output list
+      output_list <-
+        IV_names %>%
+        purrr::map(function(x){
+          IV$Tables[[x]] %>%
+            mutate(ODDS = exp(WOE + lnodds),
+                   PROB = ODDS / (ODDS + 1))
+        }) %>%
+        purrr::set_names(IV_names)
 
       output_list
 
