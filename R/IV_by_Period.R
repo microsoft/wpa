@@ -40,13 +40,13 @@
 #'
 #' @examples
 #' # Returns a data frame
-#'   sq_data %>%
-#'     IV_by_period(
-#'       before_start = "2019-11-03",
-#'       before_end = "2019-11-09",
-#'       after_start = "2019-11-10",
-#'       after_end = "2019-11-16"
-#'     )
+#' sq_data %>%
+#'   IV_by_period(
+#'     before_start = "2019-11-03",
+#'     before_end = "2019-11-09",
+#'     after_start = "2019-11-10",
+#'     after_end = "2019-11-16"
+#'   )
 #'
 #' @export
 
