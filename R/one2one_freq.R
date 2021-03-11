@@ -119,33 +119,53 @@ one2one_freq <- function(data,
 
   } else if(mode == "dist" & return == "plot"){
 
-    expanded_data$Cadence_of_1_on_1_meetings_with_manager[!is.finite(expanded_data$Cadence_of_1_on_1_meetings_with_manager)] <-
-      99
-
-    expanded_data %>%
-      create_dist(
-        metric = "Cadence_of_1_on_1_meetings_with_manager",
-        hrvar = hrvar,
-        mingroup = mingroup,
-        cut = c(1, 1.5, 3, 6),
-        unit = "Weeks"
+    plot_data <-
+      expanded_data %>%
+      mutate(
+        across(
+          .cols = Cadence_of_1_on_1_meetings_with_manager,
+          .fns = ~ifelse(!is.finite(.), 99, .)
+        )
       )
 
-
+    create_dist(
+      plot_data,
+      metric = "Cadence_of_1_on_1_meetings_with_manager",
+      hrvar = hrvar,
+      mingroup = mingroup,
+      cut = c(1, 1.5, 3, 6),
+      dist_colours = c("#facebc",
+                       "#fcf0eb",
+                       "#b4d5dd",
+                       "#bfe5ee",
+                       "grey90"),
+      unit = "Weeks"
+      )
 
   } else if(mode == "dist" & return == "table"){
 
-    expanded_data$Cadence_of_1_on_1_meetings_with_manager[!is.finite(expanded_data$Cadence_of_1_on_1_meetings_with_manager)] <-
-      99
+    plot_data <-
+      expanded_data %>%
+      mutate(
+        across(
+          .cols = Cadence_of_1_on_1_meetings_with_manager,
+          .fns = ~ifelse(!is.finite(.), 99, .)
+        )
+      )
 
-    expanded_data %>%
-      create_dist(
-        metric = "Cadence_of_1_on_1_meetings_with_manager",
-        hrvar = hrvar,
-        mingroup = mingroup,
-        cut = c(1, 1.5, 3, 6),
-        unit = "Weeks",
-        return = "table"
+    create_dist(
+      plot_data,
+      metric = "Cadence_of_1_on_1_meetings_with_manager",
+      hrvar = hrvar,
+      mingroup = mingroup,
+      cut = c(1, 1.5, 3, 6),
+      dist_colours = c("#facebc",
+                       "#fcf0eb",
+                       "#b4d5dd",
+                       "#bfe5ee",
+                       "grey90"),
+      unit = "Weeks",
+      return = "table"
       )
 
   }
