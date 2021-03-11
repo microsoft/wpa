@@ -1,3 +1,8 @@
+# wpa 1.4.1
+
+New functions:
+- `one2one_freq()` (#95)
+
 # wpa 1.4.0
 
 v1.4.0 is the version where the **working patterns** family of functions are released open source as part of **wpa** (#55). These functions include:
