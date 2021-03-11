@@ -124,7 +124,8 @@ calculate_IV <- function(data,
 #' @param predictors Character vector containing the names of the predictor
 #'   variables. If `NULL` (default) is supplied, all numeric variables in the
 #'   data will be used.
-#' @param bins Numeric value representing the number of bins to use.
+#' @param bins Numeric value representing the number of bins to use. Defaults to
+#'   10.
 #'
 #' @import dplyr
 #'
@@ -137,7 +138,7 @@ calculate_IV <- function(data,
 map_IV <- function(data,
                    predictors = NULL,
                    outcome,
-                   bins){
+                   bins = 10){
 
   if(is.null(predictors)){
 
