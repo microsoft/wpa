@@ -127,7 +127,7 @@ one2one_freq <- function(data,
         metric = "Cadence_of_1_on_1_meetings_with_manager",
         hrvar = hrvar,
         mingroup = mingroup,
-        cut = c(1, 1.5, 3, 6),
+        cut = c(0, 1.5, 3, 6),
         unit = "Weeks"
       )
 
@@ -143,7 +143,7 @@ one2one_freq <- function(data,
         metric = "Cadence_of_1_on_1_meetings_with_manager",
         hrvar = hrvar,
         mingroup = mingroup,
-        cut = c(1, 1.5, 3, 6),
+        cut = c(0, 1.5, 3, 6),
         unit = "Weeks",
         return = "table"
       )
