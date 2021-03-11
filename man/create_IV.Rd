@@ -58,7 +58,6 @@ Specify an outcome variable and return IV outputs.
 All numeric variables in the dataset are used as predictor variables.
 }
 \examples{
-\donttest{
 # Return a summary table of IV
 sq_data \%>\%
   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) \%>\%
@@ -75,7 +74,7 @@ sq_data \%>\%
   create_IV(outcome = "X",
             predictors = c("Email_hours", "Meeting_hours"),
             return = "summary")
-}
+
 }
 \seealso{
 Other Variable Association: 

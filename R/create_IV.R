@@ -45,7 +45,6 @@
 #' @family Information Value
 #'
 #' @examples
-#' \donttest{
 #' # Return a summary table of IV
 #' sq_data %>%
 #'   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) %>%
@@ -62,7 +61,7 @@
 #'   create_IV(outcome = "X",
 #'             predictors = c("Email_hours", "Meeting_hours"),
 #'             return = "summary")
-#' }
+#'
 #' @export
 create_IV <- function(data,
                       predictors = NULL,
