@@ -75,7 +75,7 @@ myPeriod <-
   plot_data <-
     plot_data %>%
     mutate(bucket_coattendman_rate =
-             case_when(coattendman_rate>=0 &  coattendman_rate<.25 ~ "0 - 50%",
+             case_when(coattendman_rate>=0 &  coattendman_rate<.25 ~ "0 - 25%",
                        coattendman_rate>=.25 & coattendman_rate<.5 ~ "25 - 50%",
                        coattendman_rate>=.50 & coattendman_rate<.75 ~ "50 - 75%",
                        coattendman_rate>=.75 ~ "75% +"))
