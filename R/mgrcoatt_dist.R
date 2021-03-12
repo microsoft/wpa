@@ -75,10 +75,10 @@ myPeriod <-
   plot_data <-
     plot_data %>%
     mutate(bucket_coattendman_rate =
-             case_when(coattendman_rate>=0 &  coattendman_rate<.20 ~ "0 - 20%",
-                       coattendman_rate>=.20 & coattendman_rate<.4 ~ "20 - 40%",
-                       coattendman_rate>=.40 & coattendman_rate<.6 ~ "40 - 60%",
-                       coattendman_rate>=.6 ~ "60% +"))
+             case_when(coattendman_rate>=0 &  coattendman_rate<.25 ~ "0 - 50%",
+                       coattendman_rate>=.25 & coattendman_rate<.5 ~ "25 - 50%",
+                       coattendman_rate>=.50 & coattendman_rate<.75 ~ "50 - 75%",
+                       coattendman_rate>=.75 ~ "75% +"))
 
 
   ## Employee count / base size table
