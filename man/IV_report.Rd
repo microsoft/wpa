@@ -9,6 +9,7 @@ IV_report(
   predictors = NULL,
   outcome,
   bins = 5,
+  max_var = 9,
   path = "IV report",
   timestamp = TRUE
 )
@@ -25,6 +26,9 @@ the values 1 or 0.}
 
 \item{bins}{Number of bins to use in \code{Information::create_infotables()},
 defaults to 10.}
+
+\item{max_var}{Numeric value to represent the maximum number of variables to
+show on plots.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
 extension}. For example, \code{"IV report"}.}
