@@ -1,6 +1,6 @@
 # Data validation
 
-This section covers the topic of **how to validate Workplace Analytics data**. Before you can apply any functions to your data set and can start looking for new insights, it is essential to perform data validation regardless of whether you are only attempting to explore the data, establish a baseline, or perform advanced analytics.
+This section covers the topic of **how to validate Workplace Analytics data**. Before you apply any functions to your data set and can start looking for new insights, it is recommended that you perform data validation. This best practice is applicable regardless of whether your aim is to explore the data, to establish a baseline, or to perform advanced analytics.
 
 ## Why validate?
 
@@ -56,7 +56,12 @@ The below functions are also helpful for exploring your data:
 3. Compute number of unique values, e.g. `length(unique(sq_data$PersonId))`
 5. Get an overview of the data, e.g. `dplyr::glimpse(sq_data)`, or `skimr::skim(sq_data)`.
 
-Validating the structure of your data is just as important as validating the data itself. 
+Validating the structure of your data is just as important as validating the data itself. You may wish to check that your data is correctly imported into R if you observe certain anomalies, such as: 
+
+- Unexpected / misspelt column names
+- Unexpected number of rows in the data
+- Unexpectedly high number of missing or unique values
+- `Date` variable is showing up as a variable type that is neither _character_ nor _Date_ type
 
 ## Data Validation Report
 
@@ -66,7 +71,25 @@ The easiest way to perform data validation with the **wpa** package is to run th
  # `spq_df` is your Standard Person Query data
 validation_report(spq_df)
 ```
-This generates an HTML report in your working directory which contains a number of checks against your data. You can supply an optional meeting query to include checks against meeting subject lines.
+This generates an HTML report in your working directory which contains a series of checks against your data, including:
+
+- Workplace Analytics Settings
+- Organizational Data Quality
+- M365 Data Quality
+
+You can find a demo output of the validation report [here](https://microsoft.github.io/wpa/report-demo/validation-report-demo.html).  Note that `validation_report()` only runs with a Standard Person Query, but you can supply an optional meeting query to include checks against meeting subject lines. To do so, you should run: 
+
+```R
+# Assuming:
+# `spq_df` is your Standard Person Query data
+# `mt_df` is your Standard Meeting Query data
+validation_report(spq_df, 
+                  meeting_data = mt_df)
+```
+
+The data validation report provides you with a series of recommendations on whether you should adjust certain settings or consider certain assumptions before proceeding with your analysis. After you've made the relevant adjustments, you can run the 'cleaned' dataset through `validation_report()` again to make sure that the potential issues have been caught out. 
+
+Note that `validation_report()` only provides recommendations based on common scenarios observed with Workplace Analytics data. When deciding whether to make an adjustment, you should consider other factors such as quality of organizational data, context, and other known collaboration norms within the organization. 
 
 ## Individual functions
 
