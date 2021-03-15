@@ -68,9 +68,9 @@ validation_report(spq_df)
 ```
 This generates an HTML report in your working directory which contains a number of checks against your data. You can supply an optional meeting query to include checks against meeting subject lines.
 
-## Breaking it down
+## Individual functions
 
-The **wpa** package provides additional data validation **functions** to be used prior to embarking on a new analysis:
+The **wpa** package provides additional data validation functions to be used prior to embarking on a new analysis. These functions make up the majority of the automated checks of `validation_report()`, where you may wish to run them individually if you wish to extract more detailed information. The key data validation functions are described below.
 
 ### Organizational attributes
 
@@ -88,29 +88,13 @@ check_query(sq_data)
 
 ### Checks on Workplace Analytics metrics
 
-```R
-identify_holidayweeks()
-```
-This function scans a standard query output for weeks where collaboration hours is far
-outside the mean. Returns a list of weeks that appear to be holiday weeks. By default, missing values are excluded.
+- `identify_holidayweeks()` scans a standard query output for weeks where collaboration hours is far outside the mean. Returns a list of weeks that appear to be holiday weeks. By default, missing values are excluded.
 
-```R
-identify_nkw()
-```
-This function scans a standard query output to identify employees with consistently low
-collaboration signals. Returns the % of non-knowledge workers identified by Organization.
+- `identify_nkw()` scans a standard query output to identify employees with consistently low collaboration signals. Returns the % of non-knowledge workers identified by Organization.
 
-```R
-identify_inactiveweeks()
-```
-This function scans a standard query output for weeks where collaboration hours is far
-outside the mean for any individual person in the dataset. Returns a list of weeks that
-appear to be inactive weeks.
+- `identify_inactiveweeks()` scans a standard query output for weeks where collaboration hours is far outside the mean for any individual person in the dataset. Returns a list of weeks that appear to be inactive weeks.
 
-```R
-identify_tenure()
-```
-This function calculates employee tenure based on different input dates. By default it selects the latest Date available with end date= "Date", but you also have flexibility to select a specified date, e.g. "1/1/2020".
+- `identify_tenure()` calculates employee tenure based on different input dates. By default it selects the latest Date available with end date= "Date", but you also have flexibility to select a specified date, e.g. `"1/1/2020"`.
 
 ### Reports 
 Run data validation **reports** prior to starting your analysis:
@@ -122,7 +106,7 @@ The function generates an interactive HTML report using Standard Person Query da
 ```R
 subject_validate_report()
 ```
-This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis. Returns a HTML report by default.
+This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exclusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis. Returns a HTML report by default.
 
 
 ## Ready to learn more?
