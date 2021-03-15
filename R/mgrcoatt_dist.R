@@ -107,30 +107,23 @@ myPeriod <-
     plot_table %>%
     ggplot(aes(x = group, y=Employees, fill = bucket_coattendman_rate)) +
     geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
-	coord_flip() +
-	scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
-	annotate("text",
-	         x = plot_legend$group,
-	         y = -.05,
-	         label = plot_legend$Employee_Count) +
-	scale_fill_manual(name="",
-	                  values = c("#bed6f2",
-	                             "#e9f1fb",
-	                             "#ffdfd3",
-	                             "#FE7F4F")) +
-	theme_classic() +
-    theme(axis.text=element_text(size=12),
-          plot.title = element_text(color="grey40", face="bold", size=18),
-          plot.subtitle = element_text(size=14),
-          legend.position = "top",
-          legend.justification = "right",
-          legend.title=element_text(size=14),
-          legend.text=element_text(size=14)) +
-	labs(title = "Time with Manager",
-	     subtitle = paste("Meeting Co-attendance Rate by", hrvar)) +
-	xlab(hrvar) +
-	ylab("Fraction of Employees") +
-	labs(caption = paste("Data from week of", myPeriod$Start, "to week of", myPeriod$End))
+  	coord_flip() +
+  	scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
+  	annotate("text",
+  	         x = plot_legend$group,
+  	         y = -.05,
+  	         label = plot_legend$Employee_Count) +
+  	scale_fill_manual(name="",
+  	                  values = c("#bed6f2",
+  	                             "#e9f1fb",
+  	                             "#ffdfd3",
+  	                             "#FE7F4F")) +
+    theme_wpa_basic() +
+  	labs(title = "Time with Manager",
+  	     subtitle = paste("Meeting Co-attendance Rate by", hrvar),
+  	     x = camel_clean(hrvar),
+  	     y = "Fraction of Employees",
+  	     caption = extract_date_range(data, return = "text"))
 
   ## Table to return
   return_table <-
