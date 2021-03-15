@@ -93,9 +93,15 @@ Note that `validation_report()` only provides recommendations based on common sc
 
 ## Individual functions
 
-The **wpa** package provides additional data validation functions to be used prior to embarking on a new analysis. These functions make up the majority of the automated checks of `validation_report()`, where you may wish to run them individually if you wish to extract more detailed information. The key data validation functions are described below.
+The **wpa** package provides additional data validation functions to be used prior to embarking on a new analysis. These functions make up the majority of the automated checks of `validation_report()`, where you can run them individually to extract more detailed information (for instance, the report may identify certain employees as _non-knowledge workers_, but does the distribution of these workers with respect to organization make sense? ). The key data validation functions are described below.
 
 ### Organizational attributes
+
+ `check_query()` performs a check on a query (data frame) and returns a diagnostic message about the data query to the R console, with information such as date range, number of employees, HR attributes identified, etc.
+
+```R
+check_query(sq_data)
+```
 
 `hrvar_count()` enables you to create a count of the distinct people by the specified HR attribute:
 
@@ -103,21 +109,31 @@ The **wpa** package provides additional data validation functions to be used pri
 hrvar_count(sq_data, hrvar = "LevelDesignation")
 ```
 
-You may also run `check_query()`, which performs a check on a query (data frame) and returns a diagnostic message about the data query to the R console, with information such as date range, number of employees, HR attributes identified, etc.
+To run a blanket analysis for all the organizational attributes in the dataset, you can run `hrvar_count_all()` instead. 
 
-```R
-check_query(sq_data)
-```
+Also check out: 
 
-### Checks on Workplace Analytics metrics
+- `identify_privacythreshold()`
+- `track_HR_change()`
+- `identify_tenure()`
 
-- `identify_holidayweeks()` scans a standard query output for weeks where collaboration hours is far outside the mean. Returns a list of weeks that appear to be holiday weeks. By default, missing values are excluded.
+Click on the linked functions to find out more.
 
-- `identify_nkw()` scans a standard query output to identify employees with consistently low collaboration signals. Returns the % of non-knowledge workers identified by Organization.
+### M365 Data Quality
 
-- `identify_inactiveweeks()` scans a standard query output for weeks where collaboration hours is far outside the mean for any individual person in the dataset. Returns a list of weeks that appear to be inactive weeks.
+There are three common reasons for removing certain employees or weeks from the data:
 
-- `identify_tenure()` calculates employee tenure based on different input dates. By default it selects the latest Date available with end date= "Date", but you also have flexibility to select a specified date, e.g. `"1/1/2020"`.
+1. A given _week_ is likely a **public holiday** which impacts a significant proportion of the organization, e.g. Christmas, New Year.
+2.  An _employee_ is a **non-knowledge worker** - in the sense that collaboration via emails and meetings is not a key part of their role. 
+3. An employee is off work for _certain weeks_ due to annual leave, sabbaticals, etc. which do not necessarily coincide with public holidays.  
+
+There are three functions in **wpa** to address each these respective scenarios:
+
+1. `identify_holidayweeks()` identifies weeks where collaboration hours are low outliers for the entire organization. 
+2. `identify_nkw()` identifies employees with overall low collaboration signals, based on average collaboration hours. In addition to non-knowledge workers, this method would also capture any effective part-timers or freelancers, where their collaboration hours are significantly low. 
+3. `identify_inactiveweeks()` identifies individual weeks where collaboration hours are low outliers for the entire organization. 
+
+Functions (1) to (3) all come with options to return only the 'clean' dataset or the original dataset with an appended flag to identify the anomalous persons/weeks. As per above, you can click on the linked functions to find out more.
 
 ### Reports 
 Run data validation **reports** prior to starting your analysis:
