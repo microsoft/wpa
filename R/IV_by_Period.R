@@ -32,7 +32,6 @@
 #' Value.
 #'
 #' @import dplyr
-#' @import Information
 #'
 #' @family Variable Association
 #' @family Information Value
