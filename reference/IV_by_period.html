@@ -112,6 +112,9 @@ which Workplace Analytics metrics are most explained by the change in dates." />
       <a href="../analyst_guide_getting_started.html">Getting Started</a>
     </li>
     <li>
+      <a href="../analyst_guide_data_validation.html">Data Validation</a>
+    </li>
+    <li>
       <a href="../analyst_guide_summary.html">Summary Functions</a>
     </li>
     <li>
@@ -291,69 +294,68 @@ Value.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Returns a data frame</span>
-<span class='co'># \donttest{</span>
-  <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>IV_by_period</span><span class='op'>(</span>
-      before_start <span class='op'>=</span> <span class='st'>"2019-11-03"</span>,
-      before_end <span class='op'>=</span> <span class='st'>"2019-11-09"</span>,
-      after_start <span class='op'>=</span> <span class='st'>"2019-11-10"</span>,
-      after_end <span class='op'>=</span> <span class='st'>"2019-11-16"</span>
-    <span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Variable HourlyRate was removed because it has only 1 unique level"</div><div class='output co'>#&gt;                                          Variable           IV
-#&gt; 15                      After_hours_meeting_hours 4.063198e-02
-#&gt; 45                After_hours_collaboration_hours 3.214857e-02
-#&gt; 37                        After_hours_email_hours 2.827746e-02
-#&gt; 41                   After_hours_instant_messages 2.646030e-02
-#&gt; 42                          Instant_messages_sent 2.390204e-02
-#&gt; 5             Generated_workload_email_recipients 2.351152e-02
-#&gt; 20               Total_emails_sent_during_meeting 2.253198e-02
-#&gt; 33                          Meetings_with_manager 2.037033e-02
-#&gt; 16                              Open_1_hour_block 2.031148e-02
-#&gt; 1                                   Workweek_span 1.875483e-02
-#&gt; 39                                    Email_hours 1.847501e-02
-#&gt; 19                      Low_quality_meeting_hours 1.840299e-02
-#&gt; 43                          Instant_Message_hours 1.832036e-02
-#&gt; 6       Generated_workload_instant_messages_hours 1.807253e-02
-#&gt; 23                      Conflicting_meeting_hours 1.673358e-02
-#&gt; 21                                       Meetings 1.621851e-02
-#&gt; 28             Meeting_hours_during_working_hours 1.607176e-02
-#&gt; 34                     Meeting_hours_with_manager 1.580855e-02
-#&gt; 22                                  Meeting_hours 1.547852e-02
-#&gt; 24                     Multitasking_meeting_hours 1.512573e-02
-#&gt; 46                            Collaboration_hours 1.431442e-02
-#&gt; 27                Time_in_self_organized_meetings 1.366691e-02
-#&gt; 4                  Generated_workload_email_hours 1.362824e-02
-#&gt; 51                                     Call_hours 1.345850e-02
-#&gt; 52                         Working_hours_in_calls 1.338040e-02
-#&gt; 40                      Working_hours_email_hours 1.317128e-02
-#&gt; 7  Generated_workload_instant_messages_recipients 1.222653e-02
-#&gt; 44                 Working_hours_instant_messages 1.194240e-02
-#&gt; 49                           After_hours_in_calls 1.160868e-02
-#&gt; 47                   Collaboration_hours_external 1.105485e-02
-#&gt; 26       Redundant_meeting_hours__organizational_ 1.065584e-02
-#&gt; 18                              Total_focus_hours 1.064046e-02
-#&gt; 38                                    Emails_sent 1.023741e-02
-#&gt; 30               Generated_workload_meeting_hours 1.021543e-02
-#&gt; 11                          External_network_size 9.104338e-03
-#&gt; 17                             Open_2_hour_blocks 8.839182e-03
-#&gt; 12                          Internal_network_size 8.784474e-03
-#&gt; 48              Working_hours_collaboration_hours 8.124579e-03
-#&gt; 9            Generated_workload_call_participants 7.956155e-03
-#&gt; 8                   Generated_workload_call_hours 6.901190e-03
-#&gt; 10             Generated_workload_calls_organized 6.404576e-03
-#&gt; 50                                    Total_calls 4.848446e-03
-#&gt; 35                   Meetings_with_manager_1_on_1 4.710288e-03
-#&gt; 31          Generated_workload_meetings_organized 4.059213e-03
-#&gt; 29           Generated_workload_meeting_attendees 3.425110e-03
-#&gt; 36              Meeting_hours_with_manager_1_on_1 3.214828e-03
-#&gt; 13                     Networking_outside_company 1.235318e-03
-#&gt; 32                  Manager_coaching_hours_1_on_1 2.339200e-04
-#&gt; 3                   Meeting_hours_with_skip_level 4.906493e-05
-#&gt; 2                        Meetings_with_skip_level 4.527091e-05
-#&gt; 25          Redundant_meeting_hours__lower_level_ 1.532858e-05
-#&gt; 14                Networking_outside_organization 4.851778e-06
-#&gt; 53                                          Layer 0.000000e+00</div><div class='input'><span class='co'># }</span>
-
+<span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>IV_by_period</span><span class='op'>(</span>
+    before_start <span class='op'>=</span> <span class='st'>"2019-11-03"</span>,
+    before_end <span class='op'>=</span> <span class='st'>"2019-11-09"</span>,
+    after_start <span class='op'>=</span> <span class='st'>"2019-11-10"</span>,
+    after_end <span class='op'>=</span> <span class='st'>"2019-11-16"</span>
+  <span class='op'>)</span>
+</div><div class='output co'>#&gt;                                          Variable           IV
+#&gt; 1                       After_hours_meeting_hours 4.063198e-02
+#&gt; 2                 After_hours_collaboration_hours 3.214857e-02
+#&gt; 3                         After_hours_email_hours 2.827746e-02
+#&gt; 4                    After_hours_instant_messages 2.646030e-02
+#&gt; 5                           Instant_messages_sent 2.390204e-02
+#&gt; 6             Generated_workload_email_recipients 2.351152e-02
+#&gt; 7                Total_emails_sent_during_meeting 2.253198e-02
+#&gt; 8                           Meetings_with_manager 2.037033e-02
+#&gt; 9                               Open_1_hour_block 2.031148e-02
+#&gt; 10                                  Workweek_span 1.875483e-02
+#&gt; 11                                    Email_hours 1.847501e-02
+#&gt; 12                      Low_quality_meeting_hours 1.840299e-02
+#&gt; 13                          Instant_Message_hours 1.832036e-02
+#&gt; 14      Generated_workload_instant_messages_hours 1.807253e-02
+#&gt; 15                      Conflicting_meeting_hours 1.673358e-02
+#&gt; 16                                       Meetings 1.621851e-02
+#&gt; 17             Meeting_hours_during_working_hours 1.607176e-02
+#&gt; 18                     Meeting_hours_with_manager 1.580855e-02
+#&gt; 19                                  Meeting_hours 1.547852e-02
+#&gt; 20                     Multitasking_meeting_hours 1.512573e-02
+#&gt; 21                            Collaboration_hours 1.431442e-02
+#&gt; 22                Time_in_self_organized_meetings 1.366691e-02
+#&gt; 23                 Generated_workload_email_hours 1.362824e-02
+#&gt; 24                                     Call_hours 1.345850e-02
+#&gt; 25                         Working_hours_in_calls 1.338040e-02
+#&gt; 26                      Working_hours_email_hours 1.317128e-02
+#&gt; 27 Generated_workload_instant_messages_recipients 1.222653e-02
+#&gt; 28                 Working_hours_instant_messages 1.194240e-02
+#&gt; 29                           After_hours_in_calls 1.160868e-02
+#&gt; 30                   Collaboration_hours_external 1.105485e-02
+#&gt; 31       Redundant_meeting_hours__organizational_ 1.065584e-02
+#&gt; 32                              Total_focus_hours 1.064046e-02
+#&gt; 33                                    Emails_sent 1.023741e-02
+#&gt; 34               Generated_workload_meeting_hours 1.021543e-02
+#&gt; 35                          External_network_size 9.104338e-03
+#&gt; 36                             Open_2_hour_blocks 8.839182e-03
+#&gt; 37                          Internal_network_size 8.784474e-03
+#&gt; 38              Working_hours_collaboration_hours 8.124579e-03
+#&gt; 39           Generated_workload_call_participants 7.956155e-03
+#&gt; 40                  Generated_workload_call_hours 6.901190e-03
+#&gt; 41             Generated_workload_calls_organized 6.404576e-03
+#&gt; 42                                    Total_calls 4.848446e-03
+#&gt; 43                   Meetings_with_manager_1_on_1 4.710288e-03
+#&gt; 44          Generated_workload_meetings_organized 4.059213e-03
+#&gt; 45           Generated_workload_meeting_attendees 3.425110e-03
+#&gt; 46              Meeting_hours_with_manager_1_on_1 3.214828e-03
+#&gt; 47                     Networking_outside_company 1.235318e-03
+#&gt; 48                  Manager_coaching_hours_1_on_1 2.339200e-04
+#&gt; 49                Networking_outside_organization 4.851778e-06
+#&gt; 50                       Meetings_with_skip_level 0.000000e+00
+#&gt; 51                  Meeting_hours_with_skip_level 0.000000e+00
+#&gt; 52          Redundant_meeting_hours__lower_level_ 0.000000e+00
+#&gt; 53                                          Layer 0.000000e+00
+#&gt; 54                                     HourlyRate 0.000000e+00</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
