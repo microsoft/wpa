@@ -4,7 +4,9 @@ This section covers the topic of **how to validate Workplace Analytics data**. B
 
 ## Why validate?
 
-There are several reasons why you should validate your Workplace Analytics data.
+Data validation is an essential routine for every analyst as it ensures that you can trust the data you are using to be accurate, clean and helpful. Data validation ensures that your dataset provides a good basis for your analyses, and acts as a proactive intervention to safeguard your analyses from the starting point.
+
+There are several additional reasons why you should validate your Workplace Analytics data.
 
 1. There may be gaps, anomalies, or errors in the organizational data, such as missing data or excessive / insufficient granularity. This may require rectifying at source, or the resulting data should be interpreted differently, e.g. any biases caveated or accounted for. 
 2. Outliers may exist in Workplace Analytics data, and often for very legitimate reasons. For instance, collaboration hours for a particular week or employee may be significantly low due to public holidays or paid time off. If these outliers are not surfaced and addressed accordingly, the interpretation of the data may be incorrect.
@@ -55,6 +57,7 @@ The below functions are also helpful for exploring your data:
 2. Get summary statistics, e.g. `summary(sq_data)`
 3. Compute number of unique values, e.g. `length(unique(sq_data$PersonId))`
 5. Get an overview of the data, e.g. `dplyr::glimpse(sq_data)`, or `skimr::skim(sq_data)`.
+6. View the entire dataset - `View(sq_data)` (not recommended for large datasets)
 
 Validating the structure of your data is just as important as validating the data itself. You may wish to check that your data is correctly imported into R if you observe certain anomalies, such as: 
 
@@ -65,13 +68,13 @@ Validating the structure of your data is just as important as validating the dat
 
 ## Data Validation Report
 
-The easiest way to perform data validation with the **wpa** package is to run the data validation report:
+An easy way to perform data validation with the **wpa** package is to run the data validation report:
 
 ```R
  # `spq_df` is your Standard Person Query data
 validation_report(spq_df)
 ```
-This generates an HTML report in your working directory which contains a series of checks against your data, including:
+This function generates an interactive HTML report in your working directory which contains a series of checks against your data, including:
 
 - Workplace Analytics Settings
 - Organizational Data Quality
@@ -87,7 +90,7 @@ validation_report(spq_df,
                   meeting_data = mt_df)
 ```
 
-The data validation report provides you with a series of recommendations on whether you should adjust certain settings or consider certain assumptions before proceeding with your analysis. After you've made the relevant adjustments, you can run the 'cleaned' dataset through `validation_report()` again to make sure that the potential issues have been caught out. 
+The data validation report provides you with a series of recommendations on whether you should adjust certain settings or consider certain assumptions before proceeding with your analysis. After you have made the relevant adjustments, you can run the 'cleaned' dataset through `validation_report()` again to make sure that the potential issues have been caught out. 
 
 Note that `validation_report()` only provides recommendations based on common scenarios observed with Workplace Analytics data. When deciding whether to make an adjustment, you should consider other factors such as quality of organizational data, context, and other known collaboration norms within the organization. 
 
@@ -134,6 +137,8 @@ There are three functions in **wpa** to address each these respective scenarios:
 3. `identify_inactiveweeks()` identifies individual weeks where collaboration hours are low outliers for the entire organization. 
 
 Functions (1) to (3) all come with options to return only the 'clean' dataset or the original dataset with an appended flag to identify the anomalous persons/weeks. As per above, you can click on the linked functions to find out more. 
+
+#### Example data clean-up
 
 Below is an example of one might create a 'clean' dataset using the functions above:
 
