@@ -45,7 +45,6 @@
 #' @family Information Value
 #'
 #' @examples
-#' \donttest{
 #' # Return a summary table of IV
 #' sq_data %>%
 #'   dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) %>%
@@ -62,7 +61,7 @@
 #'   create_IV(outcome = "X",
 #'             predictors = c("Email_hours", "Meeting_hours"),
 #'             return = "summary")
-#' }
+#'
 #' @export
 create_IV <- function(data,
                       predictors = NULL,
@@ -70,6 +69,11 @@ create_IV <- function(data,
                       bins = 5,
                       siglevel = 0.05,
                       return = "plot"){
+
+  # Preserve string
+  pred_chr <- NULL
+  pred_chr <- predictors
+
 
   if(is.null(tidyselect::all_of(predictors))){
 
@@ -93,7 +97,6 @@ create_IV <- function(data,
   odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
   lnodds <- log(odds)
 
-
   # Calculate p-value
   predictors <- data.frame(Variable = unlist(names(train)))
   predictors <-
@@ -102,7 +105,12 @@ create_IV <- function(data,
     mutate(Variable = as.character(Variable)) # Ensure not factor
 
   for (i in 1:(nrow(predictors))){
-     predictors$pval[i] <- p_test(train, outcome = "outcome", behavior = predictors$Variable[i])
+
+     predictors$pval[i] <-
+       p_test(train,
+              outcome = "outcome",
+              behavior = predictors$Variable[i])
+
   }
 
 
@@ -111,19 +119,15 @@ create_IV <- function(data,
   train <- train %>% select(predictors$Variable, outcome)
 
   # IV Analysis
-  IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
+  # IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
+
+  IV <- map_IV(data = train,
+               predictors = pred_chr,
+               outcome = "outcome", # string not variable
+               bins = bins)
+
+
   IV_names <- names(IV$Tables)
-
-  # Output list
-  output_list <-
-    IV_names %>%
-    purrr::map(function(x){
-      IV$Tables[[x]] %>%
-        mutate(ODDS = exp(WOE + lnodds),
-               PROB = ODDS / (ODDS + 1))
-    }) %>%
-    purrr::set_names(IV_names)
-
 
   IV_summary <- inner_join(IV$Summary, predictors, by = c("Variable"))
 
@@ -133,18 +137,26 @@ create_IV <- function(data,
 
   } else if(return == "IV"){
 
-    IV
+    c(
+      IV,
+      list("lnodds" = lnodds)
+      )
 
   } else if(return == "plot"){
 
+    top_n <-
+      min(
+        c(12, nrow(IV_summary))
+      )
+
     IV_summary %>%
-      utils::head(12) %>%
+      utils::head(top_n) %>%
       create_bar_asis(group_var = "Variable",
                       bar_var = "IV",
                       title = "Information Value (IV)",
                       subtitle =
                         paste("Showing top",
-                              nrow(IV_summary),
+                              top_n,
                               "predictors"))
 
   } else if(return == "plot-WOE"){
@@ -152,9 +164,20 @@ create_IV <- function(data,
     ## Return list of ggplots
 
     IV$Summary$Variable %>%
+      as.character() %>%
       purrr::map(~plot_WOE(IV = IV, predictor = .))
 
     } else if(return == "list"){
+
+      # Output list
+      output_list <-
+        IV_names %>%
+        purrr::map(function(x){
+          IV$Tables[[x]] %>%
+            mutate(ODDS = exp(WOE + lnodds),
+                   PROB = ODDS / (ODDS + 1))
+        }) %>%
+        purrr::set_names(IV_names)
 
       output_list
 
