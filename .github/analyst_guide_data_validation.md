@@ -133,19 +133,37 @@ There are three functions in **wpa** to address each these respective scenarios:
 2. `identify_nkw()` identifies employees with overall low collaboration signals, based on average collaboration hours. In addition to non-knowledge workers, this method would also capture any effective part-timers or freelancers, where their collaboration hours are significantly low. 
 3. `identify_inactiveweeks()` identifies individual weeks where collaboration hours are low outliers for the entire organization. 
 
-Functions (1) to (3) all come with options to return only the 'clean' dataset or the original dataset with an appended flag to identify the anomalous persons/weeks. As per above, you can click on the linked functions to find out more.
+Functions (1) to (3) all come with options to return only the 'clean' dataset or the original dataset with an appended flag to identify the anomalous persons/weeks. As per above, you can click on the linked functions to find out more. 
+
+Below is an example of one might create a 'clean' dataset using the functions above:
+
+```R
+library(wpa)
+library(tidyverse) # You may also just load dplyr
+
+clean_spq <-
+  raw_wowa %>% # Loaded in as a Ways of Working query
+  standardise_pq() %>%  # Standardize variable names - not necessary if SPQ
+  # Force the use of Teams metrics - optional
+  mutate(Collaboration_hours =
+           select(.,
+                  Email_hours,
+                  Meeting_hours,
+                  Unscheduled_Call_hours,
+                  Instant_Message_hours) %>%
+           apply(1, sum)) %>%
+  identify_nkw(collab_threshold = 4.99999, return = "data_cleaned") %>% # >= 5 CH
+  identify_inactiveweeks(sd = 2, return = "data_cleaned") %>% # 2 SD
+  filter(Date >= as.Date("08/30/2020", "%m/%d/%Y")) %>% # Trim start date
+  filter(Date <= as.Date("03/07/2021", "%m/%d/%Y")) %>% # Trim end date
+  filter(Date != as.Date("11/22/2020", "%m/%d/%Y")) # Remove certain weeks
+```
 
 ### Reports 
-Run data validation **reports** prior to starting your analysis:
-```R
-validation_report()
-```
-The function generates an interactive HTML report using Standard Person Query data as an input. The report contains a checks on Workplace Analytics query outputs, to provide diagnostic information for the Analyst pre-analysis. This function contains an option to supply an additional meeting query.
 
-```R
-subject_validate_report()
-```
-This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exclusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis. Returns a HTML report by default.
+In addition to the main `validation_report()`, there is also an additional report you can run for validating whether you set your meeting exclusion rule appropriately. 
+
+`subject_validate_report()` creates a text mining report in HTML based on a standard meeting query. Meeting subject lines from the `Subject` variable are analyzed, and meetings with subjects that include common exclusion terms are highlighted. The report will help you understand whether your data may be including a significant proportion of non-meetings in your meeting collaboration data. 
 
 
 ## Ready to learn more?
