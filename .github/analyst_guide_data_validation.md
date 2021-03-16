@@ -27,7 +27,7 @@ library(wpa)
 check_query(sq_data)
 ```
 
-The resulting output would look something like the following:
+The resulting output would look something like the following and will give you an initial view into your data:
 
 ```
 The data used is a Person Query.
