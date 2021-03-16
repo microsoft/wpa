@@ -29,6 +29,8 @@ navbar:
         href: analyst_guide.html
       - text: Getting Started
         href: analyst_guide_getting_started.html
+      - text: Data Validation
+        href: analyst_guide_data_validation.html
       - text: Summary Functions
         href: analyst_guide_summary.html
       - text: Distribution Functions
