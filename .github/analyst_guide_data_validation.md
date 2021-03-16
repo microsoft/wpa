@@ -1,6 +1,6 @@
 # Data validation
 
-This section covers the topic of **how to validate Workplace Analytics data**. Before you apply any functions to your data set and can start looking for new insights, it is recommended that you perform data validation. This best practice is applicable regardless of whether your aim is to explore the data, to establish a baseline, or to perform advanced analytics.
+This section covers the topic of **how to validate Workplace Analytics data**. Before you apply any functions to your data set and start looking for new insights, it is recommended that you perform data validation. This best practice is applicable regardless of whether your aim is to explore the data, to establish a baseline, or to perform advanced analytics.
 
 ## Why validate?
 
