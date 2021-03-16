@@ -49,15 +49,13 @@ which Workplace Analytics metrics are most explained by the change in dates.
 }
 \examples{
 # Returns a data frame
-\donttest{
-  sq_data \%>\%
-    IV_by_period(
-      before_start = "2019-11-03",
-      before_end = "2019-11-09",
-      after_start = "2019-11-10",
-      after_end = "2019-11-16"
-    )
-}
+sq_data \%>\%
+  IV_by_period(
+    before_start = "2019-11-03",
+    before_end = "2019-11-09",
+    after_start = "2019-11-10",
+    after_end = "2019-11-16"
+  )
 
 }
 \seealso{
