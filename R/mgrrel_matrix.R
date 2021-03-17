@@ -109,8 +109,11 @@ mgrrel_matrix <- function(data,
   ## Create a Person Weekly Average
   data1 <-
     data %>%
-    mutate(coattendman_rate = Meeting_hours_with_manager / Meeting_hours) %>% # Coattendance Rate with Manager
-    filter(!is.na(coattendman_rate)) %>%
+    # Coattendance Rate with Manager
+    mutate(coattendman_rate =
+             (Meeting_hours_with_manager / Meeting_hours) %>%
+             tidyr::replace_na(replace = 0) %>% # Replace NAs with 0s
+             ifelse(!is.finite(.), 0, .)) %>% # Replace Inf with 0s
     group_by(PersonId, !!sym(hrvar)) %>%
     summarise(
       Meeting_hours_with_manager = mean(Meeting_hours_with_manager, na.rm = TRUE),
