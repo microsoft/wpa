@@ -10,10 +10,12 @@ identify_nkw(data, collab_threshold = 5, return = "data_summary")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{collab_threshold}{The collaboration hours threshold that should be
-exceeded as an average for the entire analysis period for the employee to
-be categorized as a knowledge worker ("kw"). Enter a positive number.
-Default is set to 5 collaboration hours.}
+\item{collab_threshold}{Positive numeric value representing the collaboration
+hours threshold that should be exceeded as an average for the entire
+analysis period for the employee to be categorized as a knowledge worker
+("kw"). Default is set to 5 collaboration hours. Since v1.4.1, this uses a
+"greater than or equal to" logic (\code{>=}), in which case persons with exactly
+5 collaboration hours will pass.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
