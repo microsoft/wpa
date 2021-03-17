@@ -133,7 +133,7 @@ mgrrel_matrix <- function(data,
   ## Create key variables
   data2 <-
     data1 %>%
-    mutate(coattendande = ifelse(coattendman_rate < 0.5, "<50%", ">50%"),
+    mutate(coattendande = ifelse(coattendman_rate < 0.5, "<50%", ">=50%"),
            mgr1on1 = ifelse(Meeting_hours_with_manager_1_on_1 * 60 < threshold,
                             thres_low_chr,
                             thres_top_chr))
@@ -158,10 +158,10 @@ mgrrel_matrix <- function(data,
       mutate(xmin = ifelse(mgr1on1 == thres_low_chr, -sqrt(perc), 0),
              xmax = ifelse(mgr1on1 == thres_top_chr, sqrt(perc), 0),
              ymin = ifelse(coattendande == "<50%", -sqrt(perc), 0),
-             ymax = ifelse(coattendande == ">50%", sqrt(perc), 0),
+             ymax = ifelse(coattendande == ">=50%", sqrt(perc), 0),
              mgrRel = case_when(mgr1on1 == thres_low_chr & coattendande == "<50%" ~ "Under-coached",
-                                mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
-                                mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
+                                mgr1on1 == thres_low_chr & coattendande == ">=50%" ~ "Co-attending",
+                                mgr1on1 == thres_top_chr & coattendande == ">=50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
       mutate_at("mgrRel", ~as.factor(.))
 
@@ -181,10 +181,10 @@ mgrrel_matrix <- function(data,
       mutate(xmin = ifelse(mgr1on1 == thres_low_chr, -sqrt(perc), 0),
              xmax = ifelse(mgr1on1 == thres_top_chr, sqrt(perc), 0),
              ymin = ifelse(coattendande == "<50%", -sqrt(perc), 0),
-             ymax = ifelse(coattendande == ">50%", sqrt(perc), 0),
+             ymax = ifelse(coattendande == ">=50%", sqrt(perc), 0),
              mgrRel = case_when(mgr1on1 == thres_low_chr & coattendande == "<50%" ~ "Under-coached",
-                                mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
-                                mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
+                                mgr1on1 == thres_low_chr & coattendande == ">=50%" ~ "Co-attending",
+                                mgr1on1 == thres_top_chr & coattendande == ">=50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
       ungroup() %>%
       mutate_at("mgrRel", ~as.factor(.)) %>%
@@ -222,7 +222,7 @@ mgrrel_matrix <- function(data,
                          limits = c(-max(abs(chart$xmin), abs(chart$xmax)), max(abs(chart$xmin), abs(chart$xmax)))) +
       ylab("Employee and manager coattend") +
       scale_y_continuous(breaks = c(-max(abs(chart$ymin), abs(chart$ymax))/2, max(abs(chart$ymin), abs(chart$ymax))/2),
-                         labels = c("<50%", ">50%"),
+                         labels = c("<50%", ">=50%"),
                          limits = c(-max(abs(chart$ymin), abs(chart$ymax)), max(abs(chart$ymin), abs(chart$ymax)))) +
       theme_minimal() +
       theme(panel.grid = element_blank(),
@@ -295,8 +295,8 @@ mgrrel_matrix <- function(data,
     data2 %>%
       mutate(Type =
                case_when(mgr1on1 == thres_low_chr & coattendande == "<50%" ~ "Under-coached",
-                         mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
-                         mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
+                         mgr1on1 == thres_low_chr & coattendande == ">=50%" ~ "Co-attending",
+                         mgr1on1 == thres_top_chr & coattendande == ">=50%" ~ "Highly managed",
                          TRUE ~ "Coaching")) %>%
       select(PersonId,
              !!sym(hrvar),
