@@ -216,25 +216,18 @@ mgrrel_matrix <- function(data,
                     y = ymin + 0.5*sqrt(perc),
                     label = scales::percent(perc, accuracy = 1))) +
       coord_equal() +
-      xlab("Weekly 1:1 time with manager") +
       scale_x_continuous(breaks = c(-max(abs(chart$xmin),abs(chart$xmax))/2,max(abs(chart$xmin),abs(chart$xmax))/2),
                          labels = c(thres_low_chr, thres_top_chr),
                          limits = c(-max(abs(chart$xmin), abs(chart$xmax)), max(abs(chart$xmin), abs(chart$xmax)))) +
-      ylab("Employee and manager coattend") +
       scale_y_continuous(breaks = c(-max(abs(chart$ymin), abs(chart$ymax))/2, max(abs(chart$ymin), abs(chart$ymax))/2),
                          labels = c("<50%", ">=50%"),
                          limits = c(-max(abs(chart$ymin), abs(chart$ymax)), max(abs(chart$ymin), abs(chart$ymax)))) +
-      theme_minimal() +
-      theme(panel.grid = element_blank(),
-            plot.title = element_text(color="grey40", face="bold", size=20),
-            axis.line = element_line(),
-            legend.position = "bottom",
-            legend.title = element_blank(),
-            axis.title = element_text(size = 12),
-            axis.text = element_text(size = 12),
-            legend.text = element_text(size = 12),
-            strip.text.x = element_text(color = "grey40", face = "bold", size = 14)) +
-      labs(caption = extract_date_range(data, return = "text"))
+      theme_wpa_basic() +
+      labs(
+        x = "Weekly 1:1 time with manager",
+        y = "Employee and manager coattendance",
+        caption = extract_date_range(data, return = "text")
+        )
 
   } else if(hrvar != "Total"){
 
