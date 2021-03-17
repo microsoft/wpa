@@ -127,7 +127,7 @@ mgrrel_matrix <- function(data,
 
   ## Threshold
   thres_low_chr <- paste("<", threshold, "min")
-  thres_top_chr <- paste(">", threshold, "min")
+  thres_top_chr <- paste(">=", threshold, "min")
 
 
   ## Create key variables
