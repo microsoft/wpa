@@ -241,13 +241,14 @@ e.g. "Collaboration_hours"</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>A list of HR Variables to consider in the scan.
-Defaults to all HR attributes identified.</p></td>
+      <td><p>String containing the name of the HR Variable by which to split
+metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
+instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group size.
-Defaults to 5.</p></td>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>return</th>
