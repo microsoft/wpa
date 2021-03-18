@@ -32,10 +32,10 @@ workloads_line <- function(data,
                            return = "plot"){
 
   ## Inherit arguments
-  output <- create_line(data = data,
-                        metric = "Workweek_span",
-                        hrvar = hrvar,
-                        mingroup = mingroup,
-                        return = return)
+  create_line(data = data,
+              metric = "Workweek_span",
+              hrvar = hrvar,
+              mingroup = mingroup,
+              return = return)
 
 }

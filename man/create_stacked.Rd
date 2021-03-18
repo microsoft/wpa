@@ -18,14 +18,17 @@ create_stacked(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
 \item{metrics}{A character vector to specify variables to be used
 in calculating the "Total" value, e.g. c("Meeting_hours", "Email_hours").
 The order of the variable names supplied determine the order in which they
 appear on the stacked plot.}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}

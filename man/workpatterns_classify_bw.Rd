@@ -48,7 +48,7 @@ archetypes - "table": returns a summary table of the archetypes -
 over time}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}} Apply a rule based
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Apply a rule based
 algorithm to emails sent by hour of day, using the binary week-based (bw)
 method.
 }

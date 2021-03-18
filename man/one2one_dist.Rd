@@ -15,14 +15,15 @@ one2one_dist(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character
-vector, defaults to "Organization" but accepts any character vector, e.g.
-"LevelDesignation"}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
-size, defaults to 5.}
+size. Defaults to 5.}
 
-\item{return}{String specifying what to return. This must be one of the following strings:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
 \item \code{"plot"}
 \item \code{"table"}
