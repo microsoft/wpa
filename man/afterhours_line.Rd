@@ -30,10 +30,10 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
-Provides a week by week view of after-hours collaboration time, visualized as line charts.
-By default returns a line chart for after-hours collaboration hours,
-with a separate panel per value in the HR attribute.
-Additional options available to return a summary table.
+Provides a week by week view of after-hours collaboration time, visualized as
+line charts. By default returns a line chart for after-hours collaboration
+hours, with a separate panel per value in the HR attribute. Additional
+options available to return a summary table.
 }
 \details{
 Uses the metric \code{After_hours_collaboration_hours}.
