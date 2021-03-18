@@ -345,23 +345,23 @@ manager co-attendance time.</p></li>
 <span class='co'># Return summary table</span>
 <span class='fu'>mgrcoatt_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 5</span><span>
-#&gt;    group                `0 - 20%` `20 - 40%` `40 - 60%` `60% +`
+#&gt;    group                `0 - 25%` `25 - 50%` `50 - 75%` `75% +`
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz Dev                  0.213     </span><span style='color: #BB0000;'>NA</span><span>         0.32     0.467
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Customer Service         0.180     </span><span style='color: #BB0000;'>NA</span><span>         0.098</span><span style='text-decoration: underline;'>4</span><span>   0.721
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Facilities               0.194     </span><span style='color: #BB0000;'>NA</span><span>         0.083</span><span style='text-decoration: underline;'>3</span><span>   0.722
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Finance-Corporate        0.191     </span><span style='color: #BB0000;'>NA</span><span>         0.221    0.588
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Finance-East             0.243     </span><span style='color: #BB0000;'>NA</span><span>         0.028</span><span style='text-decoration: underline;'>6</span><span>   0.729
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Finance-South            0.210     </span><span style='color: #BB0000;'>NA</span><span>         0.111    0.679
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Finance-West             0.233     </span><span style='color: #BB0000;'>NA</span><span>         0.068</span><span style='text-decoration: underline;'>5</span><span>   0.699
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Financial Planning       0.187     </span><span style='color: #BB0000;'>NA</span><span>         0.16     0.653
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A Central              0.158     </span><span style='color: #BB0000;'>NA</span><span>         0.123    0.719
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A East                 0.246     </span><span style='color: #BB0000;'>NA</span><span>         0.169    0.585
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> G&amp;A South                0.197      0.224     0.237    0.342
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Human Resources          0.197      0.183     0.324    0.296
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Inventory Management     0.217      0.267     0.25     0.267
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> IT-Corporate             0.176      0.309     0.176    0.338
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> IT-East                  0.226      0.210     0.210    0.355</div><div class='input'>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz Dev                  0.213     0.04       0.533    0.213
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Customer Service         0.180    </span><span style='color: #BB0000;'>NA</span><span>          0.459    0.361
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Facilities               0.194    </span><span style='color: #BB0000;'>NA</span><span>          0.472    0.333
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Finance-Corporate        0.191    </span><span style='color: #BB0000;'>NA</span><span>          0.559    0.25 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Finance-East             0.243     0.014</span><span style='text-decoration: underline;'>3</span><span>     0.3      0.443
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Finance-South            0.210    </span><span style='color: #BB0000;'>NA</span><span>          0.407    0.383
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Finance-West             0.233    </span><span style='color: #BB0000;'>NA</span><span>          0.438    0.329
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Financial Planning       0.187     0.026</span><span style='text-decoration: underline;'>7</span><span>     0.467    0.32 
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A Central              0.158     0.035</span><span style='text-decoration: underline;'>1</span><span>     0.439    0.368
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A East                 0.246    </span><span style='color: #BB0000;'>NA</span><span>          0.569    0.185
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> G&amp;A South                0.197     0.421      0.105    0.276
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Human Resources          0.197     0.408      0.127    0.268
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Inventory Management     0.233     0.4        0.183    0.183
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> IT-Corporate             0.191     0.426      0.221    0.162
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> IT-East                  0.226     0.387      0.096</span><span style='text-decoration: underline;'>8</span><span>   0.290</div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

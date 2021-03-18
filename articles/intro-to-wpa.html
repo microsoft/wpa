@@ -164,7 +164,7 @@
       <h1 data-toc-skip>Introduction to {wpa}</h1>
                         <h4 class="author">Martin Chan</h4>
             
-            <h4 class="date">2021-03-16</h4>
+            <h4 class="date">2021-03-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/master/vignettes/intro-to-wpa.Rmd"><code>vignettes/intro-to-wpa.Rmd</code></a></small>
       <div class="hidden name"><code>intro-to-wpa.Rmd</code></div>
@@ -392,14 +392,14 @@
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 5</span>
-<span class="co">#&gt;   group     `0 - 20%` `20 - 40%` `40 - 60%` `60% +`</span>
+<span class="co">#&gt;   group     `0 - 25%` `25 - 50%` `50 - 75%` `75% +`</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Director      1        NA          NA      NA    </span>
-<span class="co">#&gt; 2 Executive     1        NA          NA      NA    </span>
-<span class="co">#&gt; 3 Junior IC    NA         0.0476      0.248   0.705</span>
-<span class="co">#&gt; 4 Manager       0.414     0.0601      0.120   0.405</span>
-<span class="co">#&gt; 5 Senior IC    NA         0.107       0.282   0.612</span>
-<span class="co">#&gt; 6 Support      NA         0.105       0.198   0.697</span></code></pre></div>
+<span class="co">#&gt; 1 Director    1           NA         NA      NA    </span>
+<span class="co">#&gt; 2 Executive   1           NA         NA      NA    </span>
+<span class="co">#&gt; 3 Junior IC  NA            0.133      0.524   0.343</span>
+<span class="co">#&gt; 4 Manager     0.417        0.102      0.282   0.198</span>
+<span class="co">#&gt; 5 Senior IC  NA            0.233      0.417   0.350</span>
+<span class="co">#&gt; 6 Support     0.00239      0.177      0.430   0.391</span></code></pre></div>
 <hr>
 </div>
 <div id="customizing-plot-outputs" class="section level3">
