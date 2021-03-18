@@ -10,14 +10,10 @@
 #' Returns a faceted histogram by default.
 #' Additional options available to return the underlying frequency table.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character
-#'   vector, defaults to "Organization" but accepts any character vector, e.g.
-#'   "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group
-#'   size, defaults to 5.
+#'
 #'
 #' @param binwidth Numeric value for setting `binwidth` argument within
 #'   `ggplot2::geom_histogram()`. Defaults to 1.

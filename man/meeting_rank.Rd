@@ -9,11 +9,12 @@ meeting_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{A list of HR Variables to consider in the scan.
-Defaults to all HR attributes identified.}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
-Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
