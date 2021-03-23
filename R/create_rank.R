@@ -274,7 +274,7 @@ create_rank_combine <- function(data, hrvar, metric, mingroup){
     purrr::pmap(function(var1, var2){
 
       data %>%
-        dplyr::mutate(CombinedVar =
+        dplyr::mutate(Combined =
                  paste0(
                    "[",var1, "] ",
                    !!sym(var1),
@@ -282,7 +282,7 @@ create_rank_combine <- function(data, hrvar, metric, mingroup){
                    !!sym(var2))) %>%
         create_rank(
           metric = metric,
-          hrvar = "CombinedVar",
+          hrvar = "Combined",
           mode = "simple",
           mingroup = mingroup
         )
