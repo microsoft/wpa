@@ -10,6 +10,7 @@ create_rank(
   hrvar = extract_hr(data),
   mingroup = 5,
   return = "table",
+  mode = "simple",
   plot_mode = 1
 )
 }
@@ -34,6 +35,12 @@ following strings:
 }
 
 See \code{Value} for more information.}
+
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
 
 \item{plot_mode}{Numeric vector to determine which plot mode to return. Must
 be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
@@ -82,6 +89,12 @@ create_rank(
   return = "table"
 )
 
+# Return a table - combination mode
+create_rank(
+  data = sq_data,
+  metric = "Emails_sent",
+  mode = "combine",
+  return = "table"
 
 }
 \seealso{
