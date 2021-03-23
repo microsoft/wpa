@@ -95,6 +95,7 @@ create_rank(
   metric = "Emails_sent",
   mode = "combine",
   return = "table"
+)
 
 }
 \seealso{
