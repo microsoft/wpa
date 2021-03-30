@@ -10,7 +10,7 @@ The latest stable version of **wpa** is available in Github. You can automatical
 if(!"remotes" %in% installed.packages()){
   install.packages("remotes")
 }
-remotes::install_git(url = "https://github.com/microsoft/wpa.git", upgrade = "never")
+remotes::install_github(repo = "microsoft/wpa", upgrade = "never")
 
 ```
 

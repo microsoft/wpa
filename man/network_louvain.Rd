@@ -31,8 +31,8 @@ network_louvain(
 of the nodes.}
 
 \item{algorithm}{String to specify the node placement algorithm to be used.
-Defaults to \code{"fr"} for the force-directed algorithm of Fruchterman and
-Reingold. See
+Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
+nodes. See
 \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
 list of options.}
 
@@ -71,7 +71,7 @@ default plotting method.}
 See \code{return}.
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Take a P2P network query and implement the Louvain community detection
 method. The 'igraph' implementation of the Louvain method is used.

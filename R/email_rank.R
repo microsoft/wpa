@@ -20,17 +20,34 @@
 #' @family Visualization
 #' @family Emails
 #'
+#' @examples
+#' # Return rank table
+#' email_rank(
+#'   data = sq_data,
+#'   return = "table"
+#' )
+#'
+#' # Return plot
+#' email_rank(
+#'   data = sq_data,
+#'   return = "plot"
+#' )
+#'
 #' @export
 
 email_rank <- function(data,
                        hrvar = extract_hr(data),
                        mingroup = 5,
+                       mode = "simple",
+                       plot_mode = 1,
                        return = "table"){
 
   data %>%
     create_rank(metric = "Email_hours",
                 hrvar = hrvar,
                 mingroup = mingroup,
+                mode = mode,
+                plot_mode = plot_mode,
                 return = return)
 
 }

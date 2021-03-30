@@ -10,6 +10,7 @@ create_rank(
   hrvar = extract_hr(data),
   mingroup = 5,
   return = "table",
+  mode = "simple",
   plot_mode = 1
 )
 }
@@ -19,11 +20,12 @@ create_rank(
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
 
-\item{hrvar}{A list of HR Variables to consider in the scan.
-Defaults to all HR attributes identified.}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
-Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -33,6 +35,12 @@ following strings:
 }
 
 See \code{Value} for more information.}
+
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
 
 \item{plot_mode}{Numeric vector to determine which plot mode to return. Must
 be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
@@ -47,7 +55,8 @@ argument:
 \itemize{
 \item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
-bubbles represent the size of the organizations.
+bubbles represent the size of the organizations. Note that there is no
+plot output if \code{mode} is set to \code{"combine"}.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -57,6 +66,7 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
 (across multiple HR attributes) ranked by the specified metric.
 }
 \examples{
+# Plot mode 1 - show top and bottom five groups
 create_rank(
   data = sq_data,
   hrvar = c("FunctionType", "LevelDesignation"),
@@ -81,6 +91,13 @@ create_rank(
   return = "table"
 )
 
+# Return a table - combination mode
+create_rank(
+  data = sq_data,
+  metric = "Emails_sent",
+  mode = "combine",
+  return = "table"
+)
 
 }
 \seealso{

@@ -9,19 +9,42 @@ collaboration_rank(
   data,
   hrvar = extract_hr(data),
   mingroup = 5,
+  mode = "simple",
+  plot_mode = 1,
   return = "table"
 )
 
-collab_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
+collab_rank(
+  data,
+  hrvar = extract_hr(data),
+  mingroup = 5,
+  mode = "simple",
+  plot_mode = 1,
+  return = "table"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{A list of HR Variables to consider in the scan.
-Defaults to all HR attributes identified.}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
-Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
+
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
+
+\item{plot_mode}{Numeric vector to determine which plot mode to return. Must
+be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
+\itemize{
+\item \code{1}: Top and bottom five groups across the data population are highlighted
+\item \code{2}: Top and bottom groups \emph{per} organizational attribute are highlighted
+}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -33,7 +56,15 @@ following strings:
 See \code{Value} for more information.}
 }
 \value{
-When 'table' is passed in \code{return}, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
+metric, the y-axis represents the HR attributes, and the size of the
+bubbles represent the size of the organizations. Note that there is no
+plot output if \code{mode} is set to \code{"combine"}.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 This function scans a standard query output for groups with high levels of 'Weekly Digital Collaboration'.
@@ -42,6 +73,21 @@ Returns a table with a all of groups (across multiple HR attributes) ranked by h
 \details{
 Uses the metric \code{Collaboration_hours}.
 See \code{create_rank()} for applying the same analysis to a different metric.
+}
+\examples{
+# Return rank table
+collaboration_rank(
+  data = sq_data,
+  return = "table"
+)
+
+# Return plot
+collaboration_rank(
+  data = sq_data,
+  return = "plot"
+)
+
+
 }
 \seealso{
 Other Visualization: 

@@ -58,8 +58,8 @@
 #' @param seed Seed for the random number generator passed to `leiden::leiden()`
 #'   to ensure consistency. Only applicable when `display` is set to `"leiden"`.
 #' @param algorithm String to specify the node placement algorithm to be used.
-#'   Defaults to `"fr"` for the force-directed algorithm of Fruchterman and
-#'   Reingold. See
+#'   Defaults to `"mds"` for the deterministic multi-dimensional scaling of
+#'   nodes. See
 #'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
 #'   list of options.
 #' @param size_threshold Numeric value representing the maximum number of edges

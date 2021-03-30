@@ -10,7 +10,10 @@ network_g2g(
   time_investor = NULL,
   collaborator = NULL,
   metric = "Collaboration_hours",
+  algorithm = "fr",
+  node_colour = "lightblue",
   exc_threshold = 0.1,
+  org_count = NULL,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
 )
@@ -20,7 +23,10 @@ g2g_network(
   time_investor = NULL,
   collaborator = NULL,
   metric = "Collaboration_hours",
+  algorithm = "fr",
+  node_colour = "lightblue",
   exc_threshold = 0.1,
+  org_count = NULL,
   subtitle = "Collaboration Across Organizations",
   return = "plot"
 )
@@ -37,7 +43,27 @@ column.}
 \item{metric}{String containing the variable name for metric. Defaults to
 \code{Collaboration_hours}.}
 
+\item{algorithm}{String to specify the node placement algorithm to be used.
+Defaults to \code{"fr"} for the force-directed algorithm of Fruchterman and
+Reingold. See
+\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
+list of options.}
+
+\item{node_colour}{String to specify the colour to be used for displaying
+nodes. Defaults to \code{"lightblue"}. If \code{"vary"} is supplied, a different colour
+is shown for each node at random.}
+
 \item{exc_threshold}{Exclusion threshold to apply.}
+
+\item{org_count}{Optional data frame to provide the size of each organization
+in the \code{collaborator} attribute. The data frame should contain only two
+columns:
+\itemize{
+\item Name of the \code{collaborator} attribute excluding any prefixes, e.g.
+\code{"Organization"}. Must be of character or factor type.
+\item \code{"n"}. Must be of numeric type.
+Defaults to \code{NULL}, where node sizes will be fixed.
+}}
 
 \item{subtitle}{String to override default plot subtitle.}
 
@@ -64,8 +90,8 @@ argument:
 }
 \description{
 Pass a data frame containing a group-to-group query and return a network
-plot. Automatically handles "Collaborators_within_group" and
-"Other_collaborators" within query data.
+plot. Automatically handles \code{"Collaborators_within_group"} and
+\code{"Other_collaborators"} within query data.
 }
 \examples{
 # Return a network plot
@@ -77,6 +103,19 @@ g2g_data \%>\%
               collaborator = "Collaborators_Organization",
               metric = "Meeting_hours",
               exc_threshold = 0.05)
+
+# Return a network plot with circle layout
+# Vary node colours and add org sizes
+org_tb <- hrvar_count(
+  sq_data,
+  hrvar = "Organization",
+  return = "table"
+)
+
+g2g_data \%>\%
+  network_g2g(algorithm = "circle",
+              node_colour = "vary",
+              org_count = org_tb)
 
 # Return an interaction matrix
 # Minimum arguments specified
