@@ -39,7 +39,7 @@
 #'   identified communities. The first data frame is a summary table of all the
 #'   communities. This is only valid if a community detection method is selected
 #'   at `display`.
-#'   - `'network'`: return igraph object.
+#'   - `'network'`: return 'igraph' object.
 #'
 #' @param path File path for saving the PDF output. Defaults to a timestamped
 #'   path based on current parameters.
@@ -168,7 +168,7 @@ network_p2p <- function(data,
     )
 
 
-  ## Create igraph object
+  ## Create 'igraph' object
   g_raw <-
     igraph::graph_from_data_frame(edges,
                                   directed = TRUE, # Directed, but FALSE for visualization

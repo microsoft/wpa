@@ -77,7 +77,7 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: ggplot object. A random of ten working patterns are displayed,
+#'   - `"plot"`: 'ggplot' object. A random of ten working patterns are displayed,
 #'   with diagnostic data and the Flexibility Index shown on the plot.
 #'   - `"data"`: data frame. The original input data appended with the
 #'   Flexibility Index and the component scores. Can be used with

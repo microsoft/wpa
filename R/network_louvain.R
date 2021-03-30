@@ -30,7 +30,7 @@
 #'   - `'describe'`: return a list of data frames which describe each of the
 #'   identified communities. The first data frame is a summary table of all the
 #'   communities.
-#'   - `'network'`: return igraph object.
+#'   - `'network'`: return 'igraph' object.
 #'
 #' @return See `return`.
 #'

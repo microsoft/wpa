@@ -54,7 +54,7 @@ communities and HR attributes.
 identified communities. The first data frame is a summary table of all the
 communities. This is only valid if a community detection method is selected
 at \code{display}.
-\item \code{'network'}: return igraph object.
+\item \code{'network'}: return 'igraph' object.
 }}
 
 \item{path}{File path for saving the PDF output. Defaults to a timestamped

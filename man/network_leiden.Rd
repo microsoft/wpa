@@ -66,7 +66,7 @@ communities and HR attributes.
 \item \code{'describe'}: return a list of data frames which describe each of the
 identified communities. The first data frame is a summary table of all the
 communities.
-\item \code{'network'}: return igraph object.
+\item \code{'network'}: return 'igraph' object.
 }}
 
 \item{size_threshold}{Numeric value representing the maximum number of edges

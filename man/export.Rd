@@ -14,14 +14,14 @@ export(
 )
 }
 \arguments{
-\item{x}{Data frame or ggplot object to be passed through.}
+\item{x}{Data frame or 'ggplot' object to be passed through.}
 
 \item{method}{Character string specifying the method of export.
 Valid inputs include:
 \itemize{
 \item \code{"clipboard"} (default if input is data frame)
 \item \code{"csv"}
-\item \code{"png"} (default if input is ggplot object)
+\item \code{"png"} (default if input is 'ggplot' object)
 \item \code{"svg"}
 \item \code{"jpeg"}
 \item \code{"pdf"}
@@ -43,16 +43,16 @@ argument:
 \itemize{
 \item \code{"clipboard"}: no return - data frame is saved to clipboard.
 \item \code{"csv"}: CSV file containing data frame is saved to specified path.
-\item \code{"png"}: PNG file containing ggplot object is saved to specified path.
-\item \code{"svg"}: SVG file containing ggplot object is saved to specified path.
-\item \code{"jpeg"}: JPEG file containing ggplot object is saved to specified path.
-\item \code{"pdf"}: PDF file containing ggplot object is saved to specified path.
+\item \code{"png"}: PNG file containing 'ggplot' object is saved to specified path.
+\item \code{"svg"}: SVG file containing 'ggplot' object is saved to specified path.
+\item \code{"jpeg"}: JPEG file containing 'ggplot' object is saved to specified path.
+\item \code{"pdf"}: PDF file containing 'ggplot' object is saved to specified path.
 }
 }
 \description{
 A general use function to export {wpa} outputs to CSV,
 clipboard, or save as images. By default, \code{export()} copies
-a data frame to the clipboard. If the input is a ggplot object,
+a data frame to the clipboard. If the input is a 'ggplot' object,
 the default behaviour is to export a PNG.
 }
 \seealso{

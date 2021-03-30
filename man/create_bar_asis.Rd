@@ -48,7 +48,7 @@ RGB values via \code{rgb2hex()}.}
 labels}
 }
 \value{
-ggplot object. A horizontal bar plot.
+'ggplot' object. A horizontal bar plot.
 }
 \description{
 This function creates a bar chart directly from the aggregated / summarised

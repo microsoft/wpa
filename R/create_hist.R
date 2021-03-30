@@ -30,7 +30,7 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: ggplot object. A faceted histogram for the metric.
+#'   - `"plot"`: 'ggplot' object. A faceted histogram for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'   - `"data"`: data frame. Data with calculated person averages.
 #'   - `"frequency`: list of data frames. Each data frame contains the
