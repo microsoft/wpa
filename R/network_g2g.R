@@ -7,8 +7,8 @@
 #'
 #' @description
 #' Pass a data frame containing a group-to-group query and return a network
-#' plot. Automatically handles "Collaborators_within_group" and
-#' "Other_collaborators" within query data.
+#' plot. Automatically handles `"Collaborators_within_group"` and
+#' `"Other_collaborators"` within query data.
 #'
 #' @param data Data frame containing a G2G query.
 #' @param time_investor String containing the variable name for the Time
@@ -70,15 +70,16 @@
 #'
 #' # Return a network plot with circle layout
 #' # Vary node colours and add org sizes
+#' org_tb <- hrvar_count(
+#'   sq_data,
+#'   hrvar = "Organization",
+#'   return = "table"
+#' )
+#'
 #' g2g_data %>%
 #'   network_g2g(algorithm = "circle",
 #'               node_colour = "vary",
-#'               org_count =
-#'                 hrvar_count(
-#'                   sq_data,
-#'                   hrvar = "Organization",
-#'                   return = "table"
-#'                 ))
+#'               org_count = org_tb)
 #'
 #' # Return an interaction matrix
 #' # Minimum arguments specified

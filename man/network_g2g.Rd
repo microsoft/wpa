@@ -90,8 +90,8 @@ argument:
 }
 \description{
 Pass a data frame containing a group-to-group query and return a network
-plot. Automatically handles "Collaborators_within_group" and
-"Other_collaborators" within query data.
+plot. Automatically handles \code{"Collaborators_within_group"} and
+\code{"Other_collaborators"} within query data.
 }
 \examples{
 # Return a network plot
@@ -106,15 +106,16 @@ g2g_data \%>\%
 
 # Return a network plot with circle layout
 # Vary node colours and add org sizes
+org_tb <- hrvar_count(
+  sq_data,
+  hrvar = "Organization",
+  return = "table"
+)
+
 g2g_data \%>\%
   network_g2g(algorithm = "circle",
               node_colour = "vary",
-              org_count =
-                hrvar_count(
-                  sq_data,
-                  hrvar = "Organization",
-                  return = "table"
-                ))
+              org_count = org_tb)
 
 # Return an interaction matrix
 # Minimum arguments specified
