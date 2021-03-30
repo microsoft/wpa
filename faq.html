@@ -234,6 +234,9 @@
 <p>The reason why <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work with <strong>wpa</strong> is because <strong>wpa</strong> is currently only available on GitHub and not on CRAN, and CRAN is where the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> downloads and installs R packages from. Instead, you should use <code>install_git()</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html">install_git</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span> </code></pre></div>
+<p>If the above does not work, please also try:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"microsoft/wpa"</span>, upgrade <span class="op">=</span> <span class="st">"never"</span><span class="op">)</span></code></pre></div>
 <p>For more information regarding installation, please see our <a href="https://microsoft.github.io/wpa/analyst_guide_getting_started.html">Getting Started</a> page.</p>
 </div>
 <div id="i-see-a-warning-message-about-the-installation-of-rtools-what-should-i-do" class="section level3">
@@ -259,11 +262,65 @@
 <h3 class="hasAnchor">
 <a href="#how-do-i-install-from-a-developmental--experimental-branch-of-the-package" class="anchor"></a>How do I install from a developmental / experimental branch of the package?</h3>
 <p>If you wish to install a version of the package from any branch <strong>other than the main branch</strong>, you can run the following code:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span>,
                       branch <span class="op">=</span> <span class="st">"&lt;BRANCH-NAME&gt;"</span>, <span class="co"># Replace</span>
                       build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>You should replace the <code>&lt;BRANCH-NAME&gt;</code> with the name of your target branch, such as <code>"feature/network-functions"</code>.</p>
+</div>
+<div id="should-i-install-r-to-my-onedrive-or-a-cloud-folder" class="section level3">
+<h3 class="hasAnchor">
+<a href="#should-i-install-r-to-my-onedrive-or-a-cloud-folder" class="anchor"></a>Should I install R to my OneDrive or a cloud folder?</h3>
+<p>No, you should not. You should never install the default directory for R to OneDrive, as R is a program and you are likely to experience significant cloud syncing issues if you do so. If you use Windows and have experienced this issue, please uninstall and follow the below steps for re-installation:</p>
+<ol>
+<li>Install RStudio to the default directory, e.g. <code>C:\Program Files\R\R-4.X.X\library\base\R\Rprofile</code>
+</li>
+<li>Change the default RStudio package installation location so that it does not save to OneDrive, or another cloud drive. This ensures that OneDrive doesn’t attempt to upload the thousands of files that will be downloaded via the installation of the packages. The R folder where these packages install to is by default created in the Documents folder, which by automatically syncs with OneDrive. We will be moving the installation path to our local <code>C:</code> drive instead to prevent this.</li>
+<li>Create a local folder. Open <code>File Explorer</code> -&gt; <code>C:</code> drive -&gt; <code>Create New Folder</code> -&gt; Name it <code>"R"</code>
+</li>
+<li>Change permissions:
+<ul>
+<li>If you installed RStudio in the default directory, the path to your RProfile file is <code>C:\Program Files\R\R-4.X.X\library\base\R\Rprofile</code>
+</li>
+<li>Navigate to <code>C:\Program Files\R\R-4.X.X\library\base\</code>
+</li>
+<li>Double-click the base folder so that you’re looking at its contents, which include the R subfolder.</li>
+<li>Right-click on the R subfolder and select Properties.</li>
+<li>Click on the <code>Security</code> tab.</li>
+<li>Click on the <code>Edit</code> button.</li>
+<li>Scroll down the Group or user names pane and click on the Users line near the bottom of that list.</li>
+<li>In the <code>Permissions for users</code> pane, click on the <code>Full Control</code> checkbox under <code>Allow</code>.</li>
+<li>Click OK and OK again to save and exit these windows.</li>
+</ul>
+</li>
+<li>Edit the <code>Rprofile</code> file:
+<ul>
+<li>Ensure that RStudio is closed.</li>
+<li>Navigate to <code>C:\Program Files\R\R-4.X.X\library\base\R\</code>
+</li>
+<li>Open the <code>Rprofile</code> file with your preferred text editor.</li>
+<li>Save a copy of the file in the same directory and name it <code>"RProfileBackup.txt"</code>.</li>
+<li>Reopen the <code>Rprofile</code> file with your preferred text editor.</li>
+<li>Replace the string <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("R_USER")</a></code> with the string <code>"C:/R"</code>
+<ul>
+<li>Ensure you are replacing the string <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("R_USER")</a></code> and NOT the string <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("R_LIBS_USER")</a></code>
+</li>
+<li>The string <code>"C:/R"</code> should align with the directory where you created the folder in step 3a</li>
+<li>Reference the <code>RProfileBackup.txt</code> as a backup if OneDrive uploads the package files after installation</li>
+</ul>
+</li>
+<li>Save the file and close out of your text editor and File Explorer.</li>
+</ul>
+</li>
+</ol>
+<p>You should then be able to install the <strong>wpa</strong> library by opening RStudio and running the following code:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Check if remotes is installed, if not then install it</span>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"remotes"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"microsoft/wpa"</span>, upgrade <span class="op">=</span> <span class="st">"never"</span><span class="op">)</span></code></pre></div>
+<p>You can then restart RStudio with <code>Ctrl</code> + <code>Shift</code> + <code>F10</code> in Windows.</p>
 </div>
 </div>
 <div id="import--export" class="section level2">
@@ -299,7 +356,7 @@
 <h3 class="hasAnchor">
 <a href="#how-do-i-filter-by-specific-date-ranges" class="anchor"></a>How do I filter by specific date ranges?</h3>
 <p>We recommend using <strong>dplyr</strong> (which is loaded in as part of <strong>tidyverse</strong>) for data manipulation. To filter down to a specific date range in a Person Query, you can run:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> <span class="co"># Or load dplyr</span>
 
@@ -314,7 +371,7 @@
     <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"12/19/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The above example filters the date range from the week commencing 30th of August 2020 to the week ending 19th of November 2020 inclusive. Note that the first date is a Sunday (beginning of the week) and the second date is a Saturday (end of the week). If you query is run by <strong>day</strong>, you should specify the <em>after</em> filter as the exact last day, rather than the Saturday of the week.</p>
 <p>In some scenarios, you may also want to exclude a particular week from the data. You can use a similar approach:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">clean_spq2</span> <span class="op">&lt;-</span>
     <span class="va">clean_spq</span> <span class="op">%&gt;%</span>
     <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"11/22/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -325,7 +382,7 @@
 <a href="#how-do-i-create-a-custom-hr-variable" class="anchor"></a>How do I create a custom HR variable?</h3>
 <p>The most common way to create a ‘custom HR variable’ is to create a categorical variable from one or more numeric variables. You may want to do this if you are trying to <em>bin</em> a numeric variable or create a custom rule-based segmentation with Workplace Analytics metrics.</p>
 <p>Here is an example of how to create a categorical variable (<code>N_DirectReports_NET</code>) with a numeric variable representing the number of direct reports, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> .</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> <span class="co"># Or load dplyr</span>
 
@@ -341,7 +398,7 @@
                    <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Not classified"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> creates a new column, whereas <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> runs an if-else operation to classify numeric ranges to the right hand side of the <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> symbol. When the expression on the left hand side evaluates to <code>TRUE</code>, the value on the right hand side is assigned to the new column. At the end of the code, you will see that anything that doesn’t get classified gets an ‘error handling’ value. If a value ends up as “Not classified”, you should check whether there may be gaps in your <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> chunk that is not capturing all the values.</p>
 <p>Once you have created this new variable and checked that the classifications are correct, you can further your analysis by using it as an HR attribute, such as:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">clean_spq_with_new_var</span> <span class="op">%&gt;%</span>
     <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"N_DirectReports_NET"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -354,7 +411,7 @@
 <h3 class="hasAnchor">
 <a href="#how-do-i-create-a-bar-chart-with-a-custom-metric" class="anchor"></a>How do I create a bar chart with a custom metric?</h3>
 <p>Sometimes you may wish to create an equivalent bar chart of <code><a href="reference/email_summary.html">email_sum()</a></code>, but for a custom metric or another Workplace Analytics metric that does not form part of the <code>*_sum()</code> family. This is where <strong>flexible functions</strong> are helpful, where you can use <code><a href="reference/create_bar.html">create_bar()</a></code> to produce the same visualization by supplying the custom metric name to the <code>metric</code> argument. For instance, a bar chart for <code>"Generate_workload_email_hours"</code> could be run with:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/create_bar.html">create_bar</a></span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Generate_workload_email_hours"</span><span class="op">)</span></code></pre></div>
 <p>The same person-average computation is used and the same minimum group threshold argument is also available with <code><a href="reference/create_bar.html">create_bar()</a></code>. The same is equivalent for the other visualizations:</p>
 <ul>
