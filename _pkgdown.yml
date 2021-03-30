@@ -68,6 +68,8 @@ navbar:
         href: reporting_security_issues.html
       - text: Package Structure
         href: package_structure.html
+      - text: Contributors
+        href: contributors.html  
 
     github:
       icon: fab fa-github fa-lg
