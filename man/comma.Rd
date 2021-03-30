@@ -9,6 +9,9 @@ comma(x)
 \arguments{
 \item{x}{A numeric value}
 }
+\value{
+Returns a formatted string.
+}
 \description{
 Takes a numeric value and returns a character value
 which is rounded to the whole number, and adds a comma

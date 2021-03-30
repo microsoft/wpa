@@ -9,6 +9,9 @@ camel_clean(string)
 \arguments{
 \item{string}{A string vector in 'CamelCase' format to format}
 }
+\value{
+Returns a formatted string.
+}
 \description{
 Convert a text string from the format "CamelCase" to "Camel Case".
 This is used for converting variable names such as
