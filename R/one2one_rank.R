@@ -20,17 +20,33 @@
 #' @family Visualization
 #' @family Managerial Relations
 #'
+#' @examples
+#' # Return rank table
+#' one2one_rank(
+#'   data = sq_data,
+#'   return = "table"
+#' )
+#'
+#' # Return plot
+#' one2one_rank(
+#'   data = sq_data,
+#'   return = "plot"
+#' )
 #'
 #' @export
 
 one2one_rank <- function(data,
                          hrvar = extract_hr(data),
                          mingroup = 5,
+                         mode = "simple",
+                         plot_mode = 1,
                          return = "table"){
 
   data %>%
     create_rank(metric = "Meeting_hours_with_manager_1_on_1",
                 hrvar = hrvar,
                 mingroup = mingroup,
+                mode = mode,
+                plot_mode = plot_mode,
                 return = return)
 }
