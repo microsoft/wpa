@@ -5,7 +5,9 @@ New functions:
 
 Significant changes to existing functions:
 - `create_rank()` is now able to call `create_rank_combine()` to compute
-averages for pairwise combinations. The `mode` and `plot_mode` arguments are also made available to the key metric wrapper functions of `create_rank()`.
+averages for pairwise combinations. The `mode` and `plot_mode` arguments are
+also made available to the key metric wrapper functions of `create_rank()`.
+- `network_g2g()` now has the option to specify algorithm and node colour.
 
 # wpa 1.4.0
 

@@ -30,8 +30,8 @@ network_leiden(
 \item{font_col}{String to specify font and link colour.}
 
 \item{algorithm}{String to specify the node placement algorithm to be used.
-Defaults to \code{"fr"} for the force-directed algorithm of Fruchterman and
-Reingold. See
+Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
+nodes. See
 \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
 list of options.}
 
