@@ -128,13 +128,25 @@ City." />
     <li>
       <a href="../analyst_guide_reports.html">Reports</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Reference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../reference/index.html">Functions</a>
+    </li>
+    <li>
+      <a href="../news/index.html">Changelog</a>
+    </li>
     <li>
       <a href="../faq.html">FAQ</a>
     </li>
   </ul>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../playbook_intro.html">Playbook</a>
@@ -157,6 +169,9 @@ City." />
     </li>
     <li>
       <a href="../package_structure.html">Package Structure</a>
+    </li>
+    <li>
+      <a href="../contributors.html">Contributors</a>
     </li>
   </ul>
 </li>
@@ -272,7 +287,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 <span class='fu'>p2p_data_sim</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>200</span>, nei <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     TieOrigin_PersonId TieDestination_PersonId TieOrigin_Organization
 #&gt; 1             SIM_ID_1                SIM_ID_2                  Org F
-#&gt; 2             SIM_ID_2               SIM_ID_83                  Org F
+#&gt; 2             SIM_ID_2                SIM_ID_3                  Org F
 #&gt; 3             SIM_ID_3                SIM_ID_4                  Org E
 #&gt; 4             SIM_ID_4                SIM_ID_5                  Org D
 #&gt; 5             SIM_ID_5                SIM_ID_6                  Org C
@@ -294,7 +309,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 21           SIM_ID_21               SIM_ID_22                  Org A
 #&gt; 22           SIM_ID_22               SIM_ID_23                  Org F
 #&gt; 23           SIM_ID_23               SIM_ID_24                  Org F
-#&gt; 24           SIM_ID_24              SIM_ID_185                  Org B
+#&gt; 24           SIM_ID_24               SIM_ID_25                  Org B
 #&gt; 25           SIM_ID_25               SIM_ID_26                  Org C
 #&gt; 26           SIM_ID_26               SIM_ID_27                  Org F
 #&gt; 27           SIM_ID_27               SIM_ID_28                  Org E
@@ -308,9 +323,9 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 35           SIM_ID_35               SIM_ID_36                  Org A
 #&gt; 36           SIM_ID_36               SIM_ID_37                  Org B
 #&gt; 37           SIM_ID_37               SIM_ID_38                  Org F
-#&gt; 38           SIM_ID_38               SIM_ID_39                  Org F
+#&gt; 38           SIM_ID_39              SIM_ID_106                  Org E
 #&gt; 39           SIM_ID_39               SIM_ID_40                  Org E
-#&gt; 40           SIM_ID_41              SIM_ID_169                  Org F
+#&gt; 40           SIM_ID_30               SIM_ID_40                  Org B
 #&gt; 41           SIM_ID_41               SIM_ID_42                  Org F
 #&gt; 42           SIM_ID_42               SIM_ID_43                  Org A
 #&gt; 43           SIM_ID_43               SIM_ID_44                  Org F
@@ -323,8 +338,8 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 50           SIM_ID_50               SIM_ID_51                  Org C
 #&gt; 51           SIM_ID_51               SIM_ID_52                  Org E
 #&gt; 52           SIM_ID_52               SIM_ID_53                  Org D
-#&gt; 53           SIM_ID_54              SIM_ID_144                  Org B
-#&gt; 54           SIM_ID_54               SIM_ID_55                  Org B
+#&gt; 53           SIM_ID_53               SIM_ID_54                  Org F
+#&gt; 54           SIM_ID_54              SIM_ID_150                  Org B
 #&gt; 55           SIM_ID_55               SIM_ID_56                  Org C
 #&gt; 56           SIM_ID_56               SIM_ID_57                  Org A
 #&gt; 57           SIM_ID_57               SIM_ID_58                  Org E
@@ -337,29 +352,29 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 64           SIM_ID_64               SIM_ID_65                  Org D
 #&gt; 65           SIM_ID_65               SIM_ID_66                  Org C
 #&gt; 66           SIM_ID_66               SIM_ID_67                  Org B
-#&gt; 67           SIM_ID_25               SIM_ID_67                  Org C
+#&gt; 67           SIM_ID_67               SIM_ID_68                  Org F
 #&gt; 68           SIM_ID_68               SIM_ID_69                  Org D
 #&gt; 69           SIM_ID_69               SIM_ID_70                  Org E
 #&gt; 70           SIM_ID_70               SIM_ID_71                  Org A
-#&gt; 71           SIM_ID_71               SIM_ID_72                  Org F
+#&gt; 71           SIM_ID_71              SIM_ID_194                  Org F
 #&gt; 72           SIM_ID_72               SIM_ID_73                  Org B
 #&gt; 73           SIM_ID_73               SIM_ID_74                  Org F
-#&gt; 74           SIM_ID_48               SIM_ID_74                  Org B
-#&gt; 75           SIM_ID_75               SIM_ID_76                  Org C
+#&gt; 74           SIM_ID_74               SIM_ID_75                  Org F
+#&gt; 75           SIM_ID_75              SIM_ID_106                  Org C
 #&gt; 76           SIM_ID_76               SIM_ID_77                  Org D
 #&gt; 77           SIM_ID_77               SIM_ID_78                  Org A
-#&gt; 78           SIM_ID_78               SIM_ID_79                  Org B
+#&gt; 78           SIM_ID_22               SIM_ID_79                  Org F
 #&gt; 79           SIM_ID_79               SIM_ID_80                  Org F
-#&gt; 80           SIM_ID_80               SIM_ID_81                  Org C
+#&gt; 80           SIM_ID_80              SIM_ID_139                  Org C
 #&gt; 81           SIM_ID_81               SIM_ID_82                  Org E
 #&gt; 82           SIM_ID_82               SIM_ID_83                  Org F
 #&gt; 83           SIM_ID_83               SIM_ID_84                  Org F
-#&gt; 84           SIM_ID_84              SIM_ID_141                  Org A
+#&gt; 84           SIM_ID_84               SIM_ID_85                  Org A
 #&gt; 85           SIM_ID_85               SIM_ID_86                  Org C
-#&gt; 86           SIM_ID_86               SIM_ID_87                  Org F
-#&gt; 87           SIM_ID_88              SIM_ID_199                  Org D
-#&gt; 88           SIM_ID_13               SIM_ID_89                  Org F
-#&gt; 89           SIM_ID_89              SIM_ID_187                  Org F
+#&gt; 86           SIM_ID_86              SIM_ID_116                  Org F
+#&gt; 87           SIM_ID_87               SIM_ID_88                  Org E
+#&gt; 88           SIM_ID_88               SIM_ID_89                  Org D
+#&gt; 89           SIM_ID_89               SIM_ID_90                  Org F
 #&gt; 90           SIM_ID_90               SIM_ID_91                  Org B
 #&gt; 91           SIM_ID_91               SIM_ID_92                  Org A
 #&gt; 92           SIM_ID_92               SIM_ID_93                  Org D
@@ -367,41 +382,41 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 94           SIM_ID_94               SIM_ID_95                  Org F
 #&gt; 95           SIM_ID_95               SIM_ID_96                  Org C
 #&gt; 96           SIM_ID_96               SIM_ID_97                  Org B
-#&gt; 97           SIM_ID_52               SIM_ID_98                  Org D
+#&gt; 97           SIM_ID_97               SIM_ID_98                  Org F
 #&gt; 98           SIM_ID_98               SIM_ID_99                  Org A
 #&gt; 99           SIM_ID_99              SIM_ID_100                  Org E
 #&gt; 100         SIM_ID_100              SIM_ID_101                  Org C
-#&gt; 101         SIM_ID_101              SIM_ID_102                  Org H
+#&gt; 101          SIM_ID_93              SIM_ID_101                  Org E
 #&gt; 102         SIM_ID_102              SIM_ID_103                  Org B
 #&gt; 103         SIM_ID_103              SIM_ID_104                  Org H
 #&gt; 104         SIM_ID_104              SIM_ID_105                  Org D
 #&gt; 105         SIM_ID_105              SIM_ID_106                  Org A
 #&gt; 106         SIM_ID_106              SIM_ID_107                  Org G
 #&gt; 107         SIM_ID_107              SIM_ID_108                  Org H
-#&gt; 108         SIM_ID_108              SIM_ID_118                  Org B
+#&gt; 108         SIM_ID_108              SIM_ID_109                  Org B
 #&gt; 109         SIM_ID_109              SIM_ID_110                  Org H
 #&gt; 110         SIM_ID_110              SIM_ID_111                  Org C
 #&gt; 111         SIM_ID_111              SIM_ID_112                  Org E
 #&gt; 112         SIM_ID_112              SIM_ID_113                  Org A
 #&gt; 113         SIM_ID_113              SIM_ID_114                  Org H
-#&gt; 114         SIM_ID_114              SIM_ID_115                  Org B
+#&gt; 114          SIM_ID_24              SIM_ID_114                  Org B
 #&gt; 115         SIM_ID_115              SIM_ID_116                  Org C
 #&gt; 116         SIM_ID_116              SIM_ID_117                  Org D
-#&gt; 117         SIM_ID_117              SIM_ID_134                  Org E
+#&gt; 117         SIM_ID_117              SIM_ID_118                  Org E
 #&gt; 118         SIM_ID_118              SIM_ID_119                  Org G
 #&gt; 119         SIM_ID_119              SIM_ID_120                  Org A
 #&gt; 120         SIM_ID_120              SIM_ID_121                  Org B
 #&gt; 121         SIM_ID_121              SIM_ID_122                  Org H
-#&gt; 122         SIM_ID_122              SIM_ID_123                  Org G
+#&gt; 122          SIM_ID_42              SIM_ID_123                  Org A
 #&gt; 123         SIM_ID_123              SIM_ID_124                  Org E
 #&gt; 124         SIM_ID_124              SIM_ID_125                  Org D
 #&gt; 125         SIM_ID_125              SIM_ID_126                  Org C
 #&gt; 126         SIM_ID_126              SIM_ID_127                  Org A
-#&gt; 127         SIM_ID_127              SIM_ID_159                  Org H
+#&gt; 127         SIM_ID_127              SIM_ID_128                  Org H
 #&gt; 128         SIM_ID_128              SIM_ID_129                  Org D
-#&gt; 129          SIM_ID_39              SIM_ID_130                  Org E
+#&gt; 129         SIM_ID_129              SIM_ID_137                  Org E
 #&gt; 130         SIM_ID_130              SIM_ID_131                  Org C
-#&gt; 131          SIM_ID_55              SIM_ID_132                  Org C
+#&gt; 131         SIM_ID_131              SIM_ID_132                  Org H
 #&gt; 132         SIM_ID_132              SIM_ID_133                  Org B
 #&gt; 133         SIM_ID_133              SIM_ID_134                  Org A
 #&gt; 134         SIM_ID_134              SIM_ID_135                  Org G
@@ -412,35 +427,35 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 139         SIM_ID_139              SIM_ID_140                  Org H
 #&gt; 140         SIM_ID_140              SIM_ID_141                  Org A
 #&gt; 141         SIM_ID_141              SIM_ID_142                  Org E
-#&gt; 142         SIM_ID_142              SIM_ID_143                  Org G
-#&gt; 143          SIM_ID_11              SIM_ID_144                  Org F
+#&gt; 142          SIM_ID_95              SIM_ID_142                  Org C
+#&gt; 143         SIM_ID_143              SIM_ID_144                  Org H
 #&gt; 144         SIM_ID_144              SIM_ID_145                  Org B
 #&gt; 145         SIM_ID_145              SIM_ID_146                  Org C
 #&gt; 146         SIM_ID_146              SIM_ID_147                  Org G
 #&gt; 147         SIM_ID_147              SIM_ID_148                  Org A
 #&gt; 148         SIM_ID_148              SIM_ID_149                  Org D
 #&gt; 149         SIM_ID_149              SIM_ID_150                  Org H
-#&gt; 150         SIM_ID_150              SIM_ID_151                  Org B
+#&gt; 150          SIM_ID_22              SIM_ID_150                  Org F
 #&gt; 151         SIM_ID_151              SIM_ID_152                  Org H
 #&gt; 152         SIM_ID_152              SIM_ID_153                  Org D
 #&gt; 153         SIM_ID_153              SIM_ID_154                  Org E
 #&gt; 154         SIM_ID_154              SIM_ID_155                  Org A
 #&gt; 155         SIM_ID_155              SIM_ID_156                  Org C
-#&gt; 156          SIM_ID_43              SIM_ID_157                  Org F
+#&gt; 156         SIM_ID_149              SIM_ID_156                  Org H
 #&gt; 157         SIM_ID_157              SIM_ID_158                  Org H
 #&gt; 158         SIM_ID_158              SIM_ID_159                  Org G
 #&gt; 159         SIM_ID_159              SIM_ID_160                  Org E
 #&gt; 160         SIM_ID_160              SIM_ID_161                  Org C
 #&gt; 161         SIM_ID_161              SIM_ID_162                  Org A
 #&gt; 162         SIM_ID_162              SIM_ID_163                  Org B
-#&gt; 163         SIM_ID_163              SIM_ID_164                  Org H
+#&gt; 163         SIM_ID_163              SIM_ID_175                  Org H
 #&gt; 164         SIM_ID_164              SIM_ID_165                  Org D
 #&gt; 165         SIM_ID_165              SIM_ID_166                  Org C
 #&gt; 166         SIM_ID_166              SIM_ID_167                  Org G
 #&gt; 167         SIM_ID_167              SIM_ID_168                  Org H
 #&gt; 168         SIM_ID_168              SIM_ID_169                  Org A
 #&gt; 169         SIM_ID_169              SIM_ID_170                  Org H
-#&gt; 170          SIM_ID_90              SIM_ID_171                  Org B
+#&gt; 170         SIM_ID_133              SIM_ID_171                  Org A
 #&gt; 171         SIM_ID_171              SIM_ID_172                  Org E
 #&gt; 172         SIM_ID_172              SIM_ID_173                  Org D
 #&gt; 173         SIM_ID_173              SIM_ID_174                  Org H
@@ -455,21 +470,21 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 182         SIM_ID_182              SIM_ID_183                  Org A
 #&gt; 183         SIM_ID_183              SIM_ID_184                  Org E
 #&gt; 184         SIM_ID_184              SIM_ID_185                  Org D
-#&gt; 185         SIM_ID_185              SIM_ID_186                  Org C
+#&gt; 185         SIM_ID_118              SIM_ID_185                  Org G
 #&gt; 186         SIM_ID_186              SIM_ID_187                  Org B
-#&gt; 187          SIM_ID_74              SIM_ID_187                  Org F
+#&gt; 187         SIM_ID_187              SIM_ID_188                  Org H
 #&gt; 188         SIM_ID_188              SIM_ID_189                  Org D
-#&gt; 189         SIM_ID_189              SIM_ID_190                  Org A
+#&gt; 189         SIM_ID_127              SIM_ID_190                  Org H
 #&gt; 190         SIM_ID_190              SIM_ID_191                  Org C
 #&gt; 191         SIM_ID_191              SIM_ID_192                  Org H
 #&gt; 192         SIM_ID_192              SIM_ID_193                  Org B
 #&gt; 193         SIM_ID_193              SIM_ID_194                  Org H
 #&gt; 194         SIM_ID_194              SIM_ID_195                  Org G
-#&gt; 195         SIM_ID_180              SIM_ID_196                  Org B
+#&gt; 195         SIM_ID_195              SIM_ID_196                  Org C
 #&gt; 196         SIM_ID_196              SIM_ID_197                  Org A
 #&gt; 197         SIM_ID_197              SIM_ID_198                  Org H
 #&gt; 198         SIM_ID_198              SIM_ID_199                  Org B
-#&gt; 199         SIM_ID_199              SIM_ID_200                  Org H
+#&gt; 199         SIM_ID_139              SIM_ID_199                  Org H
 #&gt; 200           SIM_ID_1              SIM_ID_200                  Org F
 #&gt; 201           SIM_ID_1                SIM_ID_3                  Org F
 #&gt; 202           SIM_ID_1              SIM_ID_199                  Org F
@@ -482,15 +497,15 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 209           SIM_ID_2              SIM_ID_199                  Org F
 #&gt; 210           SIM_ID_2                SIM_ID_5                  Org F
 #&gt; 211           SIM_ID_2              SIM_ID_198                  Org F
-#&gt; 212           SIM_ID_2                SIM_ID_6                  Org F
+#&gt; 212           SIM_ID_2                SIM_ID_9                  Org F
 #&gt; 213           SIM_ID_3                SIM_ID_5                  Org E
 #&gt; 214           SIM_ID_3              SIM_ID_200                  Org E
 #&gt; 215           SIM_ID_3                SIM_ID_6                  Org E
-#&gt; 216           SIM_ID_3              SIM_ID_199                  Org E
-#&gt; 217           SIM_ID_3                SIM_ID_7                  Org E
+#&gt; 216           SIM_ID_3              SIM_ID_108                  Org E
+#&gt; 217           SIM_ID_7              SIM_ID_159                  Org A
 #&gt; 218           SIM_ID_4                SIM_ID_6                  Org D
 #&gt; 219           SIM_ID_4                SIM_ID_7                  Org D
-#&gt; 220           SIM_ID_4              SIM_ID_200                  Org D
+#&gt; 220           SIM_ID_4              SIM_ID_139                  Org D
 #&gt; 221           SIM_ID_4                SIM_ID_8                  Org D
 #&gt; 222           SIM_ID_5                SIM_ID_7                  Org C
 #&gt; 223           SIM_ID_5                SIM_ID_8                  Org C
@@ -500,63 +515,63 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 227           SIM_ID_6               SIM_ID_10                  Org B
 #&gt; 228           SIM_ID_7                SIM_ID_9                  Org A
 #&gt; 229           SIM_ID_7               SIM_ID_10                  Org A
-#&gt; 230           SIM_ID_7               SIM_ID_11                  Org A
+#&gt; 230           SIM_ID_7              SIM_ID_143                  Org A
 #&gt; 231           SIM_ID_8               SIM_ID_10                  Org D
 #&gt; 232           SIM_ID_8               SIM_ID_11                  Org D
 #&gt; 233           SIM_ID_8               SIM_ID_12                  Org D
 #&gt; 234           SIM_ID_9               SIM_ID_11                  Org E
 #&gt; 235           SIM_ID_9               SIM_ID_12                  Org E
-#&gt; 236           SIM_ID_9               SIM_ID_13                  Org E
+#&gt; 236          SIM_ID_13               SIM_ID_53                  Org F
 #&gt; 237          SIM_ID_10               SIM_ID_12                  Org C
-#&gt; 238          SIM_ID_10               SIM_ID_13                  Org C
+#&gt; 238          SIM_ID_13               SIM_ID_82                  Org F
 #&gt; 239          SIM_ID_10               SIM_ID_14                  Org C
 #&gt; 240          SIM_ID_11               SIM_ID_13                  Org F
 #&gt; 241          SIM_ID_11               SIM_ID_14                  Org F
-#&gt; 242          SIM_ID_11               SIM_ID_15                  Org F
+#&gt; 242          SIM_ID_71              SIM_ID_133                  Org F
 #&gt; 243          SIM_ID_12               SIM_ID_14                  Org B
 #&gt; 244          SIM_ID_12               SIM_ID_15                  Org B
-#&gt; 245          SIM_ID_12               SIM_ID_16                  Org B
+#&gt; 245          SIM_ID_16              SIM_ID_133                  Org D
 #&gt; 246          SIM_ID_13               SIM_ID_15                  Org F
 #&gt; 247          SIM_ID_13               SIM_ID_16                  Org F
-#&gt; 248          SIM_ID_13               SIM_ID_17                  Org F
+#&gt; 248          SIM_ID_17               SIM_ID_49                  Org F
 #&gt; 249          SIM_ID_14               SIM_ID_16                  Org A
 #&gt; 250          SIM_ID_14               SIM_ID_17                  Org A
 #&gt; 251          SIM_ID_14               SIM_ID_18                  Org A
 #&gt; 252          SIM_ID_15               SIM_ID_17                  Org C
 #&gt; 253          SIM_ID_15               SIM_ID_18                  Org C
-#&gt; 254          SIM_ID_19              SIM_ID_107                  Org F
+#&gt; 254          SIM_ID_15               SIM_ID_19                  Org C
 #&gt; 255          SIM_ID_16               SIM_ID_18                  Org D
 #&gt; 256          SIM_ID_16               SIM_ID_19                  Org D
 #&gt; 257          SIM_ID_16               SIM_ID_20                  Org D
 #&gt; 258          SIM_ID_17               SIM_ID_19                  Org F
 #&gt; 259          SIM_ID_17               SIM_ID_20                  Org F
 #&gt; 260          SIM_ID_17               SIM_ID_21                  Org F
-#&gt; 261          SIM_ID_18               SIM_ID_20                  Org B
+#&gt; 261          SIM_ID_20              SIM_ID_106                  Org C
 #&gt; 262          SIM_ID_18               SIM_ID_21                  Org B
 #&gt; 263          SIM_ID_18               SIM_ID_22                  Org B
 #&gt; 264          SIM_ID_19               SIM_ID_21                  Org F
-#&gt; 265          SIM_ID_19               SIM_ID_22                  Org F
+#&gt; 265          SIM_ID_19              SIM_ID_144                  Org F
 #&gt; 266          SIM_ID_19               SIM_ID_23                  Org F
-#&gt; 267          SIM_ID_20               SIM_ID_22                  Org C
+#&gt; 267          SIM_ID_12               SIM_ID_22                  Org B
 #&gt; 268          SIM_ID_20               SIM_ID_23                  Org C
 #&gt; 269          SIM_ID_20               SIM_ID_24                  Org C
-#&gt; 270          SIM_ID_23               SIM_ID_56                  Org F
+#&gt; 270          SIM_ID_21               SIM_ID_23                  Org A
 #&gt; 271          SIM_ID_21               SIM_ID_24                  Org A
 #&gt; 272          SIM_ID_21               SIM_ID_25                  Org A
 #&gt; 273          SIM_ID_22               SIM_ID_24                  Org F
-#&gt; 274          SIM_ID_22               SIM_ID_25                  Org F
+#&gt; 274          SIM_ID_22               SIM_ID_39                  Org F
 #&gt; 275          SIM_ID_22               SIM_ID_26                  Org F
-#&gt; 276          SIM_ID_25              SIM_ID_147                  Org C
+#&gt; 276          SIM_ID_23               SIM_ID_25                  Org F
 #&gt; 277          SIM_ID_23               SIM_ID_26                  Org F
 #&gt; 278          SIM_ID_23               SIM_ID_27                  Org F
 #&gt; 279          SIM_ID_24               SIM_ID_26                  Org B
-#&gt; 280          SIM_ID_24               SIM_ID_27                  Org B
+#&gt; 280          SIM_ID_27               SIM_ID_64                  Org E
 #&gt; 281          SIM_ID_24               SIM_ID_28                  Org B
 #&gt; 282          SIM_ID_25               SIM_ID_27                  Org C
 #&gt; 283          SIM_ID_25               SIM_ID_28                  Org C
-#&gt; 284          SIM_ID_25              SIM_ID_114                  Org C
+#&gt; 284          SIM_ID_25               SIM_ID_29                  Org C
 #&gt; 285          SIM_ID_26               SIM_ID_28                  Org F
-#&gt; 286          SIM_ID_26              SIM_ID_159                  Org F
+#&gt; 286          SIM_ID_26               SIM_ID_29                  Org F
 #&gt; 287          SIM_ID_26               SIM_ID_30                  Org F
 #&gt; 288          SIM_ID_27               SIM_ID_29                  Org E
 #&gt; 289          SIM_ID_27               SIM_ID_30                  Org E
@@ -567,7 +582,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 294          SIM_ID_29               SIM_ID_31                  Org F
 #&gt; 295          SIM_ID_29               SIM_ID_32                  Org F
 #&gt; 296          SIM_ID_29               SIM_ID_33                  Org F
-#&gt; 297          SIM_ID_30              SIM_ID_129                  Org B
+#&gt; 297          SIM_ID_32              SIM_ID_157                  Org D
 #&gt; 298          SIM_ID_30               SIM_ID_33                  Org B
 #&gt; 299          SIM_ID_30               SIM_ID_34                  Org B
 #&gt; 300          SIM_ID_31               SIM_ID_33                  Org F
@@ -577,13 +592,13 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 304          SIM_ID_32               SIM_ID_35                  Org D
 #&gt; 305          SIM_ID_32               SIM_ID_36                  Org D
 #&gt; 306          SIM_ID_33               SIM_ID_35                  Org E
-#&gt; 307          SIM_ID_33              SIM_ID_174                  Org E
+#&gt; 307          SIM_ID_33               SIM_ID_68                  Org E
 #&gt; 308          SIM_ID_33               SIM_ID_37                  Org E
 #&gt; 309          SIM_ID_34               SIM_ID_36                  Org F
 #&gt; 310          SIM_ID_34               SIM_ID_37                  Org F
 #&gt; 311          SIM_ID_34               SIM_ID_38                  Org F
 #&gt; 312          SIM_ID_35               SIM_ID_37                  Org A
-#&gt; 313          SIM_ID_35               SIM_ID_38                  Org A
+#&gt; 313          SIM_ID_35               SIM_ID_55                  Org A
 #&gt; 314          SIM_ID_35               SIM_ID_39                  Org A
 #&gt; 315          SIM_ID_36               SIM_ID_38                  Org B
 #&gt; 316          SIM_ID_36               SIM_ID_39                  Org B
@@ -592,16 +607,16 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 319          SIM_ID_37               SIM_ID_40                  Org F
 #&gt; 320          SIM_ID_37               SIM_ID_41                  Org F
 #&gt; 321          SIM_ID_38               SIM_ID_40                  Org F
-#&gt; 322          SIM_ID_38               SIM_ID_41                  Org F
+#&gt; 322          SIM_ID_41              SIM_ID_131                  Org F
 #&gt; 323          SIM_ID_38               SIM_ID_42                  Org F
 #&gt; 324          SIM_ID_39               SIM_ID_41                  Org E
 #&gt; 325          SIM_ID_39               SIM_ID_42                  Org E
 #&gt; 326          SIM_ID_39               SIM_ID_43                  Org E
-#&gt; 327          SIM_ID_40               SIM_ID_42                  Org C
+#&gt; 327          SIM_ID_40               SIM_ID_83                  Org C
 #&gt; 328          SIM_ID_40               SIM_ID_43                  Org C
-#&gt; 329          SIM_ID_40               SIM_ID_98                  Org C
+#&gt; 329          SIM_ID_40               SIM_ID_44                  Org C
 #&gt; 330          SIM_ID_41               SIM_ID_43                  Org F
-#&gt; 331          SIM_ID_40               SIM_ID_44                  Org C
+#&gt; 331          SIM_ID_41               SIM_ID_44                  Org F
 #&gt; 332          SIM_ID_41               SIM_ID_45                  Org F
 #&gt; 333          SIM_ID_42               SIM_ID_44                  Org A
 #&gt; 334          SIM_ID_42               SIM_ID_45                  Org A
@@ -610,43 +625,43 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 337          SIM_ID_43               SIM_ID_46                  Org F
 #&gt; 338          SIM_ID_43               SIM_ID_47                  Org F
 #&gt; 339          SIM_ID_44               SIM_ID_46                  Org D
-#&gt; 340          SIM_ID_44               SIM_ID_47                  Org D
+#&gt; 340          SIM_ID_47               SIM_ID_57                  Org F
 #&gt; 341          SIM_ID_44               SIM_ID_48                  Org D
 #&gt; 342          SIM_ID_45               SIM_ID_47                  Org C
-#&gt; 343          SIM_ID_45               SIM_ID_48                  Org C
+#&gt; 343          SIM_ID_87              SIM_ID_199                  Org E
 #&gt; 344          SIM_ID_45               SIM_ID_49                  Org C
 #&gt; 345          SIM_ID_46               SIM_ID_48                  Org F
-#&gt; 346          SIM_ID_46               SIM_ID_49                  Org F
+#&gt; 346          SIM_ID_13               SIM_ID_46                  Org F
 #&gt; 347          SIM_ID_46               SIM_ID_50                  Org F
-#&gt; 348          SIM_ID_47               SIM_ID_49                  Org F
+#&gt; 348          SIM_ID_47               SIM_ID_73                  Org F
 #&gt; 349          SIM_ID_47               SIM_ID_50                  Org F
 #&gt; 350          SIM_ID_47               SIM_ID_51                  Org F
 #&gt; 351          SIM_ID_48               SIM_ID_50                  Org B
 #&gt; 352          SIM_ID_48               SIM_ID_51                  Org B
 #&gt; 353          SIM_ID_48               SIM_ID_52                  Org B
-#&gt; 354          SIM_ID_49               SIM_ID_76                  Org A
+#&gt; 354          SIM_ID_49               SIM_ID_51                  Org A
 #&gt; 355          SIM_ID_49               SIM_ID_52                  Org A
 #&gt; 356          SIM_ID_49               SIM_ID_53                  Org A
 #&gt; 357          SIM_ID_50               SIM_ID_52                  Org C
 #&gt; 358          SIM_ID_50               SIM_ID_53                  Org C
-#&gt; 359          SIM_ID_50               SIM_ID_54                  Org C
+#&gt; 359          SIM_ID_24               SIM_ID_54                  Org B
 #&gt; 360          SIM_ID_51               SIM_ID_53                  Org E
 #&gt; 361          SIM_ID_51               SIM_ID_54                  Org E
-#&gt; 362          SIM_ID_51               SIM_ID_84                  Org E
+#&gt; 362          SIM_ID_51               SIM_ID_55                  Org E
 #&gt; 363          SIM_ID_52               SIM_ID_54                  Org D
-#&gt; 364          SIM_ID_44               SIM_ID_52                  Org D
+#&gt; 364          SIM_ID_52               SIM_ID_55                  Org D
 #&gt; 365          SIM_ID_52               SIM_ID_56                  Org D
 #&gt; 366          SIM_ID_53               SIM_ID_55                  Org F
-#&gt; 367          SIM_ID_53               SIM_ID_56                  Org F
+#&gt; 367          SIM_ID_56              SIM_ID_190                  Org A
 #&gt; 368          SIM_ID_53               SIM_ID_57                  Org F
 #&gt; 369          SIM_ID_54               SIM_ID_56                  Org B
 #&gt; 370          SIM_ID_54               SIM_ID_57                  Org B
 #&gt; 371          SIM_ID_54               SIM_ID_58                  Org B
 #&gt; 372          SIM_ID_55               SIM_ID_57                  Org C
-#&gt; 373          SIM_ID_39               SIM_ID_58                  Org E
-#&gt; 374          SIM_ID_55               SIM_ID_59                  Org C
+#&gt; 373          SIM_ID_55               SIM_ID_58                  Org C
+#&gt; 374          SIM_ID_59              SIM_ID_167                  Org F
 #&gt; 375          SIM_ID_56               SIM_ID_58                  Org A
-#&gt; 376          SIM_ID_56               SIM_ID_88                  Org A
+#&gt; 376          SIM_ID_56               SIM_ID_59                  Org A
 #&gt; 377          SIM_ID_56               SIM_ID_60                  Org A
 #&gt; 378          SIM_ID_57               SIM_ID_59                  Org E
 #&gt; 379          SIM_ID_57               SIM_ID_60                  Org E
@@ -665,19 +680,19 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 392          SIM_ID_61               SIM_ID_65                  Org F
 #&gt; 393          SIM_ID_62               SIM_ID_64                  Org F
 #&gt; 394          SIM_ID_62               SIM_ID_65                  Org F
-#&gt; 395          SIM_ID_62               SIM_ID_66                  Org F
+#&gt; 395          SIM_ID_62               SIM_ID_95                  Org F
 #&gt; 396          SIM_ID_63               SIM_ID_65                  Org A
 #&gt; 397          SIM_ID_63               SIM_ID_66                  Org A
 #&gt; 398          SIM_ID_63               SIM_ID_67                  Org A
 #&gt; 399          SIM_ID_64               SIM_ID_66                  Org D
 #&gt; 400          SIM_ID_64               SIM_ID_67                  Org D
 #&gt; 401          SIM_ID_64               SIM_ID_68                  Org D
-#&gt; 402          SIM_ID_65               SIM_ID_67                  Org C
+#&gt; 402          SIM_ID_65              SIM_ID_187                  Org C
 #&gt; 403          SIM_ID_65               SIM_ID_68                  Org C
-#&gt; 404          SIM_ID_69              SIM_ID_184                  Org E
+#&gt; 404          SIM_ID_69              SIM_ID_152                  Org E
 #&gt; 405          SIM_ID_66               SIM_ID_68                  Org B
 #&gt; 406          SIM_ID_66               SIM_ID_69                  Org B
-#&gt; 407          SIM_ID_70               SIM_ID_83                  Org A
+#&gt; 407          SIM_ID_66               SIM_ID_70                  Org B
 #&gt; 408          SIM_ID_67               SIM_ID_69                  Org F
 #&gt; 409          SIM_ID_67               SIM_ID_70                  Org F
 #&gt; 410          SIM_ID_67               SIM_ID_71                  Org F
@@ -694,19 +709,19 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 421          SIM_ID_71               SIM_ID_74                  Org F
 #&gt; 422          SIM_ID_71               SIM_ID_75                  Org F
 #&gt; 423          SIM_ID_72               SIM_ID_74                  Org B
-#&gt; 424          SIM_ID_72              SIM_ID_172                  Org B
+#&gt; 424          SIM_ID_72               SIM_ID_75                  Org B
 #&gt; 425          SIM_ID_72               SIM_ID_76                  Org B
 #&gt; 426          SIM_ID_73               SIM_ID_75                  Org F
 #&gt; 427          SIM_ID_73               SIM_ID_76                  Org F
 #&gt; 428          SIM_ID_73               SIM_ID_77                  Org F
 #&gt; 429          SIM_ID_74               SIM_ID_76                  Org F
-#&gt; 430          SIM_ID_74               SIM_ID_77                  Org F
+#&gt; 430          SIM_ID_39               SIM_ID_74                  Org E
 #&gt; 431          SIM_ID_74               SIM_ID_78                  Org F
 #&gt; 432          SIM_ID_75               SIM_ID_77                  Org C
-#&gt; 433          SIM_ID_75               SIM_ID_78                  Org C
-#&gt; 434          SIM_ID_79              SIM_ID_107                  Org F
-#&gt; 435          SIM_ID_76               SIM_ID_78                  Org D
-#&gt; 436          SIM_ID_76               SIM_ID_79                  Org D
+#&gt; 433          SIM_ID_78              SIM_ID_169                  Org B
+#&gt; 434          SIM_ID_75               SIM_ID_79                  Org C
+#&gt; 435          SIM_ID_21               SIM_ID_78                  Org A
+#&gt; 436          SIM_ID_76              SIM_ID_128                  Org D
 #&gt; 437          SIM_ID_76               SIM_ID_80                  Org D
 #&gt; 438          SIM_ID_77               SIM_ID_79                  Org A
 #&gt; 439          SIM_ID_77               SIM_ID_80                  Org A
@@ -719,9 +734,9 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 446          SIM_ID_79               SIM_ID_83                  Org F
 #&gt; 447          SIM_ID_80               SIM_ID_82                  Org C
 #&gt; 448          SIM_ID_80               SIM_ID_83                  Org C
-#&gt; 449          SIM_ID_80               SIM_ID_84                  Org C
+#&gt; 449          SIM_ID_63               SIM_ID_80                  Org A
 #&gt; 450          SIM_ID_81               SIM_ID_83                  Org E
-#&gt; 451          SIM_ID_22               SIM_ID_81                  Org F
+#&gt; 451          SIM_ID_81               SIM_ID_84                  Org E
 #&gt; 452          SIM_ID_81               SIM_ID_85                  Org E
 #&gt; 453          SIM_ID_82               SIM_ID_84                  Org F
 #&gt; 454          SIM_ID_82               SIM_ID_85                  Org F
@@ -731,22 +746,22 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 458          SIM_ID_83               SIM_ID_87                  Org F
 #&gt; 459          SIM_ID_84               SIM_ID_86                  Org A
 #&gt; 460          SIM_ID_84               SIM_ID_87                  Org A
-#&gt; 461          SIM_ID_84              SIM_ID_148                  Org A
+#&gt; 461          SIM_ID_84               SIM_ID_88                  Org A
 #&gt; 462          SIM_ID_85               SIM_ID_87                  Org C
 #&gt; 463          SIM_ID_85               SIM_ID_88                  Org C
 #&gt; 464          SIM_ID_85               SIM_ID_89                  Org C
 #&gt; 465          SIM_ID_86               SIM_ID_88                  Org F
-#&gt; 466          SIM_ID_86               SIM_ID_89                  Org F
+#&gt; 466          SIM_ID_89              SIM_ID_144                  Org F
 #&gt; 467          SIM_ID_86               SIM_ID_90                  Org F
 #&gt; 468          SIM_ID_87               SIM_ID_89                  Org E
 #&gt; 469          SIM_ID_87               SIM_ID_90                  Org E
 #&gt; 470          SIM_ID_87               SIM_ID_91                  Org E
 #&gt; 471          SIM_ID_88               SIM_ID_90                  Org D
-#&gt; 472          SIM_ID_73               SIM_ID_91                  Org F
+#&gt; 472          SIM_ID_88               SIM_ID_91                  Org D
 #&gt; 473          SIM_ID_88               SIM_ID_92                  Org D
 #&gt; 474          SIM_ID_89               SIM_ID_91                  Org F
 #&gt; 475          SIM_ID_89               SIM_ID_92                  Org F
-#&gt; 476          SIM_ID_89               SIM_ID_93                  Org F
+#&gt; 476          SIM_ID_89              SIM_ID_123                  Org F
 #&gt; 477          SIM_ID_90               SIM_ID_92                  Org B
 #&gt; 478          SIM_ID_90               SIM_ID_93                  Org B
 #&gt; 479          SIM_ID_90               SIM_ID_94                  Org B
@@ -754,44 +769,44 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 481          SIM_ID_91               SIM_ID_94                  Org A
 #&gt; 482          SIM_ID_91               SIM_ID_95                  Org A
 #&gt; 483          SIM_ID_92               SIM_ID_94                  Org D
-#&gt; 484           SIM_ID_3               SIM_ID_92                  Org E
+#&gt; 484          SIM_ID_92               SIM_ID_95                  Org D
 #&gt; 485          SIM_ID_92               SIM_ID_96                  Org D
 #&gt; 486          SIM_ID_93               SIM_ID_95                  Org E
-#&gt; 487          SIM_ID_93              SIM_ID_190                  Org E
+#&gt; 487          SIM_ID_93               SIM_ID_96                  Org E
 #&gt; 488          SIM_ID_93               SIM_ID_97                  Org E
-#&gt; 489          SIM_ID_94               SIM_ID_96                  Org F
+#&gt; 489           SIM_ID_9               SIM_ID_96                  Org E
 #&gt; 490          SIM_ID_94               SIM_ID_97                  Org F
 #&gt; 491          SIM_ID_94               SIM_ID_98                  Org F
-#&gt; 492          SIM_ID_95               SIM_ID_97                  Org C
+#&gt; 492           SIM_ID_9               SIM_ID_97                  Org E
 #&gt; 493          SIM_ID_95               SIM_ID_98                  Org C
 #&gt; 494          SIM_ID_95               SIM_ID_99                  Org C
 #&gt; 495          SIM_ID_96               SIM_ID_98                  Org B
 #&gt; 496          SIM_ID_96               SIM_ID_99                  Org B
-#&gt; 497          SIM_ID_96              SIM_ID_100                  Org B
+#&gt; 497          SIM_ID_75              SIM_ID_100                  Org C
 #&gt; 498          SIM_ID_97               SIM_ID_99                  Org F
 #&gt; 499          SIM_ID_97              SIM_ID_100                  Org F
 #&gt; 500          SIM_ID_97              SIM_ID_101                  Org F
 #&gt; 501          SIM_ID_98              SIM_ID_100                  Org A
 #&gt; 502          SIM_ID_98              SIM_ID_101                  Org A
 #&gt; 503          SIM_ID_98              SIM_ID_102                  Org A
-#&gt; 504         SIM_ID_101              SIM_ID_175                  Org H
+#&gt; 504         SIM_ID_101              SIM_ID_171                  Org H
 #&gt; 505          SIM_ID_99              SIM_ID_102                  Org E
 #&gt; 506          SIM_ID_99              SIM_ID_103                  Org E
 #&gt; 507         SIM_ID_100              SIM_ID_102                  Org C
 #&gt; 508         SIM_ID_100              SIM_ID_103                  Org C
-#&gt; 509         SIM_ID_100              SIM_ID_104                  Org C
+#&gt; 509          SIM_ID_21              SIM_ID_104                  Org A
 #&gt; 510         SIM_ID_101              SIM_ID_103                  Org H
 #&gt; 511         SIM_ID_101              SIM_ID_104                  Org H
-#&gt; 512         SIM_ID_101              SIM_ID_105                  Org H
+#&gt; 512         SIM_ID_105              SIM_ID_167                  Org A
 #&gt; 513         SIM_ID_102              SIM_ID_104                  Org B
 #&gt; 514         SIM_ID_102              SIM_ID_105                  Org B
 #&gt; 515         SIM_ID_102              SIM_ID_106                  Org B
-#&gt; 516         SIM_ID_103              SIM_ID_105                  Org H
+#&gt; 516         SIM_ID_103              SIM_ID_138                  Org H
 #&gt; 517         SIM_ID_103              SIM_ID_106                  Org H
 #&gt; 518         SIM_ID_103              SIM_ID_107                  Org H
 #&gt; 519         SIM_ID_104              SIM_ID_106                  Org D
 #&gt; 520         SIM_ID_104              SIM_ID_107                  Org D
-#&gt; 521         SIM_ID_104              SIM_ID_108                  Org D
+#&gt; 521          SIM_ID_76              SIM_ID_108                  Org D
 #&gt; 522         SIM_ID_105              SIM_ID_107                  Org A
 #&gt; 523         SIM_ID_105              SIM_ID_108                  Org A
 #&gt; 524         SIM_ID_105              SIM_ID_109                  Org A
@@ -801,8 +816,8 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 528         SIM_ID_107              SIM_ID_109                  Org H
 #&gt; 529         SIM_ID_107              SIM_ID_110                  Org H
 #&gt; 530         SIM_ID_107              SIM_ID_111                  Org H
-#&gt; 531         SIM_ID_108              SIM_ID_110                  Org B
-#&gt; 532          SIM_ID_31              SIM_ID_111                  Org F
+#&gt; 531         SIM_ID_110              SIM_ID_148                  Org C
+#&gt; 532         SIM_ID_108              SIM_ID_111                  Org B
 #&gt; 533         SIM_ID_108              SIM_ID_112                  Org B
 #&gt; 534         SIM_ID_109              SIM_ID_111                  Org H
 #&gt; 535         SIM_ID_109              SIM_ID_112                  Org H
@@ -818,16 +833,16 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 545         SIM_ID_112              SIM_ID_116                  Org A
 #&gt; 546         SIM_ID_113              SIM_ID_115                  Org H
 #&gt; 547         SIM_ID_113              SIM_ID_116                  Org H
-#&gt; 548         SIM_ID_113              SIM_ID_117                  Org H
-#&gt; 549         SIM_ID_114              SIM_ID_116                  Org B
+#&gt; 548         SIM_ID_113              SIM_ID_167                  Org H
+#&gt; 549          SIM_ID_58              SIM_ID_114                  Org F
 #&gt; 550         SIM_ID_114              SIM_ID_117                  Org B
 #&gt; 551         SIM_ID_114              SIM_ID_118                  Org B
 #&gt; 552         SIM_ID_115              SIM_ID_117                  Org C
 #&gt; 553         SIM_ID_115              SIM_ID_118                  Org C
 #&gt; 554         SIM_ID_115              SIM_ID_119                  Org C
 #&gt; 555         SIM_ID_116              SIM_ID_118                  Org D
-#&gt; 556         SIM_ID_116              SIM_ID_119                  Org D
-#&gt; 557          SIM_ID_64               SIM_ID_88                  Org D
+#&gt; 556         SIM_ID_116              SIM_ID_192                  Org D
+#&gt; 557         SIM_ID_116              SIM_ID_120                  Org D
 #&gt; 558         SIM_ID_117              SIM_ID_119                  Org E
 #&gt; 559         SIM_ID_117              SIM_ID_120                  Org E
 #&gt; 560         SIM_ID_117              SIM_ID_121                  Org E
@@ -835,14 +850,14 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 562         SIM_ID_118              SIM_ID_121                  Org G
 #&gt; 563         SIM_ID_118              SIM_ID_122                  Org G
 #&gt; 564         SIM_ID_119              SIM_ID_121                  Org A
-#&gt; 565          SIM_ID_81              SIM_ID_122                  Org E
+#&gt; 565         SIM_ID_119              SIM_ID_122                  Org A
 #&gt; 566         SIM_ID_119              SIM_ID_123                  Org A
-#&gt; 567         SIM_ID_120              SIM_ID_122                  Org B
-#&gt; 568         SIM_ID_101              SIM_ID_120                  Org H
-#&gt; 569          SIM_ID_22              SIM_ID_120                  Org F
-#&gt; 570         SIM_ID_121              SIM_ID_123                  Org H
-#&gt; 571          SIM_ID_79              SIM_ID_121                  Org F
-#&gt; 572         SIM_ID_121              SIM_ID_125                  Org H
+#&gt; 567          SIM_ID_48              SIM_ID_120                  Org B
+#&gt; 568         SIM_ID_120              SIM_ID_123                  Org B
+#&gt; 569         SIM_ID_120              SIM_ID_124                  Org B
+#&gt; 570          SIM_ID_11              SIM_ID_123                  Org F
+#&gt; 571         SIM_ID_121              SIM_ID_124                  Org H
+#&gt; 572         SIM_ID_125              SIM_ID_179                  Org C
 #&gt; 573         SIM_ID_122              SIM_ID_124                  Org G
 #&gt; 574         SIM_ID_122              SIM_ID_125                  Org G
 #&gt; 575         SIM_ID_122              SIM_ID_126                  Org G
@@ -857,7 +872,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 584         SIM_ID_125              SIM_ID_129                  Org C
 #&gt; 585         SIM_ID_126              SIM_ID_128                  Org A
 #&gt; 586         SIM_ID_126              SIM_ID_129                  Org A
-#&gt; 587          SIM_ID_60              SIM_ID_126                  Org B
+#&gt; 587         SIM_ID_126              SIM_ID_130                  Org A
 #&gt; 588         SIM_ID_127              SIM_ID_129                  Org H
 #&gt; 589         SIM_ID_127              SIM_ID_130                  Org H
 #&gt; 590         SIM_ID_127              SIM_ID_131                  Org H
@@ -865,7 +880,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 592         SIM_ID_128              SIM_ID_131                  Org D
 #&gt; 593         SIM_ID_128              SIM_ID_132                  Org D
 #&gt; 594         SIM_ID_129              SIM_ID_131                  Org E
-#&gt; 595         SIM_ID_106              SIM_ID_132                  Org G
+#&gt; 595         SIM_ID_129              SIM_ID_132                  Org E
 #&gt; 596         SIM_ID_129              SIM_ID_133                  Org E
 #&gt; 597         SIM_ID_130              SIM_ID_132                  Org C
 #&gt; 598         SIM_ID_130              SIM_ID_133                  Org C
@@ -878,7 +893,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 605         SIM_ID_132              SIM_ID_136                  Org B
 #&gt; 606         SIM_ID_133              SIM_ID_135                  Org A
 #&gt; 607         SIM_ID_133              SIM_ID_136                  Org A
-#&gt; 608          SIM_ID_70              SIM_ID_137                  Org A
+#&gt; 608         SIM_ID_133              SIM_ID_137                  Org A
 #&gt; 609         SIM_ID_134              SIM_ID_136                  Org G
 #&gt; 610         SIM_ID_134              SIM_ID_137                  Org G
 #&gt; 611         SIM_ID_134              SIM_ID_138                  Org G
@@ -889,7 +904,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 616         SIM_ID_136              SIM_ID_139                  Org D
 #&gt; 617         SIM_ID_136              SIM_ID_140                  Org D
 #&gt; 618         SIM_ID_137              SIM_ID_139                  Org H
-#&gt; 619           SIM_ID_8              SIM_ID_140                  Org D
+#&gt; 619         SIM_ID_137              SIM_ID_140                  Org H
 #&gt; 620         SIM_ID_137              SIM_ID_141                  Org H
 #&gt; 621         SIM_ID_138              SIM_ID_140                  Org B
 #&gt; 622         SIM_ID_138              SIM_ID_141                  Org B
@@ -897,11 +912,11 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 624         SIM_ID_139              SIM_ID_141                  Org H
 #&gt; 625         SIM_ID_139              SIM_ID_142                  Org H
 #&gt; 626         SIM_ID_139              SIM_ID_143                  Org H
-#&gt; 627         SIM_ID_140              SIM_ID_142                  Org A
+#&gt; 627          SIM_ID_45              SIM_ID_142                  Org C
 #&gt; 628         SIM_ID_140              SIM_ID_143                  Org A
 #&gt; 629         SIM_ID_140              SIM_ID_144                  Org A
 #&gt; 630         SIM_ID_141              SIM_ID_143                  Org E
-#&gt; 631         SIM_ID_171              SIM_ID_192                  Org E
+#&gt; 631         SIM_ID_144              SIM_ID_155                  Org B
 #&gt; 632         SIM_ID_141              SIM_ID_145                  Org E
 #&gt; 633         SIM_ID_142              SIM_ID_144                  Org G
 #&gt; 634         SIM_ID_142              SIM_ID_145                  Org G
@@ -910,10 +925,10 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 637         SIM_ID_143              SIM_ID_146                  Org H
 #&gt; 638         SIM_ID_143              SIM_ID_147                  Org H
 #&gt; 639         SIM_ID_144              SIM_ID_146                  Org B
-#&gt; 640         SIM_ID_144              SIM_ID_147                  Org B
+#&gt; 640         SIM_ID_144              SIM_ID_195                  Org B
 #&gt; 641         SIM_ID_144              SIM_ID_148                  Org B
 #&gt; 642         SIM_ID_145              SIM_ID_147                  Org C
-#&gt; 643         SIM_ID_145              SIM_ID_148                  Org C
+#&gt; 643         SIM_ID_148              SIM_ID_173                  Org D
 #&gt; 644         SIM_ID_145              SIM_ID_149                  Org C
 #&gt; 645         SIM_ID_146              SIM_ID_148                  Org G
 #&gt; 646         SIM_ID_146              SIM_ID_149                  Org G
@@ -933,53 +948,53 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 660         SIM_ID_151              SIM_ID_153                  Org H
 #&gt; 661         SIM_ID_151              SIM_ID_154                  Org H
 #&gt; 662         SIM_ID_151              SIM_ID_155                  Org H
-#&gt; 663         SIM_ID_152              SIM_ID_154                  Org D
+#&gt; 663          SIM_ID_39              SIM_ID_152                  Org E
 #&gt; 664         SIM_ID_152              SIM_ID_155                  Org D
 #&gt; 665         SIM_ID_152              SIM_ID_156                  Org D
 #&gt; 666         SIM_ID_153              SIM_ID_155                  Org E
-#&gt; 667         SIM_ID_153              SIM_ID_156                  Org E
+#&gt; 667         SIM_ID_111              SIM_ID_156                  Org E
 #&gt; 668         SIM_ID_153              SIM_ID_157                  Org E
 #&gt; 669         SIM_ID_154              SIM_ID_156                  Org A
 #&gt; 670         SIM_ID_154              SIM_ID_157                  Org A
-#&gt; 671         SIM_ID_154              SIM_ID_158                  Org A
-#&gt; 672          SIM_ID_46              SIM_ID_157                  Org F
+#&gt; 671          SIM_ID_42              SIM_ID_158                  Org A
+#&gt; 672         SIM_ID_155              SIM_ID_157                  Org C
 #&gt; 673         SIM_ID_155              SIM_ID_158                  Org C
 #&gt; 674         SIM_ID_155              SIM_ID_159                  Org C
 #&gt; 675         SIM_ID_156              SIM_ID_158                  Org B
 #&gt; 676         SIM_ID_156              SIM_ID_159                  Org B
 #&gt; 677         SIM_ID_156              SIM_ID_160                  Org B
-#&gt; 678         SIM_ID_157              SIM_ID_159                  Org H
+#&gt; 678         SIM_ID_157              SIM_ID_185                  Org H
 #&gt; 679         SIM_ID_157              SIM_ID_160                  Org H
 #&gt; 680         SIM_ID_157              SIM_ID_161                  Org H
 #&gt; 681         SIM_ID_158              SIM_ID_160                  Org G
 #&gt; 682         SIM_ID_158              SIM_ID_161                  Org G
 #&gt; 683         SIM_ID_158              SIM_ID_162                  Org G
-#&gt; 684         SIM_ID_120              SIM_ID_161                  Org B
-#&gt; 685          SIM_ID_70              SIM_ID_162                  Org A
+#&gt; 684         SIM_ID_159              SIM_ID_161                  Org E
+#&gt; 685         SIM_ID_159              SIM_ID_162                  Org E
 #&gt; 686         SIM_ID_159              SIM_ID_163                  Org E
 #&gt; 687         SIM_ID_160              SIM_ID_162                  Org C
-#&gt; 688         SIM_ID_163              SIM_ID_191                  Org H
+#&gt; 688         SIM_ID_160              SIM_ID_163                  Org C
 #&gt; 689         SIM_ID_160              SIM_ID_164                  Org C
 #&gt; 690         SIM_ID_161              SIM_ID_163                  Org A
 #&gt; 691         SIM_ID_161              SIM_ID_164                  Org A
-#&gt; 692         SIM_ID_161              SIM_ID_165                  Org A
+#&gt; 692         SIM_ID_127              SIM_ID_165                  Org H
 #&gt; 693         SIM_ID_162              SIM_ID_164                  Org B
 #&gt; 694         SIM_ID_162              SIM_ID_165                  Org B
 #&gt; 695         SIM_ID_162              SIM_ID_166                  Org B
 #&gt; 696         SIM_ID_163              SIM_ID_165                  Org H
-#&gt; 697         SIM_ID_163              SIM_ID_166                  Org H
+#&gt; 697         SIM_ID_163              SIM_ID_186                  Org H
 #&gt; 698         SIM_ID_163              SIM_ID_167                  Org H
 #&gt; 699         SIM_ID_164              SIM_ID_166                  Org D
 #&gt; 700         SIM_ID_164              SIM_ID_167                  Org D
-#&gt; 701          SIM_ID_72              SIM_ID_168                  Org B
+#&gt; 701         SIM_ID_164              SIM_ID_168                  Org D
 #&gt; 702         SIM_ID_165              SIM_ID_167                  Org C
 #&gt; 703         SIM_ID_165              SIM_ID_168                  Org C
-#&gt; 704          SIM_ID_78              SIM_ID_169                  Org B
+#&gt; 704         SIM_ID_165              SIM_ID_169                  Org C
 #&gt; 705         SIM_ID_166              SIM_ID_168                  Org G
 #&gt; 706         SIM_ID_166              SIM_ID_169                  Org G
 #&gt; 707         SIM_ID_166              SIM_ID_170                  Org G
 #&gt; 708         SIM_ID_167              SIM_ID_169                  Org H
-#&gt; 709          SIM_ID_95              SIM_ID_170                  Org C
+#&gt; 709         SIM_ID_167              SIM_ID_170                  Org H
 #&gt; 710         SIM_ID_167              SIM_ID_171                  Org H
 #&gt; 711         SIM_ID_168              SIM_ID_170                  Org A
 #&gt; 712         SIM_ID_168              SIM_ID_171                  Org A
@@ -989,30 +1004,30 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 716         SIM_ID_169              SIM_ID_173                  Org H
 #&gt; 717         SIM_ID_170              SIM_ID_172                  Org C
 #&gt; 718         SIM_ID_170              SIM_ID_173                  Org C
-#&gt; 719         SIM_ID_170              SIM_ID_174                  Org C
+#&gt; 719         SIM_ID_161              SIM_ID_170                  Org A
 #&gt; 720         SIM_ID_171              SIM_ID_173                  Org E
 #&gt; 721         SIM_ID_171              SIM_ID_174                  Org E
 #&gt; 722         SIM_ID_171              SIM_ID_175                  Org E
 #&gt; 723         SIM_ID_172              SIM_ID_174                  Org D
 #&gt; 724         SIM_ID_172              SIM_ID_175                  Org D
 #&gt; 725         SIM_ID_172              SIM_ID_176                  Org D
-#&gt; 726         SIM_ID_173              SIM_ID_190                  Org H
-#&gt; 727         SIM_ID_173              SIM_ID_176                  Org H
+#&gt; 726         SIM_ID_173              SIM_ID_175                  Org H
+#&gt; 727          SIM_ID_51              SIM_ID_173                  Org E
 #&gt; 728         SIM_ID_173              SIM_ID_177                  Org H
 #&gt; 729         SIM_ID_174              SIM_ID_176                  Org B
 #&gt; 730         SIM_ID_174              SIM_ID_177                  Org B
-#&gt; 731          SIM_ID_32              SIM_ID_174                  Org D
+#&gt; 731          SIM_ID_89              SIM_ID_178                  Org F
 #&gt; 732         SIM_ID_175              SIM_ID_177                  Org A
-#&gt; 733         SIM_ID_117              SIM_ID_175                  Org E
+#&gt; 733         SIM_ID_175              SIM_ID_178                  Org A
 #&gt; 734         SIM_ID_175              SIM_ID_179                  Org A
-#&gt; 735         SIM_ID_176              SIM_ID_192                  Org D
+#&gt; 735         SIM_ID_176              SIM_ID_178                  Org D
 #&gt; 736         SIM_ID_176              SIM_ID_179                  Org D
 #&gt; 737         SIM_ID_176              SIM_ID_180                  Org D
 #&gt; 738         SIM_ID_177              SIM_ID_179                  Org E
 #&gt; 739         SIM_ID_177              SIM_ID_180                  Org E
-#&gt; 740         SIM_ID_177              SIM_ID_181                  Org E
+#&gt; 740          SIM_ID_70              SIM_ID_177                  Org A
 #&gt; 741         SIM_ID_178              SIM_ID_180                  Org G
-#&gt; 742         SIM_ID_178              SIM_ID_181                  Org G
+#&gt; 742         SIM_ID_178              SIM_ID_193                  Org G
 #&gt; 743         SIM_ID_178              SIM_ID_182                  Org G
 #&gt; 744         SIM_ID_179              SIM_ID_181                  Org H
 #&gt; 745         SIM_ID_179              SIM_ID_182                  Org H
@@ -1020,14 +1035,14 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 747         SIM_ID_180              SIM_ID_182                  Org B
 #&gt; 748         SIM_ID_180              SIM_ID_183                  Org B
 #&gt; 749         SIM_ID_180              SIM_ID_184                  Org B
-#&gt; 750         SIM_ID_181              SIM_ID_183                  Org H
+#&gt; 750          SIM_ID_34              SIM_ID_181                  Org F
 #&gt; 751         SIM_ID_181              SIM_ID_184                  Org H
 #&gt; 752         SIM_ID_181              SIM_ID_185                  Org H
 #&gt; 753         SIM_ID_182              SIM_ID_184                  Org A
 #&gt; 754         SIM_ID_182              SIM_ID_185                  Org A
 #&gt; 755         SIM_ID_182              SIM_ID_186                  Org A
 #&gt; 756         SIM_ID_183              SIM_ID_185                  Org E
-#&gt; 757           SIM_ID_8              SIM_ID_186                  Org D
+#&gt; 757         SIM_ID_183              SIM_ID_186                  Org E
 #&gt; 758         SIM_ID_183              SIM_ID_187                  Org E
 #&gt; 759         SIM_ID_184              SIM_ID_186                  Org D
 #&gt; 760         SIM_ID_184              SIM_ID_187                  Org D
@@ -1037,7 +1052,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 764         SIM_ID_185              SIM_ID_189                  Org C
 #&gt; 765         SIM_ID_186              SIM_ID_188                  Org B
 #&gt; 766         SIM_ID_186              SIM_ID_189                  Org B
-#&gt; 767         SIM_ID_158              SIM_ID_190                  Org G
+#&gt; 767         SIM_ID_186              SIM_ID_190                  Org B
 #&gt; 768         SIM_ID_187              SIM_ID_189                  Org H
 #&gt; 769         SIM_ID_187              SIM_ID_190                  Org H
 #&gt; 770         SIM_ID_187              SIM_ID_191                  Org H
@@ -1048,32 +1063,32 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 775         SIM_ID_189              SIM_ID_192                  Org A
 #&gt; 776         SIM_ID_189              SIM_ID_193                  Org A
 #&gt; 777         SIM_ID_190              SIM_ID_192                  Org C
-#&gt; 778          SIM_ID_99              SIM_ID_193                  Org E
+#&gt; 778         SIM_ID_190              SIM_ID_193                  Org C
 #&gt; 779         SIM_ID_190              SIM_ID_194                  Org C
 #&gt; 780         SIM_ID_191              SIM_ID_193                  Org H
-#&gt; 781          SIM_ID_15              SIM_ID_191                  Org C
+#&gt; 781         SIM_ID_191              SIM_ID_194                  Org H
 #&gt; 782         SIM_ID_191              SIM_ID_195                  Org H
 #&gt; 783         SIM_ID_192              SIM_ID_194                  Org B
 #&gt; 784         SIM_ID_192              SIM_ID_195                  Org B
-#&gt; 785         SIM_ID_192              SIM_ID_196                  Org B
+#&gt; 785           SIM_ID_6              SIM_ID_196                  Org B
 #&gt; 786         SIM_ID_193              SIM_ID_195                  Org H
-#&gt; 787         SIM_ID_124              SIM_ID_196                  Org D
-#&gt; 788          SIM_ID_81              SIM_ID_197                  Org E
+#&gt; 787         SIM_ID_193              SIM_ID_196                  Org H
+#&gt; 788         SIM_ID_193              SIM_ID_197                  Org H
 #&gt; 789         SIM_ID_194              SIM_ID_196                  Org G
 #&gt; 790         SIM_ID_194              SIM_ID_197                  Org G
 #&gt; 791         SIM_ID_194              SIM_ID_198                  Org G
-#&gt; 792         SIM_ID_133              SIM_ID_195                  Org A
+#&gt; 792         SIM_ID_195              SIM_ID_197                  Org C
 #&gt; 793         SIM_ID_195              SIM_ID_198                  Org C
 #&gt; 794         SIM_ID_195              SIM_ID_199                  Org C
 #&gt; 795         SIM_ID_196              SIM_ID_198                  Org A
 #&gt; 796         SIM_ID_196              SIM_ID_199                  Org A
-#&gt; 797         SIM_ID_196              SIM_ID_200                  Org A
+#&gt; 797         SIM_ID_130              SIM_ID_200                  Org C
 #&gt; 798         SIM_ID_197              SIM_ID_199                  Org H
 #&gt; 799         SIM_ID_197              SIM_ID_200                  Org H
 #&gt; 800         SIM_ID_198              SIM_ID_200                  Org B
 #&gt;     TieDestination_Organization TieOrigin_LevelDesignation
 #&gt; 1                         Org F                    Level 1
-#&gt; 2                         Org F                    Level 2
+#&gt; 2                         Org E                    Level 2
 #&gt; 3                         Org D                    Level 3
 #&gt; 4                         Org C                    Level 4
 #&gt; 5                         Org B                    Level 5
@@ -1109,9 +1124,9 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 35                        Org B                    Level 3
 #&gt; 36                        Org F                    Level 3
 #&gt; 37                        Org F                    Level 3
-#&gt; 38                        Org E                    Level 3
+#&gt; 38                        Org G                    Level 3
 #&gt; 39                        Org C                    Level 3
-#&gt; 40                        Org H                    Level 4
+#&gt; 40                        Org C                    Level 3
 #&gt; 41                        Org A                    Level 4
 #&gt; 42                        Org F                    Level 4
 #&gt; 43                        Org D                    Level 4
@@ -1125,7 +1140,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 51                        Org D                    Level 5
 #&gt; 52                        Org F                    Level 5
 #&gt; 53                        Org B                    Level 5
-#&gt; 54                        Org C                    Level 5
+#&gt; 54                        Org B                    Level 5
 #&gt; 55                        Org A                    Level 5
 #&gt; 56                        Org E                    Level 5
 #&gt; 57                        Org F                    Level 5
@@ -1138,29 +1153,29 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 64                        Org C                    Level 6
 #&gt; 65                        Org B                    Level 6
 #&gt; 66                        Org F                    Level 6
-#&gt; 67                        Org F                    Level 2
+#&gt; 67                        Org D                    Level 6
 #&gt; 68                        Org E                    Level 6
 #&gt; 69                        Org A                    Level 6
 #&gt; 70                        Org F                    Level 7
-#&gt; 71                        Org B                    Level 7
+#&gt; 71                        Org G                    Level 7
 #&gt; 72                        Org F                    Level 7
 #&gt; 73                        Org F                    Level 7
-#&gt; 74                        Org F                    Level 4
-#&gt; 75                        Org D                    Level 7
+#&gt; 74                        Org C                    Level 7
+#&gt; 75                        Org G                    Level 7
 #&gt; 76                        Org A                    Level 7
 #&gt; 77                        Org B                    Level 7
-#&gt; 78                        Org F                    Level 7
+#&gt; 78                        Org F                    Level 2
 #&gt; 79                        Org C                    Level 7
-#&gt; 80                        Org E                    Level 8
+#&gt; 80                        Org H                    Level 8
 #&gt; 81                        Org F                    Level 8
 #&gt; 82                        Org F                    Level 8
 #&gt; 83                        Org A                    Level 8
-#&gt; 84                        Org E                    Level 8
+#&gt; 84                        Org C                    Level 8
 #&gt; 85                        Org F                    Level 8
-#&gt; 86                        Org E                    Level 8
-#&gt; 87                        Org H                    Level 8
-#&gt; 88                        Org F                    Level 1
-#&gt; 89                        Org H                    Level 8
+#&gt; 86                        Org D                    Level 8
+#&gt; 87                        Org D                    Level 8
+#&gt; 88                        Org F                    Level 8
+#&gt; 89                        Org B                    Level 8
 #&gt; 90                        Org A                    Level 9
 #&gt; 91                        Org D                    Level 9
 #&gt; 92                        Org E                    Level 9
@@ -1168,24 +1183,24 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 94                        Org C                    Level 9
 #&gt; 95                        Org B                    Level 9
 #&gt; 96                        Org F                    Level 9
-#&gt; 97                        Org A                    Level 5
+#&gt; 97                        Org A                    Level 9
 #&gt; 98                        Org E                    Level 9
 #&gt; 99                        Org C                    Level 9
 #&gt; 100                       Org H                    Level 1
-#&gt; 101                       Org B                    Level 1
+#&gt; 101                       Org H                    Level 9
 #&gt; 102                       Org H                    Level 1
 #&gt; 103                       Org D                    Level 1
 #&gt; 104                       Org A                    Level 1
 #&gt; 105                       Org G                    Level 1
 #&gt; 106                       Org H                    Level 1
 #&gt; 107                       Org B                    Level 1
-#&gt; 108                       Org G                    Level 1
+#&gt; 108                       Org H                    Level 1
 #&gt; 109                       Org C                    Level 1
 #&gt; 110                       Org E                    Level 1
 #&gt; 111                       Org A                    Level 1
 #&gt; 112                       Org H                    Level 1
 #&gt; 113                       Org B                    Level 1
-#&gt; 114                       Org C                    Level 1
+#&gt; 114                       Org B                    Level 2
 #&gt; 115                       Org D                    Level 1
 #&gt; 116                       Org E                    Level 1
 #&gt; 117                       Org G                    Level 1
@@ -1193,16 +1208,16 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 119                       Org B                    Level 1
 #&gt; 120                       Org H                    Level 1
 #&gt; 121                       Org G                    Level 1
-#&gt; 122                       Org E                    Level 1
+#&gt; 122                       Org E                    Level 4
 #&gt; 123                       Org D                    Level 1
 #&gt; 124                       Org C                    Level 1
 #&gt; 125                       Org A                    Level 1
 #&gt; 126                       Org H                    Level 1
-#&gt; 127                       Org E                    Level 1
+#&gt; 127                       Org D                    Level 1
 #&gt; 128                       Org E                    Level 1
-#&gt; 129                       Org C                    Level 3
+#&gt; 129                       Org H                    Level 1
 #&gt; 130                       Org H                    Level 1
-#&gt; 131                       Org B                    Level 5
+#&gt; 131                       Org B                    Level 1
 #&gt; 132                       Org A                    Level 1
 #&gt; 133                       Org G                    Level 1
 #&gt; 134                       Org C                    Level 1
@@ -1213,7 +1228,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 139                       Org A                    Level 1
 #&gt; 140                       Org E                    Level 1
 #&gt; 141                       Org G                    Level 1
-#&gt; 142                       Org H                    Level 1
+#&gt; 142                       Org G                    Level 9
 #&gt; 143                       Org B                    Level 1
 #&gt; 144                       Org C                    Level 1
 #&gt; 145                       Org G                    Level 1
@@ -1221,27 +1236,27 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 147                       Org D                    Level 1
 #&gt; 148                       Org H                    Level 1
 #&gt; 149                       Org B                    Level 1
-#&gt; 150                       Org H                    Level 1
+#&gt; 150                       Org B                    Level 2
 #&gt; 151                       Org D                    Level 1
 #&gt; 152                       Org E                    Level 1
 #&gt; 153                       Org A                    Level 1
 #&gt; 154                       Org C                    Level 1
 #&gt; 155                       Org B                    Level 1
-#&gt; 156                       Org H                    Level 4
+#&gt; 156                       Org B                    Level 1
 #&gt; 157                       Org G                    Level 1
 #&gt; 158                       Org E                    Level 1
 #&gt; 159                       Org C                    Level 1
 #&gt; 160                       Org A                    Level 1
 #&gt; 161                       Org B                    Level 1
 #&gt; 162                       Org H                    Level 1
-#&gt; 163                       Org D                    Level 1
+#&gt; 163                       Org A                    Level 1
 #&gt; 164                       Org C                    Level 1
 #&gt; 165                       Org G                    Level 1
 #&gt; 166                       Org H                    Level 1
 #&gt; 167                       Org A                    Level 1
 #&gt; 168                       Org H                    Level 1
 #&gt; 169                       Org C                    Level 1
-#&gt; 170                       Org E                    Level 9
+#&gt; 170                       Org E                    Level 1
 #&gt; 171                       Org D                    Level 1
 #&gt; 172                       Org H                    Level 1
 #&gt; 173                       Org B                    Level 1
@@ -1256,9 +1271,9 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 182                       Org E                    Level 1
 #&gt; 183                       Org D                    Level 1
 #&gt; 184                       Org C                    Level 1
-#&gt; 185                       Org B                    Level 1
+#&gt; 185                       Org C                    Level 1
 #&gt; 186                       Org H                    Level 1
-#&gt; 187                       Org H                    Level 7
+#&gt; 187                       Org D                    Level 1
 #&gt; 188                       Org A                    Level 1
 #&gt; 189                       Org C                    Level 1
 #&gt; 190                       Org H                    Level 1
@@ -1270,7 +1285,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 196                       Org H                    Level 1
 #&gt; 197                       Org B                    Level 1
 #&gt; 198                       Org H                    Level 1
-#&gt; 199                       Org C                    Level 1
+#&gt; 199                       Org H                    Level 1
 #&gt; 200                       Org C                    Level 1
 #&gt; 201                       Org E                    Level 1
 #&gt; 202                       Org H                    Level 1
@@ -1283,15 +1298,15 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 209                       Org H                    Level 2
 #&gt; 210                       Org C                    Level 2
 #&gt; 211                       Org B                    Level 2
-#&gt; 212                       Org B                    Level 2
+#&gt; 212                       Org E                    Level 2
 #&gt; 213                       Org C                    Level 3
 #&gt; 214                       Org C                    Level 3
 #&gt; 215                       Org B                    Level 3
-#&gt; 216                       Org H                    Level 3
-#&gt; 217                       Org A                    Level 3
+#&gt; 216                       Org B                    Level 3
+#&gt; 217                       Org E                    Level 7
 #&gt; 218                       Org B                    Level 4
 #&gt; 219                       Org A                    Level 4
-#&gt; 220                       Org C                    Level 4
+#&gt; 220                       Org H                    Level 4
 #&gt; 221                       Org D                    Level 4
 #&gt; 222                       Org A                    Level 5
 #&gt; 223                       Org D                    Level 5
@@ -1301,63 +1316,63 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 227                       Org C                    Level 6
 #&gt; 228                       Org E                    Level 7
 #&gt; 229                       Org C                    Level 7
-#&gt; 230                       Org F                    Level 7
+#&gt; 230                       Org H                    Level 7
 #&gt; 231                       Org C                    Level 8
 #&gt; 232                       Org F                    Level 8
 #&gt; 233                       Org B                    Level 8
 #&gt; 234                       Org F                    Level 9
 #&gt; 235                       Org B                    Level 9
-#&gt; 236                       Org F                    Level 9
+#&gt; 236                       Org F                    Level 1
 #&gt; 237                       Org B                    Level 1
 #&gt; 238                       Org F                    Level 1
 #&gt; 239                       Org A                    Level 1
 #&gt; 240                       Org F                    Level 1
 #&gt; 241                       Org A                    Level 1
-#&gt; 242                       Org C                    Level 1
+#&gt; 242                       Org A                    Level 7
 #&gt; 243                       Org A                    Level 1
 #&gt; 244                       Org C                    Level 1
-#&gt; 245                       Org D                    Level 1
+#&gt; 245                       Org A                    Level 1
 #&gt; 246                       Org C                    Level 1
 #&gt; 247                       Org D                    Level 1
-#&gt; 248                       Org F                    Level 1
+#&gt; 248                       Org A                    Level 1
 #&gt; 249                       Org D                    Level 1
 #&gt; 250                       Org F                    Level 1
 #&gt; 251                       Org B                    Level 1
 #&gt; 252                       Org F                    Level 1
 #&gt; 253                       Org B                    Level 1
-#&gt; 254                       Org H                    Level 1
+#&gt; 254                       Org F                    Level 1
 #&gt; 255                       Org B                    Level 1
 #&gt; 256                       Org F                    Level 1
 #&gt; 257                       Org C                    Level 1
 #&gt; 258                       Org F                    Level 1
 #&gt; 259                       Org C                    Level 1
 #&gt; 260                       Org A                    Level 1
-#&gt; 261                       Org C                    Level 1
+#&gt; 261                       Org G                    Level 2
 #&gt; 262                       Org A                    Level 1
 #&gt; 263                       Org F                    Level 1
 #&gt; 264                       Org A                    Level 1
-#&gt; 265                       Org F                    Level 1
+#&gt; 265                       Org B                    Level 1
 #&gt; 266                       Org F                    Level 1
-#&gt; 267                       Org F                    Level 2
+#&gt; 267                       Org F                    Level 1
 #&gt; 268                       Org F                    Level 2
 #&gt; 269                       Org B                    Level 2
-#&gt; 270                       Org A                    Level 2
+#&gt; 270                       Org F                    Level 2
 #&gt; 271                       Org B                    Level 2
 #&gt; 272                       Org C                    Level 2
 #&gt; 273                       Org B                    Level 2
-#&gt; 274                       Org C                    Level 2
+#&gt; 274                       Org E                    Level 2
 #&gt; 275                       Org F                    Level 2
-#&gt; 276                       Org A                    Level 2
+#&gt; 276                       Org C                    Level 2
 #&gt; 277                       Org F                    Level 2
 #&gt; 278                       Org E                    Level 2
 #&gt; 279                       Org F                    Level 2
-#&gt; 280                       Org E                    Level 2
+#&gt; 280                       Org D                    Level 2
 #&gt; 281                       Org A                    Level 2
 #&gt; 282                       Org E                    Level 2
 #&gt; 283                       Org A                    Level 2
-#&gt; 284                       Org B                    Level 2
+#&gt; 284                       Org F                    Level 2
 #&gt; 285                       Org A                    Level 2
-#&gt; 286                       Org E                    Level 2
+#&gt; 286                       Org F                    Level 2
 #&gt; 287                       Org B                    Level 2
 #&gt; 288                       Org F                    Level 2
 #&gt; 289                       Org B                    Level 2
@@ -1368,7 +1383,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 294                       Org F                    Level 2
 #&gt; 295                       Org D                    Level 2
 #&gt; 296                       Org E                    Level 2
-#&gt; 297                       Org E                    Level 3
+#&gt; 297                       Org H                    Level 3
 #&gt; 298                       Org E                    Level 3
 #&gt; 299                       Org F                    Level 3
 #&gt; 300                       Org E                    Level 3
@@ -1378,13 +1393,13 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 304                       Org A                    Level 3
 #&gt; 305                       Org B                    Level 3
 #&gt; 306                       Org A                    Level 3
-#&gt; 307                       Org B                    Level 3
+#&gt; 307                       Org D                    Level 3
 #&gt; 308                       Org F                    Level 3
 #&gt; 309                       Org B                    Level 3
 #&gt; 310                       Org F                    Level 3
 #&gt; 311                       Org F                    Level 3
 #&gt; 312                       Org F                    Level 3
-#&gt; 313                       Org F                    Level 3
+#&gt; 313                       Org C                    Level 3
 #&gt; 314                       Org E                    Level 3
 #&gt; 315                       Org F                    Level 3
 #&gt; 316                       Org E                    Level 3
@@ -1393,14 +1408,14 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 319                       Org C                    Level 3
 #&gt; 320                       Org F                    Level 3
 #&gt; 321                       Org C                    Level 3
-#&gt; 322                       Org F                    Level 3
+#&gt; 322                       Org H                    Level 4
 #&gt; 323                       Org A                    Level 3
 #&gt; 324                       Org F                    Level 3
 #&gt; 325                       Org A                    Level 3
 #&gt; 326                       Org F                    Level 3
-#&gt; 327                       Org A                    Level 4
+#&gt; 327                       Org F                    Level 4
 #&gt; 328                       Org F                    Level 4
-#&gt; 329                       Org A                    Level 4
+#&gt; 329                       Org D                    Level 4
 #&gt; 330                       Org F                    Level 4
 #&gt; 331                       Org D                    Level 4
 #&gt; 332                       Org C                    Level 4
@@ -1411,43 +1426,43 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 337                       Org F                    Level 4
 #&gt; 338                       Org F                    Level 4
 #&gt; 339                       Org F                    Level 4
-#&gt; 340                       Org F                    Level 4
+#&gt; 340                       Org E                    Level 4
 #&gt; 341                       Org B                    Level 4
 #&gt; 342                       Org F                    Level 4
-#&gt; 343                       Org B                    Level 4
+#&gt; 343                       Org H                    Level 8
 #&gt; 344                       Org A                    Level 4
 #&gt; 345                       Org B                    Level 4
-#&gt; 346                       Org A                    Level 4
+#&gt; 346                       Org F                    Level 1
 #&gt; 347                       Org C                    Level 4
-#&gt; 348                       Org A                    Level 4
+#&gt; 348                       Org F                    Level 4
 #&gt; 349                       Org C                    Level 4
 #&gt; 350                       Org E                    Level 4
 #&gt; 351                       Org C                    Level 4
 #&gt; 352                       Org E                    Level 4
 #&gt; 353                       Org D                    Level 4
-#&gt; 354                       Org D                    Level 4
+#&gt; 354                       Org E                    Level 4
 #&gt; 355                       Org D                    Level 4
 #&gt; 356                       Org F                    Level 4
 #&gt; 357                       Org D                    Level 5
 #&gt; 358                       Org F                    Level 5
-#&gt; 359                       Org B                    Level 5
+#&gt; 359                       Org B                    Level 2
 #&gt; 360                       Org F                    Level 5
 #&gt; 361                       Org B                    Level 5
-#&gt; 362                       Org A                    Level 5
+#&gt; 362                       Org C                    Level 5
 #&gt; 363                       Org B                    Level 5
-#&gt; 364                       Org D                    Level 4
+#&gt; 364                       Org C                    Level 5
 #&gt; 365                       Org A                    Level 5
 #&gt; 366                       Org C                    Level 5
-#&gt; 367                       Org A                    Level 5
+#&gt; 367                       Org C                    Level 5
 #&gt; 368                       Org E                    Level 5
 #&gt; 369                       Org A                    Level 5
 #&gt; 370                       Org E                    Level 5
 #&gt; 371                       Org F                    Level 5
 #&gt; 372                       Org E                    Level 5
-#&gt; 373                       Org F                    Level 3
-#&gt; 374                       Org F                    Level 5
+#&gt; 373                       Org F                    Level 5
+#&gt; 374                       Org H                    Level 5
 #&gt; 375                       Org F                    Level 5
-#&gt; 376                       Org D                    Level 5
+#&gt; 376                       Org F                    Level 5
 #&gt; 377                       Org B                    Level 5
 #&gt; 378                       Org F                    Level 5
 #&gt; 379                       Org B                    Level 5
@@ -1466,19 +1481,19 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 392                       Org C                    Level 6
 #&gt; 393                       Org D                    Level 6
 #&gt; 394                       Org C                    Level 6
-#&gt; 395                       Org B                    Level 6
+#&gt; 395                       Org C                    Level 6
 #&gt; 396                       Org C                    Level 6
 #&gt; 397                       Org B                    Level 6
 #&gt; 398                       Org F                    Level 6
 #&gt; 399                       Org B                    Level 6
 #&gt; 400                       Org F                    Level 6
 #&gt; 401                       Org D                    Level 6
-#&gt; 402                       Org F                    Level 6
+#&gt; 402                       Org H                    Level 6
 #&gt; 403                       Org D                    Level 6
 #&gt; 404                       Org D                    Level 6
 #&gt; 405                       Org D                    Level 6
 #&gt; 406                       Org E                    Level 6
-#&gt; 407                       Org F                    Level 7
+#&gt; 407                       Org A                    Level 6
 #&gt; 408                       Org E                    Level 6
 #&gt; 409                       Org A                    Level 6
 #&gt; 410                       Org F                    Level 6
@@ -1495,19 +1510,19 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 421                       Org F                    Level 7
 #&gt; 422                       Org C                    Level 7
 #&gt; 423                       Org F                    Level 7
-#&gt; 424                       Org D                    Level 7
+#&gt; 424                       Org C                    Level 7
 #&gt; 425                       Org D                    Level 7
 #&gt; 426                       Org C                    Level 7
 #&gt; 427                       Org D                    Level 7
 #&gt; 428                       Org A                    Level 7
 #&gt; 429                       Org D                    Level 7
-#&gt; 430                       Org A                    Level 7
+#&gt; 430                       Org F                    Level 3
 #&gt; 431                       Org B                    Level 7
 #&gt; 432                       Org A                    Level 7
-#&gt; 433                       Org B                    Level 7
-#&gt; 434                       Org H                    Level 7
-#&gt; 435                       Org B                    Level 7
-#&gt; 436                       Org F                    Level 7
+#&gt; 433                       Org H                    Level 7
+#&gt; 434                       Org F                    Level 7
+#&gt; 435                       Org B                    Level 2
+#&gt; 436                       Org D                    Level 7
 #&gt; 437                       Org C                    Level 7
 #&gt; 438                       Org F                    Level 7
 #&gt; 439                       Org C                    Level 7
@@ -1520,9 +1535,9 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 446                       Org F                    Level 7
 #&gt; 447                       Org F                    Level 8
 #&gt; 448                       Org F                    Level 8
-#&gt; 449                       Org A                    Level 8
+#&gt; 449                       Org C                    Level 6
 #&gt; 450                       Org F                    Level 8
-#&gt; 451                       Org E                    Level 2
+#&gt; 451                       Org A                    Level 8
 #&gt; 452                       Org C                    Level 8
 #&gt; 453                       Org A                    Level 8
 #&gt; 454                       Org C                    Level 8
@@ -1537,13 +1552,13 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 463                       Org D                    Level 8
 #&gt; 464                       Org F                    Level 8
 #&gt; 465                       Org D                    Level 8
-#&gt; 466                       Org F                    Level 8
+#&gt; 466                       Org B                    Level 8
 #&gt; 467                       Org B                    Level 8
 #&gt; 468                       Org F                    Level 8
 #&gt; 469                       Org B                    Level 8
 #&gt; 470                       Org A                    Level 8
 #&gt; 471                       Org B                    Level 8
-#&gt; 472                       Org A                    Level 7
+#&gt; 472                       Org A                    Level 8
 #&gt; 473                       Org D                    Level 8
 #&gt; 474                       Org A                    Level 8
 #&gt; 475                       Org D                    Level 8
@@ -1555,10 +1570,10 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 481                       Org F                    Level 9
 #&gt; 482                       Org C                    Level 9
 #&gt; 483                       Org F                    Level 9
-#&gt; 484                       Org D                    Level 3
+#&gt; 484                       Org C                    Level 9
 #&gt; 485                       Org B                    Level 9
 #&gt; 486                       Org C                    Level 9
-#&gt; 487                       Org C                    Level 9
+#&gt; 487                       Org B                    Level 9
 #&gt; 488                       Org F                    Level 9
 #&gt; 489                       Org B                    Level 9
 #&gt; 490                       Org F                    Level 9
@@ -1568,31 +1583,31 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 494                       Org E                    Level 9
 #&gt; 495                       Org A                    Level 9
 #&gt; 496                       Org E                    Level 9
-#&gt; 497                       Org C                    Level 9
+#&gt; 497                       Org C                    Level 7
 #&gt; 498                       Org E                    Level 9
 #&gt; 499                       Org C                    Level 9
 #&gt; 500                       Org H                    Level 9
 #&gt; 501                       Org C                    Level 9
 #&gt; 502                       Org H                    Level 9
 #&gt; 503                       Org B                    Level 9
-#&gt; 504                       Org A                    Level 1
+#&gt; 504                       Org E                    Level 1
 #&gt; 505                       Org B                    Level 9
 #&gt; 506                       Org H                    Level 9
 #&gt; 507                       Org B                    Level 1
 #&gt; 508                       Org H                    Level 1
-#&gt; 509                       Org D                    Level 1
+#&gt; 509                       Org D                    Level 2
 #&gt; 510                       Org H                    Level 1
 #&gt; 511                       Org D                    Level 1
-#&gt; 512                       Org A                    Level 1
+#&gt; 512                       Org H                    Level 1
 #&gt; 513                       Org D                    Level 1
 #&gt; 514                       Org A                    Level 1
 #&gt; 515                       Org G                    Level 1
-#&gt; 516                       Org A                    Level 1
+#&gt; 516                       Org B                    Level 1
 #&gt; 517                       Org G                    Level 1
 #&gt; 518                       Org H                    Level 1
 #&gt; 519                       Org G                    Level 1
 #&gt; 520                       Org H                    Level 1
-#&gt; 521                       Org B                    Level 1
+#&gt; 521                       Org B                    Level 7
 #&gt; 522                       Org H                    Level 1
 #&gt; 523                       Org B                    Level 1
 #&gt; 524                       Org H                    Level 1
@@ -1602,8 +1617,8 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 528                       Org H                    Level 1
 #&gt; 529                       Org C                    Level 1
 #&gt; 530                       Org E                    Level 1
-#&gt; 531                       Org C                    Level 1
-#&gt; 532                       Org E                    Level 3
+#&gt; 531                       Org D                    Level 1
+#&gt; 532                       Org E                    Level 1
 #&gt; 533                       Org A                    Level 1
 #&gt; 534                       Org E                    Level 1
 #&gt; 535                       Org A                    Level 1
@@ -1619,16 +1634,16 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 545                       Org D                    Level 1
 #&gt; 546                       Org C                    Level 1
 #&gt; 547                       Org D                    Level 1
-#&gt; 548                       Org E                    Level 1
-#&gt; 549                       Org D                    Level 1
+#&gt; 548                       Org H                    Level 1
+#&gt; 549                       Org B                    Level 5
 #&gt; 550                       Org E                    Level 1
 #&gt; 551                       Org G                    Level 1
 #&gt; 552                       Org E                    Level 1
 #&gt; 553                       Org G                    Level 1
 #&gt; 554                       Org A                    Level 1
 #&gt; 555                       Org G                    Level 1
-#&gt; 556                       Org A                    Level 1
-#&gt; 557                       Org D                    Level 6
+#&gt; 556                       Org B                    Level 1
+#&gt; 557                       Org B                    Level 1
 #&gt; 558                       Org A                    Level 1
 #&gt; 559                       Org B                    Level 1
 #&gt; 560                       Org H                    Level 1
@@ -1636,14 +1651,14 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 562                       Org H                    Level 1
 #&gt; 563                       Org G                    Level 1
 #&gt; 564                       Org H                    Level 1
-#&gt; 565                       Org G                    Level 8
+#&gt; 565                       Org G                    Level 1
 #&gt; 566                       Org E                    Level 1
-#&gt; 567                       Org G                    Level 1
-#&gt; 568                       Org B                    Level 1
-#&gt; 569                       Org B                    Level 2
+#&gt; 567                       Org B                    Level 4
+#&gt; 568                       Org E                    Level 1
+#&gt; 569                       Org D                    Level 1
 #&gt; 570                       Org E                    Level 1
-#&gt; 571                       Org H                    Level 7
-#&gt; 572                       Org C                    Level 1
+#&gt; 571                       Org D                    Level 1
+#&gt; 572                       Org H                    Level 1
 #&gt; 573                       Org D                    Level 1
 #&gt; 574                       Org C                    Level 1
 #&gt; 575                       Org A                    Level 1
@@ -1658,7 +1673,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 584                       Org E                    Level 1
 #&gt; 585                       Org D                    Level 1
 #&gt; 586                       Org E                    Level 1
-#&gt; 587                       Org A                    Level 6
+#&gt; 587                       Org C                    Level 1
 #&gt; 588                       Org E                    Level 1
 #&gt; 589                       Org C                    Level 1
 #&gt; 590                       Org H                    Level 1
@@ -1679,7 +1694,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 605                       Org D                    Level 1
 #&gt; 606                       Org C                    Level 1
 #&gt; 607                       Org D                    Level 1
-#&gt; 608                       Org H                    Level 7
+#&gt; 608                       Org H                    Level 1
 #&gt; 609                       Org D                    Level 1
 #&gt; 610                       Org H                    Level 1
 #&gt; 611                       Org B                    Level 1
@@ -1690,7 +1705,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 616                       Org H                    Level 1
 #&gt; 617                       Org A                    Level 1
 #&gt; 618                       Org H                    Level 1
-#&gt; 619                       Org A                    Level 8
+#&gt; 619                       Org A                    Level 1
 #&gt; 620                       Org E                    Level 1
 #&gt; 621                       Org A                    Level 1
 #&gt; 622                       Org E                    Level 1
@@ -1698,11 +1713,11 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 624                       Org E                    Level 1
 #&gt; 625                       Org G                    Level 1
 #&gt; 626                       Org H                    Level 1
-#&gt; 627                       Org G                    Level 1
+#&gt; 627                       Org G                    Level 4
 #&gt; 628                       Org H                    Level 1
 #&gt; 629                       Org B                    Level 1
 #&gt; 630                       Org H                    Level 1
-#&gt; 631                       Org B                    Level 1
+#&gt; 631                       Org C                    Level 1
 #&gt; 632                       Org C                    Level 1
 #&gt; 633                       Org B                    Level 1
 #&gt; 634                       Org C                    Level 1
@@ -1711,10 +1726,10 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 637                       Org G                    Level 1
 #&gt; 638                       Org A                    Level 1
 #&gt; 639                       Org G                    Level 1
-#&gt; 640                       Org A                    Level 1
+#&gt; 640                       Org C                    Level 1
 #&gt; 641                       Org D                    Level 1
 #&gt; 642                       Org A                    Level 1
-#&gt; 643                       Org D                    Level 1
+#&gt; 643                       Org H                    Level 1
 #&gt; 644                       Org H                    Level 1
 #&gt; 645                       Org D                    Level 1
 #&gt; 646                       Org H                    Level 1
@@ -1734,7 +1749,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 660                       Org E                    Level 1
 #&gt; 661                       Org A                    Level 1
 #&gt; 662                       Org C                    Level 1
-#&gt; 663                       Org A                    Level 1
+#&gt; 663                       Org D                    Level 3
 #&gt; 664                       Org C                    Level 1
 #&gt; 665                       Org B                    Level 1
 #&gt; 666                       Org C                    Level 1
@@ -1742,21 +1757,21 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 668                       Org H                    Level 1
 #&gt; 669                       Org B                    Level 1
 #&gt; 670                       Org H                    Level 1
-#&gt; 671                       Org G                    Level 1
-#&gt; 672                       Org H                    Level 4
+#&gt; 671                       Org G                    Level 4
+#&gt; 672                       Org H                    Level 1
 #&gt; 673                       Org G                    Level 1
 #&gt; 674                       Org E                    Level 1
 #&gt; 675                       Org G                    Level 1
 #&gt; 676                       Org E                    Level 1
 #&gt; 677                       Org C                    Level 1
-#&gt; 678                       Org E                    Level 1
+#&gt; 678                       Org C                    Level 1
 #&gt; 679                       Org C                    Level 1
 #&gt; 680                       Org A                    Level 1
 #&gt; 681                       Org C                    Level 1
 #&gt; 682                       Org A                    Level 1
 #&gt; 683                       Org B                    Level 1
 #&gt; 684                       Org A                    Level 1
-#&gt; 685                       Org B                    Level 7
+#&gt; 685                       Org B                    Level 1
 #&gt; 686                       Org H                    Level 1
 #&gt; 687                       Org B                    Level 1
 #&gt; 688                       Org H                    Level 1
@@ -1768,19 +1783,19 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 694                       Org C                    Level 1
 #&gt; 695                       Org G                    Level 1
 #&gt; 696                       Org C                    Level 1
-#&gt; 697                       Org G                    Level 1
+#&gt; 697                       Org B                    Level 1
 #&gt; 698                       Org H                    Level 1
 #&gt; 699                       Org G                    Level 1
 #&gt; 700                       Org H                    Level 1
-#&gt; 701                       Org A                    Level 7
+#&gt; 701                       Org A                    Level 1
 #&gt; 702                       Org H                    Level 1
 #&gt; 703                       Org A                    Level 1
-#&gt; 704                       Org H                    Level 7
+#&gt; 704                       Org H                    Level 1
 #&gt; 705                       Org A                    Level 1
 #&gt; 706                       Org H                    Level 1
 #&gt; 707                       Org C                    Level 1
 #&gt; 708                       Org H                    Level 1
-#&gt; 709                       Org C                    Level 9
+#&gt; 709                       Org C                    Level 1
 #&gt; 710                       Org E                    Level 1
 #&gt; 711                       Org C                    Level 1
 #&gt; 712                       Org E                    Level 1
@@ -1790,28 +1805,28 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 716                       Org H                    Level 1
 #&gt; 717                       Org D                    Level 1
 #&gt; 718                       Org H                    Level 1
-#&gt; 719                       Org B                    Level 1
+#&gt; 719                       Org C                    Level 1
 #&gt; 720                       Org H                    Level 1
 #&gt; 721                       Org B                    Level 1
 #&gt; 722                       Org A                    Level 1
 #&gt; 723                       Org B                    Level 1
 #&gt; 724                       Org A                    Level 1
 #&gt; 725                       Org D                    Level 1
-#&gt; 726                       Org C                    Level 1
-#&gt; 727                       Org D                    Level 1
+#&gt; 726                       Org A                    Level 1
+#&gt; 727                       Org H                    Level 5
 #&gt; 728                       Org E                    Level 1
 #&gt; 729                       Org D                    Level 1
 #&gt; 730                       Org E                    Level 1
-#&gt; 731                       Org B                    Level 3
+#&gt; 731                       Org G                    Level 8
 #&gt; 732                       Org E                    Level 1
-#&gt; 733                       Org A                    Level 1
+#&gt; 733                       Org G                    Level 1
 #&gt; 734                       Org H                    Level 1
-#&gt; 735                       Org B                    Level 1
+#&gt; 735                       Org G                    Level 1
 #&gt; 736                       Org H                    Level 1
 #&gt; 737                       Org B                    Level 1
 #&gt; 738                       Org H                    Level 1
 #&gt; 739                       Org B                    Level 1
-#&gt; 740                       Org H                    Level 1
+#&gt; 740                       Org E                    Level 7
 #&gt; 741                       Org B                    Level 1
 #&gt; 742                       Org H                    Level 1
 #&gt; 743                       Org A                    Level 1
@@ -1821,14 +1836,14 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 747                       Org A                    Level 1
 #&gt; 748                       Org E                    Level 1
 #&gt; 749                       Org D                    Level 1
-#&gt; 750                       Org E                    Level 1
+#&gt; 750                       Org H                    Level 3
 #&gt; 751                       Org D                    Level 1
 #&gt; 752                       Org C                    Level 1
 #&gt; 753                       Org D                    Level 1
 #&gt; 754                       Org C                    Level 1
 #&gt; 755                       Org B                    Level 1
 #&gt; 756                       Org C                    Level 1
-#&gt; 757                       Org B                    Level 8
+#&gt; 757                       Org B                    Level 1
 #&gt; 758                       Org H                    Level 1
 #&gt; 759                       Org B                    Level 1
 #&gt; 760                       Org H                    Level 1
@@ -1849,21 +1864,21 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 775                       Org B                    Level 1
 #&gt; 776                       Org H                    Level 1
 #&gt; 777                       Org B                    Level 1
-#&gt; 778                       Org H                    Level 9
+#&gt; 778                       Org H                    Level 1
 #&gt; 779                       Org G                    Level 1
 #&gt; 780                       Org H                    Level 1
-#&gt; 781                       Org H                    Level 1
+#&gt; 781                       Org G                    Level 1
 #&gt; 782                       Org C                    Level 1
 #&gt; 783                       Org G                    Level 1
 #&gt; 784                       Org C                    Level 1
-#&gt; 785                       Org A                    Level 1
+#&gt; 785                       Org A                    Level 6
 #&gt; 786                       Org C                    Level 1
 #&gt; 787                       Org A                    Level 1
-#&gt; 788                       Org H                    Level 8
+#&gt; 788                       Org H                    Level 1
 #&gt; 789                       Org A                    Level 1
 #&gt; 790                       Org H                    Level 1
 #&gt; 791                       Org B                    Level 1
-#&gt; 792                       Org C                    Level 1
+#&gt; 792                       Org H                    Level 1
 #&gt; 793                       Org B                    Level 1
 #&gt; 794                       Org H                    Level 1
 #&gt; 795                       Org B                    Level 1
@@ -1874,7 +1889,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 800                       Org C                    Level 1
 #&gt;     TieDestination_LevelDesignation TieOrigin_City TieDestination_City
 #&gt; 1                           Level 2         City C              City B
-#&gt; 2                           Level 8         City B              City C
+#&gt; 2                           Level 3         City B              City A
 #&gt; 3                           Level 4         City A              City B
 #&gt; 4                           Level 5         City B              City C
 #&gt; 5                           Level 6         City C              City A
@@ -1896,7 +1911,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 21                          Level 2         City A              City B
 #&gt; 22                          Level 2         City B              City C
 #&gt; 23                          Level 2         City C              City A
-#&gt; 24                          Level 1         City A              City C
+#&gt; 24                          Level 2         City A              City C
 #&gt; 25                          Level 2         City C              City B
 #&gt; 26                          Level 2         City B              City A
 #&gt; 27                          Level 2         City A              City B
@@ -1910,9 +1925,9 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 35                          Level 3         City C              City A
 #&gt; 36                          Level 3         City A              City C
 #&gt; 37                          Level 3         City C              City B
-#&gt; 38                          Level 3         City B              City A
+#&gt; 38                          Level 1         City A              City B
 #&gt; 39                          Level 4         City A              City B
-#&gt; 40                          Level 1         City C              City C
+#&gt; 40                          Level 4         City A              City B
 #&gt; 41                          Level 4         City C              City A
 #&gt; 42                          Level 4         City A              City C
 #&gt; 43                          Level 4         City C              City B
@@ -1925,8 +1940,8 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 50                          Level 5         City B              City A
 #&gt; 51                          Level 5         City A              City B
 #&gt; 52                          Level 5         City B              City C
-#&gt; 53                          Level 1         City A              City A
-#&gt; 54                          Level 5         City A              City C
+#&gt; 53                          Level 5         City C              City A
+#&gt; 54                          Level 1         City A              City A
 #&gt; 55                          Level 5         City C              City B
 #&gt; 56                          Level 5         City B              City A
 #&gt; 57                          Level 5         City A              City B
@@ -1939,29 +1954,29 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 64                          Level 6         City B              City C
 #&gt; 65                          Level 6         City C              City A
 #&gt; 66                          Level 6         City A              City C
-#&gt; 67                          Level 6         City C              City C
+#&gt; 67                          Level 6         City C              City B
 #&gt; 68                          Level 6         City B              City A
 #&gt; 69                          Level 7         City A              City B
 #&gt; 70                          Level 7         City B              City C
-#&gt; 71                          Level 7         City C              City A
+#&gt; 71                          Level 1         City C              City B
 #&gt; 72                          Level 7         City A              City C
 #&gt; 73                          Level 7         City C              City B
-#&gt; 74                          Level 7         City A              City B
-#&gt; 75                          Level 7         City A              City B
+#&gt; 74                          Level 7         City B              City A
+#&gt; 75                          Level 1         City A              City B
 #&gt; 76                          Level 7         City B              City C
 #&gt; 77                          Level 7         City C              City A
-#&gt; 78                          Level 7         City A              City C
+#&gt; 78                          Level 7         City B              City C
 #&gt; 79                          Level 8         City C              City B
-#&gt; 80                          Level 8         City B              City A
+#&gt; 80                          Level 1         City B              City C
 #&gt; 81                          Level 8         City A              City B
 #&gt; 82                          Level 8         City B              City C
 #&gt; 83                          Level 8         City C              City A
-#&gt; 84                          Level 1         City A              City A
+#&gt; 84                          Level 8         City A              City C
 #&gt; 85                          Level 8         City C              City B
-#&gt; 86                          Level 8         City B              City A
-#&gt; 87                          Level 1         City B              City C
-#&gt; 88                          Level 8         City C              City C
-#&gt; 89                          Level 1         City C              City C
+#&gt; 86                          Level 1         City B              City B
+#&gt; 87                          Level 8         City A              City B
+#&gt; 88                          Level 8         City B              City C
+#&gt; 89                          Level 9         City C              City A
 #&gt; 90                          Level 9         City A              City C
 #&gt; 91                          Level 9         City C              City B
 #&gt; 92                          Level 9         City B              City A
@@ -1969,24 +1984,24 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 94                          Level 9         City B              City C
 #&gt; 95                          Level 9         City C              City A
 #&gt; 96                          Level 9         City A              City C
-#&gt; 97                          Level 9         City B              City B
+#&gt; 97                          Level 9         City C              City B
 #&gt; 98                          Level 9         City B              City A
 #&gt; 99                          Level 1         City A              City B
 #&gt; 100                         Level 1         City B              City C
-#&gt; 101                         Level 1         City C              City A
+#&gt; 101                         Level 1         City A              City C
 #&gt; 102                         Level 1         City A              City C
 #&gt; 103                         Level 1         City C              City B
 #&gt; 104                         Level 1         City B              City A
 #&gt; 105                         Level 1         City A              City B
 #&gt; 106                         Level 1         City B              City C
 #&gt; 107                         Level 1         City C              City A
-#&gt; 108                         Level 1         City A              City B
+#&gt; 108                         Level 1         City A              City C
 #&gt; 109                         Level 1         City C              City B
 #&gt; 110                         Level 1         City B              City A
 #&gt; 111                         Level 1         City A              City B
 #&gt; 112                         Level 1         City B              City C
 #&gt; 113                         Level 1         City C              City A
-#&gt; 114                         Level 1         City A              City C
+#&gt; 114                         Level 1         City A              City A
 #&gt; 115                         Level 1         City C              City B
 #&gt; 116                         Level 1         City B              City A
 #&gt; 117                         Level 1         City A              City B
@@ -1994,14 +2009,14 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 119                         Level 1         City C              City A
 #&gt; 120                         Level 1         City A              City C
 #&gt; 121                         Level 1         City C              City B
-#&gt; 122                         Level 1         City B              City A
+#&gt; 122                         Level 1         City A              City A
 #&gt; 123                         Level 1         City A              City B
 #&gt; 124                         Level 1         City B              City C
 #&gt; 125                         Level 1         City C              City A
 #&gt; 126                         Level 1         City A              City C
-#&gt; 127                         Level 1         City C              City A
+#&gt; 127                         Level 1         City C              City B
 #&gt; 128                         Level 1         City B              City A
-#&gt; 129                         Level 1         City A              City B
+#&gt; 129                         Level 1         City A              City C
 #&gt; 130                         Level 1         City B              City C
 #&gt; 131                         Level 1         City C              City A
 #&gt; 132                         Level 1         City A              City C
@@ -2014,7 +2029,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 139                         Level 1         City C              City B
 #&gt; 140                         Level 1         City B              City A
 #&gt; 141                         Level 1         City A              City B
-#&gt; 142                         Level 1         City B              City C
+#&gt; 142                         Level 1         City C              City B
 #&gt; 143                         Level 1         City C              City A
 #&gt; 144                         Level 1         City A              City C
 #&gt; 145                         Level 1         City C              City B
@@ -2022,27 +2037,27 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 147                         Level 1         City A              City B
 #&gt; 148                         Level 1         City B              City C
 #&gt; 149                         Level 1         City C              City A
-#&gt; 150                         Level 1         City A              City C
+#&gt; 150                         Level 1         City B              City A
 #&gt; 151                         Level 1         City C              City B
 #&gt; 152                         Level 1         City B              City A
 #&gt; 153                         Level 1         City A              City B
 #&gt; 154                         Level 1         City B              City C
 #&gt; 155                         Level 1         City C              City A
-#&gt; 156                         Level 1         City C              City C
+#&gt; 156                         Level 1         City C              City A
 #&gt; 157                         Level 1         City C              City B
 #&gt; 158                         Level 1         City B              City A
 #&gt; 159                         Level 1         City A              City B
 #&gt; 160                         Level 1         City B              City C
 #&gt; 161                         Level 1         City C              City A
 #&gt; 162                         Level 1         City A              City C
-#&gt; 163                         Level 1         City C              City B
+#&gt; 163                         Level 1         City C              City C
 #&gt; 164                         Level 1         City B              City A
 #&gt; 165                         Level 1         City A              City B
 #&gt; 166                         Level 1         City B              City C
 #&gt; 167                         Level 1         City C              City A
 #&gt; 168                         Level 1         City A              City C
 #&gt; 169                         Level 1         City C              City B
-#&gt; 170                         Level 1         City A              City A
+#&gt; 170                         Level 1         City C              City A
 #&gt; 171                         Level 1         City A              City B
 #&gt; 172                         Level 1         City B              City C
 #&gt; 173                         Level 1         City C              City A
@@ -2057,11 +2072,11 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 182                         Level 1         City B              City A
 #&gt; 183                         Level 1         City A              City B
 #&gt; 184                         Level 1         City B              City C
-#&gt; 185                         Level 1         City C              City A
+#&gt; 185                         Level 1         City B              City C
 #&gt; 186                         Level 1         City A              City C
-#&gt; 187                         Level 1         City B              City C
+#&gt; 187                         Level 1         City C              City B
 #&gt; 188                         Level 1         City B              City A
-#&gt; 189                         Level 1         City A              City B
+#&gt; 189                         Level 1         City C              City B
 #&gt; 190                         Level 1         City B              City C
 #&gt; 191                         Level 1         City C              City A
 #&gt; 192                         Level 1         City A              City C
@@ -2071,7 +2086,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 196                         Level 1         City B              City C
 #&gt; 197                         Level 1         City C              City A
 #&gt; 198                         Level 1         City A              City C
-#&gt; 199                         Level 2         City C              City B
+#&gt; 199                         Level 1         City C              City C
 #&gt; 200                         Level 2         City C              City B
 #&gt; 201                         Level 3         City C              City A
 #&gt; 202                         Level 1         City C              City C
@@ -2084,15 +2099,15 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 209                         Level 1         City B              City C
 #&gt; 210                         Level 5         City B              City C
 #&gt; 211                         Level 1         City B              City A
-#&gt; 212                         Level 6         City B              City A
+#&gt; 212                         Level 9         City B              City A
 #&gt; 213                         Level 5         City A              City C
 #&gt; 214                         Level 2         City A              City B
 #&gt; 215                         Level 6         City A              City A
-#&gt; 216                         Level 1         City A              City C
-#&gt; 217                         Level 7         City A              City C
+#&gt; 216                         Level 1         City A              City A
+#&gt; 217                         Level 1         City C              City A
 #&gt; 218                         Level 6         City B              City A
 #&gt; 219                         Level 7         City B              City C
-#&gt; 220                         Level 2         City B              City B
+#&gt; 220                         Level 1         City B              City C
 #&gt; 221                         Level 8         City B              City B
 #&gt; 222                         Level 7         City C              City C
 #&gt; 223                         Level 8         City C              City B
@@ -2108,57 +2123,57 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 233                         Level 1         City B              City A
 #&gt; 234                         Level 1         City A              City C
 #&gt; 235                         Level 1         City A              City A
-#&gt; 236                         Level 1         City A              City C
+#&gt; 236                         Level 5         City C              City C
 #&gt; 237                         Level 1         City B              City A
-#&gt; 238                         Level 1         City B              City C
+#&gt; 238                         Level 8         City C              City B
 #&gt; 239                         Level 1         City B              City B
 #&gt; 240                         Level 1         City C              City C
 #&gt; 241                         Level 1         City C              City B
-#&gt; 242                         Level 1         City C              City A
+#&gt; 242                         Level 1         City C              City C
 #&gt; 243                         Level 1         City A              City B
 #&gt; 244                         Level 1         City A              City A
-#&gt; 245                         Level 1         City A              City B
+#&gt; 245                         Level 1         City B              City C
 #&gt; 246                         Level 1         City C              City A
 #&gt; 247                         Level 1         City C              City B
-#&gt; 248                         Level 1         City C              City C
+#&gt; 248                         Level 4         City C              City C
 #&gt; 249                         Level 1         City B              City B
 #&gt; 250                         Level 1         City B              City C
 #&gt; 251                         Level 1         City B              City A
 #&gt; 252                         Level 1         City A              City C
 #&gt; 253                         Level 1         City A              City A
-#&gt; 254                         Level 1         City C              City C
+#&gt; 254                         Level 1         City A              City C
 #&gt; 255                         Level 1         City B              City A
 #&gt; 256                         Level 1         City B              City C
 #&gt; 257                         Level 2         City B              City B
 #&gt; 258                         Level 1         City C              City C
 #&gt; 259                         Level 2         City C              City B
 #&gt; 260                         Level 2         City C              City A
-#&gt; 261                         Level 2         City A              City B
+#&gt; 261                         Level 1         City B              City B
 #&gt; 262                         Level 2         City A              City A
 #&gt; 263                         Level 2         City A              City B
 #&gt; 264                         Level 2         City C              City A
-#&gt; 265                         Level 2         City C              City B
+#&gt; 265                         Level 1         City C              City A
 #&gt; 266                         Level 2         City C              City C
-#&gt; 267                         Level 2         City B              City B
+#&gt; 267                         Level 2         City A              City B
 #&gt; 268                         Level 2         City B              City C
 #&gt; 269                         Level 2         City B              City A
-#&gt; 270                         Level 5         City C              City B
+#&gt; 270                         Level 2         City A              City C
 #&gt; 271                         Level 2         City A              City A
 #&gt; 272                         Level 2         City A              City C
 #&gt; 273                         Level 2         City B              City A
-#&gt; 274                         Level 2         City B              City C
+#&gt; 274                         Level 3         City B              City A
 #&gt; 275                         Level 2         City B              City B
-#&gt; 276                         Level 1         City C              City A
+#&gt; 276                         Level 2         City C              City C
 #&gt; 277                         Level 2         City C              City B
 #&gt; 278                         Level 2         City C              City A
 #&gt; 279                         Level 2         City A              City B
-#&gt; 280                         Level 2         City A              City A
+#&gt; 280                         Level 6         City A              City B
 #&gt; 281                         Level 2         City A              City B
 #&gt; 282                         Level 2         City C              City A
 #&gt; 283                         Level 2         City C              City B
-#&gt; 284                         Level 1         City C              City A
+#&gt; 284                         Level 2         City C              City C
 #&gt; 285                         Level 2         City B              City B
-#&gt; 286                         Level 1         City B              City A
+#&gt; 286                         Level 2         City B              City C
 #&gt; 287                         Level 3         City B              City A
 #&gt; 288                         Level 2         City A              City C
 #&gt; 289                         Level 3         City A              City A
@@ -2169,7 +2184,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 294                         Level 3         City C              City C
 #&gt; 295                         Level 3         City C              City B
 #&gt; 296                         Level 3         City C              City A
-#&gt; 297                         Level 1         City A              City A
+#&gt; 297                         Level 1         City B              City C
 #&gt; 298                         Level 3         City A              City A
 #&gt; 299                         Level 3         City A              City B
 #&gt; 300                         Level 3         City C              City A
@@ -2179,13 +2194,13 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 304                         Level 3         City B              City C
 #&gt; 305                         Level 3         City B              City A
 #&gt; 306                         Level 3         City A              City C
-#&gt; 307                         Level 1         City A              City A
+#&gt; 307                         Level 6         City A              City B
 #&gt; 308                         Level 3         City A              City C
 #&gt; 309                         Level 3         City B              City A
 #&gt; 310                         Level 3         City B              City C
 #&gt; 311                         Level 3         City B              City B
 #&gt; 312                         Level 3         City C              City C
-#&gt; 313                         Level 3         City C              City B
+#&gt; 313                         Level 5         City C              City C
 #&gt; 314                         Level 3         City C              City A
 #&gt; 315                         Level 3         City A              City B
 #&gt; 316                         Level 3         City A              City A
@@ -2194,16 +2209,16 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 319                         Level 4         City C              City B
 #&gt; 320                         Level 4         City C              City C
 #&gt; 321                         Level 4         City B              City B
-#&gt; 322                         Level 4         City B              City C
+#&gt; 322                         Level 1         City C              City C
 #&gt; 323                         Level 4         City B              City A
 #&gt; 324                         Level 4         City A              City C
 #&gt; 325                         Level 4         City A              City A
 #&gt; 326                         Level 4         City A              City C
-#&gt; 327                         Level 4         City B              City A
+#&gt; 327                         Level 8         City B              City C
 #&gt; 328                         Level 4         City B              City C
-#&gt; 329                         Level 9         City B              City B
+#&gt; 329                         Level 4         City B              City B
 #&gt; 330                         Level 4         City C              City C
-#&gt; 331                         Level 4         City B              City B
+#&gt; 331                         Level 4         City C              City B
 #&gt; 332                         Level 4         City C              City A
 #&gt; 333                         Level 4         City A              City B
 #&gt; 334                         Level 4         City A              City A
@@ -2212,43 +2227,43 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 337                         Level 4         City C              City B
 #&gt; 338                         Level 4         City C              City C
 #&gt; 339                         Level 4         City B              City B
-#&gt; 340                         Level 4         City B              City C
+#&gt; 340                         Level 5         City C              City A
 #&gt; 341                         Level 4         City B              City A
 #&gt; 342                         Level 4         City A              City C
-#&gt; 343                         Level 4         City A              City A
+#&gt; 343                         Level 1         City A              City C
 #&gt; 344                         Level 4         City A              City C
 #&gt; 345                         Level 4         City B              City A
-#&gt; 346                         Level 4         City B              City C
+#&gt; 346                         Level 4         City C              City B
 #&gt; 347                         Level 5         City B              City B
-#&gt; 348                         Level 4         City C              City C
+#&gt; 348                         Level 7         City C              City C
 #&gt; 349                         Level 5         City C              City B
 #&gt; 350                         Level 5         City C              City A
 #&gt; 351                         Level 5         City A              City B
 #&gt; 352                         Level 5         City A              City A
 #&gt; 353                         Level 5         City A              City B
-#&gt; 354                         Level 7         City C              City B
+#&gt; 354                         Level 5         City C              City A
 #&gt; 355                         Level 5         City C              City B
 #&gt; 356                         Level 5         City C              City C
 #&gt; 357                         Level 5         City B              City B
 #&gt; 358                         Level 5         City B              City C
-#&gt; 359                         Level 5         City B              City A
+#&gt; 359                         Level 5         City A              City A
 #&gt; 360                         Level 5         City A              City C
 #&gt; 361                         Level 5         City A              City A
-#&gt; 362                         Level 8         City A              City A
+#&gt; 362                         Level 5         City A              City C
 #&gt; 363                         Level 5         City B              City A
-#&gt; 364                         Level 5         City B              City B
+#&gt; 364                         Level 5         City B              City C
 #&gt; 365                         Level 5         City B              City B
 #&gt; 366                         Level 5         City C              City C
-#&gt; 367                         Level 5         City C              City B
+#&gt; 367                         Level 1         City B              City B
 #&gt; 368                         Level 5         City C              City A
 #&gt; 369                         Level 5         City A              City B
 #&gt; 370                         Level 5         City A              City A
 #&gt; 371                         Level 5         City A              City B
 #&gt; 372                         Level 5         City C              City A
-#&gt; 373                         Level 5         City A              City B
-#&gt; 374                         Level 5         City C              City C
+#&gt; 373                         Level 5         City C              City B
+#&gt; 374                         Level 1         City C              City C
 #&gt; 375                         Level 5         City B              City B
-#&gt; 376                         Level 8         City B              City B
+#&gt; 376                         Level 5         City B              City C
 #&gt; 377                         Level 6         City B              City A
 #&gt; 378                         Level 5         City A              City C
 #&gt; 379                         Level 6         City A              City A
@@ -2267,19 +2282,19 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 392                         Level 6         City C              City C
 #&gt; 393                         Level 6         City B              City B
 #&gt; 394                         Level 6         City B              City C
-#&gt; 395                         Level 6         City B              City A
+#&gt; 395                         Level 9         City B              City C
 #&gt; 396                         Level 6         City A              City C
 #&gt; 397                         Level 6         City A              City A
 #&gt; 398                         Level 6         City A              City C
 #&gt; 399                         Level 6         City B              City A
 #&gt; 400                         Level 6         City B              City C
 #&gt; 401                         Level 6         City B              City B
-#&gt; 402                         Level 6         City C              City C
+#&gt; 402                         Level 1         City C              City C
 #&gt; 403                         Level 6         City C              City B
 #&gt; 404                         Level 1         City A              City B
 #&gt; 405                         Level 6         City A              City B
 #&gt; 406                         Level 6         City A              City A
-#&gt; 407                         Level 8         City B              City C
+#&gt; 407                         Level 7         City A              City B
 #&gt; 408                         Level 6         City C              City A
 #&gt; 409                         Level 7         City C              City B
 #&gt; 410                         Level 7         City C              City C
@@ -2296,19 +2311,19 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 421                         Level 7         City C              City B
 #&gt; 422                         Level 7         City C              City A
 #&gt; 423                         Level 7         City A              City B
-#&gt; 424                         Level 1         City A              City B
+#&gt; 424                         Level 7         City A              City A
 #&gt; 425                         Level 7         City A              City B
 #&gt; 426                         Level 7         City C              City A
 #&gt; 427                         Level 7         City C              City B
 #&gt; 428                         Level 7         City C              City C
 #&gt; 429                         Level 7         City B              City B
-#&gt; 430                         Level 7         City B              City C
+#&gt; 430                         Level 7         City A              City B
 #&gt; 431                         Level 7         City B              City A
 #&gt; 432                         Level 7         City A              City C
-#&gt; 433                         Level 7         City A              City A
-#&gt; 434                         Level 1         City C              City C
-#&gt; 435                         Level 7         City B              City A
-#&gt; 436                         Level 7         City B              City C
+#&gt; 433                         Level 1         City A              City C
+#&gt; 434                         Level 7         City A              City C
+#&gt; 435                         Level 7         City A              City A
+#&gt; 436                         Level 1         City B              City B
 #&gt; 437                         Level 8         City B              City B
 #&gt; 438                         Level 7         City C              City C
 #&gt; 439                         Level 8         City C              City B
@@ -2321,9 +2336,9 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 446                         Level 8         City C              City C
 #&gt; 447                         Level 8         City B              City B
 #&gt; 448                         Level 8         City B              City C
-#&gt; 449                         Level 8         City B              City A
+#&gt; 449                         Level 8         City A              City B
 #&gt; 450                         Level 8         City A              City C
-#&gt; 451                         Level 8         City B              City A
+#&gt; 451                         Level 8         City A              City A
 #&gt; 452                         Level 8         City A              City C
 #&gt; 453                         Level 8         City B              City A
 #&gt; 454                         Level 8         City B              City C
@@ -2333,22 +2348,22 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 458                         Level 8         City C              City A
 #&gt; 459                         Level 8         City A              City B
 #&gt; 460                         Level 8         City A              City A
-#&gt; 461                         Level 1         City A              City B
+#&gt; 461                         Level 8         City A              City B
 #&gt; 462                         Level 8         City C              City A
 #&gt; 463                         Level 8         City C              City B
 #&gt; 464                         Level 8         City C              City C
 #&gt; 465                         Level 8         City B              City B
-#&gt; 466                         Level 8         City B              City C
+#&gt; 466                         Level 1         City C              City A
 #&gt; 467                         Level 9         City B              City A
 #&gt; 468                         Level 8         City A              City C
 #&gt; 469                         Level 9         City A              City A
 #&gt; 470                         Level 9         City A              City C
 #&gt; 471                         Level 9         City B              City A
-#&gt; 472                         Level 9         City C              City C
+#&gt; 472                         Level 9         City B              City C
 #&gt; 473                         Level 9         City B              City B
 #&gt; 474                         Level 9         City C              City C
 #&gt; 475                         Level 9         City C              City B
-#&gt; 476                         Level 9         City C              City A
+#&gt; 476                         Level 1         City C              City A
 #&gt; 477                         Level 9         City A              City B
 #&gt; 478                         Level 9         City A              City A
 #&gt; 479                         Level 9         City A              City B
@@ -2356,15 +2371,15 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 481                         Level 9         City C              City B
 #&gt; 482                         Level 9         City C              City C
 #&gt; 483                         Level 9         City B              City B
-#&gt; 484                         Level 9         City A              City B
+#&gt; 484                         Level 9         City B              City C
 #&gt; 485                         Level 9         City B              City A
 #&gt; 486                         Level 9         City A              City C
-#&gt; 487                         Level 1         City A              City B
+#&gt; 487                         Level 9         City A              City A
 #&gt; 488                         Level 9         City A              City C
-#&gt; 489                         Level 9         City B              City A
+#&gt; 489                         Level 9         City A              City A
 #&gt; 490                         Level 9         City B              City C
 #&gt; 491                         Level 9         City B              City B
-#&gt; 492                         Level 9         City C              City C
+#&gt; 492                         Level 9         City A              City C
 #&gt; 493                         Level 9         City C              City B
 #&gt; 494                         Level 9         City C              City A
 #&gt; 495                         Level 9         City A              City B
@@ -2376,15 +2391,15 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 501                         Level 1         City B              City B
 #&gt; 502                         Level 1         City B              City C
 #&gt; 503                         Level 1         City B              City A
-#&gt; 504                         Level 1         City C              City C
+#&gt; 504                         Level 1         City C              City A
 #&gt; 505                         Level 1         City A              City A
 #&gt; 506                         Level 1         City A              City C
 #&gt; 507                         Level 1         City B              City A
 #&gt; 508                         Level 1         City B              City C
-#&gt; 509                         Level 1         City B              City B
+#&gt; 509                         Level 1         City A              City B
 #&gt; 510                         Level 1         City C              City C
 #&gt; 511                         Level 1         City C              City B
-#&gt; 512                         Level 1         City C              City A
+#&gt; 512                         Level 1         City A              City C
 #&gt; 513                         Level 1         City A              City B
 #&gt; 514                         Level 1         City A              City A
 #&gt; 515                         Level 1         City A              City B
@@ -2403,8 +2418,8 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 528                         Level 1         City C              City C
 #&gt; 529                         Level 1         City C              City B
 #&gt; 530                         Level 1         City C              City A
-#&gt; 531                         Level 1         City A              City B
-#&gt; 532                         Level 1         City C              City A
+#&gt; 531                         Level 1         City B              City B
+#&gt; 532                         Level 1         City A              City A
 #&gt; 533                         Level 1         City A              City B
 #&gt; 534                         Level 1         City C              City A
 #&gt; 535                         Level 1         City C              City B
@@ -2420,16 +2435,16 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 545                         Level 1         City B              City B
 #&gt; 546                         Level 1         City C              City C
 #&gt; 547                         Level 1         City C              City B
-#&gt; 548                         Level 1         City C              City A
-#&gt; 549                         Level 1         City A              City B
+#&gt; 548                         Level 1         City C              City C
+#&gt; 549                         Level 1         City B              City A
 #&gt; 550                         Level 1         City A              City A
 #&gt; 551                         Level 1         City A              City B
 #&gt; 552                         Level 1         City C              City A
 #&gt; 553                         Level 1         City C              City B
 #&gt; 554                         Level 1         City C              City C
 #&gt; 555                         Level 1         City B              City B
-#&gt; 556                         Level 1         City B              City C
-#&gt; 557                         Level 8         City B              City B
+#&gt; 556                         Level 1         City B              City A
+#&gt; 557                         Level 1         City B              City A
 #&gt; 558                         Level 1         City A              City C
 #&gt; 559                         Level 1         City A              City A
 #&gt; 560                         Level 1         City A              City C
@@ -2437,13 +2452,13 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 562                         Level 1         City B              City C
 #&gt; 563                         Level 1         City B              City B
 #&gt; 564                         Level 1         City C              City C
-#&gt; 565                         Level 1         City A              City B
+#&gt; 565                         Level 1         City C              City B
 #&gt; 566                         Level 1         City C              City A
-#&gt; 567                         Level 1         City A              City B
-#&gt; 568                         Level 1         City C              City A
-#&gt; 569                         Level 1         City B              City A
+#&gt; 567                         Level 1         City A              City A
+#&gt; 568                         Level 1         City A              City A
+#&gt; 569                         Level 1         City A              City B
 #&gt; 570                         Level 1         City C              City A
-#&gt; 571                         Level 1         City C              City C
+#&gt; 571                         Level 1         City C              City B
 #&gt; 572                         Level 1         City C              City C
 #&gt; 573                         Level 1         City B              City B
 #&gt; 574                         Level 1         City B              City C
@@ -2459,7 +2474,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 584                         Level 1         City C              City A
 #&gt; 585                         Level 1         City A              City B
 #&gt; 586                         Level 1         City A              City A
-#&gt; 587                         Level 1         City A              City A
+#&gt; 587                         Level 1         City A              City B
 #&gt; 588                         Level 1         City C              City A
 #&gt; 589                         Level 1         City C              City B
 #&gt; 590                         Level 1         City C              City C
@@ -2467,7 +2482,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 592                         Level 1         City B              City C
 #&gt; 593                         Level 1         City B              City A
 #&gt; 594                         Level 1         City A              City C
-#&gt; 595                         Level 1         City B              City A
+#&gt; 595                         Level 1         City A              City A
 #&gt; 596                         Level 1         City A              City C
 #&gt; 597                         Level 1         City B              City A
 #&gt; 598                         Level 1         City B              City C
@@ -2480,7 +2495,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 605                         Level 1         City A              City B
 #&gt; 606                         Level 1         City C              City A
 #&gt; 607                         Level 1         City C              City B
-#&gt; 608                         Level 1         City B              City C
+#&gt; 608                         Level 1         City C              City C
 #&gt; 609                         Level 1         City B              City B
 #&gt; 610                         Level 1         City B              City C
 #&gt; 611                         Level 1         City B              City A
@@ -2491,7 +2506,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 616                         Level 1         City B              City C
 #&gt; 617                         Level 1         City B              City B
 #&gt; 618                         Level 1         City C              City C
-#&gt; 619                         Level 1         City B              City B
+#&gt; 619                         Level 1         City C              City B
 #&gt; 620                         Level 1         City C              City A
 #&gt; 621                         Level 1         City A              City B
 #&gt; 622                         Level 1         City A              City A
@@ -2499,11 +2514,11 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 624                         Level 1         City C              City A
 #&gt; 625                         Level 1         City C              City B
 #&gt; 626                         Level 1         City C              City C
-#&gt; 627                         Level 1         City B              City B
+#&gt; 627                         Level 1         City A              City B
 #&gt; 628                         Level 1         City B              City C
 #&gt; 629                         Level 1         City B              City A
 #&gt; 630                         Level 1         City A              City C
-#&gt; 631                         Level 1         City A              City A
+#&gt; 631                         Level 1         City A              City C
 #&gt; 632                         Level 1         City A              City C
 #&gt; 633                         Level 1         City B              City A
 #&gt; 634                         Level 1         City B              City C
@@ -2515,7 +2530,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 640                         Level 1         City A              City A
 #&gt; 641                         Level 1         City A              City B
 #&gt; 642                         Level 1         City C              City A
-#&gt; 643                         Level 1         City C              City B
+#&gt; 643                         Level 1         City B              City C
 #&gt; 644                         Level 1         City C              City C
 #&gt; 645                         Level 1         City B              City B
 #&gt; 646                         Level 1         City B              City C
@@ -2535,7 +2550,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 660                         Level 1         City C              City A
 #&gt; 661                         Level 1         City C              City B
 #&gt; 662                         Level 1         City C              City C
-#&gt; 663                         Level 1         City B              City B
+#&gt; 663                         Level 1         City A              City B
 #&gt; 664                         Level 1         City B              City C
 #&gt; 665                         Level 1         City B              City A
 #&gt; 666                         Level 1         City A              City C
@@ -2543,24 +2558,24 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 668                         Level 1         City A              City C
 #&gt; 669                         Level 1         City B              City A
 #&gt; 670                         Level 1         City B              City C
-#&gt; 671                         Level 1         City B              City B
-#&gt; 672                         Level 1         City B              City C
+#&gt; 671                         Level 1         City A              City B
+#&gt; 672                         Level 1         City C              City C
 #&gt; 673                         Level 1         City C              City B
 #&gt; 674                         Level 1         City C              City A
 #&gt; 675                         Level 1         City A              City B
 #&gt; 676                         Level 1         City A              City A
 #&gt; 677                         Level 1         City A              City B
-#&gt; 678                         Level 1         City C              City A
+#&gt; 678                         Level 1         City C              City C
 #&gt; 679                         Level 1         City C              City B
 #&gt; 680                         Level 1         City C              City C
 #&gt; 681                         Level 1         City B              City B
 #&gt; 682                         Level 1         City B              City C
 #&gt; 683                         Level 1         City B              City A
 #&gt; 684                         Level 1         City A              City C
-#&gt; 685                         Level 1         City B              City A
+#&gt; 685                         Level 1         City A              City A
 #&gt; 686                         Level 1         City A              City C
 #&gt; 687                         Level 1         City B              City A
-#&gt; 688                         Level 1         City C              City C
+#&gt; 688                         Level 1         City B              City C
 #&gt; 689                         Level 1         City B              City B
 #&gt; 690                         Level 1         City C              City C
 #&gt; 691                         Level 1         City C              City B
@@ -2569,11 +2584,11 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 694                         Level 1         City A              City A
 #&gt; 695                         Level 1         City A              City B
 #&gt; 696                         Level 1         City C              City A
-#&gt; 697                         Level 1         City C              City B
+#&gt; 697                         Level 1         City C              City A
 #&gt; 698                         Level 1         City C              City C
 #&gt; 699                         Level 1         City B              City B
 #&gt; 700                         Level 1         City B              City C
-#&gt; 701                         Level 1         City A              City A
+#&gt; 701                         Level 1         City B              City A
 #&gt; 702                         Level 1         City A              City C
 #&gt; 703                         Level 1         City A              City A
 #&gt; 704                         Level 1         City A              City C
@@ -2591,28 +2606,28 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 716                         Level 1         City C              City C
 #&gt; 717                         Level 1         City B              City B
 #&gt; 718                         Level 1         City B              City C
-#&gt; 719                         Level 1         City B              City A
+#&gt; 719                         Level 1         City C              City B
 #&gt; 720                         Level 1         City A              City C
 #&gt; 721                         Level 1         City A              City A
 #&gt; 722                         Level 1         City A              City C
 #&gt; 723                         Level 1         City B              City A
 #&gt; 724                         Level 1         City B              City C
 #&gt; 725                         Level 1         City B              City B
-#&gt; 726                         Level 1         City C              City B
-#&gt; 727                         Level 1         City C              City B
+#&gt; 726                         Level 1         City C              City C
+#&gt; 727                         Level 1         City A              City C
 #&gt; 728                         Level 1         City C              City A
 #&gt; 729                         Level 1         City A              City B
 #&gt; 730                         Level 1         City A              City A
-#&gt; 731                         Level 1         City B              City A
+#&gt; 731                         Level 1         City C              City B
 #&gt; 732                         Level 1         City C              City A
-#&gt; 733                         Level 1         City A              City C
+#&gt; 733                         Level 1         City C              City B
 #&gt; 734                         Level 1         City C              City C
-#&gt; 735                         Level 1         City B              City A
+#&gt; 735                         Level 1         City B              City B
 #&gt; 736                         Level 1         City B              City C
 #&gt; 737                         Level 1         City B              City A
 #&gt; 738                         Level 1         City A              City C
 #&gt; 739                         Level 1         City A              City A
-#&gt; 740                         Level 1         City A              City C
+#&gt; 740                         Level 1         City B              City A
 #&gt; 741                         Level 1         City B              City A
 #&gt; 742                         Level 1         City B              City C
 #&gt; 743                         Level 1         City B              City B
@@ -2622,14 +2637,14 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 747                         Level 1         City A              City B
 #&gt; 748                         Level 1         City A              City A
 #&gt; 749                         Level 1         City A              City B
-#&gt; 750                         Level 1         City C              City A
+#&gt; 750                         Level 1         City B              City C
 #&gt; 751                         Level 1         City C              City B
 #&gt; 752                         Level 1         City C              City C
 #&gt; 753                         Level 1         City B              City B
 #&gt; 754                         Level 1         City B              City C
 #&gt; 755                         Level 1         City B              City A
 #&gt; 756                         Level 1         City A              City C
-#&gt; 757                         Level 1         City B              City A
+#&gt; 757                         Level 1         City A              City A
 #&gt; 758                         Level 1         City A              City C
 #&gt; 759                         Level 1         City B              City A
 #&gt; 760                         Level 1         City B              City C
@@ -2639,7 +2654,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 764                         Level 1         City C              City A
 #&gt; 765                         Level 1         City A              City B
 #&gt; 766                         Level 1         City A              City A
-#&gt; 767                         Level 1         City B              City B
+#&gt; 767                         Level 1         City A              City B
 #&gt; 768                         Level 1         City C              City A
 #&gt; 769                         Level 1         City C              City B
 #&gt; 770                         Level 1         City C              City C
@@ -2650,21 +2665,21 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 #&gt; 775                         Level 1         City A              City A
 #&gt; 776                         Level 1         City A              City C
 #&gt; 777                         Level 1         City B              City A
-#&gt; 778                         Level 1         City A              City C
+#&gt; 778                         Level 1         City B              City C
 #&gt; 779                         Level 1         City B              City B
 #&gt; 780                         Level 1         City C              City C
-#&gt; 781                         Level 1         City A              City C
+#&gt; 781                         Level 1         City C              City B
 #&gt; 782                         Level 1         City C              City A
 #&gt; 783                         Level 1         City A              City B
 #&gt; 784                         Level 1         City A              City A
 #&gt; 785                         Level 1         City A              City B
 #&gt; 786                         Level 1         City C              City A
-#&gt; 787                         Level 1         City B              City B
-#&gt; 788                         Level 1         City A              City C
+#&gt; 787                         Level 1         City C              City B
+#&gt; 788                         Level 1         City C              City C
 #&gt; 789                         Level 1         City B              City B
 #&gt; 790                         Level 1         City B              City C
 #&gt; 791                         Level 1         City B              City A
-#&gt; 792                         Level 1         City C              City A
+#&gt; 792                         Level 1         City A              City C
 #&gt; 793                         Level 1         City A              City A
 #&gt; 794                         Level 1         City A              City C
 #&gt; 795                         Level 1         City B              City A

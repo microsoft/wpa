@@ -127,13 +127,25 @@ attributes) ranked by hours of digital collaboration." />
     <li>
       <a href="../analyst_guide_reports.html">Reports</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Reference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../reference/index.html">Functions</a>
+    </li>
+    <li>
+      <a href="../news/index.html">Changelog</a>
+    </li>
     <li>
       <a href="../faq.html">FAQ</a>
     </li>
   </ul>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../playbook_intro.html">Playbook</a>
@@ -156,6 +168,9 @@ attributes) ranked by hours of digital collaboration." />
     </li>
     <li>
       <a href="../package_structure.html">Package Structure</a>
+    </li>
+    <li>
+      <a href="../contributors.html">Contributors</a>
     </li>
   </ul>
 </li>
@@ -218,7 +233,14 @@ attributes) ranked by hours of digital collaboration." />
 attributes) ranked by hours of digital collaboration.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>one2one_rank</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='fu'><a href='extract_hr.html'>extract_hr</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>, mingroup <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>one2one_rank</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  hrvar <span class='op'>=</span> <span class='fu'><a href='extract_hr.html'>extract_hr</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>,
+  mingroup <span class='op'>=</span> <span class='fl'>5</span>,
+  mode <span class='op'>=</span> <span class='st'>"simple"</span>,
+  plot_mode <span class='op'>=</span> <span class='fl'>1</span>,
+  return <span class='op'>=</span> <span class='st'>"table"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -239,6 +261,21 @@ instead of splitting by an HR attribute, supply <code>NULL</code> (without quote
 size. Defaults to 5.</p></td>
     </tr>
     <tr>
+      <th>mode</th>
+      <td><p>String to specify calculation mode. Must be either:</p><ul>
+<li><p><code>"simple"</code></p></li>
+<li><p><code>"combine"</code></p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>plot_mode</th>
+      <td><p>Numeric vector to determine which plot mode to return. Must
+be either <code>1</code> or <code>2</code>, and is only used when <code>return = "plot"</code>.</p><ul>
+<li><p><code>1</code>: Top and bottom five groups across the data population are highlighted</p></li>
+<li><p><code>2</code>: Top and bottom groups <em>per</em> organizational attribute are highlighted</p></li>
+</ul></td>
+    </tr>
+    <tr>
       <th>return</th>
       <td><p>String specifying what to return. This must be one of the
 following strings:</p><ul>
@@ -256,7 +293,8 @@ following strings:</p><ul>
 argument:</p><ul>
 <li><p><code>"plot"</code>: ggplot object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
-bubbles represent the size of the organizations.</p></li>
+bubbles represent the size of the organizations. Note that there is no
+plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul>
 
@@ -343,6 +381,33 @@ See <code><a href='create_rank.html'>create_rank()</a></code> for applying the s
 <code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
 <code><a href='one2one_trend.html'>one2one_trend</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Return rank table</span>
+<span class='fu'>one2one_rank</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>sq_data</span>,
+  return <span class='op'>=</span> <span class='st'>"table"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 x 4</span><span>
+#&gt;    hrvar            group            Meeting_hours_with_manager_1_on_1     n
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> FunctionType     Engineering                                  0.484    93
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> FunctionType     IT                                           0.444    51
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Organization     Customer Service                             0.354    61
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Organization     G&amp;A Central                                  0.342    57
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> FunctionType     Sales                                        0.341    82
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> FunctionType     Marketing                                    0.324   207
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Organization     Finance-East                                 0.316    70
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> LevelDesignation Senior IC                                    0.307   103
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Organization     Human Resources                              0.301    71
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Organization     G&amp;A East                                     0.291    65
+#&gt; </span><span style='color: #949494;'># … with 20 more rows</span><span></div><div class='input'>
+<span class='co'># Return plot</span>
+<span class='fu'>one2one_rank</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>sq_data</span>,
+  return <span class='op'>=</span> <span class='st'>"plot"</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='one2one_rank-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

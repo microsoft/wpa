@@ -124,13 +124,25 @@
     <li>
       <a href="../analyst_guide_reports.html">Reports</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Reference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../reference/index.html">Functions</a>
+    </li>
+    <li>
+      <a href="../news/index.html">Changelog</a>
+    </li>
     <li>
       <a href="../faq.html">FAQ</a>
     </li>
   </ul>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../playbook_intro.html">Playbook</a>
@@ -153,6 +165,9 @@
     </li>
     <li>
       <a href="../package_structure.html">Package Structure</a>
+    </li>
+    <li>
+      <a href="../contributors.html">Contributors</a>
     </li>
   </ul>
 </li>
@@ -215,6 +230,11 @@
 <ul>
 <li>
 <code><a href="../reference/one2one_freq.html">one2one_freq()</a></code> (<a href='https://github.com/microsoft/wpa/issues/95'>#95</a>)</li>
+</ul>
+<p>Significant changes to existing functions:</p>
+<ul>
+<li>
+<code><a href="../reference/create_rank.html">create_rank()</a></code> is now able to call <code><a href="../reference/create_rank_combine.html">create_rank_combine()</a></code> to compute averages for pairwise combinations. The <code>mode</code> and <code>plot_mode</code> arguments are also made available to the key metric wrapper functions of <code><a href="../reference/create_rank.html">create_rank()</a></code>.</li>
 </ul>
 </div>
     <div id="wpa-140" class="section level1">

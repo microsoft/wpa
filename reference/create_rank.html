@@ -127,13 +127,25 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
     <li>
       <a href="../analyst_guide_reports.html">Reports</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Reference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../reference/index.html">Functions</a>
+    </li>
+    <li>
+      <a href="../news/index.html">Changelog</a>
+    </li>
     <li>
       <a href="../faq.html">FAQ</a>
     </li>
   </ul>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../playbook_intro.html">Playbook</a>
@@ -156,6 +168,9 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
     </li>
     <li>
       <a href="../package_structure.html">Package Structure</a>
+    </li>
+    <li>
+      <a href="../contributors.html">Contributors</a>
     </li>
   </ul>
 </li>
@@ -224,6 +239,7 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
   hrvar <span class='op'>=</span> <span class='fu'><a href='extract_hr.html'>extract_hr</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>,
   mingroup <span class='op'>=</span> <span class='fl'>5</span>,
   return <span class='op'>=</span> <span class='st'>"table"</span>,
+  mode <span class='op'>=</span> <span class='st'>"simple"</span>,
   plot_mode <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
@@ -261,6 +277,13 @@ following strings:</p><ul>
 <p>See <code>Value</code> for more information.</p></td>
     </tr>
     <tr>
+      <th>mode</th>
+      <td><p>String to specify calculation mode. Must be either:</p><ul>
+<li><p><code>"simple"</code></p></li>
+<li><p><code>"combine"</code></p></li>
+</ul></td>
+    </tr>
+    <tr>
       <th>plot_mode</th>
       <td><p>Numeric vector to determine which plot mode to return. Must
 be either <code>1</code> or <code>2</code>, and is only used when <code>return = "plot"</code>.</p><ul>
@@ -276,7 +299,8 @@ be either <code>1</code> or <code>2</code>, and is only used when <code>return =
 argument:</p><ul>
 <li><p><code>"plot"</code>: ggplot object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
-bubbles represent the size of the organizations.</p></li>
+bubbles represent the size of the organizations. Note that there is no
+plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul>
 
@@ -367,7 +391,8 @@ bubbles represent the size of the organizations.</p></li>
 <code><a href='period_change.html'>period_change</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>create_rank</span><span class='op'>(</span>
+    <pre class="examples"><div class='input'><span class='co'># Plot mode 1 - show top and bottom five groups</span>
+<span class='fu'>create_rank</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>sq_data</span>,
   hrvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"FunctionType"</span>, <span class='st'>"LevelDesignation"</span><span class='op'>)</span>,
   metric <span class='op'>=</span> <span class='st'>"Emails_sent"</span>,
@@ -404,7 +429,27 @@ bubbles represent the size of the organizations.</p></li>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> LevelDesignation Executive                   46.3     6
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> Organization     Human Resources             45.8    71
 #&gt; </span><span style='color: #949494;'># … with 20 more rows</span><span></div><div class='input'>
-
+<span class='co'># Return a table - combination mode</span>
+<span class='fu'>create_rank</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>sq_data</span>,
+  metric <span class='op'>=</span> <span class='st'>"Emails_sent"</span>,
+  mode <span class='op'>=</span> <span class='st'>"combine"</span>,
+  return <span class='op'>=</span> <span class='st'>"table"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 382 x 4</span><span>
+#&gt;    hrvar    group                                              Emails_sent     n
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Combined [FunctionType] Sales [LevelDesignation] Director          66.8     6
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Combined [FunctionType] Marketing [LevelDesignation] Direc…        64.2    14
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Combined [FunctionType] Sales [LevelDesignation] Manager           63.9    28
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Combined [FunctionType] Marketing [LevelDesignation] Manag…        58.1    72
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Combined [FunctionType] Sales [LevelDesignation] Junior IC         57.8    13
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Combined [FunctionType] Sales [LevelDesignation] Support           57.4    24
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Combined [FunctionType] Marketing [LevelDesignation] Junio…        55.6    17
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Combined [FunctionType] Marketing [LevelDesignation] Senio…        55.0    22
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Combined [FunctionType] Marketing [LevelDesignation] Suppo…        53.8    81
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Combined [FunctionType] Sales [LevelDesignation] Senior IC         53.6    11
+#&gt; </span><span style='color: #949494;'># … with 372 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
