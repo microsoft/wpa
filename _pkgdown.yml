@@ -14,14 +14,15 @@ navbar:
     - contributing
     - articles
     - tutorials
-    - news
     - bug
     right: github
 
   components:
+
     home:
       icon: fas fa-home fa-lg
       href: index.html
+
     guide:
       text: Analyst Guide
       menu:
@@ -41,17 +42,24 @@ navbar:
         href: analyst_guide_network.html
       - text: Reports
         href: analyst_guide_reports.html
-      - text: FAQ
-        href: faq.html
+
     reference:
       text: Reference
-      href: reference/index.html
+      menu:
+      - text: Functions
+        href: reference/index.html
+      - text: Changelog
+        href: news/index.html   
+      - text: FAQ
+        href: faq.html
+
     playbook:
       text: Playbook
       href: playbook_intro.html
+
     contributing:
       text: Contribute
-      menu:
+      menu: news/index.html
       - text: Contributor Guide
         href: CONTRIBUTING.html
       - text: Developer Guide
@@ -60,12 +68,11 @@ navbar:
         href: reporting_security_issues.html
       - text: Package Structure
         href: package_structure.html
-    news:
-      text: Changelog
-      href: news/index.html
+
     github:
       icon: fab fa-github fa-lg
       href: https://github.com/microsoft/wpa/
+
     articles:
       text: Articles
       menu:
