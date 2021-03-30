@@ -14,9 +14,7 @@
 #' Uses the metrics `Meeting_hours`, `Email_hours`, `Unscheduled_Call_hours`,
 #' and `Instant_Message_hours`.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
+#' @template spq-params
 #' @param return Character vector specifying what to return, defaults to "plot".
 #' Valid inputs are "plot" and "table".
 #'

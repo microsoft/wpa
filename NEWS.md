@@ -3,6 +3,10 @@
 New functions:
 - `one2one_freq()` (#95)
 
+Significant changes to existing functions:
+- `create_rank()` is now able to call `create_rank_combine()` to compute
+averages for pairwise combinations. The `mode` and `plot_mode` arguments are also made available to the key metric wrapper functions of `create_rank()`.
+
 # wpa 1.4.0
 
 v1.4.0 is the version where the **working patterns** family of functions are released open source as part of **wpa** (#55). These functions include:

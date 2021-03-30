@@ -25,11 +25,12 @@ There are multiple reasons:
 This guide is organized in the following key sections:
 
 1. [**Getting Started**](analyst_guide_getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
-2. [**Summary Functions**](analyst_guide_summary.html): This section introduces functions that calculate averages and draw comparisons across groups.
-3. [**Distribution Functions**](analyst_guide_distribution.html): This section describes functions that help you explore distributions across groups.
-4. [**Trend Functions**](analyst_guide_trend.html): This section explains functions that explore time dyanmics across a wide range of metrics.
-5. [**Network Functions**](analyst_guide_network.html): This section explores functions that help you plot and analyse networks.
-6. [**Reports**](analyst_guide_reports.html): This section provides a guide to running HTML reports in the package and links to demo materials.
+2. [**Data Validation**](analyst_guide_data_validation.html): This section introduces functions for validating Workplace Analytics data. 
+3. [**Summary Functions**](analyst_guide_summary.html): This section introduces functions that calculate averages and draw comparisons across groups.
+4. [**Distribution Functions**](analyst_guide_distribution.html): This section describes functions that help you explore distributions across groups.
+5. [**Trend Functions**](analyst_guide_trend.html): This section explains functions that explore time dyanmics across a wide range of metrics.
+6. [**Network Functions**](analyst_guide_network.html): This section explores functions that help you plot and analyse networks.
+7. [**Reports**](analyst_guide_reports.html): This section provides a guide to running HTML reports in the package and links to demo materials.
 
 ## Additional resources
 

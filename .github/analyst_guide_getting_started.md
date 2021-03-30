@@ -10,7 +10,7 @@ The latest stable version of **wpa** is available in Github. You can automatical
 if(!"remotes" %in% installed.packages()){
   install.packages("remotes")
 }
-remotes::install_git(url = "https://github.com/microsoft/wpa.git", upgrade = "never")
+remotes::install_github(repo = "microsoft/wpa", upgrade = "never")
 
 ```
 
@@ -156,9 +156,7 @@ person_data %>%
 
 ## Ready to learn more?
 
-Let's go to the [**Summary Functions**](analyst_guide_summary.html) section, to see how we can analyse different Workplace Analytics Metrics in a similar way.
-
-
+Let's go to the [**Data Validation**](analyst_guide_data_validation.html) section to explore options for validating data. To skip straight to analysis, see the [**Summary Functions**](analyst_guide_summary.html) section.
 
 ## Gallery
 

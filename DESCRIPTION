@@ -63,5 +63,6 @@ Suggests:
     extrafont,
     leiden,
     lifecycle,
-    fst
+    fst,
+    glue
 Language: en-US

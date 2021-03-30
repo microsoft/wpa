@@ -13,14 +13,10 @@
 #' This is a general purpose function that powers all the functions
 #' in the package that produce box plots.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character
-#'   vector, defaults to "Organization" but accepts any character vector, e.g.
-#'   "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group
-#'   size, defaults to 5.
+#'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`

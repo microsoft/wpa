@@ -4,16 +4,37 @@
 \alias{one2one_rank}
 \title{Manager 1:1 Time Ranking}
 \usage{
-one2one_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
+one2one_rank(
+  data,
+  hrvar = extract_hr(data),
+  mingroup = 5,
+  mode = "simple",
+  plot_mode = 1,
+  return = "table"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{A list of HR Variables to consider in the scan.
-Defaults to all HR attributes identified.}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
-Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
+
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
+
+\item{plot_mode}{Numeric vector to determine which plot mode to return. Must
+be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
+\itemize{
+\item \code{1}: Top and bottom five groups across the data population are highlighted
+\item \code{2}: Top and bottom groups \emph{per} organizational attribute are highlighted
+}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -30,7 +51,8 @@ argument:
 \itemize{
 \item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
-bubbles represent the size of the organizations.
+bubbles represent the size of the organizations. Note that there is no
+plot output if \code{mode} is set to \code{"combine"}.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -42,6 +64,20 @@ attributes) ranked by hours of digital collaboration.
 \details{
 Uses the metric \code{Meeting_hours_with_manager_1_on_1}.
 See \code{create_rank()} for applying the same analysis to a different metric.
+}
+\examples{
+# Return rank table
+one2one_rank(
+  data = sq_data,
+  return = "table"
+)
+
+# Return plot
+one2one_rank(
+  data = sq_data,
+  return = "plot"
+)
+
 }
 \seealso{
 Other Visualization: 
