@@ -55,7 +55,8 @@ argument:
 \itemize{
 \item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
-bubbles represent the size of the organizations.
+bubbles represent the size of the organizations. Note that there is no
+plot output if \code{mode} is set to \code{"combine"}.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -65,6 +66,7 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
 (across multiple HR attributes) ranked by the specified metric.
 }
 \examples{
+# Plot mode 1 - show top and bottom five groups
 create_rank(
   data = sq_data,
   hrvar = c("FunctionType", "LevelDesignation"),

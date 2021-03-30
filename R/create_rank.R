@@ -40,7 +40,7 @@
 #' @family Flexible
 #'
 #' @examples
-# Plot mode 1 - show top and bottom five groups
+#' # Plot mode 1 - show top and bottom five groups
 #' create_rank(
 #'   data = sq_data,
 #'   hrvar = c("FunctionType", "LevelDesignation"),
@@ -78,7 +78,8 @@
 #' argument:
 #'   - `"plot"`: ggplot object. A bubble plot where the x-axis represents the
 #'   metric, the y-axis represents the HR attributes, and the size of the
-#'   bubbles represent the size of the organizations.
+#'   bubbles represent the size of the organizations. Note that there is no
+#'   plot output if `mode` is set to `"combine"`.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @export
@@ -129,7 +130,7 @@ create_rank <- function(data,
 
     if(return == "table"){
 
-      return(output)
+      output
 
     } else if(return == "plot"){
 
@@ -166,10 +167,11 @@ create_rank <- function(data,
                subtitle = "Lowest and highest group averages, by org. attribute",
                y = "",
                x = "") +
-          ggrepel::geom_text_repel(aes(x = !!sym(metric),
-                                       y = hrvar,
-                                       label = ifelse(Group %in% c("Top 5", "Bottom 5"), group, "")),
-                                   size = 3) +
+          ggrepel::geom_text_repel(
+            aes(x = !!sym(metric),
+                y = hrvar,
+                label = ifelse(Group %in% c("Top 5", "Bottom 5"), group, "")),
+            size = 3) +
           scale_x_continuous(position = "top") +
           scale_fill_manual(name = "Group",
                             values = c(rgb2hex(68,151,169),
@@ -261,10 +263,34 @@ create_rank <- function(data,
 
 #' @title Create combination pairs of HR variables and run 'create_rank()'
 #'
+#' @description
+#' Create pairwise combinations of HR variables and compute an average of a
+#' specified Workplace Analytics metric.
+#'
+#' @details
+#' This function is called when the `mode` argument in `create_rank()` is
+#' specified as `"combine"`.
+#'
 #' @inheritParams create_rank
 #'
+#' @examples
+#' create_rank_combine(
+#'   data = sq_data,
+#'   metric = "Email_hours"
+#' )
 #'
-create_rank_combine <- function(data, hrvar, metric, mingroup){
+#' @return Data frame containing the following variables:
+#'   - `hrvar`: placeholder column that denotes the output as `"Combined"`.
+#'   - `group`: pairwise combinations of HR attributes with the HR attribute
+#'   in square brackets followed by the value of the HR attribute.
+#'   - Name of the metric (as passed to `metric`)
+#'   - `n`
+#'
+#' @export
+create_rank_combine <- function(data,
+                                hrvar = extract_hr(data),
+                                metric,
+                                mingroup = 5){
 
   hrvar_iter_grid <-
     tidyr::expand_grid(var1 = hrvar,

@@ -4,7 +4,7 @@
 \alias{create_rank_combine}
 \title{Create combination pairs of HR variables and run 'create_rank()'}
 \usage{
-create_rank_combine(data, hrvar, metric, mingroup)
+create_rank_combine(data, hrvar = extract_hr(data), metric, mingroup = 5)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
@@ -19,6 +19,28 @@ e.g. "Collaboration_hours"}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 }
+\value{
+Data frame containing the following variables:
+\itemize{
+\item \code{hrvar}: placeholder column that denotes the output as \code{"Combined"}.
+\item \code{group}: pairwise combinations of HR attributes with the HR attribute
+in square brackets followed by the value of the HR attribute.
+\item Name of the metric (as passed to \code{metric})
+\item \code{n}
+}
+}
 \description{
-Create combination pairs of HR variables and run 'create_rank()'
+Create pairwise combinations of HR variables and compute an average of a
+specified Workplace Analytics metric.
+}
+\details{
+This function is called when the \code{mode} argument in \code{create_rank()} is
+specified as \code{"combine"}.
+}
+\examples{
+create_rank_combine(
+  data = sq_data,
+  metric = "Email_hours"
+)
+
 }
