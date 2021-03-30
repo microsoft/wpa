@@ -12,13 +12,11 @@
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a summary table.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metrics A character vector to specify variables to be used
 #' in calculating the "Total" value, e.g. c("Meeting_hours", "Email_hours").
 #' The order of the variable names supplied determine the order in which they
 #' appear on the stacked plot.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param return Character vector specifying what to return, defaults to "plot".
 #' Valid inputs are "plot" and "table".
 #' @param stack_colours

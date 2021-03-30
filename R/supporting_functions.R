@@ -178,3 +178,27 @@ comma <- function(x){
   format(x, nsmall = 0, big.mark=",")
 }
 
+#' @title Check whether package is installed and return an error message
+#'
+#' @description Checks whether a package is installed in the user's machine
+#' based on a search on the package name string. If the package is not
+#' installed, an error message is returned.
+#'
+#' @param pkgname String containing the name of the package to check whether is
+#' installed.
+#'
+check_pkg_installed <- function(pkgname) {
+  if (!(pkgname %in% rownames(installed.packages()))) {
+    stop(
+      paste0(
+        "\n\nPackage ", wrap(pkgname, wrapper = "`"),
+        " is required to run this function and is currently not installed.\n",
+        "Please install package ",
+            wrap(pkgname, wrapper = "`"),
+            " to proceed. "
+            )
+      )
+  }
+}
+
+
