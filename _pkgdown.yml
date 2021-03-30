@@ -52,7 +52,7 @@ navbar:
       href: playbook_intro.html
     contributing:
       text: Contribute
-      menu: news/index.html
+      menu:
       - text: Contributor Guide
         href: CONTRIBUTING.html
       - text: Developer Guide
