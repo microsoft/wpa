@@ -4,12 +4,13 @@
 # --------------------------------------------------------------------------------------------
 
 #' @title Classify working pattern personas using a rule based algorithm, using
-#' the person-average volume-based (pav) method.
+#' the person-average volume-based ('pav') method.
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
+#'
 #' Apply a rule based algorithm to emails or instant messages sent by hour of day.
-#' This uses a person-average volume-based (pav) method.
+#' This uses a person-average volume-based ('pav') method.
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
 #'
@@ -39,18 +40,6 @@
 #' @import dplyr
 #' @import tidyselect
 #' @import ggplot2
-#'
-#' @examples
-#' \donttest{
-#' # Returns a plot by default
-#' workpatterns_classify_pav(em_data)
-#'
-#' # Return summary table
-#' workpatterns_classify_pav(em_data, return = "table")
-#'
-#' # Return an area plot
-#' workpatterns_classify_pav(em_data, return = "plot-area")
-#' }
 #'
 #' @family Working Patterns
 #'
