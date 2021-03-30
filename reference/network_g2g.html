@@ -229,8 +229,8 @@ plot. Automatically handles &quot;Collaborators_within_group&quot; and
 
     <div class="ref-description">
     <p>Pass a data frame containing a group-to-group query and return a network
-plot. Automatically handles "Collaborators_within_group" and
-"Other_collaborators" within query data.</p>
+plot. Automatically handles <code>"Collaborators_within_group"</code> and
+<code>"Other_collaborators"</code> within query data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>network_g2g</span><span class='op'>(</span>
@@ -238,7 +238,10 @@ plot. Automatically handles "Collaborators_within_group" and
   time_investor <span class='op'>=</span> <span class='cn'>NULL</span>,
   collaborator <span class='op'>=</span> <span class='cn'>NULL</span>,
   metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>,
+  algorithm <span class='op'>=</span> <span class='st'>"fr"</span>,
+  node_colour <span class='op'>=</span> <span class='st'>"lightblue"</span>,
   exc_threshold <span class='op'>=</span> <span class='fl'>0.1</span>,
+  org_count <span class='op'>=</span> <span class='cn'>NULL</span>,
   subtitle <span class='op'>=</span> <span class='st'>"Collaboration Across Organizations"</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>
 <span class='op'>)</span>
@@ -248,7 +251,10 @@ plot. Automatically handles "Collaborators_within_group" and
   time_investor <span class='op'>=</span> <span class='cn'>NULL</span>,
   collaborator <span class='op'>=</span> <span class='cn'>NULL</span>,
   metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span>,
+  algorithm <span class='op'>=</span> <span class='st'>"fr"</span>,
+  node_colour <span class='op'>=</span> <span class='st'>"lightblue"</span>,
   exc_threshold <span class='op'>=</span> <span class='fl'>0.1</span>,
+  org_count <span class='op'>=</span> <span class='cn'>NULL</span>,
   subtitle <span class='op'>=</span> <span class='st'>"Collaboration Across Organizations"</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>
 <span class='op'>)</span></pre>
@@ -276,8 +282,33 @@ column.</p></td>
 <code>Collaboration_hours</code>.</p></td>
     </tr>
     <tr>
+      <th>algorithm</th>
+      <td><p>String to specify the node placement algorithm to be used.
+Defaults to <code>"fr"</code> for the force-directed algorithm of Fruchterman and
+Reingold. See
+<a href='https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html'>https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a full
+list of options.</p></td>
+    </tr>
+    <tr>
+      <th>node_colour</th>
+      <td><p>String to specify the colour to be used for displaying
+nodes. Defaults to <code>"lightblue"</code>. If <code>"vary"</code> is supplied, a different colour
+is shown for each node at random.</p></td>
+    </tr>
+    <tr>
       <th>exc_threshold</th>
       <td><p>Exclusion threshold to apply.</p></td>
+    </tr>
+    <tr>
+      <th>org_count</th>
+      <td><p>Optional data frame to provide the size of each organization
+in the <code>collaborator</code> attribute. The data frame should contain only two
+columns:</p><ul>
+<li><p>Name of the <code>collaborator</code> attribute excluding any prefixes, e.g.
+<code>"Organization"</code>. Must be of character or factor type.</p></li>
+<li><p><code>"n"</code>. Must be of numeric type.
+Defaults to <code>NULL</code>, where node sizes will be fixed.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>subtitle</th>
@@ -330,6 +361,19 @@ argument:</p><ul>
               metric <span class='op'>=</span> <span class='st'>"Meeting_hours"</span>,
               exc_threshold <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span>
 </div><div class='img'><img src='network_g2g-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return a network plot with circle layout</span>
+<span class='co'># Vary node colours and add org sizes</span>
+<span class='va'>org_tb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='hrvar_count.html'>hrvar_count</a></span><span class='op'>(</span>
+  <span class='va'>sq_data</span>,
+  hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
+  return <span class='op'>=</span> <span class='st'>"table"</span>
+<span class='op'>)</span>
+
+<span class='va'>g2g_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>network_g2g</span><span class='op'>(</span>algorithm <span class='op'>=</span> <span class='st'>"circle"</span>,
+              node_colour <span class='op'>=</span> <span class='st'>"vary"</span>,
+              org_count <span class='op'>=</span> <span class='va'>org_tb</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>`time_investor` field not provided. Assuming `TimeInvestors_Organization` as the `time_investor` variable.</span></div><div class='output co'>#&gt; <span class='message'>`collaborator` field not provided. Assuming `Collaborators_Organization` as the `collaborator` variable.</span></div><div class='img'><img src='network_g2g-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return an interaction matrix</span>
 <span class='co'># Minimum arguments specified</span>
 <span class='va'>g2g_data</span> <span class='op'>%&gt;%</span>
