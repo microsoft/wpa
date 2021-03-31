@@ -148,23 +148,22 @@ create_bar <- function(data,
               color = "#FFFFFF",
               fontface = "bold",
               size = 4) +
-    scale_y_continuous(limits = c(0, location * 1.25)) +
+    scale_y_continuous(expand = c(.01, 0), limits = c(0, location * 1.25)) +
     annotate("text",
              x = plot_legend$group,
              y = location * 1.15,
-             label = plot_legend$Employee_Count) +
+             label = plot_legend$Employee_Count, 
+			 size=3) +
     annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = location * 1.05, ymax = location * 1.25, alpha = .2) +
     coord_flip() +
-    theme_classic() +
-    theme(axis.text = element_text(size=12),
-          plot.title = element_text(color="grey40", face="bold", size=18),
-          plot.subtitle = element_text(size=14),
-          legend.position = "top",
-          legend.justification  = "right",
-          legend.title = element_text(size=14),
-          legend.text = element_text(size=14)) +
+    theme_wpa_basic() +
+    theme(
+		axis.line = element_blank(),   
+		axis.ticks = element_blank(),   
+		axis.text.x = element_blank(),   
+		axis.title = element_blank()) +
     labs(title = clean_nm,
-         subtitle = paste("Average", clean_nm, "by", camel_clean(hrvar))) +
+         subtitle = paste("Average", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
     xlab(camel_clean(hrvar)) +
     ylab(paste("Average weekly", clean_nm)) +
     labs(caption = extract_date_range(data, return = "text"))
