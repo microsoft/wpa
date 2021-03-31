@@ -85,19 +85,21 @@ Take a P2P network query and implement the Leiden community detection method.
 To run this function, you will require all the pre-requisites of the
 'leiden' package installed, which includes Python and 'reticulate'.
 }
-\examples{
-\donttest{
-# Simulate a small person-to-person dataset
+\section{Simulating and running Leiden Community Detection}{
+
+
+Below is an example on how to simulate a network and run the function.\preformatted{# Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
 
 # Return leiden, console, plot
 p2p_data \%>\%
   network_leiden(path = NULL,
                  return = "plot")
+```
+
+}
 }
 
-
-}
 \seealso{
 Other Network: 
 \code{\link{external_network_plot}()},

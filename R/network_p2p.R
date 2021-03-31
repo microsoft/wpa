@@ -92,20 +92,12 @@
 #'               path = NULL,
 #'               return = "plot")
 #'
-#' \donttest{
-#' # Return a network plot to console, coloured by Leiden communities
-#' # Requires python dependencies installed
-#'   p2p_data %>%
-#'     network_p2p(display = "leiden",
-#'                 path = NULL,
-#'                 return = "plot")
-#' }
-#'
 #' # Return a network plot to console, coloured by Louvain communities
 #' p2p_data %>%
 #'   network_p2p(display = "louvain",
 #'               path = NULL,
 #'               return = "plot")
+#'
 #'
 #' # Return a network plot to console
 #' # Coloured by Leiden communities
@@ -124,6 +116,19 @@
 #'   network_p2p(display = "louvain",
 #'               return = "data",
 #'               algorithm = "fr")
+#'
+#' @section Running Leiden communities:
+#'
+#' Running Leiden communities requires python dependencies installed.
+#' You can run the following:
+#'
+#' ```
+#' # Return a network plot to console, coloured by Leiden communities
+#'   p2p_data %>%
+#'     network_p2p(display = "leiden",
+#'                 path = NULL,
+#'                 return = "plot")
+#' ```
 #'
 #' @import ggplot2
 #' @import dplyr

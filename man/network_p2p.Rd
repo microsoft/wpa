@@ -115,6 +115,18 @@ Pass a data frame containing a person-to-person query and return a network
 visualization. Options are available for community detection using either the
 Louvain or the Leiden algorithms.
 }
+\section{Running Leiden communities}{
+
+
+Running Leiden communities requires python dependencies installed.
+You can run the following:\preformatted{# Return a network plot to console, coloured by Leiden communities
+  p2p_data \%>\%
+    network_p2p(display = "leiden",
+                path = NULL,
+                return = "plot")
+}
+}
+
 \examples{
 # Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
@@ -125,20 +137,12 @@ p2p_data \%>\%
               path = NULL,
               return = "plot")
 
-\donttest{
-# Return a network plot to console, coloured by Leiden communities
-# Requires python dependencies installed
-  p2p_data \%>\%
-    network_p2p(display = "leiden",
-                path = NULL,
-                return = "plot")
-}
-
 # Return a network plot to console, coloured by Louvain communities
 p2p_data \%>\%
   network_p2p(display = "louvain",
               path = NULL,
               return = "plot")
+
 
 # Return a network plot to console
 # Coloured by Leiden communities

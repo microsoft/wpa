@@ -37,8 +37,11 @@
 #'
 #' @family Network
 #'
-#' @examples
-#' \donttest{
+#' @section Simulating and running Leiden Community Detection:
+#'
+#' Below is an example on how to simulate a network and run the function.
+#'
+#' ````
 #' # Simulate a small person-to-person dataset
 #' p2p_data <- p2p_data_sim(size = 50)
 #'
@@ -46,7 +49,7 @@
 #' p2p_data %>%
 #'   network_leiden(path = NULL,
 #'                  return = "plot")
-#' }
+#' ```
 #'
 #'
 #' @export
