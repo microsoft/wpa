@@ -27,13 +27,18 @@
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to TRUE.
 #'
-#' @examples
-#' \donttest{
+#' @section Creating a report:
+#'
+#' Below is an example on how to run the report.
+#'
+#' ```
+#' library(dplyr)
+#'
 #' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>% # Simulate binary variable
+#'   mutate(CH_binary = ifelse(Collaboration_hours > 12, 1, 0)) %>% # Simulate binary variable
 #'   IV_report(outcome =  "CH_binary",
 #'             predictors = c("Email_hours", "Workweek_span"))
-#' }
+#' ```
 #'
 #' @family Reports
 #' @family Variable Association
