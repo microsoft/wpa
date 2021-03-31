@@ -23,3 +23,4 @@ man-roxygen
 ^vignettes/IV-report.Rmd$
 ^vignettes/text-mining-capabilities.Rmd$
 ^Meta$
+^cran-comments\.md$
