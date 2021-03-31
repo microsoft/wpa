@@ -3,11 +3,12 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Perform a Word or Ngram Frequency Analysis and return a Circular Bar Plot
+#' @title Perform a Word or Ngram Frequency Analysis and return a Circular Bar
+#'   Plot
 #'
 #' @description
 #' Generate a circular bar plot with frequency of words / ngrams.
-#' This is a sub-function that feeds into `meeting_tm_report()`.
+#' This function is used within `meeting_tm_report()`.
 #'
 #' @details
 #' This function uses `tm_clean()` as the underlying data wrangling function.
@@ -20,8 +21,18 @@
 #' @param stopwords A single-column data frame labelled `'word'` containing
 #'   custom stopwords to remove.
 #' @param keep A numeric vector specifying maximum number of words to keep.
-#' @param return Character vector specifying what to return, defaults to
-#'   `"plot"`. Valid inputs are `"plot"` and `"table"`.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: 'ggplot' object. A circular bar plot.
+#'   - `"table"`: data frame. A summary table.
 #'
 #' @import dplyr
 #' @import ggplot2

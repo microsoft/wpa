@@ -35,11 +35,14 @@ use:
 \item \code{"meetings"} for Meetings only
 }}
 
-\item{return}{Character vector to specify what to return. Valid options include:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
-\item \code{"plot"}: returns an overlapping area plot (default)
-\item \code{"table"}: returns a summary table
-}}
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{values}{Character vector to specify whether to return percentages
 or absolute values in "data" and "plot". Valid values are:
@@ -53,6 +56,14 @@ e.g. "0900"}
 
 \item{end_hour}{A character vector specifying starting hours,
 e.g. "1700"}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. An overlapping area plot (default).
+\item \code{"table"}: data frame. A summary table.
+}
 }
 \description{
 Uses the Hourly Collaboration query to produce an area plot of

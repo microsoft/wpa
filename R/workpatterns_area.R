@@ -26,9 +26,12 @@
 #'   - `"unscheduled_calls"` for Unscheduled Calls only
 #'   - `"meetings"` for Meetings only
 #'
-#' @param return Character vector to specify what to return. Valid options include:
-#'   - `"plot"`: returns an overlapping area plot (default)
-#'   - `"table"`: returns a summary table
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
 #'
 #' @param values Character vector to specify whether to return percentages
 #' or absolute values in "data" and "plot". Valid values are:
@@ -41,6 +44,11 @@
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. "1700"
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. An overlapping area plot (default).
+#'   - `"table"`: data frame. A summary table.
 #'
 #' @import dplyr
 #' @import tidyselect

@@ -23,6 +23,9 @@
 #'
 #' @family Themes
 #'
+#' @return
+#' Returns a ggplot object with the applied theme.
+#'
 #' @export
 theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
 
@@ -75,6 +78,9 @@ theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
 #' @import ggplot2
 #'
 #' @family Themes
+#'
+#' @return
+#' Returns a ggplot object with the applied theme.
 #'
 #' @export
 theme_wpa_basic <- function(font_size = 12){
