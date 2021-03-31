@@ -83,8 +83,10 @@ create_trend <- function(data,
     myTable_plot %>%
     ggplot(aes(x = Date , y = group , fill = !!sym(metric))) +
     geom_tile(height=.5) +
-    scale_fill_gradient(name = "Hours", low = "white", high = "#fe7f4f") +
+    scale_x_date(position = "top") + 
+	scale_fill_gradientn(name = "Hours", colours = c("steelblue4","aliceblue","white","mistyrose1","tomato1")) +
     theme_wpa_basic() +
+	theme(axis.line.y = element_blank())
     labs(title = clean_nm,
          subtitle = paste("By", camel_clean(hrvar))) +
     xlab("Date") +
