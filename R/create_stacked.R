@@ -158,9 +158,10 @@ create_stacked <- function(data,
                       labels = gsub("_", " ", metrics)) +
     coord_flip() +
     theme_wpa_basic() +
-	theme(axis.line = element_blank(),   
+	theme(axis.line = element_blank(),
+		axis.text.x = element_blank(),   	
 		axis.ticks = element_blank(),   
-		axis.title.x = element_blank()) +
+		axis.title = element_blank()) +
     labs(title = plot_title,
          subtitle = paste(plot_subtitle, "by",  tolower(camel_clean(hrvar))),
          caption = extract_date_range(data, return = "text")) +
