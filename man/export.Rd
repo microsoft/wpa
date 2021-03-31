@@ -2,7 +2,7 @@
 % Please edit documentation in R/export.R
 \name{export}
 \alias{export}
-\title{Export {wpa} outputs to CSV, clipboard, or save as images}
+\title{Export 'wpa' outputs to CSV, clipboard, or save as images}
 \usage{
 export(
   x,
@@ -50,10 +50,9 @@ argument:
 }
 }
 \description{
-A general use function to export {wpa} outputs to CSV,
-clipboard, or save as images. By default, \code{export()} copies
-a data frame to the clipboard. If the input is a 'ggplot' object,
-the default behaviour is to export a PNG.
+A general use function to export 'wpa' outputs to CSV, clipboard, or save as
+images. By default, \code{export()} copies a data frame to the clipboard. If the
+input is a 'ggplot' object, the default behaviour is to export a PNG.
 }
 \seealso{
 Other Import and Export: 

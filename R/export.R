@@ -3,13 +3,12 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Export {wpa} outputs to CSV, clipboard, or save as images
+#' @title Export 'wpa' outputs to CSV, clipboard, or save as images
 #'
 #' @description
-#' A general use function to export {wpa} outputs to CSV,
-#' clipboard, or save as images. By default, `export()` copies
-#' a data frame to the clipboard. If the input is a 'ggplot' object,
-#' the default behaviour is to export a PNG.
+#' A general use function to export 'wpa' outputs to CSV, clipboard, or save as
+#' images. By default, `export()` copies a data frame to the clipboard. If the
+#' input is a 'ggplot' object, the default behaviour is to export a PNG.
 #'
 #' @param x Data frame or 'ggplot' object to be passed through.
 #' @param method Character string specifying the method of export.
