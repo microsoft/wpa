@@ -16,12 +16,12 @@ Authors@R: c(
     person(given = "Microsoft Corporation", role = "cph")
 	)
 Description: Opinionated functions that enable easier and faster
-    analysis of Workplace Analytics data. There are three main types of functions in wpa:
-    (i) Standard functions create a ggplot visual or a summary table based on a specific
+    analysis of Workplace Analytics data. There are three main types of functions in 'wpa':
+    (i) Standard functions create a 'ggplot' visual or a summary table based on a specific
     Workplace Analytics metric; (2) Report Generation functions generate HTML reports on
     a specific analysis area, e.g. Collaboration; (3) Other miscellaneous functions cover
     more specific applications (e.g. Subject Line text mining) of Workplace Analytics data.
-    This package adheres to tidyverse principles and works well with the pipe syntax.
+    This package adheres to 'tidyverse' principles and works well with the pipe syntax.
     wpa is built with the beginner-to-intermediate R users in mind, and is optimised for
     simplicity. 
 URL: https://github.com/microsoft/wpa/
