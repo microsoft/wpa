@@ -202,7 +202,10 @@ comma <- function(x){
 #' installed.
 #'
 check_pkg_installed <- function(pkgname) {
-  if (!(pkgname %in% rownames(installed.packages()))) {
+
+  mtry <- try(find.package(package = pkgname))
+
+  if (inherits(mtry, "try-error")) {
     stop(
       paste0(
         "\n\nPackage ", wrap(pkgname, wrapper = "`"),
@@ -214,5 +217,3 @@ check_pkg_installed <- function(pkgname) {
       )
   }
 }
-
-

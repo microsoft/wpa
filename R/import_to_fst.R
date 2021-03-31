@@ -42,12 +42,7 @@
 import_to_fst <- function(path, ...){
 
   # Check if fst is installed
-  if(!"fst" %in% utils::installed.packages()){
-
-    stop('`fst` is not installed.
-         Run `install.packages("fst")` to install the package.')
-
-  }
+  check_pkg_installed(pkgname = "fst")
 
   temp_df <- import_wpa(path, ...)
 
