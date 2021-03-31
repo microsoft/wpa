@@ -86,7 +86,7 @@ create_trend <- function(data,
     scale_x_date(position = "top") + 
 	scale_fill_gradientn(name = "Hours", colours = c("steelblue4","aliceblue","white","mistyrose1","tomato1")) +
     theme_wpa_basic() +
-	theme(axis.line.y = element_blank()) + 
+	theme(axis.line.y = element_blank(), axis.title.y = element_blank()) + 
     labs(title = clean_nm,
          subtitle = paste("Hotspots by", camel_clean(hrvar))) +
     xlab("Date") +
