@@ -26,6 +26,11 @@
 #' @family Visualization
 #' @family Network
 #'
+#' @return
+#' 'ggplot' object showing a bubble plot with internal network size as the
+#' x-axis and internal network breadth as the y-axis. The size of the bubbles
+#' represent the number of unique employees in each group.
+#'
 #' @export
 
 internal_network_plot <- function(data,

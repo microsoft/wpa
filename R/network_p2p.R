@@ -25,21 +25,16 @@
 #'   the Leiden algorithm. This requires all the pre-requisites of the
 #'   **leiden** package installed, which includes Python and **reticulate**.
 #'
-#' @param return String specifying what output to return. Defaults to "plot".
-#' Valid return options include:
-#'   - `'plot'`: return a network plot.
-#'   - `'sankey'`: return a sankey plot combining communities and HR attribute.
-#'   This is only valid if a community detection method is selected at
-#'   `display`.
-#'   - `'table'`: return a vertex summary table with counts in communities and
-#'   HR attribute.
-#'   - `'data'`: return a vertex data file that matches vertices with
-#'   communities and HR attributes.
-#'   - `'describe'`: return a list of data frames which describe each of the
-#'   identified communities. The first data frame is a summary table of all the
-#'   communities. This is only valid if a community detection method is selected
-#'   at `display`.
-#'   - `'network'`: return 'igraph' object.
+#' @param return String specifying what output to return. This must be one of the
+#'   following strings:
+#'   - `'plot'` (default)
+#'   - `'sankey'`
+#'   - `'table'`
+#'   - `'data'`
+#'   - `'describe'`
+#'   - `'network'`
+#'
+#' See `Value` for more information.
 #'
 #' @param path File path for saving the PDF output. Defaults to a timestamped
 #'   path based on current parameters.
@@ -67,6 +62,23 @@
 #'   elegant plotting method (native igraph). Defaults to 5000. Set as `0` to
 #'   coerce to a fast plotting method every time, and `Inf` to always use the
 #'   default plotting method.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `'plot'`: return a network plot.
+#'   - `'sankey'`: return a sankey plot combining communities and HR attribute.
+#'   This is only valid if a community detection method is selected at
+#'   `display`.
+#'   - `'table'`: return a vertex summary table with counts in communities and
+#'   HR attribute.
+#'   - `'data'`: return a vertex data file that matches vertices with
+#'   communities and HR attributes.
+#'   - `'describe'`: return a list of data frames which describe each of the
+#'   identified communities. The first data frame is a summary table of all the
+#'   communities. This is only valid if a community detection method is selected
+#'   at `display`.
+#'   - `'network'`: return 'igraph' object.
 #'
 #' @family Network
 #'

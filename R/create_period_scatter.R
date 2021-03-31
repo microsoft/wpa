@@ -40,6 +40,10 @@
 #' @family Flexible
 #' @family Time-series
 #'
+#' @return
+#' Returns a 'ggplot' object showing two scatter plots side by side representing
+#' the two periods.
+#'
 #' @examples
 #' # Return plot
 #' create_period_scatter(sq_data,

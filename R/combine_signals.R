@@ -17,6 +17,10 @@
 #'   Defaults to `c("Emails_sent", "IMs_sent")`. Other valid values include
 #'   `"Unscheduled_calls"` and `"Meetings"`.
 #'
+#' @return
+#' Returns a numeric vector that represents the sum of signals sent for a given
+#' hour.
+#'
 #' @details
 #' `combine_signals` uses string matching to aggregate columns.
 #'

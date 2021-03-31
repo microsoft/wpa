@@ -25,6 +25,9 @@
 #'
 #' @family Import and Export
 #'
+#' @return
+#' Copies a data frame to the clipboard with no return value.
+#'
 #' @export
 
 copy_df <-function(x,

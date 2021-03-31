@@ -30,6 +30,9 @@
 #' @family Flexible
 #' @family Time-series
 #'
+#' @return
+#' Returns a 'ggplot' object representing a line plot.
+#'
 #' @examples
 #' library(dplyr)
 #'

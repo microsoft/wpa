@@ -3,12 +3,13 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Read a Workplace Analytics query in CSV using and create a FST file in
-#'   the same directory for faster reading
+#' @title Read a Workplace Analytics query in '.csv' using and create a '.fst'
+#'   file in the same directory for faster reading
 #'
-#' @description Uses `import_wpa()` to read a Workplace Analytics query in CSV
-#'   and convert this into the serialized FST format which is much faster to
-#'   read. The 'fst' package must be installed, or an error message is returned.
+#' @description Uses `import_wpa()` to read a Workplace Analytics query in
+#'   '.csv' and convert this into the serialized '.csv' format which is much
+#'   faster to read. The 'fst' package must be installed, or an error message is
+#'   returned.
 #'
 #' @details
 #' The [fst](https://www.fstpackage.org/) package provides a way to serialize
@@ -30,6 +31,10 @@
 #'   explicitly entered, e.g. `"/files/standard query.csv"`. The converted FST
 #'   file will be saved in the same directory with a different file extension.
 #' @param ... Additional arguments to pass to `import_wpa()`.
+#'
+#' @return
+#' There is no return value. A file with '.fst' extension is written to the same
+#' directory where the '.csv' file is read in.
 #'
 #' @family Import and Export
 #'

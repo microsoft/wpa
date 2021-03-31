@@ -2,8 +2,8 @@
 % Please edit documentation in R/import_to_fst.R
 \name{import_to_fst}
 \alias{import_to_fst}
-\title{Read a Workplace Analytics query in CSV using and create a FST file in
-the same directory for faster reading}
+\title{Read a Workplace Analytics query in '.csv' using and create a '.fst'
+file in the same directory for faster reading}
 \usage{
 import_to_fst(path, ...)
 }
@@ -15,10 +15,15 @@ file will be saved in the same directory with a different file extension.}
 
 \item{...}{Additional arguments to pass to \code{import_wpa()}.}
 }
+\value{
+There is no return value. A file with '.fst' extension is written to the same
+directory where the '.csv' file is read in.
+}
 \description{
-Uses \code{import_wpa()} to read a Workplace Analytics query in CSV
-and convert this into the serialized FST format which is much faster to
-read. The 'fst' package must be installed, or an error message is returned.
+Uses \code{import_wpa()} to read a Workplace Analytics query in
+'.csv' and convert this into the serialized '.csv' format which is much
+faster to read. The 'fst' package must be installed, or an error message is
+returned.
 }
 \details{
 The \href{https://www.fstpackage.org/}{fst} package provides a way to serialize
