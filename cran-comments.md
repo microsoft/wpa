@@ -8,3 +8,13 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+
+## Submission 1.4.1
+
+Addressed following comments from previous CRAN submission
+
+- Having package names in single quotes in title and description.
+- Add \value to .Rd files and explain function results.
+- Removed examples for unexported functions.
+- Removed examples that write in user's home filespace.
+- Removed usage of `installed.packages()`, using `find.package()` instead.
