@@ -88,7 +88,7 @@ create_trend <- function(data,
     theme_wpa_basic() +
 	theme(axis.line.y = element_blank(), axis.title.y = element_blank()) + 
     labs(title = clean_nm,
-         subtitle = paste("Hotspots by", camel_clean(hrvar))) +
+         subtitle = paste("Hotspots by", tolower(camel_clean(hrvar)))) +
     xlab("Date") +
     ylab(hrvar) +
     labs(caption = extract_date_range(data, return = "text"))
