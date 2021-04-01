@@ -52,13 +52,16 @@
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to `TRUE`.
 #'
-#' @examples
-#' \donttest{
+#' @section Creating a report:
+#'
+#' Below is an example on how to run the report.
+#'
+#' ```
 #' validation_report(dv_data,
 #'                   meeting_data = mt_data,
 #'                   hrvar = "Organization")
+#' ```
 #'
-#' }
 #'
 #' @importFrom purrr map_if
 #' @importFrom dplyr `%>%`

@@ -38,7 +38,7 @@ following strings: - \code{"plot"} - \code{"table"}}
 A different output is returned depending on the value passed to the
 \code{return} argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A bubble plot for the metric.
+\item \code{"plot"}: 'ggplot' object. A bubble plot for the metric.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }

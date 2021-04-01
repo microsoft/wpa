@@ -3,7 +3,7 @@
 \name{workpatterns_classify_pav}
 \alias{workpatterns_classify_pav}
 \title{Classify working pattern personas using a rule based algorithm, using
-the person-average volume-based (pav) method.}
+the person-average volume-based ('pav') method.}
 \usage{
 workpatterns_classify_pav(
   data,
@@ -49,21 +49,9 @@ e.g. "1700"}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Apply a rule based algorithm to emails or instant messages sent by hour of day.
-This uses a person-average volume-based (pav) method.
-}
-\examples{
-\donttest{
-# Returns a plot by default
-workpatterns_classify_pav(em_data)
-
-# Return summary table
-workpatterns_classify_pav(em_data, return = "table")
-
-# Return an area plot
-workpatterns_classify_pav(em_data, return = "plot-area")
-}
-
+This uses a person-average volume-based ('pav') method.
 }
 \seealso{
 Other Working Patterns: 

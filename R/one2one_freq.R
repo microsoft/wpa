@@ -21,6 +21,8 @@
 #'   - `"dist"`
 #'   - `"sum"`
 #'
+#' @inherit create_dist return
+#'
 #' @family Visualization
 #' @family Managerial Relations
 #'

@@ -18,6 +18,9 @@
 #' @param data A Ways of Working Assessment query to pass through as a data
 #'   frame.
 #'
+#' @return
+#' data frame containing the formatted query passed to the function.
+#'
 #' @family Data Validation
 #' @family Import and Export
 #'

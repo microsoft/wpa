@@ -4,6 +4,9 @@
 #'
 #' @param x String to replace all occurrences of `_` with a single space
 #'
+#' @return
+#' Character vector containing the modified string.
+#'
 #' @family Support
 #'
 #' @examples

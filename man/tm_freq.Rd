@@ -2,7 +2,8 @@
 % Please edit documentation in R/tm_freq.R
 \name{tm_freq}
 \alias{tm_freq}
-\title{Perform a Word or Ngram Frequency Analysis and return a Circular Bar Plot}
+\title{Perform a Word or Ngram Frequency Analysis and return a Circular Bar
+Plot}
 \usage{
 tm_freq(data, token = "words", stopwords = NULL, keep = 100, return = "plot")
 }
@@ -17,12 +18,26 @@ custom stopwords to remove.}
 
 \item{keep}{A numeric vector specifying maximum number of words to keep.}
 
-\item{return}{Character vector specifying what to return, defaults to
-\code{"plot"}. Valid inputs are \code{"plot"} and \code{"table"}.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object. A circular bar plot.
+\item \code{"table"}: data frame. A summary table.
+}
 }
 \description{
 Generate a circular bar plot with frequency of words / ngrams.
-This is a sub-function that feeds into \code{meeting_tm_report()}.
+This function is used within \code{meeting_tm_report()}.
 }
 \details{
 This function uses \code{tm_clean()} as the underlying data wrangling function.

@@ -20,6 +20,9 @@
 #'
 #' @family Import and Export
 #'
+#' @return
+#' Returns an HTML widget displaying rectangular data.
+#'
 #' @export
 create_dt <- function(x, rounding = 1, freeze = 2){
 

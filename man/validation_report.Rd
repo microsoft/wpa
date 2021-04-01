@@ -75,15 +75,15 @@ make the variable names consistent with a Standard Person Query.
 You can browse each individual function for details on calculations.
 }
 
-\examples{
-\donttest{
-validation_report(dv_data,
+\section{Creating a report}{
+
+
+Below is an example on how to run the report.\preformatted{validation_report(dv_data,
                   meeting_data = mt_data,
                   hrvar = "Organization")
-
+}
 }
 
-}
 \seealso{
 Other Reports: 
 \code{\link{IV_report}()},

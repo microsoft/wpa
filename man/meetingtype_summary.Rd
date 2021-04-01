@@ -28,8 +28,9 @@ Requires the following variables:
 \item \code{One_on_one_meeting_hours}
 }}
 
-\item{hrvar}{HR Variable by which to split metrics, defaults to "Organization"
-but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{HR Variable by which to split metrics, defaults to
+\code{"Organization"} but accepts any character vector, e.g.
+\code{"LevelDesignation"}}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -42,6 +43,14 @@ following strings:
 }
 
 See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A horizontal bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
 This function creates a bar chart showing the percentage of meeting hours

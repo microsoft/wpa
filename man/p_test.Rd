@@ -19,12 +19,15 @@ behavior to test.}
 \item{paired}{Specify whether the dataset is paired or not. Defaults to
 \code{TRUE}.}
 }
+\value{
+Returns a numeric value representing the p-value outcome of the test.
+}
 \description{
 Specify an outcome variable and return p-test outputs.
 All numeric variables in the dataset are used as predictor variables.
 }
 \details{
-This function is a wrapper around \code{wilcox.test()} from {stats}.
+This function is a wrapper around \code{wilcox.test()} from 'stats'.
 }
 \examples{
 # Simulate a binary variable X

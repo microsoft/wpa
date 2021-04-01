@@ -49,6 +49,10 @@ Defaults to 5.}
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}
 }
+\value{
+Returns a 'ggplot' object showing two scatter plots side by side representing
+the two periods.
+}
 \description{
 Returns two side-by-side scatter plots representing two selected metrics,
 using colour to map an HR attribute and size to represent number of employees.

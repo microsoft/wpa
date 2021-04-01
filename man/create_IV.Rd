@@ -43,11 +43,11 @@ See \code{Value} for more information.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A bar plot showing the IV value of the top
+\item \code{"plot"}: 'ggplot' object. A bar plot showing the IV value of the top
 (maximum 12) variables.
 \item \code{"summary"}: data frame. A summary table for the metric.
 \item \code{"list"}: list. A list of outputs for all the input variables.
-\item \code{"plot-WOE"}: A list of ggplot objects that show the WOE for each
+\item \code{"plot-WOE"}: A list of 'ggplot' objects that show the WOE for each
 predictor used in the model.
 \item \code{"IV"} returns the original Information object returned by
 \code{Information::create_infotables()}.

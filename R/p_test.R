@@ -2,7 +2,6 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
-
 #' @title
 #' Calculate the p-value of the null hypothesis that two outcomes are from the
 #' same dataset
@@ -19,12 +18,15 @@
 #' @param paired Specify whether the dataset is paired or not. Defaults to
 #' `TRUE`.
 #'
+#' @return
+#' Returns a numeric value representing the p-value outcome of the test.
+#'
 #' @family Support
 #'
 #' @import dplyr
 #'
 #' @details
-#' This function is a wrapper around `wilcox.test()` from {stats}.
+#' This function is a wrapper around `wilcox.test()` from 'stats'.
 #'
 #' @examples
 #' # Simulate a binary variable X

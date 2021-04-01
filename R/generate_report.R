@@ -178,12 +178,16 @@ generate_chunks <- function(level = 3,
   return(obj)
 }
 
-#' Read preamble
+#' @title Read preamble
 #'
+#' @description
 #' Read in a preamble to be used within each individual reporting function.
 #' Reads from the Markdown file installed with the package.
 #'
 #' @param path Text string containing the path for the appropriate Markdown file.
+#'
+#' @return
+#' String containing the text read in from the specified Markdown file.
 #'
 #' @family Support
 #' @family Reports

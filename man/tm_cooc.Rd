@@ -14,15 +14,29 @@ stopwords to remove.}
 
 \item{seed}{A numeric vector to set seed for random generation.}
 
-\item{return}{Character vector specifying what to return, defaults to
-\code{"plot"}. Valid inputs are \code{"plot"} and \code{"table"}.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{lmult}{A multiplier to adjust the line width in the output plot.
 Defaults to 0.05.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' and 'ggraph' object. A network plot.
+\item \code{"table"}: data frame. A summary table.
+}
+}
 \description{
 This function generates a word co-occurence network plot, with options to
-return a table. This is a sub-function that feeds into \code{meeting_tm_report()}.
+return a table. This function is used within \code{meeting_tm_report()}.
 }
 \details{
 This function uses \code{tm_clean()} as the underlying data wrangling function.

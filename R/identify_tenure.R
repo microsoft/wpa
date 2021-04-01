@@ -20,10 +20,31 @@
 #'   representing the hire date. Defaults to "HireDate".
 #' @param maxten A numeric value representing the maximum tenure.
 #' If the tenure exceeds this threshold, it would be accounted for in the flag message.
-#' @param return String to specify what to return.
-#' Defaults to "message".
-#' Other valid values include "text", "plot", "data_cleaned", "data_dirty", and "data".
-#' For "data", a data frame with the `PersonId` and a calculated variable called `TenureYear` is returned.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"message"`
+#'   - `"text"`
+#'   - `"plot"`
+#'   - `"data_cleaned"`
+#'   - `"data_dirty"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"message"`: message on console with a diagnostic message.
+#'   - `"text"`: string containing a diagnostic message.
+#'   - `"plot"`: 'ggplot' object. A line plot showing tenure.
+#'   - `"data_cleaned"`: data frame filtered only by rows with tenure values
+#'   lying within the threshold.
+#'   - `"data_dirty"`: data frame filtered only by rows with tenure values
+#'   lying outside the threshold.
+#'   - `"data"`: data frame with the `PersonId` and a calculated variable called
+#'   `TenureYear` is returned.
+#'
 #'
 #' @examples
 #' library(dplyr)

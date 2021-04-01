@@ -18,8 +18,19 @@
 #' e.g. "`0900"`
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. `"1700"`
-#' @param return String specifying what to return. Defaults to "plot",
-#' with options to return a summary table ("table").
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A plot with the y-axis showing the top ten
+#'   working patterns and the x-axis representing each hour of the day.
+#'   - `"table"`: data frame. A summary table for the top working patterns.
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'

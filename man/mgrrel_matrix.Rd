@@ -59,8 +59,9 @@ the following columns:
 }
 }
 \description{
-Generate the Manager-Relationship 2x2 matrix, returning a ggplot object by default.
-Additional options available to return a "wide" or "long" summary table.
+Generate the Manager-Relationship 2x2 matrix, returning a 'ggplot' object by
+default. Additional options available to return a "wide" or "long" summary
+table.
 }
 \examples{
 # Return matrix

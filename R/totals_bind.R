@@ -21,6 +21,11 @@
 #' @param target_value Character value to impute in the new data frame to
 #'   row-bind. Defaults to `"Total"`.
 #'
+#' @return
+#' data frame with twice the number of rows of the input data frame, where half
+#' of those rows will have the `target_col` column imputed with the value from
+#' `target_value`.
+#'
 #' @family Support
 #'
 #' @export

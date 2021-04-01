@@ -25,10 +25,33 @@ representing the hire date. Defaults to "HireDate".}
 \item{maxten}{A numeric value representing the maximum tenure.
 If the tenure exceeds this threshold, it would be accounted for in the flag message.}
 
-\item{return}{String to specify what to return.
-Defaults to "message".
-Other valid values include "text", "plot", "data_cleaned", "data_dirty", and "data".
-For "data", a data frame with the \code{PersonId} and a calculated variable called \code{TenureYear} is returned.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"message"}
+\item \code{"text"}
+\item \code{"plot"}
+\item \code{"data_cleaned"}
+\item \code{"data_dirty"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"message"}: message on console with a diagnostic message.
+\item \code{"text"}: string containing a diagnostic message.
+\item \code{"plot"}: 'ggplot' object. A line plot showing tenure.
+\item \code{"data_cleaned"}: data frame filtered only by rows with tenure values
+lying within the threshold.
+\item \code{"data_dirty"}: data frame filtered only by rows with tenure values
+lying outside the threshold.
+\item \code{"data"}: data frame with the \code{PersonId} and a calculated variable called
+\code{TenureYear} is returned.
+}
 }
 \description{
 This function calculates employee tenure based on different input dates.

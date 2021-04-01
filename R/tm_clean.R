@@ -15,7 +15,7 @@
 #'
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param token A character vector accepting either `"words"` or `"ngram"`,
+#' @param token A character vector accepting either `"words"` or `"ngrams"`,
 #'   determining type of tokenisation to return.
 #' @param stopwords A single-column data frame labelled `'word'` containing
 #'   custom stopwords to remove.
@@ -25,6 +25,18 @@
 #' @importFrom tidytext unnest_tokens
 #'
 #' @family Text-mining
+#'
+#' @examples
+#' # words
+#' tm_clean(mt_data)
+#'
+#' # ngrams
+#' tm_clean(mt_data, token = "ngrams")
+#'
+#' @return
+#' data frame with two columns:
+#' - `line`
+#' - `word`
 #'
 #' @export
 tm_clean <- function(data,
@@ -54,7 +66,6 @@ tm_clean <- function(data,
 
   }
 
-  text_df <- text_df %>% anti_join(stopwords)
+  text_df %>% anti_join(stopwords)
 
-  return(text_df)
 }

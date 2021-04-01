@@ -31,7 +31,7 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A stacked bar plot for the metric.
+#'   - `"plot"`: 'ggplot' object. A stacked bar plot for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
