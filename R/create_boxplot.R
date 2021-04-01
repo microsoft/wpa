@@ -133,7 +133,7 @@ create_boxplot <- function(data,
     ylim(0, max_point) +
     annotate("text", x = plot_legend$group, y = 0, label = plot_legend$Employee_Count) +
     scale_x_discrete(labels = scales::wrap_format(10)) +
-    theme_classic() +
+    theme_wpa_basic() +
     theme(axis.text=element_text(size=12),
           axis.text.x = element_text(angle = 30, hjust = 1),
           plot.title = element_text(color="grey40", face="bold", size=18),
@@ -146,7 +146,7 @@ create_boxplot <- function(data,
          subtitle = paste("Distribution of",
                           tolower(clean_nm),
                           "by",
-                          camel_clean(hrvar))) +
+                          tolower(camel_clean(hrvar)))) +
     xlab(hrvar) +
     ylab(paste("Average", clean_nm)) +
     labs(caption = extract_date_range(data, return = "text"))
