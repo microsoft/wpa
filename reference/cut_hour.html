@@ -49,8 +49,8 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Convert a numeric variable for hours into categorical — cut_hour" />
-<meta property="og:description" content="Supply a numeric variable, e.g. Collaboration_hours,
-and the function returns a character vector" />
+<meta property="og:description" content="Supply a numeric variable, e.g. Collaboration_hours, and return a character
+vector." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -83,7 +83,7 @@ and the function returns a character vector" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -227,8 +227,8 @@ and the function returns a character vector" />
     </div>
 
     <div class="ref-description">
-    <p>Supply a numeric variable, e.g. <code>Collaboration_hours</code>,
-and the function returns a character vector</p>
+    <p>Supply a numeric variable, e.g. <code>Collaboration_hours</code>, and return a character
+vector.</p>
     </div>
 
     <pre class="usage"><span class='fu'>cut_hour</span><span class='op'>(</span><span class='va'>metric</span>, <span class='va'>cuts</span>, unit <span class='op'>=</span> <span class='st'>"hours"</span><span class='op'>)</span></pre>
@@ -242,8 +242,9 @@ and the function returns a character vector</p>
     </tr>
     <tr>
       <th>cuts</th>
-      <td><p>A numeric variable of minimum length 3 to represent the
-cut points required.</p></td>
+      <td><p>A numeric vector of minimum length 3 to represent the
+cut points required. The minimum and maximum values provided in the vector
+are inclusive.</p></td>
     </tr>
     <tr>
       <th>unit</th>
@@ -251,6 +252,10 @@ cut points required.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Character vector representing a converted categorical variable, appended
+with the label of the unit. See <code>examples</code> for more information.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This is used within <code><a href='create_dist.html'>create_dist()</a></code> for numeric to categorical conversion.</p>

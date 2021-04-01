@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Classify working pattern personas using a rule based algorithm, using
-the person-average volume-based (pav) method. — workpatterns_classify_pav • wpa</title>
+the person-average volume-based ('pav') method. — workpatterns_classify_pav • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -50,10 +50,10 @@ the person-average volume-based (pav) method. — workpatterns_classify_pav • 
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Classify working pattern personas using a rule based algorithm, using
-the person-average volume-based (pav) method. — workpatterns_classify_pav" />
+the person-average volume-based ('pav') method. — workpatterns_classify_pav" />
 <meta property="og:description" content="
 Apply a rule based algorithm to emails or instant messages sent by hour of day.
-This uses a person-average volume-based (pav) method." />
+This uses a person-average volume-based ('pav') method." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -86,7 +86,7 @@ This uses a person-average volume-based (pav) method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -225,15 +225,15 @@ This uses a person-average volume-based (pav) method." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Classify working pattern personas using a rule based algorithm, using
-the person-average volume-based (pav) method.</h1>
+the person-average volume-based ('pav') method.</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/workpatterns_classify_pav.R'><code>R/workpatterns_classify_pav.R</code></a></small>
     <div class="hidden name"><code>workpatterns_classify_pav.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a>
-Apply a rule based algorithm to emails or instant messages sent by hour of day.
-This uses a person-average volume-based (pav) method.</p>
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
+<p>Apply a rule based algorithm to emails or instant messages sent by hour of day.
+This uses a person-average volume-based ('pav') method.</p>
     </div>
 
     <pre class="usage"><span class='fu'>workpatterns_classify_pav</span><span class='op'>(</span>
@@ -305,19 +305,6 @@ e.g. "1700"</p></td>
 <code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code>,
 <code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># Returns a plot by default</span>
-<span class='fu'>workpatterns_classify_pav</span><span class='op'>(</span><span class='va'>em_data</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in workpatterns_classify_pav(em_data): could not find function "workpatterns_classify_pav"</span></div><div class='input'>
-<span class='co'># Return summary table</span>
-<span class='fu'>workpatterns_classify_pav</span><span class='op'>(</span><span class='va'>em_data</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in workpatterns_classify_pav(em_data, return = "table"): could not find function "workpatterns_classify_pav"</span></div><div class='input'>
-<span class='co'># Return an area plot</span>
-<span class='fu'>workpatterns_classify_pav</span><span class='op'>(</span><span class='va'>em_data</span>, return <span class='op'>=</span> <span class='st'>"plot-area"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in workpatterns_classify_pav(em_data, return = "plot-area"): could not find function "workpatterns_classify_pav"</span></div><div class='input'><span class='co'># }</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

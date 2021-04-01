@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read a Workplace Analytics query in CSV using and create a FST file in
-the same directory for faster reading — import_to_fst • wpa</title>
+<title>Read a Workplace Analytics query in '.csv' using and create a '.fst'
+file in the same directory for faster reading — import_to_fst • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -49,11 +49,12 @@ the same directory for faster reading — import_to_fst • wpa</title>
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Read a Workplace Analytics query in CSV using and create a FST file in
-the same directory for faster reading — import_to_fst" />
-<meta property="og:description" content="Uses import_wpa() to read a Workplace Analytics query in CSV
-and convert this into the serialized FST format which is much faster to
-read. The 'fst' package must be installed, or an error message is returned." />
+<meta property="og:title" content="Read a Workplace Analytics query in '.csv' using and create a '.fst'
+file in the same directory for faster reading — import_to_fst" />
+<meta property="og:description" content="Uses import_wpa() to read a Workplace Analytics query in
+'.csv' and convert this into the serialized '.csv' format which is much
+faster to read. The 'fst' package must be installed, or an error message is
+returned." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -86,7 +87,7 @@ read. The 'fst' package must be installed, or an error message is returned." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -224,16 +225,17 @@ read. The 'fst' package must be installed, or an error message is returned." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read a Workplace Analytics query in CSV using and create a FST file in
-the same directory for faster reading</h1>
+    <h1>Read a Workplace Analytics query in '.csv' using and create a '.fst'
+file in the same directory for faster reading</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/import_to_fst.R'><code>R/import_to_fst.R</code></a></small>
     <div class="hidden name"><code>import_to_fst.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Uses <code><a href='import_wpa.html'>import_wpa()</a></code> to read a Workplace Analytics query in CSV
-and convert this into the serialized FST format which is much faster to
-read. The 'fst' package must be installed, or an error message is returned.</p>
+    <p>Uses <code><a href='import_wpa.html'>import_wpa()</a></code> to read a Workplace Analytics query in
+'.csv' and convert this into the serialized '.csv' format which is much
+faster to read. The 'fst' package must be installed, or an error message is
+returned.</p>
     </div>
 
     <pre class="usage"><span class='fu'>import_to_fst</span><span class='op'>(</span><span class='va'>path</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -254,6 +256,10 @@ file will be saved in the same directory with a different file extension.</p></t
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>There is no return value. A file with '.fst' extension is written to the same
+directory where the '.csv' file is read in.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <a href='https://www.fstpackage.org/'>fst</a> package provides a way to serialize

@@ -49,8 +49,8 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Perform a pairwise count of words by id — pairwise_count" />
-<meta property="og:description" content="This is a 'data.table' implementation that mimics the output
-of widyr::pairwise_count() to reduce package dependency. This is used
+<meta property="og:description" content="This is a 'data.table' implementation that mimics the output of
+pairwise_count() from 'widyr' to reduce package dependency. This is used
 internally within tm_cooc()." />
 <meta property="og:image" content="/logo.png" />
 
@@ -84,7 +84,7 @@ internally within tm_cooc()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -228,8 +228,8 @@ internally within tm_cooc()." />
     </div>
 
     <div class="ref-description">
-    <p>This is a 'data.table' implementation that mimics the output
-of <code>widyr::pairwise_count()</code> to reduce package dependency. This is used
+    <p>This is a 'data.table' implementation that mimics the output of
+<code>pairwise_count()</code> from 'widyr' to reduce package dependency. This is used
 internally within <code><a href='tm_cooc.html'>tm_cooc()</a></code>.</p>
     </div>
 
@@ -251,6 +251,14 @@ internally within <code><a href='tm_cooc.html'>tm_cooc()</a></code>.</p>
       <td><p>String to represent the word variable. Defaults to <code>"word"</code>.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data frame with the following columns representing a pairwise count:</p><ul>
+<li><p><code>"item1"</code></p></li>
+<li><p><code>"item2"</code></p></li>
+<li><p><code>"n"</code></p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

@@ -85,7 +85,7 @@ of agglomeration." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -408,19 +408,8 @@ are averaged by person and calculated as % of total daily collaboration.</p>
 #&gt; Distance         : cosine 
 #&gt; Number of objects: 147 
 #&gt; </div><div class='input'>
-<span class='co'># \donttest{</span>
-<span class='co'># Run clusters with all three signal types, return plot</span>
-<span class='fu'>workpatterns_hclust</span><span class='op'>(</span><span class='va'>em_data</span>,
-                    k <span class='op'>=</span> <span class='fl'>4</span>,
-                    return <span class='op'>=</span> <span class='st'>"plot"</span>,
-                    signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"IM"</span>, <span class='st'>"email"</span>, <span class='st'>"unscheduled_calls"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Problem with `mutate()` input `Signals_sent_00_01`.</span>
-#&gt; <span class='error'><span style='color: #BB0000;'>✖</span><span> Can't subset columns that don't exist.</span>
-#&gt; <span class='error'></span><span style='color: #BB0000;'>✖</span><span> Column `Unscheduled_calls_00_01` doesn't exist.</span>
-#&gt; <span class='error'></span><span style='color: #0000BB;'>ℹ</span><span> Input `Signals_sent_00_01` is `select(., input_string) %&gt;% apply(1, sum, na.rm = TRUE)`.</span></div><div class='input'>
-<span class='co'># }</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

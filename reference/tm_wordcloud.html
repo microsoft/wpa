@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate a wordcloud — tm_wordcloud • wpa</title>
+<title>Generate a wordcloud with meeting subject lines — tm_wordcloud • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +48,7 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Generate a wordcloud — tm_wordcloud" />
+<meta property="og:title" content="Generate a wordcloud with meeting subject lines — tm_wordcloud" />
 <meta property="og:description" content="Generate a wordcloud with the meeting query.
 This is a sub-function that feeds into meeting_tm_report()." />
 <meta property="og:image" content="/logo.png" />
@@ -83,7 +83,7 @@ This is a sub-function that feeds into meeting_tm_report()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -221,7 +221,7 @@ This is a sub-function that feeds into meeting_tm_report()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate a wordcloud</h1>
+    <h1>Generate a wordcloud with meeting subject lines</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/tm_wordcloud.R'><code>R/tm_wordcloud.R</code></a></small>
     <div class="hidden name"><code>tm_wordcloud.Rd</code></div>
     </div>
@@ -262,9 +262,13 @@ custom stopwords to remove.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table". A "table" returns the data used to
-generate the wordcloud.</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -273,11 +277,19 @@ generate the wordcloud.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: 'ggplot' object containing a word cloud.</p></li>
+<li><p><code>"table"</code>: data frame returning the data used to generate the word cloud.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Uses the ggwordcloud package for the underlying implementation, thus
-returning a ggplot. Additional layers can be added onto the plot using
-a ggplot <code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code> syntax.
+    <p>Uses the 'ggwordcloud' package for the underlying implementation, thus
+returning a 'ggplot' object. Additional layers can be added onto the plot
+using a ggplot <code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code> syntax.
 The recommendation is not to return over 100 words in a word cloud.</p>
 <p>This function uses <code><a href='tm_clean.html'>tm_clean()</a></code> as the underlying data wrangling function.
 There is an option to remove stopwords by passing a data frame into the

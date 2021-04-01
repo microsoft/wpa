@@ -87,7 +87,7 @@ To run this function, you will require all the pre-requisites of the
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -322,7 +322,7 @@ communities and HR attributes.</p></li>
 <li><p><code>'describe'</code>: return a list of data frames which describe each of the
 identified communities. The first data frame is a summary table of all the
 communities.</p></li>
-<li><p><code>'network'</code>: return igraph object.</p></li>
+<li><p><code>'network'</code>: return 'igraph' object.</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -338,6 +338,22 @@ default plotting method.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>See <code>return</code>.</p>
+    <h2 class="hasAnchor" id="simulating-and-running-leiden-community-detection"><a class="anchor" href="#simulating-and-running-leiden-community-detection"></a>Simulating and running Leiden Community Detection</h2>
+
+    
+
+
+<p>Below is an example on how to simulate a network and run the function.</p><pre># Simulate a small person-to-person dataset
+p2p_data &lt;- p2p_data_sim(size = 50)
+
+# Return leiden, console, plot
+p2p_data %&gt;%
+  network_leiden(path = NULL,
+                 return = "plot")
+```
+
+</pre>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Network: 
@@ -350,19 +366,6 @@ default plotting method.</p></td>
 <code><a href='network_p2p.html'>network_p2p</a>()</code>,
 <code><a href='p2p_data_sim.html'>p2p_data_sim</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># Simulate a small person-to-person dataset</span>
-<span class='va'>p2p_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='p2p_data_sim.html'>p2p_data_sim</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
-
-<span class='co'># Return leiden, console, plot</span>
-<span class='va'>p2p_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>network_leiden</span><span class='op'>(</span>path <span class='op'>=</span> <span class='cn'>NULL</span>,
-                 return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Error 1 occurred creating conda environment r-reticulate</span></div><div class='input'><span class='co'># }</span>
-
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

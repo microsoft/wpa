@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform a Word or Ngram Frequency Analysis and return a Circular Bar Plot — tm_freq • wpa</title>
+<title>Perform a Word or Ngram Frequency Analysis and return a Circular Bar
+Plot — tm_freq • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +49,10 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Perform a Word or Ngram Frequency Analysis and return a Circular Bar Plot — tm_freq" />
+<meta property="og:title" content="Perform a Word or Ngram Frequency Analysis and return a Circular Bar
+Plot — tm_freq" />
 <meta property="og:description" content="Generate a circular bar plot with frequency of words / ngrams.
-This is a sub-function that feeds into meeting_tm_report()." />
+This function is used within meeting_tm_report()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -83,7 +85,7 @@ This is a sub-function that feeds into meeting_tm_report()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -221,14 +223,15 @@ This is a sub-function that feeds into meeting_tm_report()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform a Word or Ngram Frequency Analysis and return a Circular Bar Plot</h1>
+    <h1>Perform a Word or Ngram Frequency Analysis and return a Circular Bar
+Plot</h1>
     <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/tm_freq.R'><code>R/tm_freq.R</code></a></small>
     <div class="hidden name"><code>tm_freq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Generate a circular bar plot with frequency of words / ngrams.
-This is a sub-function that feeds into <code><a href='meeting_tm_report.html'>meeting_tm_report()</a></code>.</p>
+This function is used within <code><a href='meeting_tm_report.html'>meeting_tm_report()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tm_freq</span><span class='op'>(</span><span class='va'>data</span>, token <span class='op'>=</span> <span class='st'>"words"</span>, stopwords <span class='op'>=</span> <span class='cn'>NULL</span>, keep <span class='op'>=</span> <span class='fl'>100</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
@@ -256,10 +259,23 @@ custom stopwords to remove.</p></td>
     </tr>
     <tr>
       <th>return</th>
-      <td><p>Character vector specifying what to return, defaults to
-<code>"plot"</code>. Valid inputs are <code>"plot"</code> and <code>"table"</code>.</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"table"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"plot"</code>: 'ggplot' object. A circular bar plot.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 

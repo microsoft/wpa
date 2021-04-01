@@ -86,7 +86,7 @@ but also have flexibility to select a specific date, e.g. &quot;1/1/2020&quot;."
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -268,12 +268,34 @@ If the tenure exceeds this threshold, it would be accounted for in the flag mess
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String to specify what to return.
-Defaults to "message".
-Other valid values include "text", "plot", "data_cleaned", "data_dirty", and "data".
-For "data", a data frame with the <code>PersonId</code> and a calculated variable called <code>TenureYear</code> is returned.</p></td>
+      <td><p>String specifying what to return. This must be one of the
+following strings:</p><ul>
+<li><p><code>"message"</code></p></li>
+<li><p><code>"text"</code></p></li>
+<li><p><code>"plot"</code></p></li>
+<li><p><code>"data_cleaned"</code></p></li>
+<li><p><code>"data_dirty"</code></p></li>
+<li><p><code>"data"</code></p></li>
+</ul>
+
+<p>See <code>Value</code> for more information.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul>
+<li><p><code>"message"</code>: message on console with a diagnostic message.</p></li>
+<li><p><code>"text"</code>: string containing a diagnostic message.</p></li>
+<li><p><code>"plot"</code>: 'ggplot' object. A line plot showing tenure.</p></li>
+<li><p><code>"data_cleaned"</code>: data frame filtered only by rows with tenure values
+lying within the threshold.</p></li>
+<li><p><code>"data_dirty"</code>: data frame filtered only by rows with tenure values
+lying outside the threshold.</p></li>
+<li><p><code>"data"</code>: data frame with the <code>PersonId</code> and a calculated variable called
+<code>TenureYear</code> is returned.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
