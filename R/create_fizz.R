@@ -129,7 +129,7 @@ create_fizz <- function(data,
          subtitle = paste("Distribution of",
                           tolower(clean_nm),
                           "by",
-                          camel_clean(hrvar)),
+                          tolower(camel_clean(hrvar))),
          caption = extract_date_range(data, return = "text"),
          x = hrvar,
          y = paste("Average", clean_nm))
