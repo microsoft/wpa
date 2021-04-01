@@ -114,6 +114,7 @@ create_bar_asis <- function(data,
                 color = "#000000",
                 fontface = "bold",
                 size = 4)
+				
   } else if(percent == TRUE){
     returnPlot <-
       data %>%
@@ -129,12 +130,17 @@ create_bar_asis <- function(data,
   }
 
   returnPlot +
-    scale_y_continuous(limits = c(0, up_break)) +
+    scale_y_continuous(expand = c(.01, 0), limits = c(0, up_break)) +
     coord_flip() +
     labs(title = title,
          subtitle = subtitle,
          caption = caption,
-         y = xlab,
+         y = camel_clean(xlab),
          x = ylab) +
-    theme_wpa_basic()
+    theme_wpa_basic() +
+	theme(
+		axis.line = element_blank(),   
+		axis.ticks = element_blank(),   
+		axis.text.x = element_blank(),   
+		axis.title = element_blank()) 
 }
