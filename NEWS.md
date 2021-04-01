@@ -1,3 +1,7 @@
+# wpa 1.4.2
+
+- Patch update 
+
 # wpa 1.4.1
 
 New functions:

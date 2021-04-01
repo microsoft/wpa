@@ -5,9 +5,14 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
 * This is a new release.
+
+## Submission 1.4.2
+
+Spotted and fixed an issue with package names in single quotes in title and 
+description.
 
 ## Submission 1.4.1
 
