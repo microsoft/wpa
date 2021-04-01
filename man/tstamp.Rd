@@ -6,8 +6,11 @@
 \usage{
 tstamp()
 }
+\value{
+String containing the timestamp in the format \code{'yymmdd_hhmmss'}.
+}
 \description{
-This function generates a time stamp of the format \code{yymmdd_hhmmss}.
+This function generates a time stamp of the format \code{'yymmdd_hhmmss'}.
 This is a support function and is not intended for direct use.
 }
 \seealso{

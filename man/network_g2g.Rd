@@ -82,9 +82,9 @@ See \code{Value} for more information.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A group-to-group network plot.
+\item \code{"plot"}: 'ggplot' object. A group-to-group network plot.
 \item \code{"table"}: data frame. An interactive matrix of the network.
-\item \verb{"network}: igraph object used for creating the network plot.
+\item \verb{"network}: 'igraph' object used for creating the network plot.
 \item \code{"data"}: data frame. A long table of the underlying data.
 }
 }

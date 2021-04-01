@@ -39,23 +39,18 @@ the Leiden algorithm. This requires all the pre-requisites of the
 \strong{leiden} package installed, which includes Python and \strong{reticulate}.
 }}
 
-\item{return}{String specifying what output to return. Defaults to "plot".
-Valid return options include:
+\item{return}{String specifying what output to return. This must be one of the
+following strings:
 \itemize{
-\item \code{'plot'}: return a network plot.
-\item \code{'sankey'}: return a sankey plot combining communities and HR attribute.
-This is only valid if a community detection method is selected at
-\code{display}.
-\item \code{'table'}: return a vertex summary table with counts in communities and
-HR attribute.
-\item \code{'data'}: return a vertex data file that matches vertices with
-communities and HR attributes.
-\item \code{'describe'}: return a list of data frames which describe each of the
-identified communities. The first data frame is a summary table of all the
-communities. This is only valid if a community detection method is selected
-at \code{display}.
-\item \code{'network'}: return igraph object.
-}}
+\item \code{'plot'} (default)
+\item \code{'sankey'}
+\item \code{'table'}
+\item \code{'data'}
+\item \code{'describe'}
+\item \code{'network'}
+}
+
+See \code{Value} for more information.}
 
 \item{path}{File path for saving the PDF output. Defaults to a timestamped
 path based on current parameters.}
@@ -94,6 +89,25 @@ elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
 coerce to a fast plotting method every time, and \code{Inf} to always use the
 default plotting method.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{'plot'}: return a network plot.
+\item \code{'sankey'}: return a sankey plot combining communities and HR attribute.
+This is only valid if a community detection method is selected at
+\code{display}.
+\item \code{'table'}: return a vertex summary table with counts in communities and
+HR attribute.
+\item \code{'data'}: return a vertex data file that matches vertices with
+communities and HR attributes.
+\item \code{'describe'}: return a list of data frames which describe each of the
+identified communities. The first data frame is a summary table of all the
+communities. This is only valid if a community detection method is selected
+at \code{display}.
+\item \code{'network'}: return 'igraph' object.
+}
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
@@ -101,6 +115,18 @@ Pass a data frame containing a person-to-person query and return a network
 visualization. Options are available for community detection using either the
 Louvain or the Leiden algorithms.
 }
+\section{Running Leiden communities}{
+
+
+Running Leiden communities requires python dependencies installed.
+You can run the following:\preformatted{# Return a network plot to console, coloured by Leiden communities
+  p2p_data \%>\%
+    network_p2p(display = "leiden",
+                path = NULL,
+                return = "plot")
+}
+}
+
 \examples{
 # Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
@@ -111,20 +137,12 @@ p2p_data \%>\%
               path = NULL,
               return = "plot")
 
-\donttest{
-# Return a network plot to console, coloured by Leiden communities
-# Requires python dependencies installed
-  p2p_data \%>\%
-    network_p2p(display = "leiden",
-                path = NULL,
-                return = "plot")
-}
-
 # Return a network plot to console, coloured by Louvain communities
 p2p_data \%>\%
   network_p2p(display = "louvain",
               path = NULL,
               return = "plot")
+
 
 # Return a network plot to console
 # Coloured by Leiden communities

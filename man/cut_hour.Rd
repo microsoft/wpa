@@ -9,14 +9,19 @@ cut_hour(metric, cuts, unit = "hours")
 \arguments{
 \item{metric}{A numeric variable representing hours.}
 
-\item{cuts}{A numeric variable of minimum length 3 to represent the
-cut points required.}
+\item{cuts}{A numeric vector of minimum length 3 to represent the
+cut points required. The minimum and maximum values provided in the vector
+are inclusive.}
 
 \item{unit}{String to specify the unit of the labels. Defaults to "hours".}
 }
+\value{
+Character vector representing a converted categorical variable, appended
+with the label of the unit. See \code{examples} for more information.
+}
 \description{
-Supply a numeric variable, e.g. \code{Collaboration_hours},
-and the function returns a character vector
+Supply a numeric variable, e.g. \code{Collaboration_hours}, and return a character
+vector.
 }
 \details{
 This is used within \code{create_dist()} for numeric to categorical conversion.

@@ -14,6 +14,7 @@
 #' Uses the metric `Meeting_hours`.
 #'
 #' @inheritParams create_fizz
+#' @inherit create_fizz return
 #'
 #' @family Visualization
 #' @family Meetings

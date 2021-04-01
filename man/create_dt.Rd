@@ -14,6 +14,9 @@ create_dt(x, rounding = 1, freeze = 2)
 \item{freeze}{Number of columns from the left to 'freeze'. Defaults to 2,
 which includes the row number column.}
 }
+\value{
+Returns an HTML widget displaying rectangular data.
+}
 \description{
 See
 \url{https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/}

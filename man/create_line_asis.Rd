@@ -37,6 +37,9 @@ create_line_asis(
 Hex codes are accepted. You can also supply
 RGB values via \code{rgb2hex()}.}
 }
+\value{
+Returns a 'ggplot' object representing a line plot.
+}
 \description{
 This function creates a line chart directly from the aggregated / summarised data.
 Unlike \code{create_line()} which performs a person-level aggregation, there is no

@@ -3,16 +3,16 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Generate a wordcloud
+#' @title Generate a wordcloud with meeting subject lines
 #'
 #' @description
 #' Generate a wordcloud with the meeting query.
 #' This is a sub-function that feeds into `meeting_tm_report()`.
 #'
 #' @details
-#' Uses the {ggwordcloud} package for the underlying implementation, thus
-#' returning a ggplot. Additional layers can be added onto the plot using
-#' a ggplot `+` syntax.
+#' Uses the 'ggwordcloud' package for the underlying implementation, thus
+#' returning a 'ggplot' object. Additional layers can be added onto the plot
+#' using a ggplot `+` syntax.
 #' The recommendation is not to return over 100 words in a word cloud.
 #'
 #' @details
@@ -25,11 +25,20 @@
 #'   custom stopwords to remove.
 #' @param seed A numeric vector to set seed for random generation.
 #' @param keep A numeric vector specifying maximum number of words to keep.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#'   Valid inputs are "plot" and "table". A "table" returns the data used to
-#'   generate the wordcloud.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
 #' @param ... Additional parameters to be passed to
 #'   `ggwordcloud::geom_text_wordcloud()`
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: 'ggplot' object containing a word cloud.
+#'   - `"table"`: data frame returning the data used to generate the word cloud.
 #'
 #' @import dplyr
 #' @examples

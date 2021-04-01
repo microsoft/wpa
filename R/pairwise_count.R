@@ -1,12 +1,18 @@
 #' @title Perform a pairwise count of words by id
 #'
-#' @description This is a 'data.table' implementation that mimics the output
-#'   of `widyr::pairwise_count()` to reduce package dependency. This is used
+#' @description This is a 'data.table' implementation that mimics the output of
+#'   `pairwise_count()` from 'widyr' to reduce package dependency. This is used
 #'   internally within `tm_cooc()`.
 #'
 #' @param data Data frame output from `tm_clean()`.
 #' @param id String to represent the id variable. Defaults to `"line"`.
 #' @param word String to represent the word variable. Defaults to `"word"`.
+#'
+#' @return
+#' data frame with the following columns representing a pairwise count:
+#'   - `"item1"`
+#'   - `"item2"`
+#'   - `"n"`
 #'
 #' @importFrom data.table ":=" "%like%" "%between%" rbindlist as.data.table
 #'

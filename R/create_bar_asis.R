@@ -30,7 +30,7 @@
 #'   labels
 #'
 #' @return
-#' ggplot object. A horizontal bar plot.
+#' 'ggplot' object. A horizontal bar plot.
 #'
 #' @examples
 #' # Creating a custom bar plot without mean aggregation

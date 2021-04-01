@@ -9,11 +9,18 @@ tm_clean(data, token = "words", stopwords = NULL)
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
-\item{token}{A character vector accepting either \code{"words"} or \code{"ngram"},
+\item{token}{A character vector accepting either \code{"words"} or \code{"ngrams"},
 determining type of tokenisation to return.}
 
 \item{stopwords}{A single-column data frame labelled \code{'word'} containing
 custom stopwords to remove.}
+}
+\value{
+data frame with two columns:
+\itemize{
+\item \code{line}
+\item \code{word}
+}
 }
 \description{
 This function processes the \code{Subject} column in a Meeting Query by applying
@@ -22,6 +29,14 @@ supplied in a data frame (using the argument \code{stopwords}). This is a
 sub-function that feeds into \code{tm_freq()}, \code{tm_cooc()}, and \code{tm_wordcloud()}.
 The default is to return a data frame with tokenised counts of words or
 ngrams.
+}
+\examples{
+# words
+tm_clean(mt_data)
+
+# ngrams
+tm_clean(mt_data, token = "ngrams")
+
 }
 \seealso{
 Other Text-mining: 

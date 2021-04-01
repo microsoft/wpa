@@ -9,6 +9,9 @@ rgb2hex(r, g, b)
 \arguments{
 \item{r, g, b}{Values that correspond to the three RGB parameters}
 }
+\value{
+Returns a string containing a HEX code.
+}
 \description{
 Convert rgb to HEX code
 }

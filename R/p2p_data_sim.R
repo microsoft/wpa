@@ -20,6 +20,11 @@
 #' # Simulate a p2p dataset with 800 edges
 #' p2p_data_sim(size = 200, nei = 4)
 #'
+#' @return
+#' data frame with the same column structure as a person-to-person flexible
+#' query. This has an edgelist structure and can be used directly as an input
+#' to `network_p2p()`.
+#'
 #' @family Data
 #' @family Network
 #'

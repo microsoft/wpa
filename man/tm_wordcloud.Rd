@@ -2,7 +2,7 @@
 % Please edit documentation in R/tm_wordcloud.R
 \name{tm_wordcloud}
 \alias{tm_wordcloud}
-\title{Generate a wordcloud}
+\title{Generate a wordcloud with meeting subject lines}
 \usage{
 tm_wordcloud(
   data,
@@ -23,21 +23,34 @@ custom stopwords to remove.}
 
 \item{keep}{A numeric vector specifying maximum number of words to keep.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table". A "table" returns the data used to
-generate the wordcloud.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
 
 \item{...}{Additional parameters to be passed to
 \code{ggwordcloud::geom_text_wordcloud()}}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object containing a word cloud.
+\item \code{"table"}: data frame returning the data used to generate the word cloud.
+}
 }
 \description{
 Generate a wordcloud with the meeting query.
 This is a sub-function that feeds into \code{meeting_tm_report()}.
 }
 \details{
-Uses the {ggwordcloud} package for the underlying implementation, thus
-returning a ggplot. Additional layers can be added onto the plot using
-a ggplot \code{+} syntax.
+Uses the 'ggwordcloud' package for the underlying implementation, thus
+returning a 'ggplot' object. Additional layers can be added onto the plot
+using a ggplot \code{+} syntax.
 The recommendation is not to return over 100 words in a word cloud.
 
 This function uses \code{tm_clean()} as the underlying data wrangling function.

@@ -46,10 +46,12 @@ calculate_IV <- function(data,
   }
 
   # Compute q
-  q <- quantile(pred_var,
-                probs = c(1:(bins - 1) / bins),
-                na.rm = TRUE,
-                type = 3)
+  q <- stats::quantile(
+    pred_var,
+    probs = c(1:(bins - 1) / bins),
+    na.rm = TRUE,
+    type = 3
+    )
 
   # Compute cuts
   cuts <- unique(q)

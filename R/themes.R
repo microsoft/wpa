@@ -3,11 +3,11 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Main theme for {wpa} visualisations
+#' @title Main theme for 'wpa' visualisations
 #'
 #' @description
-#' A theme function applied to ggplot visualisations in {wpa}.
-#' Install and load {extrafont} to use custom fonts for plotting.
+#' A theme function applied to 'ggplot' visualisations in 'wpa'.
+#' Install and load 'extrafont' to use custom fonts for plotting.
 #'
 #' @param font_size Numeric value that prescribes the base font size
 #' for the plot. The text elements are defined relatively to this
@@ -22,6 +22,9 @@
 #' @import ggplot2
 #'
 #' @family Themes
+#'
+#' @return
+#' Returns a ggplot object with the applied theme.
 #'
 #' @export
 theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
@@ -62,10 +65,10 @@ theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
           strip.text = text_small_dark)
 }
 
-#' @title Basic theme for {wpa} visualisations
+#' @title Basic theme for 'wpa' visualisations
 #'
 #' @description
-#' A theme function applied to ggplot visualisations in {wpa}.
+#' A theme function applied to 'ggplot' visualisations in 'wpa'.
 #' Based on `theme_wpa()` but has no font requirements.
 #'
 #' @param font_size Numeric value that prescribes the base font size
@@ -75,6 +78,9 @@ theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
 #' @import ggplot2
 #'
 #' @family Themes
+#'
+#' @return
+#' Returns a ggplot object with the applied theme.
 #'
 #' @export
 theme_wpa_basic <- function(font_size = 12){

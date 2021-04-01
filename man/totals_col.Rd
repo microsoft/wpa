@@ -13,6 +13,10 @@ totals_col(data, total_value = "Total")
 \code{"Total"} column. Defaults to \code{"Total"}. An error is returned if an
 existing variable has the same name as the supplied value.}
 }
+\value{
+data frame containing an additional 'Total' column on top of the input data
+frame.
+}
 \description{
 Create a 'Total' column of character type comprising exactly of
 one unique value. This is a convenience function for returning a no-HR

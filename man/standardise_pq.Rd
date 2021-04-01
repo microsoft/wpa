@@ -13,6 +13,9 @@ standardize_pq(data)
 \item{data}{A Ways of Working Assessment query to pass through as a data
 frame.}
 }
+\value{
+data frame containing the formatted query passed to the function.
+}
 \description{
 This function standardises the variable names to a Standard Person
 Query, where the standard use case is to pass a Ways of Working Assessment
