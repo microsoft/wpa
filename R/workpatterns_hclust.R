@@ -78,14 +78,6 @@
 #' # Run clusters for instant messages only, return hclust object
 #' workpatterns_hclust(em_data, k = 4, return = "hclust", signals = c("IM"))
 #'
-#' \donttest{
-#' # Run clusters with all three signal types, return plot
-#' workpatterns_hclust(em_data,
-#'                     k = 4,
-#'                     return = "plot",
-#'                     signals = c("IM", "email", "unscheduled_calls"))
-#'
-#' }
 #'
 #' @family Clustering
 #' @family Working Patterns

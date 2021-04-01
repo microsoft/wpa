@@ -23,6 +23,9 @@
 #' @param target_col Character value of the column in which to reorder
 #' @param target_value Character value of the value in `target_col` to match
 #'
+#' @return
+#' data frame with the 'Total' row reordered to the bottom.
+#'
 #' @family Support
 #'
 #' @export

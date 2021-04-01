@@ -15,8 +15,9 @@
 #' - `Decision_making_meeting_hours`
 #' - `One_on_one_meeting_hours`
 #'
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#' but accepts any character vector, e.g. "LevelDesignation"
+#' @param hrvar HR Variable by which to split metrics, defaults to
+#'   `"Organization"` but accepts any character vector, e.g.
+#'   `"LevelDesignation"`
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #' @param return String specifying what to return. This must be one of the
@@ -25,6 +26,12 @@
 #'   - `"table"`
 #'
 #' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A horizontal bar plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import ggplot2
 #' @import dplyr

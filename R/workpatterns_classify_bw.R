@@ -3,24 +3,29 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Classify working pattern week archetypes using a rule based algorithm,
-#'   using the binary week-based (bw) method.
+#' @title Classify working pattern week archetypes using a rule-based algorithm,
+#'   using the binary week-based ('bw') method.
 #'
-#' @description `r lifecycle::badge('experimental')` Apply a rule based
-#' algorithm to emails sent by hour of day, using the binary week-based (bw)
-#' method.
+#' @description
+#' `r lifecycle::badge('experimental')`
+#'
+#' Apply a rule based algorithm to emails sent by hour of day, using the binary
+#' week-based ('bw') method.
 #'
 #' @param data A data frame containing email by hours data.
 #'
 #' @param hrvar A string specifying the HR attribute to cut the data by.
 #'   Defaults to NULL. This only affects the function when "table" is returned.
 #'
-#' @param return Character vector to specify what to return. Valid options
-#'   include: - "plot": returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default) - "data": returns the raw data with the classified
-#'   archetypes - "table": returns a summary table of the archetypes -
-#'   "plot-area": returns an area plot of the percentages of archetypes shown
-#'   over time
+#' @param return Character vector to specify what to return.
+#' Valid options include:
+#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
+#'   and archetypes (default)
+#'   - `"data"`: returns the raw data with the classified
+#'   archetypes
+#'   - `"table"`: returns a summary table of the archetypes
+#'   - `"plot-area"`: returns an area plot of the percentages of archetypes
+#'   shown over time
 #'
 #' @param signals Character vector to specify which collaboration metrics to
 #'   use:
@@ -41,11 +46,6 @@
 #' @import ggplot2
 #' @importFrom magrittr "%>%"
 #' @importFrom data.table ":=" "%like%" "%between%"
-#'
-#' @examples
-#' \donttest{
-#' workpatterns_classify_bw(em_data)
-#' }
 #'
 #'
 #' @family Working Patterns

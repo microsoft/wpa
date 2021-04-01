@@ -20,6 +20,9 @@ names. Defaults to \code{FALSE}.}
 
 \item{...}{Additional arguments for write.table().}
 }
+\value{
+Copies a data frame to the clipboard with no return value.
+}
 \description{
 This is a pipe-optimised function, that feeds into \code{wpa::export()},
 but can be used as a stand-alone function.

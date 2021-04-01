@@ -30,11 +30,11 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: ggplot object. A bar plot showing the IV value of the top
+#'   - `"plot"`: 'ggplot' object. A bar plot showing the IV value of the top
 #'   (maximum 12) variables.
 #'   - `"summary"`: data frame. A summary table for the metric.
 #'   - `"list"`: list. A list of outputs for all the input variables.
-#'   - `"plot-WOE"`: A list of ggplot objects that show the WOE for each
+#'   - `"plot-WOE"`: A list of 'ggplot' objects that show the WOE for each
 #'   predictor used in the model.
 #'   - `"IV"` returns the original Information object returned by
 #'   `Information::create_infotables()`.
@@ -198,7 +198,7 @@ create_IV <- function(data,
 #' @param predictor String with the name of the predictor variable.
 #'
 #' @return
-#' ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
+#' 'ggplot' object. Bar plot with 'WOE' as the y-axis and bins of the predictor
 #' variable as the horizontal axis.
 #'
 #' @family Support

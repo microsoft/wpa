@@ -21,6 +21,10 @@
 #'   `"Total"` column. Defaults to `"Total"`. An error is returned if an
 #'   existing variable has the same name as the supplied value.
 #'
+#' @return
+#' data frame containing an additional 'Total' column on top of the input data
+#' frame.
+#'
 #' @family Support
 #'
 #' @export

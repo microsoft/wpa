@@ -34,7 +34,7 @@ size. Defaults to 5.}
 Valid inputs are "plot" and "table".}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
+Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{

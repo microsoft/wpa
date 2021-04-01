@@ -12,7 +12,7 @@ plot_WOE(IV, predictor)
 \item{predictor}{String with the name of the predictor variable.}
 }
 \value{
-ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
+'ggplot' object. Bar plot with 'WOE' as the y-axis and bins of the predictor
 variable as the horizontal axis.
 }
 \description{

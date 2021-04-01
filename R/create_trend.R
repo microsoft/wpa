@@ -30,7 +30,7 @@
 #' create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
+#' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @export

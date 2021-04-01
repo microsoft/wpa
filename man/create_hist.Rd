@@ -44,7 +44,7 @@ See \code{Value} for more information.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A faceted histogram for the metric.
+\item \code{"plot"}: 'ggplot' object. A faceted histogram for the metric.
 \item \code{"table"}: data frame. A summary table for the metric.
 \item \code{"data"}: data frame. Data with calculated person averages.
 \item \verb{"frequency}: list of data frames. Each data frame contains the

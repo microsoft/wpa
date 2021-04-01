@@ -25,8 +25,23 @@ e.g. "\verb{0900"}}
 \item{end_hour}{A character vector specifying starting hours,
 e.g. \code{"1700"}}
 
-\item{return}{String specifying what to return. Defaults to "plot",
-with options to return a summary table ("table").}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A plot with the y-axis showing the top ten
+working patterns and the x-axis representing each hour of the day.
+\item \code{"table"}: data frame. A summary table for the top working patterns.
+}
 }
 \description{
 Takes in an Hourly Collaboration query and returns a count

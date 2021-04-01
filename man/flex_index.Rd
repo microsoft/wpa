@@ -53,7 +53,7 @@ See \code{Value} for more information.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A random of ten working patterns are displayed,
+\item \code{"plot"}: 'ggplot' object. A random of ten working patterns are displayed,
 with diagnostic data and the Flexibility Index shown on the plot.
 \item \code{"data"}: data frame. The original input data appended with the
 Flexibility Index and the component scores. Can be used with

@@ -24,6 +24,13 @@ size. Defaults to 5.}
 
 See \code{Value} for more information.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object. A jittered scatter plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
+}
 \description{
 Analyze weekly meeting hours distribution, and returns a 'fizzy' scatter plot
 by default. Additional options available to return a table with distribution

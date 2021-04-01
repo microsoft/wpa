@@ -49,7 +49,7 @@ See \code{Value} for more information.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
+\item \code{"plot"}: 'ggplot' object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
 bubbles represent the size of the organizations. Note that there is no
 plot output if \code{mode} is set to \code{"combine"}.

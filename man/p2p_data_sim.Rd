@@ -16,6 +16,11 @@ the lattice will be connected.}
 
 \item{p}{Real constant between zero and one, the rewiring probability.}
 }
+\value{
+data frame with the same column structure as a person-to-person flexible
+query. This has an edgelist structure and can be used directly as an input
+to \code{network_p2p()}.
+}
 \description{
 Generate an person-to-person query / edgelist based on the graph
 according to the Watts-Strogatz small-world network model. Organizational
