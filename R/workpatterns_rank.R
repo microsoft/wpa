@@ -143,11 +143,12 @@ workpatterns_rank <- function(data,
       tidyr::gather(Hours, Freq, -patternRank)  %>%
       ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
       ggplot2::geom_tile(height=.5) +
-      ggplot2::ylab("Top 10 Work Patterns") +
+      ggplot2::ylab("Top 10 Activity Patterns") +
       ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
-      ggplot2::scale_y_reverse(breaks=seq(1,10)) +
+      ggplot2::scale_y_reverse(expand = c(0, 0), breaks=seq(1,10)) +
       theme_wpa_basic() +
-      ggplot2::theme(legend.position = "none") +
+	  ggplot2::scale_x_discrete(position = "top") +
+      ggplot2::theme(legend.position = "none", axis.line = element_blank(), axis.ticks = element_blank()) +
       ggplot2::annotate("text",
                y = myTable_legends$patternRank,
                x = 26.5,
@@ -164,14 +165,14 @@ workpatterns_rank <- function(data,
                ymin = 0.5,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
-               fill = "#fe7f4f") +
+               fill = "gray50") +
       ggplot2::annotate("rect",
                xmin = end_hour + 0.5,
                xmax = 24.5,
                ymin = 0.5,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
-               fill = "#fe7f4f")
+               fill = "gray50")
 
   } else if(return == "table"){
 
