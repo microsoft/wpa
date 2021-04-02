@@ -43,6 +43,17 @@
 #' @param end_hour A character vector specifying finish hours,
 #' e.g. "1700"
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
+#'   and archetypes (default). A 'ggplot' object.
+#'   - `"data"`: returns a data frame of the raw data with the classified
+#'   archetypes
+#'   - `"table"`: returns a data frame of summary table of the archetypes
+#'   - `"plot-area"`: returns an area plot of the percentages of archetypes
+#'   shown over time. A 'ggplot' object.
+#'
 #' @import ggplot2
 #' @importFrom magrittr "%>%"
 #' @importFrom data.table ":=" "%like%" "%between%"

@@ -255,6 +255,7 @@ workpatterns_hclust <- function(data,
 #' @importFrom tidyselect all_of
 #' @importFrom tidyr gather
 #'
+#' @noRd
 plot_signal_clust <- function(data,
                               group_label,
                               type = "bar",
@@ -368,6 +369,7 @@ plot_signal_clust <- function(data,
 #' or the groups. Currently accepted values are "cluster" and "Personas".
 #' @param sig_label See `workpatterns_hclust()`.
 #'
+#' @noRd
 run_sum_hr <- function(data,
                        group_label = "cluster",
                        sig_label = "Emails_sent"){
@@ -423,7 +425,7 @@ run_sum_hr <- function(data,
 #' @param end_hour See `workpatterns_hclust()`.
 #' @param group_label See `workpatterns_hclust()`.
 #'
-#'
+#' @noRd
 run_hour_splits <- function(data,
                             start_hour = "0900",
                             end_hour = "1700",

@@ -10,6 +10,8 @@
 #'
 #' @family Data
 #'
+#' @return data frame.
+#'
 #' @format A data frame with 2001 rows and 30 variables:
 #' \describe{
 #'   \item{MeetingId}{ }
