@@ -73,6 +73,9 @@ A data frame with 41567 rows and 56 variables:
 \usage{
 em_data
 }
+\value{
+data frame.
+}
 \description{
 A sample dataset generated from an Hourly Collaboration query from the
 Workplace Analytics demo tenant. The data is grouped by week and contains

@@ -15,10 +15,10 @@
 #' @param data A data frame containing data from the Hourly Collaboration query.
 #'
 #' @param return Character vector to specify what to return. Valid options include:
-#'   - "plot": returns a bar plot of signal distribution by hour and archetypes (default)
-#'   - "data": returns the raw data with the classified archetypes
-#'   - "table": returns a summary table of the archetypes
-#'   - "plot-area": returns an overlapping area plot
+#'   - `"plot"`: returns a bar plot of signal distribution by hour and archetypes (default)
+#'   - `"data"`: returns the raw data with the classified archetypes
+#'   - `"table"`: returns a summary table of the archetypes
+#'   - `"plot-area"`: returns an overlapping area plot
 #'
 #' @param values Character vector to specify whether to return percentages
 #' or absolute values in "data" and "plot". Valid values are:
@@ -36,6 +36,15 @@
 #' e.g. "0900"
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. "1700"
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: returns a bar plot of signal distribution by hour and
+#'   archetypes (default). A 'ggplot' object.
+#'   - `"data"`: returns a data frame of the raw data with the classified archetypes.
+#'   - `"table"`: returns a data frame of a summary table of the archetypes.
+#'   - `"plot-area"`: returns an overlapping area plot. A 'ggplot' object.
 #'
 #' @import dplyr
 #' @import tidyselect
