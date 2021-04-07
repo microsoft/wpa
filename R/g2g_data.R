@@ -11,6 +11,8 @@
 #' @family Data
 #' @family Network
 #'
+#' @return data frame.
+#'
 #' @format A data frame with 3517 rows and 7 variables:
 #' \describe{
 #'   \item{TimeInvestors_Organization}{ }

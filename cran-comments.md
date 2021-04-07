@@ -9,6 +9,10 @@
 
 * This is a new release.
 
+## Submission 1.4.3
+
+Addressed final comments from CRAN on Rd files without a \value{} tag.
+
 ## Submission 1.4.2
 
 Spotted and fixed an issue with package names in single quotes in title and 

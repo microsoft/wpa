@@ -1,4 +1,9 @@
-# wpa (development version)
+# wpa
+
+# wpa 1.4.3
+
+- Patch update 
+- New CRAN submission addressing some feedback on Rd files
 
 # wpa 1.4.2
 

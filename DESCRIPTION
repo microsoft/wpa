@@ -1,7 +1,7 @@
 Package: wpa
 Type: Package
 Title: Tools for Analysing and Visualising Workplace Analytics Data
-Version: 1.4.2.9000
+Version: 1.4.3
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com"),
@@ -22,7 +22,7 @@ Description: Opinionated functions that enable easier and faster
     a specific analysis area, e.g. Collaboration; (3) Other miscellaneous functions cover
     more specific applications (e.g. Subject Line text mining) of Workplace Analytics data.
     This package adheres to 'tidyverse' principles and works well with the pipe syntax.
-    wpa is built with the beginner-to-intermediate R users in mind, and is optimised for
+    'wpa' is built with the beginner-to-intermediate R users in mind, and is optimised for
     simplicity. 
 URL: https://github.com/microsoft/wpa/
 BugReports: https://github.com/microsoft/wpa/issues/

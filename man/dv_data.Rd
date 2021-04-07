@@ -86,6 +86,9 @@ A data frame with 897 rows and 69 variables:
 \usage{
 dv_data
 }
+\value{
+data frame.
+}
 \description{
 A dataset generated from a Standard Person Query from Workplace Analytics.
 }
