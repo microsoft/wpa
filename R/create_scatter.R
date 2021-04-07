@@ -94,7 +94,8 @@ create_scatter <- function(data,
                y = !!sym(metric_y),
                colour = !!sym(hrvar))) +
     geom_point(alpha = 0.5) +
-    labs(title = paste0(clean_x, " and\n", clean_y, " by ", camel_clean(hrvar)),
+    labs(title = paste0(clean_x, " and ", clean_y), 
+	subtitle = paste("Distribution of employees by", tolower(camel_clean(hrvar))),
          caption = extract_date_range(data, return = "text")) +
     xlab(clean_x) +
     ylab(clean_y) +

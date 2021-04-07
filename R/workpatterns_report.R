@@ -79,30 +79,33 @@ workpatterns_report <- function(data,
     })
 
   ## Create custom bar plot for archetypes
-  personas_table <-
-    wp_list$data %>%
-    dplyr::as_tibble() %>%
-    dplyr::group_by(Personas) %>%
-    dplyr::summarise(Count = dplyr::n()) %>%
-    dplyr::mutate(Percentage = Count / sum(Count, na.rm = TRUE)) %>%
-    dplyr::mutate(Percentage= scales::percent(Percentage, accuracy = 0.1))
+  # personas_table <-
+  #   wp_list$data %>%
+  #   dplyr::as_tibble() %>%
+  #   dplyr::group_by(Personas) %>%
+  #   dplyr::summarise(Count = dplyr::n()) %>%
+  #   dplyr::mutate(Percentage = Count / sum(Count, na.rm = TRUE)) %>%
+  #   dplyr::mutate(Percentage= scales::percent(Percentage, accuracy = 0.1))
 
   personas_plot <-
-    personas_table %>%
-    ggplot(aes(x = Personas, y = Count)) +
-    geom_col(fill = wpa::rgb2hex(0, 120, 212)) +
-    geom_text(aes(label = Percentage),
-              vjust = -1,
-              fontface = "bold",
-              size = 4) +
-    wpa::theme_wpa_basic() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    labs(title = "Frequency of Working Patterns",
-         subtitle = "Distribution of Cases by Archetype",
-         y = "Number of Cases",
-         x = "",
-         caption = wpa::extract_date_range(data, return = "text")) +
-    scale_y_continuous(limits = c(0, max(personas_table$Count) * 1.1))
+    wp_list$data %>%
+    plot_workpatterns_classify_bw() # Call internal function
+
+    # personas_table %>%
+    # ggplot(aes(x = Personas, y = Count)) +
+    # geom_col(fill = wpa::rgb2hex(0, 120, 212)) +
+    # geom_text(aes(label = Percentage),
+    #           vjust = -1,
+    #           fontface = "bold",
+    #           size = 4) +
+    # wpa::theme_wpa_basic() +
+    # theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    # labs(title = "Frequency of Working Patterns",
+    #      subtitle = "Distribution of Cases by Archetype",
+    #      y = "Number of Cases",
+    #      x = "",
+    #      caption = wpa::extract_date_range(data, return = "text")) +
+    # scale_y_continuous(limits = c(0, max(personas_table$Count) * 1.1))
 
 
   ## Set outputs

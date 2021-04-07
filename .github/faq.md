@@ -15,7 +15,8 @@ R is an open-source statistical programming language and one of the most popular
 
 ### I cannot install the package with `install.packages()`. Why is that?
 
-The reason why `install.packages()` will not work with **wpa** is because **wpa** is currently only available on GitHub and not on CRAN, and CRAN is where the function `install.packages()` downloads and installs R packages from. Instead, you should use `install_github()`:
+Since 6th April 2021, `install.packages()` should work with **wpa** as it is made available on CRAN on that date. If you continue to experience issues, please create an issue at https://github.com/microsoft/wpa/issues/, and install with the development version in the mean time: 
+
 ```R
 remotes::install_github(repo = "microsoft/wpa", upgrade = "never") 
 ```
@@ -49,7 +50,7 @@ Make sure you follow the recommend installation steps listed on our [Getting Sta
 
 You are recommended to use the latest stable version of R. You can find the latest version on <https://www.r-project.org/>. 
 
-### How do I install from a developmental / experimental branch of the package?
+### How do I install from a development / experimental branch of the package?
 
 If you wish to install a version of the package from any branch **other than the main branch**, you can run the following code:
 ```R
