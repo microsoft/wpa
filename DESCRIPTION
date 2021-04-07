@@ -64,5 +64,9 @@ Suggests:
     leiden,
     lifecycle,
     fst,
-    glue
+    glue,
+    assertthat,
+    lmtest,
+    portes,
+    sandwich
 Language: en-US
