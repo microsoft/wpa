@@ -8,6 +8,8 @@
 #' applying single-group Interrupted Time-Series Analysis (ITSA)
 #'
 #' @description
+#' `r lifecycle::badge('experimental')`
+#'
 #' This function implements ITSA method described in the paper 'Conducting
 #' interrupted time-series analysis for single- and multiple-group comparisons',
 #' Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500
