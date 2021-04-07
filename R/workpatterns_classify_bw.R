@@ -428,7 +428,8 @@ plot_workpatterns_classify_bw <- function(data){
     geom_polygon(
       aes(fill = value,
           group = id),
-      colour = "#FFFFFF") +
+      colour = "#FFFFFF",
+      size = 2) +
     scale_fill_manual(values = colo_v) +
     geom_text(data = label_df,
               aes(x = flexibility,
