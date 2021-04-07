@@ -435,7 +435,7 @@ plot_workpatterns_classify_bw <- function(data){
                   y = act_level,
                   label = value2,
                   colour = value),
-              size = 3) +
+              size = 5) +
     scale_colour_manual(values = text_v) +
     scale_y_continuous(breaks = 0:8,
                        labels = c("",
@@ -447,11 +447,15 @@ plot_workpatterns_classify_bw <- function(data){
     scale_x_continuous(breaks = 0:4,
                        labels = c("", "No breaks", "",
                                   "Breaks", "")) +
-    labs(title = "Distribution of employee weeks",
-         subtitle = "By working patterns",
-         y = "Flexibility level (breaks)",
-         x = "Average activity level",
+    labs(title = "Distribution of Working Patterns",
+         subtitle = "Classification of employee-weeks",
+         x = "Flexibility level (breaks)",
+         y = "Average activity level",
          caption = extract_date_range(data, return = "text")) +
     theme_wpa_basic() +
-    theme(legend.position = "none")
+    theme(
+      legend.position = "none",
+      axis.line = element_blank(),
+      axis.title = element_blank() # Toggle off axis title
+      )
 }
