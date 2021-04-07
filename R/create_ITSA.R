@@ -31,7 +31,6 @@
 #' @import sandwich
 #' @import lmtest
 #' @import portes
-#' @import assertthat
 #'
 #' @family Flexible Input
 #' @family Interrupted Time-Series Analysis
@@ -77,13 +76,13 @@ create_ITSA <-
            return = 'table') {
 
     ## Check inputs types
-    assertthat::assert_that(is.data.frame(data) &&
-                is.character(before_start) &&
-                is.character(before_end) &&
-                is.character(after_start) &&
-                is.character(after_end) &&
-                is.numeric(ac_lags_max) &&
-                is.character(return))
+    stopifnot(is.data.frame(data))
+    stopifnot(is.character(before_start))
+    stopifnot(is.character(before_end))
+    stopifnot(is.character(after_start))
+    stopifnot(is.character(after_end))
+    stopifnot(is.numeric(ac_lags_max))
+    stopifnot(is.character(return))
 
     ## Check required columns in data
     required_variables <- c("Date",
