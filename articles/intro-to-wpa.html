@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
       </span>
     </div>
 
@@ -179,7 +179,7 @@
       <h1 data-toc-skip>Introduction to {wpa}</h1>
                         <h4 class="author">Martin Chan</h4>
             
-            <h4 class="date">2021-04-02</h4>
+            <h4 class="date">2021-04-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/master/vignettes/intro-to-wpa.Rmd"><code>vignettes/intro-to-wpa.Rmd</code></a></small>
       <div class="hidden name"><code>intro-to-wpa.Rmd</code></div>
@@ -433,7 +433,8 @@
   <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a custom title"</span>,
        subtitle <span class="op">=</span> <span class="st">"This is a custom sub-title"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span>
+<span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
 <p>Note that the “pipe” syntax changes from <code><a href="../reference/%&gt;%.html">%&gt;%</a></code> to <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> once you are manipulating a ggplot output, which will return an error if not used correctly.</p>
 <p>Adding customized elements may ‘break’ the visualization, so please exercise caution when doing so.</p>

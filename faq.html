@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
       </span>
     </div>
 
@@ -246,7 +246,7 @@
 <div id="i-cannot-install-the-package-with-installpackages-why-is-that" class="section level3">
 <h3 class="hasAnchor">
 <a href="#i-cannot-install-the-package-with-installpackages-why-is-that" class="anchor"></a>I cannot install the package with <code>install.packages()</code>. Why is that?</h3>
-<p>The reason why <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> will not work with <strong>wpa</strong> is because <strong>wpa</strong> is currently only available on GitHub and not on CRAN, and CRAN is where the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> downloads and installs R packages from. Instead, you should use <code>install_github()</code>:</p>
+<p>Since 6th April 2021, <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> should work with <strong>wpa</strong> as it is made available on CRAN on that date. If you continue to experience issues, please create an issue at <a href="https://github.com/microsoft/wpa/issues/" class="uri">https://github.com/microsoft/wpa/issues/</a>, and install with the development version in the mean time:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"microsoft/wpa"</span>, upgrade <span class="op">=</span> <span class="st">"never"</span><span class="op">)</span> </code></pre></div>
 <p>If the above does not work, please also try:</p>
@@ -273,9 +273,9 @@
 <a href="#which-version-of-r-should-i-use" class="anchor"></a>Which version of R should I use?</h3>
 <p>You are recommended to use the latest stable version of R. You can find the latest version on <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>.</p>
 </div>
-<div id="how-do-i-install-from-a-developmental--experimental-branch-of-the-package" class="section level3">
+<div id="how-do-i-install-from-a-development--experimental-branch-of-the-package" class="section level3">
 <h3 class="hasAnchor">
-<a href="#how-do-i-install-from-a-developmental--experimental-branch-of-the-package" class="anchor"></a>How do I install from a developmental / experimental branch of the package?</h3>
+<a href="#how-do-i-install-from-a-development--experimental-branch-of-the-package" class="anchor"></a>How do I install from a development / experimental branch of the package?</h3>
 <p>If you wish to install a version of the package from any branch <strong>other than the main branch</strong>, you can run the following code:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span>,

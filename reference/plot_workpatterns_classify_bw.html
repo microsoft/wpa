@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract date period — extract_date_range • wpa</title>
+<title>Plotting function for workpatterns_classify_bw() — plot_workpatterns_classify_bw • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,8 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Extract date period — extract_date_range" />
-<meta property="og:description" content="Return a data frame with the start and end date
-of the query data by default. There are options to return a descriptive
-string, which is used in the caption of plots in this package." />
+<meta property="og:title" content="Plotting function for workpatterns_classify_bw() — plot_workpatterns_classify_bw" />
+<meta property="og:description" content="Internal use only." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -222,68 +220,18 @@ string, which is used in the caption of plots in this package." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract date period</h1>
-    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/supporting_functions.R'><code>R/supporting_functions.R</code></a></small>
-    <div class="hidden name"><code>extract_date_range.Rd</code></div>
+    <h1>Plotting function for <code>workpatterns_classify_bw()</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/workpatterns_classify_bw.R'><code>R/workpatterns_classify_bw.R</code></a></small>
+    <div class="hidden name"><code>plot_workpatterns_classify_bw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return a data frame with the start and end date
-of the query data by default. There are options to return a descriptive
-string, which is used in the caption of plots in this package.</p>
+    <p>Internal use only.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extract_date_range</span><span class='op'>(</span><span class='va'>data</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>plot_workpatterns_classify_bw</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>Data frame containing a query to pass through.
-The data frame must contain a <code>Date</code> column.
-Accepts a Person query or a Meeting query.</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>String specifying what output to return.
-Returns a table by default ("table"), but allows returning
-a descriptive string ("text").</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A different output is returned depending on the value passed to the <code>return</code>
-argument:</p><ul>
-<li><p><code>"table"</code>: data frame. A summary table containing the start and end date
-for the dataset.</p></li>
-<li><p><code>"text"</code>: string. Contains a descriptive string on the start and end date
-for the dataset.</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Support: 
-<code><a href='camel_clean.html'>camel_clean</a>()</code>,
-<code><a href='check_inputs.html'>check_inputs</a>()</code>,
-<code><a href='combine_signals.html'>combine_signals</a>()</code>,
-<code><a href='cut_hour.html'>cut_hour</a>()</code>,
-<code><a href='extract_hr.html'>extract_hr</a>()</code>,
-<code><a href='heat_colours.html'>heat_colours</a>()</code>,
-<code><a href='is_date_format.html'>is_date_format</a>()</code>,
-<code><a href='maxmin.html'>maxmin</a>()</code>,
-<code><a href='p_test.html'>p_test</a>()</code>,
-<code><a href='pairwise_count.html'>pairwise_count</a>()</code>,
-<code><a href='plot_WOE.html'>plot_WOE</a>()</code>,
-<code><a href='read_preamble.html'>read_preamble</a>()</code>,
-<code><a href='rgb2hex.html'>rgb2hex</a>()</code>,
-<code><a href='totals_bind.html'>totals_bind</a>()</code>,
-<code><a href='totals_col.html'>totals_col</a>()</code>,
-<code><a href='totals_reorder.html'>totals_reorder</a>()</code>,
-<code><a href='tstamp.html'>tstamp</a>()</code>,
-<code><a href='us_to_space.html'>us_to_space</a>()</code>,
-<code><a href='wrap.html'>wrap</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
