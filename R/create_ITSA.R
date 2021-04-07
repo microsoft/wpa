@@ -3,12 +3,14 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Estimate an effect of intervention on every WPA metric in input file by applying
-#' single-group Interrupted Time-Series Analysis (ITSA)
+#' @title
+#' Estimate an effect of intervention on every WPA metric in input file by
+#' applying single-group Interrupted Time-Series Analysis (ITSA)
 #'
 #' @description
-#' This function implements ITSA method described in the paper 'Conducting interrupted time-series analysis for
-#' single- and multiple-group comparisons', Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500
+#' This function implements ITSA method described in the paper 'Conducting
+#' interrupted time-series analysis for single- and multiple-group comparisons',
+#' Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500
 #'
 #' @param data Person Query as a dataframe including date column named 'Date'
 #' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.
@@ -17,12 +19,12 @@
 #' @param after_start Start date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to day after before_end.
 #' @param after_end End date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to latest date in dataset.
 #' @param ac_lags_max maximum lag for autocorrelation test. Default is 7
-#' @param return String specifying what output to return. Defaults to "table".
+#' @param return String specifying what output to return. Defaults to `"table"`.
 #' Valid return options include:
-#'   - 'plot': return a list of plots.
-#'   - 'table': return data.frame with estimated models' coefficients and their corresponding p-values
-#'               You should look for significant p-values in beta_2 to indicate an immediate treatment effect,
-#'               and/or in beta_3 to indicate a treatment effect over time
+#'   - `'plot'`: return a list of plots.
+#'   - `'table'`: return data.frame with estimated models' coefficients and their corresponding p-values
+#'               You should look for significant p-values in `beta_2` to indicate an immediate treatment effect,
+#'               and/or in `beta_3` to indicate a treatment effect over time
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -34,18 +36,36 @@
 #' @family Flexible Input
 #' @family Interrupted Time-Series Analysis
 #'
+#'
+#' @examples
+#'
+#' # Returns summary table
+#'
+#' create_ITSA(
+#'   data = sq_data,
+#'   before_start = "11/03/2019",
+#'   before_end = "12/15/2019",
+#'   after_start = "12/29/2019",
+#'   after_end = "1/26/2020",
+#'   ac_lags_max = 7,
+#'   return = "table")
+#'
+#' # Returns list of plots
+#'
+#' plot_list <-
+#'   create_ITSA(
+#'     data = sq_data,
+#'     before_start = "11/03/2019",
+#'     before_end = "12/15/2019",
+#'     after_start = "12/29/2019",
+#'     after_end = "1/26/2020",
+#'     ac_lags_max = 7,
+#'     return = 'plot')
+#'
+#' # Extract a plot as an example
+#' plot_list$Workweek_span
+#'
 #' @export
-#'
-#' @example
-#' load(file='../data/sq_data.rda')
-#'
-#' before_start <- "11/03/2019"
-#' before_end <- "12/15/2019"
-#' after_start <- "12/29/2019"
-#' after_end <- "1/26/2020"
-#'
-#' result <- create_ITSA(sq_data, before_start, before_end, after_start, after_end, ac_lags_max = 7, return = 'table')
-#'
 
 create_ITSA <-
   function(data,
@@ -57,7 +77,7 @@ create_ITSA <-
            return = 'table') {
 
     ## Check inputs types
-    assert_that(is.data.frame(data) &&
+    assertthat::assert_that(is.data.frame(data) &&
                 is.character(before_start) &&
                 is.character(before_end) &&
                 is.character(after_start) &&
@@ -165,7 +185,8 @@ create_ITSA <-
 
         # Newey-West variance estimator produces consistent estimates when there
         # is autocorrelation in addition to possible Heteroscedasticity
-        coeff_pvalues <- coeftest(single_itsa, vcov = NeweyWest(single_itsa, lag = 0, prewhite = FALSE))
+        coeff_pvalues <- lmtest::coeftest(single_itsa,
+                                          vcov = sandwich::NeweyWest(single_itsa, lag = 0, prewhite = FALSE))
 
         beta_2 <- round(single_itsa$coefficients[3], 3)
         beta_3 <- round(single_itsa$coefficients[4], 3)
@@ -181,7 +202,7 @@ create_ITSA <-
         N <- length(residuals)
 
         # Run Ljung and Box Test to test for autocorrelation
-        lb_test <- LjungBox(single_itsa, lags=seq(1, ac_lags_max), order=4, season=1, squared.residuals=FALSE)
+        lb_test <- portes::LjungBox(single_itsa, lags=seq(1, ac_lags_max), order=4, season=1, squared.residuals=FALSE)
         ind_stat_significant_coeff <- which(lb_test[,'p-value'] <= 0.05)
 
         # LjungBox test identifies statistically significant lags then we use Newey-West method
@@ -190,7 +211,10 @@ create_ITSA <-
         if(0 < length(ind_stat_significant_coeff)){
           # The Newey & West (1987) estimator requires specification
           # of the lag and suppression of prewhitening
-          coeff_pvalues <- coeftest(single_itsa, vcov = NeweyWest(single_itsa, lag = max(ind_stat_significant_coeff), prewhite = FALSE))
+          coeff_pvalues <- lmtest::coeftest(single_itsa,
+                                            vcov = sandwich::NeweyWest(single_itsa,
+                                                                       lag = max(ind_stat_significant_coeff),
+                                                                       prewhite = FALSE))
           AR_flag <- TRUE
         }
 
