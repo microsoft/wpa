@@ -24,7 +24,30 @@ A data frame with 3517 rows and 7 variables:
 \usage{
 g2g_data
 }
+\value{
+data frame.
+}
 \description{
 A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
 }
+\seealso{
+Other Data: 
+\code{\link{dv_data}},
+\code{\link{em_data}},
+\code{\link{mt_data}},
+\code{\link{p2p_data_sim}()},
+\code{\link{sq_data}}
+
+Other Network: 
+\code{\link{external_network_plot}()},
+\code{\link{internal_network_plot}()},
+\code{\link{network_describe}()},
+\code{\link{network_g2g}()},
+\code{\link{network_leiden}()},
+\code{\link{network_louvain}()},
+\code{\link{network_p2p}()},
+\code{\link{p2p_data_sim}()}
+}
+\concept{Data}
+\concept{Network}
 \keyword{datasets}

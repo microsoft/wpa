@@ -8,6 +8,11 @@
 #' @description
 #' A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
 #'
+#' @family Data
+#' @family Network
+#'
+#' @return data frame.
+#'
 #' @format A data frame with 3517 rows and 7 variables:
 #' \describe{
 #'   \item{TimeInvestors_Organization}{ }

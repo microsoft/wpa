@@ -3,7 +3,8 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Tenure calculation based on different input dates, returns data summary table or histogram
+#' @title Tenure calculation based on different input dates, returns data
+#'   summary table or histogram
 #'
 #' @description
 #' This function calculates employee tenure based on different input dates.
@@ -13,14 +14,37 @@
 #' @family Data Validation
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param end_date A string specifying the name of the date variable representing the latest date. Defaults to "Date".
-#' @param beg_date A string specifying the name of the date variable representing the hire date. Defaults to "HireDate".
+#' @param end_date A string specifying the name of the date variable
+#'   representing the latest date. Defaults to "Date".
+#' @param beg_date A string specifying the name of the date variable
+#'   representing the hire date. Defaults to "HireDate".
 #' @param maxten A numeric value representing the maximum tenure.
 #' If the tenure exceeds this threshold, it would be accounted for in the flag message.
-#' @param return String to specify what to return.
-#' Defaults to "message".
-#' Other valid values include "text", "plot", "data_cleaned", "data_dirty", and "data".
-#' For "data", a data frame with the `PersonId` and a calculated variable called `TenureYear` is returned.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"message"`
+#'   - `"text"`
+#'   - `"plot"`
+#'   - `"data_cleaned"`
+#'   - `"data_dirty"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"message"`: message on console with a diagnostic message.
+#'   - `"text"`: string containing a diagnostic message.
+#'   - `"plot"`: 'ggplot' object. A line plot showing tenure.
+#'   - `"data_cleaned"`: data frame filtered only by rows with tenure values
+#'   lying within the threshold.
+#'   - `"data_dirty"`: data frame filtered only by rows with tenure values
+#'   lying outside the threshold.
+#'   - `"data"`: data frame with the `PersonId` and a calculated variable called
+#'   `TenureYear` is returned.
+#'
 #'
 #' @examples
 #' library(dplyr)
@@ -95,9 +119,11 @@ identify_tenure <- function(data,
     )
 
   } else if(return == "data_cleaned"){
+
     return(data %>% filter(!(PersonId %in% oddpeople$PersonId)) %>% data.frame())
 
   } else if(return == "data_dirty"){
+
     return(data %>% filter((PersonId %in% oddpeople$PersonId)) %>% data.frame())
 
   } else if(return == "data"){
@@ -108,7 +134,9 @@ identify_tenure <- function(data,
       select(PersonId, TenureYear)
 
   } else {
+
     stop("Error: please check inputs for `return`")
+
   }
 
 }

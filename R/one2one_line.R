@@ -17,6 +17,7 @@
 #' @inheritParams create_line
 #' @inherit create_line return
 #'
+#' @family Visualization
 #' @family Managerial Relations
 #'
 #' @examples

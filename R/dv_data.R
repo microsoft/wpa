@@ -6,7 +6,11 @@
 #' @title Sample Standard Person Query dataset for Data Validation
 #'
 #' @description
-#' A dataset generated from a Standard Person Query from WpA.
+#' A dataset generated from a Standard Person Query from Workplace Analytics.
+#'
+#' @family Data
+#'
+#' @return data frame.
 #'
 #' @format A data frame with 897 rows and 69 variables:
 #' \describe{

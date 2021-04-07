@@ -15,10 +15,17 @@ R is an open-source statistical programming language and one of the most popular
 
 ### I cannot install the package with `install.packages()`. Why is that?
 
-The reason why `install.packages()` will not work with **wpa** is because **wpa** is currently only available on GitHub and not on CRAN, and CRAN is where the function `install.packages()` downloads and installs R packages from. Instead, you should use `install_git()`:
+Since 6th April 2021, `install.packages()` should work with **wpa** as it is made available on CRAN on that date. If you continue to experience issues, please create an issue at https://github.com/microsoft/wpa/issues/, and install with the development version in the mean time: 
+
 ```R
-remotes::install_git(url = "https://github.com/microsoft/wpa.git") 
+remotes::install_github(repo = "microsoft/wpa", upgrade = "never") 
 ```
+If the above does not work, please also try:
+
+```R
+remotes::install_github(repo = "microsoft/wpa", upgrade = "never")
+```
+
 For more information regarding installation, please see our [Getting Started](https://microsoft.github.io/wpa/analyst_guide_getting_started.html) page.
 
 ### I see a warning message about the installation of Rtools. What should I do?
@@ -43,7 +50,7 @@ Make sure you follow the recommend installation steps listed on our [Getting Sta
 
 You are recommended to use the latest stable version of R. You can find the latest version on <https://www.r-project.org/>. 
 
-### How do I install from a developmental / experimental branch of the package?
+### How do I install from a development / experimental branch of the package?
 
 If you wish to install a version of the package from any branch **other than the main branch**, you can run the following code:
 ```R
@@ -52,6 +59,47 @@ devtools::install_git(url = "https://github.com/microsoft/wpa.git",
                       build_vignettes = TRUE)
 ```
 You should replace the `<BRANCH-NAME>` with the name of your target branch, such as `"feature/network-functions"`.
+
+### Should I install R to my OneDrive or a cloud folder? 
+
+No, you should not. You should never install the default directory for R to OneDrive, as R is a program and you are likely to experience significant cloud syncing issues if you do so. If you use Windows and have experienced this issue, please uninstall and follow the below steps for re-installation:
+
+1. Install RStudio to the default directory, e.g. `C:\Program Files\R\R-4.X.X\library\base\R\Rprofile` 
+2. Change the default RStudio package installation location so that it does not save to OneDrive, or another cloud drive. This ensures that OneDrive doesn’t attempt to upload the thousands of files that will be downloaded via the installation of the packages. The R folder where these packages install to is by default created in the Documents folder, which by automatically syncs with OneDrive. We will be moving the installation path to our local `C:` drive instead to prevent this.
+3. Create a local folder. Open `File Explorer` -> `C:` drive -> `Create New Folder` -> Name it `"R"`
+4. Change permissions:
+    - If you installed RStudio in the default directory, the path to your RProfile file is `C:\Program Files\R\R-4.X.X\library\base\R\Rprofile`
+    - Navigate to `C:\Program Files\R\R-4.X.X\library\base\`
+    - Double-click the base folder so that you’re looking at its contents, which include the R subfolder.
+    - Right-click on the R subfolder and select Properties.
+    - Click on the `Security` tab.
+    - Click on the `Edit` button.
+    - Scroll down the Group or user names pane and click on the Users line near the bottom of that list.
+    - In the `Permissions for users` pane, click on the `Full Control` checkbox under `Allow`.
+    - Click OK and OK again to save and exit these windows.
+5. Edit the `Rprofile` file:
+    - Ensure that RStudio is closed.
+    - Navigate to `C:\Program Files\R\R-4.X.X\library\base\R\`
+    - Open the `Rprofile` file with your preferred text editor.
+    - Save a copy of the file in the same directory and name it `"RProfileBackup.txt"`.
+    - Reopen the `Rprofile` file with your preferred text editor.
+    - Replace the string `Sys.getenv("R_USER")` with the string `"C:/R"`
+      - Ensure you are replacing the string `Sys.getenv("R_USER")` and NOT the string `Sys.getenv("R_LIBS_USER")`
+      - The string `"C:/R"` should align with the directory where you created the folder in step 3a
+      - Reference the `RProfileBackup.txt` as a backup if OneDrive uploads the package files after installation
+    - Save the file and close out of your text editor and File Explorer.
+
+You should then be able to install the **wpa** library by opening RStudio and running the following code:
+```R
+# Check if remotes is installed, if not then install it
+if(!"remotes" %in% installed.packages()){
+  install.packages("remotes")
+}
+remotes::install_github(repo = "microsoft/wpa", upgrade = "never")
+
+```
+
+You can then restart RStudio with `Ctrl` + `Shift` + `F10` in Windows.
 
 ## Import / Export
 

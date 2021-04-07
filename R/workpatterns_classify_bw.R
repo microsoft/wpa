@@ -3,29 +3,37 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Classify working pattern week archetypes using a rule based algorithm,
-#'   using the binary week-based (bw) method.
+#' @title Classify working pattern week archetypes using a rule-based algorithm,
+#'   using the binary week-based ('bw') method.
 #'
-#' @description `r lifecycle::badge('experimental')` Apply a rule based
-#' algorithm to emails sent by hour of day, using the binary week-based (bw)
-#' method.
+#' @description
+#' `r lifecycle::badge('experimental')`
+#'
+#' Apply a rule based algorithm to emails sent by hour of day, using the binary
+#' week-based ('bw') method.
 #'
 #' @param data A data frame containing email by hours data.
 #'
 #' @param hrvar A string specifying the HR attribute to cut the data by.
 #'   Defaults to NULL. This only affects the function when "table" is returned.
 #'
-#' @param return Character vector to specify what to return. Valid options
-#'   include: - "plot": returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default) - "data": returns the raw data with the classified
-#'   archetypes - "table": returns a summary table of the archetypes -
-#'   "plot-area": returns an area plot of the percentages of archetypes shown
-#'   over time
+#' @param return Character vector to specify what to return.
+#' Valid options include:
+#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
+#'   and archetypes (default)
+#'   - `"data"`: returns the raw data with the classified
+#'   archetypes
+#'   - `"table"`: returns a summary table of the archetypes
+#'   - `"plot-area"`: returns an area plot of the percentages of archetypes
+#'   shown over time
 #'
 #' @param signals Character vector to specify which collaboration metrics to
-#'   use: - "email" (default) for emails only - "IM" for Teams messages only, -
-#'   "unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-#'   only - or a combination of signals, such as `c("email", "IM")`
+#'   use:
+#'   - a combination of signals, such as `c("email", "IM")` (default)
+#'   - `"email"` for emails only
+#'   - `"IM"` for Teams messages only
+#'   - `"unscheduled_calls"` for Unscheduled Calls only
+#'   - `"meetings"` for Meetings only
 #'
 #' @param active_threshold A numeric value specifying the minimum number of
 #'   signals to be greater than in order to qualify as _active_. Defaults to 0.
@@ -35,17 +43,23 @@
 #' @param end_hour A character vector specifying finish hours,
 #' e.g. "1700"
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
+#'   and archetypes (default). A 'ggplot' object.
+#'   - `"data"`: returns a data frame of the raw data with the classified
+#'   archetypes
+#'   - `"table"`: returns a data frame of summary table of the archetypes
+#'   - `"plot-area"`: returns an area plot of the percentages of archetypes
+#'   shown over time. A 'ggplot' object.
+#'
 #' @import ggplot2
 #' @importFrom magrittr "%>%"
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
-#' @examples
-#' \dontrun{
-#' workpatterns_classify_bw(em_data)
-#' }
 #'
-#'
-#' @family Work Patterns
+#' @family Working Patterns
 #'
 workpatterns_classify_bw <- function(data,
                                      hrvar = NULL,
@@ -311,4 +325,149 @@ workpatterns_classify_bw <- function(data,
     stop("Invalid input for `return`.")
 
   }
+}
+
+#' @title Plotting function for `workpatterns_classify_bw()`
+#'
+#' @description Internal use only.
+
+plot_workpatterns_classify_bw <- function(data){
+
+  plot_table <-
+    data %>%
+    dplyr::mutate(
+      PersonasNet =
+        case_when(
+          Personas == "0 < 3 hours on" ~ "Low activity",
+          Personas == "1 Standard with breaks workday" ~ "Standard flexible",
+          Personas == "2 Standard continuous workday" ~ "Standard (non-stop)",
+          Personas == "3 Standard flexible workday" ~ "Standard flexible",
+          Personas == "4 Long flexible workday" ~ "Long with breaks",
+          Personas == "5 Long continuous workday" ~ "Long (non-stop)",
+          Personas == "6 Always on (13h+)" ~ "Always On",
+          TRUE ~ NA_character_
+          )
+    ) %>%
+    dplyr::count(PersonasNet) %>%
+    dplyr::mutate(Percent = n / sum(n, na.rm = TRUE))
+
+  # Create base plot ----------------------------------------------------------
+
+  base_df <-
+    dplyr::tibble(id = 1:6,
+               value = c("Always On",
+                         "Long (non-stop)",
+                         "Long with breaks",
+                         "Standard (non-stop)",
+                         "Standard flexible",
+                         "Low activity"),
+               text = c(rep("#FFFFFF", 3),
+                        rep("grey5", 3)),
+               fill = c(
+                 rgb2hex(50, 83, 105),
+                 rgb2hex(69, 113, 138),
+                 rgb2hex(65, 150, 168),
+                 rgb2hex(175, 175, 175),
+                 rgb2hex(114, 194, 217),
+                 rgb2hex(221, 221, 221)
+               ))
+
+  flexibility <-
+    c(0, 0, 4, 4, # Always On
+      0, 0, 2, 2, # Long (non-stop)
+      2, 2, 4, 4, # Long with breaks
+      0, 0, 2, 2, # Standard (non-stop)
+      2, 2, 4, 4, # Standard flexible
+      0, 0, 4, 4) # Low activity
+
+  act_level <-
+    c(6, 8, 8, 6, # Always On
+      4, 6, 6, 4, # Long (non-stop)
+      4, 6, 6, 4, # Long with breaks
+      2, 4, 4, 2, # Standard (non-stop)
+      2, 4, 4, 2, # Standard flexible
+      0, 2, 2, 0) # Low activity
+
+  main_plot_df <-
+    rbind(base_df,
+          base_df,
+          base_df,
+          base_df) %>%
+    arrange(id) %>%
+    mutate(Flexibility = flexibility,
+           ActivityLevel = act_level)
+
+  label_df <-
+    main_plot_df %>%
+    group_by(id, value) %>%
+    # Get mid-points of coordinates
+    summarise(flexibility = mean(Flexibility),
+              act_level = mean(ActivityLevel),
+              .groups = "drop") %>%
+    left_join(
+      plot_table,
+      by = c("value" = "PersonasNet")
+    ) %>%
+    # Get colours and fill back into the data
+    left_join(
+      base_df,
+      by = c("id", "value")
+    ) %>%
+    mutate(value2 = sub(" ", "\n", value)# ,
+           # text = ifelse(id %in% c(1, 2, 5, 6),"#FFFFFF", "black"),
+           # fill = ifelse(id %in% c(1, 2, 5, 6),"#1d627e", "#34b1e2")
+           ) %>%
+    mutate(Percent = paste(round(Percent * 100), "%")) %>%
+    mutate(Percent = ifelse(is.na(Percent), "0 %", Percent)) %>%
+    mutate(value2 = paste(value2, Percent, sep = "\n"))
+
+  colo_v <- setNames(base_df$fill, nm = base_df$value)
+  text_v <- setNames(base_df$text, nm = base_df$value)
+
+  ## UNCOMMENT TO DEBUG
+  # list(
+  #   base_df,
+  #   colo_v,
+  #   text_v,
+  #   main_plot_df,
+  #   label_df
+  # ) %>%
+  #   print()
+
+  main_plot_df %>%
+    ggplot(aes(x = Flexibility, y = ActivityLevel)) +
+    geom_polygon(
+      aes(fill = value,
+          group = id),
+      colour = "#FFFFFF",
+      size = 2) +
+    scale_fill_manual(values = colo_v) +
+    geom_text(data = label_df,
+              aes(x = flexibility,
+                  y = act_level,
+                  label = value2,
+                  colour = value),
+              size = 5) +
+    scale_colour_manual(values = text_v) +
+    scale_y_continuous(breaks = 0:8,
+                       labels = c("",
+                                  "< 3 hours", "",
+                                  "3 - 9 hours", "",
+                                  "9 - 12 hours", "",
+                                  "13+ hours", ""
+                                  )) +
+    scale_x_continuous(breaks = 0:4,
+                       labels = c("", "No breaks", "",
+                                  "Breaks", "")) +
+    labs(title = "Distribution of Working Patterns",
+         subtitle = "Classification of employee-weeks",
+         x = "Flexibility level (breaks)",
+         y = "Average activity level",
+         caption = extract_date_range(data, return = "text")) +
+    theme_wpa_basic() +
+    theme(
+      legend.position = "none",
+      axis.line = element_blank(),
+      axis.title = element_blank() # Toggle off axis title
+      )
 }

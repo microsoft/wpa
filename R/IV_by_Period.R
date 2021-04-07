@@ -3,27 +3,49 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Identify the WPA metrics that have the biggest change between two periods.
+#' @title Identify the WPA metrics that have the biggest change between two
+#'   periods.
 #'
 #' @description
-#' This function uses the Information Value algorithm to predict which WPA metrics are most explained by the change in dates.
+#' `r lifecycle::badge('experimental')`
+#'
+#' This function uses the Information Value algorithm to predict
+#' which Workplace Analytics metrics are most explained by the change in dates.
 #'
 #' @param data Person Query as a dataframe including date column named "Date"
-#' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.
-#' @param before_start Start date of "before" time period in YYYY-MM-DD. Defaults to earliest date in dataset.
-#' @param before_end End date of "before" time period in YYYY-MM-DD
-#' @param after_start Start date of "after" time period in YYYY-MM-DD. Defaults to day after before_end.
-#' @param after_end End date of "after" time period in YYYY-MM-DD. Defaults to latest date in dataset.
-#' @param mybins Number of bins to cut the data into for Information Value analysis. Defaults to 10.
-#' @param return  Specify whether to return a summary table or detailed Excel and PDF files
-#' Specify "table" or "detailed" for outputs. Defaults to table.
+#'   This function assumes the data format is `MM/DD/YYYY` as is standard in a
+#'   WpA query output.
+#' @param before_start Start date of "before" time period in `YYYY-MM-DD`.
+#'   Defaults to earliest date in dataset.
+#' @param before_end End date of "before" time period in `YYYY-MM-DD`
+#' @param after_start Start date of "after" time period in `YYYY-MM-DD`.
+#'   Defaults to day after before_end.
+#' @param after_end End date of "after" time period in `YYYY-MM-DD`. Defaults to
+#'   latest date in dataset.
+#' @param mybins Number of bins to cut the data into for Information Value
+#'   analysis. Defaults to 10.
+#' @param return  String specifying what to return. The current only valid
+#' option is `"table"`.
+#'
+#' @return
+#' data frame containing all the variables and the corresponding Information
+#' Value.
 #'
 #' @import dplyr
-#' @import Information
 #'
-#'
-#' @family Flexible Input
+#' @family Variable Association
 #' @family Information Value
+#' @family Time-series
+#'
+#' @examples
+#' # Returns a data frame
+#' sq_data %>%
+#'   IV_by_period(
+#'     before_start = "2019-11-03",
+#'     before_end = "2019-11-09",
+#'     after_start = "2019-11-10",
+#'     after_end = "2019-11-16"
+#'   )
 #'
 #' @export
 
@@ -35,6 +57,7 @@ IV_by_period <-
            after_end = max(as.Date(data$Date, "%m/%d/%Y")),
            mybins = 10,
            return = "table") {
+
     ## Check inputs
     required_variables <- c("Date",
                             "PersonId")
@@ -80,9 +103,6 @@ IV_by_period <-
       WpA_dataset_table %>% mutate(outcome = case_when(Period == "Before" ~ "0",
                                                        Period == 'After' ~ "1"))
 
-    # Make the use of exponential notation less likely
-    options(scipen = 10)
-
     # De-select character columns
     train <-
       WpA_dataset_table %>%
@@ -105,7 +125,11 @@ IV_by_period <-
     lnodds <- log(odds)
 
     # IV Analysis
-    IV <- create_infotables(data = train, y = "Outcome", bins = mybins)
+    # IV <- create_infotables(data = train, y = "Outcome", bins = mybins)
+    IV <- map_IV(data = train,
+                 outcome = "Outcome",
+                 bins = mybins)
+
 
     # if(return == "detailed"){
     #   # Ranking variables using  IV
@@ -144,7 +168,7 @@ IV_by_period <-
       }
 
       # Return ranking table
-      return(create_dt(Tables$Summary, rounding = 2))
+      return(Tables$Summary)
       # print("Access individual metrics via Outputs[[metric_name]], e.g., Outputs[[Workweek_span]]")
 
       # # Store each variable's plot

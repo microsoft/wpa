@@ -10,14 +10,10 @@
 #' Returns a faceted histogram by default.
 #' Additional options available to return the underlying frequency table.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character
-#'   vector, defaults to "Organization" but accepts any character vector, e.g.
-#'   "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group
-#'   size, defaults to 5.
+#'
 #'
 #' @param binwidth Numeric value for setting `binwidth` argument within
 #'   `ggplot2::geom_histogram()`. Defaults to 1.
@@ -34,7 +30,7 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: ggplot object. A faceted histogram for the metric.
+#'   - `"plot"`: 'ggplot' object. A faceted histogram for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'   - `"data"`: data frame. Data with calculated person averages.
 #'   - `"frequency`: list of data frames. Each data frame contains the
@@ -116,12 +112,17 @@ create_hist <- function(data,
 
   plot_object <-
     plot_data %>%
-    ggplot(aes(x = !!sym(metric), fill = group)) +
-    geom_histogram(binwidth = binwidth, colour = "white") +
+    ggplot(aes(x = !!sym(metric))) +
+    geom_histogram(binwidth = binwidth, colour = "white", fill="#34b1e2") +
     facet_wrap(group ~ .) +
     theme_wpa_basic() +
+    theme(strip.background = element_rect(color = "#1d627e",
+                                          fill = "#1d627e"),
+          strip.text = element_text(size = 10,
+                                    colour = "#FFFFFF",
+                                    face = "bold")) +
     labs(title = clean_nm,
-         subtitle = paste("Distribution of", clean_nm, "by", camel_clean(hrvar))) +
+         subtitle = paste("Distribution of", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
     xlab(clean_nm) +
     ylab("Number of employees") +
     labs(caption = extract_date_range(data, return = "text"))

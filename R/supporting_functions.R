@@ -16,10 +16,11 @@
 #' The default value is "stop". Also accepts "names" and "warning".
 #'
 #'
-#' @return The default behaviour is to return an error message,
-#' informing the user what variables are not included. When `return` is set
-#' to "names", a character vector containing the unmatched variable names
-#' is returned.
+#' @return The default behaviour is to return an error message, informing the
+#'   user what variables are not included. When `return` is set to "names", a
+#'   character vector containing the unmatched variable names is returned.
+#'
+#' @family Support
 #'
 #' @examples
 #'
@@ -86,8 +87,12 @@ check_inputs <- function(input, requirements, return = "stop"){
 #'
 #' @param string A string vector in 'CamelCase' format to format
 #'
+#' @family Support
+#'
 #' @examples
 #' camel_clean("NoteHowTheStringIsFormatted")
+#'
+#' @return Returns a formatted string.
 #'
 #' @export
 camel_clean <- function(string){
@@ -99,6 +104,10 @@ camel_clean <- function(string){
 #' @title Convert rgb to HEX code
 #'
 #' @param r,g,b Values that correspond to the three RGB parameters
+#'
+#' @family Support
+#'
+#' @return Returns a string containing a HEX code.
 #'
 #' @export
 rgb2hex <- function(r,g,b){
@@ -119,6 +128,16 @@ rgb2hex <- function(r,g,b){
 #' @param return String specifying what output to return.
 #' Returns a table by default ("table"), but allows returning
 #' a descriptive string ("text").
+#'
+#' @family Support
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"table"`: data frame. A summary table containing the start and end date
+#'   for the dataset.
+#'   - `"text"`: string. Contains a descriptive string on the start and end date
+#'   for the dataset.
 #'
 #' @export
 extract_date_range <- function(data, return = "table"){
@@ -165,9 +184,38 @@ extract_date_range <- function(data, return = "table"){
 #'
 #' @param x A numeric value
 #'
+#' @return Returns a formatted string.
+#'
 #' @export
 comma <- function(x){
   x <- round(x, 0)
   format(x, nsmall = 0, big.mark=",")
 }
 
+#' @title Check whether package is installed and return an error message
+#'
+#' @description Checks whether a package is installed in the user's machine
+#' based on a search on the package name string. If the package is not
+#' installed, an error message is returned.
+#'
+#' @param pkgname String containing the name of the package to check whether is
+#' installed.
+#'
+#' @noRd
+#'
+check_pkg_installed <- function(pkgname) {
+
+  mtry <- try(find.package(package = pkgname))
+
+  if (inherits(mtry, "try-error")) {
+    stop(
+      paste0(
+        "\n\nPackage ", wrap(pkgname, wrapper = "`"),
+        " is required to run this function and is currently not installed.\n",
+        "Please install package ",
+            wrap(pkgname, wrapper = "`"),
+            " to proceed. "
+            )
+      )
+  }
+}

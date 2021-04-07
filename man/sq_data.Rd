@@ -84,7 +84,19 @@ the last email or meeting for each day of the work week.}
 \usage{
 sq_data
 }
-\description{
-A dataset generated from a Standard Person Query from WpA.
+\value{
+data frame.
 }
+\description{
+A dataset generated from a Standard Person Query from Workplace Analytics.
+}
+\seealso{
+Other Data: 
+\code{\link{dv_data}},
+\code{\link{em_data}},
+\code{\link{g2g_data}},
+\code{\link{mt_data}},
+\code{\link{p2p_data_sim}()}
+}
+\concept{Data}
 \keyword{datasets}

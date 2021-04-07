@@ -5,9 +5,10 @@
 
 #' @title Fabricate a 'Total' HR variable
 #'
-#' @description Create a 'Total' column of character type comprising exactly of one unique value.
-#' This is a convenience function for returning a no-HR attribute view when NULL is supplied to
-#' the `hrvar` argument in functions.
+#' @description Create a 'Total' column of character type comprising exactly of
+#'   one unique value. This is a convenience function for returning a no-HR
+#'   attribute view when `NULL` is supplied to the `hrvar` argument in
+#'   functions.
 #'
 #' @examples
 #' # Create a visual without HR attribute breaks
@@ -16,9 +17,15 @@
 #'   collab_fizz(hrvar = "Total")
 #'
 #' @param data data frame
-#' @param total_value Character value defining the name and the value of the "Total" column.
-#' Defaults to "Total". An error is returned if an existing variable has the same name as the
-#' supplied value.
+#' @param total_value Character value defining the name and the value of the
+#'   `"Total"` column. Defaults to `"Total"`. An error is returned if an
+#'   existing variable has the same name as the supplied value.
+#'
+#' @return
+#' data frame containing an additional 'Total' column on top of the input data
+#' frame.
+#'
+#' @family Support
 #'
 #' @export
 totals_col <- function(data, total_value = "Total"){

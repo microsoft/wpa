@@ -6,31 +6,48 @@
 #' @title Email Hours Ranking
 #'
 #' @description
-#' This function scans a standard query output for groups with high levels of 'Weekly Email Collaboration'.
-#' Returns a table with a all of groups (across multiple HR attributes) ranked by hours of digital collaboration.
+#' This function scans a standard query output for groups with high levels of
+#' 'Weekly Email Collaboration'. Returns a table with a all of groups (across
+#' multiple HR attributes) ranked by hours of digital collaboration.
 #'
 #' @details
 #' Uses the metric `Email_hours`.
 #' See `create_rank()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_rank
+#' @inherit create_rank return
 #'
+#' @family Visualization
 #' @family Emails
 #'
-#' @return
-#' When 'table' is passed in `return`, a summary table is returned as a data frame.
+#' @examples
+#' # Return rank table
+#' email_rank(
+#'   data = sq_data,
+#'   return = "table"
+#' )
+#'
+#' # Return plot
+#' email_rank(
+#'   data = sq_data,
+#'   return = "plot"
+#' )
 #'
 #' @export
 
 email_rank <- function(data,
                        hrvar = extract_hr(data),
                        mingroup = 5,
+                       mode = "simple",
+                       plot_mode = 1,
                        return = "table"){
 
   data %>%
     create_rank(metric = "Email_hours",
                 hrvar = hrvar,
                 mingroup = mingroup,
+                mode = mode,
+                plot_mode = plot_mode,
                 return = return)
 
 }

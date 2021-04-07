@@ -6,23 +6,37 @@
 #' @title Clean subject line text prior to analysis
 #'
 #' @description
-#' This function processes the `Subject` column in a Meeting Query by
-#' applying tokenisation using`tidytext::unnest_tokens()`, and removing
-#' any stopwords supplied in a data frame (using the argument `stopwords`).
-#' This is a sub-function that feeds into `tm_freq()`, `tm_cooc()`, and `tm_wordcloud()`.
-#' The default is to return a data frame with tokenised counts of words or ngrams.
+#' This function processes the `Subject` column in a Meeting Query by applying
+#' tokenisation using`tidytext::unnest_tokens()`, and removing any stopwords
+#' supplied in a data frame (using the argument `stopwords`). This is a
+#' sub-function that feeds into `tm_freq()`, `tm_cooc()`, and `tm_wordcloud()`.
+#' The default is to return a data frame with tokenised counts of words or
+#' ngrams.
 #'
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param token A character vector accepting either "words" or "ngram", determining
-#' type of tokenisation to return.
-#' @param stopwords A single-column data frame labelled 'word' containing custom stopwords to remove.
+#' @param token A character vector accepting either `"words"` or `"ngrams"`,
+#'   determining type of tokenisation to return.
+#' @param stopwords A single-column data frame labelled `'word'` containing
+#'   custom stopwords to remove.
 #'
 #' @import dplyr
 #' @import ggplot2
 #' @importFrom tidytext unnest_tokens
 #'
 #' @family Text-mining
+#'
+#' @examples
+#' # words
+#' tm_clean(mt_data)
+#'
+#' # ngrams
+#' tm_clean(mt_data, token = "ngrams")
+#'
+#' @return
+#' data frame with two columns:
+#' - `line`
+#' - `word`
 #'
 #' @export
 tm_clean <- function(data,
@@ -52,7 +66,6 @@ tm_clean <- function(data,
 
   }
 
-  text_df <- text_df %>% anti_join(stopwords)
+  text_df %>% anti_join(stopwords)
 
-  return(text_df)
 }

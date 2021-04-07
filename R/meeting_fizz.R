@@ -6,18 +6,24 @@
 #' @title Distribution of Meeting Hours (Fizzy Drink plot)
 #'
 #' @description
-#' Analyze weekly meeting hours distribution, and returns
-#' a 'fizzy' scatter plot by default.
-#' Additional options available to return a table with distribution elements.
+#' Analyze weekly meeting hours distribution, and returns a 'fizzy' scatter plot
+#' by default. Additional options available to return a table with distribution
+#' elements.
 #'
 #' @details
 #' Uses the metric `Meeting_hours`.
 #'
 #' @inheritParams create_fizz
+#' @inherit create_fizz return
 #'
+#' @family Visualization
 #' @family Meetings
 #'
 #' @examples
+#' # Return plot
+#' meeting_fizz(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' # Return summary table
 #' meeting_fizz(sq_data, hrvar = "Organization", return = "table")
 #' @export
 

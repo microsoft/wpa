@@ -3,24 +3,37 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Analyse word co-occurrence in subject lines and return a network plot
+#' @title
+#' Analyse word co-occurrence in subject lines and return a network plot
 #'
 #' @description
-#' This function generates a word co-occurence network plot,
-#' with options to return a table.
-#' This is a sub-function that feeds into `meeting_tm_report()`.
+#' This function generates a word co-occurence network plot, with options to
+#' return a table. This function is used within `meeting_tm_report()`.
 #'
 #' @details
 #' This function uses `tm_clean()` as the underlying data wrangling function.
-#' There is an option to remove stopwords by passing a data frame into the `stopwords`
-#' argument.
+#' There is an option to remove stopwords by passing a data frame into the
+#' `stopwords` argument.
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param stopwords A single-column data frame labelled 'word' containing custom stopwords to remove.
+#' @param stopwords A single-column data frame labelled 'word' containing custom
+#'   stopwords to remove.
 #' @param seed A numeric vector to set seed for random generation.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
-#' @param lmult A multiplier to adjust the line width in the output plot. Defaults to 0.05.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @param lmult A multiplier to adjust the line width in the output plot.
+#'   Defaults to 0.05.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: 'ggplot' and 'ggraph' object. A network plot.
+#'   - `"table"`: data frame. A summary table.
 #'
 #' @import dplyr
 #' @import ggplot2

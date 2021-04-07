@@ -10,11 +10,21 @@
 #' Returns a stacked bar plot of different buckets of coattendance.
 #' Additional options available to return a table with distribution elements.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#' @template spq-params
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A stacked bar plot showing the distribution of
+#'   manager co-attendance time.
+#'   - `"table"`: data frame. A summary table for manager co-attendance time.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -23,14 +33,22 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
+#' @family Visualization
 #' @family Managerial Relations
-#' @family Meeting Culture
 #'
 #' @examples
-#' workloads_dist(sq_data, hrvar = "Organization", return = "table")
+#' # Return plot
+#' mgrcoatt_dist(sq_data, hrvar = "Organization", return = "plot")
+#'
+#' # Return summary table
+#' mgrcoatt_dist(sq_data, hrvar = "Organization", return = "table")
+#'
 #' @export
 
-mgrcoatt_dist <- function(data, hrvar = "Organization", mingroup = 5, return = "plot") {
+mgrcoatt_dist <- function(data,
+                          hrvar = "Organization",
+                          mingroup = 5,
+                          return = "plot") {
 
 myPeriod <-
     data %>%
@@ -56,10 +74,11 @@ myPeriod <-
   ## Create buckets of coattendance time
   plot_data <-
     plot_data %>%
-    mutate(bucket_coattendman_rate = case_when(coattendman_rate>=0 &  coattendman_rate<.20 ~ "0 - 20%",
-                                                                        coattendman_rate>=.20 & coattendman_rate<.4 ~ "20 - 40%",
-                                                                        coattendman_rate>=.40 & coattendman_rate<.6 ~ "40 - 60%",
-                                                                        coattendman_rate>=.6 ~ "60% +"))
+    mutate(bucket_coattendman_rate =
+             case_when(coattendman_rate>=0 &  coattendman_rate<.25 ~ "0 - 25%",
+                       coattendman_rate>=.25 & coattendman_rate<.5 ~ "25 - 50%",
+                       coattendman_rate>=.50 & coattendman_rate<.75 ~ "50 - 75%",
+                       coattendman_rate>=.75 ~ "75% +"))
 
 
   ## Employee count / base size table
@@ -74,7 +93,8 @@ myPeriod <-
     plot_data %>%
     group_by(group, bucket_coattendman_rate) %>%
     summarize(Employees=n(),
-              Employee_Count=first(Employee_Count), percent= Employees / Employee_Count) %>%
+              Employee_Count=first(Employee_Count),
+              percent= Employees / Employee_Count) %>%
     arrange(group, bucket_coattendman_rate)
 
   ## Table for annotation
@@ -87,19 +107,23 @@ myPeriod <-
     plot_table %>%
     ggplot(aes(x = group, y=Employees, fill = bucket_coattendman_rate)) +
     geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
-	coord_flip() +
-	scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
-	annotate("text", x = plot_legend$group, y = -.05, label = plot_legend$Employee_Count ) +
-	scale_fill_manual(name="", values = c("#bed6f2", "#e9f1fb","#ffdfd3","#FE7F4F")) +
-	theme_classic() +
-    theme(axis.text=element_text(size=12),
-          plot.title = element_text(color="grey40", face="bold", size=18),
-          plot.subtitle = element_text(size=14), legend.position = "top", legend.justification = "right",
-          legend.title=element_text(size=14), legend.text=element_text(size=14)) +
-	labs(title = "Time with Manager", subtitle = paste("Meeting Co-attendance Rate by", hrvar)) +
-	xlab(hrvar) +
-	ylab("Fraction of Employees") +
-	labs(caption = paste("Data from week of", myPeriod$Start, "to week of", myPeriod$End))
+  	coord_flip() +
+  	scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
+  	annotate("text",
+  	         x = plot_legend$group,
+  	         y = -.05,
+  	         label = plot_legend$Employee_Count) +
+  	scale_fill_manual(name="",
+  	                  values = c("#bed6f2",
+  	                             "#e9f1fb",
+  	                             "#ffdfd3",
+  	                             "#FE7F4F")) +
+    theme_wpa_basic() +
+  	labs(title = "Time with Manager",
+  	     subtitle = paste("Meeting Co-attendance Rate by", hrvar),
+  	     x = camel_clean(hrvar),
+  	     y = "Fraction of Employees",
+  	     caption = extract_date_range(data, return = "text"))
 
   ## Table to return
   return_table <-

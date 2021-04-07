@@ -6,10 +6,10 @@
 #' @title After-hours Collaboration Time Trend - Line Chart
 #'
 #' @description
-#' Provides a week by week view of after-hours collaboration time, visualized as line charts.
-#' By default returns a line chart for after-hours collaboration hours,
-#' with a separate panel per value in the HR attribute.
-#' Additional options available to return a summary table.
+#' Provides a week by week view of after-hours collaboration time, visualized as
+#' line charts. By default returns a line chart for after-hours collaboration
+#' hours, with a separate panel per value in the HR attribute. Additional
+#' options available to return a summary table.
 #'
 #' @details
 #' Uses the metric `After_hours_collaboration_hours`.
@@ -19,7 +19,8 @@
 #' @inheritParams create_line
 #' @inherit create_line return
 #'
-#' @family After-Hours
+#' @family Visualization
+#' @family After-hours Collaboration
 #'
 #' @examples
 #' # Return a line plot
@@ -36,7 +37,7 @@ afterhours_line <- function(data,
                             return = "plot"){
 
   ## Inherit arguments
-  output <- create_line(data = data,
+  create_line(data = data,
               metric = "After_hours_collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,

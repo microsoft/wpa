@@ -5,19 +5,21 @@
 
 #' @title Generate Meeting Text Mining report in HTML for Common Exclusion Terms
 #'
-#' @description
-#' This functions creates a text mining report in HTML based on Meeting Subject Lines for data validation. It scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-#' Returns a HTML report by default.
+#' @description This functions creates a text mining report in HTML based on
+#' Meeting Subject Lines for data validation. It scans a meeting query and
+#' highlights meetings with subjects that include common exlusion terms. It is
+#' intended to be used by an analyst to validate raw data before conducting
+#' additional analysis. Returns a HTML report by default.
 #'
 #' @family Data Validation
 #' @family Text-mining
 #' @family Reports
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' For example, "meeting text mining report".
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
-#' Defaults to TRUE.
+#' @param path Pass the file path and the desired file name, _excluding the file
+#'   extension_. For example, `"meeting text mining report"`.
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to `TRUE`.
 #' @param keep A numeric vector specifying maximum number of words to keep.
 #' @param seed A numeric vector to set seed for random generation.
 #'

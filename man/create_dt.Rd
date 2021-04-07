@@ -14,6 +14,20 @@ create_dt(x, rounding = 1, freeze = 2)
 \item{freeze}{Number of columns from the left to 'freeze'. Defaults to 2,
 which includes the row number column.}
 }
-\description{
-See https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/ for more.
+\value{
+Returns an HTML widget displaying rectangular data.
 }
+\description{
+See
+\url{https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/}
+for more.
+}
+\seealso{
+Other Import and Export: 
+\code{\link{copy_df}()},
+\code{\link{export}()},
+\code{\link{import_to_fst}()},
+\code{\link{import_wpa}()},
+\code{\link{standardise_pq}()}
+}
+\concept{Import and Export}

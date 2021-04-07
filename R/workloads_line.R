@@ -14,7 +14,8 @@
 #' @inheritParams create_line
 #' @inherit create_line return
 #'
-#' @family Workloads
+#' @family Visualization
+#' @family Workweek Span
 #'
 #' @examples
 #' # Return a line plot
@@ -31,10 +32,10 @@ workloads_line <- function(data,
                            return = "plot"){
 
   ## Inherit arguments
-  output <- create_line(data = data,
-                        metric = "Workweek_span",
-                        hrvar = hrvar,
-                        mingroup = mingroup,
-                        return = return)
+  create_line(data = data,
+              metric = "Workweek_span",
+              hrvar = hrvar,
+              mingroup = mingroup,
+              return = return)
 
 }

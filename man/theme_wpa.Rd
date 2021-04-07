@@ -2,7 +2,7 @@
 % Please edit documentation in R/themes.R
 \name{theme_wpa}
 \alias{theme_wpa}
-\title{Main theme for {wpa} visualisations}
+\title{Main theme for 'wpa' visualisations}
 \usage{
 theme_wpa(font_size = 12, font_family = "Segoe UI")
 }
@@ -12,12 +12,20 @@ for the plot. The text elements are defined relatively to this
 base font size. Defaults to 12.}
 
 \item{font_family}{Character value specifying the font family
-to be used in the plot. The default value is "Segoe UI". To ensure
+to be used in the plot. The default value is \code{"Segoe UI"}. To ensure
 you can use this font, install and load {extrafont} prior to
 plotting. There is an initialisation process that is described by:
-https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2}
+\url{https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2}}
+}
+\value{
+Returns a ggplot object with the applied theme.
 }
 \description{
-A theme function applied to ggplot visualisations in {wpa}.
-Install and load {extrafont} to use custom fonts for plotting.
+A theme function applied to 'ggplot' visualisations in 'wpa'.
+Install and load 'extrafont' to use custom fonts for plotting.
 }
+\seealso{
+Other Themes: 
+\code{\link{theme_wpa_basic}()}
+}
+\concept{Themes}

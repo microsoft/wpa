@@ -15,18 +15,33 @@ workpatterns_rank(
 \arguments{
 \item{data}{A data frame containing hourly collaboration data.}
 
-\item{signals}{Character vector to specify which collaboration metrics to use:
-You may use "email" (default) for emails only, "IM" for Teams messages only,
-or a combination of the two \code{c("email", "IM")}.}
+\item{signals}{Character vector to specify which collaboration metrics to
+use: You may use \code{"email"} (default) for emails only, \code{"IM"} for Teams
+messages only, or a combination of the two \code{c("email", "IM")}.}
 
 \item{start_hour}{A character vector specifying starting hours,
-e.g. "0900"}
+e.g. "\verb{0900"}}
 
 \item{end_hour}{A character vector specifying starting hours,
-e.g. "1700"}
+e.g. \code{"1700"}}
 
-\item{return}{String specifying what to return. Defaults to "plot",
-with options to return a summary table ("table").}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: ggplot object. A plot with the y-axis showing the top ten
+working patterns and the x-axis representing each hour of the day.
+\item \code{"table"}: data frame. A summary table for the top working patterns.
+}
 }
 \description{
 Takes in an Hourly Collaboration query and returns a count
@@ -37,3 +52,86 @@ least.
 workpatterns_rank(em_data)
 
 }
+\seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{mgrrel_matrix}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()}
+
+Other Working Patterns: 
+\code{\link{flex_index}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
+\code{\link{plot_flex_index}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_classify_bw}()},
+\code{\link{workpatterns_classify_pav}()},
+\code{\link{workpatterns_classify}()},
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_report}()}
+}
+\concept{Visualization}
+\concept{Working Patterns}

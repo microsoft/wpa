@@ -9,24 +9,29 @@ subject_validate(data, return = "text")
 \arguments{
 \item{data}{A meeting query in the form of a data frame.}
 
-\item{return}{A string specifying what to return.
-Returns a message in the console by default, where 'text' is passed in \code{return}.
-When 'table' is passed, a summary table with common terms found is printed.
-When 'data' is passed, a the original data with an additional flag column is returned as a data frame.}
+\item{return}{A string specifying what to return. Returns a message in the
+console by default, where \code{'text'} is passed in \code{return}. When \code{'table'} is
+passed, a summary table with common terms found is printed. When \code{'data'}
+is passed, a the original data with an additional flag column is returned
+as a data frame.}
 }
 \value{
-Returns a message in the console by default, where 'text' is passed in \code{return}.
-When 'table' is passed, a summary table with common terms found is printed.
-When 'data' is passed, a the original data with an additional flag column is returned as a data frame.
+Returns a message in the console by default, where \code{'text'} is passed
+in \code{return}. When \code{'table'} is passed, a summary table with common terms
+found is printed. When \code{'data'} is passed, a the original data with an
+additional flag column is returned as a data frame.
 }
 \description{
-This functions scans a meeting query and highlights meetings with subjects that include common exlusion terms. It is intended to be used by an analyst to validate raw data before conducting additional analysis.
-Returns a summary in the console by default.
-Additional option to return the underlying data with a flag of items for review.
+This functions scans a meeting query and highlights meetings with subjects
+that include common exlusion terms. It is intended to be used by an analyst
+to validate raw data before conducting additional analysis. Returns a summary
+in the console by default. Additional option to return the underlying data
+with a flag of items for review.
 }
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -34,15 +39,30 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
+
+Other Text-mining: 
+\code{\link{meeting_tm_report}()},
+\code{\link{pairwise_count}()},
+\code{\link{subject_validate_report}()},
+\code{\link{tm_clean}()},
+\code{\link{tm_cooc}()},
+\code{\link{tm_freq}()},
+\code{\link{tm_wordcloud}()}
 }
 \concept{Data Validation}
+\concept{Text-mining}

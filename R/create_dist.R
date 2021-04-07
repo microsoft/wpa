@@ -10,27 +10,28 @@
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
 #'
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
 #'
 #' See `Value` for more information.
 #'
-#' @param cut A numeric vector of length three to specify the breaks for the distribution,
+#' @param cut A numeric vector of length three to specify the breaks for the
+#'   distribution,
 #' e.g. c(10, 15, 20)
 #' @param dist_colours A character vector of length four to specify colour
 #' codes for the stacked bars.
-#' @param unit See `cut_hour()`.
+#' @param unit String to specify what units. This defaults to `"hours"` but can
+#'   accept any custom string. See `cut_hour()` for more details.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A stacked bar plot for the metric.
+#'   - `"plot"`: 'ggplot' object. A stacked bar plot for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
@@ -41,6 +42,7 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
+#' @family Visualization
 #' @family Flexible
 #'
 #' @examples
@@ -128,14 +130,19 @@ create_dist <- function(data,
     plot_table %>%
     ggplot(aes(x = group, y=Employees, fill = bucket_hours)) +
     geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
-    scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
+    scale_y_continuous(expand = c(.01, 0), labels = function(x) paste0(x*100, "%"), position = "right") +
     coord_flip() +
-    annotate("text", x = plot_legend$group, y = -.05, label = plot_legend$Employee_Count ) +
+    annotate("text", x = plot_legend$group, y = 1.06, label = plot_legend$Employee_Count, size=3 ) +
+	annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = 1.02, ymax = 1.1, alpha = .2) +
+	annotate(x=length(plot_legend$group) + 0.8, xend=length(plot_legend$group) + 0.8, y=0, yend=1, colour="black", lwd=0.75, geom="segment") +
     scale_fill_manual(name="",
                       values = rev(dist_colours)) +
     theme_wpa_basic() +
+	theme(axis.line = element_blank(),   
+		axis.ticks = element_blank(),   
+		axis.title.y = element_blank()) +
     labs(title = clean_nm,
-         subtitle = paste("Distribution of", clean_nm, "by", camel_clean(hrvar))) +
+         subtitle = paste("Distribution of", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
     xlab(camel_clean(hrvar)) +
     ylab("Fraction of employees") +
     labs(caption = extract_date_range(data, return = "text"))

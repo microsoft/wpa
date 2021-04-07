@@ -3,32 +3,38 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Sankey chart of org between HR attributes (Defaults to Organization) and NA (outside company move) (Data Overview)
+#' @title Sankey chart of organizational movement between HR attributes and
+#'   missing values (outside company move) (Data Overview)
 #'
 #' @description
 #' Creates a list of everyone at a specified start date and a specified end date
-#' then aggregates up people who have moved between orgs between this to points of time
-#' and visualiazes the move through a sankey chart.
+#' then aggregates up people who have moved between orgs between this to points
+#' of time and visualiazes the move through a sankey chart.
 #' Through this chart you can see:
 #' -  The HR attribute/orgs that have the highest move out
 #' -  The HR attribute/orgs that have the highest move in
-#' -  The number of people that do not have that HR attribute ot  they are no longer in the system
+#' -  The number of people that do not have that HR attribute ot  they are no
+#' longer in the system
 #'
 #' @param data A Person Query dataset in the form of a data frame.
 #' @param start_date A start date to compare changes. See `end_date`.
 #' @param end_date An end date to compare changes. See `start_date`.
-#' @param hrvar HR Variable by which to compare changes between, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
-#' @param NA_replacement Character replacement for NA defaults to "out of company"
+#' @param hrvar HR Variable by which to compare changes between, defaults to
+#'   `"Organization"` but accepts any character vector, e.g.
+#'   `"LevelDesignation"`
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#' @param return Character vector specifying what to return, defaults to
+#'   `"plot"`. Valid inputs are `"plot"` and `"table"`.
+#' @param NA_replacement Character replacement for NA defaults to "out of
+#'   company"
 #'
 #' @import dplyr
 #'
 #' @family Data Validation
 #'
 #' @return
-#' Returns a NetworkD3 object by default, where 'plot' is passed in `return`.
+#' Returns a 'NetworkD3' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples

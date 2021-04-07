@@ -6,15 +6,23 @@
 #' @title Convert a numeric variable for hours into categorical
 #'
 #' @description
-#' Supply a numeric variable, e.g. `Collaboration_hours`,
-#' and the function returns a character vector
+#' Supply a numeric variable, e.g. `Collaboration_hours`, and return a character
+#' vector.
+#'
+#' @details
+#' This is used within `create_dist()` for numeric to categorical conversion.
 #'
 #' @param metric A numeric variable representing hours.
-#' @param cuts A numeric variable of minimum length 3 to represent the
-#' cut points required.
+#' @param cuts A numeric vector of minimum length 3 to represent the
+#' cut points required. The minimum and maximum values provided in the vector
+#' are inclusive.
 #' @param unit String to specify the unit of the labels. Defaults to "hours".
 #'
-#' @family General
+#' @family Support
+#'
+#' @return
+#' Character vector representing a converted categorical variable, appended
+#' with the label of the unit. See `examples` for more information.
 #'
 #' @examples
 #' # Direct use

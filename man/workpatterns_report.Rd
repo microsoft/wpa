@@ -44,3 +44,30 @@ This function takes a Hourly Collaboration query and generates a HTML report
 on working patterns archetypes. Archetypes are created using the binary-week
 method.
 }
+\seealso{
+Other Reports: 
+\code{\link{IV_report}()},
+\code{\link{capacity_report}()},
+\code{\link{coaching_report}()},
+\code{\link{collaboration_report}()},
+\code{\link{connectivity_report}()},
+\code{\link{generate_report}()},
+\code{\link{meeting_tm_report}()},
+\code{\link{read_preamble}()},
+\code{\link{subject_validate_report}()},
+\code{\link{validation_report}()}
+
+Other Working Patterns: 
+\code{\link{flex_index}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
+\code{\link{plot_flex_index}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_classify_bw}()},
+\code{\link{workpatterns_classify_pav}()},
+\code{\link{workpatterns_classify}()},
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()}
+}
+\concept{Reports}
+\concept{Working Patterns}

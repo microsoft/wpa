@@ -2,7 +2,8 @@
 % Please edit documentation in R/IV_by_Period.R
 \name{IV_by_period}
 \alias{IV_by_period}
-\title{Identify the WPA metrics that have the biggest change between two periods.}
+\title{Identify the WPA metrics that have the biggest change between two
+periods.}
 \usage{
 IV_by_period(
   data,
@@ -16,31 +17,65 @@ IV_by_period(
 }
 \arguments{
 \item{data}{Person Query as a dataframe including date column named "Date"
-This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.}
+This function assumes the data format is \code{MM/DD/YYYY} as is standard in a
+WpA query output.}
 
-\item{before_start}{Start date of "before" time period in YYYY-MM-DD. Defaults to earliest date in dataset.}
+\item{before_start}{Start date of "before" time period in \code{YYYY-MM-DD}.
+Defaults to earliest date in dataset.}
 
-\item{before_end}{End date of "before" time period in YYYY-MM-DD}
+\item{before_end}{End date of "before" time period in \code{YYYY-MM-DD}}
 
-\item{after_start}{Start date of "after" time period in YYYY-MM-DD. Defaults to day after before_end.}
+\item{after_start}{Start date of "after" time period in \code{YYYY-MM-DD}.
+Defaults to day after before_end.}
 
-\item{after_end}{End date of "after" time period in YYYY-MM-DD. Defaults to latest date in dataset.}
+\item{after_end}{End date of "after" time period in \code{YYYY-MM-DD}. Defaults to
+latest date in dataset.}
 
-\item{mybins}{Number of bins to cut the data into for Information Value analysis. Defaults to 10.}
+\item{mybins}{Number of bins to cut the data into for Information Value
+analysis. Defaults to 10.}
 
-\item{return}{Specify whether to return a summary table or detailed Excel and PDF files
-Specify "table" or "detailed" for outputs. Defaults to table.}
+\item{return}{String specifying what to return. The current only valid
+option is \code{"table"}.}
+}
+\value{
+data frame containing all the variables and the corresponding Information
+Value.
 }
 \description{
-This function uses the Information Value algorithm to predict which WPA metrics are most explained by the change in dates.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+This function uses the Information Value algorithm to predict
+which Workplace Analytics metrics are most explained by the change in dates.
+}
+\examples{
+# Returns a data frame
+sq_data \%>\%
+  IV_by_period(
+    before_start = "2019-11-03",
+    before_end = "2019-11-09",
+    after_start = "2019-11-10",
+    after_end = "2019-11-16"
+  )
+
 }
 \seealso{
-Other Flexible Input: 
-\code{\link{period_change}()}
+Other Variable Association: 
+\code{\link{IV_report}()},
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
 
 Other Information Value: 
 \code{\link{IV_report}()},
-\code{\link{create_IV}()}
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
+
+Other Time-series: 
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_trend}()},
+\code{\link{period_change}()}
 }
-\concept{Flexible Input}
 \concept{Information Value}
+\concept{Time-series}
+\concept{Variable Association}

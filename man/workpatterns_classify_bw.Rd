@@ -2,8 +2,8 @@
 % Please edit documentation in R/workpatterns_classify_bw.R
 \name{workpatterns_classify_bw}
 \alias{workpatterns_classify_bw}
-\title{Classify working pattern week archetypes using a rule based algorithm,
-using the binary week-based (bw) method.}
+\title{Classify working pattern week archetypes using a rule-based algorithm,
+using the binary week-based ('bw') method.}
 \usage{
 workpatterns_classify_bw(
   data,
@@ -22,9 +22,14 @@ workpatterns_classify_bw(
 Defaults to NULL. This only affects the function when "table" is returned.}
 
 \item{signals}{Character vector to specify which collaboration metrics to
-use: - "email" (default) for emails only - "IM" for Teams messages only, -
-"unscheduled_calls" for Unscheduled Calls only - "meetings" for Meetings
-only - or a combination of signals, such as \code{c("email", "IM")}}
+use:
+\itemize{
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+}}
 
 \item{start_hour}{A character vector specifying start hours,
 e.g. "0900"}
@@ -35,34 +40,48 @@ e.g. "1700"}
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
-\item{return}{Character vector to specify what to return. Valid options
-include: - "plot": returns a heatmap plot of signal distribution by hour
-and archetypes (default) - "data": returns the raw data with the classified
-archetypes - "table": returns a summary table of the archetypes -
-"plot-area": returns an area plot of the percentages of archetypes shown
-over time}
+\item{return}{Character vector to specify what to return.
+Valid options include:
+\itemize{
+\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
+and archetypes (default)
+\item \code{"data"}: returns the raw data with the classified
+archetypes
+\item \code{"table"}: returns a summary table of the archetypes
+\item \code{"plot-area"}: returns an area plot of the percentages of archetypes
+shown over time
+}}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
+and archetypes (default). A 'ggplot' object.
+\item \code{"data"}: returns a data frame of the raw data with the classified
+archetypes
+\item \code{"table"}: returns a data frame of summary table of the archetypes
+\item \code{"plot-area"}: returns an area plot of the percentages of archetypes
+shown over time. A 'ggplot' object.
+}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Apply a rule based
-algorithm to emails sent by hour of day, using the binary week-based (bw)
-method.
-}
-\examples{
-\dontrun{
-workpatterns_classify_bw(em_data)
-}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-
+Apply a rule based algorithm to emails sent by hour of day, using the binary
+week-based ('bw') method.
 }
 \seealso{
-Other Work Patterns: 
+Other Working Patterns: 
 \code{\link{flex_index}()},
 \code{\link{identify_shifts_wp}()},
-\code{\link{personas_hclust}()},
+\code{\link{identify_shifts}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_pav}()},
 \code{\link{workpatterns_classify}()},
-\code{\link{workpatterns_hclust}()}
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
-\concept{Work Patterns}
+\concept{Working Patterns}

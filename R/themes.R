@@ -3,24 +3,28 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Main theme for {wpa} visualisations
+#' @title Main theme for 'wpa' visualisations
 #'
 #' @description
-#' A theme function applied to ggplot visualisations in {wpa}.
-#' Install and load {extrafont} to use custom fonts for plotting.
+#' A theme function applied to 'ggplot' visualisations in 'wpa'.
+#' Install and load 'extrafont' to use custom fonts for plotting.
 #'
 #' @param font_size Numeric value that prescribes the base font size
 #' for the plot. The text elements are defined relatively to this
 #' base font size. Defaults to 12.
 #'
 #' @param font_family Character value specifying the font family
-#' to be used in the plot. The default value is "Segoe UI". To ensure
+#' to be used in the plot. The default value is `"Segoe UI"`. To ensure
 #' you can use this font, install and load {extrafont} prior to
 #' plotting. There is an initialisation process that is described by:
-#' https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2
+#' <https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2>
 #'
 #' @import ggplot2
 #'
+#' @family Themes
+#'
+#' @return
+#' Returns a ggplot object with the applied theme.
 #'
 #' @export
 theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
@@ -61,10 +65,10 @@ theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
           strip.text = text_small_dark)
 }
 
-#' @title Basic theme for {wpa} visualisations
+#' @title Basic theme for 'wpa' visualisations
 #'
 #' @description
-#' A theme function applied to ggplot visualisations in {wpa}.
+#' A theme function applied to 'ggplot' visualisations in 'wpa'.
 #' Based on `theme_wpa()` but has no font requirements.
 #'
 #' @param font_size Numeric value that prescribes the base font size
@@ -73,6 +77,10 @@ theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
 #'
 #' @import ggplot2
 #'
+#' @family Themes
+#'
+#' @return
+#' Returns a ggplot object with the applied theme.
 #'
 #' @export
 theme_wpa_basic <- function(font_size = 12){

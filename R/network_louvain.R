@@ -3,25 +3,38 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Implement the Louvain community detection on a Person to Person network query
+#' @title Implement the Louvain community detection on a Person to Person
+#'   network query
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
-#' Take a P2P network query and implement the Louvain community detection method. The
-#' **igraph** implementation of the Louvain method is used.
+#'
+#' Take a P2P network query and implement the Louvain community detection
+#' method. The 'igraph' implementation of the Louvain method is used.
 #'
 #' @inheritParams network_p2p
 #'
 #' @param return
-#' String specifying what output to return. Defaults to "plot-louvain". Valid return options include:
-#'   - 'plot-louvain': return a network plot coloured by Louvain communities, saving a PDF to path.
-#'   - 'plot-hrvar': return a network plot coloured by HR attribute, saving a PDF to path.
-#'   - 'plot-sankey': return a sankey plot combining communities and HR attribute.
-#'   - 'table': return a vertex summary table with counts in communities and HR attribute.
-#'   - 'data': return a vertex data file that matches vertices with communities and HR attributes.
-#'   - 'describe': return a list of data frames which describe each of the identified communities.
-#'     The first data frame is a summary table of all the communities.
-#'   - 'network': return igraph object.
+#' String specifying what output to return. Defaults to "plot-louvain". Valid
+#' return options include:
+#'   - `'plot-louvain'`: return a network plot coloured by Louvain communities,
+#'   saving a PDF to path.
+#'   - `'plot-hrvar'`: return a network plot coloured by HR attribute, saving a
+#'   PDF to path.
+#'   - `'plot-sankey'`: return a sankey plot combining communities and HR
+#'   attribute.
+#'   - `'table'`: return a vertex summary table with counts in communities and
+#'   HR attribute.
+#'   - `'data'`: return a vertex data file that matches vertices with
+#'   communities and HR attributes.
+#'   - `'describe'`: return a list of data frames which describe each of the
+#'   identified communities. The first data frame is a summary table of all the
+#'   communities.
+#'   - `'network'`: return 'igraph' object.
+#'
+#' @return See `return`.
+#'
+#' @family Network
 #'
 #' @examples
 #' # Simulate a small person-to-person dataset
@@ -40,7 +53,9 @@ network_louvain <- function(data,
                             node_alpha = 0.8,
                             algorithm = "mds",
                             path = "network_p2p_louvain",
-                            desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
+                            desc_hrvar = c("Organization",
+                                           "LevelDesignation",
+                                           "FunctionType"),
                             return = "plot-louvain",
                             size_threshold = 5000){
 

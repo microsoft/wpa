@@ -230,6 +230,23 @@ utils::globalVariables(
     "MeetingId",
     "NRecurring",
     "Sum_Attendee_meeting_hours",
-    "Total_meeting_cost"
+    "Total_meeting_cost",
+    "Attendee hours",
+    "DaySpan",
+    "Domain",
+    "Hour",
+    "PANEL",
+    "Time_in_self_organized_meetings",
+    "Type",
+    "labelpos",
+    "Cadence_of_1_on_1_meetings_with_manager",
+    "IV",
+    "Meetings_with_manager_1_on_1",
+    "org_size",
+    "var",
+    "var1",
+    "var2",
+    "where",
+    "WOE"
     )
 )

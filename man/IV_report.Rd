@@ -9,6 +9,7 @@ IV_report(
   predictors = NULL,
   outcome,
   bins = 5,
+  max_var = 9,
   path = "IV report",
   timestamp = TRUE
 )
@@ -26,8 +27,11 @@ the values 1 or 0.}
 \item{bins}{Number of bins to use in \code{Information::create_infotables()},
 defaults to 10.}
 
+\item{max_var}{Numeric value to represent the maximum number of variables to
+show on plots.}
+
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
-extension}. For example, "collaboration report".}
+extension}. For example, \code{"IV report"}.}
 
 \item{timestamp}{Logical vector specifying whether to include a timestamp in
 the file name. Defaults to TRUE.}
@@ -44,15 +48,18 @@ data exploration technique that helps determine which columns in a data set
 have predictive power or influence on the value of a specified dependent
 variable.
 }
-\examples{
-\dontrun{
+\section{Creating a report}{
+
+
+Below is an example on how to run the report.\preformatted{library(dplyr)
+
 sq_data \%>\%
-  mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) \%>\% # Simulate binary variable
+  mutate(CH_binary = ifelse(Collaboration_hours > 12, 1, 0)) \%>\% # Simulate binary variable
   IV_report(outcome =  "CH_binary",
             predictors = c("Email_hours", "Workweek_span"))
 }
-
 }
+
 \seealso{
 Other Reports: 
 \code{\link{capacity_report}()},
@@ -61,12 +68,21 @@ Other Reports:
 \code{\link{connectivity_report}()},
 \code{\link{generate_report}()},
 \code{\link{meeting_tm_report}()},
+\code{\link{read_preamble}()},
 \code{\link{subject_validate_report}()},
-\code{\link{validation_report}()}
+\code{\link{validation_report}()},
+\code{\link{workpatterns_report}()}
+
+Other Variable Association: 
+\code{\link{IV_by_period}()},
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
 
 Other Information Value: 
 \code{\link{IV_by_period}()},
-\code{\link{create_IV}()}
+\code{\link{create_IV}()},
+\code{\link{plot_WOE}()}
 }
 \concept{Information Value}
 \concept{Reports}
+\concept{Variable Association}

@@ -2,7 +2,8 @@
 % Please edit documentation in R/identify_tenure.R
 \name{identify_tenure}
 \alias{identify_tenure}
-\title{Tenure calculation based on different input dates, returns data summary table or histogram}
+\title{Tenure calculation based on different input dates, returns data
+summary table or histogram}
 \usage{
 identify_tenure(
   data,
@@ -15,17 +16,42 @@ identify_tenure(
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{end_date}{A string specifying the name of the date variable representing the latest date. Defaults to "Date".}
+\item{end_date}{A string specifying the name of the date variable
+representing the latest date. Defaults to "Date".}
 
-\item{beg_date}{A string specifying the name of the date variable representing the hire date. Defaults to "HireDate".}
+\item{beg_date}{A string specifying the name of the date variable
+representing the hire date. Defaults to "HireDate".}
 
 \item{maxten}{A numeric value representing the maximum tenure.
 If the tenure exceeds this threshold, it would be accounted for in the flag message.}
 
-\item{return}{String to specify what to return.
-Defaults to "message".
-Other valid values include "text", "plot", "data_cleaned", "data_dirty", and "data".
-For "data", a data frame with the \code{PersonId} and a calculated variable called \code{TenureYear} is returned.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"message"}
+\item \code{"text"}
+\item \code{"plot"}
+\item \code{"data_cleaned"}
+\item \code{"data_dirty"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"message"}: message on console with a diagnostic message.
+\item \code{"text"}: string containing a diagnostic message.
+\item \code{"plot"}: 'ggplot' object. A line plot showing tenure.
+\item \code{"data_cleaned"}: data frame filtered only by rows with tenure values
+lying within the threshold.
+\item \code{"data_dirty"}: data frame filtered only by rows with tenure values
+lying outside the threshold.
+\item \code{"data"}: data frame with the \code{PersonId} and a calculated variable called
+\code{TenureYear} is returned.
+}
 }
 \description{
 This function calculates employee tenure based on different input dates.
@@ -45,6 +71,7 @@ identify_tenure(sq_data2)
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -52,15 +79,20 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

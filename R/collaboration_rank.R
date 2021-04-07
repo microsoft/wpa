@@ -14,17 +14,32 @@
 #' See `create_rank()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_rank
+#' @inherit create_rank return
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
-#' @return
-#' When 'table' is passed in `return`, a summary table is returned as a data frame.
+#' @examples
+#' # Return rank table
+#' collaboration_rank(
+#'   data = sq_data,
+#'   return = "table"
+#' )
+#'
+#' # Return plot
+#' collaboration_rank(
+#'   data = sq_data,
+#'   return = "plot"
+#' )
+#'
 #'
 #' @export
 
 collaboration_rank <- function(data,
                                hrvar = extract_hr(data),
                                mingroup = 5,
+                               mode = "simple",
+                               plot_mode = 1,
                                return = "table"){
 
 
@@ -32,6 +47,8 @@ collaboration_rank <- function(data,
               metric="Collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,
+              mode = mode,
+              plot_mode = plot_mode,
               return = return)
 
 }

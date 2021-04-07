@@ -1,6 +1,6 @@
 # wpa <img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/logo2.png" align="right" width=15% />
 
-  [![R build status](https://github.com/microsoft/wpa/workflows/R-CMD-check/badge.svg)](https://github.com/microsoft/wpa/actions/) [![CodeFactor](https://www.codefactor.io/repository/github/microsoft/wpa/badge/)](https://www.codefactor.io/repository/github/microsoft/wpa/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT/) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+  [![R build status](https://github.com/microsoft/wpa/workflows/R-CMD-check/badge.svg)](https://github.com/microsoft/wpa/actions/) [![CodeFactor](https://www.codefactor.io/repository/github/microsoft/wpa/badge/)](https://www.codefactor.io/repository/github/microsoft/wpa/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT/) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)  [![CRAN status](https://www.r-pkg.org/badges/version/wpa)](https://CRAN.R-project.org/package=wpa)
 
 ## Analyze and Visualize Workplace Analytics data
 
@@ -29,6 +29,7 @@ To get started with the package,  please see the following links:
 - [Installation and Set-up](https://microsoft.github.io/wpa/analyst_guide_getting_started.html)
 - [Full function list](https://microsoft.github.io/wpa/reference/index.html)
 - [Analyst Guide](https://microsoft.github.io/wpa/analyst_guide.html)
+- [FAQ](https://microsoft.github.io/wpa/faq.html)
 
 Also check out our package cheat sheet for a quick glimpse of what **wpa** offers:
 
@@ -73,4 +74,5 @@ Contributors to the GitHub repo:
 
 ![](https://raw.githubusercontent.com/microsoft/wpa/main/CONTRIBUTORS.svg)
 
-See full list [here](https://microsoft.github.io/wpa/authors.html).
+See the full list of our contributors [here](https://microsoft.github.io/wpa/contributors.html).
+

@@ -10,12 +10,12 @@
 #' a 'fizzy' scatter plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
-#' @details
-#' Uses the metric `Collaboration_hours`.
+#' @template ch
 #'
 #' @inheritParams create_fizz
 #' @inherit create_fizz return
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @examples

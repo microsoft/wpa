@@ -31,7 +31,8 @@
 #'   - `"vars"`: data frame containing all the columns of HR variables present
 #'    in the data.
 #'
-#' @family General
+#' @family Support
+#' @family Data Validation
 #'
 #' @examples
 #' sq_data %>% extract_hr(return = "names")

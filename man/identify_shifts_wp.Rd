@@ -16,6 +16,25 @@ identify_shifts_wp(
 \arguments{
 \item{data}{A data frame containing data from the Hourly Collaboration query.}
 
+\item{signals}{Character vector to specify which collaboration metrics to
+use:
+\itemize{
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+}}
+
+\item{active_threshold}{A numeric value specifying the minimum number of
+signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
+
+\item{start_hour}{A character vector specifying start hours,
+e.g. "0900"}
+
+\item{end_hour}{A character vector specifying finish hours,
+e.g. "1700"}
+
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
@@ -57,14 +76,43 @@ em_data \%>\% identify_shifts_wp(return = "table")
 
 }
 \seealso{
-Other Work Patterns: 
+Other Data Validation: 
+\code{\link{check_query}()},
+\code{\link{extract_hr}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count_all}()},
+\code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
+\code{\link{identify_holidayweeks}()},
+\code{\link{identify_inactiveweeks}()},
+\code{\link{identify_nkw}()},
+\code{\link{identify_outlier}()},
+\code{\link{identify_privacythreshold}()},
+\code{\link{identify_query}()},
+\code{\link{identify_shifts}()},
+\code{\link{identify_tenure}()},
+\code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
+\code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
+
+Other Working Patterns: 
 \code{\link{flex_index}()},
-\code{\link{personas_hclust}()},
+\code{\link{identify_shifts}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify_pav}()},
 \code{\link{workpatterns_classify}()},
-\code{\link{workpatterns_hclust}()}
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
-\concept{Work Patterns}
+\concept{Data Validation}
+\concept{Working Patterns}

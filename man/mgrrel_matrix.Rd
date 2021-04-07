@@ -7,6 +7,7 @@
 mgrrel_matrix(
   data,
   hrvar = NULL,
+  mingroup = 5,
   return = "plot",
   plot_colors = c("#fe7f4f", "#b4d5dd", "#facebc", "#fcf0eb"),
   threshold = 15
@@ -15,8 +16,11 @@ mgrrel_matrix(
 \arguments{
 \item{data}{Standard Person Query data to pass through. Accepts a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character vector,
-e.g. "Organization". Defaults to NULL.}
+\item{hrvar}{HR Variable by which to split metrics. Accepts a character
+vector, e.g. "Organization". Defaults to \code{NULL}.}
+
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -28,7 +32,8 @@ following strings:
 
 See \code{Value} for more information.}
 
-\item{plot_colors}{Pass a character vector of length 4 containing HEX codes to specify colors to use in plotting.}
+\item{plot_colors}{Pass a character vector of length 4 containing HEX codes
+to specify colors to use in plotting.}
 
 \item{threshold}{Specify a numeric value to determine threshold (in minutes) for 1:1 manager hours.
 Defaults to 15.}
@@ -54,8 +59,9 @@ the following columns:
 }
 }
 \description{
-Generate the Manager-Relationship 2x2 matrix, returning a ggplot object by default.
-Additional options available to return a "wide" or "long" summary table.
+Generate the Manager-Relationship 2x2 matrix, returning a 'ggplot' object by
+default. Additional options available to return a "wide" or "long" summary
+table.
 }
 \examples{
 # Return matrix
@@ -82,18 +88,83 @@ sq_data \%>\%
 
 }
 \seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_rank}()}
+
 Other Managerial Relations: 
 \code{\link{mgrcoatt_dist}()},
 \code{\link{one2one_dist}()},
 \code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
 \code{\link{one2one_line}()},
 \code{\link{one2one_rank}()},
 \code{\link{one2one_sum}()},
 \code{\link{one2one_trend}()}
-
-Other Meeting Culture: 
-\code{\link{meeting_dist}()},
-\code{\link{mgrcoatt_dist}()}
 }
 \concept{Managerial Relations}
-\concept{Meeting Culture}
+\concept{Visualization}

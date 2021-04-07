@@ -4,33 +4,150 @@
 \alias{email_rank}
 \title{Email Hours Ranking}
 \usage{
-email_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
+email_rank(
+  data,
+  hrvar = extract_hr(data),
+  mingroup = 5,
+  mode = "simple",
+  plot_mode = 1,
+  return = "table"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{A list of HR Variables to consider in the scan.
-Defaults to all HR attributes identified.}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
-Defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
-\item{return}{A character vector specifying what to return.
-Valid values include "table" (default). Features are being considered for alternative return options but are currently
-unavailable.}
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
+
+\item{plot_mode}{Numeric vector to determine which plot mode to return. Must
+be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
+\itemize{
+\item \code{1}: Top and bottom five groups across the data population are highlighted
+\item \code{2}: Top and bottom groups \emph{per} organizational attribute are highlighted
+}}
+
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"table"} (default)
+\item \code{"plot"}
+}
+
+See \code{Value} for more information.}
 }
 \value{
-When 'table' is passed in \code{return}, a summary table is returned as a data frame.
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object. A bubble plot where the x-axis represents the
+metric, the y-axis represents the HR attributes, and the size of the
+bubbles represent the size of the organizations. Note that there is no
+plot output if \code{mode} is set to \code{"combine"}.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
 }
 \description{
-This function scans a standard query output for groups with high levels of 'Weekly Email Collaboration'.
-Returns a table with a all of groups (across multiple HR attributes) ranked by hours of digital collaboration.
+This function scans a standard query output for groups with high levels of
+'Weekly Email Collaboration'. Returns a table with a all of groups (across
+multiple HR attributes) ranked by hours of digital collaboration.
 }
 \details{
 Uses the metric \code{Email_hours}.
 See \code{create_rank()} for applying the same analysis to a different metric.
 }
+\examples{
+# Return rank table
+email_rank(
+  data = sq_data,
+  return = "table"
+)
+
+# Return plot
+email_rank(
+  data = sq_data,
+  return = "plot"
+)
+
+}
 \seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{mgrrel_matrix}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_rank}()}
+
 Other Emails: 
 \code{\link{email_dist}()},
 \code{\link{email_fizz}()},
@@ -39,3 +156,4 @@ Other Emails:
 \code{\link{email_trend}()}
 }
 \concept{Emails}
+\concept{Visualization}

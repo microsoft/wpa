@@ -13,4 +13,6 @@
 #' @export
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
+#' @return
+#' Returns immediate object.
 NULL

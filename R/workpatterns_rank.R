@@ -11,20 +11,34 @@
 #' least.
 #'
 #' @param data A data frame containing hourly collaboration data.
-#' @param signals Character vector to specify which collaboration metrics to use:
-#' You may use "email" (default) for emails only, "IM" for Teams messages only,
-#' or a combination of the two `c("email", "IM")`.
+#' @param signals Character vector to specify which collaboration metrics to
+#'   use: You may use `"email"` (default) for emails only, `"IM"` for Teams
+#'   messages only, or a combination of the two `c("email", "IM")`.
 #' @param start_hour A character vector specifying starting hours,
-#' e.g. "0900"
+#' e.g. "`0900"`
 #' @param end_hour A character vector specifying starting hours,
-#' e.g. "1700"
-#' @param return String specifying what to return. Defaults to "plot",
-#' with options to return a summary table ("table").
+#' e.g. `"1700"`
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A plot with the y-axis showing the top ten
+#'   working patterns and the x-axis representing each hour of the day.
+#'   - `"table"`: data frame. A summary table for the top working patterns.
 #'
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
 #' workpatterns_rank(em_data)
+#'
+#' @family Visualization
+#' @family Working Patterns
 #'
 #' @export
 workpatterns_rank <- function(data,
@@ -140,11 +154,12 @@ workpatterns_rank <- function(data,
       tidyr::gather(Hours, Freq, -patternRank)  %>%
       ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
       ggplot2::geom_tile(height=.5) +
-      ggplot2::ylab("Top 10 Work Patterns") +
+      ggplot2::ylab("Top 10 Activity Patterns") +
       ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
-      ggplot2::scale_y_reverse(breaks=seq(1,10)) +
+      ggplot2::scale_y_reverse(expand = c(0, 0), breaks=seq(1,10)) +
       theme_wpa_basic() +
-      ggplot2::theme(legend.position = "none") +
+	  ggplot2::scale_x_discrete(position = "top") +
+      ggplot2::theme(legend.position = "none", axis.line = element_blank(), axis.ticks = element_blank()) +
       ggplot2::annotate("text",
                y = myTable_legends$patternRank,
                x = 26.5,
@@ -161,14 +176,14 @@ workpatterns_rank <- function(data,
                ymin = 0.5,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
-               fill = "#fe7f4f") +
+               fill = "gray50") +
       ggplot2::annotate("rect",
                xmin = end_hour + 0.5,
                xmax = 24.5,
                ymin = 0.5,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
-               fill = "#fe7f4f")
+               fill = "gray50")
 
   } else if(return == "table"){
 

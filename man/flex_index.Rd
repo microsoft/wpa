@@ -53,10 +53,11 @@ See \code{Value} for more information.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A random of ten working patterns are displayed,
+\item \code{"plot"}: 'ggplot' object. A random of ten working patterns are displayed,
 with diagnostic data and the Flexibility Index shown on the plot.
 \item \code{"data"}: data frame. The original input data appended with the
-Flexibility Index and the component scores.
+Flexibility Index and the component scores. Can be used with
+\code{plot_flex_index()} to recreate visuals found in \code{flex_index()}.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -119,23 +120,24 @@ em_data \%>\%
 em_data \%>\%
   flex_index(hrvar = "Organization", return = "table")
 
-\dontrun{
+\donttest{
 # Return the raw data with the computed Flexibility Index
 em_data \%>\%
   flex_index(return = "data")
-
-
 }
+
 }
 \seealso{
-Other Work Patterns: 
+Other Working Patterns: 
 \code{\link{identify_shifts_wp}()},
-\code{\link{personas_hclust}()},
+\code{\link{identify_shifts}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify_pav}()},
 \code{\link{workpatterns_classify}()},
-\code{\link{workpatterns_hclust}()}
+\code{\link{workpatterns_hclust}()},
+\code{\link{workpatterns_rank}()},
+\code{\link{workpatterns_report}()}
 }
-\concept{Work Patterns}
+\concept{Working Patterns}

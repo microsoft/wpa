@@ -6,18 +6,18 @@
 #' @title Mean Bar Plot for any metric
 #'
 #' @description
-#' Provides an overview analysis of a selected metric by calculating a mean per metric.
+#' Provides an overview analysis of a selected metric by calculating a mean per
+#' metric.
 #' Returns a bar plot showing the average of a selected metric by default.
 #' Additional options available to return a summary table.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#' but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#'
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
 #'
@@ -32,7 +32,7 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A bar plot for the metric.
+#'   - `"plot"`: 'ggplot' object. A bar plot for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
@@ -41,16 +41,23 @@
 #' @importFrom scales wrap_format
 #' @importFrom stats reorder
 #'
-#' @family General
+#' @family Visualization
+#' @family Flexible
 #'
 #' @examples
 #' # Return a ggplot bar chart
 #' create_bar(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
-#' create_bar(sq_data, metric = "Generated_workload_email_hours")
-#' create_bar(sq_data, metric = "After_hours_collaboration_hours")
+#'
+#' # Change bar colour
+#' create_bar(sq_data,
+#'            metric = "After_hours_collaboration_hours",
+#'            bar_colour = "alert")
 #'
 #' # Return a summary table
-#' create_bar(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "table")
+#' create_bar(sq_data,
+#'            metric = "Collaboration_hours",
+#'            hrvar = "LevelDesignation",
+#'            return = "table")
 #' @export
 create_bar <- function(data,
                        metric,
@@ -141,26 +148,33 @@ create_bar <- function(data,
               color = "#FFFFFF",
               fontface = "bold",
               size = 4) +
-    scale_y_continuous(limits = c(0, location * 1.25)) +
+    scale_y_continuous(expand = c(.01, 0), limits = c(0, location * 1.25)) +
     annotate("text",
              x = plot_legend$group,
              y = location * 1.15,
-             label = plot_legend$Employee_Count) +
-    annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = location * 1.05, ymax = location * 1.25, alpha = .2) +
+             label = plot_legend$Employee_Count,
+			 size=3) +
+    annotate("rect",
+             xmin = 0.5,
+             xmax = length(plot_legend$group) + 0.5,
+             ymin = location * 1.05,
+             ymax = location * 1.25,
+             alpha = .2) +
     coord_flip() +
-    theme_classic() +
-    theme(axis.text = element_text(size=12),
-          plot.title = element_text(color="grey40", face="bold", size=18),
-          plot.subtitle = element_text(size=14),
-          legend.position = "top",
-          legend.justification  = "right",
-          legend.title = element_text(size=14),
-          legend.text = element_text(size=14)) +
-    labs(title = clean_nm,
-         subtitle = paste("Average", clean_nm, "by", camel_clean(hrvar))) +
-    xlab(camel_clean(hrvar)) +
-    ylab(paste("Average weekly", clean_nm)) +
-    labs(caption = extract_date_range(data, return = "text"))
+    theme_wpa_basic() +
+    theme(
+  		axis.line = element_blank(),
+  		axis.ticks = element_blank(),
+  		axis.text.x = element_blank(),
+  		axis.title = element_blank()
+		) +
+    labs(
+      title = clean_nm,
+      subtitle = paste("Average", tolower(clean_nm), "by", tolower(camel_clean(hrvar))),
+      x = camel_clean(hrvar),
+      y = paste("Average weekly", clean_nm),
+      labs = extract_date_range(data, return = "text")
+         )
 
   summary_table <-
     plot_data %>%

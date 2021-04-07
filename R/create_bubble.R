@@ -33,7 +33,8 @@
 #' @import ggplot2
 #' @import scales
 #'
-#' @family General
+#' @family Visualization
+#' @family Flexible
 #'
 #' @examples
 #' create_bubble(sq_data,
@@ -48,7 +49,7 @@
 #'
 #' @return A different output is returned depending on the value passed to the
 #' `return` argument:
-#'  - `"plot"`: ggplot object. A bubble plot for the metric.
+#'  - `"plot"`: 'ggplot' object. A bubble plot for the metric.
 #'  - `"table"`: data frame. A summary table for the metric.
 #'
 #' @export

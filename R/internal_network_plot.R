@@ -6,9 +6,13 @@
 #' @title Plot Internal Network Breadth and Size as a scatter plot
 #'
 #' @description
-#' Plot the internal network metrics for a HR variable as a scatter plot, showing
-#' Internal Network Breadth as the vertical axis and Internal Network Size as the
-#' horizontal axis.
+#' Plot the internal network metrics for a HR variable as a scatter plot,
+#' showing Internal Network Breadth as the vertical axis and Internal Network
+#' Size as the horizontal axis.
+#'
+#' @details
+#' Uses the metrics `Internal_network_size` and
+#' `Networking_outside_organization`.
 #'
 #' @inheritParams create_bubble
 #'
@@ -16,7 +20,16 @@
 #' # Return plot
 #' sq_data %>% internal_network_plot(return = "plot")
 #'
-#' @family Connectivity
+#' # Return summary table
+#' sq_data %>% internal_network_plot(return = "table")
+#'
+#' @family Visualization
+#' @family Network
+#'
+#' @return
+#' 'ggplot' object showing a bubble plot with internal network size as the
+#' x-axis and internal network breadth as the y-axis. The size of the bubbles
+#' represent the number of unique employees in each group.
 #'
 #' @export
 

@@ -35,6 +35,8 @@
 #' @import dplyr
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
+#' @family Meetings
+#'
 #' @examples
 #' meeting_extract(mt_data,
 #'                 recurring_only = FALSE,

@@ -20,20 +20,28 @@
 #'   the values 1 or 0.
 #' @param bins Number of bins to use in `Information::create_infotables()`,
 #'   defaults to 10.
+#' @param max_var Numeric value to represent the maximum number of variables to
+#' show on plots.
 #' @param path Pass the file path and the desired file name, _excluding the file
-#'   extension_. For example, "collaboration report".
+#'   extension_. For example, `"IV report"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to TRUE.
 #'
-#' @examples
-#' \dontrun{
+#' @section Creating a report:
+#'
+#' Below is an example on how to run the report.
+#'
+#' ```
+#' library(dplyr)
+#'
 #' sq_data %>%
-#'   mutate(X = ifelse(Collaboration_hours > 12, 1, 0)) %>% # Simulate binary variable
+#'   mutate(CH_binary = ifelse(Collaboration_hours > 12, 1, 0)) %>% # Simulate binary variable
 #'   IV_report(outcome =  "CH_binary",
 #'             predictors = c("Email_hours", "Workweek_span"))
-#' }
+#' ```
 #'
 #' @family Reports
+#' @family Variable Association
 #' @family Information Value
 #'
 #' @inherit generate_report return
@@ -43,32 +51,61 @@ IV_report <- function(data,
                       predictors = NULL,
                       outcome,
                       bins = 5,
+                      max_var = 9,
                       path = "IV report",
                       timestamp = TRUE){
 
-  ## Create timestamped path (if applicable)
+  # Create timestamped path (if applicable) -----------------------------------
+
   if(timestamp == TRUE){
     newpath <- paste(path, wpa::tstamp())
   } else {
     newpath <- path
   }
 
- table_list <-
-   data %>%
-   create_IV(outcome = outcome,
-             predictors = predictors,
-             bins = bins,
-             return = "list")
+  # Return IV object directly -------------------------------------------------
 
- ## List of ggplot
- plot_list <-
-   data %>%
-   create_IV(outcome = outcome,
-             predictors = predictors,
-             bins = bins,
-             return = "plot-WOE")
+  # Call `calculate_IV()` only once
+  IV_obj <-
+    data %>%
+    create_IV(outcome = outcome,
+              predictors = predictors,
+              bins = bins,
+              return = "IV")
 
- table_names <- gsub("_", " ", x = names(table_list))
+  # IV_names
+  IV_names <- names(IV_obj$Tables)
+
+  # List of tables -----------------------------------------------------------
+
+  table_list <-
+    IV_names %>%
+    purrr::map(function(x){
+      IV_obj$Tables[[x]] %>%
+         mutate(ODDS = exp(WOE + IV_obj$lnodds),
+                PROB = ODDS / (ODDS + 1))
+    }) %>%
+    purrr::set_names(IV_names)
+
+  # List of ggplot objects ----------------------------------------------------
+
+  plot_list <-
+   IV_obj$Summary$Variable %>%
+   as.character() %>%
+   purrr::map(~plot_WOE(IV = IV_obj, predictor = .))
+
+  # Restrict maximum plots to `max_var` ---------------------------------------
+
+  if(length(plot_list) > max_var){
+
+    plot_list <- plot_list[1:max_var]
+    table_list <- table_list[1:max_var]
+
+  }
+
+  table_names <- gsub("_", " ", x = names(table_list))
+
+  # Output list ---------------------------------------------------------------
 
   output_list <-
     list(

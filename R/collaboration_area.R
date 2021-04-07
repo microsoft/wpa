@@ -34,6 +34,7 @@
 #' @import reshape2
 #' @import scales
 #'
+#' @family Visualization
 #' @family Collaboration
 #'
 #' @examples
@@ -48,7 +49,7 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A stacked area plot for the metric.
+#'   - `"plot"`: 'ggplot' object. A stacked area plot for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @export

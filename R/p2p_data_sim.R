@@ -1,8 +1,9 @@
 #' @title Simulate a person-to-person query using a Watts-Strogatz model
 #'
 #' @description Generate an person-to-person query / edgelist based on the graph
-#' according to the Watts-Strogatz small-world network model. Organizational data
-#' fields are also simulated for `Organization`, `LevelDesignation`, and `City`.
+#'   according to the Watts-Strogatz small-world network model. Organizational
+#'   data fields are also simulated for `Organization`, `LevelDesignation`, and
+#'   `City`.
 #'
 #' @param dim Integer constant, the dimension of the starting lattice.
 #' @param size Integer constant, the size of the lattice along each dimension.
@@ -11,13 +12,21 @@
 #' @param p Real constant between zero and one, the rewiring probability.
 #'
 #' @details
-#' This is a wrapper around `igraph::watts.strogatz.game()`. See igraph documentation
-#' for details on methodology. Loop edges and multiple edges are disabled. Size of the
-#' network can be changing the arguments `size` and `nei`.
+#' This is a wrapper around `igraph::watts.strogatz.game()`. See igraph
+#' documentation for details on methodology. Loop edges and multiple edges are
+#' disabled. Size of the network can be changing the arguments `size` and `nei`.
 #'
 #' @examples
 #' # Simulate a p2p dataset with 800 edges
 #' p2p_data_sim(size = 200, nei = 4)
+#'
+#' @return
+#' data frame with the same column structure as a person-to-person flexible
+#' query. This has an edgelist structure and can be used directly as an input
+#' to `network_p2p()`.
+#'
+#' @family Data
+#' @family Network
 #'
 #' @export
 p2p_data_sim <- function(dim = 1,
@@ -50,6 +59,8 @@ p2p_data_sim <- function(dim = 1,
 #'   - `Organization`
 #'   - `LevelDesignation`
 #'   - `City`
+#'
+#' @noRd
 add_cat <- function(x, type){
 
   if(type == "Organization"){

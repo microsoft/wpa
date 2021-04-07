@@ -9,25 +9,53 @@ identify_holidayweeks(data, sd = 1, return = "message")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{sd}{The standard deviation below the mean for collaboration hours that should define an outlier week. Enter a positive number. Default is 1 standard deviation.}
+\item{sd}{The standard deviation below the mean for collaboration hours that
+should define an outlier week. Enter a positive number. Default is 1
+standard deviation.}
 
-\item{return}{String to specify what to return. Returns a message by default (\code{return} = "message").
-Valid options are:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
-\item When 'message' is passed, a message is printed identifying holiday weeks.
-\item When 'data' is passed, a dataset with outlier weeks flagged in a new column is returned as a dataframe.
-\item When 'data_cleaned' is passed, a dataset with outlier weeks removed is returned as a dataframe.
-\item when 'data_dirty' is passed, a dataset with only outlier weeks is returned as a dataframe.
-\item when 'plot' is passed, a plot with holiday weeks highlighted is returned as a dataframe.
-}}
+\item \code{"message"} (default)
+\item \code{"data"}
+\item \code{"data_cleaned"}
+\item \code{"data_dirty"}
+\item \code{"plot"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"message"}: message on console. a message is printed identifying holiday
+weeks.
+\item \code{"data"}: data frame. A dataset with outlier weeks flagged in a new
+column is returned as a dataframe.
+\item \code{"data_cleaned"}: data frame. A dataset with outlier weeks removed is
+returned.
+\item \code{"data_dirty"}: data frame. A dataset with only outlier weeks is
+returned.
+\item \code{"plot"}: ggplot object. A line plot of Collaboration Hours with holiday
+weeks highlighted.
+}
 }
 \description{
-This function scans a standard query output for weeks where collaboration hours is far outside the mean.
-Returns a list of weeks that appear to be holiday weeks and optionally an edited dataframe with outliers removed.
-By default, missing values are excluded.
+This function scans a standard query output for weeks where collaboration
+hours is far outside the mean. Returns a list of weeks that appear to be
+holiday weeks and optionally an edited dataframe with outliers removed. By
+default, missing values are excluded.
 
-As best practice, run this function prior to any analysis to remove atypical collaboration weeks from your dataset.
+As best practice, run this function prior to any analysis to remove atypical
+collaboration weeks from your dataset.
 }
+\section{Metrics used}{
+
+The metric \code{Collaboration_hours} is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.
+}
+
 \examples{
 # Return a message by default
 identify_holidayweeks(sq_data)
@@ -35,11 +63,11 @@ identify_holidayweeks(sq_data)
 # Return plot
 identify_holidayweeks(sq_data, return = "plot")
 
-
 }
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
@@ -47,15 +75,20 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

@@ -11,17 +11,18 @@
 #' Workplace Analytics query outputs to provide diagnostic information
 #' for the Analyst prior to analysis.
 #'
-#' An additional Standard Meeting Query can be provided to perform meeting subject line
-#' related checks. This is optional and the validation report can be run without it.
+#' An additional Standard Meeting Query can be provided to perform meeting
+#' subject line related checks. This is optional and the validation report can
+#' be run without it.
 #'
 #' @details
-#' For your input to `data` or `meeting_data`, please use the function `wpa::import_wpa()`
-#' to import your csv query files into R. This function will standardize format
-#' and prepare the data as input for this report.
+#' For your input to `data` or `meeting_data`, please use the function
+#' `wpa::import_wpa()` to import your csv query files into R. This function will
+#' standardize format and prepare the data as input for this report.
 #'
-#' If you are passing a Ways of Working Assessment query instead of a Standard Person query
-#' to the `data` argument, please also use `standardise_pq()` to make the variable names
-#' consistent with a Standard Person Query.
+#' If you are passing a Ways of Working Assessment query instead of a Standard
+#' Person query to the `data` argument, please also use `standardise_pq()` to
+#' make the variable names consistent with a Standard Person Query.
 #'
 #' @section Checking functions within `validation_report()`:
 #'   - `check_query()`
@@ -39,28 +40,35 @@
 #' You can browse each individual function for details on calculations.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param meeting_data An optional Meeting Query dataset in the form of a data frame.
+#' @param meeting_data An optional Meeting Query dataset in the form of a data
+#'   frame.
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
 #'  but accepts any character vector, e.g. "Organization"
-#' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' @param hrvar_threshold Numeric value determining the maximum number of unique values
-#' to be allowed to qualify as a HR variable. This is passed directly to the `threshold`
-#' argument within `hrvar_count_all()`.
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
-#' Defaults to TRUE.
+#' @param path Pass the file path and the desired file name, _excluding the file
+#'   extension_.
+#' @param hrvar_threshold Numeric value determining the maximum number of unique
+#'   values to be allowed to qualify as a HR variable. This is passed directly
+#'   to the `threshold` argument within `hrvar_count_all()`.
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to `TRUE`.
 #'
-#' @examples
-#' \dontrun{
+#' @section Creating a report:
+#'
+#' Below is an example on how to run the report.
+#'
+#' ```
 #' validation_report(dv_data,
 #'                   meeting_data = mt_data,
 #'                   hrvar = "Organization")
+#' ```
 #'
-#' }
 #'
 #' @importFrom purrr map_if
 #' @importFrom dplyr `%>%`
 #'
 #' @family Reports
+#' @family Data Validation
+#'
 #' @inherit generate_report return
 #'
 #' @export

@@ -9,14 +9,22 @@ cut_hour(metric, cuts, unit = "hours")
 \arguments{
 \item{metric}{A numeric variable representing hours.}
 
-\item{cuts}{A numeric variable of minimum length 3 to represent the
-cut points required.}
+\item{cuts}{A numeric vector of minimum length 3 to represent the
+cut points required. The minimum and maximum values provided in the vector
+are inclusive.}
 
 \item{unit}{String to specify the unit of the labels. Defaults to "hours".}
 }
+\value{
+Character vector representing a converted categorical variable, appended
+with the label of the unit. See \code{examples} for more information.
+}
 \description{
-Supply a numeric variable, e.g. \code{Collaboration_hours},
-and the function returns a character vector
+Supply a numeric variable, e.g. \code{Collaboration_hours}, and return a character
+vector.
+}
+\details{
+This is used within \code{create_dist()} for numeric to categorical conversion.
 }
 \examples{
 # Direct use
@@ -27,14 +35,25 @@ cut_hour(sq_data$Collaboration_hours, cuts = c(10, 15, 20))
 
 }
 \seealso{
-Other General: 
-\code{\link{create_bar_asis}()},
-\code{\link{create_bar}()},
-\code{\link{create_boxplot}()},
-\code{\link{create_bubble}()},
-\code{\link{create_scatter}()},
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{extract_date_range}()},
 \code{\link{extract_hr}()},
-\code{\link{hrvar_count}()},
-\code{\link{identify_outlier}()}
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{maxmin}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
 }
-\concept{General}
+\concept{Support}

@@ -15,12 +15,9 @@
 #' This is a general purpose function that powers all the functions
 #' in the package that produce faceted line plots.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param return String specifying what to return. This must be one of the following strings:
 #'   - `"plot"`
 #'   - `"table"`
@@ -33,7 +30,9 @@
 #' @import scales
 #' @importFrom tidyselect all_of
 #'
+#' @family Visualization
 #' @family Flexible
+#' @family Time-series
 #'
 #' @examples
 #' # Return plot of Email Hours
@@ -47,7 +46,7 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A faceted line plot for the metric.
+#'   - `"plot"`: 'ggplot' object. A faceted line plot for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @export
@@ -112,27 +111,17 @@ create_line <- function(data,
     geom_line(colour = "#1d627e") +
     facet_wrap(.~group) +
     scale_fill_gradient(name="Hours", low = "white", high = "red") +
-    theme_classic() +
-    theme(plot.title = element_text(color = "grey40",
-                                    face = "bold",
-                                    size = 18),
-          plot.subtitle = element_text(size = 14),
-          strip.background = element_rect(color = "#1d627e",
+    theme_wpa_basic() +
+    theme(strip.background = element_rect(color = "#1d627e",
                                           fill = "#1d627e"),
           strip.text = element_text(size = 10,
                                     colour = "#FFFFFF",
-                                    face = "bold"),
-          axis.text = element_text(size = 8, face = "bold"),
-          axis.line = element_line(colour = "grey40"),
-          legend.position = "right",
-          legend.justification = "right",
-          legend.title=element_text(size = 10),
-          legend.text=element_text(size = 10)) +
+                                    face = "bold")) +
     labs(title = clean_nm,
          subtitle = paste("Total",
                           tolower(clean_nm),
                           "by",
-                          camel_clean(hrvar))) +
+                          tolower(camel_clean(hrvar)))) +
     xlab("Date") +
     ylab("Weekly hours") +
     labs(caption = extract_date_range(data, return = "text")) +

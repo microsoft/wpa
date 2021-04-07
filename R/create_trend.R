@@ -6,17 +6,14 @@
 #' @title Heat mapped horizontal bar plot over time for any metric
 #'
 #' @description
-#' Provides a week by week view of a selected Workplace Analytics metric.
-#' By default returns a week by week heatmap bar plot, highlighting the points in time with most activity.
-#' Additional options available to return a summary table.
+#' Provides a week by week view of a selected Workplace Analytics metric. By
+#' default returns a week by week heatmap bar plot, highlighting the points in
+#' time with most activity. Additional options available to return a summary
+#' table.
 #'
-#'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param return Character vector specifying what to return, defaults to "plot".
 #' Valid inputs are "plot" and "table".
 #'
@@ -25,13 +22,15 @@
 #' @import reshape2
 #' @import scales
 #'
+#' @family Visualization
 #' @family Flexible
+#' @family Time-series
 #'
 #' @examples
 #' create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
+#' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @export
@@ -84,10 +83,12 @@ create_trend <- function(data,
     myTable_plot %>%
     ggplot(aes(x = Date , y = group , fill = !!sym(metric))) +
     geom_tile(height=.5) +
-    scale_fill_gradient(name = "Hours", low = "white", high = "#fe7f4f") +
+    scale_x_date(position = "top") + 
+	scale_fill_gradientn(name = "Hours", colours = c("steelblue4","aliceblue","white","mistyrose1","tomato1")) +
     theme_wpa_basic() +
+	theme(axis.line.y = element_blank(), axis.title.y = element_blank()) + 
     labs(title = clean_nm,
-         subtitle = paste("By", camel_clean(hrvar))) +
+         subtitle = paste("Hotspots by", tolower(camel_clean(hrvar)))) +
     xlab("Date") +
     ylab(hrvar) +
     labs(caption = extract_date_range(data, return = "text"))

@@ -26,7 +26,31 @@
 #' @import ggplot2
 #' @import dplyr
 #'
+#' @family Visualization
 #' @family Flexible
+#' @family Time-series
+#'
+#' @return
+#' Returns a 'ggplot' object representing a line plot.
+#'
+#' @examples
+#' library(dplyr)
+#'
+#' # Median `Emails_sent` grouped by `Date`
+#' # Without Person Averaging
+#' med_df <-
+#'   sq_data %>%
+#'   group_by(Date) %>%
+#'   summarise(Emails_sent_median = median(Emails_sent))
+#'
+#' med_df %>%
+#'   create_line_asis(
+#'     date_var = "Date",
+#'     metric = "Emails_sent_median",
+#'     title = "Median Emails Sent",
+#'     subtitle = "Person Averaging Not Applied",
+#'     caption = extract_date_range(sq_data, return = "text")
+#'   )
 #'
 #' @export
 create_line_asis <- function(data,

@@ -13,11 +13,9 @@
 #' This is a general purpose function that powers all the functions
 #' in the package that produce 'fizzy drink' / jittered scatter plots.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric Character string containing the name of the metric,
-#' e.g. "Collaboration_hours"
-#' @param hrvar HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size, defaults to 5.
+#' e.g. `"Collaboration_hours"`
 #' @param return String specifying what to return. This must be one of the following strings:
 #'   - `"plot"`
 #'   - `"table"`
@@ -26,7 +24,7 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A jittered scatter plot for the metric.
+#'   - `"plot"`: 'ggplot' object. A jittered scatter plot for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
@@ -36,6 +34,7 @@
 #' @importFrom stats median
 #' @importFrom stats sd
 #'
+#' @family Visualization
 #' @family Flexible
 #'
 #' @examples
@@ -104,18 +103,36 @@ create_fizz <- function(data,
                alpha = 1/5,
                color = "#578DB8",
                position = position_jitter(width = 0.1, height = 0.1)) +
-    ylim(0, max_point) +
-    annotate("text", x = plot_legend$group, y = 0, label = plot_legend$Employee_Count) +
-    scale_x_discrete(labels = scales::wrap_format(10)) +
     theme_wpa_basic() +
+    theme(
+      axis.line = element_blank(),
+      panel.grid.major.x = element_line(colour = "grey80"),
+      axis.ticks = element_blank(),
+      axis.title = element_blank()
+    ) +
+    annotate("text",
+             x = plot_legend$group,
+             y = max_point,
+             label = plot_legend$Employee_Count,
+             size = 3) +
+    annotate("rect",
+             xmin = 0.5,
+             xmax = length(plot_legend$group) + 0.5,
+             ymin = max_point*0.95,
+             ymax = max_point*1.05,
+             alpha = .2) +
+    scale_y_continuous(
+      position = "right",
+      limits = c(0, max_point * 1.1)) +
+    coord_flip() +
     labs(title = clean_nm,
          subtitle = paste("Distribution of",
                           tolower(clean_nm),
                           "by",
-                          camel_clean(hrvar))) +
-    xlab(hrvar) +
-    ylab(paste("Average", clean_nm)) +
-    labs(caption = extract_date_range(data, return = "text"))
+                          tolower(camel_clean(hrvar))),
+         caption = extract_date_range(data, return = "text"),
+         x = hrvar,
+         y = paste("Average", clean_nm))
 
   summary_table <-
     plot_data %>%

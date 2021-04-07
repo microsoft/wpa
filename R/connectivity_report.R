@@ -6,20 +6,16 @@
 #' @title Generate a Connectivity report in HTML
 #'
 #' @description
-#' The function generates an interactive HTML report using
-#' Standard Person Query data as an input. The report contains a series
-#' of summary analysis and visualisations relating to key **connectivity**
-#' metrics in Workplace Analytics, including external/internal network size
-#' vs breadth.
+#' The function generates an interactive HTML report using Standard Person Query
+#' data as an input. The report contains a series of summary analysis and
+#' visualisations relating to key **connectivity** metrics in Workplace
+#' Analytics, including external/internal network size vs breadth.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#'  but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param path Pass the file path and the desired file name, _excluding the file extension_.
-#' For example, "collaboration report".
-#' @param timestamp Logical vector specifying whether to include a timestamp in the file name.
-#' Defaults to TRUE.
+#' @template spq-params
+#' @param path Pass the file path and the desired file name, _excluding the file
+#'   extension_. For example, `"connectivity report"`.
+#' @param timestamp Logical vector specifying whether to include a timestamp in
+#'   the file name. Defaults to `TRUE`.
 #'
 #' @importFrom purrr map_if
 #' @importFrom dplyr `%>%`
@@ -43,14 +39,15 @@ connectivity_report <- function(data,
   }
 
   output_list <-
-    list(data %>% check_query(return = "text") %>% md2html(),
+    list(data %>% check_query(return = "text", validation = TRUE),
 
          data %>% external_network_plot(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% external_network_plot(hrvar = hrvar, mingroup = mingroup, return = "table"),
 
          data %>% internal_network_plot(hrvar = hrvar, mingroup = mingroup, return = "plot"),
          data %>% internal_network_plot(hrvar = hrvar, mingroup = mingroup, return = "table")) %>%
-    purrr::map_if(is.data.frame, create_dt)
+    purrr::map_if(is.data.frame, create_dt) %>%
+    purrr::map_if(is.character, md2html)
 
   title_list <-
     c("Data Overview",

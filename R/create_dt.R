@@ -6,7 +6,9 @@
 #' @title Create interactive tables in HTML with 'download' buttons.
 #'
 #' @description
-#' See https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/ for more.
+#' See
+#' <https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/>
+#' for more.
 #'
 #' @param x Data frame to be passed through.
 #' @param rounding Numeric vector to specify the number of decimal points to display
@@ -15,6 +17,11 @@
 #'
 #' @import DT
 #' @importFrom dplyr mutate_if
+#'
+#' @family Import and Export
+#'
+#' @return
+#' Returns an HTML widget displaying rectangular data.
 #'
 #' @export
 create_dt <- function(x, rounding = 1, freeze = 2){

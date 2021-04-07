@@ -36,7 +36,13 @@
 #' @import dplyr
 #' @import ggplot2
 #'
+#' @family Visualization
 #' @family Flexible
+#' @family Time-series
+#'
+#' @return
+#' Returns a 'ggplot' object showing two scatter plots side by side representing
+#' the two periods.
 #'
 #' @examples
 #' # Return plot
@@ -147,9 +153,7 @@ create_period_scatter <- function(data,
   clean_y <- us_to_space(metric_y)
 
   plot_title <-
-    paste(clean_x, "and", clean_y,
-          "over", before_label,
-          "and", after_label)
+    paste(clean_x, "and", clean_y)
 
 
   plot_object <-
@@ -162,14 +166,20 @@ create_period_scatter <- function(data,
     scale_size(range = c(1, 20)) +
     facet_wrap(.~Period) +
     guides(size = FALSE) +
-    theme(legend.position = "bottom") +
+	theme_wpa_basic() +
+    theme(legend.position = "bottom", 
+	strip.background = element_rect(color = "#1d627e",
+                                          fill = "#1d627e"),
+          strip.text = element_text(size = 10,
+                                    colour = "#FFFFFF",
+                                    face = "bold")) +
     ggtitle(plot_title,
-            subtitle = paste("Weekly data by", hrvar)) +
+            subtitle = paste("Comparison of weekly averages by ", tolower(camel_clean(hrvar)))) +
     ylab(clean_y) +
     xlab(clean_x) +
-    labs(caption = date_range_str) +
-    wpa::theme_wpa_basic()
-
+    labs(caption = date_range_str) 
+	
+	
   if(return == "table"){
 
     # return(myTable_return)

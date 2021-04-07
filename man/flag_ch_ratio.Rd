@@ -2,7 +2,8 @@
 % Please edit documentation in R/flag_ch_ratio.R
 \name{flag_ch_ratio}
 \alias{flag_ch_ratio}
-\title{Flag unusual high collaboration hours to after-hours collaboration hours ratio}
+\title{Flag unusual high collaboration hours to after-hours collaboration
+hours ratio}
 \usage{
 flag_ch_ratio(data, threshold = c(1, 30), return = "message")
 }
@@ -20,11 +21,13 @@ Defaults to 30.}
 }}
 }
 \value{
-A different output is returned depending on the value passed to the \code{return} argument:
+A different output is returned depending on the value passed to the \code{return}
+argument:
 \itemize{
 \item \code{"message"}: message in the console containing diagnotic summary
 \item \code{"text"}: string containing diagnotic summary
-\item \code{"data"}: data frame. Person-level data with flags on unusually high or low ratios
+\item \code{"data"}: data frame. Person-level data with flags on unusually high or
+low ratios
 }
 }
 \description{
@@ -32,6 +35,12 @@ This function flags persons who have an unusual ratio
 of collaboration hours to after-hours collaboration hours.
 Returns a character string by default.
 }
+\section{Metrics used}{
+
+The metric \code{Collaboration_hours} is used in the calculations. Please ensure
+that your query contains a metric with the exact same name.
+}
+
 \examples{
 flag_ch_ratio(sq_data)
 
@@ -45,22 +54,28 @@ data.frame(PersonId = c("Alice", "Bob"),
 \seealso{
 Other Data Validation: 
 \code{\link{check_query}()},
+\code{\link{extract_hr}()},
 \code{\link{flag_em_ratio}()},
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
+\code{\link{identify_shifts_wp}()},
+\code{\link{identify_shifts}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
+\code{\link{standardise_pq}()},
 \code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
-\code{\link{track_HR_change}()}
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}

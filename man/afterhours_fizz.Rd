@@ -9,9 +9,12 @@ afterhours_fizz(data, hrvar = "Organization", mingroup = 5, return = "plot")
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{hrvar}{HR Variable by which to split metrics. Accepts a character vector, defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
-\item{mingroup}{Numeric value setting the privacy threshold / minimum group size, defaults to 5.}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
 \item{return}{String specifying what to return. This must be one of the following strings:
 \itemize{
@@ -24,7 +27,7 @@ See \code{Value} for more information.}
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:
 \itemize{
-\item \code{"plot"}: ggplot object. A jittered scatter plot for the metric.
+\item \code{"plot"}: 'ggplot' object. A jittered scatter plot for the metric.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -45,11 +48,80 @@ afterhours_fizz(sq_data, hrvar = "LevelDesignation", return = "plot")
 afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
-Other After-Hours: 
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_bar}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_line}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_network_plot}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{internal_network_plot}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_quality}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist_ca}()},
+\code{\link{meetingtype_dist_mt}()},
+\code{\link{meetingtype_dist}()},
+\code{\link{meetingtype_summary}()},
+\code{\link{mgrcoatt_dist}()},
+\code{\link{mgrrel_matrix}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()},
+\code{\link{period_change}()},
+\code{\link{workloads_dist}()},
+\code{\link{workloads_fizz}()},
+\code{\link{workloads_line}()},
+\code{\link{workloads_rank}()},
+\code{\link{workloads_summary}()},
+\code{\link{workloads_trend}()},
+\code{\link{workpatterns_area}()},
+\code{\link{workpatterns_rank}()}
+
+Other After-hours Collaboration: 
 \code{\link{afterhours_dist}()},
 \code{\link{afterhours_line}()},
 \code{\link{afterhours_rank}()},
 \code{\link{afterhours_summary}()},
 \code{\link{afterhours_trend}()}
 }
-\concept{After-Hours}
+\concept{After-hours Collaboration}
+\concept{Visualization}

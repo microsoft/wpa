@@ -2,7 +2,7 @@
 % Please edit documentation in R/tm_wordcloud.R
 \name{tm_wordcloud}
 \alias{tm_wordcloud}
-\title{Generate a wordcloud}
+\title{Generate a wordcloud with meeting subject lines}
 \usage{
 tm_wordcloud(
   data,
@@ -16,30 +16,46 @@ tm_wordcloud(
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
-\item{stopwords}{A single-column data frame labelled 'word' containing custom stopwords to remove.}
+\item{stopwords}{A single-column data frame labelled \code{'word'} containing
+custom stopwords to remove.}
 
 \item{seed}{A numeric vector to set seed for random generation.}
 
 \item{keep}{A numeric vector specifying maximum number of words to keep.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
-Valid inputs are "plot" and "table". A "table" returns the data used to generate the wordcloud.}
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+}
 
-\item{...}{Additional parameters to be passed to \code{ggwordcloud::geom_text_wordcloud()}#'}
+See \code{Value} for more information.}
+
+\item{...}{Additional parameters to be passed to
+\code{ggwordcloud::geom_text_wordcloud()}}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object containing a word cloud.
+\item \code{"table"}: data frame returning the data used to generate the word cloud.
+}
 }
 \description{
 Generate a wordcloud with the meeting query.
 This is a sub-function that feeds into \code{meeting_tm_report()}.
 }
 \details{
-Uses the {ggwordcloud} package for the underlying implementation, thus
-returning a ggplot. Additional layers can be added onto the plot using
-a ggplot \code{+} syntax.
+Uses the 'ggwordcloud' package for the underlying implementation, thus
+returning a 'ggplot' object. Additional layers can be added onto the plot
+using a ggplot \code{+} syntax.
 The recommendation is not to return over 100 words in a word cloud.
 
 This function uses \code{tm_clean()} as the underlying data wrangling function.
-There is an option to remove stopwords by passing a data frame into the \code{stopwords}
-argument.
+There is an option to remove stopwords by passing a data frame into the
+\code{stopwords} argument.
 }
 \examples{
 tm_wordcloud(mt_data, keep = 30)
@@ -48,7 +64,9 @@ tm_wordcloud(mt_data, keep = 30)
 \seealso{
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},
+\code{\link{pairwise_count}()},
 \code{\link{subject_validate_report}()},
+\code{\link{subject_validate}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_cooc}()},
 \code{\link{tm_freq}()}

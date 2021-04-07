@@ -11,10 +11,24 @@
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric A character string specifying the metric to test.
-#' @param person A logical value to specify whether to calculate person-averages.
-#' Defaults to TRUE (person-averages calculated).
+#' @param person A logical value to specify whether to calculate
+#'   person-averages. Defaults to `TRUE` (person-averages calculated).
 #' @param threshold Numeric value specifying the threshold for flagging.
-#' @param return A character string specifying what to return.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"text"`
+#'   - `"message"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"text"`: string. A diagnostic message.
+#'   - `"message"`: message on console. A diagnostic message.
+#'   - `"table"`: data frame. A person-level table with `PersonId` and the
+#'   extreme values of the selected metric.
 #'
 #' @family Data Validation
 #'
@@ -86,10 +100,16 @@ flag_extreme <- function(data,
   }
 
   if(return == "text"){
+
     FlagMessage
+
   } else if(return == "message"){
+
     message(FlagMessage)
+
   } else if(return == "table"){
+
     extreme_df
+
   }
 }

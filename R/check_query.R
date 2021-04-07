@@ -28,7 +28,8 @@
 #' See `Value` for more information.
 #'
 #' @param validation Logical value to specify whether to return a check used by
-#'   the `validation_report()`. Defaults to `FALSE`.
+#'   the `validation_report()`. Defaults to `FALSE`. To hide checks on variable
+#'   names, set `validation` to `TRUE`.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
@@ -75,6 +76,7 @@ check_query <- function(data, return = "message", validation = FALSE){
 #'
 #' @details Used as part of `check_query()`.
 #'
+#' @noRd
 #'
 check_person_query <- function(data, return){
 
@@ -173,6 +175,7 @@ check_person_query <- function(data, return){
 #'
 #' @details Used as part of `check_query()`.
 #'
+#' @noRd
 check_query_validation <- function(data, return){
   ## Query Type - Initialise
   main_chunk <- ""

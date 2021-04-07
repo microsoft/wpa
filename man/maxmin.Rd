@@ -7,17 +7,47 @@
 maxmin(x)
 }
 \arguments{
-\item{x}{Pass a vector or the required columns of a data frame through this argument.}
+\item{x}{Pass a vector or the required columns of a data frame through this
+argument.}
+}
+\value{
+Returns a numeric vector with the input rescaled.
 }
 \description{
-This function allows you to scale vectors or an entire data frame using the max-min scaling method
-A numeric vector is always returned. Originally implemented in https://github.com/martinctc/surveytoolbox.
+This function allows you to scale vectors or an entire data
+frame using the max-min scaling method A numeric vector is always returned.
 }
 \details{
-This is used within \code{keymetrics_scan()} to enable row-wise heatmapping.
+This is used within \code{keymetrics_scan()} to enable row-wise
+heatmapping. Originally implemented in
+\url{https://github.com/martinctc/surveytoolbox}.
 }
 \examples{
 numbers <- c(15, 40, 10, 2)
 maxmin(numbers)
+
 }
+\seealso{
+Other Support: 
+\code{\link{camel_clean}()},
+\code{\link{check_inputs}()},
+\code{\link{combine_signals}()},
+\code{\link{cut_hour}()},
+\code{\link{extract_date_range}()},
+\code{\link{extract_hr}()},
+\code{\link{heat_colours}()},
+\code{\link{is_date_format}()},
+\code{\link{p_test}()},
+\code{\link{pairwise_count}()},
+\code{\link{plot_WOE}()},
+\code{\link{read_preamble}()},
+\code{\link{rgb2hex}()},
+\code{\link{totals_bind}()},
+\code{\link{totals_col}()},
+\code{\link{totals_reorder}()},
+\code{\link{tstamp}()},
+\code{\link{us_to_space}()},
+\code{\link{wrap}()}
+}
+\concept{Support}
 \keyword{max-min}

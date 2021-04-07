@@ -1,10 +1,12 @@
-#' @title Create a summary bar chart of the proportion of Meeting Hours spent in Long or Large Meetings
+#' @title Create a summary bar chart of the proportion of Meeting Hours spent in
+#'   Long or Large Meetings
 #'
 #' @description
-#' This function creates a bar chart showing the percentage of meeting hours which are spent in
-#' long or large meetings.
+#' This function creates a bar chart showing the percentage of meeting hours
+#' which are spent in long or large meetings.
 #'
-#' @param data Ways of Working Assessment query in the form of a data frame. Requires the following variables:
+#' @param data Ways of Working Assessment query in the form of a data frame.
+#'   Requires the following variables:
 #' - `Bloated_meeting_hours`
 #' - `Lengthy_meeting_hours`
 #' - `Workshop_meeting_hours`
@@ -12,15 +14,29 @@
 #' - `Status_update_meeting_hours`
 #' - `Decision_making_meeting_hours`
 #' - `One_on_one_meeting_hours`
-#' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
-#' but accepts any character vector, e.g. "LevelDesignation"
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
-#' @param return Character vector specifying what to return, defaults to "plot".
-#' Valid inputs are "plot" and "table".
+#'
+#' @param hrvar HR Variable by which to split metrics, defaults to
+#'   `"Organization"` but accepts any character vector, e.g.
+#'   `"LevelDesignation"`
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: ggplot object. A horizontal bar plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import ggplot2
 #' @import dplyr
 #'
+#' @family Visualization
 #' @family Meetings
 #'
 #' @export
@@ -28,6 +44,12 @@ meetingtype_summary <- function(data,
                                 hrvar = "Organization",
                                 mingroup = 5,
                                 return = "plot"){
+
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
 
   mt_dist_str <- c("Bloated_meeting_hours",
                    "Lengthy_meeting_hours",
@@ -55,6 +77,7 @@ meetingtype_summary <- function(data,
     select(!!sym(hrvar), MeetingHoursInLongOrLargeMeetings, n)
 
   if(return == "plot"){
+
     returnTable %>%
       create_bar_asis(group_var = hrvar,
                       bar_var = "MeetingHoursInLongOrLargeMeetings",
@@ -63,10 +86,15 @@ meetingtype_summary <- function(data,
                       caption = extract_date_range(data, return = "text"),
                       percent = TRUE,
                       bar_colour = "alert")
+
   } else if(return == "table"){
+
     returnTable
+
   } else {
+
     stop("Please enter a valid input for `return`.")
+
   }
 }
 

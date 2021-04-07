@@ -12,6 +12,7 @@
 ^pkgdown$
 ^\.github$
 ^CONTRIBUTORS.svg$
+man-roxygen
 
 # Ignore all figures
 ^man/figures
@@ -22,3 +23,5 @@
 ^vignettes/IV-report.Rmd$
 ^vignettes/text-mining-capabilities.Rmd$
 ^Meta$
+^cran-comments\.md$
+^CRAN-RELEASE$
