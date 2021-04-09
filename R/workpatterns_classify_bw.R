@@ -46,8 +46,8 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default). A 'ggplot' object.
+#'   - `"plot"`: returns a summary grid plot of the classified archetypes
+#'   (default). A 'ggplot' object.
 #'   - `"data"`: returns a data frame of the raw data with the classified
 #'   archetypes
 #'   - `"table"`: returns a data frame of summary table of the archetypes
@@ -198,6 +198,7 @@ workpatterns_classify_bw <- function(data,
     dplyr::as_tibble(ptn_data_final)
   }
 
+  # NOW DEFUNCT - NOT USED ---------------------------------------------------
   return_plot <- function(){
     ## Table for annotation
     myTable_legends <-
@@ -251,6 +252,8 @@ workpatterns_classify_bw <- function(data,
                fill = "red")
   }
 
+  # Plot area chart over time -----------------------------------------------
+
   return_plot_area <- function(){
     ptn_data_final %>%
       dplyr::group_by(Date, Personas) %>%
@@ -303,7 +306,7 @@ workpatterns_classify_bw <- function(data,
 
   } else if(return == "plot"){
 
-    return_plot()
+    plot_workpatterns_classify_bw(ptn_data_final)
 
   } else if(return == "plot-area"){
 
