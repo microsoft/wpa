@@ -26,6 +26,8 @@
 #'   - `"table"`: returns a summary table of the archetypes
 #'   - `"plot-area"`: returns an area plot of the percentages of archetypes
 #'   shown over time
+#'   - `"plot-hrvar"`: returns a bar plot showing the count of archetypes,
+#'   faceted by the supplied HR attribute.
 #'
 #' @param signals Character vector to specify which collaboration metrics to
 #'   use:
@@ -53,6 +55,8 @@
 #'   - `"table"`: returns a data frame of summary table of the archetypes
 #'   - `"plot-area"`: returns an area plot of the percentages of archetypes
 #'   shown over time. A 'ggplot' object.
+#'   - `"plot-hrvar"`: returns a bar plot showing the count of archetypes,
+#'   faceted by the supplied HR attribute. A 'ggplot' object.
 #'
 #' @import ggplot2
 #' @importFrom magrittr "%>%"
@@ -312,6 +316,12 @@ workpatterns_classify_bw <- function(data,
 
     return_plot_area()
 
+  } else if(return == "plot-hrvar"){
+
+    plot_wp_bw_hrvar(
+      x = return_table()
+    )
+
   } else if (return == "table"){
 
     return_table()
@@ -333,6 +343,8 @@ workpatterns_classify_bw <- function(data,
 #' @title Plotting function for `workpatterns_classify_bw()`
 #'
 #' @description Internal use only.
+#'
+#' @noRd
 
 plot_workpatterns_classify_bw <- function(data){
 
@@ -474,3 +486,33 @@ plot_workpatterns_classify_bw <- function(data){
       axis.title = element_blank() # Toggle off axis title
       )
 }
+
+#' @title
+#' Plotting a faceted bar plot for `workpatterns_classify_bw()`
+#'
+#' @description Internal use only.
+#'
+#' @details
+#' Accepts a `"table"` input.
+#'
+#' @import ggplot2
+#'
+#' @noRd
+plot_wp_bw_hrvar <- function(x){
+
+  x %>%
+    tidyr::pivot_longer(cols = -Personas) %>%
+    ggplot(aes(x = Personas,
+               y = value)) +
+    geom_col(fill = "lightblue") +
+    facet_wrap(. ~ name) +
+    geom_text(aes(label = scales::percent(value, accuracy = 1)),
+              size = 3,
+              hjust = -0.3) +
+    coord_flip() +
+    scale_y_continuous(labels = scales::percent,
+                       limits = c(NA, 1)) +
+    theme_wpa_basic()
+
+}
+

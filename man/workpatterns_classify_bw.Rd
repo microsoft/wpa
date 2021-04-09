@@ -50,6 +50,8 @@ archetypes
 \item \code{"table"}: returns a summary table of the archetypes
 \item \code{"plot-area"}: returns an area plot of the percentages of archetypes
 shown over time
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute.
 }}
 }
 \value{
@@ -63,6 +65,8 @@ archetypes
 \item \code{"table"}: returns a data frame of summary table of the archetypes
 \item \code{"plot-area"}: returns an area plot of the percentages of archetypes
 shown over time. A 'ggplot' object.
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute. A 'ggplot' object.
 }
 }
 \description{

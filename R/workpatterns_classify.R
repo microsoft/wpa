@@ -68,6 +68,7 @@
 #'   - `"data"`
 #'   - `"table"`
 #'   - `"plot-area"`
+#'   - `"plot-hrvar"` (only for `bw` method)
 #'
 #' See `Value` for more information.
 #'
@@ -108,6 +109,9 @@
 #'   - `"table"`: returns a summary table of the archetypes
 #'   - `"plot-area"`: returns an area plot of the percentages of archetypes
 #'   shown over time
+#'   - `"plot-hrvar"`: returns a bar plot showing the count of archetypes,
+#'   faceted by the supplied HR attribute. This is only available for the `bw`
+#'   method.
 #'
 #' @examples
 #'
