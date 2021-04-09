@@ -319,7 +319,7 @@ workpatterns_classify_bw <- function(data,
   } else if (return == "list"){
 
     list(data = return_data(),
-         plot = return_plot(),
+         plot = plot_workpatterns_classify_bw(ptn_data_final),
          plot_area = return_plot_area(),
          table = return_table())
 
