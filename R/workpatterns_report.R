@@ -88,8 +88,7 @@ workpatterns_report <- function(data,
   #   dplyr::mutate(Percentage= scales::percent(Percentage, accuracy = 0.1))
 
   personas_plot <-
-    wp_list$data %>%
-    plot_workpatterns_classify_bw() # Call internal function
+    wp_list$plot
 
     # personas_table %>%
     # ggplot(aes(x = Personas, y = Count)) +

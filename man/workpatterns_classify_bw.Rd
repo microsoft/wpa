@@ -50,19 +50,23 @@ archetypes
 \item \code{"table"}: returns a summary table of the archetypes
 \item \code{"plot-area"}: returns an area plot of the percentages of archetypes
 shown over time
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute.
 }}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
-and archetypes (default). A 'ggplot' object.
+\item \code{"plot"}: returns a summary grid plot of the classified archetypes
+(default). A 'ggplot' object.
 \item \code{"data"}: returns a data frame of the raw data with the classified
 archetypes
 \item \code{"table"}: returns a data frame of summary table of the archetypes
 \item \code{"plot-area"}: returns an area plot of the percentages of archetypes
 shown over time. A 'ggplot' object.
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute. A 'ggplot' object.
 }
 }
 \description{

@@ -26,6 +26,8 @@
 #'   - `"table"`: returns a summary table of the archetypes
 #'   - `"plot-area"`: returns an area plot of the percentages of archetypes
 #'   shown over time
+#'   - `"plot-hrvar"`: returns a bar plot showing the count of archetypes,
+#'   faceted by the supplied HR attribute.
 #'
 #' @param signals Character vector to specify which collaboration metrics to
 #'   use:
@@ -46,13 +48,15 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default). A 'ggplot' object.
+#'   - `"plot"`: returns a summary grid plot of the classified archetypes
+#'   (default). A 'ggplot' object.
 #'   - `"data"`: returns a data frame of the raw data with the classified
 #'   archetypes
 #'   - `"table"`: returns a data frame of summary table of the archetypes
 #'   - `"plot-area"`: returns an area plot of the percentages of archetypes
 #'   shown over time. A 'ggplot' object.
+#'   - `"plot-hrvar"`: returns a bar plot showing the count of archetypes,
+#'   faceted by the supplied HR attribute. A 'ggplot' object.
 #'
 #' @import ggplot2
 #' @importFrom magrittr "%>%"
@@ -198,6 +202,7 @@ workpatterns_classify_bw <- function(data,
     dplyr::as_tibble(ptn_data_final)
   }
 
+  # NOW DEFUNCT - NOT USED ---------------------------------------------------
   return_plot <- function(){
     ## Table for annotation
     myTable_legends <-
@@ -251,6 +256,8 @@ workpatterns_classify_bw <- function(data,
                fill = "red")
   }
 
+  # Plot area chart over time -----------------------------------------------
+
   return_plot_area <- function(){
     ptn_data_final %>%
       dplyr::group_by(Date, Personas) %>%
@@ -303,11 +310,17 @@ workpatterns_classify_bw <- function(data,
 
   } else if(return == "plot"){
 
-    return_plot()
+    plot_workpatterns_classify_bw(ptn_data_final)
 
   } else if(return == "plot-area"){
 
     return_plot_area()
+
+  } else if(return == "plot-hrvar"){
+
+    plot_wp_bw_hrvar(
+      x = return_table()
+    )
 
   } else if (return == "table"){
 
@@ -316,7 +329,7 @@ workpatterns_classify_bw <- function(data,
   } else if (return == "list"){
 
     list(data = return_data(),
-         plot = return_plot(),
+         plot = plot_workpatterns_classify_bw(ptn_data_final),
          plot_area = return_plot_area(),
          table = return_table())
 
@@ -330,6 +343,8 @@ workpatterns_classify_bw <- function(data,
 #' @title Plotting function for `workpatterns_classify_bw()`
 #'
 #' @description Internal use only.
+#'
+#' @noRd
 
 plot_workpatterns_classify_bw <- function(data){
 
@@ -471,3 +486,33 @@ plot_workpatterns_classify_bw <- function(data){
       axis.title = element_blank() # Toggle off axis title
       )
 }
+
+#' @title
+#' Plotting a faceted bar plot for `workpatterns_classify_bw()`
+#'
+#' @description Internal use only.
+#'
+#' @details
+#' Accepts a `"table"` input.
+#'
+#' @import ggplot2
+#'
+#' @noRd
+plot_wp_bw_hrvar <- function(x){
+
+  x %>%
+    tidyr::pivot_longer(cols = -Personas) %>%
+    ggplot(aes(x = Personas,
+               y = value)) +
+    geom_col(fill = "lightblue") +
+    facet_wrap(. ~ name) +
+    geom_text(aes(label = scales::percent(value, accuracy = 1)),
+              size = 3,
+              hjust = -0.3) +
+    coord_flip() +
+    scale_y_continuous(labels = scales::percent,
+                       limits = c(NA, 1)) +
+    theme_wpa_basic()
+
+}
+
