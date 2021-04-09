@@ -295,6 +295,8 @@ archetypes</p></li>
 <li><p><code>"table"</code>: returns a summary table of the archetypes</p></li>
 <li><p><code>"plot-area"</code>: returns an area plot of the percentages of archetypes
 shown over time</p></li>
+<li><p><code>"plot-hrvar"</code>: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute.</p></li>
 </ul></td>
     </tr>
     </table>
@@ -303,13 +305,15 @@ shown over time</p></li>
 
     <p>A different output is returned depending on the value passed to the <code>return</code>
 argument:</p><ul>
-<li><p><code>"plot"</code>: returns a heatmap plot of signal distribution by hour
-and archetypes (default). A 'ggplot' object.</p></li>
+<li><p><code>"plot"</code>: returns a summary grid plot of the classified archetypes
+(default). A 'ggplot' object.</p></li>
 <li><p><code>"data"</code>: returns a data frame of the raw data with the classified
 archetypes</p></li>
 <li><p><code>"table"</code>: returns a data frame of summary table of the archetypes</p></li>
 <li><p><code>"plot-area"</code>: returns an area plot of the percentages of archetypes
 shown over time. A 'ggplot' object.</p></li>
+<li><p><code>"plot-hrvar"</code>: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute. A 'ggplot' object.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
