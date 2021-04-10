@@ -2,8 +2,8 @@
 % Please edit documentation in R/workpatterns_classify_bw.R
 \name{workpatterns_classify_bw}
 \alias{workpatterns_classify_bw}
-\title{Classify working pattern week archetypes using a rule based algorithm,
-using the binary week-based (bw) method.}
+\title{Classify working pattern week archetypes using a rule-based algorithm,
+using the binary week-based ('bw') method.}
 \usage{
 workpatterns_classify_bw(
   data,
@@ -40,24 +40,40 @@ e.g. "1700"}
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
-\item{return}{Character vector to specify what to return. Valid options
-include: - "plot": returns a heatmap plot of signal distribution by hour
-and archetypes (default) - "data": returns the raw data with the classified
-archetypes - "table": returns a summary table of the archetypes -
-"plot-area": returns an area plot of the percentages of archetypes shown
-over time}
+\item{return}{Character vector to specify what to return.
+Valid options include:
+\itemize{
+\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
+and archetypes (default)
+\item \code{"data"}: returns the raw data with the classified
+archetypes
+\item \code{"table"}: returns a summary table of the archetypes
+\item \code{"plot-area"}: returns an area plot of the percentages of archetypes
+shown over time
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute.
+}}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: returns a summary grid plot of the classified archetypes
+(default). A 'ggplot' object.
+\item \code{"data"}: returns a data frame of the raw data with the classified
+archetypes
+\item \code{"table"}: returns a data frame of summary table of the archetypes
+\item \code{"plot-area"}: returns an area plot of the percentages of archetypes
+shown over time. A 'ggplot' object.
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute. A 'ggplot' object.
+}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Apply a rule based
-algorithm to emails sent by hour of day, using the binary week-based (bw)
-method.
-}
-\examples{
-\donttest{
-workpatterns_classify_bw(em_data)
-}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-
+Apply a rule based algorithm to emails sent by hour of day, using the binary
+week-based ('bw') method.
 }
 \seealso{
 Other Working Patterns: 

@@ -13,6 +13,10 @@ totals_col(data, total_value = "Total")
 \code{"Total"} column. Defaults to \code{"Total"}. An error is returned if an
 existing variable has the same name as the supplied value.}
 }
+\value{
+data frame containing an additional 'Total' column on top of the input data
+frame.
+}
 \description{
 Create a 'Total' column of character type comprising exactly of
 one unique value. This is a convenience function for returning a no-HR
@@ -37,7 +41,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

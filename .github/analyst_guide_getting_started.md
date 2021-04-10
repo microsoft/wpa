@@ -3,7 +3,13 @@ This section contains the detailed installation instructions, and a first overvi
 
 ## Installation
 
-The latest stable version of **wpa** is available in Github. You can automatically download and install it in your local device, by running the following code in R:
+The stable version of **wpa** can be installed directly from CRAN:
+
+```R
+install.packages("wpa")
+```
+
+There may occasionally be some experimental features that are only available in the development version. To install the development version from GitHub, you can also run:
 
 ```R
 # Check if remotes is installed, if not then install it
@@ -18,7 +24,7 @@ The above code will tell R not to update dependency packages, which speeds up th
 
 As best practice, you should restart your R Session both **before** and **after** running the above code. 
 
-**wpa** is not yet released on CRAN, and therefore `install.packages()` will not work. If you prefer to proceed with a local installation, you can download a installation file [here](https://github.com/microsoft/wpa/releases). 
+If you prefer to proceed with a local installation, you can download a installation file [here](https://github.com/microsoft/wpa/releases). 
 
 ### Troubleshooting installation
 

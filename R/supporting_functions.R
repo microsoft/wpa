@@ -92,6 +92,8 @@ check_inputs <- function(input, requirements, return = "stop"){
 #' @examples
 #' camel_clean("NoteHowTheStringIsFormatted")
 #'
+#' @return Returns a formatted string.
+#'
 #' @export
 camel_clean <- function(string){
 
@@ -104,6 +106,8 @@ camel_clean <- function(string){
 #' @param r,g,b Values that correspond to the three RGB parameters
 #'
 #' @family Support
+#'
+#' @return Returns a string containing a HEX code.
 #'
 #' @export
 rgb2hex <- function(r,g,b){
@@ -126,6 +130,14 @@ rgb2hex <- function(r,g,b){
 #' a descriptive string ("text").
 #'
 #' @family Support
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"table"`: data frame. A summary table containing the start and end date
+#'   for the dataset.
+#'   - `"text"`: string. Contains a descriptive string on the start and end date
+#'   for the dataset.
 #'
 #' @export
 extract_date_range <- function(data, return = "table"){
@@ -172,6 +184,8 @@ extract_date_range <- function(data, return = "table"){
 #'
 #' @param x A numeric value
 #'
+#' @return Returns a formatted string.
+#'
 #' @export
 comma <- function(x){
   x <- round(x, 0)
@@ -187,8 +201,13 @@ comma <- function(x){
 #' @param pkgname String containing the name of the package to check whether is
 #' installed.
 #'
+#' @noRd
+#'
 check_pkg_installed <- function(pkgname) {
-  if (!(pkgname %in% rownames(installed.packages()))) {
+
+  mtry <- try(find.package(package = pkgname))
+
+  if (inherits(mtry, "try-error")) {
     stop(
       paste0(
         "\n\nPackage ", wrap(pkgname, wrapper = "`"),
@@ -200,5 +219,3 @@ check_pkg_installed <- function(pkgname) {
       )
   }
 }
-
-

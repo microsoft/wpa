@@ -10,14 +10,17 @@ maxmin(x)
 \item{x}{Pass a vector or the required columns of a data frame through this
 argument.}
 }
+\value{
+Returns a numeric vector with the input rescaled.
+}
 \description{
 This function allows you to scale vectors or an entire data
 frame using the max-min scaling method A numeric vector is always returned.
-Originally implemented in \url{https://github.com/martinctc/surveytoolbox}.
 }
 \details{
 This is used within \code{keymetrics_scan()} to enable row-wise
-heatmapping.
+heatmapping. Originally implemented in
+\url{https://github.com/martinctc/surveytoolbox}.
 }
 \examples{
 numbers <- c(15, 40, 10, 2)
@@ -34,7 +37,6 @@ Other Support:
 \code{\link{extract_hr}()},
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

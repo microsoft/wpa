@@ -158,6 +158,8 @@ generate_report <- function(title = "My minimal HTML generator",
 #' @param subheader Character string to specify the subheader of the chunk.
 #' @param echo Logical value to specify whether to display code.
 #' @param object Character string to specify name of the object to show.
+#'
+#' @noRd
 generate_chunks <- function(level = 3,
                             title,
                             subheader = "",
@@ -178,12 +180,16 @@ generate_chunks <- function(level = 3,
   return(obj)
 }
 
-#' Read preamble
+#' @title Read preamble
 #'
+#' @description
 #' Read in a preamble to be used within each individual reporting function.
 #' Reads from the Markdown file installed with the package.
 #'
 #' @param path Text string containing the path for the appropriate Markdown file.
+#'
+#' @return
+#' String containing the text read in from the specified Markdown file.
 #'
 #' @family Support
 #' @family Reports
@@ -214,6 +220,8 @@ read_preamble <- function(path){
 #' @param text Character vector containing Markdown text
 #'
 #' @family Support
+#'
+#' @noRd
 #'
 md2html <- function(text){
 

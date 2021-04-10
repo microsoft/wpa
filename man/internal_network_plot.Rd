@@ -27,6 +27,11 @@ following strings: - \code{"plot"} - \code{"table"}}
 \item{bubble_size}{A numeric vector of length two to specify the size range
 of the bubbles}
 }
+\value{
+'ggplot' object showing a bubble plot with internal network size as the
+x-axis and internal network breadth as the y-axis. The size of the bubbles
+represent the number of unique employees in each group.
+}
 \description{
 Plot the internal network metrics for a HR variable as a scatter plot,
 showing Internal Network Breadth as the vertical axis and Internal Network

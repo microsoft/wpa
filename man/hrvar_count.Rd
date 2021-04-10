@@ -30,7 +30,7 @@ See \code{Value} for more information.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"plot"}: ggplot object containing a bar plot.
+\item \code{"plot"}: 'ggplot' object containing a bar plot.
 \item \code{"table"}: data frame containing a count table.
 }
 }

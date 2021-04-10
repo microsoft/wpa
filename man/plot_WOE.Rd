@@ -12,7 +12,7 @@ plot_WOE(IV, predictor)
 \item{predictor}{String with the name of the predictor variable.}
 }
 \value{
-ggplot object. Bar plot with 'WOE' as the y-axis and bins of the predictor
+'ggplot' object. Bar plot with 'WOE' as the y-axis and bins of the predictor
 variable as the horizontal axis.
 }
 \description{
@@ -30,7 +30,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{read_preamble}()},

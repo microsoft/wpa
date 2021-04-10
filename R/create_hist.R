@@ -30,7 +30,7 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: ggplot object. A faceted histogram for the metric.
+#'   - `"plot"`: 'ggplot' object. A faceted histogram for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'   - `"data"`: data frame. Data with calculated person averages.
 #'   - `"frequency`: list of data frames. Each data frame contains the
@@ -112,12 +112,17 @@ create_hist <- function(data,
 
   plot_object <-
     plot_data %>%
-    ggplot(aes(x = !!sym(metric), fill = group)) +
-    geom_histogram(binwidth = binwidth, colour = "white") +
+    ggplot(aes(x = !!sym(metric))) +
+    geom_histogram(binwidth = binwidth, colour = "white", fill="#34b1e2") +
     facet_wrap(group ~ .) +
     theme_wpa_basic() +
+    theme(strip.background = element_rect(color = "#1d627e",
+                                          fill = "#1d627e"),
+          strip.text = element_text(size = 10,
+                                    colour = "#FFFFFF",
+                                    face = "bold")) +
     labs(title = clean_nm,
-         subtitle = paste("Distribution of", clean_nm, "by", camel_clean(hrvar))) +
+         subtitle = paste("Distribution of", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
     xlab(clean_nm) +
     ylab("Number of employees") +
     labs(caption = extract_date_range(data, return = "text"))

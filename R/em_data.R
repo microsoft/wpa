@@ -12,6 +12,8 @@
 #'
 #' @family Data
 #'
+#' @return data frame.
+#'
 #' @format A data frame with 41567 rows and 56 variables:
 #' \describe{
 #'   \item{PersonId}{ }

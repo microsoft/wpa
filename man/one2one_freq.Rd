@@ -36,6 +36,13 @@ following strings:
 \item \code{"sum"}
 }}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object. A stacked bar plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
+}
 \description{
 This function calculates the average number of weeks (cadence) between of 1:1
 meetings between an employee and their manager. Returns a  distribution plot

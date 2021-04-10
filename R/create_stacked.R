@@ -34,7 +34,7 @@
 #' @family Flexible
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
+#' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
@@ -145,11 +145,12 @@ create_stacked <- function(data,
               position = position_stack(vjust = 0.5),
               color = "#FFFFFF",
               fontface = "bold") +
-    scale_y_continuous(limits = c(0, location * 1.25)) +
+    scale_y_continuous(expand = c(.01, 0), limits = c(0, location * 1.25)) +
     annotate("text",
              x = myTable_legends$group,
              y = location * 1.15,
-             label = myTable_legends$Employee_Count) +
+             label = myTable_legends$Employee_Count,
+			 size=3) +
     annotate("rect", xmin = 0.5, xmax = length(myTable_legends$group) + 0.5, ymin = location * 1.05, ymax = location * 1.25, alpha = .2) +
     scale_fill_manual(name="",
                       values = stack_colours,
@@ -157,8 +158,12 @@ create_stacked <- function(data,
                       labels = gsub("_", " ", metrics)) +
     coord_flip() +
     theme_wpa_basic() +
+	theme(axis.line = element_blank(),
+		axis.text.x = element_blank(),   	
+		axis.ticks = element_blank(),   
+		axis.title = element_blank()) +
     labs(title = plot_title,
-         subtitle = paste(plot_subtitle, "by",  camel_clean(hrvar)),
+         subtitle = paste(plot_subtitle, "by",  tolower(camel_clean(hrvar))),
          caption = extract_date_range(data, return = "text")) +
     xlab(hrvar) +
     ylab("Average weekly hours")

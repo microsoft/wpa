@@ -31,7 +31,7 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: ggplot object. A stacked bar plot for the metric.
+#'   - `"plot"`: 'ggplot' object. A stacked bar plot for the metric.
 #'   - `"table"`: data frame. A summary table for the metric.
 #'
 #' @import dplyr
@@ -130,14 +130,19 @@ create_dist <- function(data,
     plot_table %>%
     ggplot(aes(x = group, y=Employees, fill = bucket_hours)) +
     geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
-    scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
+    scale_y_continuous(expand = c(.01, 0), labels = function(x) paste0(x*100, "%"), position = "right") +
     coord_flip() +
-    annotate("text", x = plot_legend$group, y = -.05, label = plot_legend$Employee_Count ) +
+    annotate("text", x = plot_legend$group, y = 1.06, label = plot_legend$Employee_Count, size=3 ) +
+	annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = 1.02, ymax = 1.1, alpha = .2) +
+	annotate(x=length(plot_legend$group) + 0.8, xend=length(plot_legend$group) + 0.8, y=0, yend=1, colour="black", lwd=0.75, geom="segment") +
     scale_fill_manual(name="",
                       values = rev(dist_colours)) +
     theme_wpa_basic() +
+	theme(axis.line = element_blank(),   
+		axis.ticks = element_blank(),   
+		axis.title.y = element_blank()) +
     labs(title = clean_nm,
-         subtitle = paste("Distribution of", clean_nm, "by", camel_clean(hrvar))) +
+         subtitle = paste("Distribution of", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
     xlab(camel_clean(hrvar)) +
     ylab("Fraction of employees") +
     labs(caption = extract_date_range(data, return = "text"))

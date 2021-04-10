@@ -13,6 +13,9 @@ totals_reorder(data, target_col, target_value = "Total")
 
 \item{target_value}{Character value of the value in \code{target_col} to match}
 }
+\value{
+data frame with the 'Total' row reordered to the bottom.
+}
 \description{
 For a given data frame, reorder a row to the first row of that
 data frame through matching a \emph{value} of a \emph{variable}. The intended usage
@@ -40,7 +43,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

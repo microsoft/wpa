@@ -1,3 +1,16 @@
+# wpa (development version)
+
+- Improved aesthetics on plots
+
+# wpa 1.4.3
+
+- Patch update 
+- New CRAN submission addressing some feedback on Rd files (successful)
+
+# wpa 1.4.2
+
+- Patch update 
+
 # wpa 1.4.1
 
 New functions:

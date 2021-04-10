@@ -9,6 +9,9 @@ camel_clean(string)
 \arguments{
 \item{string}{A string vector in 'CamelCase' format to format}
 }
+\value{
+Returns a formatted string.
+}
 \description{
 Convert a text string from the format "CamelCase" to "Camel Case".
 This is used for converting variable names such as
@@ -29,7 +32,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

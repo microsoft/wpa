@@ -2,7 +2,7 @@
 % Please edit documentation in R/themes.R
 \name{theme_wpa_basic}
 \alias{theme_wpa_basic}
-\title{Basic theme for {wpa} visualisations}
+\title{Basic theme for 'wpa' visualisations}
 \usage{
 theme_wpa_basic(font_size = 12)
 }
@@ -11,8 +11,11 @@ theme_wpa_basic(font_size = 12)
 for the plot. The text elements are defined relatively to this
 base font size. Defaults to 12.}
 }
+\value{
+Returns a ggplot object with the applied theme.
+}
 \description{
-A theme function applied to ggplot visualisations in {wpa}.
+A theme function applied to 'ggplot' visualisations in 'wpa'.
 Based on \code{theme_wpa()} but has no font requirements.
 }
 \seealso{

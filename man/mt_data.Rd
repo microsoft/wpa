@@ -54,6 +54,9 @@ A data frame with 2001 rows and 30 variables:
 \usage{
 mt_data
 }
+\value{
+data frame.
+}
 \description{
 A dataset generated from a Meeting Query from Workplace Analytics.
 }

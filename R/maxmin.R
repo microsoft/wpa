@@ -2,10 +2,10 @@
 #'
 #' @description This function allows you to scale vectors or an entire data
 #'   frame using the max-min scaling method A numeric vector is always returned.
-#'   Originally implemented in <https://github.com/martinctc/surveytoolbox>.
 #'
 #' @details This is used within `keymetrics_scan()` to enable row-wise
-#'   heatmapping.
+#'   heatmapping. Originally implemented in
+#'   <https://github.com/martinctc/surveytoolbox>.
 #'
 #' @param x Pass a vector or the required columns of a data frame through this
 #'   argument.
@@ -16,6 +16,9 @@
 #' @examples
 #' numbers <- c(15, 40, 10, 2)
 #' maxmin(numbers)
+#'
+#' @return
+#' Returns a numeric vector with the input rescaled.
 #'
 #' @export
 

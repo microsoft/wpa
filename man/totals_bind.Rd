@@ -15,6 +15,11 @@ This is usually the intended grouping column.}
 \item{target_value}{Character value to impute in the new data frame to
 row-bind. Defaults to \code{"Total"}.}
 }
+\value{
+data frame with twice the number of rows of the input data frame, where half
+of those rows will have the \code{target_col} column imputed with the value from
+\code{target_value}.
+}
 \description{
 Row-bind an identical data frame and impute a specific
 column with the \code{target_value}, which defaults as "Total". The purpose of
@@ -38,7 +43,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

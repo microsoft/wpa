@@ -9,6 +9,9 @@ read_preamble(path)
 \arguments{
 \item{path}{Text string containing the path for the appropriate Markdown file.}
 }
+\value{
+String containing the text read in from the specified Markdown file.
+}
 \description{
 Read in a preamble to be used within each individual reporting function.
 Reads from the Markdown file installed with the package.
@@ -24,7 +27,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

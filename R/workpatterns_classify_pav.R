@@ -4,20 +4,21 @@
 # --------------------------------------------------------------------------------------------
 
 #' @title Classify working pattern personas using a rule based algorithm, using
-#' the person-average volume-based (pav) method.
+#' the person-average volume-based ('pav') method.
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
+#'
 #' Apply a rule based algorithm to emails or instant messages sent by hour of day.
-#' This uses a person-average volume-based (pav) method.
+#' This uses a person-average volume-based ('pav') method.
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
 #'
 #' @param return Character vector to specify what to return. Valid options include:
-#'   - "plot": returns a bar plot of signal distribution by hour and archetypes (default)
-#'   - "data": returns the raw data with the classified archetypes
-#'   - "table": returns a summary table of the archetypes
-#'   - "plot-area": returns an overlapping area plot
+#'   - `"plot"`: returns a bar plot of signal distribution by hour and archetypes (default)
+#'   - `"data"`: returns the raw data with the classified archetypes
+#'   - `"table"`: returns a summary table of the archetypes
+#'   - `"plot-area"`: returns an overlapping area plot
 #'
 #' @param values Character vector to specify whether to return percentages
 #' or absolute values in "data" and "plot". Valid values are:
@@ -36,21 +37,18 @@
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. "1700"
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: returns a bar plot of signal distribution by hour and
+#'   archetypes (default). A 'ggplot' object.
+#'   - `"data"`: returns a data frame of the raw data with the classified archetypes.
+#'   - `"table"`: returns a data frame of a summary table of the archetypes.
+#'   - `"plot-area"`: returns an overlapping area plot. A 'ggplot' object.
+#'
 #' @import dplyr
 #' @import tidyselect
 #' @import ggplot2
-#'
-#' @examples
-#' \donttest{
-#' # Returns a plot by default
-#' workpatterns_classify_pav(em_data)
-#'
-#' # Return summary table
-#' workpatterns_classify_pav(em_data, return = "table")
-#'
-#' # Return an area plot
-#' workpatterns_classify_pav(em_data, return = "plot-area")
-#' }
 #'
 #' @family Working Patterns
 #'

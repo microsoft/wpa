@@ -3,20 +3,19 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Export {wpa} outputs to CSV, clipboard, or save as images
+#' @title Export 'wpa' outputs to CSV, clipboard, or save as images
 #'
 #' @description
-#' A general use function to export {wpa} outputs to CSV,
-#' clipboard, or save as images. By default, `export()` copies
-#' a data frame to the clipboard. If the input is a ggplot object,
-#' the default behaviour is to export a PNG.
+#' A general use function to export 'wpa' outputs to CSV, clipboard, or save as
+#' images. By default, `export()` copies a data frame to the clipboard. If the
+#' input is a 'ggplot' object, the default behaviour is to export a PNG.
 #'
-#' @param x Data frame or ggplot object to be passed through.
+#' @param x Data frame or 'ggplot' object to be passed through.
 #' @param method Character string specifying the method of export.
 #' Valid inputs include:
 #'   - `"clipboard"` (default if input is data frame)
 #'   - `"csv"`
-#'   - `"png"` (default if input is ggplot object)
+#'   - `"png"` (default if input is 'ggplot' object)
 #'   - `"svg"`
 #'   - `"jpeg"`
 #'   - `"pdf"`
@@ -32,10 +31,10 @@
 #' argument:
 #'   - `"clipboard"`: no return - data frame is saved to clipboard.
 #'   - `"csv"`: CSV file containing data frame is saved to specified path.
-#'   - `"png"`: PNG file containing ggplot object is saved to specified path.
-#'   - `"svg"`: SVG file containing ggplot object is saved to specified path.
-#'   - `"jpeg"`: JPEG file containing ggplot object is saved to specified path.
-#'   - `"pdf"`: PDF file containing ggplot object is saved to specified path.
+#'   - `"png"`: PNG file containing 'ggplot' object is saved to specified path.
+#'   - `"svg"`: SVG file containing 'ggplot' object is saved to specified path.
+#'   - `"jpeg"`: JPEG file containing 'ggplot' object is saved to specified path.
+#'   - `"pdf"`: PDF file containing 'ggplot' object is saved to specified path.
 #'
 #' @importFrom utils write.csv
 #'
@@ -60,7 +59,7 @@ export <- function(x,
 
   ## Force method to png if is.ggplot and method not appropriate
   if(is.ggplot(x) & method %in% c("clipboard", "csv")){
-    message("Input is a ggplot object. Defaulted to exporting as PNG...")
+    message("Input is a 'ggplot' object. Defaulted to exporting as PNG...")
     method <- "png"
   }
 

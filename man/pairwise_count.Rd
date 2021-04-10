@@ -13,9 +13,17 @@ pairwise_count(data, id = "line", word = "word")
 
 \item{word}{String to represent the word variable. Defaults to \code{"word"}.}
 }
+\value{
+data frame with the following columns representing a pairwise count:
+\itemize{
+\item \code{"item1"}
+\item \code{"item2"}
+\item \code{"n"}
+}
+}
 \description{
-This is a 'data.table' implementation that mimics the output
-of \code{widyr::pairwise_count()} to reduce package dependency. This is used
+This is a 'data.table' implementation that mimics the output of
+\code{pairwise_count()} from 'widyr' to reduce package dependency. This is used
 internally within \code{tm_cooc()}.
 }
 \examples{
@@ -36,7 +44,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{plot_WOE}()},
 \code{\link{read_preamble}()},

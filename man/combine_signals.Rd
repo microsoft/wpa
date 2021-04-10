@@ -16,6 +16,10 @@ combine_signals(data, hr, signals = c("Emails_sent", "IMs_sent"))
 Defaults to \code{c("Emails_sent", "IMs_sent")}. Other valid values include
 \code{"Unscheduled_calls"} and \code{"Meetings"}.}
 }
+\value{
+Returns a numeric vector that represents the sum of signals sent for a given
+hour.
+}
 \description{
 Takes in an Hourly Collaboration Data, and for each hour sums and aggregates
 the signals (e.g.\code{Emails_sent} and \code{IMs_sent}) in \code{Signals_sent}. This is an
@@ -43,7 +47,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

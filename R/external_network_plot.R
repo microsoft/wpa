@@ -19,6 +19,11 @@
 #' # Return plot
 #' sq_data %>% external_network_plot(return = "plot")
 #'
+#' @return
+#' 'ggplot' object showing a bubble plot with external network size as the
+#' x-axis and external network breadth as the y-axis. The size of the bubbles
+#' represent the number of unique employees in each group.
+#'
 #' @family Visualization
 #' @family Network
 #'

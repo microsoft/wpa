@@ -58,6 +58,7 @@ following strings:
 \item \code{"data"}
 \item \code{"table"}
 \item \code{"plot-area"}
+\item \code{"plot-hrvar"} (only for \code{bw} method)
 }
 
 See \code{Value} for more information.}
@@ -72,6 +73,9 @@ and archetypes (default)
 \item \code{"table"}: returns a summary table of the archetypes
 \item \code{"plot-area"}: returns an area plot of the percentages of archetypes
 shown over time
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute. This is only available for the \code{bw}
+method.
 }
 }
 \description{

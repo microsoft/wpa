@@ -47,9 +47,9 @@
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
-#'   - `"plot"`: ggplot object. A group-to-group network plot.
+#'   - `"plot"`: 'ggplot' object. A group-to-group network plot.
 #'   - `"table"`: data frame. An interactive matrix of the network.
-#'   - `"network`: igraph object used for creating the network plot.
+#'   - `"network`: 'igraph' object used for creating the network plot.
 #'   - `"data"`: data frame. A long table of the underlying data.
 #'
 #' @import ggplot2
@@ -212,7 +212,7 @@ network_g2g <- function(data,
 
     if(return == "network"){
 
-      mynet_em # Return igraph object
+      mynet_em # Return 'igraph' object
 
     } else {
 

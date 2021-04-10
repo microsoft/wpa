@@ -9,6 +9,9 @@ rgb2hex(r, g, b)
 \arguments{
 \item{r, g, b}{Values that correspond to the three RGB parameters}
 }
+\value{
+Returns a string containing a HEX code.
+}
 \description{
 Convert rgb to HEX code
 }
@@ -23,7 +26,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

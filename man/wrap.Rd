@@ -11,6 +11,9 @@ wrap(string, wrapper = "\\"")
 
 \item{wrapper}{Character to wrap around \code{string}}
 }
+\value{
+Character vector containing the modified string.
+}
 \description{
 This function adds a character at the start and end of a character
 string, where the default behaviour is to add a double quote.
@@ -26,7 +29,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

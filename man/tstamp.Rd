@@ -6,8 +6,11 @@
 \usage{
 tstamp()
 }
+\value{
+String containing the timestamp in the format \code{'yymmdd_hhmmss'}.
+}
 \description{
-This function generates a time stamp of the format \code{yymmdd_hhmmss}.
+This function generates a time stamp of the format \code{'yymmdd_hhmmss'}.
 This is a support function and is not intended for direct use.
 }
 \seealso{
@@ -21,7 +24,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},

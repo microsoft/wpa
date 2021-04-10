@@ -30,7 +30,7 @@
 #' create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
+#' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @export
@@ -83,10 +83,12 @@ create_trend <- function(data,
     myTable_plot %>%
     ggplot(aes(x = Date , y = group , fill = !!sym(metric))) +
     geom_tile(height=.5) +
-    scale_fill_gradient(name = "Hours", low = "white", high = "#fe7f4f") +
+    scale_x_date(position = "top") + 
+	scale_fill_gradientn(name = "Hours", colours = c("steelblue4","aliceblue","white","mistyrose1","tomato1")) +
     theme_wpa_basic() +
+	theme(axis.line.y = element_blank(), axis.title.y = element_blank()) + 
     labs(title = clean_nm,
-         subtitle = paste("By", camel_clean(hrvar))) +
+         subtitle = paste("Hotspots by", tolower(camel_clean(hrvar)))) +
     xlab("Date") +
     ylab(hrvar) +
     labs(caption = extract_date_range(data, return = "text"))

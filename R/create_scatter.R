@@ -45,7 +45,7 @@
 #' "Organization", mingroup = 100, return = "plot")
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
+#' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @export
@@ -94,7 +94,8 @@ create_scatter <- function(data,
                y = !!sym(metric_y),
                colour = !!sym(hrvar))) +
     geom_point(alpha = 0.5) +
-    labs(title = paste0(clean_x, " and\n", clean_y, " by ", camel_clean(hrvar)),
+    labs(title = paste0(clean_x, " and ", clean_y), 
+	subtitle = paste("Distribution of employees by", tolower(camel_clean(hrvar))),
          caption = extract_date_range(data, return = "text")) +
     xlab(clean_x) +
     ylab(clean_y) +

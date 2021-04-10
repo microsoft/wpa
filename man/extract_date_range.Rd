@@ -15,6 +15,16 @@ Accepts a Person query or a Meeting query.}
 Returns a table by default ("table"), but allows returning
 a descriptive string ("text").}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"table"}: data frame. A summary table containing the start and end date
+for the dataset.
+\item \code{"text"}: string. Contains a descriptive string on the start and end date
+for the dataset.
+}
+}
 \description{
 Return a data frame with the start and end date
 of the query data by default. There are options to return a descriptive
@@ -30,7 +40,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{p_test}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},
