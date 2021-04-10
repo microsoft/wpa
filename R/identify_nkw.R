@@ -93,7 +93,8 @@ identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){
 
   } else if(return %in% c("data_clean", "data_cleaned")){
 
-    return(data_with_flag %>% filter(flag_nkw == "kw") %>% data.frame())
+    data_with_flag %>%
+      filter(flag_nkw == "kw")
 
   } else if(return == "text"){
 
