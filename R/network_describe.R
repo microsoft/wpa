@@ -7,7 +7,7 @@
 #' Uncover HR attributes which best represent a population for a Person to
 #' Person query
 #'
-#' @author Tannaz Sattari Tabrizi <Tannaz.Sattari@microsoft.com>
+#' @author Tannaz Sattari Tabrizi <Tannaz.Sattari@@microsoft.com>
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`

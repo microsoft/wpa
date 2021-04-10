@@ -11,6 +11,8 @@
 #' day. Uses a binary week-based ('bw') method by default, with options to use
 #' the the person-average volume-based ('pav') method.
 #'
+#' @author Ainize Cidoncha <ainize.cidoncha@@microsoft.com>
+#'
 #' @details This is a wrapper around `workpatterns_classify_bw()` and
 #' `workpatterns_classify_pav()`, and calls each function depending on what is
 #' supplied to the `method` argument. Both methods implement a rule-based

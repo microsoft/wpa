@@ -16,6 +16,8 @@
 #' -  The number of people that do not have that HR attribute ot  they are no
 #' longer in the system
 #'
+#' @author Tannaz Sattari Tabrizi <Tannaz.Sattari@@microsoft.com>
+#'
 #' @param data A Person Query dataset in the form of a data frame.
 #' @param start_date A start date to compare changes. See `end_date`.
 #' @param end_date An end date to compare changes. See `start_date`.

@@ -178,5 +178,8 @@ Other Working Patterns:
 \code{\link{workpatterns_rank}()},
 \code{\link{workpatterns_report}()}
 }
+\author{
+Ainize Cidoncha \href{mailto:ainize.cidoncha@microsoft.com}{ainize.cidoncha@microsoft.com}
+}
 \concept{Clustering}
 \concept{Working Patterns}
