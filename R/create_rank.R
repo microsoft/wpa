@@ -10,13 +10,9 @@
 #' levels of a given Workplace Analytics Metric. Returns a table with all groups
 #' (across multiple HR attributes) ranked by the specified metric.
 #'
-#' @param data A Standard Person Query dataset in the form of a data frame.
+#' @template spq-params
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param hrvar A list of HR Variables to consider in the scan.
-#' Defaults to all HR attributes identified.
-#' @param mingroup Numeric value setting the privacy threshold / minimum group size.
-#' Defaults to 5.
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
