@@ -10,6 +10,7 @@ create_rank(
   hrvar = extract_hr(data),
   mingroup = 5,
   return = "table",
+  mode = "simple",
   plot_mode = 1
 )
 }
@@ -35,6 +36,12 @@ following strings:
 
 See \code{Value} for more information.}
 
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
+
 \item{plot_mode}{Numeric vector to determine which plot mode to return. Must
 be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
 \itemize{
@@ -48,7 +55,8 @@ argument:
 \itemize{
 \item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
-bubbles represent the size of the organizations.
+bubbles represent the size of the organizations. Note that there is no
+plot output if \code{mode} is set to \code{"combine"}.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -58,6 +66,7 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
 (across multiple HR attributes) ranked by the specified metric.
 }
 \examples{
+# Plot mode 1 - show top and bottom five groups
 create_rank(
   data = sq_data,
   hrvar = c("FunctionType", "LevelDesignation"),
@@ -82,6 +91,13 @@ create_rank(
   return = "table"
 )
 
+# Return a table - combination mode
+create_rank(
+  data = sq_data,
+  metric = "Emails_sent",
+  mode = "combine",
+  return = "table"
+)
 
 }
 \seealso{

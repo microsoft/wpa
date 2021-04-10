@@ -20,17 +20,33 @@
 #' @family Visualization
 #' @family Workweek Span
 #'
+#' @examples
+#' # Return rank table
+#' workloads_rank(
+#'   data = sq_data,
+#'   return = "table"
+#' )
+#'
+#' # Return plot
+#' workloads_rank(
+#'   data = sq_data,
+#'   return = "plot"
+#' )
 #'
 #' @export
 
 workloads_rank <- function(data,
                            hrvar = extract_hr(data),
                            mingroup = 5,
+                           mode = "simple",
+                           plot_mode = 1,
                            return = "table"){
 
   data %>%
     create_rank(metric = "Workweek_span",
                 hrvar = hrvar,
                 mingroup = mingroup,
+                mode = mode,
+                plot_mode = plot_mode,
                 return = return)
 }

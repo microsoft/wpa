@@ -74,4 +74,5 @@ Contributors to the GitHub repo:
 
 ![](https://raw.githubusercontent.com/microsoft/wpa/main/CONTRIBUTORS.svg)
 
-See full list [here](https://microsoft.github.io/wpa/authors.html).
+See the full list of our contributors [here](https://microsoft.github.io/wpa/contributors.html).
+

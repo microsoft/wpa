@@ -4,7 +4,14 @@
 \alias{email_rank}
 \title{Email Hours Ranking}
 \usage{
-email_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
+email_rank(
+  data,
+  hrvar = extract_hr(data),
+  mingroup = 5,
+  mode = "simple",
+  plot_mode = 1,
+  return = "table"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
@@ -15,6 +22,19 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
+
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
+
+\item{plot_mode}{Numeric vector to determine which plot mode to return. Must
+be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
+\itemize{
+\item \code{1}: Top and bottom five groups across the data population are highlighted
+\item \code{2}: Top and bottom groups \emph{per} organizational attribute are highlighted
+}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -31,7 +51,8 @@ argument:
 \itemize{
 \item \code{"plot"}: ggplot object. A bubble plot where the x-axis represents the
 metric, the y-axis represents the HR attributes, and the size of the
-bubbles represent the size of the organizations.
+bubbles represent the size of the organizations. Note that there is no
+plot output if \code{mode} is set to \code{"combine"}.
 \item \code{"table"}: data frame. A summary table for the metric.
 }
 }
@@ -43,6 +64,20 @@ multiple HR attributes) ranked by hours of digital collaboration.
 \details{
 Uses the metric \code{Email_hours}.
 See \code{create_rank()} for applying the same analysis to a different metric.
+}
+\examples{
+# Return rank table
+email_rank(
+  data = sq_data,
+  return = "table"
+)
+
+# Return plot
+email_rank(
+  data = sq_data,
+  return = "plot"
+)
+
 }
 \seealso{
 Other Visualization: 
