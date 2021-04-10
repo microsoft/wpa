@@ -53,8 +53,8 @@ Hours — identify_nkw • wpa</title>
 Hours — identify_nkw" />
 <meta property="og:description" content="This function scans a standard query output to identify employees with
 consistently low collaboration signals. Returns the % of non-knowledge
-workers identified by Organization, and optionally an edited dataframe with
-non-knowledge workers removed, or the full dataframe with the kw/nkw flag
+workers identified by Organization, and optionally an edited data frame with
+non-knowledge workers removed, or the full data frame with the kw/nkw flag
 added." />
 <meta property="og:image" content="/logo.png" />
 
@@ -235,8 +235,8 @@ Hours</h1>
     <div class="ref-description">
     <p>This function scans a standard query output to identify employees with
 consistently low collaboration signals. Returns the % of non-knowledge
-workers identified by Organization, and optionally an edited dataframe with
-non-knowledge workers removed, or the full dataframe with the kw/nkw flag
+workers identified by Organization, and optionally an edited data frame with
+non-knowledge workers removed, or the full data frame with the kw/nkw flag
 added.</p>
     </div>
 
@@ -251,10 +251,12 @@ added.</p>
     </tr>
     <tr>
       <th>collab_threshold</th>
-      <td><p>The collaboration hours threshold that should be
-exceeded as an average for the entire analysis period for the employee to
-be categorized as a knowledge worker ("kw"). Enter a positive number.
-Default is set to 5 collaboration hours.</p></td>
+      <td><p>Positive numeric value representing the collaboration
+hours threshold that should be exceeded as an average for the entire
+analysis period for the employee to be categorized as a knowledge worker
+("kw"). Default is set to 5 collaboration hours. Any versions after v1.4.3,
+this uses a "greater than or equal to" logic (<code>&gt;=</code>), in which case persons
+with exactly 5 collaboration hours will pass.</p></td>
     </tr>
     <tr>
       <th>return</th>
