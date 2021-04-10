@@ -9,15 +9,17 @@
 #' @description
 #' This function scans a standard query output to identify employees with
 #' consistently low collaboration signals. Returns the % of non-knowledge
-#' workers identified by Organization, and optionally an edited dataframe with
-#' non-knowledge workers removed, or the full dataframe with the kw/nkw flag
+#' workers identified by Organization, and optionally an edited data frame with
+#' non-knowledge workers removed, or the full data frame with the kw/nkw flag
 #' added.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
-#' @param collab_threshold The collaboration hours threshold that should be
-#'   exceeded as an average for the entire analysis period for the employee to
-#'   be categorized as a knowledge worker ("kw"). Enter a positive number.
-#'   Default is set to 5 collaboration hours.
+#' @param collab_threshold Positive numeric value representing the collaboration
+#'   hours threshold that should be exceeded as an average for the entire
+#'   analysis period for the employee to be categorized as a knowledge worker
+#'   ("kw"). Default is set to 5 collaboration hours. Any versions after v1.4.3,
+#'   this uses a "greater than or equal to" logic (`>=`), in which case persons
+#'   with exactly 5 collaboration hours will pass.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"text"`
@@ -49,12 +51,14 @@ identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){
     data %>%
     group_by(PersonId, Organization) %>%
     summarize(mean_collab = mean(Collaboration_hours), .groups = "drop")%>%
-    mutate(flag_nkw = case_when(mean_collab > collab_threshold ~ "kw",
+    mutate(flag_nkw = case_when(mean_collab >= collab_threshold ~ "kw",
                                 TRUE ~ "nkw"))
 
-  data_with_flag <- left_join(data,
-                              summary_byPersonId %>%
-                                dplyr::select(PersonId,flag_nkw), by = 'PersonId')
+  data_with_flag <-
+    left_join(data,
+              summary_byPersonId %>%
+                dplyr::select(PersonId,flag_nkw),
+              by = 'PersonId')
 
   summary_byOrganization <-
     summary_byPersonId %>%
@@ -89,7 +93,8 @@ identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){
 
   } else if(return %in% c("data_clean", "data_cleaned")){
 
-    return(data_with_flag %>% filter(flag_nkw == "kw") %>% data.frame())
+    data_with_flag %>%
+      filter(flag_nkw == "kw")
 
   } else if(return == "text"){
 
