@@ -101,13 +101,19 @@ implementations.
 This method classifies each \strong{person-week} into one of the seven
 archetypes:
 \itemize{
-\item 0 < 3 hours on
-\item 1 Standard with breaks workday
-\item 2 Standard continuous workday
-\item 3 Standard flexible workday
-\item 4 Long flexible workday
-\item 5 Long continuous workday
-\item 6 Always on (13h+)
+\item \strong{0 < 3 hours on}: fewer than 3 hours of active hours
+\item \strong{1 Standard with breaks workday}: active for fewer than \emph{expected
+hours}, with no activity outside working hours
+\item \strong{2 Standard continuous workday}: number of active hours equal \emph{expected
+hours}, with no activity outside working hours
+\item \strong{3 Standard flexible workday}: number of active hours are less than or
+equal to \emph{expected hours}, with some activity outside working hours
+\item \strong{4 Long flexible workday}: number of active hours exceed \emph{expected
+hours}, with breaks occurring throughout
+\item \strong{5 Long continuous workday}: number of active hours exceed \emph{expected
+hours}, with activity happening in a continuous block (no breaks)
+\item \strong{6 Always on (13h+)}: number of active hours greater than or equal to
+13
 }
 
 This is the recommended method over \code{pav} for several reasons:
@@ -125,21 +131,31 @@ results towards the 'standard working hours'.
 This method classifies each \strong{person} (based on unique \code{PersonId}) into
 one of the six archetypes:
 \itemize{
-\item Absent
-\item Extended Hours - Morning
-\item Extended Hours - Evening
-\item Overnight workers
-\item Standard Hours
-\item Always On
+\item \strong{Absent}: Fewer than 10 signals over the week.
+\item \strong{Extended Hours - Morning:} 15\%+ of collaboration before start hours and
+less than 70\% within standard hours, and less than 15\% of collaboration after
+end hours
+\item \strong{Extended Hours - Evening}: Less than 15\% of collaboration before start
+hours and less than 70\% within standard hours, and 15\%+ of collaboration
+after end hours
+\item \strong{Overnight workers}: less than 30\% of collaboration happens within
+standard hours
+\item \strong{Standard Hours}: over 70\% of collaboration within standard hours
+\item \strong{Always On}: over 15\% of collaboration happens before starting hour and
+end hour (both conditions must satisfy) and less than 70\% of collaboration
+within standard hours
 }
 }
 
 \section{Flexibility Index}{
  The Working Patterns archetypes as calculated
 using the binary-week method shares many similarities with the Flexibility
-Index (see \code{flex_index()}): - Both are computed directly from the Hourly
-Collaboration Flexible Query. - Both apply the same binary conversion of
-activity on the signals from the Hourly Collaboration Flexible Query.
+Index (see \code{flex_index()}):
+\itemize{
+\item Both are computed directly from the Hourly Collaboration Flexible Query.
+\item Both apply the same binary conversion of activity on the signals from the
+Hourly Collaboration Flexible Query.
+}
 }
 
 \examples{

@@ -24,13 +24,19 @@
 #'
 #'   This method classifies each **person-week** into one of the seven
 #'   archetypes:
-#'   - 0 < 3 hours on
-#'   - 1 Standard with breaks workday
-#'   - 2 Standard continuous workday
-#'   - 3 Standard flexible workday
-#'   - 4 Long flexible workday
-#'   - 5 Long continuous workday
-#'   - 6 Always on (13h+)
+#'   - **0 < 3 hours on**: fewer than 3 hours of active hours
+#'   - **1 Standard with breaks workday**: active for fewer than _expected
+#'   hours_, with no activity outside working hours
+#'   - **2 Standard continuous workday**: number of active hours equal _expected
+#'   hours_, with no activity outside working hours
+#'   - **3 Standard flexible workday**: number of active hours are less than or
+#'   equal to _expected hours_, with some activity outside working hours
+#'   - **4 Long flexible workday**: number of active hours exceed _expected
+#'   hours_, with breaks occurring throughout
+#'   - **5 Long continuous workday**: number of active hours exceed _expected
+#'   hours_, with activity happening in a continuous block (no breaks)
+#'   - **6 Always on (13h+)**: number of active hours greater than or equal to
+#'   13
 #'
 #'   This is the recommended method over `pav` for several reasons:
 #'   1. `bw` ignores _volume effects_, where activity volume can still bias the
@@ -42,18 +48,33 @@
 #'
 #'   This method classifies each **person** (based on unique `PersonId`) into
 #'   one of the six archetypes:
-#'   - Absent
-#'   - Extended Hours - Morning
-#'   - Extended Hours - Evening
-#'   - Overnight workers
-#'   - Standard Hours
-#'   - Always On
+#' - **Absent**: Fewer than 10 signals over the week.
+#'
+#' - **Extended Hours - Morning:** 15%+ of collaboration before start hours and
+#' less than 70% within standard hours, and less than 15% of collaboration after
+#' end hours
+#'
+#' - **Extended Hours - Evening**: Less than 15% of collaboration before start
+#' hours and less than 70% within standard hours, and 15%+ of collaboration
+#' after end hours
+#'
+#' - **Overnight workers**: less than 30% of collaboration happens within
+#' standard hours
+#'
+#' - **Standard Hours**: over 70% of collaboration within standard hours
+#'
+#' - **Always On**: over 15% of collaboration happens before starting hour and
+#' end hour (both conditions must satisfy) and less than 70% of collaboration
+#' within standard hours
+#'
 #'
 #' @section Flexibility Index: The Working Patterns archetypes as calculated
 #'   using the binary-week method shares many similarities with the Flexibility
-#'   Index (see `flex_index()`): - Both are computed directly from the Hourly
-#'   Collaboration Flexible Query. - Both apply the same binary conversion of
-#'   activity on the signals from the Hourly Collaboration Flexible Query.
+#'   Index (see `flex_index()`):
+#'
+#'   - Both are computed directly from the Hourly Collaboration Flexible Query.
+#'   - Both apply the same binary conversion of activity on the signals from the
+#'   Hourly Collaboration Flexible Query.
 #'
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
