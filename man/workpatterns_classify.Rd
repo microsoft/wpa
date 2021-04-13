@@ -117,6 +117,21 @@ results towards the 'standard working hours'.
 \item It captures the intuition that each individual can have 'light' and
 'heavy' weeks with respect to workload.
 }
+\itemize{
+\item \strong{0 < 3 hours on}: fewer than 3 hours of active hours
+\item \strong{1 Standard with breaks workday}: active for fewer than \emph{expected
+hours}, with no activity outside working hours
+\item \strong{2 Standard continuous workday}: number of active hours equal \emph{expected
+hours}, with no activity outside working hours
+\item \strong{3 Standard flexible workday}: number of active hours are less than or
+equal to \emph{expected hours}, with some activity outside working hours
+\item \strong{4 Long flexible workday}: number of active hours exceed \emph{expected
+hours}, with breaks occurring throughout
+\item \strong{5 Long continuous workday}: number of active hours exceed \emph{expected
+hours}, with activity happening in a continuous block (no breaks)
+\item \strong{6 Always on (13h+)}: number of active hours greater than or equal to
+13
+}
 }
 
 \section{Person Average method}{
@@ -131,6 +146,23 @@ one of the six archetypes:
 \item Overnight workers
 \item Standard Hours
 \item Always On
+}
+
+The Person Average archetypes are defined as follows:
+\itemize{
+\item \strong{Absent}: Fewer than 10 signals over the week.
+\item \strong{Extended Hours - Morning:} 15\%+ of collaboration before start hours and
+less than 70\% within standard hours, and less than 15\% of collaboration after
+end hours
+\item \strong{Extended Hours - Evening}: Less than 15\% of collaboration before start
+hours and less than 70\% within standard hours, and 15\%+ of collaboration
+after end hours
+\item \strong{Overnight workers}: less than 30\% of collaboration happens within
+standard hours
+\item \strong{Standard Hours}: over 70\% of collaboration within standard hours
+\item \strong{Always On}: over 15\% of collaboration happens before starting hour and
+end hour (both conditions must satisfy) and less than 70\% of collaboration
+within standard hours
 }
 }
 
