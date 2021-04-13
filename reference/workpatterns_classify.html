@@ -345,13 +345,19 @@ implementations.</p>
 
 <p>This method classifies each <strong>person-week</strong> into one of the seven
 archetypes:</p><ul>
-<li><p>0 &lt; 3 hours on</p></li>
-<li><p>1 Standard with breaks workday</p></li>
-<li><p>2 Standard continuous workday</p></li>
-<li><p>3 Standard flexible workday</p></li>
-<li><p>4 Long flexible workday</p></li>
-<li><p>5 Long continuous workday</p></li>
-<li><p>6 Always on (13h+)</p></li>
+<li><p><strong>0 &lt; 3 hours on</strong>: fewer than 3 hours of active hours</p></li>
+<li><p><strong>1 Standard with breaks workday</strong>: active for fewer than <em>expected
+hours</em>, with no activity outside working hours</p></li>
+<li><p><strong>2 Standard continuous workday</strong>: number of active hours equal <em>expected
+hours</em>, with no activity outside working hours</p></li>
+<li><p><strong>3 Standard flexible workday</strong>: number of active hours are less than or
+equal to <em>expected hours</em>, with some activity outside working hours</p></li>
+<li><p><strong>4 Long flexible workday</strong>: number of active hours exceed <em>expected
+hours</em>, with breaks occurring throughout</p></li>
+<li><p><strong>5 Long continuous workday</strong>: number of active hours exceed <em>expected
+hours</em>, with activity happening in a continuous block (no breaks)</p></li>
+<li><p><strong>6 Always on (13h+)</strong>: number of active hours greater than or equal to
+13</p></li>
 </ul>
 
 <p>This is the recommended method over <code>pav</code> for several reasons:</p><ol>
@@ -368,21 +374,31 @@ results towards the 'standard working hours'.</p></li>
 
 <p>This method classifies each <strong>person</strong> (based on unique <code>PersonId</code>) into
 one of the six archetypes:</p><ul>
-<li><p>Absent</p></li>
-<li><p>Extended Hours - Morning</p></li>
-<li><p>Extended Hours - Evening</p></li>
-<li><p>Overnight workers</p></li>
-<li><p>Standard Hours</p></li>
-<li><p>Always On</p></li>
+<li><p><strong>Absent</strong>: Fewer than 10 signals over the week.</p></li>
+<li><p><strong>Extended Hours - Morning:</strong> 15%+ of collaboration before start hours and
+less than 70% within standard hours, and less than 15% of collaboration after
+end hours</p></li>
+<li><p><strong>Extended Hours - Evening</strong>: Less than 15% of collaboration before start
+hours and less than 70% within standard hours, and 15%+ of collaboration
+after end hours</p></li>
+<li><p><strong>Overnight workers</strong>: less than 30% of collaboration happens within
+standard hours</p></li>
+<li><p><strong>Standard Hours</strong>: over 70% of collaboration within standard hours</p></li>
+<li><p><strong>Always On</strong>: over 15% of collaboration happens before starting hour and
+end hour (both conditions must satisfy) and less than 70% of collaboration
+within standard hours</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="flexibility-index"><a class="anchor" href="#flexibility-index"></a>Flexibility Index</h2>
 
     <p>The Working Patterns archetypes as calculated
 using the binary-week method shares many similarities with the Flexibility
-Index (see <code><a href='flex_index.html'>flex_index()</a></code>): - Both are computed directly from the Hourly
-Collaboration Flexible Query. - Both apply the same binary conversion of
-activity on the signals from the Hourly Collaboration Flexible Query.</p>
+Index (see <code><a href='flex_index.html'>flex_index()</a></code>):</p><ul>
+<li><p>Both are computed directly from the Hourly Collaboration Flexible Query.</p></li>
+<li><p>Both apply the same binary conversion of activity on the signals from the
+Hourly Collaboration Flexible Query.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Clustering: 
