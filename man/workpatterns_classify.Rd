@@ -150,9 +150,12 @@ within standard hours
 \section{Flexibility Index}{
  The Working Patterns archetypes as calculated
 using the binary-week method shares many similarities with the Flexibility
-Index (see \code{flex_index()}): - Both are computed directly from the Hourly
-Collaboration Flexible Query. - Both apply the same binary conversion of
-activity on the signals from the Hourly Collaboration Flexible Query.
+Index (see \code{flex_index()}):
+\itemize{
+\item Both are computed directly from the Hourly Collaboration Flexible Query.
+\item Both apply the same binary conversion of activity on the signals from the
+Hourly Collaboration Flexible Query.
+}
 }
 
 \examples{

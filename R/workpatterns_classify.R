@@ -70,9 +70,11 @@
 #'
 #' @section Flexibility Index: The Working Patterns archetypes as calculated
 #'   using the binary-week method shares many similarities with the Flexibility
-#'   Index (see `flex_index()`): - Both are computed directly from the Hourly
-#'   Collaboration Flexible Query. - Both apply the same binary conversion of
-#'   activity on the signals from the Hourly Collaboration Flexible Query.
+#'   Index (see `flex_index()`):
+#'
+#'   - Both are computed directly from the Hourly Collaboration Flexible Query.
+#'   - Both apply the same binary conversion of activity on the signals from the
+#'   Hourly Collaboration Flexible Query.
 #'
 #'
 #' @param data A data frame containing data from the Hourly Collaboration query.
