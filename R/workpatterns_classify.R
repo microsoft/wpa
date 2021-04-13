@@ -24,20 +24,6 @@
 #'
 #'   This method classifies each **person-week** into one of the seven
 #'   archetypes:
-#'   - 0 < 3 hours on
-#'   - 1 Standard with breaks workday
-#'   - 2 Standard continuous workday
-#'   - 3 Standard flexible workday
-#'   - 4 Long flexible workday
-#'   - 5 Long continuous workday
-#'   - 6 Always on (13h+)
-#'
-#'   This is the recommended method over `pav` for several reasons:
-#'   1. `bw` ignores _volume effects_, where activity volume can still bias the
-#'   results towards the 'standard working hours'.
-#'   2. It captures the intuition that each individual can have 'light' and
-#'   'heavy' weeks with respect to workload.
-#'
 #'   - **0 < 3 hours on**: fewer than 3 hours of active hours
 #'   - **1 Standard with breaks workday**: active for fewer than _expected
 #'   hours_, with no activity outside working hours
@@ -52,19 +38,16 @@
 #'   - **6 Always on (13h+)**: number of active hours greater than or equal to
 #'   13
 #'
+#'   This is the recommended method over `pav` for several reasons:
+#'   1. `bw` ignores _volume effects_, where activity volume can still bias the
+#'   results towards the 'standard working hours'.
+#'   2. It captures the intuition that each individual can have 'light' and
+#'   'heavy' weeks with respect to workload.
+#'
 #' @section Person Average method:
 #'
 #'   This method classifies each **person** (based on unique `PersonId`) into
 #'   one of the six archetypes:
-#'   - Absent
-#'   - Extended Hours - Morning
-#'   - Extended Hours - Evening
-#'   - Overnight workers
-#'   - Standard Hours
-#'   - Always On
-#'
-#' The Person Average archetypes are defined as follows:
-#'
 #' - **Absent**: Fewer than 10 signals over the week.
 #'
 #' - **Extended Hours - Morning:** 15%+ of collaboration before start hours and

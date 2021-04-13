@@ -101,23 +101,6 @@ implementations.
 This method classifies each \strong{person-week} into one of the seven
 archetypes:
 \itemize{
-\item 0 < 3 hours on
-\item 1 Standard with breaks workday
-\item 2 Standard continuous workday
-\item 3 Standard flexible workday
-\item 4 Long flexible workday
-\item 5 Long continuous workday
-\item 6 Always on (13h+)
-}
-
-This is the recommended method over \code{pav} for several reasons:
-\enumerate{
-\item \code{bw} ignores \emph{volume effects}, where activity volume can still bias the
-results towards the 'standard working hours'.
-\item It captures the intuition that each individual can have 'light' and
-'heavy' weeks with respect to workload.
-}
-\itemize{
 \item \strong{0 < 3 hours on}: fewer than 3 hours of active hours
 \item \strong{1 Standard with breaks workday}: active for fewer than \emph{expected
 hours}, with no activity outside working hours
@@ -132,6 +115,14 @@ hours}, with activity happening in a continuous block (no breaks)
 \item \strong{6 Always on (13h+)}: number of active hours greater than or equal to
 13
 }
+
+This is the recommended method over \code{pav} for several reasons:
+\enumerate{
+\item \code{bw} ignores \emph{volume effects}, where activity volume can still bias the
+results towards the 'standard working hours'.
+\item It captures the intuition that each individual can have 'light' and
+'heavy' weeks with respect to workload.
+}
 }
 
 \section{Person Average method}{
@@ -139,16 +130,6 @@ hours}, with activity happening in a continuous block (no breaks)
 
 This method classifies each \strong{person} (based on unique \code{PersonId}) into
 one of the six archetypes:
-\itemize{
-\item Absent
-\item Extended Hours - Morning
-\item Extended Hours - Evening
-\item Overnight workers
-\item Standard Hours
-\item Always On
-}
-
-The Person Average archetypes are defined as follows:
 \itemize{
 \item \strong{Absent}: Fewer than 10 signals over the week.
 \item \strong{Extended Hours - Morning:} 15\%+ of collaboration before start hours and
