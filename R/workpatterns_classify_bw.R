@@ -73,9 +73,20 @@ workpatterns_classify_bw <- function(data,
                                      active_threshold = 0,
                                      return = "plot"){
 
-  ## assign to hrvar_str
-  hrvar_str <- NULL
-  hrvar_str <- hrvar
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+
+    ## assign to hrvar_str
+    ## So R doesn't get confused
+    hrvar_str <- NULL
+    hrvar_str <- "Total"
+
+  } else {
+
+    hrvar_str <- hrvar
+
+  }
 
   ## convert to data.table
   data2 <-
@@ -195,7 +206,14 @@ workpatterns_classify_bw <- function(data,
   # bind cut tree to data frame
   ptn_data_final <-
     ptn_data_personas %>%
-    left_join(signals_df, by = c("PersonId","Date"))
+    left_join(
+      signals_df %>%
+        select(-Signals_Total), # Avoid duplication
+      by = c("PersonId","Date")) %>%
+    left_join(
+      data2 %>%
+        select(PersonId, Date, hrvar_str), # Avoid duplication
+      by = c("PersonId","Date"))
 
   ## Return-chunks
   return_data <- function(){
@@ -271,12 +289,13 @@ workpatterns_classify_bw <- function(data,
       labs(title = "Distribution of Working Patterns over time",
            y = "Percentage",
            caption = extract_date_range(data2, return = "text")) +
-      theme(legend.position = "right")
+      theme(legend.position = "right") +
+      scale_y_continuous(labels = scales::percent)
   }
 
   return_table <- function(hrvar = hrvar_str){
 
-    if(is.null(hrvar)){
+    if(hrvar == "Total"){
 
       ptn_data_final %>%
         data.table::as.data.table() %>%
@@ -289,7 +308,7 @@ workpatterns_classify_bw <- function(data,
     } else {
 
       ptn_data_final %>%
-        dplyr::left_join(select(data2, PersonId, Date, hrvar), by = c("PersonId", "Date")) %>%
+        # dplyr::left_join(select(data2, PersonId, Date, hrvar), by = c("PersonId", "Date")) # %>%
         data.table::as.data.table() %>%
         .[, .(n = .N), by = c("Personas", hrvar)] %>%
         .[n >= 5, ] %>%
