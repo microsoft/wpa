@@ -155,6 +155,9 @@ Other Flexible:
 \code{\link{create_stacked}()},
 \code{\link{create_trend}()}
 }
+\author{
+Mark Powers \href{mailto:mark.powers@microsoft.com}{mark.powers@microsoft.com}
+}
 \concept{Flexible}
 \concept{Flexible Input}
 \concept{Time-series}

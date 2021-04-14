@@ -71,4 +71,7 @@ Other Clustering:
 \code{\link{workpatterns_classify}()},
 \code{\link{workpatterns_hclust}()}
 }
+\author{
+Ainize Cidoncha \href{mailto:ainize.cidoncha@microsoft.com}{ainize.cidoncha@microsoft.com}
+}
 \concept{Clustering}

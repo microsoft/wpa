@@ -94,4 +94,7 @@ Other Reports:
 \code{\link{validation_report}()},
 \code{\link{workpatterns_report}()}
 }
+\author{
+Martin Chan \href{mailto:martin.chan@microsoft.com}{martin.chan@microsoft.com}
+}
 \concept{Reports}

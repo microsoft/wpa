@@ -60,4 +60,7 @@ Other Support:
 \code{\link{us_to_space}()},
 \code{\link{wrap}()}
 }
+\author{
+Mark Powers \href{mailto:mark.powers@microsoft.com}{mark.powers@microsoft.com}
+}
 \concept{Support}

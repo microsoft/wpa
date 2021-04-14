@@ -10,6 +10,8 @@
 #' Specify an outcome variable and return p-test outputs.
 #' All numeric variables in the dataset are used as predictor variables.
 #'
+#' @author Mark Powers <mark.powers@@microsoft.com>
+#'
 #' @param data A Person Query dataset in the form of a data frame.
 #' @param outcome A string specifying the name of a binary variable, i.e. can
 #'   only contain the values 1 or 0. Used to group the two distributions.

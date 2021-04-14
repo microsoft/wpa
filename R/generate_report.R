@@ -9,6 +9,8 @@
 #' This is a support function using a list-pmap workflow to
 #' create a HTML document, using RMarkdown as the engine.
 #'
+#' @author Martin Chan <martin.chan@@microsoft.com>
+#'
 #' @param title Character string to specify the title of the chunk.
 #' @param filename File name to be used in the exported HTML.
 #' @param outputs A list of outputs to be added to the HTML report.

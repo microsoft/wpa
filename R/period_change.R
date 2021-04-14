@@ -10,6 +10,8 @@
 #' This function also presents the p-value for the null hypothesis
 #'  that the variable has not changed, using a Wilcox signed-rank test.
 #'
+#' @author Mark Powers <mark.powers@@microsoft.com>
+#'
 #' @param data Person Query as a dataframe including date column named `"Date"`
 #'   This function assumes the data format is `MM/DD/YYYY` as is standard in a
 #'   Workplace Analytics query output.
