@@ -10,6 +10,9 @@
 #' levels of a given Workplace Analytics Metric. Returns a table with all groups
 #' (across multiple HR attributes) ranked by the specified metric.
 #'
+#' @author Carlos Morales Torrado <carlos.morales@@microsoft.com>
+#' @author Martin Chan <martin.chan@@microsoft.com>
+#'
 #' @template spq-params
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"

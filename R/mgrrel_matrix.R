@@ -10,6 +10,8 @@
 #' default. Additional options available to return a "wide" or "long" summary
 #' table.
 #'
+#' @author Lucas Hogner <lucas.hogner@@microsoft.com>
+#'
 #' @param data Standard Person Query data to pass through. Accepts a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character
 #'   vector, e.g. "Organization". Defaults to `NULL`.

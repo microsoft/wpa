@@ -186,5 +186,10 @@ Other Flexible:
 \code{\link{create_trend}()},
 \code{\link{period_change}()}
 }
+\author{
+Carlos Morales Torrado \href{mailto:carlos.morales@microsoft.com}{carlos.morales@microsoft.com}
+
+Martin Chan \href{mailto:martin.chan@microsoft.com}{martin.chan@microsoft.com}
+}
 \concept{Flexible}
 \concept{Visualization}
