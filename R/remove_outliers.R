@@ -18,6 +18,8 @@
 #' individual**, as opposed to the group. Note that `remove_outliers()` has a
 #' longer runtime compared to `identify_outlier()`.
 #'
+#' @author Mark Powers <mark.powers@@microsoft.com>
+#'
 #' @details
 #' For mature functions to remove common outliers, please see the following:
 #' - `identify_holidayweeks()`

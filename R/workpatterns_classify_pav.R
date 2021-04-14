@@ -12,6 +12,8 @@
 #' Apply a rule based algorithm to emails or instant messages sent by hour of day.
 #' This uses a person-average volume-based ('pav') method.
 #'
+#' @author Ainize Cidoncha <ainize.cidoncha@@microsoft.com>
+#'
 #' @param data A data frame containing data from the Hourly Collaboration query.
 #'
 #' @param return Character vector to specify what to return. Valid options include:

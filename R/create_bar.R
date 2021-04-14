@@ -173,7 +173,7 @@ create_bar <- function(data,
       subtitle = paste("Average", tolower(clean_nm), "by", tolower(camel_clean(hrvar))),
       x = camel_clean(hrvar),
       y = paste("Average weekly", clean_nm),
-      labs = extract_date_range(data, return = "text")
+      caption = extract_date_range(data, return = "text")
          )
 
   summary_table <-

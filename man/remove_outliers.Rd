@@ -65,4 +65,7 @@ Other Data Validation:
 \code{\link{track_HR_change}()},
 \code{\link{validation_report}()}
 }
+\author{
+Mark Powers \href{mailto:mark.powers@microsoft.com}{mark.powers@microsoft.com}
+}
 \concept{Data Validation}

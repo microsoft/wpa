@@ -166,5 +166,8 @@ Other Managerial Relations:
 \code{\link{one2one_sum}()},
 \code{\link{one2one_trend}()}
 }
+\author{
+Lucas Hogner \href{mailto:lucas.hogner@microsoft.com}{lucas.hogner@microsoft.com}
+}
 \concept{Managerial Relations}
 \concept{Visualization}

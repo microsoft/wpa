@@ -12,6 +12,8 @@
 #' Apply a rule based algorithm to emails sent by hour of day, using the binary
 #' week-based ('bw') method.
 #'
+#' @author Ainize Cidoncha <ainize.cidoncha@@microsoft.com>
+#'
 #' @param data A data frame containing email by hours data.
 #'
 #' @param hrvar A string specifying the HR attribute to cut the data by.

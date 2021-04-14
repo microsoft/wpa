@@ -76,6 +76,9 @@ Other Time-series:
 \code{\link{create_trend}()},
 \code{\link{period_change}()}
 }
+\author{
+Mark Powers \href{mailto:mark.powers@microsoft.com}{mark.powers@microsoft.com}
+}
 \concept{Information Value}
 \concept{Time-series}
 \concept{Variable Association}
