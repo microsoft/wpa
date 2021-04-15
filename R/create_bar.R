@@ -29,6 +29,8 @@
 #' RGB values via `rgb2hex()`.
 #' @param na.rm A logical value indicating whether `NA` should be stripped
 #' before the computation proceeds. Defaults to `FALSE`.
+#' @param plot_title An option to override plot title.
+#' @param plot_subtitle An option to override plot subtitle.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -65,7 +67,9 @@ create_bar <- function(data,
                        mingroup = 5,
                        return = "plot",
                        bar_colour = "default",
-                       na.rm = FALSE){
+                       na.rm = FALSE,
+					   plot_title= us_to_space(metric),
+					   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar)))){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -115,58 +119,8 @@ create_bar <- function(data,
 
   }
 
-  ## Employee count / base size table
-  plot_legend <-
-    plot_data %>%
-    group_by(group) %>%
-    summarize(Employee_Count = first(Employee_Count)) %>%
-    mutate(Employee_Count = paste("n=",Employee_Count))
-
-  ## Data for bar plot
-  plot_table <-
-    plot_data %>%
-    group_by(group) %>%
-    summarise_at(metric, ~mean(., na.rm = na.rm)) %>%
-    arrange(desc(!!sym(metric)))
-
-  ## Table for annotation
-  annot_table <-
-    plot_legend %>%
-    dplyr::left_join(plot_table, by = "group")
-
-  ## Location attribute for x axis
- location <- plot_table %>% select(!!sym(metric)) %>% max()
-
   ## Bar plot
-  plot_object <-
-    plot_table %>%
-    ggplot(aes(x = stats::reorder(group, !!sym(metric)), y = !!sym(metric))) +
-    geom_bar(stat = "identity",
-             fill = bar_colour) +
-    geom_text(aes(label = round(!!sym(metric), 1)),
-              hjust = 1.3,
-              color = "#FFFFFF",
-              fontface = "bold",
-              size = 4) +
-    scale_y_continuous(expand = c(.01, 0), limits = c(0, location * 1.25)) +
-    annotate("text",
-             x = plot_legend$group,
-             y = location * 1.15,
-             label = plot_legend$Employee_Count, 
-			 size=3) +
-    annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = location * 1.05, ymax = location * 1.25, alpha = .2) +
-    coord_flip() +
-    theme_wpa_basic() +
-    theme(
-		axis.line = element_blank(),   
-		axis.ticks = element_blank(),   
-		axis.text.x = element_blank(),   
-		axis.title = element_blank()) +
-    labs(title = clean_nm,
-         subtitle = paste("Average", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
-    xlab(camel_clean(hrvar)) +
-    ylab(paste("Average weekly", clean_nm)) +
-    labs(caption = extract_date_range(data, return = "text"))
+  plot_object <- data %>% create_stacked(metrics=metric, hrvar = hrvar, mingroup=mingroup, stack_colours = bar_colour, plot_title = plot_title, plot_subtitle=plot_subtitle, return = "plot")
 
   summary_table <-
     plot_data %>%
