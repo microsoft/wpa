@@ -41,11 +41,22 @@ e.g. "1700"}
 
 \item{return}{Character vector to specify what to return. Valid options include:
 \itemize{
-\item "plot": returns a bar plot of signal distribution by hour and archetypes (default)
-\item "data": returns the raw data with the classified archetypes
-\item "table": returns a summary table of the archetypes
-\item "plot-area": returns an overlapping area plot
+\item \code{"plot"}: returns a bar plot of signal distribution by hour and archetypes (default)
+\item \code{"data"}: returns the raw data with the classified archetypes
+\item \code{"table"}: returns a summary table of the archetypes
+\item \code{"plot-area"}: returns an overlapping area plot
 }}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: returns a bar plot of signal distribution by hour and
+archetypes (default). A 'ggplot' object.
+\item \code{"data"}: returns a data frame of the raw data with the classified archetypes.
+\item \code{"table"}: returns a data frame of a summary table of the archetypes.
+\item \code{"plot-area"}: returns an overlapping area plot. A 'ggplot' object.
+}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -65,5 +76,8 @@ Other Working Patterns:
 \code{\link{workpatterns_hclust}()},
 \code{\link{workpatterns_rank}()},
 \code{\link{workpatterns_report}()}
+}
+\author{
+Ainize Cidoncha \href{mailto:ainize.cidoncha@microsoft.com}{ainize.cidoncha@microsoft.com}
 }
 \concept{Working Patterns}

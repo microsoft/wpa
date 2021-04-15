@@ -83,4 +83,7 @@ Other Data Validation:
 \code{\link{subject_validate}()},
 \code{\link{validation_report}()}
 }
+\author{
+Tannaz Sattari Tabrizi \href{mailto:Tannaz.Sattari@microsoft.com}{Tannaz.Sattari@microsoft.com}
+}
 \concept{Data Validation}

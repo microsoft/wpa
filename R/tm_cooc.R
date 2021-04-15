@@ -10,6 +10,8 @@
 #' This function generates a word co-occurence network plot, with options to
 #' return a table. This function is used within `meeting_tm_report()`.
 #'
+#' @author Carlos Morales <carlos.morales@@microsoft.com>
+#'
 #' @details
 #' This function uses `tm_clean()` as the underlying data wrangling function.
 #' There is an option to remove stopwords by passing a data frame into the

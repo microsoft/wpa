@@ -76,6 +76,7 @@ check_query <- function(data, return = "message", validation = FALSE){
 #'
 #' @details Used as part of `check_query()`.
 #'
+#' @noRd
 #'
 check_person_query <- function(data, return){
 
@@ -174,6 +175,7 @@ check_person_query <- function(data, return){
 #'
 #' @details Used as part of `check_query()`.
 #'
+#' @noRd
 check_query_validation <- function(data, return){
   ## Query Type - Initialise
   main_chunk <- ""

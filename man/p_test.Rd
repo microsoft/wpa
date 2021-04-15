@@ -49,7 +49,6 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
-\code{\link{md2html}()},
 \code{\link{pairwise_count}()},
 \code{\link{plot_WOE}()},
 \code{\link{read_preamble}()},
@@ -60,5 +59,8 @@ Other Support:
 \code{\link{tstamp}()},
 \code{\link{us_to_space}()},
 \code{\link{wrap}()}
+}
+\author{
+Mark Powers \href{mailto:mark.powers@microsoft.com}{mark.powers@microsoft.com}
 }
 \concept{Support}

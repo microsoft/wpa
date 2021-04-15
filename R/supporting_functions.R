@@ -201,6 +201,8 @@ comma <- function(x){
 #' @param pkgname String containing the name of the package to check whether is
 #' installed.
 #'
+#' @noRd
+#'
 check_pkg_installed <- function(pkgname) {
 
   mtry <- try(find.package(package = pkgname))

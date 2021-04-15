@@ -50,7 +50,24 @@ archetypes
 \item \code{"table"}: returns a summary table of the archetypes
 \item \code{"plot-area"}: returns an area plot of the percentages of archetypes
 shown over time
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute.
 }}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: returns a summary grid plot of the classified archetypes
+(default). A 'ggplot' object.
+\item \code{"data"}: returns a data frame of the raw data with the classified
+archetypes
+\item \code{"table"}: returns a data frame of summary table of the archetypes
+\item \code{"plot-area"}: returns an area plot of the percentages of archetypes
+shown over time. A 'ggplot' object.
+\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+faceted by the supplied HR attribute. A 'ggplot' object.
+}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -70,5 +87,8 @@ Other Working Patterns:
 \code{\link{workpatterns_hclust}()},
 \code{\link{workpatterns_rank}()},
 \code{\link{workpatterns_report}()}
+}
+\author{
+Ainize Cidoncha \href{mailto:ainize.cidoncha@microsoft.com}{ainize.cidoncha@microsoft.com}
 }
 \concept{Working Patterns}

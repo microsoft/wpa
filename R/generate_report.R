@@ -9,6 +9,8 @@
 #' This is a support function using a list-pmap workflow to
 #' create a HTML document, using RMarkdown as the engine.
 #'
+#' @author Martin Chan <martin.chan@@microsoft.com>
+#'
 #' @param title Character string to specify the title of the chunk.
 #' @param filename File name to be used in the exported HTML.
 #' @param outputs A list of outputs to be added to the HTML report.
@@ -158,6 +160,8 @@ generate_report <- function(title = "My minimal HTML generator",
 #' @param subheader Character string to specify the subheader of the chunk.
 #' @param echo Logical value to specify whether to display code.
 #' @param object Character string to specify name of the object to show.
+#'
+#' @noRd
 generate_chunks <- function(level = 3,
                             title,
                             subheader = "",
@@ -218,6 +222,8 @@ read_preamble <- function(path){
 #' @param text Character vector containing Markdown text
 #'
 #' @family Support
+#'
+#' @noRd
 #'
 md2html <- function(text){
 

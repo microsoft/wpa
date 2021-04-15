@@ -60,4 +60,7 @@ Other Text-mining:
 \code{\link{tm_freq}()},
 \code{\link{tm_wordcloud}()}
 }
+\author{
+Carlos Morales \href{mailto:carlos.morales@microsoft.com}{carlos.morales@microsoft.com}
+}
 \concept{Text-mining}

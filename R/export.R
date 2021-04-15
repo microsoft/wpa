@@ -10,6 +10,8 @@
 #' images. By default, `export()` copies a data frame to the clipboard. If the
 #' input is a 'ggplot' object, the default behaviour is to export a PNG.
 #'
+#' @author Martin Chan <martin.chan@@microsoft.com>
+#'
 #' @param x Data frame or 'ggplot' object to be passed through.
 #' @param method Character string specifying the method of export.
 #' Valid inputs include:

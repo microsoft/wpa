@@ -59,6 +59,8 @@ p2p_data_sim <- function(dim = 1,
 #'   - `Organization`
 #'   - `LevelDesignation`
 #'   - `City`
+#'
+#' @noRd
 add_cat <- function(x, type){
 
   if(type == "Organization"){

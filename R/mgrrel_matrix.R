@@ -10,6 +10,8 @@
 #' default. Additional options available to return a "wide" or "long" summary
 #' table.
 #'
+#' @author Lucas Hogner <lucas.hogner@@microsoft.com>
+#'
 #' @param data Standard Person Query data to pass through. Accepts a data frame.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character
 #'   vector, e.g. "Organization". Defaults to `NULL`.
@@ -110,8 +112,11 @@ mgrrel_matrix <- function(data,
   ## Create a Person Weekly Average
   data1 <-
     data %>%
-    mutate(coattendman_rate = Meeting_hours_with_manager / Meeting_hours) %>% # Coattendance Rate with Manager
-    filter(!is.na(coattendman_rate)) %>%
+    # Coattendance Rate with Manager
+    mutate(coattendman_rate =
+             (Meeting_hours_with_manager / Meeting_hours) %>%
+             tidyr::replace_na(replace = 0) %>% # Replace NAs with 0s
+             ifelse(!is.finite(.), 0, .)) %>% # Replace Inf with 0s
     group_by(PersonId, !!sym(hrvar)) %>%
     summarise(
       Meeting_hours_with_manager = mean(Meeting_hours_with_manager, na.rm = TRUE),
@@ -125,13 +130,13 @@ mgrrel_matrix <- function(data,
 
   ## Threshold
   thres_low_chr <- paste("<", threshold, "min")
-  thres_top_chr <- paste(">", threshold, "min")
+  thres_top_chr <- paste(">=", threshold, "min")
 
 
   ## Create key variables
   data2 <-
     data1 %>%
-    mutate(coattendande = ifelse(coattendman_rate < 0.5, "<50%", ">50%"),
+    mutate(coattendande = ifelse(coattendman_rate < 0.5, "<50%", ">=50%"),
            mgr1on1 = ifelse(Meeting_hours_with_manager_1_on_1 * 60 < threshold,
                             thres_low_chr,
                             thres_top_chr))
@@ -156,10 +161,10 @@ mgrrel_matrix <- function(data,
       mutate(xmin = ifelse(mgr1on1 == thres_low_chr, -sqrt(perc), 0),
              xmax = ifelse(mgr1on1 == thres_top_chr, sqrt(perc), 0),
              ymin = ifelse(coattendande == "<50%", -sqrt(perc), 0),
-             ymax = ifelse(coattendande == ">50%", sqrt(perc), 0),
+             ymax = ifelse(coattendande == ">=50%", sqrt(perc), 0),
              mgrRel = case_when(mgr1on1 == thres_low_chr & coattendande == "<50%" ~ "Under-coached",
-                                mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
-                                mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
+                                mgr1on1 == thres_low_chr & coattendande == ">=50%" ~ "Co-attending",
+                                mgr1on1 == thres_top_chr & coattendande == ">=50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
       mutate_at("mgrRel", ~as.factor(.))
 
@@ -179,10 +184,10 @@ mgrrel_matrix <- function(data,
       mutate(xmin = ifelse(mgr1on1 == thres_low_chr, -sqrt(perc), 0),
              xmax = ifelse(mgr1on1 == thres_top_chr, sqrt(perc), 0),
              ymin = ifelse(coattendande == "<50%", -sqrt(perc), 0),
-             ymax = ifelse(coattendande == ">50%", sqrt(perc), 0),
+             ymax = ifelse(coattendande == ">=50%", sqrt(perc), 0),
              mgrRel = case_when(mgr1on1 == thres_low_chr & coattendande == "<50%" ~ "Under-coached",
-                                mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
-                                mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
+                                mgr1on1 == thres_low_chr & coattendande == ">=50%" ~ "Co-attending",
+                                mgr1on1 == thres_top_chr & coattendande == ">=50%" ~ "Highly managed",
                                 TRUE ~ "Coaching")) %>%
       ungroup() %>%
       mutate_at("mgrRel", ~as.factor(.)) %>%
@@ -214,25 +219,18 @@ mgrrel_matrix <- function(data,
                     y = ymin + 0.5*sqrt(perc),
                     label = scales::percent(perc, accuracy = 1))) +
       coord_equal() +
-      xlab("Weekly 1:1 time with manager") +
       scale_x_continuous(breaks = c(-max(abs(chart$xmin),abs(chart$xmax))/2,max(abs(chart$xmin),abs(chart$xmax))/2),
                          labels = c(thres_low_chr, thres_top_chr),
                          limits = c(-max(abs(chart$xmin), abs(chart$xmax)), max(abs(chart$xmin), abs(chart$xmax)))) +
-      ylab("Employee and manager coattend") +
       scale_y_continuous(breaks = c(-max(abs(chart$ymin), abs(chart$ymax))/2, max(abs(chart$ymin), abs(chart$ymax))/2),
-                         labels = c("<50%", ">50%"),
+                         labels = c("<50%", ">=50%"),
                          limits = c(-max(abs(chart$ymin), abs(chart$ymax)), max(abs(chart$ymin), abs(chart$ymax)))) +
-      theme_minimal() +
-      theme(panel.grid = element_blank(),
-            plot.title = element_text(color="grey40", face="bold", size=20),
-            axis.line = element_line(),
-            legend.position = "bottom",
-            legend.title = element_blank(),
-            axis.title = element_text(size = 12),
-            axis.text = element_text(size = 12),
-            legend.text = element_text(size = 12),
-            strip.text.x = element_text(color = "grey40", face = "bold", size = 14)) +
-      labs(caption = extract_date_range(data, return = "text"))
+      theme_wpa_basic() +
+      labs(
+        x = "Weekly 1:1 time with manager",
+        y = "Employee and manager coattendance",
+        caption = extract_date_range(data, return = "text")
+        )
 
   } else if(hrvar != "Total"){
 
@@ -293,8 +291,8 @@ mgrrel_matrix <- function(data,
     data2 %>%
       mutate(Type =
                case_when(mgr1on1 == thres_low_chr & coattendande == "<50%" ~ "Under-coached",
-                         mgr1on1 == thres_low_chr & coattendande == ">50%" ~ "Co-attending",
-                         mgr1on1 == thres_top_chr & coattendande == ">50%" ~ "Highly managed",
+                         mgr1on1 == thres_low_chr & coattendande == ">=50%" ~ "Co-attending",
+                         mgr1on1 == thres_top_chr & coattendande == ">=50%" ~ "Highly managed",
                          TRUE ~ "Coaching")) %>%
       select(PersonId,
              !!sym(hrvar),

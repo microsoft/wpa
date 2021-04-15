@@ -62,4 +62,7 @@ Other Import and Export:
 \code{\link{import_wpa}()},
 \code{\link{standardise_pq}()}
 }
+\author{
+Martin Chan \href{mailto:martin.chan@microsoft.com}{martin.chan@microsoft.com}
+}
 \concept{Import and Export}

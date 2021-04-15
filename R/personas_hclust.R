@@ -12,6 +12,7 @@
 #' The hierarchical clustering uses cosine distance and the ward.D method
 #' of agglomeration.
 #'
+#' @author Ainize Cidoncha <ainize.cidoncha@@microsoft.com>
 #'
 #' @param data A data frame containing `PersonId` and selected metrics for
 #'   clustering.

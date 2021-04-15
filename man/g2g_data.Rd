@@ -24,6 +24,9 @@ A data frame with 3517 rows and 7 variables:
 \usage{
 g2g_data
 }
+\value{
+data frame.
+}
 \description{
 A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
 }
