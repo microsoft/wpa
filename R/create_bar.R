@@ -31,6 +31,11 @@
 #' before the computation proceeds. Defaults to `FALSE`.
 #' @param plot_title An option to override plot title.
 #' @param plot_subtitle An option to override plot subtitle.
+#' @param rank String specifying how to rank the bars. Valid inputs are:
+#'   - `"descending"` - ranked highest to lowest from top to bottom (default).
+#'   - `"ascending"` - ranked lowest to highest from top to bottom.
+#'   - `NULL` - uses the original levels of the HR attribute.
+#'
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -68,8 +73,9 @@ create_bar <- function(data,
                        return = "plot",
                        bar_colour = "default",
                        na.rm = FALSE,
-					   plot_title= us_to_space(metric),
-					   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar)))){
+                       plot_title = us_to_space(metric),
+                       plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+                       rank = "descending"){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -120,7 +126,15 @@ create_bar <- function(data,
   }
 
   ## Bar plot
-  plot_object <- data %>% create_stacked(metrics=metric, hrvar = hrvar, mingroup=mingroup, stack_colours = bar_colour, plot_title = plot_title, plot_subtitle=plot_subtitle, return = "plot")
+  plot_object <- data %>%
+    create_stacked(metrics=metric,
+                   hrvar = hrvar,
+                   mingroup = mingroup,
+                   stack_colours = bar_colour,
+                   plot_title = plot_title,
+                   plot_subtitle = plot_subtitle,
+                   return = "plot",
+                   rank = rank)
 
   summary_table <-
     plot_data %>%

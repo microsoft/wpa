@@ -23,6 +23,10 @@
 #' A character vector to specify the colour codes for the stacked bar charts.
 #' @param plot_title An option to override plot title.
 #' @param plot_subtitle An option to override plot subtitle.
+#' @param rank String specifying how to rank the bars. Valid inputs are:
+#'   - `"descending"` - ranked highest to lowest from top to bottom (default).
+#'   - `"ascending"` - ranked lowest to highest from top to bottom.
+#'   - `NULL` - uses the original levels of the HR attribute.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -49,7 +53,8 @@
 #'                              "Email_hours",
 #'                              "Call_hours",
 #'                              "Instant_Message_hours"),
-#'                  return = "plot")
+#'                  return = "plot",
+#'                  rank = "ascending")
 #'
 #' sq_data %>%
 #'   create_stacked(hrvar = "FunctionType",
@@ -58,6 +63,7 @@
 #'                              "Call_hours",
 #'                              "Instant_Message_hours"),
 #'                  return = "table")
+#'
 #' @export
 create_stacked <- function(data,
                            hrvar = "Organization",
@@ -70,7 +76,8 @@ create_stacked <- function(data,
                                              "#b4d5dd",
                                              "#adc0cb"),
                            plot_title = "Collaboration Hours",
-                           plot_subtitle = paste("Average by", tolower(camel_clean(hrvar)))){
+                           plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+                           rank = "descending"){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -141,7 +148,12 @@ create_stacked <- function(data,
        "")
    )
  }
- 
+
+
+ invert_mean <- function(x){
+   mean(x) * -1
+ }
+
   ## Create plot
 
   plot_object <-
@@ -150,7 +162,17 @@ create_stacked <- function(data,
     mutate(Metric = factor(Metric, levels = rev(metrics))) %>%
     group_by(group, Metric) %>%
     summarise_at(vars(Value), ~mean(.)) %>%
-    ggplot(aes(x = stats::reorder(group, Value, mean), y = Value, fill = Metric)) +
+    # Conditional ranking based on `rank` argument
+    { if(is.null(rank)){
+      ggplot(., aes(x = group, y = Value, fill = Metric))
+    } else if(rank == "descending"){
+      ggplot(., aes(x = stats::reorder(group, Value, mean), y = Value, fill = Metric))
+    } else if(rank == "ascending"){
+      ggplot(., aes(x = stats::reorder(group, Value, invert_mean), y = Value, fill = Metric))
+    } else {
+      stop("Invalid return to `rank`")
+    }
+    } +
     geom_bar(position = "stack", stat = "identity") +
     geom_text(aes(label = round(Value, 1)),
               position = position_stack(vjust = 0.5),
@@ -171,7 +193,7 @@ create_stacked <- function(data,
     coord_flip() +
     theme_wpa_basic() +
 	theme(axis.line = element_blank(),
-		axis.ticks = element_blank(),   
+		axis.ticks = element_blank(),
 		axis.title = element_blank()) +
     labs(title = plot_title,
          subtitle = plot_subtitle,

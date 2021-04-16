@@ -12,7 +12,8 @@ create_stacked(
   return = "plot",
   stack_colours = c("#1d627e", "#34b1e2", "#b4d5dd", "#adc0cb"),
   plot_title = "Collaboration Hours",
-  plot_subtitle = "Weekly collaboration hours"
+  plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+  rank = "descending"
 )
 }
 \arguments{
@@ -38,6 +39,13 @@ Valid inputs are "plot" and "table".}
 \item{plot_title}{An option to override plot title.}
 
 \item{plot_subtitle}{An option to override plot subtitle.}
+
+\item{rank}{String specifying how to rank the bars. Valid inputs are:
+\itemize{
+\item \code{"descending"} - ranked highest to lowest from top to bottom (default).
+\item \code{"ascending"} - ranked lowest to highest from top to bottom.
+\item \code{NULL} - uses the original levels of the HR attribute.
+}}
 }
 \value{
 Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.
@@ -62,7 +70,8 @@ sq_data \%>\%
                              "Email_hours",
                              "Call_hours",
                              "Instant_Message_hours"),
-                 return = "plot")
+                 return = "plot",
+                 rank = "ascending")
 
 sq_data \%>\%
   create_stacked(hrvar = "FunctionType",
@@ -71,6 +80,7 @@ sq_data \%>\%
                              "Call_hours",
                              "Instant_Message_hours"),
                  return = "table")
+
 }
 \seealso{
 Other Visualization: 
