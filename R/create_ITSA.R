@@ -6,6 +6,8 @@
 #' @title
 #' Estimate an effect of intervention on every WPA metric in input file by
 #' applying single-group Interrupted Time-Series Analysis (ITSA)
+#' 
+#' @author Aleksey Ashikhmin <alashi@@microsoft.com>
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
@@ -16,10 +18,10 @@
 #'
 #' @param data Person Query as a dataframe including date column named 'Date'
 #' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.
-#' @param before_start Start date of 'before' time period in YYYY-MM-DD format as character type. Defaults to earliest date in dataset.
-#' @param before_end End date of 'before' time period in YYYY-MM-DD  format as character type.
-#' @param after_start Start date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to day after before_end.
-#' @param after_end End date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to latest date in dataset.
+#' @param before_start Start date of 'before' time period in MM/DD/YYYY format as character type. Defaults to earliest date in dataset.
+#' @param before_end End date of 'before' time period in MM/DD/YYYY  format as character type.
+#' @param after_start Start date of 'after' time period in MM/DD/YYYY  format as character type. Defaults to day after before_end.
+#' @param after_end End date of 'after' time period in MM/DD/YYYY  format as character type. Defaults to latest date in dataset.
 #' @param ac_lags_max maximum lag for autocorrelation test. Default is 7
 #' @param return String specifying what output to return. Defaults to `"table"`.
 #' Valid return options include:
