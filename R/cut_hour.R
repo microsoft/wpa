@@ -39,8 +39,8 @@ cut_hour <- function(metric, cuts, unit = "hours"){
   cuts <- unique(cuts) # No duplicates allowed
   ncuts <- length(cuts)
 
-  if(ncuts < 3){
-    stop("Please provide a numeric vector of at least length 3 to `cuts`")
+  if(ncuts < 2){
+    stop("Please provide a numeric vector of at least length 2 to `cuts`")
   }
 
 
