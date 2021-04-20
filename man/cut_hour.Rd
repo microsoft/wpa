@@ -4,7 +4,7 @@
 \alias{cut_hour}
 \title{Convert a numeric variable for hours into categorical}
 \usage{
-cut_hour(metric, cuts, unit = "hours")
+cut_hour(metric, cuts, unit = "hours", lbound = 0, ubound = 100)
 }
 \arguments{
 \item{metric}{A numeric variable representing hours.}
@@ -14,6 +14,12 @@ cut points required. The minimum and maximum values provided in the vector
 are inclusive.}
 
 \item{unit}{String to specify the unit of the labels. Defaults to "hours".}
+
+\item{lbound}{Numeric. Specifies the lower bound (inclusive) value for the
+minimum label. Defaults to 0.}
+
+\item{ubound}{Numeric. Specifies the upper bound (inclusive) value for the
+maximum label. Defaults to 100.}
 }
 \value{
 Character vector representing a converted categorical variable, appended
