@@ -12,7 +12,9 @@ create_dist(
   return = "plot",
   cut = c(15, 20, 25),
   dist_colours = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee"),
-  unit = "hours"
+  unit = "hours",
+  lbound = 0,
+  ubound = 100
 )
 }
 \arguments{
@@ -44,8 +46,14 @@ e.g. c(10, 15, 20)}
 \item{dist_colours}{A character vector of length four to specify colour
 codes for the stacked bars.}
 
-\item{unit}{String to specify what units. This defaults to \code{"hours"} but can
-accept any custom string. See \code{cut_hour()} for more details.}
+\item{unit}{String to specify what unit to use. This defaults to \code{"hours"}
+but can accept any custom string. See \code{cut_hour()} for more details.}
+
+\item{lbound}{Numeric. Specifies the lower bound (inclusive) value for the
+minimum label. Defaults to 0.}
+
+\item{ubound}{Numeric. Specifies the upper bound (inclusive) value for the
+maximum label. Defaults to 100.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:

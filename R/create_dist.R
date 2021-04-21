@@ -26,8 +26,9 @@
 #' e.g. c(10, 15, 20)
 #' @param dist_colours A character vector of length four to specify colour
 #' codes for the stacked bars.
-#' @param unit String to specify what units. This defaults to `"hours"` but can
-#'   accept any custom string. See `cut_hour()` for more details.
+#' @param unit String to specify what unit to use. This defaults to `"hours"`
+#'   but can accept any custom string. See `cut_hour()` for more details.
+#' @inheritParams cut_hour
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -63,7 +64,9 @@ create_dist <- function(data,
                                          "#fcf0eb",
                                          "#b4d5dd",
                                          "#bfe5ee"),
-                        unit = "hours") {
+                        unit = "hours",
+                        lbound = 0,
+                        ubound = 100) {
 
   ## Check inputs
   required_variables <- c("Date",
@@ -125,34 +128,42 @@ create_dist <- function(data,
     dplyr::left_join(plot_table, by = "group")
 
   ## Remove max from axis labels, and add %
-max_blank <- function(x){
-  as.character(
-    c(
-      scales::percent(
-        x[1:length(x) - 1]
-        ),
-      "")
-  )
-}
- 
-  # paste0(x*100, "%") 
+  max_blank <- function(x){
+    as.character(
+      c(
+        scales::percent(
+          x[1:length(x) - 1]
+          ),
+        "")
+    )
+  }
+
+  # paste0(x*100, "%")
+
+  ## Replace dist_colours
+  if((length(dist_colours) - length(cut)) < 1){
+
+    dist_colours <- heat_colours(n = length(cut) + 1)
+    message("Insufficient colours supplied to `dist_colours` - using default colouring palette instead.",
+            "Please supply a vector of colours of length n + 1 where n is the length of vector supplied to `cut`.")
+  }
 
   ## Bar plot
 
   plot_object <-
     plot_table %>%
-    ggplot(aes(x = group, y=Employees, fill = bucket_hours)) +
+    ggplot(aes(x = group, y = Employees, fill = bucket_hours)) +
     geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
     scale_y_continuous(expand = c(.01, 0), labels = max_blank, position = "right") +
     coord_flip() +
-    annotate("text", x = plot_legend$group, y = 1.15, label = plot_legend$Employee_Count, size=3 ) +
-	annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = 1.05, ymax = 1.25, alpha = .2) +
-	annotate(x=length(plot_legend$group) + 0.8, xend=length(plot_legend$group) + 0.8, y=0, yend=1, colour="black", lwd=0.75, geom="segment") +
+    annotate("text", x = plot_legend$group, y = 1.15, label = plot_legend$Employee_Count, size = 3) +
+    annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = 1.05, ymax = 1.25, alpha = .2) +
+    annotate(x=length(plot_legend$group) + 0.8, xend=length(plot_legend$group) + 0.8, y=0, yend=1, colour="black", lwd=0.75, geom="segment") +
     scale_fill_manual(name="",
                       values = rev(dist_colours)) +
     theme_wpa_basic() +
-	theme(axis.line = element_blank(),   
-		axis.ticks = element_blank(),   
+    theme(axis.line = element_blank(),
+		axis.ticks = element_blank(),
 		axis.title = element_blank()) +
     labs(title = clean_nm,
          subtitle = paste("Percentage of employees by", tolower(camel_clean(hrvar)))) +
