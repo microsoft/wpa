@@ -86,7 +86,7 @@ eh_labels <- c(
   "More than twenty-five" = "25+ hours"
 )
 
-sq_df \%>\%
+sq_data \%>\%
   create_dist(metric = "Email_hours",
               labels = eh_labels, return = "plot")
 
