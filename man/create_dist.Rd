@@ -14,7 +14,8 @@ create_dist(
   dist_colours = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee"),
   unit = "hours",
   lbound = 0,
-  ubound = 100
+  ubound = 100,
+  labels = NULL
 )
 }
 \arguments{
@@ -54,6 +55,9 @@ minimum label. Defaults to 0.}
 
 \item{ubound}{Numeric. Specifies the upper bound (inclusive) value for the
 maximum label. Defaults to 100.}
+
+\item{labels}{Character vector to override labels for the created
+categorical variables}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:
@@ -73,6 +77,19 @@ create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 
 # Return summary table
 create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
+
+# Use custom labels by providing a label vector
+eh_labels <- c(
+  "Fewer than fifteen" = "< 15 hours",
+  "Between fifteen and twenty" = "15 - 20 hours",
+  "Between twenty and twenty-five" = "20 - 25 hours",
+  "More than twenty-five" = "25+ hours"
+)
+
+sq_df \%>\%
+  create_dist(metric = "Email_hours",
+              labels = eh_labels, return = "plot")
+
 }
 \seealso{
 Other Visualization: 

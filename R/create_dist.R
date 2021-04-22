@@ -29,6 +29,8 @@
 #' @param unit String to specify what unit to use. This defaults to `"hours"`
 #'   but can accept any custom string. See `cut_hour()` for more details.
 #' @inheritParams cut_hour
+#' @param labels Character vector to override labels for the created
+#' categorical variables
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -52,6 +54,19 @@
 #'
 #' # Return summary table
 #' create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
+#'
+#' # Use custom labels by providing a label vector
+#' eh_labels <- c(
+#'   "Fewer than fifteen" = "< 15 hours",
+#'   "Between fifteen and twenty" = "15 - 20 hours",
+#'   "Between twenty and twenty-five" = "20 - 25 hours",
+#'   "More than twenty-five" = "25+ hours"
+#' )
+#'
+#' sq_df %>%
+#'   create_dist(metric = "Email_hours",
+#'               labels = eh_labels, return = "plot")
+#'
 #' @export
 
 create_dist <- function(data,
@@ -66,7 +81,8 @@ create_dist <- function(data,
                                          "#bfe5ee"),
                         unit = "hours",
                         lbound = 0,
-                        ubound = 100) {
+                        ubound = 100,
+                        labels = NULL) {
 
   ## Check inputs
   required_variables <- c("Date",
@@ -158,9 +174,30 @@ create_dist <- function(data,
     coord_flip() +
     annotate("text", x = plot_legend$group, y = 1.15, label = plot_legend$Employee_Count, size = 3) +
     annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = 1.05, ymax = 1.25, alpha = .2) +
-    annotate(x=length(plot_legend$group) + 0.8, xend=length(plot_legend$group) + 0.8, y=0, yend=1, colour="black", lwd=0.75, geom="segment") +
-    scale_fill_manual(name="",
-                      values = rev(dist_colours)) +
+    annotate(x = length(plot_legend$group) + 0.8,
+             xend = length(plot_legend$group) + 0.8,
+             y = 0,
+             yend = 1,
+             colour = "black",
+             lwd = 0.75,
+             geom = "segment") +
+
+    # Option to override labels ---------------------------------------------
+    {if(is.null(labels)){
+
+      scale_fill_manual(name = "", values = rev(dist_colours))
+
+    } else {
+
+      # # Match with values, replace with names
+      # # Flip names and values to be used for `scale_fill_manual()`
+      flip <- function(x){ setNames(object = names(x), nm = x)}
+
+      scale_fill_manual(name = "",
+                        labels = flip(labels),
+                        values = rev(dist_colours))
+
+    }} +
     theme_wpa_basic() +
     theme(axis.line = element_blank(),
 		axis.ticks = element_blank(),
@@ -170,10 +207,25 @@ create_dist <- function(data,
     xlab(camel_clean(hrvar)) +
     labs(caption = extract_date_range(data, return = "text"))
 
+  ## Replace labels
+  replace_labels <- function(x, labels){
+
+    ifelse(
+      is.na(names(labels[match(x, labels)])),
+      x,
+      names(labels[match(x, labels)])
+    )
+  }
+
   ## Table to return
   return_table <-
     plot_table %>%
     select(group, bucket_hours, percent) %>%
+    {if(is.null(labels)){
+      .
+    } else {
+      mutate(., bucket_hours = replace_labels(x = bucket_hours, labels = labels))
+    }} %>%
     spread(bucket_hours,  percent) %>%
     left_join(data %>%
                 rename(group = !!sym(hrvar)) %>%
