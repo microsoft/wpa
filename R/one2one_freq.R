@@ -67,6 +67,29 @@ one2one_freq <- function(data,
         1 / (sum(Meetings_with_manager_1_on_1) / n())
       )
 
+  # `breaks_to_labels()` -----------------------------------------------------
+
+  breaks_to_labels <- function(x){
+
+    lookup <-
+      c(
+        "Never" = "0 - 0.1 Weeks",
+        "Weekly\n(once per week)" = "0.1 - 1 Weeks",
+        "Twice monthly or more\n(up to 3 weeks)" = "1 - 3 Weeks",
+        "Monthly\n(3 - 6 weeks)" = "3 - 6 Weeks",
+        "Every two months\n(6 - 10 weeks)" = "6 - 10 Weeks",
+        "Quarterly or less\n(>10 weeks)" = "10+ Weeks"
+      )
+
+    ifelse(
+      is.na(names(lookup[match(x, lookup)])),
+      x,
+      names(lookup[match(x, lookup)])
+    )
+  }
+
+  # Return outputs -----------------------------------------------------------
+
   if(return == "data"){
 
    expanded_data
@@ -119,14 +142,14 @@ one2one_freq <- function(data,
         mingroup = mingroup
       )
 
-  } else if(mode == "dist" & return == "plot"){
+  } else if(mode == "dist"){
 
     plot_data <-
       expanded_data %>%
       mutate(
         across(
           .cols = Cadence_of_1_on_1_meetings_with_manager,
-          .fns = ~ifelse(!is.finite(.), 99, .)
+          .fns = ~ifelse(!is.finite(.), 0, .)
         )
       )
 
@@ -135,40 +158,30 @@ one2one_freq <- function(data,
       metric = "Cadence_of_1_on_1_meetings_with_manager",
       hrvar = hrvar,
       mingroup = mingroup,
-      cut = c(1, 1.5, 3, 6),
-      dist_colours = c("#facebc",
-                       "#fcf0eb",
-                       "#b4d5dd",
-                       "#bfe5ee",
-                       "grey90"),
-      unit = "Weeks"
-      )
-
-  } else if(mode == "dist" & return == "table"){
-
-    plot_data <-
-      expanded_data %>%
-      mutate(
-        across(
-          .cols = Cadence_of_1_on_1_meetings_with_manager,
-          .fns = ~ifelse(!is.finite(.), 99, .)
-        )
-      )
-
-    create_dist(
-      plot_data,
-      metric = "Cadence_of_1_on_1_meetings_with_manager",
-      hrvar = hrvar,
-      mingroup = mingroup,
-      cut = c(1, 1.5, 3, 6),
-      dist_colours = c("#facebc",
-                       "#fcf0eb",
-                       "#b4d5dd",
-                       "#bfe5ee",
-                       "grey90"),
+      cut = c(
+        0, # Never
+        0.1, # Fake upper bound for equal zero
+        1, # Once a week
+        3, # Twice monthly or more
+        6, # Monthly
+        10 # Bi-monthly
+              ),
+      dist_colours = c(
+        "#F1B8A1", # Reddish orange
+        "#facebc", # Orangeish
+        "#fcf0eb", # Light orange
+        "grey90",
+        "#bfe5ee", # Light teal
+        "#b4d5dd", # Dark teal
+        "grey60"
+        ),
       unit = "Weeks",
-      return = "table"
-      )
+      labels = breaks_to_labels,
+      return = return
+    )
+  } else {
+
+    stop("Invalid value passed to `mode` or `return`")
 
   }
 }
