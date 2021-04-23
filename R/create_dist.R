@@ -91,26 +91,39 @@ create_dist <- function(data,
                         sort_by = NULL,
                         labels = NULL) {
 
-  ## Check inputs
+  ## Check inputs -----------------------------------------------------------
   required_variables <- c("Date",
                           metric,
                           "PersonId")
 
-  ## Error message if variables are not present
+  ## Error message if variables are not present -----------------------------
   ## Nothing happens if all present
   data %>%
     check_inputs(requirements = required_variables)
 
-  ## Clean metric name
+  ## Clean metric name ------------------------------------------------------
   clean_nm <- us_to_space(metric)
 
-  ## Handling NULL values passed to hrvar
+  ## Replace labels ---------------------------------------------------------
+
+  replace_labels <- function(x, labels){
+
+    ifelse(
+      is.na(names(labels[match(x, labels)])),
+      x,
+      names(labels[match(x, labels)])
+    )
+  }
+
+  ## Handling NULL values passed to hrvar -----------------------------------
+
   if(is.null(hrvar)){
     data <- totals_col(data)
     hrvar <- "Total"
   }
 
-  ## Basic Data for bar plot
+  ## Basic Data for bar plot ------------------------------------------------
+
   plot_data <-
     data %>%
     rename(group = !!sym(hrvar)) %>%
@@ -124,7 +137,8 @@ create_dist <- function(data,
               by = "group") %>%
     filter(Employee_Count >= mingroup)
 
-  ## Create buckets of collaboration hours
+  ## Create buckets of collaboration hours ---------------------------------
+
   plot_data <-
     plot_data %>%
     mutate(bucket_hours = cut_hour(!!sym(metric),
@@ -133,7 +147,7 @@ create_dist <- function(data,
                                    lbound = lbound,
                                    ubound = ubound))
 
-  ## Employee count / base size table
+  ## Employee count / base size table --------------------------------------
   plot_legend <-
     plot_data %>%
     group_by(group) %>%
@@ -149,7 +163,7 @@ create_dist <- function(data,
               percent = Employees / Employee_Count ) %>%
     arrange(group, desc(bucket_hours))
 
-  ## Table for annotation
+  ## Table for annotation --------------------------------------------------
   annot_table <-
     plot_legend %>%
     dplyr::left_join(plot_table, by = "group")
@@ -167,7 +181,8 @@ create_dist <- function(data,
 
   # paste0(x*100, "%")
 
-  ## Replace dist_colours
+  ## Replace dist_colours --------------------------------------------------
+
   if((length(dist_colours) - length(cut)) < 1){
 
     dist_colours <- heat_colours(n = length(cut) + 1)
@@ -176,6 +191,7 @@ create_dist <- function(data,
   }
 
   ## Table to return -------------------------------------------------------
+
   return_table <-
     plot_table %>%
     select(group, bucket_hours, percent) %>%
@@ -256,24 +272,16 @@ create_dist <- function(data,
     }} +
     theme_wpa_basic() +
     theme(axis.line = element_blank(),
-		axis.ticks = element_blank(),
-		axis.title = element_blank()) +
-    labs(title = clean_nm,
-         subtitle = paste("Percentage of employees by", tolower(camel_clean(hrvar)))) +
-    xlab(camel_clean(hrvar)) +
-    labs(caption = extract_date_range(data, return = "text"))
+          axis.ticks = element_blank(),
+          axis.title = element_blank()) +
+    labs(
+      title = clean_nm,
+      subtitle = paste("Percentage of employees by", tolower(camel_clean(hrvar))),
+      x = camel_clean(hrvar),
+      caption = extract_date_range(data, return = "text")
+      )
 
-  ## Replace labels
-  replace_labels <- function(x, labels){
-
-    ifelse(
-      is.na(names(labels[match(x, labels)])),
-      x,
-      names(labels[match(x, labels)])
-    )
-  }
-
-
+  # Return options ---------------------------------------------------------
 
 
   if(return == "table"){
