@@ -15,6 +15,7 @@ create_dist(
   unit = "hours",
   lbound = 0,
   ubound = 100,
+  sort_by = NULL,
   labels = NULL
 )
 }
@@ -56,6 +57,9 @@ minimum label. Defaults to 0.}
 \item{ubound}{Numeric. Specifies the upper bound (inclusive) value for the
 maximum label. Defaults to 100.}
 
+\item{sort_by}{String to specify the bucket label to sort by. Defaults to
+\code{NULL} (no sorting).}
+
 \item{labels}{Character vector to override labels for the created
 categorical variables}
 }
@@ -90,6 +94,10 @@ sq_data \%>\%
   create_dist(metric = "Email_hours",
               labels = eh_labels, return = "plot")
 
+# Sort by a category
+sq_data \%>\%
+  create_dist(metric = "Collaboration_hours",
+              sort_by = "25+ hours")
 }
 \seealso{
 Other Visualization: 

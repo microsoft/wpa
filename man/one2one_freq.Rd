@@ -9,7 +9,8 @@ one2one_freq(
   hrvar = "Organization",
   mingroup = 5,
   return = "plot",
-  mode = "dist"
+  mode = "dist",
+  sort_by = "Quarterly or less\\n(>10 weeks)"
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ following strings:
 \item \code{"dist"}
 \item \code{"sum"}
 }}
+
+\item{sort_by}{String to specify the bucket label to sort by. Defaults to
+\code{NULL} (no sorting).}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:

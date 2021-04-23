@@ -29,6 +29,8 @@
 #' @param unit String to specify what unit to use. This defaults to `"hours"`
 #'   but can accept any custom string. See `cut_hour()` for more details.
 #' @inheritParams cut_hour
+#' @param sort_by String to specify the bucket label to sort by. Defaults to
+#'  `NULL` (no sorting).
 #' @param labels Character vector to override labels for the created
 #' categorical variables
 #'
@@ -67,6 +69,10 @@
 #'   create_dist(metric = "Email_hours",
 #'               labels = eh_labels, return = "plot")
 #'
+#' # Sort by a category
+#' sq_data %>%
+#'   create_dist(metric = "Collaboration_hours",
+#'               sort_by = "25+ hours")
 #' @export
 
 create_dist <- function(data,
@@ -82,6 +88,7 @@ create_dist <- function(data,
                         unit = "hours",
                         lbound = 0,
                         ubound = 100,
+                        sort_by = NULL,
                         labels = NULL) {
 
   ## Check inputs
@@ -168,11 +175,52 @@ create_dist <- function(data,
             "Please supply a vector of colours of length n + 1 where n is the length of vector supplied to `cut`.")
   }
 
-  ## Bar plot
+  ## Table to return -------------------------------------------------------
+  return_table <-
+    plot_table %>%
+    select(group, bucket_hours, percent) %>%
+    {if(is.null(labels)){
+
+      .
+
+    } else if(is.function(labels)){
+
+      mutate(., bucket_hours = do.call(what = labels, args = list(bucket_hours)))
+
+    } else {
+
+      mutate(., bucket_hours = replace_labels(x = bucket_hours, labels = labels))
+
+    }} %>%
+    spread(bucket_hours,  percent) %>%
+    left_join(data %>%
+                rename(group = !!sym(hrvar)) %>%
+                group_by(group) %>%
+                summarise(Employee_Count = n_distinct(PersonId)),
+              by = "group") %>%
+    ungroup() %>%
+    { if(is.null(sort_by)){
+
+      .
+
+    } else {
+
+      arrange(., desc(!!sym(sort_by)))
+
+    }} %>%
+    mutate(group = factor(group, levels = unique(group)))
+
+
+
+  ## Bar plot -------------------------------------------------------------
 
   plot_object <-
     plot_table %>%
-    ggplot(aes(x = group, y = Employees, fill = bucket_hours)) +
+    mutate(group = factor(group, levels = levels(return_table$group))) %>%
+    ggplot(aes(x = group,
+               y = Employees,
+               # y = stats::reorder(Employees, group),
+               fill = bucket_hours)) +
     geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
     scale_y_continuous(expand = c(.01, 0), labels = max_blank, position = "right") +
     coord_flip() +
@@ -225,36 +273,12 @@ create_dist <- function(data,
     )
   }
 
-  ## Table to return
-  return_table <-
-    plot_table %>%
-    select(group, bucket_hours, percent) %>%
-    {if(is.null(labels)){
 
-      .
-
-    } else if(is.function(labels)){
-
-      mutate(., bucket_hours = do.call(what = labels, args = list(bucket_hours)))
-
-    } else {
-
-      mutate(., bucket_hours = replace_labels(x = bucket_hours, labels = labels))
-
-    }} %>%
-    spread(bucket_hours,  percent) %>%
-    left_join(data %>%
-                rename(group = !!sym(hrvar)) %>%
-                group_by(group) %>%
-                summarise(Employee_Count = n_distinct(PersonId)),
-              by = "group")
 
 
   if(return == "table"){
 
-    return_table %>%
-      as_tibble() %>%
-      return()
+    return_table
 
   } else if(return == "plot"){
 

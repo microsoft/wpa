@@ -21,6 +21,7 @@
 #'   - `"dist"`
 #'   - `"sum"`
 #'
+#' @inheritParams create_dist
 #' @inherit create_dist return
 #'
 #' @family Visualization
@@ -48,7 +49,8 @@ one2one_freq <- function(data,
                          hrvar = "Organization",
                          mingroup = 5,
                          return = "plot",
-                         mode="dist") {
+                         mode = "dist",
+                         sort_by = "Quarterly or less\n(>10 weeks)") {
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
@@ -173,13 +175,14 @@ one2one_freq <- function(data,
         "#F1B8A1", # Reddish orange
         "#facebc", # Orangeish
         "#fcf0eb", # Light orange
-        "grey90",  # Light grey
+        # "grey90",  # Light grey
         "#bfe5ee", # Light teal
         "#b4d5dd" # Dark teal
         ),
       unit = "Weeks",
       labels = breaks_to_labels,
-      return = return
+      return = return,
+      sort_by = sort_by
     )
   } else {
 
