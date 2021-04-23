@@ -170,10 +170,10 @@ one2one_freq <- function(data,
         "#F1B8A1", # Reddish orange
         "#facebc", # Orangeish
         "#fcf0eb", # Light orange
-        "grey90",
+        "grey90",  # Light grey
         "#bfe5ee", # Light teal
         "#b4d5dd", # Dark teal
-        "grey60"
+        "grey60"   # Dark grey
         ),
       unit = "Weeks",
       labels = breaks_to_labels,
