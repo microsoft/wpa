@@ -226,10 +226,12 @@ create_dist <- function(data,
     plot_table %>%
     select(group, bucket_hours, percent) %>%
     {if(is.null(labels)){
-      .
-    } else if(is.function(labels)){
 
       .
+
+    } else if(is.function(labels)){
+
+      mutate(., bucket_hours = do.call(what = labels, args = list(bucket_hours)))
 
     } else {
 
