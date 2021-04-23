@@ -154,52 +154,68 @@ create_stacked <- function(data,
    mean(x) * -1
  }
 
-  ## Create plot
+  ## Create plot -----------------------------------------------------------
 
-  plot_object <-
-    plot_table %>%
-    filter(Metric != "Total") %>%
-    mutate(Metric = factor(Metric, levels = rev(metrics))) %>%
-    group_by(group, Metric) %>%
-    summarise_at(vars(Value), ~mean(.)) %>%
-    # Conditional ranking based on `rank` argument
-    { if(is.null(rank)){
-      ggplot(., aes(x = group, y = Value, fill = Metric))
-    } else if(rank == "descending"){
-      ggplot(., aes(x = stats::reorder(group, Value, mean), y = Value, fill = Metric))
-    } else if(rank == "ascending"){
-      ggplot(., aes(x = stats::reorder(group, Value, invert_mean), y = Value, fill = Metric))
-    } else {
-      stop("Invalid return to `rank`")
-    }
-    } +
-    geom_bar(position = "stack", stat = "identity") +
-    geom_text(aes(label = round(Value, 1)),
-              position = position_stack(vjust = 0.5),
-              color = "#FFFFFF",
-              fontface = "bold") +
-    scale_y_continuous(expand = c(.01, 0), limits = c(0, location * 1.25),labels=max_blank, position = "right") +
-    annotate("text",
-             x = myTable_legends$group,
-             y = location * 1.15,
-             label = myTable_legends$Employee_Count,
-			 size=3) +
-    annotate("rect", xmin = 0.5, xmax = length(myTable_legends$group) + 0.5, ymin = location * 1.05, ymax = location * 1.25, alpha = .2) +
-	annotate(x=length(myTable_legends$group) + 0.8, xend=length(myTable_legends$group) + 0.8, y=0, yend=location* 1.04, colour="black", lwd=0.75, geom="segment") +
-    scale_fill_manual(name="",
-                      values = stack_colours,
-                      breaks = metrics,
-                      labels = gsub("_", " ", metrics)) +
-    coord_flip() +
-    theme_wpa_basic() +
-	theme(axis.line = element_blank(),
-		axis.ticks = element_blank(),
-		axis.title = element_blank()) +
-    labs(title = plot_title,
-         subtitle = plot_subtitle,
-         caption = extract_date_range(data, return = "text")) +
-    xlab(hrvar) +
-    ylab("Average weekly hours")
+ plot_object <-
+   plot_table %>%
+   filter(Metric != "Total") %>%
+   mutate(Metric = factor(Metric, levels = rev(metrics))) %>%
+   group_by(group, Metric) %>%
+   summarise_at(vars(Value), ~mean(.)) %>%
+   # Conditional ranking based on `rank` argument
+   { if(is.null(rank)){
+     ggplot(., aes(x = group, y = Value, fill = Metric))
+   } else if(rank == "descending"){
+     ggplot(., aes(x = stats::reorder(group, Value, mean), y = Value, fill = Metric))
+   } else if(rank == "ascending"){
+     ggplot(., aes(x = stats::reorder(group, Value, invert_mean), y = Value, fill = Metric))
+   } else {
+     stop("Invalid return to `rank`")
+   }
+   } +
+   geom_bar(position = "stack", stat = "identity") +
+   geom_text(aes(label = round(Value, 1)),
+             position = position_stack(vjust = 0.5),
+             color = "#FFFFFF",
+             fontface = "bold") +
+   scale_y_continuous(expand = c(.01, 0),
+                      limits = c(0, location * 1.25),
+                      labels = max_blank,
+                      position = "right") +
+   annotate("text",
+            x = myTable_legends$group,
+            y = location * 1.15,
+            label = myTable_legends$Employee_Count,
+            size = 3) +
+   annotate("rect",
+            xmin = 0.5,
+            xmax = length(myTable_legends$group) + 0.5,
+            ymin = location * 1.05,
+            ymax = location * 1.25,
+            alpha = .2) +
+   annotate(x=length(myTable_legends$group) + 0.8,
+            xend=length(myTable_legends$group) + 0.8,
+            y = 0,
+            yend = location* 1.04,
+            colour = "black",
+            lwd = 0.75,
+            geom = "segment") +
+   scale_fill_manual(name="",
+                     values = stack_colours,
+                     breaks = metrics,
+                     labels = gsub("_", " ", metrics)) +
+   coord_flip() +
+   theme_wpa_basic() +
+   theme(axis.line = element_blank(),
+         axis.ticks = element_blank(),
+         axis.title = element_blank()) +
+   labs(title = plot_title,
+        subtitle = plot_subtitle,
+        x = hrvar,
+        y = "Average weekly hours",
+        caption = extract_date_range(data, return = "text"))
+
+  # Return options ---------------------------------------------------------
 
   if(return == "table"){
 
