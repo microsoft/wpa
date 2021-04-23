@@ -67,14 +67,18 @@ one2one_freq <- function(data,
         1 / (sum(Meetings_with_manager_1_on_1) / n())
       )
 
+
+  # Arbitrarily large constant -----------------------------------------------
+
+  arb_const <- 99999
+
   # `breaks_to_labels()` -----------------------------------------------------
 
   breaks_to_labels <- function(x){
 
     lookup <-
       c(
-        "Never" = "0 - 0.1 Weeks",
-        "Weekly\n(once per week)" = "0.1 - 1 Weeks",
+        "Weekly\n(once per week)" = "< 1 Weeks",
         "Twice monthly or more\n(up to 3 weeks)" = "1 - 3 Weeks",
         "Monthly\n(3 - 6 weeks)" = "3 - 6 Weeks",
         "Every two months\n(6 - 10 weeks)" = "6 - 10 Weeks",
@@ -149,7 +153,7 @@ one2one_freq <- function(data,
       mutate(
         across(
           .cols = Cadence_of_1_on_1_meetings_with_manager,
-          .fns = ~ifelse(!is.finite(.), 0, .)
+          .fns = ~ifelse(!is.finite(.), arb_const, .)
         )
       )
 
@@ -159,21 +163,19 @@ one2one_freq <- function(data,
       hrvar = hrvar,
       mingroup = mingroup,
       cut = c(
-        0, # Never
-        0.1, # Fake upper bound for equal zero
         1, # Once a week
         3, # Twice monthly or more
         6, # Monthly
         10 # Bi-monthly
-              ),
+        ),
+      ubound = arb_const + 1, # Bigger than arbitrary constant
       dist_colours = c(
         "#F1B8A1", # Reddish orange
         "#facebc", # Orangeish
         "#fcf0eb", # Light orange
         "grey90",  # Light grey
         "#bfe5ee", # Light teal
-        "#b4d5dd", # Dark teal
-        "grey60"   # Dark grey
+        "#b4d5dd" # Dark teal
         ),
       unit = "Weeks",
       labels = breaks_to_labels,

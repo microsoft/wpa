@@ -120,7 +120,11 @@ create_dist <- function(data,
   ## Create buckets of collaboration hours
   plot_data <-
     plot_data %>%
-    mutate(bucket_hours = cut_hour(!!sym(metric), cuts = cut, unit = unit))
+    mutate(bucket_hours = cut_hour(!!sym(metric),
+                                   cuts = cut,
+                                   unit = unit,
+                                   lbound = lbound,
+                                   ubound = ubound))
 
   ## Employee count / base size table
   plot_legend <-
