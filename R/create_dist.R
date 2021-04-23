@@ -187,6 +187,10 @@ create_dist <- function(data,
 
       scale_fill_manual(name = "", values = rev(dist_colours))
 
+    } else if(is.function(labels)){
+
+      scale_fill_manual(name = "", labels = labels, values = rev(dist_colours))
+
     } else {
 
       # # Match with values, replace with names
@@ -223,8 +227,14 @@ create_dist <- function(data,
     select(group, bucket_hours, percent) %>%
     {if(is.null(labels)){
       .
+    } else if(is.function(labels)){
+
+      .
+
     } else {
+
       mutate(., bucket_hours = replace_labels(x = bucket_hours, labels = labels))
+
     }} %>%
     spread(bucket_hours,  percent) %>%
     left_join(data %>%
