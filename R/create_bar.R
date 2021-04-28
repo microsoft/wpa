@@ -35,6 +35,7 @@
 #'   - `"descending"` - ranked highest to lowest from top to bottom (default).
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
 #'   - `NULL` - uses the original levels of the HR attribute.
+#' @param xlim An option to set max value in x axis.
 #'
 #'
 #' @return
@@ -75,7 +76,8 @@ create_bar <- function(data,
                        na.rm = FALSE,
                        plot_title = us_to_space(metric),
                        plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
-                       rank = "descending"){
+                       rank = "descending",
+					   xlim = NULL){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -134,7 +136,8 @@ create_bar <- function(data,
                    plot_title = plot_title,
                    plot_subtitle = plot_subtitle,
                    return = "plot",
-                   rank = rank)
+                   rank = rank,
+				   xlim = xlim)
 
   summary_table <-
     plot_data %>%

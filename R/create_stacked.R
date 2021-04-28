@@ -27,6 +27,7 @@
 #'   - `"descending"` - ranked highest to lowest from top to bottom (default).
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
 #'   - `NULL` - uses the original levels of the HR attribute.
+#' @param xlim An option to set max value in x axis. 
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -77,7 +78,8 @@ create_stacked <- function(data,
                                              "#adc0cb"),
                            plot_title = "Collaboration Hours",
                            plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
-                           rank = "descending"){
+                           rank = "descending",
+						   xlim = NULL){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -138,7 +140,15 @@ create_stacked <- function(data,
     left_join(totalTable, by = "group")
 
   ## Get maximum value
+  if (is.null(xlim)) {
   location <- max(myTable_legends$Total)
+  }
+  else if(is.numeric(xlim)) {
+  location <- xlim 
+  }
+  else {
+     stop("Invalid return to `xlim`")
+   }
 
   ## Remove max from axis labels
  max_blank <- function(x){
