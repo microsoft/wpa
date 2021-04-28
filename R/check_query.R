@@ -81,8 +81,17 @@ check_query <- function(data, return = "message", validation = FALSE){
 check_person_query <- function(data, return){
 
   ## Query Type - Initialise
-  ## Uses `identify_query()`
-  main_chunk <- paste0("The data used is a ", identify_query(data), " from ", wrap(data %>% count(Domain) %>% arrange(-n) %>% slice(1) %>% pull(Domain), wrapper = "`"))
+
+  if(!("Domain" %in% names(data))){
+
+    main_chunk <- ""
+
+  } else {
+
+    ## Uses `identify_query()`
+    main_chunk <- paste0("The data used is a ", identify_query(data), " from ", wrap(data %>% count(Domain) %>% arrange(-n) %>% slice(1) %>% pull(Domain), wrapper = "`"))
+
+  }
 
   ## PersonId
   if(!("PersonId" %in% names(data))){
