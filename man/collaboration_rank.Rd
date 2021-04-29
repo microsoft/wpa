@@ -11,7 +11,7 @@ collaboration_rank(
   mingroup = 5,
   mode = "simple",
   plot_mode = 1,
-  return = "table"
+  return = "plot"
 )
 
 collab_rank(
@@ -20,7 +20,7 @@ collab_rank(
   mingroup = 5,
   mode = "simple",
   plot_mode = 1,
-  return = "table"
+  return = "plot"
 )
 }
 \arguments{
