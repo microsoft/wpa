@@ -213,6 +213,23 @@ check_query_validation <- function(data, return){
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
   }
 
+ ## Extract unique identifiers of query
+
+	extracted_chr <-  data %>% hrvar_count_all(return = "table") %>% filter(`Unique values`==1) %>% pull(Attributes)
+	
+	if (length(extracted_chr)>1) {
+	
+		extractHRValues <- function(data, hrvar){
+			data %>% summarise(FirstValue = first(!!sym(hrvar))) %>% mutate(HRAttribute = hrvar) %>% select(HRAttribute, FirstValue) %>% mutate(FirstValue = as.character(FirstValue)) # Coerce type 
+			}
+			
+		result <- extracted_chr %>% purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>% bind_rows()
+		
+     new_chunk <- paste("Unique Identifiers Include:", result %>% mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>% pull(identifier) %>% paste(collapse = "; "))
+	 main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+	 }
+
+
   ## HR Variables
   hr_chr <- extract_hr(data, max_unique = 200) %>% wrap(wrapper = "`")
   new_chunk <- paste("There are", length(hr_chr), "(estimated) HR attributes in the data:" )
