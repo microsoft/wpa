@@ -109,7 +109,7 @@ check_person_query <- function(data, return){
 			data %>% summarise(FirstValue = first(!!sym(hrvar))) %>% mutate(HRAttribute = hrvar) %>% select(HRAttribute, FirstValue) %>% mutate(FirstValue = as.character(FirstValue)) # Coerce type 
 			}
 			
-		result <- extracted_chr %>% purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>% bind_rows()
+		result <- extracted_chr %>% purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>% bind_rows() %>% wrap(wrapper = "`")
 		
      new_chunk <- paste("Unique Identifiers Include:", result %>% mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>% pull(identifier) %>% paste(collapse = "; "))
 	 main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
@@ -222,7 +222,7 @@ check_query_validation <- function(data, return){
 			data %>% summarise(FirstValue = first(!!sym(hrvar))) %>% mutate(HRAttribute = hrvar) %>% select(HRAttribute, FirstValue) %>% mutate(FirstValue = as.character(FirstValue)) # Coerce type 
 			}
 			
-		result <- extracted_chr %>% purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>% bind_rows()
+		result <- extracted_chr %>% purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>% bind_rows() %>% wrap(wrapper = "`")
 		
      new_chunk <- paste("Unique Identifiers Include:", result %>% mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>% pull(identifier) %>% paste(collapse = "; "))
 	 main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
