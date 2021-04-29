@@ -40,7 +40,7 @@ collaboration_rank <- function(data,
                                mingroup = 5,
                                mode = "simple",
                                plot_mode = 1,
-                               return = "table"){
+                               return = "plot"){
 
 
   create_rank(data,
