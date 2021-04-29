@@ -21,13 +21,15 @@
 #' Valid inputs are "plot" and "table".
 #' @param stack_colours
 #' A character vector to specify the colour codes for the stacked bar charts.
+#' @param percent Logical value to determine whether to show labels as
+#'   percentage signs. Defaults to `FALSE`.
 #' @param plot_title An option to override plot title.
 #' @param plot_subtitle An option to override plot subtitle.
 #' @param rank String specifying how to rank the bars. Valid inputs are:
 #'   - `"descending"` - ranked highest to lowest from top to bottom (default).
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
 #'   - `NULL` - uses the original levels of the HR attribute.
-#' @param xlim An option to set max value in x axis. 
+#' @param xlim An option to set max value in x axis.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -76,6 +78,7 @@ create_stacked <- function(data,
                                              "#34b1e2",
                                              "#b4d5dd",
                                              "#adc0cb"),
+                           percent = FALSE,
                            plot_title = "Collaboration Hours",
                            plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
                            rank = "descending",
@@ -144,13 +147,13 @@ create_stacked <- function(data,
   location <- max(myTable_legends$Total)
   }
   else if(is.numeric(xlim)) {
-  location <- xlim 
+  location <- xlim
   }
   else {
      stop("Invalid return to `xlim`")
    }
 
-  ## Remove max from axis labels
+  ## Remove max from axis labels ------------------------------------------
  max_blank <- function(x){
    as.character(
      c(
@@ -159,6 +162,17 @@ create_stacked <- function(data,
    )
  }
 
+ ## Remove max from axis labels, but with percentages ---------------------
+ max_blank_percent <- function(x){
+
+   x <- scales::percent(x)
+
+   as.character(
+     c(
+       x[1:length(x) - 1],
+       "")
+   )
+ }
 
  invert_mean <- function(x){
    mean(x) * -1
@@ -184,14 +198,30 @@ create_stacked <- function(data,
    }
    } +
    geom_bar(position = "stack", stat = "identity") +
-   geom_text(aes(label = round(Value, 1)),
-             position = position_stack(vjust = 0.5),
-             color = "#FFFFFF",
-             fontface = "bold") +
-   scale_y_continuous(expand = c(.01, 0),
-                      limits = c(0, location * 1.25),
-                      labels = max_blank,
-                      position = "right") +
+   { if(percent == FALSE){
+     geom_text(aes(label = round(Value, 1)),
+               position = position_stack(vjust = 0.5),
+               color = "#FFFFFF",
+               fontface = "bold")
+   } else if(percent == TRUE){
+     geom_text(aes(label = scales::percent(Value, accuracy = 0.1)),
+               position = position_stack(vjust = 0.5),
+               color = "#FFFFFF",
+               fontface = "bold")
+   }
+   } +
+   { if(percent == FALSE){
+     scale_y_continuous(expand = c(.01, 0),
+                        limits = c(0, location * 1.25),
+                        labels = max_blank,
+                        position = "right")
+   } else if(percent == TRUE){
+     scale_y_continuous(expand = c(.01, 0),
+                        limits = c(0, location * 1.25),
+                        labels = max_blank_percent,
+                        position = "right")
+   }
+   } +
    annotate("text",
             x = myTable_legends$group,
             y = location * 1.15,

@@ -29,6 +29,8 @@
 #' RGB values via `rgb2hex()`.
 #' @param na.rm A logical value indicating whether `NA` should be stripped
 #' before the computation proceeds. Defaults to `FALSE`.
+#' @param percent Logical value to determine whether to show labels as
+#'   percentage signs. Defaults to `FALSE`.
 #' @param plot_title An option to override plot title.
 #' @param plot_subtitle An option to override plot subtitle.
 #' @param rank String specifying how to rank the bars. Valid inputs are:
@@ -74,6 +76,7 @@ create_bar <- function(data,
                        return = "plot",
                        bar_colour = "default",
                        na.rm = FALSE,
+                       percent = FALSE,
                        plot_title = us_to_space(metric),
                        plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
                        rank = "descending",
@@ -133,6 +136,7 @@ create_bar <- function(data,
                    hrvar = hrvar,
                    mingroup = mingroup,
                    stack_colours = bar_colour,
+                   percent = percent,
                    plot_title = plot_title,
                    plot_subtitle = plot_subtitle,
                    return = "plot",

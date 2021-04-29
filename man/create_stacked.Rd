@@ -11,9 +11,11 @@ create_stacked(
   mingroup = 5,
   return = "plot",
   stack_colours = c("#1d627e", "#34b1e2", "#b4d5dd", "#adc0cb"),
+  percent = FALSE,
   plot_title = "Collaboration Hours",
   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
-  rank = "descending"
+  rank = "descending",
+  xlim = NULL
 )
 }
 \arguments{
@@ -36,6 +38,9 @@ Valid inputs are "plot" and "table".}
 
 \item{stack_colours}{A character vector to specify the colour codes for the stacked bar charts.}
 
+\item{percent}{Logical value to determine whether to show labels as
+percentage signs. Defaults to \code{FALSE}.}
+
 \item{plot_title}{An option to override plot title.}
 
 \item{plot_subtitle}{An option to override plot subtitle.}
@@ -46,6 +51,8 @@ Valid inputs are "plot" and "table".}
 \item \code{"ascending"} - ranked lowest to highest from top to bottom.
 \item \code{NULL} - uses the original levels of the HR attribute.
 }}
+
+\item{xlim}{An option to set max value in x axis.}
 }
 \value{
 Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.

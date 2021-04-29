@@ -12,9 +12,11 @@ create_bar(
   return = "plot",
   bar_colour = "default",
   na.rm = FALSE,
+  percent = FALSE,
   plot_title = us_to_space(metric),
   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
-  rank = "descending"
+  rank = "descending",
+  xlim = NULL
 )
 }
 \arguments{
@@ -47,6 +49,9 @@ RGB values via \code{rgb2hex()}.}
 \item{na.rm}{A logical value indicating whether \code{NA} should be stripped
 before the computation proceeds. Defaults to \code{FALSE}.}
 
+\item{percent}{Logical value to determine whether to show labels as
+percentage signs. Defaults to \code{FALSE}.}
+
 \item{plot_title}{An option to override plot title.}
 
 \item{plot_subtitle}{An option to override plot subtitle.}
@@ -57,6 +62,8 @@ before the computation proceeds. Defaults to \code{FALSE}.}
 \item \code{"ascending"} - ranked lowest to highest from top to bottom.
 \item \code{NULL} - uses the original levels of the HR attribute.
 }}
+
+\item{xlim}{An option to set max value in x axis.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:
