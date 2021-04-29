@@ -82,7 +82,7 @@ create_stacked <- function(data,
                            plot_title = "Collaboration Hours",
                            plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
                            rank = "descending",
-						   xlim = NULL){
+                           xlim = NULL){
 
   ## Check inputs
   required_variables <- c("Date",
