@@ -99,34 +99,39 @@ check_person_query <- function(data, return){
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
   }
 
- ## Extract unique identifiers of query
+  ## Extract unique identifiers of query ------------------------------------
 
-	extracted_chr <-  data %>% hrvar_count_all(return = "table") %>% filter(`Unique values`==1) %>% pull(Attributes)
+    extracted_chr <-  data %>%
+      hrvar_count_all(return = "table") %>%
+      filter(`Unique values`==1) %>%
+      pull(Attributes)
 
-	if (length(extracted_chr)>1) {
+    if (length(extracted_chr) > 1) {
 
-	  extractHRValues <- function(data = data, hrvar){
-	    data %>%
-	      summarise(FirstValue = first(!!sym(hrvar))) %>%
-	      mutate(HRAttribute = hrvar) %>%
-	      select(HRAttribute, FirstValue) %>%
-	      mutate(FirstValue = as.character(FirstValue)) # Coerce type
-	  }
+      extractHRValues <- function(data = data, hrvar){
+        data %>%
+          summarise(FirstValue = first(!!sym(hrvar))) %>%
+          mutate(HRAttribute = hrvar) %>%
+          select(HRAttribute, FirstValue) %>%
+          mutate(FirstValue = as.character(FirstValue)) # Coerce type
+      }
 
-		result <- extracted_chr %>%
-		  purrr::map(function(x){
-		    extractHRValues(data = data, hrvar = x)
-		  }) %>%
-		  bind_rows() %>%
-		  mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>%
-		  pull(identifier) %>%
-		  wrap(wrapper = "`")
+      result <- extracted_chr %>%
+        purrr::map(function(x){
+          extractHRValues(data = data, hrvar = x)
+        }) %>%
+        bind_rows() %>%
+        mutate(HRAttribute = wrap(HRAttribute, wrapper = "`")) %>%
+        mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>%
+        pull(identifier)
 
-		new_chunk <- paste(
-		  "Unique Identifiers Include:",
-		  result %>% paste(collapse = "; ")
-		)
-	 }
+      new_chunk <- paste(
+        "Unique Identifiers Include:",
+        result %>% paste(collapse = "; ")
+      )
+
+      main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+    }
 
 
   ## HR Variables
@@ -225,11 +230,14 @@ check_query_validation <- function(data, return){
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
   }
 
- ## Extract unique identifiers of query
+ ## Extract unique identifiers of query ------------------------------------
 
-	extracted_chr <-  data %>% hrvar_count_all(return = "table") %>% filter(`Unique values`==1) %>% pull(Attributes)
+	extracted_chr <-  data %>%
+	  hrvar_count_all(return = "table") %>%
+	  filter(`Unique values`==1) %>%
+	  pull(Attributes)
 
-	if (length(extracted_chr)>1) {
+	if (length(extracted_chr) > 1) {
 
 		extractHRValues <- function(data = data, hrvar){
 			data %>%
@@ -244,9 +252,9 @@ check_query_validation <- function(data, return){
 		    extractHRValues(data = data, hrvar = x)
 		    }) %>%
 		  bind_rows() %>%
+		  mutate(HRAttribute = wrap(HRAttribute, wrapper = "`")) %>%
 		  mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>%
-		  pull(identifier) %>%
-		  wrap(wrapper = "`")
+		  pull(identifier)
 
 		new_chunk <- paste(
 		  "Unique Identifiers Include:",
