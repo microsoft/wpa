@@ -48,7 +48,7 @@ hrvar_count_all <- function(data,
                             ){
 
   ## Character vector of HR attributes
-  extracted_chr <- extract_hr(data, return = "names", max_unique = threshold)
+  extracted_chr <- extract_hr(data, return = "names", max_unique = threshold, exclude_constants = FALSE)
 
   summary_table_n <-
     data %>%
