@@ -351,6 +351,7 @@ workpatterns_classify_bw <- function(data,
 
     list(data = return_data(),
          plot = plot_workpatterns_classify_bw(ptn_data_final),
+         plot_hrvar = plot_wp_bw_hrvar(x = return_table()),
          plot_area = return_plot_area(),
          table = return_table())
 
