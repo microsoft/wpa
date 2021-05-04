@@ -250,12 +250,11 @@ utils::globalVariables(
     "WOE",
     "ActivityLevel",
     "Attributes",
-    "Firstvalue",
+    "FirstValue",
     "Flexibility",
     "HRAttribute",
     "identifier",
     "PersonasNet",
-    "Unique",
-    "values"
+    "Unique values"
     )
 )
