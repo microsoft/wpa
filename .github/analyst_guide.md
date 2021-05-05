@@ -38,6 +38,7 @@ To get the most out of **wpa**, make sure to leverage these additional resources
 
 1. Our official [**wpa** cheat sheet](https://github.com/microsoft/wpa/blob/main/man/figures/wpa%20cheatsheet.pdf).
 2. A growing list of [articles](https://microsoft.github.io/wpa/articles/) with detailed walkthroughs, written by multiple contributors. 
+3. Our [Microsoft Learn module](https://docs.microsoft.com/en-us/learn/modules/workplace-analytics-r-package/) _Analyze Microsoft Workplace Analytics data using the wpa R package_, which takes you step-by-step through the R package and its key features. 
 
 ## Ready to go?
 
