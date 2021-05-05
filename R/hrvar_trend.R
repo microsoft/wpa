@@ -79,16 +79,13 @@ hrvar_trend <- function(data,
 
   if(return == "table"){
 
-    data %>%
-      data.table::as.data.table() %>%
-      .[, .(n = n_distinct(PersonId)), by = hrvar] %>%
-      as_tibble() %>%
-      arrange(desc(n))
+    summary_table %>% mutate(PersonId="") %>% create_trend(metric = "n", hrvar = hrvar, mingroup = 0, return = "table")
 
   } else if(return == "plot"){
 
     ## This is re-run to enable multi-attribute grouping without concatenation
-    summary_table %>% create_trend(summary_table, metric = "n", hrvar = "LevelDesignation", mingroup = 0, return = "plot")
+    summary_table %>% mutate(PersonId="") %>% create_trend(metric = "n", hrvar = hrvar, mingroup = 0, return = "plot") + labs(title = "Employees over time", subtitle = paste("Dynamics by ", tolower(camel_clean(hrvar))))
+
 
   } else {
 
