@@ -21,7 +21,7 @@ data frame. A summary table giving the percentage of group
 combinations that best represent the provided data.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
 
 Returns a data frame that gives a percentage of the group combinations that
 best represent the population provided. Uses a person to person query. This

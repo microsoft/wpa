@@ -87,6 +87,7 @@ Other Visualization:
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{keymetrics_scan}()},
 \code{\link{meeting_dist}()},
 \code{\link{meeting_fizz}()},
