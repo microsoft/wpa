@@ -61,7 +61,7 @@ maximum label. Defaults to 100.}
 \code{NULL} (no sorting).}
 
 \item{labels}{Character vector to override labels for the created
-categorical variables}
+categorical variables. Must be a named vector - see examples.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:
