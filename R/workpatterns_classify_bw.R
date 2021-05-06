@@ -47,6 +47,9 @@
 #' @param end_hour A character vector specifying finish hours,
 #' e.g. "1700"
 #'
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
@@ -72,6 +75,7 @@ workpatterns_classify_bw <- function(data,
                                      signals = c("email","IM"),
                                      start_hour = "0900",
                                      end_hour = "1700",
+                                     mingroup = 5,
                                      active_threshold = 0,
                                      return = "plot"){
 
@@ -313,7 +317,7 @@ workpatterns_classify_bw <- function(data,
         # dplyr::left_join(select(data2, PersonId, Date, hrvar), by = c("PersonId", "Date")) # %>%
         data.table::as.data.table() %>%
         .[, .(n = .N), by = c("Personas", hrvar)] %>%
-        .[n >= 5, ] %>%
+        .[n >= mingroup, ] %>%
         .[, prop := n / sum(n), by = hrvar] %>% # % breakdown by HR org
         dplyr::as_tibble() %>%
         dplyr::select(-n) %>% # Remove n

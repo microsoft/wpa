@@ -11,6 +11,7 @@ workpatterns_classify(
   signals = "email",
   start_hour = "0900",
   end_hour = "1700",
+  mingroup = 5,
   active_threshold = 0,
   method = "bw",
   return = "plot"
@@ -42,6 +43,9 @@ Note that this currently only supports \strong{hourly} increments.}
 
 \item{end_hour}{A character vector specifying starting hours, e.g. "1700".
 Note that this currently only supports \strong{hourly} increments.}
+
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
 
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.
