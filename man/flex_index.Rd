@@ -69,6 +69,13 @@ entire population. The Flexibility Index is a quantitative measure of the
 freedom for employees to work at a time of their choice.
 }
 \details{
+The \strong{Flexibility Index} is a metric that has been developed to quantify and
+measure flexibility using behavioural data from Workplace Analytics.
+Flexibility here refers to the freedom of employees to adopt a working
+arrangement of their own choice, and more specifically refers to \strong{time}
+flexibility (\emph{whenever} I want) as opposed to \strong{geographical} flexibility
+(\emph{wherever} I want).
+
 The \strong{Flexibility Index} is a score between 0 and 1, and is calculated based
 on three component measures:
 \itemize{
