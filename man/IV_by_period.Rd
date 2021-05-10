@@ -18,7 +18,7 @@ IV_by_period(
 \arguments{
 \item{data}{Person Query as a dataframe including date column named "Date"
 This function assumes the data format is \code{MM/DD/YYYY} as is standard in a
-WpA query output.}
+Workplace Analytics query output.}
 
 \item{before_start}{Start date of "before" time period in \code{YYYY-MM-DD}.
 Defaults to earliest date in dataset.}

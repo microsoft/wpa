@@ -1,8 +1,8 @@
 #' @title Meeting Type Distribution (Meeting Query)
 #'
 #' @description
-#' Calculate the hour distribution of internal meeting types,
-#' using a Meeting Query with core WpA variables as an input.
+#' Calculate the hour distribution of internal meeting types, using a Meeting
+#' Query with core Workplace Analytics variables as an input.
 #'
 #' @param data Meeting Query data frame. Must contain the variables `Attendee` and `DurationHours`
 #' @param return String specifying what to return. This must be one of the

@@ -38,6 +38,8 @@ beyond the specified thresholds.
 }
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 This function enables you to create a summary table to validate
 organizational data. This table will provide a summary of the data found in
 the Workplace Analytics Sources page. This function will return a summary

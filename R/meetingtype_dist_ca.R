@@ -1,8 +1,8 @@
 #' @title Meeting Type Distribution (Ways of Working Assessment Query)
 #'
 #' @description
-#' Calculate the hour distribution of internal meeting types,
-#' using a Ways of Working Assessment Query with core WpA variables as an input.
+#' Calculate the hour distribution of internal meeting types, using a Ways of
+#' Working Assessment Query with core Workplace Analytics variables as an input.
 #'
 #' @param data Meeting Query data frame. Must contain the variables `Attendee` and `DurationHours`
 #' @param hrvar Character string to specify the HR attribute to split the data by.

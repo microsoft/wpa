@@ -35,7 +35,7 @@ argument:
 }
 }
 \description{
-This function generates a word co-occurence network plot, with options to
+This function generates a word co-occurrence network plot, with options to
 return a table. This function is used within \code{meeting_tm_report()}.
 }
 \details{

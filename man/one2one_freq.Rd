@@ -48,11 +48,29 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 This function calculates the average number of weeks (cadence) between of 1:1
 meetings between an employee and their manager. Returns a  distribution plot
 for typical cadence of 1:1 meetings. Additional options available to return a
 bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric.
 }
+\section{Distribution view}{
+
+For this view, there are four categories of cadence:
+\itemize{
+\item Weekly (once per week)
+\item Twice monthly or more (up to 3 weeks)
+\item Monthly (3 - 6 weeks)
+\item Every two months (6 - 10 weeks)
+\item Quarterly or less (> 10 weeks)
+}
+
+In the occasion there are zero 1:1 meetings with managers, this is included
+into the last category, i.e. 'Quarterly or less'. Note that when \code{mode} is
+set to \code{"sum"}, these rows are simply excluded from the calculation.
+}
+
 \examples{
 # Return plot, mode dist
 one2one_freq(sq_data,

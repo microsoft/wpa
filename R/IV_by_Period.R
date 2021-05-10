@@ -16,7 +16,7 @@
 #'
 #' @param data Person Query as a dataframe including date column named "Date"
 #'   This function assumes the data format is `MM/DD/YYYY` as is standard in a
-#'   WpA query output.
+#'   Workplace Analytics query output.
 #' @param before_start Start date of "before" time period in `YYYY-MM-DD`.
 #'   Defaults to earliest date in dataset.
 #' @param before_end End date of "before" time period in `YYYY-MM-DD`

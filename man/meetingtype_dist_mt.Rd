@@ -30,8 +30,8 @@ is passed to \code{hrvar}, a stacked bar plot is returned.
 }
 }
 \description{
-Calculate the hour distribution of internal meeting types,
-using a Meeting Query with core WpA variables as an input.
+Calculate the hour distribution of internal meeting types, using a Meeting
+Query with core Workplace Analytics variables as an input.
 }
 \seealso{
 Other Visualization: 
