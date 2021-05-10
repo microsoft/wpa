@@ -43,7 +43,8 @@ Other Data:
 \code{\link{em_data}},
 \code{\link{g2g_data}},
 \code{\link{mt_data}},
-\code{\link{sq_data}}
+\code{\link{sq_data}},
+\code{\link{utc_data}}
 
 Other Network: 
 \code{\link{external_network_plot}()},

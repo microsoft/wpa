@@ -96,7 +96,8 @@ Other Data:
 \code{\link{em_data}},
 \code{\link{g2g_data}},
 \code{\link{mt_data}},
-\code{\link{p2p_data_sim}()}
+\code{\link{p2p_data_sim}()},
+\code{\link{utc_data}}
 }
 \concept{Data}
 \keyword{datasets}

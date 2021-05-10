@@ -36,7 +36,8 @@ Other Data:
 \code{\link{em_data}},
 \code{\link{mt_data}},
 \code{\link{p2p_data_sim}()},
-\code{\link{sq_data}}
+\code{\link{sq_data}},
+\code{\link{utc_data}}
 
 Other Network: 
 \code{\link{external_network_plot}()},
