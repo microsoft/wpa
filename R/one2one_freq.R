@@ -5,7 +5,8 @@
 
 #' @title Frequency of Manager 1:1 Meetings as bar or 100% stacked bar chart
 #'
-#' @description
+#' @description `r lifecycle::badge('experimental')`
+#'
 #' This function calculates the average number of weeks (cadence) between of 1:1
 #' meetings between an employee and their manager. Returns a  distribution plot
 #' for typical cadence of 1:1 meetings. Additional options available to return a
@@ -23,6 +24,19 @@
 #'
 #' @inheritParams create_dist
 #' @inherit create_dist return
+#'
+#' @section Distribution view:
+#' For this view, there are four categories of cadence:
+#'   - Weekly (once per week)
+#'   - Twice monthly or more (up to 3 weeks)
+#'   - Monthly (3 - 6 weeks)
+#'   - Every two months (6 - 10 weeks)
+#'   - Quarterly or less (> 10 weeks)
+#'
+#' In the occasion there are zero 1:1 meetings with managers, this is included
+#' into the last category, i.e. 'Quarterly or less'. Note that when `mode` is
+#' set to `"sum"`, these rows are simply excluded from the calculation.
+#'
 #'
 #' @family Visualization
 #' @family Managerial Relations

@@ -6,7 +6,8 @@
 #' @title Create count of distinct fields and percentage of employees with
 #'   missing values for all HR variables
 #'
-#' @description
+#' @description `r lifecycle::badge('experimental')`
+#'
 #' This function enables you to create a summary table to validate
 #' organizational data. This table will provide a summary of the data found in
 #' the Workplace Analytics Sources page. This function will return a summary
