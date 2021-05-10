@@ -90,7 +90,15 @@ day. Uses a binary week-based ('bw') method by default, with options to use
 the the person-average volume-based ('pav') method.
 }
 \details{
-This is a wrapper around \code{workpatterns_classify_bw()} and
+The working patterns archetypes are a set of segments created based on the
+aggregated hourly activity of employees. A motivation of creating these
+archetypes is to capture the diversity in working patterns, where for
+instance employees may choose to take multiple or extended breaks throughout
+the day, or choose to start or end earlier/later than their standard working
+hours. Two methods have been developed to capture the different working
+patterns.
+
+This function is a wrapper around \code{workpatterns_classify_bw()} and
 \code{workpatterns_classify_pav()}, and calls each function depending on what is
 supplied to the \code{method} argument. Both methods implement a rule-based
 classification of either \strong{person-weeks} or \strong{persons} that pull apart
@@ -126,6 +134,17 @@ This is the recommended method over \code{pav} for several reasons:
 results towards the 'standard working hours'.
 \item It captures the intuition that each individual can have 'light' and
 'heavy' weeks with respect to workload.
+}
+
+In the standard plot output, the archetypes have been abbreviated to show the
+following:
+\itemize{
+\item \strong{Low Activity} - archetype 0
+\item \strong{Standard} - archetype 2
+\item \strong{Flexible} - archetypes 1 and 3
+\item \strong{Long continuous} - archetype 5
+\item \strong{Long flexible} - archetype 4
+\item \strong{Always On} - archetype 6
 }
 }
 
@@ -200,6 +219,10 @@ Other Working Patterns:
 }
 \author{
 Ainize Cidoncha \href{mailto:ainize.cidoncha@microsoft.com}{ainize.cidoncha@microsoft.com}
+
+Carlos Morales Torrado \href{mailto:carlos.morales@microsoft.com}{carlos.morales@microsoft.com}
+
+Martin Chan \href{mailto:martin.chan@microsoft.com}{martin.chan@microsoft.com}
 }
 \concept{Clustering}
 \concept{Working Patterns}
