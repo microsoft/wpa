@@ -380,11 +380,11 @@ plot_workpatterns_classify_bw <- function(data){
       PersonasNet =
         case_when(
           Personas == "0 < 3 hours on" ~ "Low activity",
-          Personas == "1 Standard with breaks workday" ~ "Standard flexible",
-          Personas == "2 Standard continuous workday" ~ "Standard (non-stop)",
-          Personas == "3 Standard flexible workday" ~ "Standard flexible",
-          Personas == "4 Long flexible workday" ~ "Long with breaks",
-          Personas == "5 Long continuous workday" ~ "Long (non-stop)",
+          Personas == "1 Standard with breaks workday" ~ "Flexible",
+          Personas == "2 Standard continuous workday" ~ "Standard",
+          Personas == "3 Standard flexible workday" ~ "Flexible",
+          Personas == "4 Long flexible workday" ~ "Long flexible",
+          Personas == "5 Long continuous workday" ~ "Long continuous",
           Personas == "6 Always on (13h+)" ~ "Always On",
           TRUE ~ NA_character_
           )
@@ -397,10 +397,10 @@ plot_workpatterns_classify_bw <- function(data){
   base_df <-
     dplyr::tibble(id = 1:6,
                value = c("Always On",
-                         "Long (non-stop)",
-                         "Long with breaks",
-                         "Standard (non-stop)",
-                         "Standard flexible",
+                         "Long continuous",
+                         "Long flexible",
+                         "Standard",
+                         "Flexible",
                          "Low activity"),
                text = c(rep("#FFFFFF", 3),
                         rep("grey5", 3)),
