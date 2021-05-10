@@ -32,8 +32,8 @@ argument:
 }
 }
 \description{
-This function provides a week by week view of the count of the distinct people
-by the specified HR attribute.The default behaviour is to return a
+This function provides a week by week view of the count of the distinct
+people by the specified HR attribute.The default behaviour is to return a
 week by week heatmap bar plot.
 }
 \examples{

@@ -6,8 +6,8 @@
 #' @title Track count of distinct people over time in a specified HR variable
 #'
 #' @description
-#' This function provides a week by week view of the count of the distinct people
-#' by the specified HR attribute.The default behaviour is to return a
+#' This function provides a week by week view of the count of the distinct
+#' people by the specified HR attribute.The default behaviour is to return a
 #' week by week heatmap bar plot.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
@@ -79,12 +79,25 @@ hrvar_trend <- function(data,
 
   if(return == "table"){
 
-    summary_table %>% mutate(PersonId="") %>% create_trend(metric = "n", hrvar = hrvar, mingroup = 0, return = "table")
+    summary_table %>%
+      mutate(PersonId = "") %>%
+      create_trend(metric = "n",
+                   hrvar = hrvar,
+                   mingroup = 0,
+                   return = "table")
 
   } else if(return == "plot"){
 
     ## This is re-run to enable multi-attribute grouping without concatenation
-    summary_table %>% mutate(PersonId="") %>% create_trend(metric = "n", hrvar = hrvar, mingroup = 0, return = "plot") + labs(title = "Employees over time", subtitle = paste("Dynamics by ", tolower(camel_clean(hrvar))))
+    summary_table %>%
+      mutate(PersonId="") %>%
+      create_trend(metric = "n",
+                   hrvar = hrvar,
+                   mingroup = 0,
+                   return = "plot",
+                   legend_title = "Number of employees") +
+      labs(title = "Employees over time",
+           subtitle = paste0("Dynamics by ", tolower(camel_clean(hrvar))))
 
 
   } else {
