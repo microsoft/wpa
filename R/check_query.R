@@ -101,18 +101,34 @@ check_person_query <- function(data, return){
 
  ## Extract unique identifiers of query ------------------------------------
 
-	extracted_chr <-  data %>% hrvar_count_all(return = "table") %>% filter(`Unique values`==1) %>% pull(Attributes)
-	
+	extracted_chr <-
+	  data %>%
+	  hrvar_count_all(return = "table") %>%
+	  filter(`Unique values`==1) %>%
+	  pull(Attributes)
+
 	if (length(extracted_chr)>1) {
-	
+
 		extractHRValues <- function(data, hrvar){
-			data %>% summarise(FirstValue = first(!!sym(hrvar))) %>% mutate(HRAttribute = hrvar) %>% select(HRAttribute, FirstValue) %>% mutate(FirstValue = as.character(FirstValue)) # Coerce type 
+			data %>%
+		    summarise(FirstValue = first(!!sym(hrvar))) %>%
+		    mutate(HRAttribute = wrap(hrvar, wrapper = "`")) %>%
+		    select(HRAttribute, FirstValue) %>%
+		    mutate(FirstValue = as.character(FirstValue)) # Coerce type
 			}
-			
-		result <- extracted_chr %>% purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>% bind_rows()
-		
-     new_chunk <- paste("Unique identifiers include:", result %>% mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>% pull(identifier) %>% paste(collapse = "; "))
-	 main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+
+		result <-
+		  extracted_chr %>%
+		  purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>%
+		  bind_rows()
+
+     new_chunk <- paste("Unique identifiers include:",
+                        result %>%
+                          mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>%
+                          pull(identifier) %>%
+                          paste(collapse = "; "))
+
+     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
 	 }
 
 
@@ -221,18 +237,27 @@ check_query_validation <- function(data, return){
 
 	if (length(extracted_chr) > 1) {
 
-		extractHRValues <- function(data = data, hrvar){
-			data %>%
-		    summarise(FirstValue = first(!!sym(hrvar))) %>%
-		    mutate(HRAttribute = hrvar) %>%
-		    select(HRAttribute, FirstValue) %>%
-		    mutate(FirstValue = as.character(FirstValue)) # Coerce type
-			}
-			
-		result <- extracted_chr %>% purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>% bind_rows()
-		
-     new_chunk <- paste("Unique identifiers include:", result %>% mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>% pull(identifier) %>% paste(collapse = "; "))
-	 main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+
+	  extractHRValues <- function(data, hrvar){
+	    data %>%
+	      summarise(FirstValue = first(!!sym(hrvar))) %>%
+	      mutate(HRAttribute = wrap(hrvar, wrapper = "`")) %>%
+	      select(HRAttribute, FirstValue) %>%
+	      mutate(FirstValue = as.character(FirstValue)) # Coerce type
+	  }
+
+	  result <-
+	    extracted_chr %>%
+	    purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>%
+	    bind_rows()
+
+	  new_chunk <- paste("Unique identifiers include:",
+	                     result %>%
+	                       mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>%
+	                       pull(identifier) %>%
+	                       paste(collapse = "; "))
+
+	  main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
 
 	 }
 
