@@ -67,6 +67,9 @@ workpatterns_rank <- function(data,
 
   ## Select input variable names
   if("email" %in% signals & "IM" %in% signals){
+  
+    ## Create label for plot subtitle
+	subtitle_signal <- "emails and chats"
 
     ## Create 24 summed `Signals_sent` columns
     signal_cols <-
@@ -87,7 +90,10 @@ workpatterns_rank <- function(data,
 
   } else if(signals == "IM"){
 
-    match_index <- grepl(pattern = "^IMs_sent", x = names(data2))
+	## Create label for plot subtitle
+	subtitle_signal <- "chats"
+		
+	match_index <- grepl(pattern = "^IMs_sent", x = names(data2))
     input_var <- names(data2)[match_index]
     input_var2 <- c("PersonId", "Date", input_var)
 
@@ -100,7 +106,10 @@ workpatterns_rank <- function(data,
 
 
   } else if(signals == "email"){
-
+  
+    ## Create label for plot subtitle
+	subtitle_signal <- "emails"
+	
     match_index <- grepl(pattern = "^Emails_sent", x = names(data2))
     input_var <- names(data2)[match_index]
     input_var2 <- c("PersonId", "Date", input_var)
@@ -185,7 +194,7 @@ workpatterns_rank <- function(data,
                alpha = .1,
                fill = "gray50") +
   labs(title = "Patterns of digital activity",
-       subtitle ="Activity trail based on weekly collaboration activity",
+       subtitle =paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
 	   caption = extract_date_range(data, return = "text"))
 
   } else if(return == "table"){
