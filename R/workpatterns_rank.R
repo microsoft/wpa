@@ -143,7 +143,7 @@ workpatterns_rank <- function(data,
       myTable_return %>%
       dplyr::select(patternRank, WeekCount) %>%
       dplyr::mutate(WeekPercentage = WeekCount / sum(WeekCount, na.rm = TRUE),
-                    WeekCount = paste0("n= ", WeekCount, " (", scales::percent(WeekPercentage, accuracy = 0.1), ")")) %>%
+                    WeekCount = paste0(scales::percent(WeekPercentage, accuracy = 0.1))) %>%
       utils::head(10)
 
     myTable_return %>%
@@ -183,7 +183,10 @@ workpatterns_rank <- function(data,
                ymin = 0.5,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
-               fill = "gray50")
+               fill = "gray50") +
+  labs(title = "Observed activity",
+       subtitle ="Activity patterns based on collaboration activity",
+	   caption = extract_date_range(data, return = "text")))
 
   } else if(return == "table"){
 
