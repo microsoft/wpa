@@ -49,7 +49,8 @@
   <script src="../extra.js"></script>
 
 <meta property="og:title" content="Frequency of Manager 1:1 Meetings as bar or 100% stacked bar chart — one2one_freq" />
-<meta property="og:description" content="This function calculates the average number of weeks (cadence) between of 1:1
+<meta property="og:description" content="
+This function calculates the average number of weeks (cadence) between of 1:1
 meetings between an employee and their manager. Returns a  distribution plot
 for typical cadence of 1:1 meetings. Additional options available to return a
 bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric." />
@@ -85,7 +86,7 @@ bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -229,7 +230,8 @@ bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric." />
     </div>
 
     <div class="ref-description">
-    <p>This function calculates the average number of weeks (cadence) between of 1:1
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
+<p>This function calculates the average number of weeks (cadence) between of 1:1
 meetings between an employee and their manager. Returns a  distribution plot
 for typical cadence of 1:1 meetings. Additional options available to return a
 bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric.</p>
@@ -240,7 +242,8 @@ bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric.</p>
   hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
   mingroup <span class='op'>=</span> <span class='fl'>5</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>,
-  mode <span class='op'>=</span> <span class='st'>"dist"</span>
+  mode <span class='op'>=</span> <span class='st'>"dist"</span>,
+  sort_by <span class='op'>=</span> <span class='st'>"Quarterly or less\n(&gt;10 weeks)"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -277,6 +280,11 @@ following strings:</p><ul>
 <li><p><code>"sum"</code></p></li>
 </ul></td>
     </tr>
+    <tr>
+      <th>sort_by</th>
+      <td><p>String to specify the bucket label to sort by. Defaults to
+<code>NULL</code> (no sorting).</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -286,6 +294,21 @@ following strings:</p><ul>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="distribution-view"><a class="anchor" href="#distribution-view"></a>Distribution view</h2>
+
+    
+
+<p>For this view, there are four categories of cadence:</p><ul>
+<li><p>Weekly (once per week)</p></li>
+<li><p>Twice monthly or more (up to 3 weeks)</p></li>
+<li><p>Monthly (3 - 6 weeks)</p></li>
+<li><p>Every two months (6 - 10 weeks)</p></li>
+<li><p>Quarterly or less (&gt; 10 weeks)</p></li>
+</ul>
+
+<p>In the occasion there are zero 1:1 meetings with managers, this is included
+into the last category, i.e. 'Quarterly or less'. Note that when <code>mode</code> is
+set to <code>"sum"</code>, these rows are simply excluded from the calculation.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Visualization: 
@@ -325,6 +348,7 @@ following strings:</p><ul>
 <code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='hrvar_trend.html'>hrvar_trend</a>()</code>,
 <code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
 <code><a href='keymetrics_scan.html'>keymetrics_scan</a>()</code>,
 <code><a href='meeting_dist.html'>meeting_dist</a>()</code>,
@@ -381,23 +405,24 @@ following strings:</p><ul>
 <span class='co'># Return summary table</span>
 <span class='fu'>one2one_freq</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 6</span><span>
-#&gt;    group `1 - 1.5 Weeks` `1.5 - 3 Weeks` `3 - 6 Weeks` `6+ Weeks` Employee_Count
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz …          0.013</span><span style='text-decoration: underline;'>3</span><span>           0.16          0.347      0.48              75
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Cust…          0.065</span><span style='text-decoration: underline;'>6</span><span>           0.459         0.213      0.262             61
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Faci…         </span><span style='color: #BB0000;'>NA</span><span>                0.139         0.458      0.403             72
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Fina…         </span><span style='color: #BB0000;'>NA</span><span>                0.206         0.441      0.353             68
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Fina…         </span><span style='color: #BB0000;'>NA</span><span>                0.371         0.457      0.171             70
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Fina…         </span><span style='color: #BB0000;'>NA</span><span>                0.247         0.444      0.309             81
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Fina…         </span><span style='color: #BB0000;'>NA</span><span>                0.164         0.479      0.356             73
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Fina…         </span><span style='color: #BB0000;'>NA</span><span>                0.173         0.28       0.547             75
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A …          0.052</span><span style='text-decoration: underline;'>6</span><span>           0.404         0.316      0.228             57
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A …          0.015</span><span style='text-decoration: underline;'>4</span><span>           0.369         0.185      0.431             65
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> G&amp;A …         </span><span style='color: #BB0000;'>NA</span><span>                0.421         0.237      0.342             76
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Huma…          0.056</span><span style='text-decoration: underline;'>3</span><span>           0.380         0.239      0.324             71
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Inve…         </span><span style='color: #BB0000;'>NA</span><span>                0.217         0.433      0.35              60
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> IT-C…         </span><span style='color: #BB0000;'>NA</span><span>                0.279         0.279      0.441             68
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> IT-E…         </span><span style='color: #BB0000;'>NA</span><span>                0.113         0.274      0.613             62</div><div class='input'>
+#&gt;    group  `Every two month… `Monthly\n(3 - 6… `Quarterly or l… `Twice monthly o…
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> IT-Ea…            0.258              0.274           0.355              0.113
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Finan…            0.068</span><span style='text-decoration: underline;'>5</span><span>             0.479           0.288              0.164
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Human…            0.042</span><span style='text-decoration: underline;'>3</span><span>             0.239           0.282              0.437
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Finan…            0.28               0.28            0.267              0.173
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> IT-Co…            0.191              0.279           0.25               0.279
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> G&amp;A E…            0.2                0.185           0.231              0.385
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Facil…            0.208              0.458           0.194              0.139
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> G&amp;A S…            0.158              0.237           0.184              0.421
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Biz D…            0.307              0.347           0.173              0.173
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Finan…            0.160              0.444           0.148              0.247
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> Custo…            0.115              0.213           0.148              0.525
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> G&amp;A C…            0.105              0.316           0.123              0.456
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Finan…            0.265              0.441           0.088</span><span style='text-decoration: underline;'>2</span><span>             0.206
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> Inven…            0.283              0.433           0.066</span><span style='text-decoration: underline;'>7</span><span>             0.217
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> Finan…            0.114              0.457           0.057</span><span style='text-decoration: underline;'>1</span><span>             0.371
+#&gt; </span><span style='color: #949494;'># … with 1 more variable: Employee_Count &lt;int&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

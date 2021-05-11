@@ -85,7 +85,7 @@ the the person-average volume-based ('pav') method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -242,6 +242,7 @@ the the person-average volume-based ('pav') method.</p>
   signals <span class='op'>=</span> <span class='st'>"email"</span>,
   start_hour <span class='op'>=</span> <span class='st'>"0900"</span>,
   end_hour <span class='op'>=</span> <span class='st'>"1700"</span>,
+  mingroup <span class='op'>=</span> <span class='fl'>5</span>,
   active_threshold <span class='op'>=</span> <span class='fl'>0</span>,
   method <span class='op'>=</span> <span class='st'>"bw"</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>
@@ -288,6 +289,11 @@ Note that this currently only supports <strong>hourly</strong> increments.</p></
 Note that this currently only supports <strong>hourly</strong> increments.</p></td>
     </tr>
     <tr>
+      <th>mingroup</th>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
+    </tr>
+    <tr>
       <th>active_threshold</th>
       <td><p>A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as <em>active</em>. Defaults to 0.
@@ -331,7 +337,14 @@ method.</p></li>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a wrapper around <code><a href='workpatterns_classify_bw.html'>workpatterns_classify_bw()</a></code> and
+    <p>The working patterns archetypes are a set of segments created based on the
+aggregated hourly activity of employees. A motivation of creating these
+archetypes is to capture the diversity in working patterns, where for
+instance employees may choose to take multiple or extended breaks throughout
+the day, or choose to start or end earlier/later than their standard working
+hours. Two methods have been developed to capture the different working
+patterns.</p>
+<p>This function is a wrapper around <code><a href='workpatterns_classify_bw.html'>workpatterns_classify_bw()</a></code> and
 <code><a href='workpatterns_classify_pav.html'>workpatterns_classify_pav()</a></code>, and calls each function depending on what is
 supplied to the <code>method</code> argument. Both methods implement a rule-based
 classification of either <strong>person-weeks</strong> or <strong>persons</strong> that pull apart
@@ -366,6 +379,16 @@ results towards the 'standard working hours'.</p></li>
 <li><p>It captures the intuition that each individual can have 'light' and
 'heavy' weeks with respect to workload.</p></li>
 </ol>
+
+<p>In the standard plot output, the archetypes have been abbreviated to show the
+following:</p><ul>
+<li><p><strong>Low Activity</strong> - archetype 0</p></li>
+<li><p><strong>Standard</strong> - archetype 2</p></li>
+<li><p><strong>Flexible</strong> - archetypes 1 and 3</p></li>
+<li><p><strong>Long continuous</strong> - archetype 5</p></li>
+<li><p><strong>Long flexible</strong> - archetype 4</p></li>
+<li><p><strong>Always On</strong> - archetype 6</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="person-average-method"><a class="anchor" href="#person-average-method"></a>Person Average method</h2>
 
@@ -418,6 +441,8 @@ Hourly Collaboration Flexible Query.</p></li>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Ainize Cidoncha <a href='mailto:ainize.cidoncha@microsoft.com'>ainize.cidoncha@microsoft.com</a></p>
+<p>Carlos Morales Torrado <a href='mailto:carlos.morales@microsoft.com'>carlos.morales@microsoft.com</a></p>
+<p>Martin Chan <a href='mailto:martin.chan@microsoft.com'>martin.chan@microsoft.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

@@ -84,7 +84,7 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -236,7 +236,7 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
     <pre class="usage"><span class='fu'>create_rank</span><span class='op'>(</span>
   <span class='va'>data</span>,
   <span class='va'>metric</span>,
-  hrvar <span class='op'>=</span> <span class='fu'><a href='extract_hr.html'>extract_hr</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>,
+  hrvar <span class='op'>=</span> <span class='fu'><a href='extract_hr.html'>extract_hr</a></span><span class='op'>(</span><span class='va'>data</span>, exclude_constants <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
   mingroup <span class='op'>=</span> <span class='fl'>5</span>,
   return <span class='op'>=</span> <span class='st'>"table"</span>,
   mode <span class='op'>=</span> <span class='st'>"simple"</span>,
@@ -342,6 +342,7 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='hrvar_trend.html'>hrvar_trend</a>()</code>,
 <code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
 <code><a href='keymetrics_scan.html'>keymetrics_scan</a>()</code>,
 <code><a href='meeting_dist.html'>meeting_dist</a>()</code>,

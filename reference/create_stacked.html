@@ -86,7 +86,7 @@ Additional options available to return a summary table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -244,8 +244,11 @@ Additional options available to return a summary table.</p>
   mingroup <span class='op'>=</span> <span class='fl'>5</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>,
   stack_colours <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#1d627e"</span>, <span class='st'>"#34b1e2"</span>, <span class='st'>"#b4d5dd"</span>, <span class='st'>"#adc0cb"</span><span class='op'>)</span>,
+  percent <span class='op'>=</span> <span class='cn'>FALSE</span>,
   plot_title <span class='op'>=</span> <span class='st'>"Collaboration Hours"</span>,
-  plot_subtitle <span class='op'>=</span> <span class='st'>"Weekly collaboration hours"</span>
+  plot_subtitle <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"Average by"</span>, <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span><span class='op'>(</span><span class='fu'><a href='camel_clean.html'>camel_clean</a></span><span class='op'>(</span><span class='va'>hrvar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  rank <span class='op'>=</span> <span class='st'>"descending"</span>,
+  xlim <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -283,12 +286,29 @@ Valid inputs are "plot" and "table".</p></td>
       <td><p>A character vector to specify the colour codes for the stacked bar charts.</p></td>
     </tr>
     <tr>
+      <th>percent</th>
+      <td><p>Logical value to determine whether to show labels as
+percentage signs. Defaults to <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
       <th>plot_title</th>
       <td><p>An option to override plot title.</p></td>
     </tr>
     <tr>
       <th>plot_subtitle</th>
       <td><p>An option to override plot subtitle.</p></td>
+    </tr>
+    <tr>
+      <th>rank</th>
+      <td><p>String specifying how to rank the bars. Valid inputs are:</p><ul>
+<li><p><code>"descending"</code> - ranked highest to lowest from top to bottom (default).</p></li>
+<li><p><code>"ascending"</code> - ranked lowest to highest from top to bottom.</p></li>
+<li><p><code>NULL</code> - uses the original levels of the HR attribute.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>xlim</th>
+      <td><p>An option to set max value in x axis.</p></td>
     </tr>
     </table>
 
@@ -334,6 +354,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='hrvar_trend.html'>hrvar_trend</a>()</code>,
 <code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
 <code><a href='keymetrics_scan.html'>keymetrics_scan</a>()</code>,
 <code><a href='meeting_dist.html'>meeting_dist</a>()</code>,
@@ -394,7 +415,8 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
                              <span class='st'>"Email_hours"</span>,
                              <span class='st'>"Call_hours"</span>,
                              <span class='st'>"Instant_Message_hours"</span><span class='op'>)</span>,
-                 return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
+                 return <span class='op'>=</span> <span class='st'>"plot"</span>,
+                 rank <span class='op'>=</span> <span class='st'>"ascending"</span><span class='op'>)</span>
 </div><div class='img'><img src='create_stacked-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'>create_stacked</span><span class='op'>(</span>hrvar <span class='op'>=</span> <span class='st'>"FunctionType"</span>,
@@ -414,7 +436,8 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 #&gt; </span><span style='color: #BCBCBC;'>6</span><span> Operations           9.79        9.33       5.22                 0.655  25.0
 #&gt; </span><span style='color: #BCBCBC;'>7</span><span> R_and_D              7.37        7.79       4.05                 0.593  19.8
 #&gt; </span><span style='color: #BCBCBC;'>8</span><span> Sales               16.2        14.7        8.92                 0.538  40.4
-#&gt; </span><span style='color: #949494;'># … with 1 more variable: Employee_Count &lt;int&gt;</span><span></div></span></pre>
+#&gt; </span><span style='color: #949494;'># … with 1 more variable: Employee_Count &lt;int&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

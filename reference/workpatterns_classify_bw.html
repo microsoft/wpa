@@ -86,7 +86,7 @@ week-based ('bw') method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -242,6 +242,7 @@ week-based ('bw') method.</p>
   signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"email"</span>, <span class='st'>"IM"</span><span class='op'>)</span>,
   start_hour <span class='op'>=</span> <span class='st'>"0900"</span>,
   end_hour <span class='op'>=</span> <span class='st'>"1700"</span>,
+  mingroup <span class='op'>=</span> <span class='fl'>5</span>,
   active_threshold <span class='op'>=</span> <span class='fl'>0</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>
 <span class='op'>)</span></pre>
@@ -278,6 +279,11 @@ e.g. "0900"</p></td>
       <th>end_hour</th>
       <td><p>A character vector specifying finish hours,
 e.g. "1700"</p></td>
+    </tr>
+    <tr>
+      <th>mingroup</th>
+      <td><p>Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.</p></td>
     </tr>
     <tr>
       <th>active_threshold</th>

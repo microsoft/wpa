@@ -84,7 +84,7 @@ identified, etc." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -260,8 +260,7 @@ following strings:</p><ul>
     </tr>
     <tr>
       <th>validation</th>
-      <td><p>Logical value to specify whether to return a check used by
-the <code><a href='validation_report.html'>validation_report()</a></code>. Defaults to <code>FALSE</code>. To hide checks on variable
+      <td><p>Logical value to specify whether to show summarized version. Defaults to <code>FALSE</code>. To hide checks on variable
 names, set <code>validation</code> to <code>TRUE</code>.</p></td>
     </tr>
     </table>
@@ -290,6 +289,7 @@ query. When run, this prints diagnostic data to the R console.</p>
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='hrvar_trend.html'>hrvar_trend</a>()</code>,
 <code><a href='identify_churn.html'>identify_churn</a>()</code>,
 <code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
 <code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
@@ -310,11 +310,13 @@ query. When run, this prints diagnostic data to the R console.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>check_query</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>The data used is a Person Query from `CONTOSO.COM`</span>
+#&gt; <span class='message'>The data used is a Person Query</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>There are 1034 employees in this dataset.</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>Date ranges from 2019-11-03 to 2020-01-26.</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>Unique identifiers include: `Domain` is CONTOSO.COM; `IsInternal` is TRUE; `Region` is US; `TimeZone` is Pacific Standard Time</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>There are 4 (estimated) HR attributes in the data:</span>
 #&gt; <span class='message'>`FunctionType`, `LevelDesignation`, `Organization`, `IsActive`</span>

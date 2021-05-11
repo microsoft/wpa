@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Manager Relationship 2x2 Matrix — mgrrel_matrix • wpa</title>
+<title>Track count of distinct people over time in a specified HR variable — hrvar_trend • wpa</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,10 @@
   
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Manager Relationship 2x2 Matrix — mgrrel_matrix" />
-<meta property="og:description" content="Generate the Manager-Relationship 2x2 matrix, returning a 'ggplot' object by
-default. Additional options available to return a &quot;wide&quot; or &quot;long&quot; summary
-table." />
+<meta property="og:title" content="Track count of distinct people over time in a specified HR variable — hrvar_trend" />
+<meta property="og:description" content="This function provides a week by week view of the count of the distinct
+people by the specified HR attribute.The default behaviour is to return a
+week by week heatmap bar plot." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -222,42 +222,32 @@ table." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Manager Relationship 2x2 Matrix</h1>
-    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/mgrrel_matrix.R'><code>R/mgrrel_matrix.R</code></a></small>
-    <div class="hidden name"><code>mgrrel_matrix.Rd</code></div>
+    <h1>Track count of distinct people over time in a specified HR variable</h1>
+    <small class="dont-index">Source: <a href='https://github.com/microsoft/wpa/blob/master/R/hrvar_trend.R'><code>R/hrvar_trend.R</code></a></small>
+    <div class="hidden name"><code>hrvar_trend.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generate the Manager-Relationship 2x2 matrix, returning a 'ggplot' object by
-default. Additional options available to return a "wide" or "long" summary
-table.</p>
+    <p>This function provides a week by week view of the count of the distinct
+people by the specified HR attribute.The default behaviour is to return a
+week by week heatmap bar plot.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mgrrel_matrix</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  hrvar <span class='op'>=</span> <span class='cn'>NULL</span>,
-  mingroup <span class='op'>=</span> <span class='fl'>5</span>,
-  return <span class='op'>=</span> <span class='st'>"plot"</span>,
-  plot_colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#fe7f4f"</span>, <span class='st'>"#b4d5dd"</span>, <span class='st'>"#facebc"</span>, <span class='st'>"#fcf0eb"</span><span class='op'>)</span>,
-  threshold <span class='op'>=</span> <span class='fl'>15</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>hrvar_trend</span><span class='op'>(</span><span class='va'>data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Standard Person Query data to pass through. Accepts a data frame.</p></td>
+      <td><p>A Standard Person Query dataset in the form of a data frame.</p></td>
     </tr>
     <tr>
       <th>hrvar</th>
-      <td><p>HR Variable by which to split metrics. Accepts a character
-vector, e.g. "Organization". Defaults to <code>NULL</code>.</p></td>
-    </tr>
-    <tr>
-      <th>mingroup</th>
-      <td><p>Numeric value setting the privacy threshold / minimum group
-size. Defaults to 5.</p></td>
+      <td><p>HR Variable by which to split metrics, defaults to
+"Organization" but accepts any character vector, e.g. "LevelDesignation".
+If a vector with more than one value is provided, the HR attributes are
+automatically concatenated.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -265,20 +255,9 @@ size. Defaults to 5.</p></td>
 following strings:</p><ul>
 <li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
-<li><p><code>"data"</code></p></li>
 </ul>
 
 <p>See <code>Value</code> for more information.</p></td>
-    </tr>
-    <tr>
-      <th>plot_colors</th>
-      <td><p>Pass a character vector of length 4 containing HEX codes
-to specify colors to use in plotting.</p></td>
-    </tr>
-    <tr>
-      <th>threshold</th>
-      <td><p>Specify a numeric value to determine threshold (in minutes) for 1:1 manager hours.
-Defaults to 15.</p></td>
     </tr>
     </table>
 
@@ -286,19 +265,8 @@ Defaults to 15.</p></td>
 
     <p>A different output is returned depending on the value passed to the <code>return</code>
 argument:</p><ul>
-<li><p><code>"plot"</code>: ggplot object. When <code>NULL</code> is passed to <code>hrvar</code>, a two-by-two
-grid where the size of the grid represents total percentage of employees is
-returned. Otherwise, a horizontal stacked bar plot is returned.</p></li>
-<li><p><code>"table"</code>: data frame. A summary table is returned.</p></li>
-<li><p><code>"data"</code>: data frame. A long table grouped at the <code>PersonId</code> level with
-the following columns:</p><ul>
-<li><p><code>PersonId</code></p></li>
-<li><p>HR variable supplied to <code>hrvar</code></p></li>
-<li><p><code>CoattendanceRate</code></p></li>
-<li><p><code>Meeting_hours_with_manager_1_on_1</code></p></li>
-<li><p><code>mgr1on1</code></p></li>
-<li><p><code>Type</code></p></li>
-</ul></li>
+<li><p><code>"plot"</code>: 'ggplot' object containing a bar plot.</p></li>
+<li><p><code>"table"</code>: data frame containing a count table.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -340,7 +308,6 @@ the following columns:</p><ul>
 <code><a href='external_network_plot.html'>external_network_plot</a>()</code>,
 <code><a href='hr_trend.html'>hr_trend</a>()</code>,
 <code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
-<code><a href='hrvar_trend.html'>hrvar_trend</a>()</code>,
 <code><a href='internal_network_plot.html'>internal_network_plot</a>()</code>,
 <code><a href='keymetrics_scan.html'>keymetrics_scan</a>()</code>,
 <code><a href='meeting_dist.html'>meeting_dist</a>()</code>,
@@ -355,6 +322,7 @@ the following columns:</p><ul>
 <code><a href='meetingtype_dist.html'>meetingtype_dist</a>()</code>,
 <code><a href='meetingtype_summary.html'>meetingtype_summary</a>()</code>,
 <code><a href='mgrcoatt_dist.html'>mgrcoatt_dist</a>()</code>,
+<code><a href='mgrrel_matrix.html'>mgrrel_matrix</a>()</code>,
 <code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
 <code><a href='one2one_fizz.html'>one2one_fizz</a>()</code>,
 <code><a href='one2one_freq.html'>one2one_freq</a>()</code>,
@@ -371,43 +339,52 @@ the following columns:</p><ul>
 <code><a href='workloads_trend.html'>workloads_trend</a>()</code>,
 <code><a href='workpatterns_area.html'>workpatterns_area</a>()</code>,
 <code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code></p>
-<p>Other Managerial Relations: 
-<code><a href='mgrcoatt_dist.html'>mgrcoatt_dist</a>()</code>,
-<code><a href='one2one_dist.html'>one2one_dist</a>()</code>,
-<code><a href='one2one_fizz.html'>one2one_fizz</a>()</code>,
-<code><a href='one2one_freq.html'>one2one_freq</a>()</code>,
-<code><a href='one2one_line.html'>one2one_line</a>()</code>,
-<code><a href='one2one_rank.html'>one2one_rank</a>()</code>,
-<code><a href='one2one_sum.html'>one2one_sum</a>()</code>,
-<code><a href='one2one_trend.html'>one2one_trend</a>()</code></p></div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Lucas Hogner <a href='mailto:lucas.hogner@microsoft.com'>lucas.hogner@microsoft.com</a></p>
+<p>Other Data Validation: 
+<code><a href='check_query.html'>check_query</a>()</code>,
+<code><a href='extract_hr.html'>extract_hr</a>()</code>,
+<code><a href='flag_ch_ratio.html'>flag_ch_ratio</a>()</code>,
+<code><a href='flag_em_ratio.html'>flag_em_ratio</a>()</code>,
+<code><a href='flag_extreme.html'>flag_extreme</a>()</code>,
+<code><a href='flag_outlooktime.html'>flag_outlooktime</a>()</code>,
+<code><a href='hr_trend.html'>hr_trend</a>()</code>,
+<code><a href='hrvar_count_all.html'>hrvar_count_all</a>()</code>,
+<code><a href='hrvar_count.html'>hrvar_count</a>()</code>,
+<code><a href='identify_churn.html'>identify_churn</a>()</code>,
+<code><a href='identify_holidayweeks.html'>identify_holidayweeks</a>()</code>,
+<code><a href='identify_inactiveweeks.html'>identify_inactiveweeks</a>()</code>,
+<code><a href='identify_nkw.html'>identify_nkw</a>()</code>,
+<code><a href='identify_outlier.html'>identify_outlier</a>()</code>,
+<code><a href='identify_privacythreshold.html'>identify_privacythreshold</a>()</code>,
+<code><a href='identify_query.html'>identify_query</a>()</code>,
+<code><a href='identify_shifts_wp.html'>identify_shifts_wp</a>()</code>,
+<code><a href='identify_shifts.html'>identify_shifts</a>()</code>,
+<code><a href='identify_tenure.html'>identify_tenure</a>()</code>,
+<code><a href='remove_outliers.html'>remove_outliers</a>()</code>,
+<code><a href='standardise_pq.html'>standardise_pq</a>()</code>,
+<code><a href='subject_validate_report.html'>subject_validate_report</a>()</code>,
+<code><a href='subject_validate.html'>subject_validate</a>()</code>,
+<code><a href='track_HR_change.html'>track_HR_change</a>()</code>,
+<code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return matrix</span>
-<span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
-</div><div class='img'><img src='mgrrel_matrix-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return stacked bar plot</span>
-<span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
-</div><div class='img'><img src='mgrrel_matrix-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Visualize coaching style types</span>
-<span class='co'># Ensure dplyr is loaded</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-
-<span class='co'># Extract PersonId and Coaching Type</span>
-<span class='va'>match_df</span> <span class='op'>&lt;-</span>
-  <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mgrrel_matrix</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>PersonId</span>, <span class='va'>Type</span><span class='op'>)</span>
-
-<span class='co'># Join and visualize baseline</span>
-<span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>match_df</span>, by <span class='op'>=</span> <span class='st'>"PersonId"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='keymetrics_scan.html'>keymetrics_scan</a></span><span class='op'>(</span>hrvar <span class='op'>=</span> <span class='st'>"Type"</span>,
-                  return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</div><div class='img'><img src='mgrrel_matrix-3.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Return a bar plot</span>
+<span class='fu'>hrvar_trend</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span><span class='op'>)</span>
+</div><div class='img'><img src='hrvar_trend-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Return a summary table</span>
+<span class='fu'>hrvar_trend</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 14</span><span>
+#&gt;   group     `2019-11-03` `2019-11-10` `2019-11-17` `2019-11-24` `2019-12-01`
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Director            68           68           68           68           68
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Executive            6            6            6            6            6
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Junior IC          105          105          105          105          105
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Manager            333          333          333          333          333
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Senior IC          103          103          103          103          103
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Support            419          419          419          419          419
+#&gt; </span><span style='color: #949494;'># … with 8 more variables: 2019-12-08 &lt;dbl&gt;, 2019-12-15 &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   2019-12-22 &lt;dbl&gt;, 2019-12-29 &lt;dbl&gt;, 2020-01-05 &lt;dbl&gt;, 2020-01-12 &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   2020-01-19 &lt;dbl&gt;, 2020-01-26 &lt;dbl&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
