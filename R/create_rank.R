@@ -89,7 +89,7 @@
 
 create_rank <- function(data,
                         metric,
-                        hrvar = extract_hr(data),
+                        hrvar = extract_hr(data, exclude_constants = TRUE),
                         mingroup = 5,
                         return = "table",
                         mode = "simple",

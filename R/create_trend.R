@@ -14,8 +14,11 @@
 #' @template spq-params
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
-#' @param return Character vector specifying what to return, defaults to "plot".
+#' @param return Character vector specifying what to return, defaults to
+#' `"plot"`.
 #' Valid inputs are "plot" and "table".
+#' @param legend_title String to be used as the title of the legend. Defaults to
+#' `"Hours"`.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -39,7 +42,8 @@ create_trend <- function(data,
                          metric,
                          hrvar = "Organization",
                          mingroup = 5,
-                         return = "plot"){
+                         return = "plot",
+                         legend_title = "Hours"){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -83,10 +87,15 @@ create_trend <- function(data,
     myTable_plot %>%
     ggplot(aes(x = Date , y = group , fill = !!sym(metric))) +
     geom_tile(height=.5) +
-    scale_x_date(position = "top") + 
-	scale_fill_gradientn(name = "Hours", colours = c("steelblue4","aliceblue","white","mistyrose1","tomato1")) +
+    scale_x_date(position = "top") +
+    scale_fill_gradientn(name = legend_title,
+                         colours = c("steelblue4",
+                                     "aliceblue",
+                                     "white",
+                                     "mistyrose1",
+                                     "tomato1")) +
     theme_wpa_basic() +
-	theme(axis.line.y = element_blank(), axis.title.y = element_blank()) + 
+    theme(axis.line.y = element_blank(), axis.title.y = element_blank()) +
     labs(title = clean_nm,
          subtitle = paste("Hotspots by", tolower(camel_clean(hrvar)))) +
     xlab("Date") +

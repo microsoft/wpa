@@ -7,7 +7,7 @@
 create_rank(
   data,
   metric,
-  hrvar = extract_hr(data),
+  hrvar = extract_hr(data, exclude_constants = TRUE),
   mingroup = 5,
   return = "table",
   mode = "simple",
@@ -137,6 +137,7 @@ Other Visualization:
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{internal_network_plot}()},
 \code{\link{keymetrics_scan}()},
 \code{\link{meeting_dist}()},

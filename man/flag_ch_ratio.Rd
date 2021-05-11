@@ -24,7 +24,7 @@ Defaults to 30.}
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{"message"}: message in the console containing diagnotic summary
+\item \code{"message"}: message in the console containing diagnostic summary
 \item \code{"text"}: string containing diagnotic summary
 \item \code{"data"}: data frame. Person-level data with flags on unusually high or
 low ratios
@@ -61,6 +61,7 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},

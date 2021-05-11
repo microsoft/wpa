@@ -5,7 +5,8 @@
 
 #' @title Frequency of Manager 1:1 Meetings as bar or 100% stacked bar chart
 #'
-#' @description
+#' @description `r lifecycle::badge('experimental')`
+#'
 #' This function calculates the average number of weeks (cadence) between of 1:1
 #' meetings between an employee and their manager. Returns a  distribution plot
 #' for typical cadence of 1:1 meetings. Additional options available to return a
@@ -21,7 +22,21 @@
 #'   - `"dist"`
 #'   - `"sum"`
 #'
+#' @inheritParams create_dist
 #' @inherit create_dist return
+#'
+#' @section Distribution view:
+#' For this view, there are four categories of cadence:
+#'   - Weekly (once per week)
+#'   - Twice monthly or more (up to 3 weeks)
+#'   - Monthly (3 - 6 weeks)
+#'   - Every two months (6 - 10 weeks)
+#'   - Quarterly or less (> 10 weeks)
+#'
+#' In the occasion there are zero 1:1 meetings with managers, this is included
+#' into the last category, i.e. 'Quarterly or less'. Note that when `mode` is
+#' set to `"sum"`, these rows are simply excluded from the calculation.
+#'
 #'
 #' @family Visualization
 #' @family Managerial Relations
@@ -48,7 +63,8 @@ one2one_freq <- function(data,
                          hrvar = "Organization",
                          mingroup = 5,
                          return = "plot",
-                         mode="dist") {
+                         mode = "dist",
+                         sort_by = "Quarterly or less\n(>10 weeks)") {
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
@@ -66,6 +82,33 @@ one2one_freq <- function(data,
       Cadence_of_1_on_1_meetings_with_manager =
         1 / (sum(Meetings_with_manager_1_on_1) / n())
       )
+
+
+  # Arbitrarily large constant -----------------------------------------------
+
+  arb_const <- 99999
+
+  # `breaks_to_labels()` -----------------------------------------------------
+
+  breaks_to_labels <- function(x){
+
+    lookup <-
+      c(
+        "Weekly\n(once per week)" = "< 1 Weeks",
+        "Twice monthly or more\n(up to 3 weeks)" = "1 - 3 Weeks",
+        "Monthly\n(3 - 6 weeks)" = "3 - 6 Weeks",
+        "Every two months\n(6 - 10 weeks)" = "6 - 10 Weeks",
+        "Quarterly or less\n(>10 weeks)" = "10+ Weeks"
+      )
+
+    ifelse(
+      is.na(names(lookup[match(x, lookup)])),
+      x,
+      names(lookup[match(x, lookup)])
+    )
+  }
+
+  # Return outputs -----------------------------------------------------------
 
   if(return == "data"){
 
@@ -119,14 +162,14 @@ one2one_freq <- function(data,
         mingroup = mingroup
       )
 
-  } else if(mode == "dist" & return == "plot"){
+  } else if(mode == "dist"){
 
     plot_data <-
       expanded_data %>%
       mutate(
         across(
           .cols = Cadence_of_1_on_1_meetings_with_manager,
-          .fns = ~ifelse(!is.finite(.), 99, .)
+          .fns = ~ifelse(!is.finite(.), arb_const, .)
         )
       )
 
@@ -135,40 +178,29 @@ one2one_freq <- function(data,
       metric = "Cadence_of_1_on_1_meetings_with_manager",
       hrvar = hrvar,
       mingroup = mingroup,
-      cut = c(1, 1.5, 3, 6),
-      dist_colours = c("#facebc",
-                       "#fcf0eb",
-                       "#b4d5dd",
-                       "#bfe5ee",
-                       "grey90"),
-      unit = "Weeks"
-      )
-
-  } else if(mode == "dist" & return == "table"){
-
-    plot_data <-
-      expanded_data %>%
-      mutate(
-        across(
-          .cols = Cadence_of_1_on_1_meetings_with_manager,
-          .fns = ~ifelse(!is.finite(.), 99, .)
-        )
-      )
-
-    create_dist(
-      plot_data,
-      metric = "Cadence_of_1_on_1_meetings_with_manager",
-      hrvar = hrvar,
-      mingroup = mingroup,
-      cut = c(1, 1.5, 3, 6),
-      dist_colours = c("#facebc",
-                       "#fcf0eb",
-                       "#b4d5dd",
-                       "#bfe5ee",
-                       "grey90"),
+      cut = c(
+        1, # Once a week
+        3, # Twice monthly or more
+        6, # Monthly
+        10 # Bi-monthly
+        ),
+      ubound = arb_const + 1, # Bigger than arbitrary constant
+      dist_colours = c(
+        "#F1B8A1", # Reddish orange
+        "#facebc", # Orangeish
+        "#fcf0eb", # Light orange
+        # "grey90",  # Light grey
+        "#bfe5ee", # Light teal
+        "#b4d5dd" # Dark teal
+        ),
       unit = "Weeks",
-      return = "table"
-      )
+      labels = breaks_to_labels,
+      return = return,
+      sort_by = sort_by
+    )
+  } else {
+
+    stop("Invalid value passed to `mode` or `return`")
 
   }
 }

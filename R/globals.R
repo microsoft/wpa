@@ -247,6 +247,14 @@ utils::globalVariables(
     "var1",
     "var2",
     "where",
-    "WOE"
+    "WOE",
+    "ActivityLevel",
+    "Attributes",
+    "FirstValue",
+    "Flexibility",
+    "HRAttribute",
+    "identifier",
+    "PersonasNet",
+    "Unique values"
     )
 )

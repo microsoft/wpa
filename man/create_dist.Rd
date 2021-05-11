@@ -12,7 +12,11 @@ create_dist(
   return = "plot",
   cut = c(15, 20, 25),
   dist_colours = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee"),
-  unit = "hours"
+  unit = "hours",
+  lbound = 0,
+  ubound = 100,
+  sort_by = NULL,
+  labels = NULL
 )
 }
 \arguments{
@@ -44,8 +48,20 @@ e.g. c(10, 15, 20)}
 \item{dist_colours}{A character vector of length four to specify colour
 codes for the stacked bars.}
 
-\item{unit}{String to specify what units. This defaults to \code{"hours"} but can
-accept any custom string. See \code{cut_hour()} for more details.}
+\item{unit}{String to specify what unit to use. This defaults to \code{"hours"}
+but can accept any custom string. See \code{cut_hour()} for more details.}
+
+\item{lbound}{Numeric. Specifies the lower bound (inclusive) value for the
+minimum label. Defaults to 0.}
+
+\item{ubound}{Numeric. Specifies the upper bound (inclusive) value for the
+maximum label. Defaults to 100.}
+
+\item{sort_by}{String to specify the bucket label to sort by. Defaults to
+\code{NULL} (no sorting).}
+
+\item{labels}{Character vector to override labels for the created
+categorical variables. Must be a named vector - see examples.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:
@@ -65,6 +81,23 @@ create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 
 # Return summary table
 create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
+
+# Use custom labels by providing a label vector
+eh_labels <- c(
+  "Fewer than fifteen" = "< 15 hours",
+  "Between fifteen and twenty" = "15 - 20 hours",
+  "Between twenty and twenty-five" = "20 - 25 hours",
+  "More than twenty-five" = "25+ hours"
+)
+
+sq_data \%>\%
+  create_dist(metric = "Email_hours",
+              labels = eh_labels, return = "plot")
+
+# Sort by a category
+sq_data \%>\%
+  create_dist(metric = "Collaboration_hours",
+              sort_by = "25+ hours")
 }
 \seealso{
 Other Visualization: 
@@ -103,6 +136,7 @@ Other Visualization:
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{internal_network_plot}()},
 \code{\link{keymetrics_scan}()},
 \code{\link{meeting_dist}()},

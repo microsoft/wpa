@@ -34,8 +34,8 @@ is passed to \code{hrvar}, a stacked bar plot is returned.
 }
 }
 \description{
-Calculate the hour distribution of internal meeting types,
-using a Ways of Working Assessment Query with core WpA variables as an input.
+Calculate the hour distribution of internal meeting types, using a Ways of
+Working Assessment Query with core Workplace Analytics variables as an input.
 }
 \seealso{
 Other Visualization: 
@@ -75,6 +75,7 @@ Other Visualization:
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{internal_network_plot}()},
 \code{\link{keymetrics_scan}()},
 \code{\link{meeting_dist}()},

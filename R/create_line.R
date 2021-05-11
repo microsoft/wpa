@@ -105,38 +105,39 @@ create_line <- function(data,
     ungroup()
 
 
-  plot_object <-
+  return_plot <- function(){
+
     myTable_plot %>%
-    ggplot(aes(x = Date, y = !!sym(metric))) +
-    geom_line(colour = "#1d627e") +
-    facet_wrap(.~group) +
-    scale_fill_gradient(name="Hours", low = "white", high = "red") +
-    theme_wpa_basic() +
-    theme(strip.background = element_rect(color = "#1d627e",
-                                          fill = "#1d627e"),
-          strip.text = element_text(size = 10,
-                                    colour = "#FFFFFF",
-                                    face = "bold")) +
-    labs(title = clean_nm,
-         subtitle = paste("Total",
-                          tolower(clean_nm),
-                          "by",
-                          tolower(camel_clean(hrvar)))) +
-    xlab("Date") +
-    ylab("Weekly hours") +
-    labs(caption = extract_date_range(data, return = "text")) +
-    ylim(0, NA) # Set origin to zero
+      ggplot(aes(x = Date, y = !!sym(metric))) +
+      geom_line(colour = "#1d627e") +
+      facet_wrap(.~group) +
+      scale_fill_gradient(name="Hours", low = "white", high = "red") +
+      theme_wpa_basic() +
+      theme(strip.background = element_rect(color = "#1d627e",
+                                            fill = "#1d627e"),
+            strip.text = element_text(size = 10,
+                                      colour = "#FFFFFF",
+                                      face = "bold")) +
+      labs(title = clean_nm,
+           subtitle = paste("Total",
+                            tolower(clean_nm),
+                            "by",
+                            tolower(camel_clean(hrvar))),
+           x = "Date",
+           y = "Weekly hours",
+           caption = extract_date_range(data, return = "text")) +
+      ylim(0, NA) # Set origin to zero
+
+  }
 
 
   if(return == "table"){
 
-    myTable_return %>%
-      as_tibble() %>%
-      return()
+    myTable_return
 
   } else if(return == "plot"){
 
-    return(plot_object)
+    return_plot()
 
   } else {
 

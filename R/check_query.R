@@ -27,8 +27,7 @@
 #'
 #' See `Value` for more information.
 #'
-#' @param validation Logical value to specify whether to return a check used by
-#'   the `validation_report()`. Defaults to `FALSE`. To hide checks on variable
+#' @param validation Logical value to specify whether to show summarized version. Defaults to `FALSE`. To hide checks on variable
 #'   names, set `validation` to `TRUE`.
 #'
 #' @return
@@ -80,9 +79,8 @@ check_query <- function(data, return = "message", validation = FALSE){
 #'
 check_person_query <- function(data, return){
 
-  ## Query Type - Initialise
-  ## Uses `identify_query()`
-  main_chunk <- paste0("The data used is a ", identify_query(data), " from ", wrap(data %>% count(Domain) %>% arrange(-n) %>% slice(1) %>% pull(Domain), wrapper = "`"))
+  ## Query Type - Uses `identify_query()`
+    main_chunk <- paste0("The data used is a ", identify_query(data))
 
   ## PersonId
   if(!("PersonId" %in% names(data))){
@@ -100,6 +98,39 @@ check_person_query <- function(data, return){
     new_chunk <- paste0("Date ranges from ", min(data$Date), " to ", max(data$Date), ".")
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
   }
+
+ ## Extract unique identifiers of query ------------------------------------
+
+	extracted_chr <-
+	  data %>%
+	  hrvar_count_all(return = "table") %>%
+	  filter(`Unique values`==1) %>%
+	  pull(Attributes)
+
+	if (length(extracted_chr)>1) {
+
+		extractHRValues <- function(data, hrvar){
+			data %>%
+		    summarise(FirstValue = first(!!sym(hrvar))) %>%
+		    mutate(HRAttribute = wrap(hrvar, wrapper = "`")) %>%
+		    select(HRAttribute, FirstValue) %>%
+		    mutate(FirstValue = as.character(FirstValue)) # Coerce type
+			}
+
+		result <-
+		  extracted_chr %>%
+		  purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>%
+		  bind_rows()
+
+     new_chunk <- paste("Unique identifiers include:",
+                        result %>%
+                          mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>%
+                          pull(identifier) %>%
+                          paste(collapse = "; "))
+
+     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+	 }
+
 
   ## HR Variables
   hr_chr <- extract_hr(data, max_unique = 200) %>% wrap(wrapper = "`")
@@ -196,6 +227,40 @@ check_query_validation <- function(data, return){
     new_chunk <- paste0("Date ranges from ", min(data$Date), " to ", max(data$Date), ".")
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
   }
+
+ ## Extract unique identifiers of query ------------------------------------
+
+	extracted_chr <-  data %>%
+	  hrvar_count_all(return = "table") %>%
+	  filter(`Unique values`==1) %>%
+	  pull(Attributes)
+
+	if (length(extracted_chr) > 1) {
+
+
+	  extractHRValues <- function(data, hrvar){
+	    data %>%
+	      summarise(FirstValue = first(!!sym(hrvar))) %>%
+	      mutate(HRAttribute = wrap(hrvar, wrapper = "`")) %>%
+	      select(HRAttribute, FirstValue) %>%
+	      mutate(FirstValue = as.character(FirstValue)) # Coerce type
+	  }
+
+	  result <-
+	    extracted_chr %>%
+	    purrr::map(function(x){ extractHRValues(data = data, hrvar = x)}) %>%
+	    bind_rows()
+
+	  new_chunk <- paste("Unique identifiers include:",
+	                     result %>%
+	                       mutate(identifier = paste(HRAttribute, "is", FirstValue)) %>%
+	                       pull(identifier) %>%
+	                       paste(collapse = "; "))
+
+	  main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+
+	 }
+
 
   ## HR Variables
   hr_chr <- extract_hr(data, max_unique = 200) %>% wrap(wrapper = "`")

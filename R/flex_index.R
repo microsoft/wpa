@@ -13,6 +13,13 @@
 #' freedom for employees to work at a time of their choice.
 #'
 #' @details
+#' The **Flexibility Index** is a metric that has been developed to quantify and
+#' measure flexibility using behavioural data from Workplace Analytics.
+#' Flexibility here refers to the freedom of employees to adopt a working
+#' arrangement of their own choice, and more specifically refers to **time**
+#' flexibility (_whenever_ I want) as opposed to **geographical** flexibility
+#' (_wherever_ I want).
+#'
 #' The **Flexibility Index** is a score between 0 and 1, and is calculated based
 #' on three component measures:
 #'

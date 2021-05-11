@@ -142,7 +142,7 @@ sq_data %>% mgrrel_matrix(hrvar = "LevelDesignation", return = "chartdata")
 
 ### Distribution of Time spent with Manager
 
-The `mgrcoatt_dist()` function generates the distribution of meeting co-attendence rate of staff with managers.
+The `mgrcoatt_dist()` function generates the distribution of meeting co-attendance rate of staff with managers.
 
 ```{r}
 sq_data %>% mgrcoatt_dist(hrvar = "LevelDesignation")

@@ -9,7 +9,8 @@ create_trend(
   metric,
   hrvar = "Organization",
   mingroup = 5,
-  return = "plot"
+  return = "plot",
+  legend_title = "Hours"
 )
 }
 \arguments{
@@ -25,8 +26,12 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 
-\item{return}{Character vector specifying what to return, defaults to "plot".
+\item{return}{Character vector specifying what to return, defaults to
+\code{"plot"}.
 Valid inputs are "plot" and "table".}
+
+\item{legend_title}{String to be used as the title of the legend. Defaults to
+\code{"Hours"}.}
 }
 \value{
 Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.
@@ -79,6 +84,7 @@ Other Visualization:
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{internal_network_plot}()},
 \code{\link{keymetrics_scan}()},
 \code{\link{meeting_dist}()},

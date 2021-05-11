@@ -12,8 +12,19 @@
 #' the the person-average volume-based ('pav') method.
 #'
 #' @author Ainize Cidoncha <ainize.cidoncha@@microsoft.com>
+#' @author Carlos Morales Torrado <carlos.morales@@microsoft.com>
+#' @author Martin Chan <martin.chan@@microsoft.com>
 #'
-#' @details This is a wrapper around `workpatterns_classify_bw()` and
+#' @details
+#' The working patterns archetypes are a set of segments created based on the
+#' aggregated hourly activity of employees. A motivation of creating these
+#' archetypes is to capture the diversity in working patterns, where for
+#' instance employees may choose to take multiple or extended breaks throughout
+#' the day, or choose to start or end earlier/later than their standard working
+#' hours. Two methods have been developed to capture the different working
+#' patterns.
+#'
+#' This function is a wrapper around `workpatterns_classify_bw()` and
 #' `workpatterns_classify_pav()`, and calls each function depending on what is
 #' supplied to the `method` argument. Both methods implement a rule-based
 #' classification of either **person-weeks** or **persons** that pull apart
@@ -45,6 +56,15 @@
 #'   results towards the 'standard working hours'.
 #'   2. It captures the intuition that each individual can have 'light' and
 #'   'heavy' weeks with respect to workload.
+#'
+#' In the standard plot output, the archetypes have been abbreviated to show the
+#' following:
+#'   - **Low Activity** - archetype 0
+#'   - **Standard** - archetype 2
+#'   - **Flexible** - archetypes 1 and 3
+#'   - **Long continuous** - archetype 5
+#'   - **Long flexible** - archetype 4
+#'   - **Always On** - archetype 6
 #'
 #' @section Person Average method:
 #'
@@ -116,6 +136,9 @@
 #' @param end_hour A character vector specifying starting hours, e.g. "1700".
 #'   Note that this currently only supports **hourly** increments.
 #'
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#'
 #' @param active_threshold A numeric value specifying the minimum number of
 #'   signals to be greater than in order to qualify as _active_. Defaults to 0.
 #'   Only applicable for the binary-week method.
@@ -164,6 +187,7 @@ workpatterns_classify <- function(data,
                                   signals = "email",
                                   start_hour = "0900",
                                   end_hour = "1700",
+                                  mingroup = 5,
                                   active_threshold = 0,
                                   method = "bw",
                                   return = "plot"){
@@ -174,6 +198,7 @@ workpatterns_classify <- function(data,
                              signals = signals,
                              start_hour = start_hour,
                              end_hour = end_hour,
+                             mingroup = mingroup,
                              active_threshold = active_threshold,
                              return = return)
   } else if(method == "pav"){

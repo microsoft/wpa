@@ -9,6 +9,11 @@
 
 * This is a new release.
 
+## Submission 1.5.0
+
+Minor release with improvements to visualization functions. 
+
+
 ## Submission 1.4.3
 
 Addressed final comments from CRAN on Rd files without a \value{} tag.

@@ -25,8 +25,7 @@ following strings:
 
 See \code{Value} for more information.}
 
-\item{validation}{Logical value to specify whether to return a check used by
-the \code{validation_report()}. Defaults to \code{FALSE}. To hide checks on variable
+\item{validation}{Logical value to specify whether to show summarized version. Defaults to \code{FALSE}. To hide checks on variable
 names, set \code{validation} to \code{TRUE}.}
 }
 \value{
@@ -61,6 +60,7 @@ Other Data Validation:
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
 \code{\link{identify_inactiveweeks}()},

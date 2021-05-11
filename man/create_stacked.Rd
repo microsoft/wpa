@@ -11,8 +11,11 @@ create_stacked(
   mingroup = 5,
   return = "plot",
   stack_colours = c("#1d627e", "#34b1e2", "#b4d5dd", "#adc0cb"),
+  percent = FALSE,
   plot_title = "Collaboration Hours",
-  plot_subtitle = "Weekly collaboration hours"
+  plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+  rank = "descending",
+  xlim = NULL
 )
 }
 \arguments{
@@ -35,9 +38,21 @@ Valid inputs are "plot" and "table".}
 
 \item{stack_colours}{A character vector to specify the colour codes for the stacked bar charts.}
 
+\item{percent}{Logical value to determine whether to show labels as
+percentage signs. Defaults to \code{FALSE}.}
+
 \item{plot_title}{An option to override plot title.}
 
 \item{plot_subtitle}{An option to override plot subtitle.}
+
+\item{rank}{String specifying how to rank the bars. Valid inputs are:
+\itemize{
+\item \code{"descending"} - ranked highest to lowest from top to bottom (default).
+\item \code{"ascending"} - ranked lowest to highest from top to bottom.
+\item \code{NULL} - uses the original levels of the HR attribute.
+}}
+
+\item{xlim}{An option to set max value in x axis.}
 }
 \value{
 Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.
@@ -62,7 +77,8 @@ sq_data \%>\%
                              "Email_hours",
                              "Call_hours",
                              "Instant_Message_hours"),
-                 return = "plot")
+                 return = "plot",
+                 rank = "ascending")
 
 sq_data \%>\%
   create_stacked(hrvar = "FunctionType",
@@ -71,6 +87,7 @@ sq_data \%>\%
                              "Call_hours",
                              "Instant_Message_hours"),
                  return = "table")
+
 }
 \seealso{
 Other Visualization: 
@@ -109,6 +126,7 @@ Other Visualization:
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{internal_network_plot}()},
 \code{\link{keymetrics_scan}()},
 \code{\link{meeting_dist}()},

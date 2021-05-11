@@ -47,6 +47,9 @@
 #' @param end_hour A character vector specifying finish hours,
 #' e.g. "1700"
 #'
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
@@ -72,6 +75,7 @@ workpatterns_classify_bw <- function(data,
                                      signals = c("email","IM"),
                                      start_hour = "0900",
                                      end_hour = "1700",
+                                     mingroup = 5,
                                      active_threshold = 0,
                                      return = "plot"){
 
@@ -313,7 +317,7 @@ workpatterns_classify_bw <- function(data,
         # dplyr::left_join(select(data2, PersonId, Date, hrvar), by = c("PersonId", "Date")) # %>%
         data.table::as.data.table() %>%
         .[, .(n = .N), by = c("Personas", hrvar)] %>%
-        .[n >= 5, ] %>%
+        .[n >= mingroup, ] %>%
         .[, prop := n / sum(n), by = hrvar] %>% # % breakdown by HR org
         dplyr::as_tibble() %>%
         dplyr::select(-n) %>% # Remove n
@@ -351,6 +355,7 @@ workpatterns_classify_bw <- function(data,
 
     list(data = return_data(),
          plot = plot_workpatterns_classify_bw(ptn_data_final),
+         plot_hrvar = plot_wp_bw_hrvar(x = return_table()),
          plot_area = return_plot_area(),
          table = return_table())
 
@@ -375,11 +380,11 @@ plot_workpatterns_classify_bw <- function(data){
       PersonasNet =
         case_when(
           Personas == "0 < 3 hours on" ~ "Low activity",
-          Personas == "1 Standard with breaks workday" ~ "Standard flexible",
-          Personas == "2 Standard continuous workday" ~ "Standard (non-stop)",
-          Personas == "3 Standard flexible workday" ~ "Standard flexible",
-          Personas == "4 Long flexible workday" ~ "Long with breaks",
-          Personas == "5 Long continuous workday" ~ "Long (non-stop)",
+          Personas == "1 Standard with breaks workday" ~ "Flexible",
+          Personas == "2 Standard continuous workday" ~ "Standard",
+          Personas == "3 Standard flexible workday" ~ "Flexible",
+          Personas == "4 Long flexible workday" ~ "Long flexible",
+          Personas == "5 Long continuous workday" ~ "Long continuous",
           Personas == "6 Always on (13h+)" ~ "Always On",
           TRUE ~ NA_character_
           )
@@ -392,10 +397,10 @@ plot_workpatterns_classify_bw <- function(data){
   base_df <-
     dplyr::tibble(id = 1:6,
                value = c("Always On",
-                         "Long (non-stop)",
-                         "Long with breaks",
-                         "Standard (non-stop)",
-                         "Standard flexible",
+                         "Long continuous",
+                         "Long flexible",
+                         "Standard",
+                         "Flexible",
                          "Low activity"),
                text = c(rep("#FFFFFF", 3),
                         rep("grey5", 3)),

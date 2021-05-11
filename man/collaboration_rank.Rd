@@ -11,7 +11,7 @@ collaboration_rank(
   mingroup = 5,
   mode = "simple",
   plot_mode = 1,
-  return = "table"
+  return = "plot"
 )
 
 collab_rank(
@@ -20,7 +20,7 @@ collab_rank(
   mingroup = 5,
   mode = "simple",
   plot_mode = 1,
-  return = "table"
+  return = "plot"
 )
 }
 \arguments{
@@ -126,6 +126,7 @@ Other Visualization:
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
 \code{\link{internal_network_plot}()},
 \code{\link{keymetrics_scan}()},
 \code{\link{meeting_dist}()},

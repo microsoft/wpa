@@ -7,7 +7,7 @@
 #' Analyse word co-occurrence in subject lines and return a network plot
 #'
 #' @description
-#' This function generates a word co-occurence network plot, with options to
+#' This function generates a word co-occurrence network plot, with options to
 #' return a table. This function is used within `meeting_tm_report()`.
 #'
 #' @author Carlos Morales <carlos.morales@@microsoft.com>
