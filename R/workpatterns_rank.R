@@ -194,7 +194,7 @@ workpatterns_rank <- function(data,
                alpha = .1,
                fill = "gray50") +
   labs(title = "Patterns of digital activity",
-       subtitle =paste("Hourly activity based on", subtitle_signal ,"sent in a week"),
+       subtitle =paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
 	   caption = extract_date_range(data, return = "text"))
 
   } else if(return == "table"){
