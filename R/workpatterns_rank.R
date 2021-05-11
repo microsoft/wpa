@@ -184,9 +184,9 @@ workpatterns_rank <- function(data,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
                fill = "gray50") +
-  labs(title = "Observed activity",
-       subtitle ="Activity patterns based on collaboration activity",
-	   caption = extract_date_range(data, return = "text")))
+  labs(title = "Patterns of digital activity",
+       subtitle ="Activity trail based on weekly collaboration activity",
+	   caption = extract_date_range(data, return = "text"))
 
   } else if(return == "table"){
 
