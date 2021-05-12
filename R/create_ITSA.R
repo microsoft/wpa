@@ -288,9 +288,9 @@ create_ITSA <-
         dX <- 1
 
         # Calculate annotation positions on the graph
-        Y_at_intervantion_when_no_intervantion_happened <- hat_Y_before_and_at_intervention[dim(hat_Y_before_and_at_intervention)[1] ,"Y"]
-        Y_at_intervantion_when_intervantion_happened <- hat_Y_after_and_at_intervention[1,"Y"]
-        pos_y_end_beta_2 <- (Y_at_intervantion_when_no_intervantion_happened + Y_at_intervantion_when_intervantion_happened)/2
+        Y_at_intervention_when_no_intervention_happened <- hat_Y_before_and_at_intervention[dim(hat_Y_before_and_at_intervention)[1] ,"Y"]
+        Y_at_intervention_when_intervention_happened <- hat_Y_after_and_at_intervention[1,"Y"]
+        pos_y_end_beta_2 <- (Y_at_intervention_when_no_intervention_happened + Y_at_intervention_when_intervention_happened)/2
         pos_y_start_beta_2 <- pos_y_end_beta_2 + dY
         pos_x_end_beta_2 <- event_T
         pos_x_start_beta_2 <- pos_x_end_beta_2 - dX
@@ -298,7 +298,7 @@ create_ITSA <-
         # Create data.frame with all the annotation info
         annotation <- data.frame(
           x = pos_x_start_beta_2 - dX,
-          y = Y_at_intervantion_when_intervantion_happened + dY,
+          y = Y_at_intervention_when_intervention_happened + dY,
           label = c(paste0("beta_2=", round(beta_2, 3), collapse=" "))
         )
 
@@ -306,7 +306,7 @@ create_ITSA <-
         p_final <- p +
           geom_vline(xintercept=event_T, color="red", size=1) +
           annotate("segment", x = pos_x_start_beta_2, xend = pos_x_end_beta_2, y = pos_y_start_beta_2, yend = pos_y_end_beta_2, colour = "black", size=0.5, alpha=0.6, arrow=arrow())+
-          annotate("segment", x = pos_x_end_beta_2, xend = pos_x_end_beta_2, y = Y_at_intervantion_when_no_intervantion_happened, yend = Y_at_intervantion_when_intervantion_happened, colour = "purple", size=2, alpha=1)+
+          annotate("segment", x = pos_x_end_beta_2, xend = pos_x_end_beta_2, y = Y_at_intervention_when_no_intervention_happened, yend = Y_at_intervention_when_intervention_happened, colour = "purple", size=2, alpha=1)+
           geom_text(data=annotation, aes( x=x, y=y, label=label), color="orange", size=5, angle=0, fontface="bold" )
 
         # Save plot in list
