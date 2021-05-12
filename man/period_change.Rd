@@ -155,6 +155,9 @@ Other Flexible:
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
 \code{\link{create_trend}()}
+
+Other Flexible Input: 
+\code{\link{create_ITSA}()}
 }
 \author{
 Mark Powers \href{mailto:mark.powers@microsoft.com}{mark.powers@microsoft.com}
