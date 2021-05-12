@@ -69,7 +69,7 @@ workpatterns_rank <- function(data,
   if("email" %in% signals & "IM" %in% signals){
   
     ## Create label for plot subtitle
-	subtitle_signal <- "emails and chats"
+	subtitle_signal <- "emails / chats"
 
     ## Create 24 summed `Signals_sent` columns
     signal_cols <-
@@ -161,14 +161,15 @@ workpatterns_rank <- function(data,
       purrr::set_names(nm = gsub(pattern = "_.+", replacement = "", x = names(.))) %>%
       utils::head(10)  %>%
       tidyr::gather(Hours, Freq, -patternRank)  %>%
-      ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
+      ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq )) +
       ggplot2::geom_tile(height=.5) +
       ggplot2::ylab("Top 10 Activity Patterns") +
-      ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
+      #ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
       ggplot2::scale_y_reverse(expand = c(0, 0), breaks=seq(1,10)) +
       theme_wpa_basic() +
 	  ggplot2::scale_x_discrete(position = "top") +
-      ggplot2::theme(legend.position = "none", axis.label.x = element_blank(), axis.line = element_blank(), axis.ticks = element_blank()) +
+      ggplot2::theme(axis.title.x = element_blank(), axis.line = element_blank(), axis.ticks = element_blank()) +
+	  scale_fill_continuous(guide="legend", low = "white", high = "#1d627e", breaks = 0:1, name="", labels = c("", paste("Observed", subtitle_signal, "activity"))) +
       ggplot2::annotate("text",
                y = myTable_legends$patternRank,
                x = 26.5,
