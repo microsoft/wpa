@@ -303,12 +303,17 @@ create_ITSA <-
         )
 
         # Create final plot
-        p_final <- p +
+        p_final <- p + ggtitle(metric_name) +
           geom_vline(xintercept=event_T, color="red", size=1) +
           annotate("segment", x = pos_x_start_beta_2, xend = pos_x_end_beta_2, y = pos_y_start_beta_2, yend = pos_y_end_beta_2, colour = "black", size=0.5, alpha=0.6, arrow=arrow())+
           annotate("segment", x = pos_x_end_beta_2, xend = pos_x_end_beta_2, y = Y_at_intervention_when_no_intervention_happened, yend = Y_at_intervention_when_intervention_happened, colour = "purple", size=2, alpha=1)+
           geom_text(data=annotation, aes( x=x, y=y, label=label), color="orange", size=5, angle=0, fontface="bold" )
 
+        # Change the color, the size and the face of
+        # the main title
+        p_final <- p_final + theme(
+          plot.title = element_text(color="blue", size=14, face="bold.italic"))
+        
         # Save plot in list
         results_plot[[metric_name]] <- p_final
       }else{
