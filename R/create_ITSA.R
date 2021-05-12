@@ -10,7 +10,7 @@
 #' @author Aleksey Ashikhmin <alashi@@microsoft.com>
 #'
 #' @description
-#' `r lifecycle::badge('experimental')`
+#' r lifecycle::badge('experimental')
 #'
 #' This function implements ITSA method described in the paper 'Conducting
 #' interrupted time-series analysis for single- and multiple-group comparisons',
@@ -23,12 +23,12 @@
 #' @param after_start Start date of 'after' time period in MM/DD/YYYY  format as character type. Defaults to day after before_end.
 #' @param after_end End date of 'after' time period in MM/DD/YYYY  format as character type. Defaults to latest date in dataset.
 #' @param ac_lags_max maximum lag for autocorrelation test. Default is 7
-#' @param return String specifying what output to return. Defaults to `"table"`.
+#' @param return String specifying what output to return. Defaults to "table".
 #' Valid return options include:
-#'   - `'plot'`: return a list of plots.
-#'   - `'table'`: return data.frame with estimated models' coefficients and their corresponding p-values
-#'               You should look for significant p-values in `beta_2` to indicate an immediate treatment effect,
-#'               and/or in `beta_3` to indicate a treatment effect over time
+#'   - 'plot': return a list of plots.
+#'   - 'table': return data.frame with estimated models' coefficients and their corresponding p-values
+#'               You should look for significant p-values in beta_2 to indicate an immediate treatment effect,
+#'               and/or in beta_3 to indicate a treatment effect over time
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -81,10 +81,10 @@ create_ITSA <-
 
     ## Check inputs types
     stopifnot(is.data.frame(data))
-    stopifnot(is.character(before_start))
+    stopifnot(is.character(before_start)|inherits(before_start, "Date"))
     stopifnot(is.character(before_end))
     stopifnot(is.character(after_start))
-    stopifnot(is.character(after_end))
+    stopifnot(is.character(after_end)|inherits(after_end, "Date"))
     stopifnot(is.numeric(ac_lags_max))
     stopifnot(is.character(return))
 
