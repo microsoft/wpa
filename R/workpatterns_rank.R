@@ -168,7 +168,7 @@ workpatterns_rank <- function(data,
       ggplot2::scale_y_reverse(expand = c(0, 0), breaks=seq(1,10)) +
       theme_wpa_basic() +
 	  ggplot2::scale_x_discrete(position = "top") +
-      ggplot2::theme(legend.position = "none", axis.line = element_blank(), axis.ticks = element_blank()) +
+      ggplot2::theme(legend.position = "none", axis.label.x = element_blank(), axis.line = element_blank(), axis.ticks = element_blank()) +
       ggplot2::annotate("text",
                y = myTable_legends$patternRank,
                x = 26.5,
