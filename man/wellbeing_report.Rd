@@ -2,16 +2,33 @@
 % Please edit documentation in R/wellbeing_report.R
 \name{wellbeing_report}
 \alias{wellbeing_report}
-\title{Wellbeing Report}
+\title{Generate a Wellbeing Report in HTML}
 \usage{
 wellbeing_report(
   wbq,
   hcq,
   hrvar = "Organization",
   mingroup = 5,
-  output_file = "wellbeing_report.html"
+  path = "wellbeing_report"
 )
 }
+\arguments{
+\item{wbq}{Data frame. A custom Wellbeing Query dataset.}
+
+\item{hcq}{Data frame. An Hourly Collaboration Query dataset.}
+
+\item{hrvar}{String specifying HR attribute to cut by archetypes. Defaults to
+\code{Organization}.}
+
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group
+size. Defaults to 5.}
+
+\item{path}{Pass the file path and the desired file name, \emph{excluding the file
+extension}. Defaults to \code{"wellbeing_report"}.}
+}
 \description{
-Generate a wellbeing report
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+This function takes a custom Wellbeing Query and an Hourly Collaboration
+query, generating a HTML report on wellbeing.
 }

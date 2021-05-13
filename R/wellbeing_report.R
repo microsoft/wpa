@@ -1,19 +1,34 @@
-#' @title Wellbeing Report
+#' @title Generate a Wellbeing Report in HTML
 #'
-#' @description Generate a wellbeing report
+#' @description
+#' `r lifecycle::badge('experimental')`
+#'
+#' This function takes a custom Wellbeing Query and an Hourly Collaboration
+#' query, generating a HTML report on wellbeing.
+#'
+#' @param wbq Data frame. A custom Wellbeing Query dataset.
+#' @param hcq Data frame. An Hourly Collaboration Query dataset.
+#' @param hrvar String specifying HR attribute to cut by archetypes. Defaults to
+#'   `Organization`.
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
+#' @param path Pass the file path and the desired file name, _excluding the file
+#'   extension_. Defaults to `"wellbeing_report"`.
 #'
 #' @export
 wellbeing_report <- function(wbq,
                              hcq,
                              hrvar = "Organization",
                              mingroup = 5,
-                             output_file = "wellbeing_report.html"
+                             path = "wellbeing_report"
                              ){
+
   generate_report2(
     wbq = wbq,
     hcq = hcq,
     hrvar = hrvar,
     mingroup = mingroup,
+    output_file = paste0(path, ".html"),
     report_title = "Org Insights | Employee Wellbeing Report",
     rmd_dir = system.file("rmd_template/wellbeing/wellbeing_report.rmd", package = "wpa"),
     output_format =
