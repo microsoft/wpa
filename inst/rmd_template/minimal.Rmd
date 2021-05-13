@@ -1,0 +1,44 @@
+---
+params:
+  data: data
+  set_title: report_title
+  hrvar: hrvar
+  mingroup: mingroup
+title: "`r params$set_title`"  
+---
+
+# Minimal Report
+
+This is a minimal report that shows basic diagnostic information about the dataset. This report is designed for testing purposes only.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(wpa)
+
+## Get user data
+data <- params$data
+hrvar <- params$hrvar
+mingroup <- params$mingroup
+
+keymetrics_scan(data,
+                hrvar = hrvar,
+                mingroup = mingroup)
+```
+
+
+## Email Hours
+
+Here is a view of email hours.
+
+```{r echo=FALSE}
+create_bar(data,
+           hrvar = hrvar,
+           metric = "Email_hours",
+           mingroup = mingroup)
+```
+
+
+## Diagnostics
+
+```{r echo=FALSE}
+check_query(data)
+```
