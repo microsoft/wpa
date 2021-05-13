@@ -1,0 +1,87 @@
+Resilience 1
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B>
+  <font size="+3">
+    Resilience - Are employees able to engage in uninterrupted focus time?  
+  </font>
+</B>
+<br>
+<br>
+</p>
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### % of workday available for focus work
+
+```{r}
+
+KPI_1 <-  my_sq_data %>%
+  create_bar(hrvar = NULL,
+             metric = "% of 2-hour focus block",
+             return = "table") %>%
+  pull("% of 2-hour focus block")  %>% round(4)
+  
+paste(KPI_1*100, "% focus time") %>%
+  flexdashboard::valueBox(icon = "fa-user-edit",
+                          color = "#34b1e2")
+  
+```
+
+### <B> Are employees able to engage in uninterrupted focus time? </B> <br> Meeting-free focus time is vital for employees to be able to complete individual tasks, think creatively, and address critical business demands. Employees are able  to engage in high quality focus time if there is a break of 2 hours between meetings.
+
+```{r}
+resilience1_w1_plot1 <-
+  my_sq_data %>%
+  create_bar(hrvar = hrvar,
+             metric = "% of 2-hour focus block",
+             rank = NULL,
+             percent = TRUE) 
+
+resilience1_w1_plot1 +
+  labs(title = "Focus Time",
+       subtitle = paste("2-hr focus blocks available as percentage of workday"))
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Average unscheduled collaboration per person each day
+
+```{r}
+
+KPI_4 <- 
+  my_sq_data %>%
+  mutate(Unscheduled_collaboration_hours = (Unscheduled_Call_hours + Instant_message_hours + Email_hours)/5) %>%
+  create_bar(hrvar = NULL,
+             metric = "Unscheduled_collaboration_hours",
+             return ="table") %>%
+  pull(Unscheduled_collaboration_hours) %>%
+  round(1)
+
+paste(KPI_4, "unscheduled collaboration hours") %>%
+  flexdashboard::valueBox(icon = "fa-phone",
+                          color = "#f59b76")
+```
+
+### <B> Is time for individual work prioritized and respected? </B> <br> High levels of unscheduled collaboration (emails, chats, calls) could risk the quality of focus time by breaking employees’ concentration and cause disruption.
+
+```{r}
+resilience1_w2_plot1 <- my_sq_data %>% mutate(Unscheduled_collaboration_hours = (Unscheduled_Call_hours + Instant_message_hours + Email_hours)/5) %>%
+  create_bar(hrvar = hrvar,
+             rank = NULL,
+             bar_colour = "#f59b76",
+             metric = "Unscheduled_collaboration_hours") 
+
+resilience1_w2_plot1 +
+  labs(title = "Unscheduled Collaboration",
+       subtitle = paste("Average hours per person per day"))
+
+```
+

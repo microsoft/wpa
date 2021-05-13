@@ -1,0 +1,151 @@
+Flexibility 2
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B>
+  <font size="+3">
+    Flexibility - Are employees embracing flexible work schedules?
+  </font>
+</B>
+<br>
+<br>
+</p>
+
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of weeks employees define their own start times
+
+```{r}
+
+KPI_1 <- 
+  flex_index_data %>%
+  create_bar(
+    metric = "ChangeHours",
+    hrvar = NULL,
+	return="table") %>%
+  select(ChangeHours) %>%
+  pull(1) %>%
+  round(3)*100 
+  
+
+paste(KPI_1, "% define start time")  %>%
+  flexdashboard::valueBox(icon = "fa-hourglass-start",
+                          color = "#34b1e2")
+						  
+```
+
+### <B>Are employees freely defining their start time?</B> <br> Teams that embrace flexibility allow members of the team to start their workday at different times. Employees should be able to follow a schedule that suits their needs, than those imposed by an employer.
+
+```{r}
+
+flex2_w1_plot <- 
+  flex_index_data %>%
+  mutate(Percentage_of_weeks = ChangeHours)  %>%
+  create_bar(metric = "Percentage_of_weeks",
+             hrvar = hrvar,
+			 rank = NULL,
+             xlim = 1,
+             bar_colour = "#34b1e2",
+             percent = TRUE)
+
+flex2_w1_plot +
+  labs(title = "Define start times",
+       subtitle = paste("% of weeks employees define start times"))
+
+```
+
+
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of weeks employees take breaks during the day
+
+```{r}
+
+KPI_3 <-  flex_index_data %>%
+  create_bar(
+    metric = "TakeBreaks",
+    hrvar = NULL,
+	return="table") %>%
+  select(TakeBreaks) %>%
+  pull(1) %>%
+  round(3)*100 
+
+paste(KPI_3, "% take breaks") %>%
+  flexdashboard::valueBox(icon = "fa-stopwatch",
+                          color = rgb2hex(1, 147, 157))
+						  
+```
+
+### <B>Are employees taking pre-defined breaks?</B> <br> Employees should have the freedom to choose when to take breaks during the day. In teams that embrace flexibility, some members will choose to organize / split their day in different ways (e.g. take a long lunch-break, disconnect in the afternoon and reconnect in the evening, etc.)
+
+```{r}
+
+flex2_w3_plot <-
+  flex_index_data %>%
+  mutate(Percentage_of_weeks = TakeBreaks) %>%
+  create_bar(
+    metric = "Percentage_of_weeks",
+    hrvar = hrvar,
+    xlim = 1,
+    rank = NULL,
+    bar_colour = rgb2hex(1, 147, 157),
+    percent = TRUE
+  )
+
+flex2_w3_plot +
+  labs(title = "Take breaks",
+       subtitle = paste("% of weeks employees take breaks"))
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of weeks employees limit their activity to 8 or less distinct hours
+
+```{r}
+
+KPI_2 <- flex_index_data %>%
+  create_bar(
+    metric = "ControlHours",
+    hrvar = NULL,
+	return="table") %>%
+  select(ControlHours) %>%
+  pull(1) %>%
+  round(3)*100 
+
+
+paste(KPI_2, "% control hours") %>%
+  flexdashboard::valueBox(icon = "fa-balance-scale",
+                          color = "#00508F")
+						  
+```
+
+### <B>Are employees able to disconnect after work?</B> <br> Employees who choose alternative work schedules should be able to maintain a workload that is broadly equivalent to the standard 8 hours. Flexible working should not result in longer hours spread across the day. 
+
+```{r}
+
+
+flex2_w2_plot <- flex_index_data %>%
+  mutate(Percentage_of_weeks=ControlHours) %>%
+  create_bar(metric = "Percentage_of_weeks",
+             hrvar = hrvar,
+             xlim = 1,
+             rank = NULL,
+             bar_colour = "#00508F",
+             percent = TRUE)
+
+flex2_w2_plot +
+  labs(title = "Control hours",
+       subtitle = paste("% of weeks employees control hours"))
+
+```
+
+

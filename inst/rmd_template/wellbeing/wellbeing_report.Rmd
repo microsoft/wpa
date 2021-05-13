@@ -1,0 +1,113 @@
+---
+params:
+  wbq: wbq
+  hcq: hcq
+  set_title: report_title
+  hrvar: hrvar
+  mingroup: mingroup
+title: "`r params$set_title`"      
+---
+
+<style>                     
+.navbar {
+  background-color: rgb(47,85,151);
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: Arial;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+}
+
+body {
+  font-family: Arial;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+.chart-title {  
+  font-family: Arial;
+  height:100px; 
+  display: inline-block;
+  overflow: auto;
+}    
+</style>   
+
+```{r setup, include=FALSE}
+start_time <- Sys.time()
+
+# 1. Load Library
+library(flexdashboard)
+library(wpa)
+library(tidyverse)
+
+# 1a. Load auxiliary functions
+source("auxiliary.R")
+
+# 2. Load Data
+my_sq_data <- params$wbq
+my_em_data <- params$hcq
+hrvar <- params$hrvar
+mingroup <- params$mingroup
+
+intro_toc <- readLines("toc.md")
+
+# 3a. Simulate variables for custom Wellbeing query
+my_sq_data <-
+  my_sq_data %>%
+  rename(
+    Instant_message_hours = "Instant_Message_hours"
+    ) %>%
+  
+  # Daily estimates --------------------------------------------------------
+  
+  mutate(Work_time = Workweek_span / 5) %>% # Average day span
+  mutate(dailyCollabHours = Collaboration_hours / 5)  %>% # Average daily CH
+  mutate(dailyAfterHours = After_hours_collaboration_hours / 5) %>%
+  
+  # Two Hour Focus Blocks ---------------------------------------------------
+
+  mutate(focus_per = (Total_focus_hours/ Workweek_span)) %>%
+  mutate(focus_per = ifelse(is.infinite(focus_per), 0, focus_per)) %>%
+  rename(`% of 2-hour focus block` = "focus_per")
+
+# Values containing groups over minimum group size
+mingroup_str <-
+  my_sq_data %>%
+  hrvar_count(hrvar = hrvar,
+              return = "table") %>%
+  filter(n >= mingroup) %>%
+  pull(!!sym(hrvar))
+
+# 4. Compute working patterns list and flexibility index data
+wp_list <-
+  my_em_data %>%
+  workpatterns_classify(start_hour = "0800",
+                        return = "list",
+                        hrvar = hrvar)
+
+flex_index_data <- 
+  my_em_data %>%
+  flex_index(return = "data",
+             hrvar = hrvar)
+
+```
+
+```{r child = "db_cover_4.Rmd"}
+
+```
+
+```{r child = "db_1.Rmd"}
+
+```
+
+```{r child = "db_4.Rmd"}
+
+```
+
+```{r child = "db_notes.Rmd"}
+
+```
