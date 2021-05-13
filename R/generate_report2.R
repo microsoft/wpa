@@ -41,9 +41,7 @@ generate_report2 <- function(output_format = rmarkdown::html_document(toc = TRUE
       output_file = output_file,
       output_dir = output_dir,
       intermediates_dir = output_dir,
-      params = list(data = data,
-                    set_title = report_title,
-                    ...)
+      params = list(set_title = report_title, ...)
   ))
 
   ## Open report
