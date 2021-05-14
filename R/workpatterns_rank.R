@@ -18,6 +18,8 @@
 #' e.g. "`0900"`
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. `"1700"`
+#' @param top number specifying how many top working patterns to display in plot,
+#' e.g. `"10"`
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -45,6 +47,7 @@ workpatterns_rank <- function(data,
                               signals = c("email", "IM"),
 							  start_hour = "0900",
                               end_hour = "1700",
+							  top = 10,
                               return = "plot"){
 
   # Make sure data.table knows we know we're using it
@@ -153,19 +156,21 @@ workpatterns_rank <- function(data,
       dplyr::select(patternRank, WeekCount) %>%
       dplyr::mutate(WeekPercentage = WeekCount / sum(WeekCount, na.rm = TRUE),
                     WeekCount = paste0(scales::percent(WeekPercentage, accuracy = 0.1))) %>%
-      utils::head(10)
+      utils::head(top)
+	  
+	coverage <- myTable_legends %>% summarize(total=sum(WeekPercentage)) %>% pull(1)  %>% scales::percent(accuracy = 0.1)
 
     myTable_return %>%
       dplyr::select(patternRank, dplyr::starts_with(sig_label_))  %>%
       purrr::set_names(nm = gsub(pattern = sig_label_, replacement = "", x = names(.))) %>%
       purrr::set_names(nm = gsub(pattern = "_.+", replacement = "", x = names(.))) %>%
-      utils::head(10)  %>%
+      utils::head(top)  %>%
       tidyr::gather(Hours, Freq, -patternRank)  %>%
       ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq )) +
       ggplot2::geom_tile(height=.5) +
-      ggplot2::ylab("Top 10 Activity Patterns") +
+      ggplot2::ylab(paste("Top", top, "activity patterns")) +
       #ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
-      ggplot2::scale_y_reverse(expand = c(0, 0), breaks=seq(1,10)) +
+      ggplot2::scale_y_reverse(expand = c(0, 0), breaks=seq(1,top)) +
       theme_wpa_basic() +
 	  ggplot2::scale_x_discrete(position = "top") +
       ggplot2::theme(axis.title.x = element_blank(), axis.line = element_blank(), axis.ticks = element_blank()) +
@@ -196,7 +201,7 @@ workpatterns_rank <- function(data,
                fill = "gray50") +
   labs(title = "Patterns of digital activity",
        subtitle =paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
-	   caption = extract_date_range(data, return = "text"))
+	   caption = paste("Top", top, "patterns represent", coverage, "of workweeks.", extract_date_range(data, return = "text")))
 
   } else if(return == "table"){
 
