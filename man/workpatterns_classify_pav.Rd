@@ -8,7 +8,7 @@ the person-average volume-based ('pav') method.}
 workpatterns_classify_pav(
   data,
   values = "percent",
-  signals = "email",
+  signals = c("email", "IM"),
   start_hour = "0900",
   end_hour = "1700",
   return = "plot"
