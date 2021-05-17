@@ -9,6 +9,7 @@ workpatterns_rank(
   signals = c("email", "IM"),
   start_hour = "0900",
   end_hour = "1700",
+  top = 10,
   return = "plot"
 )
 }
@@ -24,6 +25,9 @@ e.g. "\verb{0900"}}
 
 \item{end_hour}{A character vector specifying starting hours,
 e.g. \code{"1700"}}
+
+\item{top}{number specifying how many top working patterns to display in plot,
+e.g. \code{"10"}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
