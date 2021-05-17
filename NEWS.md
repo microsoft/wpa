@@ -1,3 +1,8 @@
+# wpa (development version)
+
+- Improved visuals on `workpatterns_rank()`
+
+
 # wpa 1.5.0
 
 - Improved aesthetics on plots
