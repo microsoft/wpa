@@ -16,35 +16,55 @@ create_ITSA(
 )
 }
 \arguments{
-\item{data}{Person Query as a dataframe including date column named 'Date'
-This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.}
+\item{data}{Person Query as a dataframe including date column named \code{Date}.
+This function assumes the data format is MM/DD/YYYY as is standard in a WpA
+query output.}
 
-\item{before_start}{Start date of 'before' time period in YYYY-MM-DD format as character type. Defaults to earliest date in dataset.}
+\item{before_start}{Start date of 'before' time period in MM/DD/YYYY format
+as character type. Before time period is the period before the intervention
+(e.g. training program, re-org, shift to remote work) occurs and bounded by
+before_start and before_end parameters. Longer period increases likelihood
+of achieving more statistically significant results. Defaults to earliest
+date in dataset.}
 
-\item{before_end}{End date of 'before' time period in YYYY-MM-DD  format as character type.}
+\item{before_end}{End date of 'before' time period in MM/DD/YYYY  format as
+character type.}
 
-\item{after_start}{Start date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to day after before_end.}
+\item{after_start}{Start date of 'after' time period in MM/DD/YYYY  format as
+character type. After time period is the period after the intervention
+occurs and bounded by after_start and after_end parameters. Longer period
+increases likelihood of achieving more statistically significant results.
+Defaults to date after before_end.}
 
-\item{after_end}{End date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to latest date in dataset.}
+\item{after_end}{End date of 'after' time period in MM/DD/YYYY  format as
+character type. Defaults to latest date in dataset.}
 
 \item{ac_lags_max}{maximum lag for autocorrelation test. Default is 7}
 
-\item{return}{String specifying what output to return. Defaults to \code{"table"}.
+\item{return}{String specifying what output to return. Defaults to "table".
 Valid return options include:
 \itemize{
 \item \code{'plot'}: return a list of plots.
-\item \code{'table'}: return data.frame with estimated models' coefficients and their corresponding p-values
-You should look for significant p-values in \code{beta_2} to indicate an immediate treatment effect,
-and/or in \code{beta_3} to indicate a treatment effect over time
+\item \code{'table'}: return data.frame with estimated models' coefficients and
+their corresponding p-values You should look for significant p-values in
+beta_2 to indicate an immediate treatment effect, and/or in beta_3 to
+indicate a treatment effect over time
 }}
 }
 \description{
+r lifecycle::badge('experimental')
+
 This function implements ITSA method described in the paper 'Conducting
 interrupted time-series analysis for single- and multiple-group comparisons',
 Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500
 }
+\details{
+This function uses the additional package dependencies 'sandwich', 'lmtest',
+and 'portes'. Please install these separately from CRAN prior to running the
+function.
+}
 \examples{
-
+\donttest{
 # Returns summary table
 
 create_ITSA(
@@ -70,11 +90,14 @@ plot_list <-
 
 # Extract a plot as an example
 plot_list$Workweek_span
-
+}
 }
 \seealso{
 Other Flexible Input: 
 \code{\link{period_change}()}
+}
+\author{
+Aleksey Ashikhmin \href{mailto:alashi@microsoft.com}{alashi@microsoft.com}
 }
 \concept{Flexible Input}
 \concept{Interrupted Time-Series Analysis}
