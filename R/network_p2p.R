@@ -43,7 +43,8 @@
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param legend_pos String to specify position of legend. Defaults to
-#'   `"bottom"`. See `ggplot2::theme()`.
+#'   `"bottom"`. See `ggplot2::theme()`. This is only currently applicable when
+#'   the 'ggraph' plotting method is being used.
 #' @param palette Function for generating a colour palette with a single
 #'   argument `n`. Uses "rainbow" by default.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency
@@ -61,7 +62,7 @@
 #'   before `network_leiden()` switches to use a more efficient, but less
 #'   elegant plotting method (native igraph). Defaults to 5000. Set as `0` to
 #'   coerce to a fast plotting method every time, and `Inf` to always use the
-#'   default plotting method.
+#'   default plotting method (with 'ggraph').
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
@@ -341,7 +342,7 @@ network_p2p <- function(data,
                                 alpha = node_alpha,
                                 pch = 16) +
         theme_void() +
-        theme(legend.position = "bottom",
+        theme(legend.position = legend_pos,
               legend.background = element_rect(fill = bg_fill),
               plot.background = element_rect(fill = bg_fill),
               text = element_text(colour = font_col),
