@@ -125,12 +125,19 @@
 #' Running Leiden communities requires python dependencies installed.
 #' You can run the following:
 #'
-#' ```
+#' ```R
 #' # Return a network plot to console, coloured by Leiden communities
 #'   p2p_data %>%
 #'     network_p2p(display = "leiden",
 #'                 path = NULL,
 #'                 return = "plot")
+#' ```
+#' When installing the 'leiden' package, you may be required to install the Python
+#' libraries 'python-igraph' and 'leidenalg'. You can install them with:
+#'
+#' ```R
+#' reticulate::py_install("python-igraph")
+#' reticulate::py_install("leidenalg")
 #' ```
 #'
 #' @import ggplot2
