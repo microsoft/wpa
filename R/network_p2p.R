@@ -48,7 +48,9 @@
 #' @param palette Function for generating a colour palette with a single
 #'   argument `n`. Uses "rainbow" by default.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency
-#'   of the nodes.
+#'   of the nodes. Defaults to 0.7.
+#' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
+#'   of the edges (only for 'ggraph' mode). Defaults to 1.
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults
 #'   to 0.5.
 #' @param seed Seed for the random number generator passed to `leiden::leiden()`
@@ -144,11 +146,12 @@ network_p2p <- function(data,
                         return = "plot",
                         path = paste0("network_p2p_", display),
                         desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-                        bg_fill = "#000000",
-                        font_col = "#FFFFFF",
+                        bg_fill = "#FFFFFF",
+                        font_col = "grey20",
                         legend_pos = "bottom",
                         palette = "rainbow",
                         node_alpha = 0.7,
+                        edge_alpha = 1,
                         res = 0.5,
                         seed = 1,
                         algorithm = "mds",
@@ -337,7 +340,7 @@ network_p2p <- function(data,
 
       plot_output <-
         g_layout +
-        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.05, alpha = 0.15) +
+        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.05, alpha = edge_alpha) +
         ggraph::geom_node_point(aes(colour = !!sym(v_attr)),
                                 alpha = node_alpha,
                                 pch = 16) +

@@ -11,11 +11,12 @@ network_p2p(
   return = "plot",
   path = paste0("network_p2p_", display),
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-  bg_fill = "#000000",
-  font_col = "#FFFFFF",
+  bg_fill = "#FFFFFF",
+  font_col = "grey20",
   legend_pos = "bottom",
   palette = "rainbow",
   node_alpha = 0.7,
+  edge_alpha = 1,
   res = 0.5,
   seed = 1,
   algorithm = "mds",
@@ -70,7 +71,10 @@ the 'ggraph' plotting method is being used.}
 argument \code{n}. Uses "rainbow" by default.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
-of the nodes.}
+of the nodes. Defaults to 0.7.}
+
+\item{edge_alpha}{A numeric value between 0 and 1 to specify the transparency
+of the edges (only for 'ggraph' mode). Defaults to 1.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
 to 0.5.}

@@ -28,7 +28,7 @@ network_louvain(
 \item{font_col}{String to specify font and link colour.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
-of the nodes.}
+of the nodes. Defaults to 0.7.}
 
 \item{algorithm}{String to specify the node placement algorithm to be used.
 Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of

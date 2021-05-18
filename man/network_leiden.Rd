@@ -39,7 +39,7 @@ list of options.}
 path based on current parameters.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
-of the nodes.}
+of the nodes. Defaults to 0.7.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
 to 0.5.}
