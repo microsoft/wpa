@@ -63,7 +63,8 @@ to use when returning the \code{"describe"} output. See \code{network_describe()
 \item{font_col}{String to specify font and link colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to
-\code{"bottom"}. See \code{ggplot2::theme()}.}
+\code{"bottom"}. See \code{ggplot2::theme()}. This is only currently applicable when
+the 'ggraph' plotting method is being used.}
 
 \item{palette}{Function for generating a colour palette with a single
 argument \code{n}. Uses "rainbow" by default.}
@@ -87,7 +88,7 @@ list of options.}
 before \code{network_leiden()} switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
 coerce to a fast plotting method every time, and \code{Inf} to always use the
-default plotting method.}
+default plotting method (with 'ggraph').}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}

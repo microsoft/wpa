@@ -73,7 +73,7 @@ communities.
 before \code{network_leiden()} switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
 coerce to a fast plotting method every time, and \code{Inf} to always use the
-default plotting method.}
+default plotting method (with 'ggraph').}
 }
 \value{
 See \code{return}.
