@@ -42,6 +42,19 @@ paste(KPI_1, "% define start time")  %>%
 ### <B>Are employees freely defining their start time?</B> <br> Teams that embrace flexibility allow members of the team to start their workday at different times. Employees should be able to follow a schedule that suits their needs, than those imposed by an employer.
 
 ```{r}
+# Convert `start_hour` into an hour slot string
+hr_slot <- function(x){
+  
+  h_str <- as.numeric(substr(x, start = 1, stop = 2))
+  m_str <- substr(x, start = 3, stop = 4) # keep as string
+  
+  apm <- ifelse(h_str < 12, "AM", "PM")
+  
+  slot1 <- paste0(h_str)
+  slot2 <- paste0(h_str + 1)
+  
+  paste0(slot1, "-", slot2, apm)
+}
 
 flex2_w1_plot <- 
   flex_index_data %>%
@@ -55,7 +68,7 @@ flex2_w1_plot <-
 
 flex2_w1_plot +
   labs(title = "Define start times",
-       subtitle = paste("% of weeks employees define start times"))
+       subtitle = paste("% of weeks employees start outside", hr_slot(start_hour), "window"))
 
 ```
 

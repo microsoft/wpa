@@ -46,8 +46,10 @@ urg_sum_tb <-
     summarise(across(IsUrgent, ~mean(., na.rm = TRUE))) %>%
     rename(PercentageAffected = "IsUrgent"),
   my_sq_data %>%
+    group_by(!!sym(hrvar), PersonId) %>%
+    summarise(across(IsUrgent, ~sum(., na.rm = TRUE)), .groups = "drop") %>%
     group_by(!!sym(hrvar)) %>%
-    summarise(across(IsUrgent, ~sum(., na.rm = TRUE))) %>%
+    summarise(across(IsUrgent, ~mean(., na.rm = TRUE))) %>%
     rename(NumberUrgentWeeks = "IsUrgent"),
   my_sq_data %>%
     hrvar_count(hrvar,
@@ -69,7 +71,14 @@ paste(urg_percent, "urgent collaboration") %>%
 ### <B>Which teams are affected by urgent needs more?</B> <br> Work can be unpreditcable and there will be urgent requests, but an overwhelming amount will prevent employees from being able to complete business-as-usual activities.
 
 ```{r}
-urg_sum_tb %>%
+
+if(sum(my_sq_data$IsUrgent) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
+  urg_sum_tb %>%
   ggplot(aes(x = PercentageAffected,
              y = NumberUrgentWeeks,
              colour = !!sym(hrvar),
@@ -80,7 +89,7 @@ urg_sum_tb %>%
     title = "Urgent Collaboration",
     subtitle = "Bubble size measures number of people in organization",
     x = "% of employees affected by urgent collaboration",
-    y = "Number of urgent weeks",
+    y = "Urgent weeks per employee (average)",
     caption = extract_date_range(my_sq_data, return = "text")) +
   scale_size(range = c(1, 20)) +
   scale_x_continuous(labels = scales::percent) +
@@ -92,6 +101,7 @@ urg_sum_tb %>%
     legend.position = "none"
   )
   
+}
 
 ```
 
@@ -105,6 +115,11 @@ urg_calc <- my_sq_data %>%
   group_by(IsUrgent) %>%
   summarise(across(After_hours_collaboration_hours, ~mean(.)))
 
+any_urg <-
+  urg_calc %>%
+  filter(IsUrgent == TRUE) %>%
+  nrow()
+
 afch_urg <-
   urg_calc %>%
   filter(IsUrgent == TRUE) %>%
@@ -116,8 +131,19 @@ afch_nonurg <-
   pull(After_hours_collaboration_hours)
 
 
+afch_display <- (afch_urg - afch_nonurg) / afch_nonurg
 
-scales::percent((afch_urg - afch_nonurg) / afch_nonurg) %>%
+if(any_urg == 0){
+  
+  afch_display <- "0 %"
+  
+} else {
+  
+  afch_display <- scales::percent(afch_display)
+  
+}
+
+afch_display %>%
   paste("change in after hours") %>%
   flexdashboard::valueBox(icon = "fa-moon",
                           color = "#f59b76")
@@ -133,6 +159,12 @@ groups_above_mingroup <-
   filter(n >= 5) %>%
   pull(!!sym(hrvar))
 
+if(sum(my_sq_data$IsUrgent) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
 my_sq_data %>%
   filter(!!sym(hrvar) %in% groups_above_mingroup) %>%
   group_by(IsUrgent, !!sym(hrvar)) %>%
@@ -173,6 +205,8 @@ my_sq_data %>%
                               return = "table") %>%
                pull(After_hours_collaboration_hours),
              colour = "red")
+  
+}
 
 ```
 

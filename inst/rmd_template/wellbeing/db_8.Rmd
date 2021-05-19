@@ -246,7 +246,7 @@ my_sq_data %>%
     axis.title = element_blank()) +
   scale_y_continuous(labels = scales::percent, position = "right") +
   coord_flip() +
-  labs(title = "Informal communciation (chats) distribution",
+  labs(title = "Informal communciation distribution",
        subtitle = "Percentage of chats sent",
        caption = extract_date_range(my_sq_data, return = "text"))
 ```

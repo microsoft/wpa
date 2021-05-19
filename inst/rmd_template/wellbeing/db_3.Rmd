@@ -78,8 +78,7 @@ paste(KPI_1, "% always-on") %>%
 flexibility1_w1_plot1 <- wp_list$plot
 
 flexibility1_w1_plot1 +
-  labs(title = "Classification of activity patterns",
-       subtitle = "Frequency of common archetypes")
+  labs(title = "Classification of activity patterns", subtitle = "Frequency of common archetypes")
 
 						
 ```
@@ -123,23 +122,23 @@ round_percent <- function(x){
 }
 
 wp_list$data %>%
-  mutate(Personas = case_when(Personas == "0 < 3 hours on" ~ "Low activity",
+  mutate(Personas = case_when(Personas == "0 < 3 hours on" ~ "Low\nactivity",
                               Personas == "1 Standard with breaks workday" ~ "Flexible",
                               Personas == "2 Standard continuous workday" ~ "Standard",
                               Personas == "3 Standard flexible workday" ~ "Flexible",
-                              Personas == "4 Long flexible workday" ~ "Long flexible",
-                              Personas == "5 Long continuous workday" ~ "Long continuous",
-                              Personas == "6 Always on (13h+)" ~ "Always on"
+                              Personas == "4 Long flexible workday" ~ "Long\nflexible",
+                              Personas == "5 Long continuous workday" ~ "Long\ncontinuous",
+                              Personas == "6 Always on (13h+)" ~ "Always\non"
                               ) %>%
            factor(levels = 
-                    c("Low activity",
+                    c("Low\nactivity",
                       "Standard",
                       "Flexible",
-                      "Long flexible",
-                      "Long continuous",
-                      "Always on"))) %>%
+                      "Long\nflexible",
+                      "Long\ncontinuous",
+                      "Always\non"))) %>%
   count(!!sym(hrvar), Personas) %>%
-  filter(!!sym(hrvar) %in% mingroup) %>%
+  filter(!!sym(hrvar) %in% mingroup_str) %>%
   group_by(!!sym(hrvar)) %>%
   mutate(percent = n / sum(n)) %>%
   ungroup() %>%
@@ -159,7 +158,7 @@ wp_list$data %>%
   # viridis::scale_fill_viridis(labels = scales::percent) +
   scale_x_discrete(position = "top") +
   theme_wpa_basic() +
-  theme(axis.text.x = element_text(angle = 30,
+  theme(axis.text.x = element_text(angle = 50,
                                    vjust = 0.5,
                                    hjust = 0),
         axis.title = element_blank(),
