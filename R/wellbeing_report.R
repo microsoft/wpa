@@ -12,6 +12,8 @@
 #'   `Organization`.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
+#' @param start_hour 	A character vector specifying starting hours, e.g. "0900".
+#'   Note that this currently only supports hourly increments.
 #' @param path Pass the file path and the desired file name, _excluding the file
 #'   extension_. Defaults to `"wellbeing_report"`.
 #'
@@ -20,6 +22,7 @@ wellbeing_report <- function(wbq,
                              hcq,
                              hrvar = "Organization",
                              mingroup = 5,
+                             start_hour = "0900",
                              path = "wellbeing_report"
                              ){
 

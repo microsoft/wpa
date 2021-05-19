@@ -9,6 +9,7 @@ wellbeing_report(
   hcq,
   hrvar = "Organization",
   mingroup = 5,
+  start_hour = "0900",
   path = "wellbeing_report"
 )
 }
@@ -22,6 +23,9 @@ wellbeing_report(
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
+
+\item{start_hour}{A character vector specifying starting hours, e.g. "0900".
+Note that this currently only supports hourly increments.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
 extension}. Defaults to \code{"wellbeing_report"}.}

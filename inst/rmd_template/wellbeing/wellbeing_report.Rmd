@@ -5,6 +5,7 @@ params:
   set_title: report_title
   hrvar: hrvar
   mingroup: mingroup
+  start_hour: start_hour
 title: "`r params$set_title`"      
 ---
 
@@ -52,6 +53,7 @@ my_sq_data <- params$wbq
 my_em_data <- params$hcq
 hrvar <- params$hrvar
 mingroup <- params$mingroup
+start_hour <- params$start_hour
 
 intro_toc <- readLines("toc.md")
 
@@ -85,7 +87,7 @@ mingroup_str <-
 # 4. Compute working patterns list and flexibility index data
 wp_list <-
   my_em_data %>%
-  workpatterns_classify(start_hour = "0800",
+  workpatterns_classify(start_hour = start_hour,
                         return = "list",
                         hrvar = hrvar)
 
