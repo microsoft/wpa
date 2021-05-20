@@ -276,6 +276,28 @@ mgrrel_matrix <- function(data,
     clean_tb %>%
       as_tibble() %>%
       return()
+	  
+  } else if(return == "insights"){
+  
+  
+  	kpi_1 <- clean_tb  %>% filter(mgrRel =="Co-attending") %>%  pull(3)  %>% round(3)*100
+
+	insight_1 <- paste("-", kpi_1, "% of employees mostly see their managers in group meetings.")
+	
+	kpi_2 <- clean_tb  %>% filter(mgrRel =="Coaching") %>%  pull(3)  %>% round(3)*100
+
+	insight_2 <- paste("+", kpi_2, "% of employees seem empowered to lead meetings independently and receive frequent manager 1:1 support.")
+	
+	kpi_3 <- clean_tb  %>% filter(mgrRel =="Highly managed") %>%  pull(3)  %>% round(3)*100
+
+	insight_3 <- paste("-", kpi_3, "% of employees appear highly managed, with frequent 1:1 and group interactions.")
+		
+	kpi_4 <- clean_tb  %>% filter(mgrRel =="Under-coached") %>%  pull(3)  %>% round(3)*100
+  
+	insight_4 <- paste("-", kpi_4, "% of employees appear under-coached, with limited 1:1 or group interactions with their managers.")
+	
+	paste(insight_1, insight_2, insight_3, insight_4, "\n", sep="\n") %>% cat()
+
 
   } else if(return == "chartdata"){
 
