@@ -2,7 +2,7 @@ Introduction
 =====================================
 
 <div class="jumbotron" style="background-color:#FFFFFF;">
-<img src="Microsoft-Viva-Insights-logo.png" style="float:right;width:180px;height:180px;">
+<!--<img src="Microsoft-Viva-Insights-logo.png" style="float:right;width:180px;height:180px;">-->
   <h1 class="display-4">Employee Wellbeing Report</h1>
   <p class="lead" style="color:gray;"> <B> Microsoft Viva | Organisational Insights </B></p>
   <hr class="my-4">
