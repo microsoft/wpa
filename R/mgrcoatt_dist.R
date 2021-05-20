@@ -131,13 +131,13 @@ myPeriod <-
              lwd = 0.75,
              geom = "segment") +
   	scale_fill_manual(name="",
-  	                  values = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee")) +
+  	                  values = c("#bfe5ee",  "#b4d5dd", "#fcf0eb", "#facebc")) +
     theme_wpa_basic() +
     theme(axis.line = element_blank(),
           axis.ticks = element_blank(),
           axis.title = element_blank()) +
   	labs(title = "Meetings coattended by line manager",
-  	     subtitle = paste("Percentage of employees by", tolower(camel_clean(hrvar))),
+  	     subtitle = paste("Percentage of meetings per person"),
   	     caption = extract_date_range(data, return = "text"))
 
   ## Table to return
