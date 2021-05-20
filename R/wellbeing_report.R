@@ -36,6 +36,7 @@ wellbeing_report <- function(wbq,
     rmd_dir = system.file("rmd_template/wellbeing/wellbeing_report.rmd", package = "wpa"),
     output_format =
       flexdashboard::flex_dashboard(orientation = "columns",
-                                    vertical_layout = "fill")
+                                    vertical_layout = "fill"),
+    start_hour = start_hour # Additional arguments to param
   )
 }
