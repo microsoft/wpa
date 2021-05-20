@@ -136,7 +136,7 @@ myPeriod <-
     theme(axis.line = element_blank(),
           axis.ticks = element_blank(),
           axis.title = element_blank()) +
-  	labs(title = "Meeting co-attendance with Manager",
+  	labs(title = "Meetings coattended by line manager",
   	     subtitle = paste("Percentage of employees by", tolower(camel_clean(hrvar))),
   	     caption = extract_date_range(data, return = "text"))
 
