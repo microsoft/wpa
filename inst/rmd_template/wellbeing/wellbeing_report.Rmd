@@ -62,19 +62,37 @@ intro_toc <- readLines("toc.md")
 col_checker <- function(x, col, replacement = NULL){
 
   if(col %in% names(x) & is.null(replacement)){
-
+    
+    # column exists, replacement not specified
+    # ACTION: RETURN
     x
 
-  } else if(col %in% names(x) & !is.null(replacement)){
-
-    dplyr::rename(x, !!sym(replacement) := col)
+  } else if(!is.null(replacement)){
+    
+    if(replacement %in% names(x)){
+      
+      # replacement exists
+      # ACTION: return as is
+      x
+      
+    } else {
+      
+      # column exists, replacement specified
+      # ACTION: RENAME
+      dplyr::rename(x, !!sym(replacement) := col)
+      
+    }
 
   } else if(!(col %in% names(x)) & !is.null(replacement)){
 
+    # column not exist, replacement specified
+    # ACTION: DUMMY COLUMN WITH REPLACEMENT
     dplyr::mutate(x, !!sym(replacement) := NA) # create dummy column
 
-  } else {
+  } else if(!(col %in% names(x)) & is.null(replacement)){
 
+    # column not exist, replacement not specified
+    # ACTION: DUMMY COLUMN WITH COLUMN
     dplyr::mutate(x, !!sym(col) := NA) # create dummy column
 
   }
