@@ -87,12 +87,32 @@ my_sq_data <-
   # Column checks ----------------------------------------------------------
   col_checker(col = "Instant_Message_hours", replacement = "Instant_message_hours") %>%
   col_checker(col = "Collaboration_hrs", replacement = "Collaboration_hours") %>%
+  col_checker(col = "Urgent_email_hours") %>%
+  col_checker(col = "Weekend_Email") %>%
+  col_checker(col = "Weekend_IMs_sent") %>%
+  col_checker(col = "IMs_sent_same_level") %>%
+  col_checker(col = "IMs_sent_other_level") %>%
   
   # Daily estimates --------------------------------------------------------
   
   mutate(Work_time = Workweek_span / 5) %>% # Average day span
   mutate(dailyCollabHours = Collaboration_hours / 5)  %>% # Average daily CH
   mutate(dailyAfterHours = After_hours_collaboration_hours / 5) %>%
+  
+  # Urgent collaboration ---------------------------------------------------
+  
+  mutate(Urgent_collaboration_hours = Urgent_email_hours) %>%
+  # mutate(Urgent_collaboration_hours = Urgent_meeting_hours + Urgent_email_hours) %>%
+  mutate(IsUrgent = ifelse(Urgent_collaboration_hours > 0, TRUE, FALSE)) %>%
+  
+  # Weekend work ------------------------------------------------------------
+
+  # mutate(Weekend_work = ifelse(Weekend_Email > 0 | Weekend_Meeting > 0, TRUE, FALSE)) %>%
+  mutate(Weekend_work = ifelse(Weekend_Email > 0 | Weekend_IMs_sent > 0, TRUE, FALSE)) %>%
+  group_by(PersonId)  %>%
+  mutate(Frequency_of_weekend_work = 1 / (sum(Weekend_work) / n())) %>% #TODO: Verify logic
+  mutate(monthly_weekend_work = Frequency_of_weekend_work < (52/12)) %>%
+  ungroup() %>%
   
   # Two Hour Focus Blocks ---------------------------------------------------
 
@@ -130,7 +150,31 @@ flex_index_data <-
 
 ```
 
+```{r child = "db_2.Rmd"}
+
+```
+
+```{r child = "db_3.Rmd"}
+
+```
+
 ```{r child = "db_4.Rmd"}
+
+```
+
+```{r child = "db_5.Rmd"}
+
+```
+
+```{r child = "db_6.Rmd"}
+
+```
+
+```{r child = "db_7.Rmd"}
+
+```
+
+```{r child = "db_8.Rmd"}
 
 ```
 
