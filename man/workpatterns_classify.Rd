@@ -8,7 +8,7 @@ workpatterns_classify(
   data,
   hrvar = "Organization",
   values = "percent",
-  signals = "email",
+  signals = c("email", "IM"),
   start_hour = "0900",
   end_hour = "1700",
   mingroup = 5,
