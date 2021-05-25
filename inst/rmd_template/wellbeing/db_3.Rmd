@@ -93,9 +93,9 @@ Column {data-width=30%}
 KPI_2 <-  
   wp_list$table %>%
   filter(Personas =="6 Always on (13h+)") %>%
-  pivot_longer(!Personas, names_to = "group", values_to = "alwaysOn") %>%
+  pivot_longer(cols = -Personas, names_to = "group", values_to = "alwaysOn") %>%
   filter(group %in% mingroup_str) %>%
-  filter(alwaysOn == max(alwaysOn)) %>%
+  arrange(desc(alwaysOn)) %>%
   pull(group) %>%
   .[[1]]
 

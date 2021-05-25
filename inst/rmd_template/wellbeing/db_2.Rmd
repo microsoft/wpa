@@ -103,12 +103,20 @@ Column {data-width=30%}
 
 ```{r}
 
-KPI_3 <- my_sq_data %>%
-  create_bar(metric = "monthly_weekend_work", hrvar = NULL, return="table") %>%
-  pull("monthly_weekend_work") %>%
-  .[[1]] %>%
-  round(3)* 100
-
+if(sum(my_sq_data$monthly_weekend_work, na.rm = TRUE) == 0){
+  
+  KPI_3 <- 0
+  
+} else {
+  
+  KPI_3 <- 
+    my_sq_data %>%
+    create_bar(metric = "monthly_weekend_work", hrvar = NULL, return="table") %>%
+    pull("monthly_weekend_work") %>%
+    .[[1]] %>%
+    round(3)* 100
+  
+}
 
 # Need to calculate right KPI
 paste(KPI_3, "% weekend workers") %>%
@@ -120,8 +128,14 @@ paste(KPI_3, "% weekend workers") %>%
 ### <B>Are employees engaging in regular weekend work?</B> <br> Switching on for even a short period of time on weekends can siginifcantly harm employee wellbeing.  
 
 ```{r}
+
+if(sum(my_sq_data$Frequency_of_weekend_work, na.rm = TRUE) == 0){
   
-my_sq_data %>%
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+    
+  my_sq_data %>%
   mutate(
     across(.cols = Frequency_of_weekend_work,
            .fns = ~ifelse(!is.finite(.), 52, .))) %>% # Assume once a year = Never
@@ -163,5 +177,7 @@ my_sq_data %>%
         axis.title = element_blank(),
         panel.grid.major.y = element_line(color="gray"),
         panel.grid.major.x = element_line(colour = "#D9E7F7", size = 5)) 
+  
+}
 
 ```

@@ -136,7 +136,12 @@ my_sq_data <-
 
   mutate(focus_per = (Total_focus_hours/ Workweek_span)) %>%
   mutate(focus_per = ifelse(is.infinite(focus_per), 0, focus_per)) %>%
-  rename(`% of 2-hour focus block` = "focus_per")
+  rename(`% of 2-hour focus block` = "focus_per") %>% 
+  mutate(Total_focus_hours_daily = Total_focus_hours / 5) %>%
+  
+  # Unscheduled collaboration -----------------------------------------------
+  
+  mutate(Unscheduled_collaboration_hours_daily = (Unscheduled_Call_hours + Instant_message_hours + Email_hours)/5)
 
 # Values containing groups over minimum group size
 mingroup_str <-

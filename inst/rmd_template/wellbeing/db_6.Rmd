@@ -72,7 +72,7 @@ paste(urg_percent, "urgent collaboration") %>%
 
 ```{r}
 
-if(sum(my_sq_data$IsUrgent) == 0){
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
   
   md2html("## Note: there is insufficient urgent collaboration data to display.")
   
@@ -159,7 +159,7 @@ groups_above_mingroup <-
   filter(n >= 5) %>%
   pull(!!sym(hrvar))
 
-if(sum(my_sq_data$IsUrgent) == 0){
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
   
   md2html("## Note: there is insufficient urgent collaboration data to display.")
   
