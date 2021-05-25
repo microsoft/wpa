@@ -96,8 +96,8 @@ KPI_2 <-
   pivot_longer(!Personas, names_to = "group", values_to = "alwaysOn") %>%
   filter(group %in% mingroup_str) %>%
   filter(alwaysOn == max(alwaysOn)) %>%
-  select(group) %>%
-  pull(1)
+  pull(group) %>%
+  .[[1]]
 
 KPI_2  %>% flexdashboard::valueBox(icon = "fa-search")  
 

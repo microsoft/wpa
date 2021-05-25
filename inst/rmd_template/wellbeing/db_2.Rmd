@@ -53,9 +53,23 @@ Column {data-width=30%}
 ```{r}
 KPI_2 <-
   my_sq_data %>%
-    create_dist(metric = "dailyAfterHours", hrvar = NULL, return="table", cut = c(1,2)) %>%
-    select("2+ hours") %>%
-    pull(1) %>% round(3)* 100
+    create_dist(metric = "dailyAfterHours",
+                hrvar = NULL,
+                return = "table",
+                cut = c(1,2))
+
+if(!("2+ hours" %in% names(KPI_2))){
+  
+  KPI_2 <- 0
+  
+} else {
+  
+  KPI_2 <- 
+    KPI_2 %>%
+    pull("2+ hours") %>%
+    .[[1]] %>%
+    round(3) * 100
+}
 
 paste(KPI_2, "% long after-hours") %>%
   flexdashboard::valueBox(icon = "fa-calendar-plus",
@@ -91,8 +105,8 @@ Column {data-width=30%}
 
 KPI_3 <- my_sq_data %>%
   create_bar(metric = "monthly_weekend_work", hrvar = NULL, return="table") %>%
-  select("monthly_weekend_work") %>%
-  pull(1) %>%
+  pull("monthly_weekend_work") %>%
+  .[[1]] %>%
   round(3)* 100
 
 
@@ -134,11 +148,12 @@ my_sq_data %>%
 	values = "#5B0F66",
     # guide = "Frequency of weekend work"
     ) +
-  scale_x_continuous(
+  scale_x_reverse(
+    limits = c(15, 1),
     breaks = c(1, 52/12, 52/6, 13),
-    limits = c(1, 15),
-    position = "top", 
-    labels = c("Weekly", "Monthly", "Bi-Monthly", "Quarterly")) +
+    labels = c("Weekly", "Monthly", "Bi-Monthly", "Quarterly"),
+    position = "top"
+  ) +
   labs(title = "Weekend work", 
        subtitle = "Median frequency of weekend work", 
        caption = extract_date_range(my_sq_data, return = "text")) +
