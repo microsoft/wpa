@@ -17,17 +17,18 @@ Resilience 1
 Column {data-width=30%}
 -----------------------------------------------------------------------
 
-### % of workday available for focus work
+### total hours available for focus work
 
 ```{r}
 
 KPI_1 <-  my_sq_data %>%
   create_bar(hrvar = NULL,
-             metric = "% of 2-hour focus block",
+             metric = "Total_focus_hours",
              return = "table") %>%
-  pull("% of 2-hour focus block")  %>% round(4)
+  pull("Total_focus_hours") %>%
+  round(1)
   
-paste(KPI_1*100, "% focus time") %>%
+paste(KPI_1, "total focus hours") %>%
   flexdashboard::valueBox(icon = "fa-user-edit",
                           color = "#34b1e2")
   
@@ -39,13 +40,13 @@ paste(KPI_1*100, "% focus time") %>%
 resilience1_w1_plot1 <-
   my_sq_data %>%
   create_bar(hrvar = hrvar,
-             metric = "% of 2-hour focus block",
+             metric = "Total_focus_hours",
              rank = NULL,
-             percent = TRUE) 
+             percent = FALSE) 
 
 resilience1_w1_plot1 +
   labs(title = "Focus Time",
-       subtitle = paste("2-hr focus blocks available as percentage of workday"))
+       subtitle = paste("Total hours consisting of 2-hr focus blocks"))
 
 ```
 
