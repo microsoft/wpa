@@ -107,9 +107,10 @@ my_sq_data <-
   col_checker(col = "Weekend_IMs_sent") %>%
   col_checker(col = "IMs_sent_same_level") %>%
   col_checker(col = "IMs_sent_other_level") %>%
-  col_checker(col = "Intimate_1_on_1_meeting_hours") %>%
-  col_checker(col = "Intimate_group_meeting_hours") %>%
-  col_checker(col = "Instant_messages_sent") %>%
+  col_checker(col = "Meeting_hours_1on1", replacement = "Intimate_1_on_1_meeting_hours") %>%
+  col_checker(col = "Meeting_hours_intimate_group",
+              replacement = "Intimate_group_meeting_hours") %>%
+  col_checker(col = "IMs_sent", replacement = "Instant_messages_sent") %>%
   
   # Daily estimates --------------------------------------------------------
   

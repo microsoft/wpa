@@ -2,7 +2,7 @@ Notes
 =====================================
 
 
-Column {data-width=100%}
+Column {data-width=30%}
 -----------------------------------------------------------------------
 
 ### <B>Report Notes</B>
@@ -25,16 +25,17 @@ paste(text1, text2, text3, sep = "\n\n" )%>% md2html()
 ```
 
 
-Column {data-width=100%}
+Column {data-width=70%}
 -----------------------------------------------------------------------
 
-### <B> HR Attribute  </B>
+### <B> Sample Glossary </B>
 
 ```{r}
 
-paste("Data in this report is split by ", hrvar ,". Consider other slicing options below")  %>%
-  md2html() 
-  
-my_sq_data %>% collab_rank(return="plot")
+tibble(
+  Term = "Collaboration_hours",
+  Definition = "Number of hours the person spent in meetings, emails, IMs, and calls with at least one other person, either internal or external, after deduplication of time due to overlapping activities (for example, calls during a meeting)."
+) %>%
+  create_dt()
 
 ```
