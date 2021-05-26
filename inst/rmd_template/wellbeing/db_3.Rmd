@@ -1,6 +1,4 @@
-
-
-Flexibility 1
+Activity patterns
 =====================================
 
 

@@ -1,4 +1,4 @@
-Community 1
+Community
 =====================================
 
 <body style="background-color:white;font-family:arial">

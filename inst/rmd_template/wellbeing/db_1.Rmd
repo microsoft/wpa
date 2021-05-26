@@ -1,4 +1,4 @@
-Balance 1
+Balance
 =====================================
 
 <body style="background-color:white;font-family:arial">

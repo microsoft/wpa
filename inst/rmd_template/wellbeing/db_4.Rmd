@@ -1,4 +1,4 @@
-Flexibility 2
+Flexibility
 =====================================
 
 <body style="background-color:white;font-family:arial">
