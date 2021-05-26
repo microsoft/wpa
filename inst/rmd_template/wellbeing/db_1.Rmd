@@ -106,7 +106,9 @@ KPI_3 <-
 
 
 if(!("6+ hours" %in% names(KPI_3))){
+  
   KPI_3 <- 0
+  
 } else {
   
   KPI_3 <- 

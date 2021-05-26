@@ -58,7 +58,15 @@ urg_sum_tb <-
   purrr::reduce(full_join, by = hrvar) %>%
   filter(n >= 5)
 
-urg_percent <- scales::percent(mean(my_sq_data$IsUrgent))
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  urg_percent <- "0 %"
+  
+} else {
+
+  urg_percent <- scales::percent(mean(my_sq_data$IsUrgent))  
+  
+}
 
 ## KPI box
 

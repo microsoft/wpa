@@ -158,8 +158,16 @@ Column {data-width=30%}
 
 ```{r}
 
+if(
+  sum(my_sq_data$IMs_sent_other_level, na.rm = TRUE) == 0 |
+  sum(my_sq_data$IMs_sent_same_level, na.rm = TRUE) == 0
+  ){
+  
+  KPI_2 <- "0%"
 
-p_table <-
+} else {
+  
+  p_table <-
   my_sq_data %>%
   group_by(PersonId) %>%
   summarise(
@@ -179,10 +187,11 @@ p_table <-
   ) %>%
   mutate(Answer = IMs_sent_other_level / (IMs_sent_other_level + IMs_sent_same_level))
   
-
-KPI_2 <- p_table$Answer %>%
+  KPI_2 <- p_table$Answer %>%
   scales::percent() %>%
   .[[1]] 
+  
+}
 						  
 paste(KPI_2, "Informality across levels") %>%
   flexdashboard::valueBox(icon = "fa-users",
@@ -194,7 +203,17 @@ paste(KPI_2, "Informality across levels") %>%
 ### <B>Are employees engaging with people other than their peers?</B> <br> Encourage employees to engage with members of the team that not just their peers to help them feel a stronger sense of community.
 
 ```{r}
-my_sq_data %>%
+
+if(
+  sum(my_sq_data$IMs_sent_other_level, na.rm = TRUE) == 0 |
+  sum(my_sq_data$IMs_sent_same_level, na.rm = TRUE) == 0
+  ){
+  
+  md2html("## Note: there is insufficient collaboration data to display.")
+  
+} else {
+  
+  my_sq_data %>%
   mutate(Informal_same_level = IMs_sent_same_level,
          Informal_other_level = IMs_sent_other_level) %>%
   group_by(PersonId, !!sym(hrvar)) %>%
@@ -249,4 +268,8 @@ my_sq_data %>%
   labs(title = "Informal communciation distribution",
        subtitle = "Percentage of chats sent",
        caption = extract_date_range(my_sq_data, return = "text"))
+  
+}
+
+
 ```
