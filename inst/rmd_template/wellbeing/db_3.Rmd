@@ -103,19 +103,9 @@ KPI_2  %>% flexdashboard::valueBox(icon = "fa-search")
 
 ```
 
-### <B>Which teams are most affected? </B> <br> Identify groups with highest prevalence the negative work patterns and  encourage them to disconnect and build regular breaks in their work day.
+### <B>Which teams are most affected? </B> <br> Identify groups with highest prevalence the negative activity patterns and  encourage them to disconnect and build regular breaks in their work day.
 
 ```{r}
-
-#   flexibility1_w2_plot1 <- wp_list$plot_hrvar +
-#   labs(title = "Distribution of Working Patterns",
-#        subtitle = paste("By", camel_clean(hrvar))) + theme_wpa_basic() + 
-#   theme(axis.title = element_blank())
-# 
-# flexibility1_w2_plot1 +
-#   labs(title = "Working pattern distribution",
-#        subtitle = "Frequency of employee work-weeks",
-#        caption = extract_date_range(wp_list$data, return = "text"))
 
 round_percent <- function(x){
   scales::percent(x, accuracy = 1)
