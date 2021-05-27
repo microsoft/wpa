@@ -5,7 +5,7 @@ Balance
 
 <p style="color:gray;background-color:white;margin-left: 20px">
 <br>
-<B>   <font size="+3">Balance - Are employees able to balance work and personal time?</font></B>
+<B>   <font size="+3">Are employees able to balance work and personal time?</font></B>
 <br>
 <br>
 </p>

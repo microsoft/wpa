@@ -13,18 +13,18 @@ Introduction
   <div class="row">
   <div class="col-md-6">
   <div class="list-group">
-  <a href="#balance" class="list-group-item">1.1 Balance </a>
-  <a href="#after-hours" class="list-group-item">1.2 After-hours </a>
-  <a href="#activity-patterns" class="list-group-item">2.1 Activity Patterns</a>
-  <a href="#flexibility" class="list-group-item">2.2 Flexibility </a>
+  <a href="#balance" class="list-group-item">1. Balance </a>
+  <a href="#after-hours" class="list-group-item">2. After-hours </a>
+  <a href="#activity-patterns" class="list-group-item">3. Activity Patterns</a>
+  <a href="#flexibility" class="list-group-item">4. Flexibility </a>
   </div>
   </div>
   <div class="col-md-6">
   <div class="list-group">
-  <a href="#focus" class="list-group-item">3.1 Focus</a>
-  <a href="#urgency" class="list-group-item">3.2 Urgency</a>
-  <a href="#community" class="list-group-item">4.1 Community</a>
-  <a href="#informal-communication" class="list-group-item">4.2 Informal communication</a>
+  <a href="#focus" class="list-group-item">5. Focus</a>
+  <a href="#urgency" class="list-group-item">6. Urgency</a>
+  <a href="#community" class="list-group-item">7. Community</a>
+  <a href="#informal-communication" class="list-group-item">8. Informal communication</a>
   </div>
   </div>
   </div>

@@ -28,7 +28,7 @@ paste(text1, text2, text3, sep = "\n\n" )%>% md2html()
 Column {data-width=70%}
 -----------------------------------------------------------------------
 
-### <B> Sample Glossary </B>
+### <B> Glossary </B>
 
 ```{r}
 
