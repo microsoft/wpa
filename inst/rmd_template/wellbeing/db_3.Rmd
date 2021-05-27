@@ -8,7 +8,7 @@ Activity patterns
 <br>
 <B>
   <font size="+3">
-    Flexibility - Are employees able to switch off?
+    Are employees able to switch off?
   </font>
 </B>
 <br>

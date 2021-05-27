@@ -7,7 +7,7 @@ Focus
 <br>
 <B>
   <font size="+3">
-    Resilience - Are employees able to engage in uninterrupted focus time?  
+    Are employees able to engage in uninterrupted focus time?  
   </font>
 </B>
 <br>

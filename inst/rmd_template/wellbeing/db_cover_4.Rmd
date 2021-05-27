@@ -13,27 +13,23 @@ Introduction
   <div class="row">
   <div class="col-md-6">
   <div class="list-group">
-  <a href="#balance-1" class="list-group-item"> <B> 1. Balance </B></a>
-  <a href="#balance-1" class="list-group-item">1.1 Are employees able to balance work and personal time?</a>
-  <a href="#balance-2" class="list-group-item">1.2 Is collaboration load impacting personal time? </a>
-    <a href="#flexibility-1" class="list-group-item"> <B> 2. Flexibility </B></a>
-  <a href="#flexibility-1" class="list-group-item">2.1 Are employees able to switch off?</a>
-  <a href="#flexibility-2" class="list-group-item">2.2 Are employees embracing flexible work schedules?</a>
+  <a href="#balance" class="list-group-item">1.1 Balance </a>
+  <a href="#after-hours" class="list-group-item">1.2 After-hours </a>
+  <a href="#activity-patterns" class="list-group-item">2.1 Activity Patterns</a>
+  <a href="#flexibility" class="list-group-item">2.2 Flexibility </a>
   </div>
   </div>
   <div class="col-md-6">
   <div class="list-group">
-  <a href="#resilience-1" class="list-group-item"><B> 3 Resilience </B></a>
-  <a href="#resilience-1" class="list-group-item">3.1 Are employees able to engage in uninterrupted focus time?</a>
-  <a href="#resilience-2" class="list-group-item">3.2 Can teams respond to urgent needs without risking employee wellbeing?</a>
-  <a href="#community-1" class="list-group-item"><B> 4. Community </B></a>
-  <a href="#community-1" class="list-group-item">4.1 Are employees maintaining communities within the workplace?</a>
-  <a href="#community-2" class="list-group-item">4.2 Are employees connecting informally?</a>
+  <a href="#focus" class="list-group-item">3.1 Focus</a>
+  <a href="#urgency" class="list-group-item">3.2 Urgency</a>
+  <a href="#community" class="list-group-item">4.1 Community</a>
+  <a href="#informal-communication" class="list-group-item">4.2 Informal communication</a>
   </div>
   </div>
   </div>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#balance-1" role="button">Start exploring</a>
+    <a class="btn btn-primary btn-lg" href="#balance" role="button">Start exploring</a>
   </p>
 </div>
 <br>

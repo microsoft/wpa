@@ -5,7 +5,7 @@ After-hours
 
 <p style="color:gray;background-color:white;margin-left: 20px">
 <br>
-<B>   <font size="+3">Balance - Can we identify groups most at risk of burnout?</font>   </B>
+<B>   <font size="+3">Can we identify groups most at risk of burnout?</font>   </B>
 <br>
 <br>
 </p>

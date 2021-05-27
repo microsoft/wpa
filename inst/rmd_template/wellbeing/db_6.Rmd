@@ -7,7 +7,7 @@ Urgency
 <br>
 <B>
   <font size="+3">
-    Resilience - Can teams respond to urgent needs without risking employee wellbeing?
+    Can teams respond to urgent needs without risking employee wellbeing?
   </font>
 </B>
 <br>
