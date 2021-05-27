@@ -95,10 +95,11 @@ if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
   theme_wpa_basic() +
   labs(
     title = "Urgent Collaboration",
-    subtitle = "Bubble size measures number of people in organization",
+    subtitle = "Impact and Frequency of Emails with 'Urgent' keywords",
     x = "% of employees affected by urgent collaboration",
     y = "Urgent weeks per employee (average)",
-    caption = extract_date_range(my_sq_data, return = "text")) +
+    caption = paste("Bubble size measures number of people in organization.",
+                    extract_date_range(my_sq_data, return = "text"))) +
   scale_size(range = c(1, 20)) +
   scale_x_continuous(labels = scales::percent) +
   ggrepel::geom_text_repel(aes(label = !!sym(hrvar)),
