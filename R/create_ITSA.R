@@ -50,9 +50,6 @@
 #'
 #' @import dplyr
 #' @import ggplot2
-#' @import sandwich
-#' @import lmtest
-#' @import portes
 #'
 #' @family Flexible Input
 #' @family Interrupted Time-Series Analysis
