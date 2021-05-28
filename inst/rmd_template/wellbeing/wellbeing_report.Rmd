@@ -48,6 +48,10 @@ library(tidyverse)
 # 1a. Load auxiliary functions
 source("auxiliary.R")
 
+# Glossary
+gloss_tb <-
+  readr::read_csv("glossary.csv")
+
 # 2. Load Data
 my_sq_data <- params$wbq
 my_em_data <- params$hcq

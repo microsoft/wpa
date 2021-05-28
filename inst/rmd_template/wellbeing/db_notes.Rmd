@@ -32,10 +32,7 @@ Column {data-width=70%}
 
 ```{r}
 
-tibble(
-  Term = "Collaboration_hours",
-  Definition = "Number of hours the person spent in meetings, emails, IMs, and calls with at least one other person, either internal or external, after deduplication of time due to overlapping activities (for example, calls during a meeting)."
-) %>%
+gloss_tb %>%
   create_dt()
 
 ```
