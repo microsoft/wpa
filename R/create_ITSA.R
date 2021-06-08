@@ -16,6 +16,10 @@
 #' interrupted time-series analysis for single- and multiple-group comparisons',
 #' Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500
 #'
+#' This function further requires the installation of 'sandwich', 'portes', and
+#' 'lmtest' in order to work. These packages can be installed from CRAN using
+#' `install.packages()`.
+#'
 #' @details
 #' This function uses the additional package dependencies 'sandwich', 'lmtest',
 #' and 'portes'. Please install these separately from CRAN prior to running the
