@@ -103,6 +103,11 @@ create_ITSA <-
     stopifnot(is.numeric(ac_lags_max))
     stopifnot(is.character(return))
 
+    ## Check if dependencies are installed
+    check_pkg_installed(pkgname = "sandwich")
+    check_pkg_installed(pkgname = "lmtest")
+    check_pkg_installed(pkgname = "portes")
+
     ## Check required columns in data
     required_variables <- c("Date",
                             "PersonId")
@@ -199,7 +204,7 @@ create_ITSA <-
 
         data_OLS <- data.frame(Date, Y, T, X, XT, stringsAsFactors=FALSE)
 
-        single_itsa = lm(Y ~ T + X + XT, data = data_OLS)
+        single_itsa = stats::lm(Y ~ T + X + XT, data = data_OLS)
 
         # Newey-West variance estimator produces consistent estimates when there
         # is autocorrelation in addition to possible Heteroscedasticity
@@ -289,7 +294,7 @@ create_ITSA <-
         before_intervention_df <- data_OLS[1:event_T,]
         before_intervention_df[event_T,"X"] <- 0
 
-        hat_Y_before_and_at_intervention <- data.frame(DateTime = data_OLS[1:event_T, "Date"], T=data_OLS[1:event_T, "T"],Y = predict(single_itsa, before_intervention_df))
+        hat_Y_before_and_at_intervention <- data.frame(DateTime = data_OLS[1:event_T, "Date"], T=data_OLS[1:event_T, "T"],Y = stats::predict(single_itsa, before_intervention_df))
         hat_Y_after_and_at_intervention <- data.frame(DateTime =data_OLS[event_T:dim(data_OLS)[1], "Date"], T=data_OLS[event_T:dim(data_OLS)[1], "T"], Y = hat_Y[event_T:dim(data_OLS)[1]])
 
         # Create basic graph
