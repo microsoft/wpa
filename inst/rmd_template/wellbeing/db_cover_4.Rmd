@@ -15,8 +15,8 @@ Introduction
   <div class="list-group">
   <a href="#balance" class="list-group-item">1. Balance </a>
   <a href="#after-hours" class="list-group-item">2. After-hours </a>
-  <a href="#activity-patterns" class="list-group-item">3. Activity Patterns</a>
-  <a href="#flexibility" class="list-group-item">4. Flexibility </a>
+  <a href="#flexibility" class="list-group-item">3. Flexibility </a>
+  <a href="#activity-patterns" class="list-group-item">4. Activity Patterns</a>
   </div>
   </div>
   <div class="col-md-6">
