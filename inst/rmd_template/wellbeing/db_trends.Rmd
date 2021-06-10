@@ -51,9 +51,15 @@ create_tracking <- function(data, metric, title, subtitle){
               colour = metrics)) +
     geom_line() +
     theme_wpa_basic() +
+    theme(axis.line = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          panel.grid.major.x = element_line(color="gray"),
+          panel.grid.major.y = element_line(colour = "#D9E7F7", size = 5)) +
     labs(
       title = title,
-      subtitle = subtitle
+      subtitle = subtitle,
+      caption = extract_date_range(data, return = "text")
       ) +
     scale_x_date(position = "top")
   
@@ -61,7 +67,6 @@ create_tracking <- function(data, metric, title, subtitle){
 
 # Weekend work
 # % Active on the weekend
-
 create_tracking(
   data = my_sq_data,
   metric = "monthly_weekend_work",
@@ -78,7 +83,7 @@ create_tracking(
 create_tracking(
   data = my_sq_data,
   metric = "Total_focus_hours_daily",
-  title = "Focus\n%Focus Time",
+  title = "Focus\nFocus Time",
   subtitle = "Average daily focus hours"
 )
 
@@ -92,10 +97,10 @@ Column {data-width=33%}
 ```{r}
 # % of employees who limit their activity to 8 or fewer distinct hours
 create_tracking(
-  data = my_sq_data,
-  metric = "monthly_weekend_work",
+  data = flex_index_data,
+  metric = "ControlHours",
   title = "Flexibility\n%Control Active Hours",
-  subtitle = "% of company active on the weekend"
+  subtitle = "% of employees controlling active hours"
 )
   
 ```

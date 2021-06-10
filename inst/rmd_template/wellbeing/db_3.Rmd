@@ -147,7 +147,7 @@ paste(KPI_2, "% control active hours") %>%
 
 
 flex2_w2_plot <- flex_index_data %>%
-  mutate(Percentage_of_weeks=ControlHours) %>%
+  mutate(Percentage_of_weeks = ControlHours) %>%
   create_bar(metric = "Percentage_of_weeks",
              hrvar = hrvar,
              xlim = 1,
