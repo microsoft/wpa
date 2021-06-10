@@ -1,0 +1,109 @@
+Trends
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B><font size="+3">How are behaviors impacting wellbeing evolving?</font></B>
+<br>
+<br>
+</p>
+
+<style>
+.chart-title {  
+  font-family: Arial;
+  height:40px; 
+  display: inline-block;
+  overflow: auto;
+}    
+</style>   
+
+Column {data-width=33%}
+-----------------------------------------------------------------------
+
+### <b>Balance</b>
+
+```{r}
+
+# Weekend work
+# % Active on the weekend
+temp_plot <-
+  my_sq_data %>%
+  group_by(Date) %>%
+  summarise(across(.cols = "Collaboration_hours",
+                   .fns = ~mean(., na.rm = TRUE)),
+            .groups = "drop") %>%
+  mutate(
+    lag0 = lag(Collaboration_hours, 0),
+    lag1 = lag(Collaboration_hours, 1),
+    lag2 = lag(Collaboration_hours, 2),
+    lag3 = lag(Collaboration_hours, 3)
+  ) %>%
+  mutate(movave = select(., paste0("lag", 0:3)) %>% apply(1, function(x) mean(x))) %>%
+  select(-paste0("lag", 0:3)) %>%
+  pivot_longer(cols = c("Collaboration_hours", movave),
+               names_to = "metrics",
+               values_to = "value") %>%
+  drop_na(value) %>%
+  ggplot(aes(x = Date,
+            y = value,
+            colour = metrics)) +
+  geom_line() +
+  theme_wpa_basic()
+
+temp_plot
+  
+```
+
+### <b>Focus</b>
+
+```{r}
+  
+# % of work week with focus time
+temp_plot
+
+```
+
+Column {data-width=33%}
+-----------------------------------------------------------------------
+
+### <b>Flexibility</b>
+
+```{r}
+# % of employees who limit their activity to 8 or fewer distinct hours
+temp_plot
+  
+```
+
+
+### <b>Urgency</b>
+
+```{r}
+  
+# Average after hours collaboration for urgent weeks
+temp_plot
+
+```
+
+Column {data-width=33%}
+-----------------------------------------------------------------------
+
+### <b>Activity patterns</b>
+
+```{r}
+  
+# Always on
+# % of employees who are active for over 13+ hours a day
+temp_plot
+
+```
+
+### <b>Community</b>
+
+```{r}
+# small group meetings
+# % of meeting time in a small group setting
+temp_plot
+  
+```

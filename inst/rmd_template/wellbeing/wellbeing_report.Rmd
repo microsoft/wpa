@@ -206,6 +206,10 @@ flex_index_data <-
 
 ```
 
+```{r child = "db_trends.Rmd"}
+
+```
+
 ```{r child = "db_notes.Rmd"}
 
 ```
