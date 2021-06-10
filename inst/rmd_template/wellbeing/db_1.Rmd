@@ -1,4 +1,4 @@
-Balance
+Collaboration
 =====================================
 
 <body style="background-color:white;font-family:arial">
