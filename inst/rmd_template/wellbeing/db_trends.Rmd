@@ -9,7 +9,7 @@ Trends
 <br>
 <br>
 </p>
-
+<!--
 <style>
 .chart-title {  
   font-family: Arial;
@@ -18,92 +18,133 @@ Trends
   overflow: auto;
 }    
 </style>   
+-->
 
 Column {data-width=33%}
 -----------------------------------------------------------------------
 
-### <b>Balance</b>
+### <b>Balance</b> {.no-title}
 
 ```{r}
 
+create_tracking <- function(data, metric, title, subtitle){
+  
+  data %>%
+    group_by(Date) %>%
+    summarise(across(.cols = metric,
+                     .fns = ~mean(., na.rm = TRUE)),
+              .groups = "drop") %>%
+    mutate(
+      lag0 = lag(!!sym(metric), 0),
+      lag1 = lag(!!sym(metric), 1),
+      lag2 = lag(!!sym(metric), 2),
+      lag3 = lag(!!sym(metric), 3)
+    ) %>%
+    mutate(`4 week rolling average` = select(., paste0("lag", 0:3)) %>% apply(1, function(x) mean(x))) %>%
+    select(-paste0("lag", 0:3)) %>%
+    pivot_longer(cols = c(metric, `4 week rolling average`),
+                 names_to = "metrics",
+                 values_to = "value") %>%
+    drop_na(value) %>%
+    ggplot(aes(x = Date,
+              y = value,
+              colour = metrics)) +
+    geom_line() +
+    theme_wpa_basic() +
+    labs(
+      title = title,
+      subtitle = subtitle
+      ) +
+    scale_x_date(position = "top")
+  
+}
+
 # Weekend work
 # % Active on the weekend
-temp_plot <-
-  my_sq_data %>%
-  group_by(Date) %>%
-  summarise(across(.cols = "Collaboration_hours",
-                   .fns = ~mean(., na.rm = TRUE)),
-            .groups = "drop") %>%
-  mutate(
-    lag0 = lag(Collaboration_hours, 0),
-    lag1 = lag(Collaboration_hours, 1),
-    lag2 = lag(Collaboration_hours, 2),
-    lag3 = lag(Collaboration_hours, 3)
-  ) %>%
-  mutate(movave = select(., paste0("lag", 0:3)) %>% apply(1, function(x) mean(x))) %>%
-  select(-paste0("lag", 0:3)) %>%
-  pivot_longer(cols = c("Collaboration_hours", movave),
-               names_to = "metrics",
-               values_to = "value") %>%
-  drop_na(value) %>%
-  ggplot(aes(x = Date,
-            y = value,
-            colour = metrics)) +
-  geom_line() +
-  theme_wpa_basic()
 
-temp_plot
-  
+create_tracking(
+  data = my_sq_data,
+  metric = "monthly_weekend_work",
+  title = "Balance\nWeekend work",
+  subtitle = "% of company active on the weekend"
+)
 ```
 
-### <b>Focus</b>
+### <b>Focus</b> {.no-title}
 
 ```{r}
   
 # % of work week with focus time
-temp_plot
+create_tracking(
+  data = my_sq_data,
+  metric = "Total_focus_hours_daily",
+  title = "Focus\n%Focus Time",
+  subtitle = "Average daily focus hours"
+)
 
 ```
 
 Column {data-width=33%}
 -----------------------------------------------------------------------
 
-### <b>Flexibility</b>
+### <b>Flexibility</b> {.no-title}
 
 ```{r}
 # % of employees who limit their activity to 8 or fewer distinct hours
-temp_plot
+create_tracking(
+  data = my_sq_data,
+  metric = "monthly_weekend_work",
+  title = "Flexibility\n%Control Active Hours",
+  subtitle = "% of company active on the weekend"
+)
   
 ```
 
-
-### <b>Urgency</b>
+### <b>Urgency</b> {.no-title}
 
 ```{r}
   
 # Average after hours collaboration for urgent weeks
-temp_plot
+create_tracking(
+  data = my_sq_data,
+  metric = "monthly_weekend_work",
+  title = "Urgency\n%Urgent collaboration",
+  subtitle = "% of company active on the weekend"
+)
 
 ```
 
 Column {data-width=33%}
 -----------------------------------------------------------------------
 
-### <b>Activity patterns</b>
+### <b>Activity patterns</b> {.no-title} 
 
 ```{r}
   
 # Always on
 # % of employees who are active for over 13+ hours a day
-temp_plot
+
+wp_list$data %>%
+  mutate(IsAlwaysOn = (Personas == "6 Always on (13h+)")) %>%
+  create_tracking(
+    metric = "IsAlwaysOn",
+    title = "Activity patterns\nAlways On",
+    subtitle = "% of employees who are active for over 13+ hour blocks a day"
+    )
 
 ```
 
-### <b>Community</b>
+
+### <b>Community</b> {.no-title}
 
 ```{r}
 # small group meetings
 # % of meeting time in a small group setting
-temp_plot
+create_tracking(
+  data = my_sq_data,
+  metric = "monthly_weekend_work",
+  title = "Community\nSmall group meetings",
+  subtitle = "% of company active on the weekend"
+)
   
 ```
