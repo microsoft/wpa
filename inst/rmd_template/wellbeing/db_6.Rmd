@@ -96,7 +96,7 @@ if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
   labs(
     title = "Urgent Collaboration",
     subtitle = "Impact and Frequency of Emails with 'Urgent' keywords",
-    x = "% of employees affected by urgent collaboration",
+    x = "% of employees affected",
     y = "Urgent weeks per employee (average)",
     caption = paste("Bubble size measures number of people in organization.",
                     extract_date_range(my_sq_data, return = "text"))) +

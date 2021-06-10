@@ -30,7 +30,7 @@ KPI_1 <-
   pull(1) %>%
   round(1)
 
-paste(KPI_1, "Chats per week") %>%
+paste(KPI_1, "Weekly chats") %>%
   flexdashboard::valueBox(icon = "fa-users",
                           color = "#34b1e2")
 
@@ -49,7 +49,7 @@ community2_w1_plot1 <-
 
 community2_w1_plot1 <-
   community2_w1_plot1 +
-  labs(title = "Informal communciation (chats)",
+  labs(title = "Weekly Chats",
        subtitle= "Average chats sent per person each week")
 
 community2_w1_plot1 
@@ -87,7 +87,7 @@ KPI_2 <- p_table$Answer %>%
   scales::percent() %>%
   .[[1]] 
 						  
-paste(KPI_2, "Chats") %>%
+paste(KPI_2, "Proportion of Chats") %>%
   flexdashboard::valueBox(icon = "fa-users",
                           color = rgb2hex(1, 147, 157))
 
@@ -145,7 +145,7 @@ my_sq_data %>%
     axis.title = element_blank()) +
   scale_y_continuous(labels = scales::percent, position = "right") +
   coord_flip() +
-  labs(title = "Written communciation (chats and emails)",
+  labs(title = "Written communciation",
        subtitle = "Percentage of written communication by type",
        caption = extract_date_range(my_sq_data, return = "text"))
 
@@ -154,7 +154,7 @@ my_sq_data %>%
 Column {data-width=30%}
 -----------------------------------------------------------------------
 
-### Percentage of informal communication that occurs across levels
+### Percentage of chats that occurs across levels
 
 ```{r}
 
@@ -193,7 +193,7 @@ if(
   
 }
 						  
-paste(KPI_2, "Informality across levels") %>%
+paste(KPI_2, "Chats across levels") %>%
   flexdashboard::valueBox(icon = "fa-users",
                           color = rgb2hex(0, 43, 73))
 						  
@@ -265,7 +265,7 @@ if(
     axis.title = element_blank()) +
   scale_y_continuous(labels = scales::percent, position = "right") +
   coord_flip() +
-  labs(title = "Informal communciation distribution",
+  labs(title = "Chats distribution",
        subtitle = "Percentage of chats sent",
        caption = extract_date_range(my_sq_data, return = "text"))
   
