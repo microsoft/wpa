@@ -26,61 +26,14 @@ Column {data-width=33%}
 ### <b>Balance</b> {.no-title}
 
 ```{r}
-
-create_tracking <- function(data, metric, title, subtitle){
-  
-  data %>%
-    group_by(Date) %>%
-    summarise(across(.cols = metric,
-                     .fns = ~mean(., na.rm = TRUE)),
-              .groups = "drop") %>%
-    mutate(
-      lag0 = lag(!!sym(metric), 0),
-      lag1 = lag(!!sym(metric), 1),
-      lag2 = lag(!!sym(metric), 2),
-      lag3 = lag(!!sym(metric), 3)
-    ) %>%
-    mutate(`4 week rolling average` = select(., paste0("lag", 0:3)) %>%
-             apply(1, function(x) mean(x, na.rm = TRUE))) %>% # Use all available data
-    select(-paste0("lag", 0:3)) %>%
-    rename(`Weekly average` = metric) %>%
-    pivot_longer(cols = c(`Weekly average`, `4 week rolling average`),
-                 names_to = "metrics",
-                 values_to = "value") %>%
-    drop_na(value) %>%
-    ggplot(aes(x = Date,
-              y = value,
-              colour = metrics)) +
-    geom_line(size = 1) +
-    scale_colour_manual(
-      values = c(
-        "Weekly average" = rgb2hex(67, 189, 211),
-        "4 week rolling average" = rgb2hex(0, 82, 101)), 
-    labels = us_to_space,
-    guide = guide_legend(reverse = TRUE)
-    ) +
-    theme_wpa_basic() +
-    theme(axis.line = element_blank(),
-          axis.ticks = element_blank(),
-          axis.title = element_blank(),
-          panel.grid.major.x = element_line(color="gray"),
-          panel.grid.major.y = element_line(colour = "#D9E7F7", size = 5)) +
-    labs(
-      title = title,
-      subtitle = subtitle,
-      caption = extract_date_range(data, return = "text")
-      ) +
-    scale_x_date(position = "top")
-  
-}
-
 # Weekend work
 # % Active on the weekend
 create_tracking(
   data = my_sq_data,
   metric = "monthly_weekend_work",
-  title = "Balance\nWeekend work",
-  subtitle = "% of company active on the weekend"
+  plot_title = "Weekend work",
+  plot_subtitle = "% of company active on the weekend",
+  percent = TRUE
 )
 ```
 
@@ -92,8 +45,9 @@ create_tracking(
 create_tracking(
   data = my_sq_data,
   metric = "Total_focus_hours_daily",
-  title = "Focus\nFocus Time",
-  subtitle = "Average daily focus hours"
+  plot_title = "Focus Time",
+  plot_subtitle = "Average daily focus hours",
+  percent = FALSE
 )
 
 ```
@@ -108,8 +62,9 @@ Column {data-width=33%}
 create_tracking(
   data = flex_index_data,
   metric = "ControlHours",
-  title = "Flexibility\n%Control Active Hours",
-  subtitle = "% of employees controlling active hours"
+  plot_title = "Control Active Hours",
+  plot_subtitle = "% of employees controlling active hours",
+  percent = TRUE
 )
   
 ```
@@ -124,8 +79,9 @@ my_sq_data %>%
   filter(IsUrgent == TRUE) %>%
   create_tracking(
     metric = "After_hours_collaboration_hours",
-    title = "Urgency\nUrgent collaboration",
-    subtitle = "Average after hours collaboration for urgent weeks"
+    plot_title = "Urgent collaboration",
+    plot_subtitle = "Average after hours collaboration for urgent weeks",
+    percent = FALSE
 )
 
 ```
@@ -144,8 +100,9 @@ wp_list$data %>%
   mutate(IsAlwaysOn = (Personas == "6 Always on (13h+)")) %>%
   create_tracking(
     metric = "IsAlwaysOn",
-    title = "Activity patterns\nAlways On",
-    subtitle = "% of employees who are active for over 13+ hour blocks a day"
+    plot_title = "Always On",
+    plot_subtitle = "% of employees who are active for over 13+ hour blocks a day",
+    percent = TRUE
     )
 
 ```
@@ -156,11 +113,13 @@ wp_list$data %>%
 ```{r}
 # small group meetings
 # % of meeting time in a small group setting
-create_tracking(
-  data = my_sq_data,
-  metric = "monthly_weekend_work",
-  title = "Community\nSmall group meetings",
-  subtitle = "% of company active on the weekend"
+my_sq_data %>%
+  mutate(SmallGroupMeetingPercent = Intimate_group_meeting_hours / Meeting_hours) %>%
+  create_tracking(
+    metric = "SmallGroupMeetingPercent",
+    plot_title = "Small group meetings",
+    plot_subtitle = "% of meeting time in a small group setting",
+    percent = TRUE
 )
   
 ```
