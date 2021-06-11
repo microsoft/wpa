@@ -32,3 +32,11 @@ Create a two-series line chart that visualizes a set of metric
 over time for the selected population, with one of the series being a
 four-week rolling average.
 }
+\examples{
+sq_data \%>\%
+  create_tracking(
+    metric = "Collaboration_hours",
+    percent = FALSE
+  )
+
+}

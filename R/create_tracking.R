@@ -19,6 +19,13 @@
 #' @param percent Logical value to determine whether to show labels as
 #'   percentage signs. Defaults to `FALSE`.
 #'
+#' @examples
+#' sq_data %>%
+#'   create_tracking(
+#'     metric = "Collaboration_hours",
+#'     percent = FALSE
+#'   )
+#'
 #' @import dplyr
 #' @import ggplot2
 #' @import reshape2
