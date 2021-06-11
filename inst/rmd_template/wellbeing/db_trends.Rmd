@@ -40,16 +40,25 @@ create_tracking <- function(data, metric, title, subtitle){
       lag2 = lag(!!sym(metric), 2),
       lag3 = lag(!!sym(metric), 3)
     ) %>%
-    mutate(`4 week rolling average` = select(., paste0("lag", 0:3)) %>% apply(1, function(x) mean(x))) %>%
+    mutate(`4 week rolling average` = select(., paste0("lag", 0:3)) %>%
+             apply(1, function(x) mean(x, na.rm = TRUE))) %>% # Use all available data
     select(-paste0("lag", 0:3)) %>%
-    pivot_longer(cols = c(metric, `4 week rolling average`),
+    rename(`Weekly average` = metric) %>%
+    pivot_longer(cols = c(`Weekly average`, `4 week rolling average`),
                  names_to = "metrics",
                  values_to = "value") %>%
     drop_na(value) %>%
     ggplot(aes(x = Date,
               y = value,
               colour = metrics)) +
-    geom_line() +
+    geom_line(size = 1) +
+    scale_colour_manual(
+      values = c(
+        "Weekly average" = rgb2hex(67, 189, 211),
+        "4 week rolling average" = rgb2hex(0, 82, 101)), 
+    labels = us_to_space,
+    guide = guide_legend(reverse = TRUE)
+    ) +
     theme_wpa_basic() +
     theme(axis.line = element_blank(),
           axis.ticks = element_blank(),
@@ -110,11 +119,13 @@ create_tracking(
 ```{r}
   
 # Average after hours collaboration for urgent weeks
-create_tracking(
-  data = my_sq_data,
-  metric = "monthly_weekend_work",
-  title = "Urgency\n%Urgent collaboration",
-  subtitle = "% of company active on the weekend"
+
+my_sq_data %>%
+  filter(IsUrgent == TRUE) %>%
+  create_tracking(
+    metric = "After_hours_collaboration_hours",
+    title = "Urgency\nUrgent collaboration",
+    subtitle = "Average after hours collaboration for urgent weeks"
 )
 
 ```
