@@ -15,14 +15,15 @@ Introduction
   <div class="list-group">
   <a href="#collaboration" class="list-group-item">1. Collaboration </a>
   <a href="#balance" class="list-group-item">2. Balance </a>
-  <a href="#flexibility" class="list-group-item">3. Flexibility </a>
-  <a href="#activity-patterns" class="list-group-item">4. Activity Patterns</a>
+  <a href="#urgency" class="list-group-item">3. Urgency</a>
+  <a href="#flexibility" class="list-group-item">4. Flexibility </a>
+  
   </div>
   </div>
   <div class="col-md-6">
   <div class="list-group">
-  <a href="#focus" class="list-group-item">5. Focus</a>
-  <a href="#urgency" class="list-group-item">6. Urgency</a>
+  <a href="#activity-patterns" class="list-group-item">5. Activity Patterns</a>
+  <a href="#focus" class="list-group-item">6. Focus</a>
   <a href="#community" class="list-group-item">7. Community</a>
   <a href="#informal-communication" class="list-group-item">8. Informal communication</a>
   </div>

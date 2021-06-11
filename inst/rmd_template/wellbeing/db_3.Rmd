@@ -1,4 +1,4 @@
-Flexibility
+Urgency
 =====================================
 
 <body style="background-color:white;font-family:arial">
@@ -7,158 +7,215 @@ Flexibility
 <br>
 <B>
   <font size="+3">
-    Are employees embracing flexible work schedules?
+    Can teams respond to urgent needs without risking employee wellbeing?
   </font>
 </B>
 <br>
 <br>
 </p>
 
+<!--
+<p>
+  <a class="btn btn-primary btn-lg btn-block" data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample6">
+    Resilience: Is the organisation able to respond to urgent needs without risking employee wellbeing?
+  </a>
+</p>
+<div class="collapse" id="collapseExample6">
+  <div class="card card-body">
+    Companies need to cope with unexpected demands without impacting work-life balance. Protect groups with high levels of urgency and after-hours work by shifting towards more planned activities.
+  </div>
+</div>
+<hr>
+-->
 
 Column {data-width=30%}
 -----------------------------------------------------------------------
 
-### Percentage of weeks employees define their own start times
+### % of work weeks included urgent collaboration
 
 ```{r}
 
-KPI_1 <- 
-  flex_index_data %>%
-  create_bar(
-    metric = "ChangeHours",
-    hrvar = NULL,
-	return="table") %>%
-  select(ChangeHours) %>%
-  pull(1) %>%
-  round(3)*100 
-  
+## Pre-calculation
+## Summary table for urgency
+urg_sum_tb <-
+  list(
+  my_sq_data %>%
+    group_by(!!sym(hrvar), PersonId) %>%
+    summarise(across(IsUrgent, ~any(., na.rm = TRUE)), .groups = "drop") %>% # TRUE if any
+    group_by(!!sym(hrvar)) %>%
+    summarise(across(IsUrgent, ~mean(., na.rm = TRUE))) %>%
+    rename(PercentageAffected = "IsUrgent"),
+  my_sq_data %>%
+    group_by(!!sym(hrvar), PersonId) %>%
+    summarise(across(IsUrgent, ~sum(., na.rm = TRUE)), .groups = "drop") %>%
+    group_by(!!sym(hrvar)) %>%
+    summarise(across(IsUrgent, ~mean(., na.rm = TRUE))) %>%
+    rename(NumberUrgentWeeks = "IsUrgent"),
+  my_sq_data %>%
+    hrvar_count(hrvar,
+                return = "table")
+) %>%
+  purrr::reduce(full_join, by = hrvar) %>%
+  filter(n >= 5)
 
-paste(KPI_1, "% define start time")  %>%
-  flexdashboard::valueBox(icon = "fa-hourglass-start",
-                          color = "#34b1e2")
-						  
-```
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  urg_percent <- "0 %"
+  
+} else {
 
-### <B>Are employees freely defining their start time?</B> <br> Teams that embrace flexibility allow members of the team to start their workday at different times. Employees should be able to follow a schedule that suits their needs, than those imposed by an employer.
-
-```{r}
-# Convert `start_hour` into an hour slot string
-hr_slot <- function(x){
+  urg_percent <- scales::percent(mean(my_sq_data$IsUrgent))  
   
-  h_str <- as.numeric(substr(x, start = 1, stop = 2))
-  m_str <- substr(x, start = 3, stop = 4) # keep as string
-  
-  apm <- ifelse(h_str < 12, "AM", "PM")
-  
-  slot1 <- paste0(h_str)
-  slot2 <- paste0(h_str + 1)
-  
-  paste0(slot1, "-", slot2, apm)
 }
 
-flex2_w1_plot <- 
-  flex_index_data %>%
-  mutate(Percentage_of_weeks = ChangeHours)  %>%
-  create_bar(metric = "Percentage_of_weeks",
-             hrvar = hrvar,
-			 rank = NULL,
-             xlim = 1,
-             bar_colour = "#34b1e2",
-             percent = TRUE)
+## KPI box
 
-flex2_w1_plot +
-  labs(title = "Define start times",
-       subtitle = paste("% of weeks employees start outside", hr_slot(start_hour), "window"))
+paste(urg_percent, "urgent collaboration") %>%
+  flexdashboard::valueBox(icon = "fa-exclamation")
+
 
 ```
 
-
-
-Column {data-width=30%}
------------------------------------------------------------------------
-
-### Percentage of weeks employees have recurring disconnection time
+### <B>Which teams are affected by urgent needs more?</B> <br> Work can be unpreditcable and there will be urgent requests, but an overwhelming amount will prevent employees from being able to complete business-as-usual activities.
 
 ```{r}
 
-KPI_3 <-  flex_index_data %>%
-  create_bar(
-    metric = "TakeBreaks",
-    hrvar = NULL,
-	return="table") %>%
-  select(TakeBreaks) %>%
-  pull(1) %>%
-  round(3)*100 
-
-paste(KPI_3, "% recurring disconnection") %>%
-  flexdashboard::valueBox(icon = "fa-stopwatch",
-                          color = rgb2hex(1, 147, 157))
-						  
-```
-
-### <B>Are employees disconnecting at a recurring time during the week?</B> <br> Employees should have the freedom to define their weekday by taking recurring disconnection time to suit their needs. In teams that embrace flexibility, members will choose to organize / split their day in different ways (e.g. take a long lunch-break, disconnect in the afternoon and reconnect in the evening, etc.)
-
-```{r}
-
-flex2_w3_plot <-
-  flex_index_data %>%
-  mutate(Percentage_of_weeks = TakeBreaks) %>%
-  create_bar(
-    metric = "Percentage_of_weeks",
-    hrvar = hrvar,
-    xlim = 1,
-    rank = NULL,
-    bar_colour = rgb2hex(1, 147, 157),
-    percent = TRUE
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
+  urg_sum_tb %>%
+  ggplot(aes(x = PercentageAffected,
+             y = NumberUrgentWeeks,
+             colour = !!sym(hrvar),
+             size = n)) +
+  geom_point(alpha = 0.8) +
+  theme_wpa_basic() +
+  labs(
+    title = "Urgent Collaboration",
+    subtitle = "Impact and Frequency of Emails with 'Urgent' keywords",
+    x = "% of employees affected",
+    y = "Urgent weeks per employee (average)",
+    caption = paste("Bubble size measures number of people in organization.",
+                    extract_date_range(my_sq_data, return = "text"))) +
+  scale_size(range = c(1, 20)) +
+  scale_x_continuous(labels = scales::percent) +
+  ggrepel::geom_text_repel(aes(label = !!sym(hrvar)),
+                           size = 3,
+                           force_pull = -0.02,
+                           colour = "grey40") +
+  theme(
+    legend.position = "none"
   )
-
-flex2_w3_plot +
-  labs(title = "Recurring Disconnection Time",
-       subtitle = paste("% of weeks employees have recurring disconnection"))
+  
+}
 
 ```
 
 Column {data-width=30%}
 -----------------------------------------------------------------------
 
-### Percentage of weeks employees limit their activity to 8 or less distinct hours
+### % change in after-hours when urgent collaboration is present
 
 ```{r}
+urg_calc <- my_sq_data %>%
+  group_by(IsUrgent) %>%
+  summarise(across(After_hours_collaboration_hours, ~mean(.)))
 
-KPI_2 <- flex_index_data %>%
-  create_bar(
-    metric = "ControlHours",
-    hrvar = NULL,
-	return="table") %>%
-  select(ControlHours) %>%
-  pull(1) %>%
-  round(3)*100 
+any_urg <-
+  urg_calc %>%
+  filter(IsUrgent == TRUE) %>%
+  nrow()
+
+afch_urg <-
+  urg_calc %>%
+  filter(IsUrgent == TRUE) %>%
+  pull(After_hours_collaboration_hours)
+
+afch_nonurg <-
+  urg_calc %>%
+  filter(IsUrgent == FALSE) %>%
+  pull(After_hours_collaboration_hours)
 
 
-paste(KPI_2, "% control active hours") %>%
-  flexdashboard::valueBox(icon = "fa-balance-scale",
-                          color = "#00508F")
-						  
+afch_display <- (afch_urg - afch_nonurg) / afch_nonurg
+
+if(any_urg == 0){
+  
+  afch_display <- "0 %"
+  
+} else {
+  
+  afch_display <- scales::percent(afch_display)
+  
+}
+
+afch_display %>%
+  paste("change in after hours") %>%
+  flexdashboard::valueBox(icon = "fa-moon",
+                          color = "#f59b76")
 ```
 
-### <B>Are employees able to control their active hours?</B> <br> Employees who choose alternative work schedules should be able to maintain a workload that is broadly equivalent to the standard 8 hours. Flexible working should not result in longer hours spread across the day. 
+
+### <B>Is the organization able to respond to urgent needs without risking employee wellbeing?</B> <br> Companies need to cope with unexpected demands without impacting work-life balance. Protect groups with high levels of urgency and after-hours work by shifting towards more planned activities.
 
 ```{r}
+groups_above_mingroup <-
+  my_sq_data %>%
+  hrvar_count(hrvar = hrvar, return = "table") %>%
+  filter(n >= 5) %>%
+  pull(!!sym(hrvar))
 
-
-flex2_w2_plot <- flex_index_data %>%
-  mutate(Percentage_of_weeks = ControlHours) %>%
-  create_bar(metric = "Percentage_of_weeks",
-             hrvar = hrvar,
-             xlim = 1,
-             rank = NULL,
-             bar_colour = "#00508F",
-             percent = TRUE)
-
-flex2_w2_plot +
-  labs(title = "Control active hours",
-       subtitle = paste("% of weeks employees control active hours"))
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
+my_sq_data %>%
+  filter(!!sym(hrvar) %in% groups_above_mingroup) %>%
+  group_by(IsUrgent, !!sym(hrvar)) %>%
+  summarise(across(After_hours_collaboration_hours, ~mean(.)), .groups = "drop") %>%
+  mutate(Urgent_collaboration =
+           case_when(IsUrgent == TRUE ~ "Urgent weeks",
+                     IsUrgent == FALSE ~ "Non-urgent weeks")) %>%
+  ggplot(aes(x = After_hours_collaboration_hours,
+             y = !!sym(hrvar),
+             colour = Urgent_collaboration)) +
+  geom_point(size = 3) +
+  scale_x_continuous(position = "top") +
+  scale_colour_manual(
+    name = "Urgent collaboration",
+    values = c(
+      "Non-urgent weeks" = "#00508F",
+      "Urgent weeks" = "#f59b76"
+    )
+  ) +
+  theme_wpa_basic() +
+  labs(title = "After hours collaboration",
+       subtitle = "Average hours per person per week",
+       caption = extract_date_range(my_sq_data, return = "text"),
+       x = us_to_space("After_hours_collaboration_hours")) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "#D9E7F7", size = 3), # lightblue bar
+    panel.grid.minor.x = element_line(color="gray"),
+    strip.placement = "outside",
+    strip.background = element_blank(),
+    strip.text = element_blank(),
+    axis.title = element_blank()
+  ) +
+  geom_vline(xintercept =
+               my_sq_data %>%
+               afterhours_sum(hrvar = NULL,
+                              return = "table") %>%
+               pull(After_hours_collaboration_hours),
+             colour = "red")
+  
+}
 
 ```
-
 
