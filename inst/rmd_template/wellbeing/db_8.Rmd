@@ -42,7 +42,8 @@ paste(KPI_1, "Weekly chats") %>%
 
 community2_w1_plot1 <- 
   my_sq_data %>%
-  create_bar(metric="Instant_messages_sent",
+  rename(Chats_sent = "Instant_messages_sent") %>%
+  create_bar(metric = "Chats_sent",
              hrvar=hrvar,
              rank = NULL
              )
@@ -59,9 +60,16 @@ community2_w1_plot1
 Column {data-width=30%}
 -----------------------------------------------------------------------
 
-### Percentage of writen communication that is conducted informally via chats
+### Percentage of writen communication conducted informally via chats
 
 ```{r}
+# Custom formatter for IMs
+format_im <- function(x){
+  x <- gsub(pattern = "Instant_messages_",
+            replacement = "Chats_",
+            x = x)
+  us_to_space(x)
+}
 
 p_table <-
   my_sq_data %>%
@@ -132,7 +140,7 @@ my_sq_data %>%
   scale_fill_manual(values = c(
     "Instant_messages_sent" = rgb2hex(1, 147, 157),
     "Emails_sent" = rgb2hex(189, 191, 192)), 
-    labels = us_to_space,
+    labels = format_im,
     guide = guide_legend(reverse = TRUE)
   ) +
   scale_colour_manual(values = c(
