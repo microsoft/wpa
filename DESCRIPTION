@@ -67,5 +67,6 @@ Suggests:
     leiden,
     lifecycle,
     fst,
-    glue
+    glue,
+    flexdashboard
 Language: en-US

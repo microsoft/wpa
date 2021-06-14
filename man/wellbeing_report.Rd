@@ -14,7 +14,8 @@ wellbeing_report(
 )
 }
 \arguments{
-\item{wbq}{Data frame. A custom Wellbeing Query dataset.}
+\item{wbq}{Data frame. A custom Wellbeing Query dataset based on the Person
+Query.}
 
 \item{hcq}{Data frame. An Hourly Collaboration Query dataset.}
 

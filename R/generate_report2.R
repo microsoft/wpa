@@ -22,6 +22,8 @@
 #' @param output_dir output directory for report in `rmarkdown::render()`.
 #'   Default is user's current directory.
 #' @param report_title report title. Default is `"Report"`.
+#' @param rmd_dir string specifying the path to the directory containing the
+#'   RMarkdown template files.
 #' @param \dots other arguments to be passed to `params`. For instance, pass
 #'   `hrvar` if the RMarkdown document requires a 'hrvar' parameter.
 #' @export

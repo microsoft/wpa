@@ -25,6 +25,9 @@ Default is user's current directory.}
 
 \item{report_title}{report title. Default is \code{"Report"}.}
 
+\item{rmd_dir}{string specifying the path to the directory containing the
+RMarkdown template files.}
+
 \item{\dots}{other arguments to be passed to \code{params}. For instance, pass
 \code{hrvar} if the RMarkdown document requires a 'hrvar' parameter.}
 }
