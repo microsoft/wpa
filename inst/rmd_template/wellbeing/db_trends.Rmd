@@ -28,13 +28,22 @@ Column {data-width=33%}
 ```{r}
 # Weekend work
 # % Active on the weekend
-create_tracking(
-  data = my_sq_data,
-  metric = "monthly_weekend_work",
-  plot_title = "Weekend work",
-  plot_subtitle = "% of company active on the weekend",
-  percent = TRUE
+
+if(sum(my_sq_data$Weekend_work, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+  
+  create_tracking(
+    data = my_sq_data,
+    metric = "Weekend_work",
+    plot_title = "Weekend work",
+    plot_subtitle = "% of employees active on the weekend",
+    percent = TRUE
 )
+}
+
 ```
 
 ### <b>Focus</b> {.no-title}
@@ -72,17 +81,24 @@ create_tracking(
 ### <b>Urgency</b> {.no-title}
 
 ```{r}
-  
-# Average after hours collaboration for urgent weeks
 
-my_sq_data %>%
-  filter(IsUrgent == TRUE) %>%
-  create_tracking(
-    metric = "After_hours_collaboration_hours",
-    plot_title = "Urgent collaboration",
-    plot_subtitle = "Average after hours collaboration for urgent weeks",
-    percent = FALSE
-)
+# PREVIOUS: Average after hours collaboration for urgent weeks
+
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+  
+  my_sq_data %>%
+    # filter(IsUrgent == TRUE) %>%
+    create_tracking(
+      metric = "IsUrgent",
+      plot_title = "Urgent collaboration",
+      plot_subtitle = "% of employees who have experienced urgent collaboration",
+      percent = TRUE
+    )
+}
 
 ```
 
@@ -113,13 +129,24 @@ wp_list$data %>%
 ```{r}
 # small group meetings
 # % of meeting time in a small group setting
-my_sq_data %>%
-  mutate(SmallGroupMeetingPercent = Intimate_group_meeting_hours / Meeting_hours) %>%
-  create_tracking(
-    metric = "SmallGroupMeetingPercent",
-    plot_title = "Small group meetings",
-    plot_subtitle = "% of meeting time in a small group setting",
-    percent = TRUE
-)
+
+if(sum(my_sq_data$Intimate_group_meeting_hours, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+  
+  my_sq_data %>%
+    mutate(SmallGroupMeetingPercent = Intimate_group_meeting_hours / Meeting_hours) %>%
+    create_tracking(
+      metric = "SmallGroupMeetingPercent",
+      plot_title = "Small group meetings",
+      plot_subtitle = "Average % of meeting time in a small group setting",
+      percent = TRUE
+  )
+}
+
+
+
   
 ```
