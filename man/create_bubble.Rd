@@ -92,6 +92,7 @@ Other Visualization:
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_tracking}()},
 \code{\link{create_trend}()},
 \code{\link{email_dist}()},
 \code{\link{email_fizz}()},
@@ -149,6 +150,7 @@ Other Flexible:
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_tracking}()},
 \code{\link{create_trend}()},
 \code{\link{period_change}()}
 }

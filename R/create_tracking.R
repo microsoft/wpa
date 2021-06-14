@@ -3,12 +3,15 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create a line chart that tracks metrics over time with rolling
-#'   averages
+#' @title Create a line chart that tracks metrics over time with a 4-week
+#'   rolling average
 #'
-#' @description Create a two-series line chart that visualizes a set of metric
-#'   over time for the selected population, with one of the series being a
-#'   four-week rolling average.
+#' @description
+#' `r lifecycle::badge('experimental')`
+#'
+#' Create a two-series line chart that visualizes a set of metric over time for
+#' the selected population, with one of the series being a four-week rolling
+#' average.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric,
@@ -25,6 +28,9 @@
 #'     metric = "Collaboration_hours",
 #'     percent = FALSE
 #'   )
+#'
+#' @family Visualization
+#' @family Flexible
 #'
 #' @import dplyr
 #' @import ggplot2
