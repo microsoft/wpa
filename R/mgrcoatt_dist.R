@@ -102,27 +102,42 @@ myPeriod <-
     plot_legend %>%
     dplyr::left_join(plot_table, by = "group")
 
+	## Remove max from axis labels, and add %
+  max_blank <- function(x){
+    as.character(
+      c(
+        scales::percent(
+          x[1:length(x) - 1]
+          ),
+        "")
+    )
+  }
+
+
   ## Bar plot
   plot_object <-
     plot_table %>%
     ggplot(aes(x = group, y=Employees, fill = bucket_coattendman_rate)) +
     geom_bar(stat = "identity", position = position_fill(reverse = TRUE)) +
   	coord_flip() +
-  	scale_y_continuous(labels = function(x) paste0(x*100, "%")) +
-  	annotate("text",
-  	         x = plot_legend$group,
-  	         y = -.05,
-  	         label = plot_legend$Employee_Count) +
+    scale_y_continuous(expand = c(.01, 0), labels = max_blank, position = "right") +
+	annotate("text", x = plot_legend$group, y = 1.15, label = plot_legend$Employee_Count, size = 3) +
+    annotate("rect", xmin = 0.5, xmax = length(plot_legend$group) + 0.5, ymin = 1.05, ymax = 1.25, alpha = .2) +
+    annotate(x = length(plot_legend$group) + 0.8,
+             xend = length(plot_legend$group) + 0.8,
+             y = 0,
+             yend = 1,
+             colour = "black",
+             lwd = 0.75,
+             geom = "segment") +
   	scale_fill_manual(name="",
-  	                  values = c("#bed6f2",
-  	                             "#e9f1fb",
-  	                             "#ffdfd3",
-  	                             "#FE7F4F")) +
+  	                  values = c("#bfe5ee",  "#b4d5dd", "#fcf0eb", "#facebc")) +
     theme_wpa_basic() +
-  	labs(title = "Time with Manager",
-  	     subtitle = paste("Meeting Co-attendance Rate by", hrvar),
-  	     x = camel_clean(hrvar),
-  	     y = "Fraction of Employees",
+    theme(axis.line = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank()) +
+  	labs(title = "Meetings coattended by line manager",
+  	     subtitle = paste("Percentage of meetings per person"),
   	     caption = extract_date_range(data, return = "text"))
 
   ## Table to return
