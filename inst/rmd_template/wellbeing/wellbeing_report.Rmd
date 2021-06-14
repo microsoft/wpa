@@ -15,9 +15,9 @@ title: "`r params$set_title`"
 start_time <- Sys.time()
 
 # 1. Load Library
-library(flexdashboard)
 library(wpa)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 
 # 1a. Load auxiliary functions
 source("auxiliary.R")

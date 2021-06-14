@@ -6,7 +6,8 @@
 #' This function takes a custom Wellbeing Query and an Hourly Collaboration
 #' query, generating a HTML report on wellbeing.
 #'
-#' @param wbq Data frame. A custom Wellbeing Query dataset.
+#' @param wbq Data frame. A custom Wellbeing Query dataset based on the Person
+#'   Query.
 #' @param hcq Data frame. An Hourly Collaboration Query dataset.
 #' @param hrvar String specifying HR attribute to cut by archetypes. Defaults to
 #'   `Organization`.
@@ -26,6 +27,11 @@ wellbeing_report <- function(wbq,
                              path = "wellbeing_report"
                              ){
 
+  ## Check if dependencies are installed
+  check_pkg_installed(pkgname = "flexdashboard")
+
+
+  ## Generate report from RMarkdown
   generate_report2(
     wbq = wbq,
     hcq = hcq,
