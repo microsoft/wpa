@@ -49,6 +49,10 @@ create_tracking <- function(data,
   min_date <- data %>% extract_date_range() %>% pull(Start)
   max_date <- data %>% extract_date_range() %>% pull(End)
 
+  # Set variables
+  metrics <- NULL
+  `4 week rolling average` <- NULL
+
   data %>%
     group_by(Date) %>%
     summarise(across(.cols = metric,
