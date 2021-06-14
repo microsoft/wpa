@@ -52,6 +52,7 @@ create_tracking <- function(data,
   # Set variables
   metrics <- NULL
   `4 week rolling average` <- NULL
+  `Weekly average` <- NULL
 
   data %>%
     group_by(Date) %>%
