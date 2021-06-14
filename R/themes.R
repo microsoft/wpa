@@ -89,6 +89,7 @@ theme_wpa_basic <- function(font_size = 12){
   bg_colour2 <- "#CCCCCC" # light grey
   text_colour <- "grey40"
 
+  text_tiny_dark <- element_text(size = font_size - 4, colour = text_colour, face = "plain")
   text_small_dark <- element_text(size = font_size - 2, colour = text_colour, face = "plain")
   text_small_light <- element_text(size = font_size - 2, colour = "#FFFFFF", face = "plain")
   text_normal <- element_text(size = font_size + 0, colour = text_colour, face = "plain")
@@ -103,6 +104,7 @@ theme_wpa_basic <- function(font_size = 12){
           text = text_normal,
           plot.title = text_title,
           plot.subtitle = text_normal,
+          plot.caption = text_tiny_dark,
 
           axis.title = text_normal,
           axis.text = text_small_dark,

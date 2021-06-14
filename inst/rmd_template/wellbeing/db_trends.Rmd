@@ -1,0 +1,152 @@
+Trends
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B><font size="+3">How are behaviors impacting wellbeing evolving?</font></B>
+<br>
+<br>
+</p>
+<!--
+<style>
+.chart-title {  
+  font-family: Arial;
+  height:40px; 
+  display: inline-block;
+  overflow: auto;
+}    
+</style>   
+-->
+
+Column {data-width=33%}
+-----------------------------------------------------------------------
+
+### <b>Balance</b> {.no-title}
+
+```{r}
+# Weekend work
+# % Active on the weekend
+
+if(sum(my_sq_data$Weekend_work, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+  
+  create_tracking(
+    data = my_sq_data,
+    metric = "Weekend_work",
+    plot_title = "Weekend work",
+    plot_subtitle = "% of employees active on the weekend",
+    percent = TRUE
+)
+}
+
+```
+
+### <b>Focus</b> {.no-title}
+
+```{r}
+  
+# % of work week with focus time
+create_tracking(
+  data = my_sq_data,
+  metric = "Total_focus_hours_daily",
+  plot_title = "Focus Time",
+  plot_subtitle = "Average daily focus hours",
+  percent = FALSE
+)
+
+```
+
+Column {data-width=33%}
+-----------------------------------------------------------------------
+
+### <b>Flexibility</b> {.no-title}
+
+```{r}
+# % of employees who limit their activity to 8 or fewer distinct hours
+create_tracking(
+  data = flex_index_data,
+  metric = "ControlHours",
+  plot_title = "Control Active Hours",
+  plot_subtitle = "% of employees controlling active hours",
+  percent = TRUE
+)
+  
+```
+
+### <b>Urgency</b> {.no-title}
+
+```{r}
+
+# PREVIOUS: Average after hours collaboration for urgent weeks
+
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+  
+  my_sq_data %>%
+    # filter(IsUrgent == TRUE) %>%
+    create_tracking(
+      metric = "IsUrgent",
+      plot_title = "Urgent collaboration",
+      plot_subtitle = "% of employees who have experienced urgent collaboration",
+      percent = TRUE
+    )
+}
+
+```
+
+Column {data-width=33%}
+-----------------------------------------------------------------------
+
+### <b>Activity patterns</b> {.no-title} 
+
+```{r}
+  
+# Always on
+# % of employees who are active for over 13+ hours a day
+
+wp_list$data %>%
+  mutate(IsAlwaysOn = (Personas == "6 Always on (13h+)")) %>%
+  create_tracking(
+    metric = "IsAlwaysOn",
+    plot_title = "Always On",
+    plot_subtitle = "% of employees who are active for over 13+ hour blocks a day",
+    percent = TRUE
+    )
+
+```
+
+
+### <b>Community</b> {.no-title}
+
+```{r}
+# small group meetings
+# % of meeting time in a small group setting
+
+if(sum(my_sq_data$Intimate_group_meeting_hours, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+  
+  my_sq_data %>%
+    mutate(SmallGroupMeetingPercent = Intimate_group_meeting_hours / Meeting_hours) %>%
+    create_tracking(
+      metric = "SmallGroupMeetingPercent",
+      plot_title = "Small group meetings",
+      plot_subtitle = "Average % of meeting time in a small group setting",
+      percent = TRUE
+  )
+}
+
+
+
+  
+```
