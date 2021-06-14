@@ -2,10 +2,20 @@ Notes
 =====================================
 
 
-Column {data-width=30%}
+Column {data-width=20%}
 -----------------------------------------------------------------------
 
-### <B>Report Notes</B>
+### Report Notes
+
+```{r}
+flexdashboard::valueBox(
+  value = "",
+  color = rgb2hex(130, 130, 130)
+  )
+
+```
+
+### <B>Report Notes</B> {.no-title}
 
 ```{r}
   
@@ -25,14 +35,27 @@ paste(text1, text2, text3, sep = "\n\n" )%>% md2html()
 ```
 
 
-Column {data-width=70%}
+Column {data-width=80%}
 -----------------------------------------------------------------------
 
-### <B> Glossary </B>
+### Glossary title
+
+```{r}
+flexdashboard::valueBox(
+  value = "",
+  color = rgb2hex(130, 130, 130)
+  )
+
+```
+
+
+### <B> Glossary </B> {.no-title}
 
 ```{r}
 
 gloss_tb %>%
-  create_dt()
+  create_dt(
+    freeze = 0
+  )
 
 ```
