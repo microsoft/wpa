@@ -2,6 +2,11 @@
 
 - Improved visuals on `workpatterns_rank()`
 
+New functions:
+- `generate_report2()` (#141)
+- `wellbeing_report()` (#141)
+- `create_tracking()` (#141)
+
 
 # wpa 1.5.0
 
