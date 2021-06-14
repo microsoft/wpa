@@ -6,7 +6,7 @@
 #' @title
 #' Estimate an effect of intervention on every WPA metric in input file by
 #' applying single-group Interrupted Time-Series Analysis (ITSA)
-#' 
+#'
 #' @author Aleksey Ashikhmin <alashi@@microsoft.com>
 #'
 #' @description
@@ -16,38 +16,51 @@
 #' interrupted time-series analysis for single- and multiple-group comparisons',
 #' Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500
 #'
-#' @param data Person Query as a dataframe including date column named 'Date'
-#' This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.
-#' @param before_start Start date of 'before' time period in MM/DD/YYYY format as character type.
-#' Before time period is the period before the intervention (e.g. training program, re-org, shift to remote work) 
-#' occurs and bounded by before_start and before_end parameters. Longer period increases likelihood of achieving more statistically significant results.  
-#' Defaults to earliest date in dataset.
-#' @param before_end End date of 'before' time period in MM/DD/YYYY  format as character type.
-#' @param after_start Start date of 'after' time period in MM/DD/YYYY  format as character type. 
-#' After time period is the period after the intervention occurs and bounded by after_start and after_end parameters. 
-#' Longer period increases likelihood of achieving more statistically significant results.  
-#' Defaults to date after before_end.
-#' @param after_end End date of 'after' time period in MM/DD/YYYY  format as character type. Defaults to latest date in dataset.
+#' This function further requires the installation of 'sandwich', 'portes', and
+#' 'lmtest' in order to work. These packages can be installed from CRAN using
+#' `install.packages()`.
+#'
+#' @details
+#' This function uses the additional package dependencies 'sandwich', 'lmtest',
+#' and 'portes'. Please install these separately from CRAN prior to running the
+#' function.
+#'
+#' @param data Person Query as a dataframe including date column named `Date`.
+#'   This function assumes the data format is MM/DD/YYYY as is standard in a WpA
+#'   query output.
+#' @param before_start Start date of 'before' time period in MM/DD/YYYY format
+#'   as character type. Before time period is the period before the intervention
+#'   (e.g. training program, re-org, shift to remote work) occurs and bounded by
+#'   before_start and before_end parameters. Longer period increases likelihood
+#'   of achieving more statistically significant results. Defaults to earliest
+#'   date in dataset.
+#' @param before_end End date of 'before' time period in MM/DD/YYYY  format as
+#'   character type.
+#' @param after_start Start date of 'after' time period in MM/DD/YYYY  format as
+#'   character type. After time period is the period after the intervention
+#'   occurs and bounded by after_start and after_end parameters. Longer period
+#'   increases likelihood of achieving more statistically significant results.
+#'   Defaults to date after before_end.
+#' @param after_end End date of 'after' time period in MM/DD/YYYY  format as
+#'   character type. Defaults to latest date in dataset.
 #' @param ac_lags_max maximum lag for autocorrelation test. Default is 7
 #' @param return String specifying what output to return. Defaults to "table".
 #' Valid return options include:
-#'   - 'plot': return a list of plots.
-#'   - 'table': return data.frame with estimated models' coefficients and their corresponding p-values
-#'               You should look for significant p-values in beta_2 to indicate an immediate treatment effect,
-#'               and/or in beta_3 to indicate a treatment effect over time
+#'   - `'plot'`: return a list of plots.
+#'   - `'table'`: return data.frame with estimated models' coefficients and
+#'   their corresponding p-values You should look for significant p-values in
+#'   beta_2 to indicate an immediate treatment effect, and/or in beta_3 to
+#'   indicate a treatment effect over time
 #'
 #' @import dplyr
 #' @import ggplot2
-#' @import sandwich
-#' @import lmtest
-#' @import portes
 #'
 #' @family Flexible Input
 #' @family Interrupted Time-Series Analysis
 #'
 #'
 #' @examples
-#'
+#' \donttest{
 #' # Returns summary table
 #'
 #' create_ITSA(
@@ -73,7 +86,7 @@
 #'
 #' # Extract a plot as an example
 #' plot_list$Workweek_span
-#'
+#' }
 #' @export
 
 create_ITSA <-
@@ -93,6 +106,11 @@ create_ITSA <-
     stopifnot(is.character(after_end)|inherits(after_end, "Date"))
     stopifnot(is.numeric(ac_lags_max))
     stopifnot(is.character(return))
+
+    ## Check if dependencies are installed
+    check_pkg_installed(pkgname = "sandwich")
+    check_pkg_installed(pkgname = "lmtest")
+    check_pkg_installed(pkgname = "portes")
 
     ## Check required columns in data
     required_variables <- c("Date",
@@ -190,7 +208,7 @@ create_ITSA <-
 
         data_OLS <- data.frame(Date, Y, T, X, XT, stringsAsFactors=FALSE)
 
-        single_itsa = lm(Y ~ T + X + XT, data = data_OLS)
+        single_itsa = stats::lm(Y ~ T + X + XT, data = data_OLS)
 
         # Newey-West variance estimator produces consistent estimates when there
         # is autocorrelation in addition to possible Heteroscedasticity
@@ -280,7 +298,7 @@ create_ITSA <-
         before_intervention_df <- data_OLS[1:event_T,]
         before_intervention_df[event_T,"X"] <- 0
 
-        hat_Y_before_and_at_intervention <- data.frame(DateTime = data_OLS[1:event_T, "Date"], T=data_OLS[1:event_T, "T"],Y = predict(single_itsa, before_intervention_df))
+        hat_Y_before_and_at_intervention <- data.frame(DateTime = data_OLS[1:event_T, "Date"], T=data_OLS[1:event_T, "T"],Y = stats::predict(single_itsa, before_intervention_df))
         hat_Y_after_and_at_intervention <- data.frame(DateTime =data_OLS[event_T:dim(data_OLS)[1], "Date"], T=data_OLS[event_T:dim(data_OLS)[1], "T"], Y = hat_Y[event_T:dim(data_OLS)[1]])
 
         # Create basic graph
@@ -319,7 +337,7 @@ create_ITSA <-
         # the main title
         p_final <- p_final + theme(
           plot.title = element_text(color="blue", size=14, face="bold.italic"))
-        
+
         # Save plot in list
         results_plot[[metric_name]] <- p_final
       }else{
