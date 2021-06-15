@@ -70,10 +70,11 @@ create_IV <- function(data,
                       siglevel = 0.05,
                       return = "plot"){
 
-  # Preserve string
+  # Preserve string ----------------------------------------------------------
   pred_chr <- NULL
   pred_chr <- predictors
 
+  # Select training dataset --------------------------------------------------
 
   if(is.null(tidyselect::all_of(predictors))){
 
@@ -93,7 +94,8 @@ create_IV <- function(data,
 
   }
 
-  # Calculate Odds
+  # Calculate odds -----------------------------------------------------------
+
   odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
   lnodds <- log(odds)
 
