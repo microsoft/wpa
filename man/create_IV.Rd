@@ -10,22 +10,27 @@ create_IV(
   outcome,
   bins = 5,
   siglevel = 0.05,
+  exc_sig = FALSE,
   return = "plot"
 )
 }
 \arguments{
 \item{data}{A Person Query dataset in the form of a data frame.}
 
-\item{predictors}{A character vector specifying the columns to be used as predictors.
-Defaults to NULL, where all numeric vectors in the data will be used as predictors.}
+\item{predictors}{A character vector specifying the columns to be used as
+predictors. Defaults to NULL, where all numeric vectors in the data will be
+used as predictors.}
 
 \item{outcome}{A string specifying a binary variable, i.e. can only contain
 the values 1 or 0.}
 
-\item{bins}{Number of bins to use in \code{Information::create_infotables()}, defaults to 5.}
+\item{bins}{Number of bins to use, defaults to 5.}
 
-\item{siglevel}{Significance level to use in comparing populations for the outcomes,
-defaults to 0.05}
+\item{siglevel}{Significance level to use in comparing populations for the
+outcomes, defaults to 0.05}
+
+\item{exc_sig}{Logical value determining whether to exclude values where the
+p-value lies below what is set at \code{siglevel}. Defaults to \code{FALSE}.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -49,8 +54,8 @@ argument:
 \item \code{"list"}: list. A list of outputs for all the input variables.
 \item \code{"plot-WOE"}: A list of 'ggplot' objects that show the WOE for each
 predictor used in the model.
-\item \code{"IV"} returns the original Information object returned by
-\code{Information::create_infotables()}.
+\item \code{"IV"} returns a list object which mirrors the return
+in \code{Information::create_infotables()}.
 }
 }
 \description{
