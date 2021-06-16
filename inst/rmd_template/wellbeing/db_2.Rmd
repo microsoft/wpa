@@ -1,0 +1,183 @@
+Balance
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B><font size="+3">Can employees balance collaboration and personal time?</font></B>
+<br>
+<br>
+</p>
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Average daily collaboration taking place after-hours  
+
+```{r}
+
+
+KPI_1 <- my_sq_data %>%
+  create_bar(metric="dailyAfterHours", hrvar= NULL, return="table") %>%
+  select(dailyAfterHours) %>%
+  pull(1) %>%
+  round(1)
+
+paste(KPI_1, "hrs after work-hours")  %>%
+  flexdashboard::valueBox(icon = "fa-moon",
+                          color = rgb2hex(49, 97, 124))
+```
+
+### <B>Is after-hours work common practice?</B> <br> Although sometimes it may be necessary, habitually extending work into evenings is particularly detrimental to workers’ mental health.
+
+```{r}
+balance2_w1_plot1 <- my_sq_data  %>%
+  rename(`After Hours Collaboration` = "dailyAfterHours") %>%
+  create_bar(metric = "After Hours Collaboration",
+             hrvar = hrvar,
+             return = "plot",
+             rank = NULL,
+             bar_colour =  rgb2hex(49, 97, 124)) # Need to add mode of communication
+
+balance2_w1_plot1 + labs(title = "After hours", subtitle = "Average hours per person per day")
+
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of employees engaging in 2+ after-hours per day 
+
+```{r}
+KPI_2 <-
+  my_sq_data %>%
+    create_dist(metric = "dailyAfterHours",
+                hrvar = NULL,
+                return = "table",
+                cut = c(1,2))
+
+if(!("2+ hours" %in% names(KPI_2))){
+  
+  KPI_2 <- 0
+  
+} else {
+  
+  KPI_2 <- 
+    KPI_2 %>%
+    pull("2+ hours") %>%
+    .[[1]] %>%
+    round(3) * 100
+}
+
+paste(KPI_2, "% long after-hours") %>%
+  flexdashboard::valueBox(icon = "fa-calendar-plus",
+                          color = "#f59b76")
+```
+
+### <B>Which employees are engaging in the most after hours work? </B> <br> Identify groups most at risk of losing personal time and take steps to intervene and help reduce regular after-hours.
+
+```{r}
+balance2_w2_plot1 <- 
+  my_sq_data %>%
+  rename(`After Hours Collaboration` = "dailyAfterHours")  %>% 
+  create_dist(metric = "After Hours Collaboration",
+              hrvar = hrvar,
+              return = "plot",
+              cut = c(1,2),
+              dist_colours = c("#f59b76", "#fcf0eb", "#bfe5ee"))
+		
+		
+balance2_w2_plot1 +
+  labs(title = "After hours distribution",
+       subtitle = "% of employees by daily after hours collaboration")
+
+		
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of employees active on weekends at least once per month 
+
+```{r}
+
+if(sum(my_sq_data$monthly_weekend_work, na.rm = TRUE) == 0){
+  
+  KPI_3 <- 0
+  
+} else {
+  
+  KPI_3 <- 
+    my_sq_data %>%
+    create_bar(metric = "monthly_weekend_work", hrvar = NULL, return="table") %>%
+    pull("monthly_weekend_work") %>%
+    .[[1]] %>%
+    round(3)* 100
+  
+}
+
+# Need to calculate right KPI
+paste(KPI_3, "% weekend workers") %>%
+  flexdashboard::valueBox(icon = "fa-calendar-times",
+                          color = "#5B0F66")
+
+```
+
+### <B>Are employees engaging in regular weekend work?</B> <br> Switching on for even a short period of time on weekends can siginifcantly harm employee wellbeing.  
+
+```{r}
+
+if(sum(my_sq_data$Frequency_of_weekend_work, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient data to display.")
+  
+} else {
+    
+  my_sq_data %>%
+  mutate(
+    across(.cols = Frequency_of_weekend_work,
+           .fns = ~ifelse(!is.finite(.), 52, .))) %>% # Assume once a year = Never
+  group_by(!!sym(hrvar), PersonId) %>%
+  summarise(
+    across(
+      .cols = Frequency_of_weekend_work,
+      .fns = ~median(., na.rm = TRUE)
+    ),
+    .groups = "drop"
+  ) %>%
+  group_by(!!sym(hrvar)) %>%
+  summarise(
+    Frequency_of_weekend_work = median(Frequency_of_weekend_work, na.rm = TRUE),
+    n = n_distinct(PersonId)
+  ) %>%
+  filter(n >= 5) %>%
+  ggplot(aes(x = Frequency_of_weekend_work,
+             y = !!sym(hrvar),
+             colour = "Frequency of weekend work")) +
+  geom_point(size = 3) +
+  scale_colour_manual(
+    name="",
+	values = "#5B0F66",
+    # guide = "Frequency of weekend work"
+    ) +
+  scale_x_reverse(
+    limits = c(15, 1),
+    breaks = c(1, 52/12, 52/6, 13),
+    labels = c("Weekly", "Monthly", "Bi-Monthly", "Quarterly"),
+    position = "top"
+  ) +
+  labs(title = "Weekend work", 
+       subtitle = "Median frequency of weekend work", 
+       caption = extract_date_range(my_sq_data, return = "text")) +
+  theme_wpa_basic() + 
+  theme(axis.line.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank(),
+        panel.grid.major.y = element_line(color="gray"),
+        panel.grid.major.x = element_line(colour = "#D9E7F7", size = 5)) 
+  
+}
+
+```
