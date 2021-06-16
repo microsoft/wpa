@@ -233,6 +233,9 @@ network_p2p <- function(data,
 
   } else if(display == "leiden"){
 
+    # Check package installation
+    check_pkg_installed(pkgname = "leiden")
+
     ## Return a numeric vector of partitions / clusters / modules
     ## Set a low resolution parameter to have fewer groups
     ld <- leiden::leiden(g_raw, resolution_parameter = res, seed = seed) # create partitions
@@ -352,14 +355,18 @@ network_p2p <- function(data,
                                 alpha = node_alpha,
                                 pch = 16) +
         theme_void() +
-        theme(legend.position = legend_pos,
-              legend.background = element_rect(fill = bg_fill),
-              plot.background = element_rect(fill = bg_fill),
-              text = element_text(colour = font_col),
-              axis.line = element_blank()) +
+        theme(
+          legend.position = legend_pos,
+          legend.background = element_rect(fill = bg_fill, colour = bg_fill),
+
+          text = element_text(colour = font_col),
+          axis.line = element_blank(),
+          panel.grid = element_blank()
+          ) +
         labs(caption = paste0("Person to person collaboration showing ", v_attr, ".  "), # spaces intentional
              y = "",
              x = "")
+
 
       # Default PDF output unless NULL supplied to path
       if(is.null(path)){
