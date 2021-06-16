@@ -136,11 +136,13 @@ create_IV <- function(data,
 
   train <- train %>% select(predictors$Variable, outcome)
 
-  # IV Analysis
+  # IV Analysis -------------------------------------------------------------
+
+  ## Following section is equivalent to:
   # IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
 
   IV <- map_IV(data = train,
-               predictors = pred_chr,
+               predictors = predictors$Variable, # filtered set
                outcome = "outcome", # string not variable
                bins = bins)
 
