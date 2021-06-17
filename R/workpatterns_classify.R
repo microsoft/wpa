@@ -57,6 +57,13 @@
 #'   2. It captures the intuition that each individual can have 'light' and
 #'   'heavy' weeks with respect to workload.
 #'
+#' The notion of 'breaks' in the 'binary-week' method is best understood as
+#' 'recurring disconnection time'. This denotes an hourly block where there is
+#' consistently no activity occurring throughout the week. Note that this
+#' applies a stricter criterion compared to the common definition of a break,
+#' which is simply a time interval where no active work is being done, and thus
+#' the more specific terminology 'recurring disconnection time' is preferred.
+#'
 #' In the standard plot output, the archetypes have been abbreviated to show the
 #' following:
 #'   - **Low Activity** - archetype 0
