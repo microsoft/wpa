@@ -47,8 +47,10 @@ signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 \item{return}{Character vector to specify what to return.
 Valid options include:
 \itemize{
-\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
-and archetypes (default)
+\item \code{"plot"}: returns a grid showing the distribution of archetypes by
+'breaks' and number of active hours (default)
+\item \code{"plot-dist"}: returns a heatmap plot of signal distribution by hour
+and archetypes
 \item \code{"data"}: returns the raw data with the classified
 archetypes
 \item \code{"table"}: returns a summary table of the archetypes

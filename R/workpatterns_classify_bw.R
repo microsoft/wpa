@@ -21,8 +21,10 @@
 #'
 #' @param return Character vector to specify what to return.
 #' Valid options include:
-#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default)
+#'   - `"plot"`: returns a grid showing the distribution of archetypes by
+#'   'breaks' and number of active hours (default)
+#'   - `"plot-dist"`: returns a heatmap plot of signal distribution by hour
+#'   and archetypes
 #'   - `"data"`: returns the raw data with the classified
 #'   archetypes
 #'   - `"table"`: returns a summary table of the archetypes
@@ -336,6 +338,10 @@ workpatterns_classify_bw <- function(data,
   } else if(return == "plot"){
 
     plot_workpatterns_classify_bw(ptn_data_final)
+
+  } else if(return == "plot-dist"){
+
+    return_plot()
 
   } else if(return == "plot-area"){
 
