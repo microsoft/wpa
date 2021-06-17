@@ -67,6 +67,7 @@ following strings:
 \item \code{"table"}
 \item \code{"plot-area"}
 \item \code{"plot-hrvar"} (only for \code{bw} method)
+\item \code{"plot-dist"} (only for \code{bw} method)
 }
 
 See \code{Value} for more information.}
@@ -75,15 +76,22 @@ See \code{Value} for more information.}
 Character vector to specify what to return. Valid options
 include:
 \itemize{
-\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
-and archetypes (default)
-\item \code{"data"}: returns the raw data with the classified archetypes
-\item \code{"table"}: returns a summary table of the archetypes
-\item \code{"plot-area"}: returns an area plot of the percentages of archetypes
-shown over time
-\item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
+\item \code{"plot"}: ggplot object. With the \code{bw} method, this returns a grid
+showing the distribution of archetypes by 'breaks' and number of active
+hours (default). With the \code{pav} method, this returns a faceted bar plot
+which shows the percentage of signals sent in each hour, with each facet
+representing an archetype.
+\item \code{"data"}: data frame. The raw data with the classified archetypes.
+\item \code{"table"}: data frame. A summary table of the archetypes.
+\item \code{"plot-area"}: ggplot object. With the \code{bw} method, this returns an area
+plot of the percentages of archetypes shown over time. With the \code{pav}
+method, this returns an area chart which shows the percentage of signals
+sent in each hour, with each line representing an archetype.
+\item \code{"plot-hrvar"}: ggplot object. A bar plot showing the count of archetypes,
 faceted by the supplied HR attribute. This is only available for the \code{bw}
 method.
+\item \code{"plot-dist"}: returns a heatmap plot of signal distribution by hour and
+archetypes. This is only available for the \code{bw} method.
 }
 }
 \description{

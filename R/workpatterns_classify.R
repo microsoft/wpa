@@ -119,6 +119,7 @@
 #'   - `"table"`
 #'   - `"plot-area"`
 #'   - `"plot-hrvar"` (only for `bw` method)
+#'   - `"plot-dist"` (only for `bw` method)
 #'
 #' See `Value` for more information.
 #'
@@ -160,15 +161,22 @@
 #'
 #' @return Character vector to specify what to return. Valid options
 #'   include:
-#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default)
-#'   - `"data"`: returns the raw data with the classified archetypes
-#'   - `"table"`: returns a summary table of the archetypes
-#'   - `"plot-area"`: returns an area plot of the percentages of archetypes
-#'   shown over time
-#'   - `"plot-hrvar"`: returns a bar plot showing the count of archetypes,
+#'   - `"plot"`: ggplot object. With the `bw` method, this returns a grid
+#'   showing the distribution of archetypes by 'breaks' and number of active
+#'   hours (default). With the `pav` method, this returns a faceted bar plot
+#'   which shows the percentage of signals sent in each hour, with each facet
+#'   representing an archetype.
+#'   - `"data"`: data frame. The raw data with the classified archetypes.
+#'   - `"table"`: data frame. A summary table of the archetypes.
+#'   - `"plot-area"`: ggplot object. With the `bw` method, this returns an area
+#'   plot of the percentages of archetypes shown over time. With the `pav`
+#'   method, this returns an area chart which shows the percentage of signals
+#'   sent in each hour, with each line representing an archetype.
+#'   - `"plot-hrvar"`: ggplot object. A bar plot showing the count of archetypes,
 #'   faceted by the supplied HR attribute. This is only available for the `bw`
 #'   method.
+#'   - `"plot-dist"`: returns a heatmap plot of signal distribution by hour and
+#'   archetypes. This is only available for the `bw` method.
 #'
 #' @examples
 #'
