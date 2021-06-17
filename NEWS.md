@@ -7,6 +7,9 @@ New functions:
 - `wellbeing_report()` (#141)
 - `create_tracking()` (#141)
 
+Other changes:
+- Improved error handling on `create_IV()` (#157)
+
 
 # wpa 1.5.0
 
