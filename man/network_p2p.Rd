@@ -64,8 +64,14 @@ to use when returning the \code{"describe"} output. See \code{network_describe()
 \item{font_col}{String to specify font and link colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to
-\code{"bottom"}. See \code{ggplot2::theme()}. This is only currently applicable when
-the 'ggraph' plotting method is being used.}
+\code{"bottom"}. See \code{ggplot2::theme()}. This is applicable for both the
+'ggraph' and the fast plotting method. Valid inputs include:
+\itemize{
+\item \code{"bottom"}
+\item \code{"top"}
+\item \code{"left"}
+-\code{"right"}
+}}
 
 \item{palette}{Function for generating a colour palette with a single
 argument \code{n}. Uses "rainbow" by default.}

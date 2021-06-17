@@ -43,8 +43,13 @@
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param legend_pos String to specify position of legend. Defaults to
-#'   `"bottom"`. See `ggplot2::theme()`. This is only currently applicable when
-#'   the 'ggraph' plotting method is being used.
+#'   `"bottom"`. See `ggplot2::theme()`. This is applicable for both the
+#'   'ggraph' and the fast plotting method. Valid inputs include:
+#'   - `"bottom"`
+#'   - `"top"`
+#'   - `"left"`
+#'   -`"right"`
+#'
 #' @param palette Function for generating a colour palette with a single
 #'   argument `n`. Uses "rainbow" by default.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency
@@ -300,7 +305,7 @@ network_p2p <- function(data,
       igraph::E(g)$width <- 1
 
       ## Internal basic plotting function used inside `network_p2p()`
-      plot_basic_graph <- function(){
+      plot_basic_graph <- function(lpos = legend_pos){
 
         old_par <- par(no.readonly = TRUE)
         on.exit(par(old_par))
@@ -309,6 +314,34 @@ network_p2p <- function(data,
 
         layout_text <- paste0("igraph::layout_with_", algorithm)
 
+        ## Legend position
+
+        if(lpos == "left"){
+
+          leg_x <- -1.5
+          leg_y <- 0.5
+
+        } else if(lpos == "right"){
+
+          leg_x <- 1.5
+          leg_y <- 0.5
+
+        } else if(lpos == "top"){
+
+          leg_x <- 0
+          leg_y <- 1.5
+
+        } else if(lpos == "bottom"){
+
+          leg_x <- 0
+          leg_y <- -1.0
+
+        } else {
+
+          stop("Invalid `legend_pos` input.")
+
+        }
+
         graphics::plot(g,
                        layout = eval(parse(text = layout_text)),
                        vertex.label = NA,
@@ -316,8 +349,8 @@ network_p2p <- function(data,
                        edge.arrow.mode = "-",
                        edge.color = "#adadad")
 
-        graphics::legend(x = -1.5,
-                         y = 0.5,
+        graphics::legend(x = leg_x,
+                         y = leg_y,
                          legend = colour_tb[[v_attr]], # vertex attribute
                          pch = 21,
                          text.col = font_col,
