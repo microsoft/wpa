@@ -209,6 +209,7 @@ workpatterns_classify <- function(data,
       stop("Input to `start_hour` or `end_hour` must be of the form 'hhmm'. ",
            "Only whole hour increments are allowed.")
     }
+  }
 
   test_hour(start_hour)
   test_hour(end_hour)
