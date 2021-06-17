@@ -70,6 +70,9 @@
 #'   elegant plotting method (native igraph). Defaults to 5000. Set as `0` to
 #'   coerce to a fast plotting method every time, and `Inf` to always use the
 #'   default plotting method (with 'ggraph').
+#' @param weight String to specify which column to use as weights for the
+#' network. Defaults to `"StrongTieScore`. To create a graph without weights,
+#' supply `NULL` to this argument.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
@@ -167,14 +170,28 @@ network_p2p <- function(data,
                         res = 0.5,
                         seed = 1,
                         algorithm = "mds",
-                        size_threshold = 5000){
+                        size_threshold = 5000,
+                        weight = "StrongTieScore"){
 
   ## Set edges df
-  edges <-
-    data %>%
-    select(from = "TieOrigin_PersonId",
-           to = "TieDestination_PersonId",
-           weight = "StrongTieScore")
+  if(is.null(weight)){
+
+    edges <-
+      data %>%
+      mutate(NoWeight = 1) %>% # No weight
+      select(from = "TieOrigin_PersonId",
+             to = "TieDestination_PersonId",
+             weight = "NoWeight")
+
+  } else {
+
+    edges <-
+      data %>%
+      select(from = "TieOrigin_PersonId",
+             to = "TieDestination_PersonId",
+             weight = "StrongTieScore")
+
+  }
 
   ## Set variables
   TO_hrvar <- paste0("TieOrigin_", hrvar)

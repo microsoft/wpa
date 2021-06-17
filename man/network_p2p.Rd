@@ -20,7 +20,8 @@ network_p2p(
   res = 0.5,
   seed = 1,
   algorithm = "mds",
-  size_threshold = 5000
+  size_threshold = 5000,
+  weight = "StrongTieScore"
 )
 }
 \arguments{
@@ -99,6 +100,10 @@ before \code{network_leiden()} switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
 coerce to a fast plotting method every time, and \code{Inf} to always use the
 default plotting method (with 'ggraph').}
+
+\item{weight}{String to specify which column to use as weights for the
+network. Defaults to \verb{"StrongTieScore}. To create a graph without weights,
+supply \code{NULL} to this argument.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
