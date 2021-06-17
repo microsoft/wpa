@@ -196,6 +196,25 @@ workpatterns_classify <- function(data,
                                   method = "bw",
                                   return = "plot"){
 
+  # Test the format of `start_hour` and `end_hour` --------------------------
+
+  test_hour <- function(x){
+
+    if(nchar(x) != 4){
+
+      stop("Input to `start_hour` or `end_hour` must be of the form 'hhmm'.")
+
+    } else if(substr(x, start = 3, stop = 4) != "00"){
+
+      stop("Input to `start_hour` or `end_hour` must be of the form 'hhmm'. ",
+           "Only whole hour increments are allowed.")
+    }
+
+  test_hour(start_hour)
+  test_hour(end_hour)
+
+  # Method flow -------------------------------------------------------------
+
   if(method == "bw"){
     workpatterns_classify_bw(data = data,
                              hrvar = hrvar,
@@ -214,7 +233,9 @@ workpatterns_classify <- function(data,
                               end_hour = end_hour,
                               return = return)
   } else {
+
     stop("Invalid method: please check input for `method`")
+
   }
 }
 
