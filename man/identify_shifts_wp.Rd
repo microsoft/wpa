@@ -10,6 +10,7 @@ identify_shifts_wp(
   active_threshold = 1,
   start_hour = 9,
   end_hour = 17,
+  percent = FALSE,
   return = "plot"
 )
 }
@@ -38,6 +39,9 @@ PM, then \code{"0900"} should be supplied here.}
 Note that this currently only supports \strong{hourly} increments. If the
 official hours specifying checking in and 9 AM and checking out at 5 PM,
 then \code{"1700"} should be supplied here.}
+
+\item{percent}{Logical value to determine whether to show labels as
+percentage signs. Defaults to \code{FALSE}.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:

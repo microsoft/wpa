@@ -22,6 +22,9 @@
 #'
 #' See `Value` for more information.
 #'
+#' @param percent Logical value to determine whether to show labels as
+#'   percentage signs. Defaults to `FALSE`.
+#'
 #' @inheritParams workpatterns_classify_bw
 #'
 #' @return
@@ -54,6 +57,7 @@ identify_shifts_wp <- function(data,
                                active_threshold = 1,
                                start_hour = 9,
                                end_hour = 17,
+                               percent = FALSE,
                                return = "plot"){
 
   ## Remove case-sensitivity for signals
@@ -147,6 +151,12 @@ identify_shifts_wp <- function(data,
     out_data %>%
       group_by(Shifts) %>%
       summarise(WeekCount = n()) %>%
+      { if(percent == TRUE){
+        mutate(., WeekCount = WeekCount / sum(WeekCount, na.rm = TRUE))
+      } else {
+        .
+      }
+      } %>%
       arrange(desc(WeekCount)) %>%
       utils::head(10) %>%
       create_bar_asis(group_var = "Shifts",
@@ -155,6 +165,7 @@ identify_shifts_wp <- function(data,
                       subtitle = "Showing top 10 only",
                       caption = extract_date_range(data, return = "text"),
                       ylab = "Shifts",
-                      xlab = "Frequency")
+                      xlab = "Frequency",
+                      percent = percent)
   }
 }

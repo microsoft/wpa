@@ -110,11 +110,12 @@ create_bar_asis <- function(data,
       ggplot(aes(x = reorder(!!sym(group_var), !!sym(bar_var)), y = !!sym(bar_var))) +
       geom_col(fill = bar_colour) +
       geom_text(aes(label = round(!!sym(bar_var), digits = rounding)),
-                hjust = -0.25,
-                color = "#000000",
+                position = position_stack(vjust = 0.5),
+                # hjust = -0.25,
+                color = "#FFFFFF",
                 fontface = "bold",
                 size = 4)
-				
+
   } else if(percent == TRUE){
     returnPlot <-
       data %>%
@@ -122,8 +123,9 @@ create_bar_asis <- function(data,
       geom_col(fill = bar_colour) +
       geom_text(aes(label = scales::percent(!!sym(bar_var),
                                             accuracy = 10 ^ -rounding)),
-                hjust = -0.25,
-                color = "#000000",
+                position = position_stack(vjust = 0.5),
+                # hjust = -0.25,
+                color = "#FFFFFF",
                 fontface = "bold",
                 size = 4)
 
@@ -138,9 +140,10 @@ create_bar_asis <- function(data,
          y = camel_clean(xlab),
          x = ylab) +
     theme_wpa_basic() +
-	theme(
-		axis.line = element_blank(),   
-		axis.ticks = element_blank(),   
-		axis.text.x = element_blank(),   
-		axis.title = element_blank()) 
+    theme(
+      axis.line = element_blank(),
+		  axis.ticks = element_blank(),
+		  axis.text.x = element_blank(),
+		  axis.title = element_blank()
+		  )
 }
