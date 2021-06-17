@@ -38,11 +38,15 @@ use:
 \item or a combination of signals, such as \code{c("email", "IM")}
 }}
 
-\item{start_hour}{A character vector specifying starting hours, e.g. "0900".
-Note that this currently only supports \strong{hourly} increments.}
+\item{start_hour}{A character vector specifying starting hours, e.g.
+\code{"0900"}. Note that this currently only supports \strong{hourly} increments. If
+the official hours specifying checking in and 9 AM and checking out at 5
+PM, then \code{"0900"} should be supplied here.}
 
-\item{end_hour}{A character vector specifying starting hours, e.g. "1700".
-Note that this currently only supports \strong{hourly} increments.}
+\item{end_hour}{A character vector specifying starting hours, e.g. \code{"1700"}.
+Note that this currently only supports \strong{hourly} increments. If the
+official hours specifying checking in and 9 AM and checking out at 5 PM,
+then \code{"1700"} should be supplied here.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}

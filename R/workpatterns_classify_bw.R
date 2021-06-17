@@ -44,10 +44,14 @@
 #' @param active_threshold A numeric value specifying the minimum number of
 #'   signals to be greater than in order to qualify as _active_. Defaults to 0.
 #'
-#' @param start_hour A character vector specifying start hours,
-#' e.g. "0900"
-#' @param end_hour A character vector specifying finish hours,
-#' e.g. "1700"
+#' @param start_hour A character vector specifying starting hours, e.g.
+#'   `"0900"`. Note that this currently only supports **hourly** increments. If
+#'   the official hours specifying checking in and 9 AM and checking out at 5
+#'   PM, then `"0900"` should be supplied here.
+#' @param end_hour A character vector specifying starting hours, e.g. `"1700"`.
+#'   Note that this currently only supports **hourly** increments. If the
+#'   official hours specifying checking in and 9 AM and checking out at 5 PM,
+#'   then `"1700"` should be supplied here.
 #'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
@@ -114,8 +118,9 @@ workpatterns_classify_bw <- function(data,
   start_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = start_hour))
   end_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = end_hour))
 
-  # Calculate hours within working hours
-  d <- (end_hour - start_hour) - 1
+  ## Calculate hours within working hours
+  ## e.g. if `end_hour` value is 17, then the reference slot should be 16
+  d <- (end_hour - 1) - start_hour
 
   # Text replacement only for allowed values
 
@@ -187,8 +192,8 @@ workpatterns_classify_bw <- function(data,
                 summarise(First_signal=min(Start),
                           Last_signal=max(End)),
               by=c("PersonId","Date"))%>%
-    mutate(Day_Span=Last_signal-First_signal,
-           Signals_Break_hours=Day_Span-Signals_Total)
+    mutate(Day_Span = Last_signal - First_signal,
+           Signals_Break_hours = Day_Span - Signals_Total)
 
 
   personas_levels <-
@@ -510,8 +515,8 @@ plot_workpatterns_classify_bw <- function(data){
                                   "13+ hours", ""
                                   )) +
     scale_x_continuous(breaks = 0:4,
-                       labels = c("", "No breaks", "",
-                                  "Breaks", "")) +
+                       labels = c("", "No recurring breaks", "",
+                                  "Take recurring breaks", "")) +
     labs(title = "Distribution of Working Patterns",
          subtitle = "Classification of employee-weeks",
          x = "Flexibility level (breaks)",

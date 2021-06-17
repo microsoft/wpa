@@ -131,10 +131,14 @@
 #'   - `"meetings"` for Meetings only
 #'   - or a combination of signals, such as `c("email", "IM")`
 #'
-#' @param start_hour A character vector specifying starting hours, e.g. "0900".
-#'   Note that this currently only supports **hourly** increments.
-#' @param end_hour A character vector specifying starting hours, e.g. "1700".
-#'   Note that this currently only supports **hourly** increments.
+#' @param start_hour A character vector specifying starting hours, e.g.
+#'   `"0900"`. Note that this currently only supports **hourly** increments. If
+#'   the official hours specifying checking in and 9 AM and checking out at 5
+#'   PM, then `"0900"` should be supplied here.
+#' @param end_hour A character vector specifying starting hours, e.g. `"1700"`.
+#'   Note that this currently only supports **hourly** increments. If the
+#'   official hours specifying checking in and 9 AM and checking out at 5 PM,
+#'   then `"1700"` should be supplied here.
 #'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.

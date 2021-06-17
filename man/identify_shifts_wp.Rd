@@ -29,11 +29,15 @@ use:
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
-\item{start_hour}{A character vector specifying start hours,
-e.g. "0900"}
+\item{start_hour}{A character vector specifying starting hours, e.g.
+\code{"0900"}. Note that this currently only supports \strong{hourly} increments. If
+the official hours specifying checking in and 9 AM and checking out at 5
+PM, then \code{"0900"} should be supplied here.}
 
-\item{end_hour}{A character vector specifying finish hours,
-e.g. "1700"}
+\item{end_hour}{A character vector specifying starting hours, e.g. \code{"1700"}.
+Note that this currently only supports \strong{hourly} increments. If the
+official hours specifying checking in and 9 AM and checking out at 5 PM,
+then \code{"1700"} should be supplied here.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
