@@ -253,9 +253,15 @@ workpatterns_classify_bw <- function(data,
       # geom_text(aes(label = percent(Freq)), size = 3) +
       labs(title = "Distribution of Signals by Hour",
            subtitle = "Weekly Working Patterns Archetypes") +
-      scale_fill_gradient2(low = "white", high = "red") +
+      scale_fill_continuous(
+        guide="legend",
+        low = "white",
+        high = "#1d627e",
+        breaks = 0:1,
+        name="",
+        labels = c("", "Observed activity")
+        ) +
       wpa::theme_wpa_basic() +
-      ggplot2::theme(legend.position = "none") +
       ggplot2::annotate("text",
                         y = myTable_legends$Personas,
                         x = 26.5,
@@ -272,14 +278,14 @@ workpatterns_classify_bw <- function(data,
                ymin = 0.5,
                ymax = 7.5,
                alpha = .1,
-               fill = "red") +
+               fill = "gray50") +
       ggplot2::annotate("rect",
                xmin = end_hour + 0.5,
                xmax = 24.5,
                ymin = 0.5,
                ymax = 7.5,
                alpha = .1,
-               fill = "red")
+               fill = "gray50")
   }
 
   # Plot area chart over time -----------------------------------------------
