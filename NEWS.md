@@ -9,6 +9,7 @@ New functions:
 
 Other changes:
 - Improved error handling on `create_IV()` (#157)
+- Bug fixes to plotting mechanism for `network_p2p()` and added ability to select custom weights (#149)
 
 
 # wpa 1.5.0

@@ -43,11 +43,19 @@
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font and link colour.
 #' @param legend_pos String to specify position of legend. Defaults to
-#'   `"bottom"`. See `ggplot2::theme()`.
+#'   `"bottom"`. See `ggplot2::theme()`. This is applicable for both the
+#'   'ggraph' and the fast plotting method. Valid inputs include:
+#'   - `"bottom"`
+#'   - `"top"`
+#'   - `"left"`
+#'   -`"right"`
+#'
 #' @param palette Function for generating a colour palette with a single
 #'   argument `n`. Uses "rainbow" by default.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency
-#'   of the nodes.
+#'   of the nodes. Defaults to 0.7.
+#' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
+#'   of the edges (only for 'ggraph' mode). Defaults to 1.
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults
 #'   to 0.5.
 #' @param seed Seed for the random number generator passed to `leiden::leiden()`
@@ -61,7 +69,10 @@
 #'   before `network_leiden()` switches to use a more efficient, but less
 #'   elegant plotting method (native igraph). Defaults to 5000. Set as `0` to
 #'   coerce to a fast plotting method every time, and `Inf` to always use the
-#'   default plotting method.
+#'   default plotting method (with 'ggraph').
+#' @param weight String to specify which column to use as weights for the
+#' network. Defaults to `"StrongTieScore`. To create a graph without weights,
+#' supply `NULL` to this argument.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
@@ -122,12 +133,19 @@
 #' Running Leiden communities requires python dependencies installed.
 #' You can run the following:
 #'
-#' ```
+#' ```R
 #' # Return a network plot to console, coloured by Leiden communities
 #'   p2p_data %>%
 #'     network_p2p(display = "leiden",
 #'                 path = NULL,
 #'                 return = "plot")
+#' ```
+#' When installing the 'leiden' package, you may be required to install the Python
+#' libraries 'python-igraph' and 'leidenalg'. You can install them with:
+#'
+#' ```R
+#' reticulate::py_install("python-igraph")
+#' reticulate::py_install("leidenalg")
 #' ```
 #'
 #' @import ggplot2
@@ -143,22 +161,37 @@ network_p2p <- function(data,
                         return = "plot",
                         path = paste0("network_p2p_", display),
                         desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-                        bg_fill = "#000000",
-                        font_col = "#FFFFFF",
+                        bg_fill = "#FFFFFF",
+                        font_col = "grey20",
                         legend_pos = "bottom",
                         palette = "rainbow",
                         node_alpha = 0.7,
+                        edge_alpha = 1,
                         res = 0.5,
                         seed = 1,
                         algorithm = "mds",
-                        size_threshold = 5000){
+                        size_threshold = 5000,
+                        weight = "StrongTieScore"){
 
   ## Set edges df
-  edges <-
-    data %>%
-    select(from = "TieOrigin_PersonId",
-           to = "TieDestination_PersonId",
-           weight = "StrongTieScore")
+  if(is.null(weight)){
+
+    edges <-
+      data %>%
+      mutate(NoWeight = 1) %>% # No weight
+      select(from = "TieOrigin_PersonId",
+             to = "TieDestination_PersonId",
+             weight = "NoWeight")
+
+  } else {
+
+    edges <-
+      data %>%
+      select(from = "TieOrigin_PersonId",
+             to = "TieDestination_PersonId",
+             weight = "StrongTieScore")
+
+  }
 
   ## Set variables
   TO_hrvar <- paste0("TieOrigin_", hrvar)
@@ -221,6 +254,9 @@ network_p2p <- function(data,
     v_attr <- "cluster"
 
   } else if(display == "leiden"){
+
+    # Check package installation
+    check_pkg_installed(pkgname = "leiden")
 
     ## Return a numeric vector of partitions / clusters / modules
     ## Set a low resolution parameter to have fewer groups
@@ -286,7 +322,7 @@ network_p2p <- function(data,
       igraph::E(g)$width <- 1
 
       ## Internal basic plotting function used inside `network_p2p()`
-      plot_basic_graph <- function(){
+      plot_basic_graph <- function(lpos = legend_pos){
 
         old_par <- par(no.readonly = TRUE)
         on.exit(par(old_par))
@@ -295,6 +331,34 @@ network_p2p <- function(data,
 
         layout_text <- paste0("igraph::layout_with_", algorithm)
 
+        ## Legend position
+
+        if(lpos == "left"){
+
+          leg_x <- -1.5
+          leg_y <- 0.5
+
+        } else if(lpos == "right"){
+
+          leg_x <- 1.5
+          leg_y <- 0.5
+
+        } else if(lpos == "top"){
+
+          leg_x <- 0
+          leg_y <- 1.5
+
+        } else if(lpos == "bottom"){
+
+          leg_x <- 0
+          leg_y <- -1.0
+
+        } else {
+
+          stop("Invalid `legend_pos` input.")
+
+        }
+
         graphics::plot(g,
                        layout = eval(parse(text = layout_text)),
                        vertex.label = NA,
@@ -302,8 +366,8 @@ network_p2p <- function(data,
                        edge.arrow.mode = "-",
                        edge.color = "#adadad")
 
-        graphics::legend(x = -1.5,
-                         y = 0.5,
+        graphics::legend(x = leg_x,
+                         y = leg_y,
                          legend = colour_tb[[v_attr]], # vertex attribute
                          pch = 21,
                          text.col = font_col,
@@ -336,19 +400,23 @@ network_p2p <- function(data,
 
       plot_output <-
         g_layout +
-        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.05, alpha = 0.15) +
+        ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.05, alpha = edge_alpha) +
         ggraph::geom_node_point(aes(colour = !!sym(v_attr)),
                                 alpha = node_alpha,
                                 pch = 16) +
         theme_void() +
-        theme(legend.position = "bottom",
-              legend.background = element_rect(fill = bg_fill),
-              plot.background = element_rect(fill = bg_fill),
-              text = element_text(colour = font_col),
-              axis.line = element_blank()) +
+        theme(
+          legend.position = legend_pos,
+          legend.background = element_rect(fill = bg_fill, colour = bg_fill),
+
+          text = element_text(colour = font_col),
+          axis.line = element_blank(),
+          panel.grid = element_blank()
+          ) +
         labs(caption = paste0("Person to person collaboration showing ", v_attr, ".  "), # spaces intentional
              y = "",
              x = "")
+
 
       # Default PDF output unless NULL supplied to path
       if(is.null(path)){
