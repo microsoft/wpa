@@ -25,6 +25,9 @@
 #' @param percent Logical value to determine whether to show labels as
 #'   percentage signs. Defaults to `FALSE`.
 #'
+#' @param n Numeric value specifying number of shifts to show. Defaults to 10.
+#' This parameter is only used when `return` is set to `"plot"`,
+#'
 #' @inheritParams workpatterns_classify_bw
 #'
 #' @return
@@ -47,6 +50,9 @@
 #' # Return plot
 #' em_data %>% identify_shifts_wp()
 #'
+#' # Return plot - showing percentages
+#' em_data %>% identify_shifts_wp(percent = TRUE)
+#'
 #' # Return table
 #' em_data %>% identify_shifts_wp(return = "table")
 #'
@@ -58,6 +64,7 @@ identify_shifts_wp <- function(data,
                                start_hour = 9,
                                end_hour = 17,
                                percent = FALSE,
+                               n = 10,
                                return = "plot"){
 
   ## Remove case-sensitivity for signals
@@ -158,11 +165,11 @@ identify_shifts_wp <- function(data,
       }
       } %>%
       arrange(desc(WeekCount)) %>%
-      utils::head(10) %>%
+      utils::head(n) %>%
       create_bar_asis(group_var = "Shifts",
                       bar_var = "WeekCount",
                       title = "Most frequent shifts",
-                      subtitle = "Showing top 10 only",
+                      subtitle = paste("Showing top", n),
                       caption = extract_date_range(data, return = "text"),
                       ylab = "Shifts",
                       xlab = "Frequency",
