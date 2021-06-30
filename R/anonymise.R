@@ -30,7 +30,8 @@
 
 anonymise <- function(x,
                       scramble = FALSE,
-                      replacement = NULL){
+                      replacement = NULL,
+                      jitter = NULL){
 
   n_to_rep <- length(x)
   v_to_rep <- unique(x)
@@ -62,3 +63,54 @@ anonymise <- function(x,
 #' @rdname anonymise
 #' @export
 anonymize <- anonymise
+
+#' @title Jitter metrics in a data frame
+#'
+#' @description Convenience wrapper around `jitter()` to add a layer of
+#'   anonymity to a query. This can be used in combination with `anonymise()` to
+#'   produce a demo dataset from real data.
+#'
+#' @param data Data frame containing a query.
+#' @param cols Character vector containing the metrics to jitter. When set to
+#' `NULL` (default), all numeric columns in the data frame are jittered.
+#' @param ... Additional arguments to pass to `jitter()`.
+#'
+#' @importFrom dplyr mutate
+#' @importFrom dplyr across
+#'
+#' @examples
+#' jittered <- jitter_metrics(sq_data, cols = Collaboration_hours)
+#' head(
+#'   data.frame(
+#'     original = sq_data$Collaboration_hours,
+#'     jittered = jittered$Collaboration_hours
+#'   )
+#' )
+#'
+#' @export
+
+jitter_metrics <- function(data, cols = NULL, ...){
+
+  if(!is.null(cols)){
+
+    data %>%
+      mutate(
+        across(
+          .cols = cols,
+          .fns = ~abs(jitter(., ...))
+        )
+      )
+
+  } else {
+
+    data %>%
+      mutate(
+        across(
+          .cols = where(~is.numeric(.)),
+          .fns = ~abs(jitter(., ...))
+        )
+      )
+
+  }
+
+}

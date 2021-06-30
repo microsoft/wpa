@@ -5,9 +5,9 @@
 \alias{anonymize}
 \title{Anonymise a categorical variable by replacing values}
 \usage{
-anonymise(x, scramble = FALSE, replacement = NULL)
+anonymise(x, scramble = FALSE, replacement = NULL, jitter = NULL)
 
-anonymize(x, scramble = FALSE, replacement = NULL)
+anonymize(x, scramble = FALSE, replacement = NULL, jitter = NULL)
 }
 \arguments{
 \item{x}{Character vector to be passed through.}
