@@ -1,6 +1,7 @@
 # wpa (development version)
 
-- Improved visuals on `workpatterns_rank()`
+- Improved visuals on `workpatterns_rank()` and `identify_shifts_wp()` (#160)
+- Added ability to show percentages on `identify_shifts_wp()` (#160)
 
 New functions:
 - `generate_report2()` (#141)
