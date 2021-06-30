@@ -79,7 +79,7 @@ anonymize <- anonymise
 #' @importFrom dplyr across
 #'
 #' @examples
-#' jittered <- jitter_metrics(sq_data, cols = Collaboration_hours)
+#' jittered <- jitter_metrics(sq_data, cols = "Collaboration_hours")
 #' head(
 #'   data.frame(
 #'     original = sq_data$Collaboration_hours,
