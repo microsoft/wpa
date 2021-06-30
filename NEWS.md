@@ -6,6 +6,8 @@ New functions:
 - `generate_report2()` (#141)
 - `wellbeing_report()` (#141)
 - `create_tracking()` (#141)
+- `anonymize()` (#162)
+- `jitter_metrics()` (#162)
 
 Other changes:
 - Improved error handling on `create_IV()` (#157)
