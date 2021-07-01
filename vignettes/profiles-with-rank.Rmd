@@ -25,7 +25,7 @@ This article introduces the **rank functions** that are included in the [**wpa**
 
 2. Automatically identify groups that are worth investigating (i.e. those with the highest or lowest values on a metric of choice). 
 
-Rank functions can uncover previously unknown patterns and interesting trends, without analysts having to manually slice the data across multiple attributes. You can think of them as a tool for automatic group exploration - an efficient method for identifying the top and bottom performers in a group of employees without manually reviewing all the possible organisational divisions.
+Rank functions can uncover previously unknown patterns and interesting trends, without analysts having to manually slice the data across multiple attributes. You can think of them as a tool for automatic group exploration - an efficient method for identifying the top and bottom groups of employees without manually reviewing all the possible organisational divisions.
 
 Additionally, these functions can reveal what combination of attributes best describe a group that shows a specific behaviour (i.e for example, what organisational attributes represent employees suffering from excessive workload, receiving insufficient coaching, etc). As business leaders often want to develop targeted interventions to address specific issues, these functions can be a great way to inform action planning and transformation initiatives.
 
