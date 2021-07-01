@@ -27,8 +27,6 @@ Additionally, these functions can reveal what combination of attributes best des
 
 This article is divided in four sections. After this introduction, section two describes rank functions and show how them can be used with person query outputs. In the following section, we explore their use for profiling - i.e. to identify in which groups are specific behaviour is most common. The forth and final section, includes a list of additional use cases that can benefit from this method. 
 
-
-
 ## Rank Functions
 
 ### Baseline analysis
@@ -74,9 +72,7 @@ This plot contains the same information as the table above. Each row corresponds
 
 ### Combining two HR variables
 
-In our baseline analysis we uncovered that the 82 employees labeled as  **"FunctionType = Sales" ** have the highest average collaboration hours. However, 
-it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may
- be experiencing similar levels of collaboration ovearload, but that are hidden given the  structure of the organisational data (for example, the managers within a particular business unit).
+In our baseline analysis we uncovered that the 82 employees labeled as  **"FunctionType = Sales" ** have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration ovearload, but that are hidden given the  structure of the organisational data (for example, the managers within a particular business unit).
 
 The rank includes an additional mode called "combine", that allows us to take our analysis one step further:
 
@@ -103,7 +99,7 @@ So far, we have limited our analysis to `collaboration_rank()`. However, the [**
 * `workloads_rank()`
 
 
-Additionaly, you can use the more general version below, if you want to apply this to any other numeric variable of your choice:
+Additionally, you can use the more general version below, if you want to apply this to any other numeric variable of your choice, using the argument `metric`:
 
 * `create_rank()`
 
@@ -122,12 +118,12 @@ sq_data %>%
     create_rank(metric = "At_risk", mode = "combine")
 ```
 
-The results of this analysis, reveal that the combination of heavy collaboration load  plus long workweeks is most prevalent among the 13 employees in  **FunctionType = Sales** and **LevelDesignation = Junior IC** (the average employee of this groups, experiences high collaboration load and long workweeks 31% of the time). 
+The results of this analysis, reveal that the combination of heavy collaboration load plus long workweeks is most prevalent among the 13 employees in  **FunctionType = Sales** and **LevelDesignation = Junior IC** (the average employee of this groups, experiences high collaboration load and long workweeks 31% of the time). 
 
 
 ## Conclusion, use cases and other applications
 
-In this articule, we have shown how **rank functions** can be a powerful tool to both uncover previously unknown patterns and to profile the groups that are experiencing a certain behaviour. In the context  of Workplace Analytics, we see a wide range of applications in the areas of wellbeing, ways of working, and sales excellence. Examples include: 
+In this article, we have shown how **rank functions** can be a powerful tool to both uncover previously unknown patterns and to profile the groups that are experiencing a certain behaviour. In the context of Workplace Analytics, we see a wide range of applications in the areas of wellbeing, ways of working, and sales excellence. Examples include: 
 
 * **Workload:** Identifying groups with excessive collaboration and long workdays
 * **Freedom to disconnect:**  Identifying groups with always-on behaviours
