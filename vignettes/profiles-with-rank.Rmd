@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 This article introduces the **rank functions** that are included in the [**wpa** R package](https://microsoft.github.io/wpa). These functions are unique, as they are designed to:
 
-1. Scan a full person dataset, and
+1. Scan a full person query, and
 
 2. Automatically identify groups that are worth investigating (i.e. those with the highest or lowest values on a metric of choice). 
 
