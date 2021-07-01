@@ -49,7 +49,7 @@ Using the `sq_data` demo dataset (that contains a weekly person query output) le
 ```{r message=FALSE, warning=FALSE}
 
 sq_data %>% 
-collaboration_rank(return="table")
+    collaboration_rank(return = "table")
 
 ```
 
