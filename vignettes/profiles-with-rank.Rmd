@@ -1,5 +1,5 @@
 ---
-title: "Identifying relevant groups with rank functions"
+title: "Identifying noteworthy groups with rank functions"
 author: "Carlos Morales-Torrado"
 date: "2021-06-30"
 tags:
@@ -19,13 +19,13 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This article introduces the **rank functions** that are included in the [**wpa** R package](https://microsoft.github.io/wpa). These are powerful functions that scan a full person query dataset and automatically identify groups of interest, i.e. those exhibiting the highest or lowest values for a metric in the population.
+This article introduces the **rank functions** that are included in the [**wpa** R package](https://microsoft.github.io/wpa). These are powerful functions that scan a full person query dataset and automatically identify noteworthy groups, i.e. those exhibiting the highest or lowest values for a metric in the population.
 
 Rank functions can uncover previously unknown patterns and interesting trends, without analysts having to manually slice the data across multiple attributes. You can think of them as a tool for _automatic group exploration_ - an efficient method for identifying the top and bottom performers in a group of employees without manually reviewing all the possible organisational divisions.
 
 Additionally, these functions can reveal what combination of attributes best describe a group that shows a specific behaviour (i.e for example, what organisational attributes represent employees suffering from excessive workload, receiving insufficient coaching, etc). As business leaders often want to develop targeted interventions to address specific issues, these functions can be a great way to inform action planning and transformation initiatives.
 
-This article is divided in four sections. After this introduction, section two describes rank functions and show how them can be used with person query outputs. In the following section, we explore their use for profiling - i.e. to identify in which groups are specific behaviour is most common. The forth and final section, includes a list of additional use cases that can benefit from this method. 
+This article is divided in four sections. After this introduction, section two describes rank functions and show how them can be used with person query outputs. In the following section, we explore their use for profiling - i.e. to identify in which groups are specific behaviour is most common. The fourth and final section includes a list of additional use cases that can benefit from this method. 
 
 ## Rank Functions
 
@@ -57,7 +57,7 @@ sq_data %>%
     print(n = 30)
 ```
 
-This analysis shows us that the 82 employees labelled as `"FunctionType = Sales"` have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in `"Organization = Inventory Management"` with 26.2 hours. On the lower end, the 75 employees labelled as `"Organization = Biz Dev"` appear to have the lowest collaboration time.
+This analysis shows us that the 82 employees labelled as `"FunctionType = "Sales"` have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in `Organization = "Inventory Management"` with 26.2 hours. On the lower end, the 75 employees labelled as `Organization = "Biz Dev"` appear to have the lowest collaboration time.
 
 This output is useful to identify groups that are worth investigating (e.g. employees labelled as `"FunctionType = Sales"`). It also reveals that splits by `FunctionType` and `Organization` are more interesting than those by `LevelDesignation`, as they have more variation; all groups in `LevelDesignation` have similar levels of collaboration, between 18 and 22 hours a week. 
 
@@ -72,7 +72,7 @@ This plot contains the same information as the table above. Each row corresponds
 
 ### Combining two HR variables
 
-In our baseline analysis, we uncovered that the 82 employees labelled as  `"FunctionType = Sales"` have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration overload, but that are hidden given the structure of the organisational data (for example, the managers within a particular business unit).
+In our baseline analysis, we uncovered that the 82 employees labelled as  `FunctionType = "Sales"` have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration overload, but that are hidden given the structure of the organisational data (for example, the managers within a particular business unit).
 
 The rank function includes an additional mode called "combine" that allows us to take our analysis one step further by performing on two HR variables the same analysis in a combinatorial manner:
 
@@ -118,7 +118,7 @@ sq_data %>%
     create_rank(metric = "At_risk", mode = "combine")
 ```
 
-The custom `At_risk` variable identifies whether any particular person-week exhibits high collaboration hours and long workweeks. By combining this with `create_rank()`, the analysis reveals that the combination of heavy collaboration load plus long workweeks is most prevalent among the 13 employees in  **FunctionType = Sales** and **LevelDesignation = Junior IC**. In other words, the average employee of these groups experience high collaboration load and long workweeks 31% of the time. 
+The custom `At_risk` variable identifies whether any particular person-week exhibits high collaboration hours and long workweeks. By combining this with `create_rank()`, the analysis reveals that the combination of heavy collaboration load plus long workweeks is most prevalent among the 13 employees in  `FunctionType = "Sales"` and `LevelDesignation = "Junior IC"`. In other words, the average employee of these groups experience high collaboration load and long workweeks 31% of the time. 
 
 ## Conclusion, use cases and other applications
 
