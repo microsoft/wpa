@@ -57,7 +57,7 @@ sq_data %>%
     print(n = 30)
 ```
 
-This analysis shows us that the 82 employees labelled as **"FunctionType = Sales"** have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in **"Organization = Inventory Management"** with 26.2 hours. On the lower end, the 75 employees labelled as **"Organization = Biz Dev"** appear to have the lowest collaboration time.
+This analysis shows us that the 82 employees labelled as `"FunctionType = Sales"` have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in `"Organization = Inventory Management"` with 26.2 hours. On the lower end, the 75 employees labelled as `"Organization = Biz Dev"` appear to have the lowest collaboration time.
 
 This output is useful to identify groups that are worth investigating (e.g. employees labelled as `"FunctionType = Sales"`). It also reveals that splits by `FunctionType` and `Organization` are more interesting than those by `LevelDesignation`, as they have more variation; all groups in `LevelDesignation` have similar levels of collaboration, between 18 and 22 hours a week. 
 
@@ -68,11 +68,11 @@ sq_data %>%
     collaboration_rank(return = "plot")
 ```
 
-This plot contains the same information as the table above. Each row corresponds to a different organisational attribute and the bubbles show how the population is split across different subgroups (bubble size is proportional to the number of individuals). The five groups in orange are clearly the ones spending most time in collaboration, with Sales way ahead in the front. Keep in mind that is row is a different way to slice the same population, so groups across rows are not mutually exclusive. 
+This plot contains the same information as the table above. Each row corresponds to a different organisational attribute and the bubbles show how the population is split across different subgroups, where bubble size is proportional to the number of individuals. The five groups in orange are clearly the ones spending most time in collaboration, with Sales being far ahead of the other groups. Keep in mind that each row of bubbles represents a different way to slice the same population, so groups across rows are not mutually exclusive. 
 
 ### Combining two HR variables
 
-In our baseline analysis, we uncovered that the 82 employees labelled as  **"FunctionType = Sales" ** have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration overload, but that are hidden given the structure of the organisational data (for example, the managers within a particular business unit).
+In our baseline analysis, we uncovered that the 82 employees labelled as  `"FunctionType = Sales"` have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration overload, but that are hidden given the structure of the organisational data (for example, the managers within a particular business unit).
 
 The rank function includes an additional mode called "combine" that allows us to take our analysis one step further by performing on two HR variables the same analysis in a combinatorial manner:
 
@@ -110,7 +110,7 @@ In the previous section, we explored how rank functions can help analysts uncove
 
 Rank functions have an additional use: they can help us identify **what combination of attributes best describe a group that shows a given behaviour**. For example, we may be concerned about individuals that are experiencing both a heavy collaboration load (more than 20 hours a week on average) and long workweeks (workweek span of over 60 hours), and would like to know where in the organisations these individuals sit. 
 
-To answer that question, let's create a new numeric custom metric (i.e. a binary flag that is only either `1` or `0`) and then apply the `create_rank` function:
+To answer that question, let's create a new numeric custom metric (i.e. a binary flag that is only either `1` or `0`) and then apply the `create_rank()` function:
 
 ```{r message=FALSE, warning=FALSE}
 sq_data %>%
