@@ -109,6 +109,17 @@ attempt to create such a proxy for quantifying and measuring flexibility,
 using behavioural data from Workplace Analytics.
 }
 
+\section{Recurring disconnection time}{
+
+The key component of \code{TakeBreaks} in the Flexibility Index is best
+interpreted as 'recurring disconnection time'. This denotes an hourly block
+where there is consistently no activity occurring throughout the week. Note
+that this applies a stricter criterion compared to the common definition of
+a break, which is simply a time interval where no active work is being
+done, and thus the more specific terminology 'recurring disconnection time'
+is preferred.
+}
+
 \examples{
 # Examples of how to test the plotting options individually
 # Sample of 10 work patterns

@@ -32,11 +32,15 @@ use:
 \item \code{"meetings"} for Meetings only
 }}
 
-\item{start_hour}{A character vector specifying start hours,
-e.g. "0900"}
+\item{start_hour}{A character vector specifying starting hours, e.g.
+\code{"0900"}. Note that this currently only supports \strong{hourly} increments. If
+the official hours specifying checking in and 9 AM and checking out at 5
+PM, then \code{"0900"} should be supplied here.}
 
-\item{end_hour}{A character vector specifying finish hours,
-e.g. "1700"}
+\item{end_hour}{A character vector specifying starting hours, e.g. \code{"1700"}.
+Note that this currently only supports \strong{hourly} increments. If the
+official hours specifying checking in and 9 AM and checking out at 5 PM,
+then \code{"1700"} should be supplied here.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -47,8 +51,10 @@ signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 \item{return}{Character vector to specify what to return.
 Valid options include:
 \itemize{
-\item \code{"plot"}: returns a heatmap plot of signal distribution by hour
-and archetypes (default)
+\item \code{"plot"}: returns a grid showing the distribution of archetypes by
+'breaks' and number of active hours (default)
+\item \code{"plot-dist"}: returns a heatmap plot of signal distribution by hour
+and archetypes
 \item \code{"data"}: returns the raw data with the classified
 archetypes
 \item \code{"table"}: returns a summary table of the archetypes
