@@ -28,7 +28,7 @@ Rank functions can uncover previously unknown patterns and interesting trends, w
 
 Additionally, these functions can reveal what combination of attributes best describe a group that shows a specific behaviour (i.e for example, what organisational attributes represent employees suffering from excessive workload, receiving insufficient coaching, etc). As business leaders often want to develop targeted interventions to address specific issues, these functions can be a great way to inform action planning and transformation initiatives.
 
-This article is divided in four sections. After this introduction, section two describes rank functions and show how them can be used with person query outputs. In the following section, we explore their use for profiling - i.e. to identify in which groups are specific behaviour is most common. The fourth and final section includes a list of additional use cases that can benefit from this method. 
+This article is divided in four sections. After this introduction, section two describes rank functions and show how them can be used with person query outputs. In the following section, we explore their use for profiling - i.e. to identify in which groups a specific behaviour is most common. The fourth and final section includes a list of additional use cases that can benefit from this method. 
 
 ## Rank Functions
 
@@ -62,7 +62,6 @@ sq_data %>%
 This analysis shows us that the 82 employees labelled as `"FunctionType = "Sales"` have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in `Organization = "Inventory Management"` with 26.2 hours. On the lower end, the 75 employees labelled as `Organization = "Biz Dev"` appear to have the lowest collaboration time.
 
 This output is useful to identify groups that are worth investigating (e.g. employees labelled as `"FunctionType = Sales"`). It also reveals that splits by `FunctionType` and `Organization` are more interesting than those by `LevelDesignation`, as they have more variation; all groups in `LevelDesignation` have similar levels of collaboration, between 18 and 22 hours a week. 
-
 Rank functions can also display this information in visual form. We can get that by changing the `return` argument from `"table"` to `"plot"`:
 
 ```{r message=FALSE, warning=FALSE}
