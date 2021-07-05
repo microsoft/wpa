@@ -66,9 +66,11 @@ levels of a given Workplace Analytics Metric. Returns a table with all groups
 (across multiple HR attributes) ranked by the specified metric.
 }
 \examples{
+sq_data_small <- dplyr::slice_sample(sq_data, prop = 0.1)
+
 # Plot mode 1 - show top and bottom five groups
 create_rank(
-  data = sq_data,
+  data = sq_data_small,
   hrvar = c("FunctionType", "LevelDesignation"),
   metric = "Emails_sent",
   return = "plot",
@@ -77,7 +79,7 @@ create_rank(
 
 # Plot mode 2 - show top and bottom groups per HR variable
 create_rank(
-  data = sq_data,
+  data = sq_data_small,
   hrvar = c("FunctionType", "LevelDesignation"),
   metric = "Emails_sent",
   return = "plot",
@@ -86,14 +88,14 @@ create_rank(
 
 # Return a table
 create_rank(
-  data = sq_data,
+  data = sq_data_small,
   metric = "Emails_sent",
   return = "table"
 )
 
 # Return a table - combination mode
 create_rank(
-  data = sq_data,
+  data = sq_data_small,
   metric = "Emails_sent",
   mode = "combine",
   return = "table"
