@@ -57,6 +57,13 @@
 #'   2. It captures the intuition that each individual can have 'light' and
 #'   'heavy' weeks with respect to workload.
 #'
+#' The notion of 'breaks' in the 'binary-week' method is best understood as
+#' 'recurring disconnection time'. This denotes an hourly block where there is
+#' consistently no activity occurring throughout the week. Note that this
+#' applies a stricter criterion compared to the common definition of a break,
+#' which is simply a time interval where no active work is being done, and thus
+#' the more specific terminology 'recurring disconnection time' is preferred.
+#'
 #' In the standard plot output, the archetypes have been abbreviated to show the
 #' following:
 #'   - **Low Activity** - archetype 0
@@ -112,6 +119,7 @@
 #'   - `"table"`
 #'   - `"plot-area"`
 #'   - `"plot-hrvar"` (only for `bw` method)
+#'   - `"plot-dist"` (only for `bw` method)
 #'
 #' See `Value` for more information.
 #'
@@ -131,10 +139,14 @@
 #'   - `"meetings"` for Meetings only
 #'   - or a combination of signals, such as `c("email", "IM")`
 #'
-#' @param start_hour A character vector specifying starting hours, e.g. "0900".
-#'   Note that this currently only supports **hourly** increments.
-#' @param end_hour A character vector specifying starting hours, e.g. "1700".
-#'   Note that this currently only supports **hourly** increments.
+#' @param start_hour A character vector specifying starting hours, e.g.
+#'   `"0900"`. Note that this currently only supports **hourly** increments. If
+#'   the official hours specifying checking in and 9 AM and checking out at 5
+#'   PM, then `"0900"` should be supplied here.
+#' @param end_hour A character vector specifying starting hours, e.g. `"1700"`.
+#'   Note that this currently only supports **hourly** increments. If the
+#'   official hours specifying checking in and 9 AM and checking out at 5 PM,
+#'   then `"1700"` should be supplied here.
 #'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
@@ -149,15 +161,22 @@
 #'
 #' @return Character vector to specify what to return. Valid options
 #'   include:
-#'   - `"plot"`: returns a heatmap plot of signal distribution by hour
-#'   and archetypes (default)
-#'   - `"data"`: returns the raw data with the classified archetypes
-#'   - `"table"`: returns a summary table of the archetypes
-#'   - `"plot-area"`: returns an area plot of the percentages of archetypes
-#'   shown over time
-#'   - `"plot-hrvar"`: returns a bar plot showing the count of archetypes,
+#'   - `"plot"`: ggplot object. With the `bw` method, this returns a grid
+#'   showing the distribution of archetypes by 'breaks' and number of active
+#'   hours (default). With the `pav` method, this returns a faceted bar plot
+#'   which shows the percentage of signals sent in each hour, with each facet
+#'   representing an archetype.
+#'   - `"data"`: data frame. The raw data with the classified archetypes.
+#'   - `"table"`: data frame. A summary table of the archetypes.
+#'   - `"plot-area"`: ggplot object. With the `bw` method, this returns an area
+#'   plot of the percentages of archetypes shown over time. With the `pav`
+#'   method, this returns an area chart which shows the percentage of signals
+#'   sent in each hour, with each line representing an archetype.
+#'   - `"plot-hrvar"`: ggplot object. A bar plot showing the count of archetypes,
 #'   faceted by the supplied HR attribute. This is only available for the `bw`
 #'   method.
+#'   - `"plot-dist"`: returns a heatmap plot of signal distribution by hour and
+#'   archetypes. This is only available for the `bw` method.
 #'
 #' @examples
 #'
@@ -192,6 +211,26 @@ workpatterns_classify <- function(data,
                                   method = "bw",
                                   return = "plot"){
 
+  # Test the format of `start_hour` and `end_hour` --------------------------
+
+  test_hour <- function(x){
+
+    if(nchar(x) != 4){
+
+      stop("Input to `start_hour` or `end_hour` must be of the form 'hhmm'.")
+
+    } else if(substr(x, start = 3, stop = 4) != "00"){
+
+      stop("Input to `start_hour` or `end_hour` must be of the form 'hhmm'. ",
+           "Only whole hour increments are allowed.")
+    }
+  }
+
+  test_hour(start_hour)
+  test_hour(end_hour)
+
+  # Method flow -------------------------------------------------------------
+
   if(method == "bw"){
     workpatterns_classify_bw(data = data,
                              hrvar = hrvar,
@@ -210,7 +249,9 @@ workpatterns_classify <- function(data,
                               end_hour = end_hour,
                               return = return)
   } else {
+
     stop("Invalid method: please check input for `method`")
+
   }
 }
 
