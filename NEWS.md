@@ -1,11 +1,14 @@
 # wpa (development version)
 
-- Improved visuals on `workpatterns_rank()`
+- Improved visuals on `workpatterns_rank()` and `identify_shifts_wp()` (#160)
+- Added ability to show percentages on `identify_shifts_wp()` (#160)
 
 New functions:
 - `generate_report2()` (#141)
 - `wellbeing_report()` (#141)
 - `create_tracking()` (#141)
+- `anonymize()` (#162)
+- `jitter_metrics()` (#162)
 
 Other changes:
 - Improved error handling on `create_IV()` (#157)
