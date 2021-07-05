@@ -1,7 +1,10 @@
 ---
-title: "Identifying relevant groups with rank functions"
+title: "Identifying noteworthy groups with rank functions"
 author: "Carlos Morales-Torrado"
-date: "2021-06-30"
+date: '2021-06-30'
+output:
+  html_document:
+    df_print: paged
 tags:
 - rank
 - profiles
@@ -19,19 +22,13 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This article introduces the **rank functions** that are included in the [**wpa** R package](https://microsoft.github.io/wpa). These functions are unique, as they are designed to:
+This article introduces the **rank functions** that are included in the [**wpa** R package](https://microsoft.github.io/wpa). These are powerful functions that scan a full person query dataset and automatically identify noteworthy groups, i.e. those exhibiting the highest or lowest values for a metric in the population.
 
-1. Scan a full person query, and
-
-2. Automatically identify groups that are worth investigating (i.e. those with the highest or lowest values on a metric of choice). 
-
-Rank functions can uncover previously unknown patterns and interesting trends, without analysts having to manually slice the data across multiple attributes. You can think of them as a tool for automatic group exploration - an efficient method for identifying the top and bottom groups of employees without manually reviewing all the possible organisational divisions.
+Rank functions can uncover previously unknown patterns and interesting trends, without analysts having to manually slice the data across multiple attributes. You can think of them as a tool for _automatic group exploration_ - an efficient method for identifying the top and bottom group of employees without manually reviewing all the possible organisational divisions.
 
 Additionally, these functions can reveal what combination of attributes best describe a group that shows a specific behaviour (i.e for example, what organisational attributes represent employees suffering from excessive workload, receiving insufficient coaching, etc). As business leaders often want to develop targeted interventions to address specific issues, these functions can be a great way to inform action planning and transformation initiatives.
 
-This article is divided in four sections. After this introduction, section two describes rank functions and show how them can be used with person query outputs. In the following section, we explore their use for profiling - i.e. to identify in which groups are specific behaviour is most common. The forth and final section, includes a list of additional use cases that can benefit from this method. 
-
-
+This article is divided in four sections. After this introduction, section two describes rank functions and show how them can be used with person query outputs. In the following section, we explore their use for profiling - i.e. to identify in which groups a specific behaviour is most common. The fourth and final section includes a list of additional use cases that can benefit from this method. 
 
 ## Rank Functions
 
@@ -44,73 +41,67 @@ library(wpa)
 library(dplyr)
 ```
 
-Using the `sq_data` demo dataset (that contains a weekly person query output) let's use the `collaboration_rank()` function:
-
-```{r message=FALSE, warning=FALSE}
-
-sq_data %>% 
-collaboration_rank(return="table")
-
-```
-
-The output table contains the results from the automatic group exploration. The rank function has taken all available organisational attributes in this dataset ("FunctionType", "Organization", "LevelDesignation", and "IsActive") and calculated the average collaboration hours for each group within each one of them. The table shows the results for all groups analysed, ranked from highest to lowest. 
-
-To see the entire table, we can add the function `print` to the command above. 
+We will use the `sq_data` demo dataset, which contains a weekly person query output, and apply the `collaboration_rank()` function:
 
 ```{r message=FALSE, warning=FALSE}
 sq_data %>% 
-collaboration_rank(return="table") %>%  
-print(n=30)
+    collaboration_rank(return = "table")
 
 ```
 
-This analysis shows us that the 82 employees labeled as **"FunctionType = Sales"** have the largest collaboration hours, with a weekly average of 31 hours. In second place are those 60 individuals in **"Organization = Inventory Management"** with 26.2 hours. On the lower end, the 75 employees labelled as **"Organization = Biz Dev"** appear to have the lowest collaboration time.
+The output table contains the results from the automatic group exploration. The rank function has taken all available organisational attributes in this dataset (`FunctionType`, `Organization`, `LevelDesignation`, and `IsActive`) and calculated the average collaboration hours for each group within each organisational attribute. The table shows the analysed results for all groups, ranked from highest to lowest. 
 
-This output is useful to identify groups that are worth investigating (e.g. employees labeled as "FunctionType = Sales"). It also reveals that splits by "FunctionType" and "Organization" are more interesting than those by "LevelDesignation", as they have more variability (All groups in "LevelDesignation" have  relatively similar levels of collaboration, between 18 and 22 hours a week). 
-
-Rank functions can also display this information in visual form. We can get that by changing the `return` argument from "table" to "plot":
+To view the entire table, we can add the function `print` to the command above. 
 
 ```{r message=FALSE, warning=FALSE}
 sq_data %>% 
-collaboration_rank(return="plot")
-
+    collaboration_rank(return = "table") %>%  
+    print(n = 30)
 ```
 
-This plot contains the same information as the table above. Each row corresponds to a different organisational attribute and the bubbles show how the population is split across different subgroups (bubble size is proportional to the number of individuals). The five groups in orange are clearly the ones spending most time in collaboration, with Sales way ahead in the front. Keep in mind that is row is a different way to slice the same population, so groups across rows are not mutually exclusive. 
+This analysis shows us that the 82 employees labelled as `"FunctionType = "Sales"` have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in `Organization = "Inventory Management"` with 26.2 hours. On the lower end, the 75 employees labelled as `Organization = "Biz Dev"` appear to have the lowest collaboration time.
+
+This output is useful to identify groups that are worth investigating (e.g. employees labelled as `"FunctionType = Sales"`). It also reveals that `FunctionType` and `Organization` are interesting attributes to split the data, as the have significant variation. In contrast, for `LevelDesignation` all groups appear to have broadly similar levels of collaboration (between 18 and 22 hours a week), with no group above others by a significant amount.  
+
+Rank functions can also display this information in visual form. We can get that by changing the `return` argument from `"table"` to `"plot"`:
+
+```{r message=FALSE, warning=FALSE}
+sq_data %>% 
+    collaboration_rank(return = "plot")
+```
+
+This plot contains the same information as the table above. Each row corresponds to a different organisational attribute and the bubbles show how the population is split across different subgroups, where bubble size is proportional to the number of individuals. The five groups in orange are clearly the ones spending most time in collaboration, with Sales being far ahead of the other groups. Keep in mind that each row of bubbles represents a different way to slice the same population, so groups across rows are not mutually exclusive. 
 
 ### Combining two HR variables
 
-In our baseline analysis we uncovered that the 82 employees labeled as  **"FunctionType = Sales" ** have the highest average collaboration hours. However, 
-it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may
- be experiencing similar levels of collaboration ovearload, but that are hidden given the  structure of the organisational data (for example, the managers within a particular business unit).
+In our baseline analysis, we uncovered that the 82 employees labelled as  `FunctionType = "Sales"` have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration overload, but that are hidden given the structure of the organisational data (for example, the managers within a particular business unit).
 
-The rank includes an additional mode called "combine", that allows us to take our analysis one step further:
+The rank function includes an additional mode called "combine" that allows us to take our analysis one step further by performing on two HR variables the same analysis in a combinatorial manner:
 
 ```{r message=FALSE, warning=FALSE}
 sq_data %>% 
-collaboration_rank(return="table",   mode = "combine")
-
+    collaboration_rank(return = "table", mode = "combine")
 ```
 
-The output table contains similar results from the group exploration above, but with more granularity. The function has automatically created smaller groups by combining two distinct groups from the organisational attributes in scope. In this case, it seems that the 28 managers in Sales are the worst affected group, with a weekly average of 33.7 hours in collaboration per week (that sounds like a lot of meetings!). 
+The output table contains similar results from the group exploration above, but with more granularity. The function has automatically created smaller groups by combining two distinct groups from the organisational attributes in scope. In this case, it seems that the 28 managers in Sales are the worst affected group, with a weekly average of 33.7 hours in collaboration per week - that sounds like a lot of meetings!
 
 
 ### Additional functions 
 
-So far, we have limited our analysis to `collaboration_rank()`. However, the [**wpa** R package](https://microsoft.github.io/wpa) includes many other rank functions for key workplace analytics metrics:
+So far, we have limited our analysis to `collaboration_rank()`, which only performs the analysis on the metric `Collaboration_hours`. However, the [**wpa** R package](https://microsoft.github.io/wpa) includes many other rank functions for key Workplace Analytics metrics:
 
-* `afterhours_rank()`
+* `afterhours_rank()` - for `After_hours_collaboration_hours`
 
-* `email_rank()`
+* `email_rank()` - for `Email_hours`
 
-* `meeting_rank()`
+* `meeting_rank()` - for `Meeting_hours`
 
-* `one2one_rank()`
+* `one2one_rank()` - for `Meeting_hours_with_manager_1_on_1`
 
-* `workloads_rank()`
+* `workloads_rank()` - for `Workweek_span`
 
 
-Additionaly, you can use the more general version below, if you want to apply this to any other numeric variable of your choice:
+Additionally, if you want to apply this to any other numeric variable of your choice, you can use the more general version below by specifying the metric as a string with the argument `metric`:
 
 * `create_rank()`
 
@@ -119,32 +110,32 @@ Additionaly, you can use the more general version below, if you want to apply th
 
 In the previous section, we explored how rank functions can help analysts uncover interesting insights, without the need of manually slicing the data across multiple attributes. 
 
-Rank functions have an additional use: they can help us identify what combination of attributes best describe a group that shows a given behaviour. For example, we may be concerned about individuals that are experiencing both a heavy collaboration load (more than 20 hours a week on average) and long workweeks (workweek span of over 60 hours), and would like to know where in the organisations these individuals sit. 
+Rank functions have an additional use: they can help us identify **what combination of attributes best describe a group that shows a given behaviour**. For example, we may be concerned about individuals that are experiencing both a heavy collaboration load (more than 20 hours a week on average) and long workweeks (workweek span of over 60 hours), and would like to know where in the organisations these individuals sit. 
 
-To answer that question, let's create a new numeric custom metric (i.e. a 1/0 flag) and then use the `create_rank` function:
+To answer that question, let's create a new numeric custom metric (i.e. a binary flag that is only either `1` or `0`) and then apply the `create_rank()` function:
 
 ```{r message=FALSE, warning=FALSE}
 sq_data %>%
-mutate(At_risk = ifelse(Collaboration_hours > 20 &  Workweek_span > 60 , 1, 0)) %>%
-create_rank(metric = "At_risk", mode="combine")
-
+    mutate(At_risk = ifelse(Collaboration_hours > 20 &  Workweek_span > 60 , 1, 0)) %>%
+    create_rank(metric = "At_risk", mode = "combine")
 ```
 
-The results of this analysis, reveal that the combination of heavy collaboration load  plus long workweeks is most prevalent among the 13 employees in  **FunctionType=Sales** and **LevelDesignation=Junior IC** (the average employee of this groups, experiences high collaboration load and long workweeks 31% of the time). 
-
+The custom `At_risk` variable identifies whether any particular person-week exhibits high collaboration hours and long workweeks. By combining this with `create_rank()`, the analysis reveals that the combination of heavy collaboration load plus long workweeks is most prevalent among the 13 employees in  `FunctionType = "Sales"` and `LevelDesignation = "Junior IC"`. In other words, the average employee of these groups experience high collaboration load and long workweeks 31% of the time. 
 
 ## Conclusion, use cases and other applications
 
-In this articule, we have shown how **rank functions** can be a powerful tool to both uncover previously unknown patterns and to profile the groups that are experiencing a certain behaviour. In the context  of Workplace Analytics, we see a wide range of applications in the areas of wellbeing, ways of working, and sales excellence. Examples include: 
+In this article, we have shown how **rank functions** can be a powerful tool to both uncover previously unknown patterns and to profile the groups that are experiencing a certain behaviour. In the context of Workplace Analytics, we see a wide range of applications in the areas of wellbeing, ways of working, and sales excellence. Examples include: 
 
 * **Workload:** Identifying groups with excessive collaboration and long workdays
 * **Freedom to disconnect:**  Identifying groups with always-on behaviours
 * **Coaching:**  Identifying groups with insufficient coaching and manager time
 * **Exposure:**  Identifying groups with insufficient skip-level exposure
-* **Isolation:**  Identifying groups with insufficient cross-team collaboration.
-* **Sales performance:**  Identifying groups with insufficient external collaboration.
+* **Isolation:**  Identifying groups with insufficient cross-team collaboration
+* **Sales performance:**  Identifying groups with insufficient external collaboration
 
 
 ## Feedback
 
-Hope you found this useful! If you have any suggestions or feedback, please visit https://github.com/microsoft/wpa/issues.
+We hope you found this article useful! 
+
+If you have any suggestions or feedback, please submit an issue at https://github.com/microsoft/wpa/issues.
