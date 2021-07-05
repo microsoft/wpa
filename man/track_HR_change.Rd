@@ -41,13 +41,14 @@ When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{
 Creates a list of everyone at a specified start date and a specified end date
-then aggregates up people who have moved between orgs between this to points
-of time and visualizes the move through a sankey chart.
+then aggregates up people who have moved between organizations between this
+to points of time and visualizes the move through a sankey chart.
+
 Through this chart you can see:
 \itemize{
 \item The HR attribute/orgs that have the highest move out
 \item The HR attribute/orgs that have the highest move in
-\item The number of people that do not have that HR attribute ot  they are no
+\item The number of people that do not have that HR attribute or if they are no
 longer in the system
 }
 }
