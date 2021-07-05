@@ -44,7 +44,6 @@ library(dplyr)
 We will use the `sq_data` demo dataset, which contains a weekly person query output, and apply the `collaboration_rank()` function:
 
 ```{r message=FALSE, warning=FALSE}
-
 sq_data %>% 
     collaboration_rank(return = "table")
 
