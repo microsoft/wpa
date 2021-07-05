@@ -93,6 +93,7 @@ create_rank(
   return = "table"
 )
 
+\donttest{
 # Return a table - combination mode
 create_rank(
   data = sq_data_small,
@@ -100,6 +101,7 @@ create_rank(
   mode = "combine",
   return = "table"
 )
+}
 
 }
 \seealso{

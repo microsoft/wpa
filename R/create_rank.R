@@ -71,6 +71,7 @@
 #'   return = "table"
 #' )
 #'
+#' \donttest{
 #' # Return a table - combination mode
 #' create_rank(
 #'   data = sq_data_small,
@@ -78,6 +79,7 @@
 #'   mode = "combine",
 #'   return = "table"
 #' )
+#' }
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
