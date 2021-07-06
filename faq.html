@@ -457,6 +457,82 @@
 <p>For analysis inspirations, we recommend having a look through our <a href="https://microsoft.github.io/wpa/playbook_intro.html">R playbook</a> identifying useful analyses or functions for exploring a particular area of Workplace Analytics.</p>
 <p>If you have an idea for an analysis and would like this to be documented in the Playbook, you are very welcome to create an issue at <a href="https://github.com/microsoft/wpa/issues/" class="uri">https://github.com/microsoft/wpa/issues/</a> where we can add your idea and we will credit you as a contributor. You can also use the issue to invite discussion on your analysis idea, although we ask to please keep the discussion relevant to analysis via the R package.</p>
 </div>
+<div id="how-do-i-reorder-hr-attributes-when-creating-a-plot-in-the-package" class="section level3">
+<h3 class="hasAnchor">
+<a href="#how-do-i-reorder-hr-attributes-when-creating-a-plot-in-the-package" class="anchor"></a>How do I reorder HR attributes when creating a plot in the package?</h3>
+<p>Some functions, such as <code><a href="reference/create_bar.html">create_bar()</a></code> , offer an argument (<code>rank</code>) for ordering the categorical variable, i.e. the HR attribute when creating the visualisation. Other functions by default perform no ordering, so they show up in the same order as the data is presented.</p>
+<p>For instance, the following code would yield a stacked bar plot with no ordering applied:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span>
+
+<span class="co">#### NO REORDERING ####</span>
+<span class="va">sq_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/create_dist.html">create_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,
+              metric <span class="op">=</span> <span class="st">"Email_hours"</span><span class="op">)</span></code></pre></div>
+<p>To apply an ordering manually, the best way is to convert the HR attribute into a <strong>factor</strong> variable, where you can specify the <em>levels</em>. You can understand <em>levels</em> as a way to specify the order in which the values of your HR attribute should be ranked. The following code will yield an ordered stacked bar plot:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#### ORDERING APPLIED ####</span>
+<span class="va">ld_order</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="co"># Order levels</span>
+    <span class="st">"Executive"</span>,
+    <span class="st">"Director"</span>,
+    <span class="st">"Manager"</span>,
+    <span class="st">"Senior IC"</span>,
+    <span class="st">"Junior IC"</span>,
+    <span class="st">"Support"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Reverse if necessary</span>
+
+
+<span class="va">sq_data</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>LevelDesignation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>
+    <span class="va">LevelDesignation</span>, 
+    levels <span class="op">=</span> <span class="va">ld_order</span> <span class="co"># Specify order</span>
+  <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/create_dist.html">create_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,
+              metric <span class="op">=</span> <span class="st">"Email_hours"</span><span class="op">)</span></code></pre></div>
+<p>Note that the <code>levels</code> argument within <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> accepts a character vector which matches the values in your HR attribute.</p>
+</div>
+<div id="can-i-use-visuals-from-the-package-within-power-bi" class="section level3">
+<h3 class="hasAnchor">
+<a href="#can-i-use-visuals-from-the-package-within-power-bi" class="anchor"></a>Can I use visuals from the package within Power BI?</h3>
+<p><em>Note: this is not a Power BI documentation and therefore will not contain the most recent information on Power BI’s capabilities. This information is accurate to the extent of the author’s knowledge at the time of writing.</em></p>
+<p>To use visuals from the <strong>wpa</strong> R library within Power BI, there are two pre-requisites beyond having R and the package installed:</p>
+<ul>
+<li>R home directories set. Follow the steps described in <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals#enable-r-visuals-in-power-bi-desktop">Create Power BI visuals using R - Power BI</a>.</li>
+<li>Query data imported to Power BI</li>
+</ul>
+<p>Only visuals generated from the package of the <code>ggplot</code> object type can be embedded within Power BI. In most cases, what this means is that the visual will only display if the value passed to the <code>return</code> argument in your function is <code>"plot"</code>. For instance, the following is code returns a valid object:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_dist.html">email_dist</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<p>Note that there are some exceptions to the <code>"plot"</code> rule, as some functions return a HTML widget, such as <code><a href="reference/create_sankey.html">create_sankey()</a></code>. You will also not be able to return data frames, HTML reports, or DataTables objects (the output of <code><a href="reference/create_dt.html">create_dt()</a></code>).</p>
+<p>The documentation <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals#enable-r-visuals-in-power-bi-desktop">here</a> provides more details on the limitations of the R visuals.</p>
+<p>Here are a series of steps, slightly abridged, taken from the Power BI documentation, last updated July 6th 2021:</p>
+<ol>
+<li>Select the R Visual icon in the Visualization pane to add an R visual.</li>
+<li>In the<code>Enable script visuals</code> window that appears, select <code>Enable</code>.</li>
+<li>In the <code>Values</code> section of the <code>Visualization</code> pane, drag fields from the <code>Fields</code> pane that you want to consume in your R script, just as you would with any other Power BI Desktop visual.
+<ul>
+<li>Alternatively, you can also select the fields directly in the <code>Fields</code> pane.</li>
+<li>Only fields that you’ve added to the <code>Values</code> section are available to your R script.</li>
+<li>You can add new fields or remove unneeded fields from the <code>Values</code> section while working on your R script in the R script editor. Power BI Desktop automatically detects which fields you’ve added or removed.</li>
+<li>The generated dataframe is named <code>dataset</code>, and you access selected columns by their respective names.</li>
+<li>Make sure to use OrderDate instead of Date Hierarchy.</li>
+<li>Ensure that you have <code>PersonId</code>, <code>Date</code>, any relevant metrics, and HR attributes included as required as inputs to the R function.</li>
+</ul>
+</li>
+<li>In the R script editor, below the line <code>"# Paste or type your script code here:,"</code> paste or type: <code><a href="https://github.com/microsoft/wpa/">library(wpa)</a></code>
+</li>
+<li>Continue pasting or typing the scripts CAUTION: You can run functions in PBI R visual only when the output is visual <code>= "plot"</code>. Otherwise, there will be an error in the R visual placeholder on the report canvas when you run the script.</li>
+<li>Run the script by clicking <code>Run script</code> icon in the script editor.</li>
+<li>When you modify the script or change the visual area size, you can refresh the visual by clicking Run script icon.</li>
+<li>You may apply filters just like other Power BI visuals using Filter pane.</li>
+</ol>
+<p>A minimal example that you could try on your R script editor is:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
+<span class="va">dataset</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_summary.html">email_sum</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
 </div>
 <div id="contributing-and-engaging" class="section level2">
 <h2 class="hasAnchor">
