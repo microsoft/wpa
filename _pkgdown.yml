@@ -79,4 +79,6 @@ navbar:
         href: articles/IV-report.html
       - text: Identifying changes over time
         href: articles/Change-over-time.html
+      - text: Identifying noteworthy groups with rank functions
+        href: articles/profiles-with-rank.html
 
