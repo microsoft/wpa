@@ -8,5 +8,8 @@ articles:
   intro-to-wpa: intro-to-wpa.html
   profiles-with-rank: profiles-with-rank.html
   text-mining-capabilities: text-mining-capabilities.html
-last_built: 2021-07-06T14:24Z
+last_built: 2021-07-06T14:48Z
+urls:
+  reference: https://microsoft.github.io/wpa//reference
+  article: https://microsoft.github.io/wpa//articles
 
