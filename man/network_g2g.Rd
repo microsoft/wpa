@@ -53,7 +53,10 @@ list of options.}
 nodes. Defaults to \code{"lightblue"}. If \code{"vary"} is supplied, a different colour
 is shown for each node at random.}
 
-\item{exc_threshold}{Exclusion threshold to apply.}
+\item{exc_threshold}{Numeric value between 0 and 1 specifying the exclusion
+threshold to apply. Defaults to 0.1, which means that the plot will only
+display collaboration above 10\% of a node's total collaboration. This
+argument has no impact on \code{"data"} or \code{"table"} return.}
 
 \item{org_count}{Optional data frame to provide the size of each organization
 in the \code{collaborator} attribute. The data frame should contain only two

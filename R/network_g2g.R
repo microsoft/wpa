@@ -25,7 +25,10 @@
 #' @param node_colour String to specify the colour to be used for displaying
 #' nodes. Defaults to `"lightblue"`. If `"vary"` is supplied, a different colour
 #' is shown for each node at random.
-#' @param exc_threshold Exclusion threshold to apply.
+#' @param exc_threshold Numeric value between 0 and 1 specifying the exclusion
+#'   threshold to apply. Defaults to 0.1, which means that the plot will only
+#'   display collaboration above 10% of a node's total collaboration. This
+#'   argument has no impact on `"data"` or `"table"` return.
 #' @param org_count Optional data frame to provide the size of each organization
 #' in the `collaborator` attribute. The data frame should contain only two
 #' columns:
