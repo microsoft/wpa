@@ -86,7 +86,7 @@ method. The 'igraph' implementation of the Louvain method is used." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -271,7 +271,7 @@ method. The 'igraph' implementation of the Louvain method is used.</p>
     <tr>
       <th>node_alpha</th>
       <td><p>A numeric value between 0 and 1 to specify the transparency
-of the nodes.</p></td>
+of the nodes. Defaults to 0.7.</p></td>
     </tr>
     <tr>
       <th>algorithm</th>
@@ -317,7 +317,7 @@ communities.</p></li>
 before <code><a href='network_leiden.html'>network_leiden()</a></code> switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as <code>0</code> to
 coerce to a fast plotting method every time, and <code>Inf</code> to always use the
-default plotting method.</p></td>
+default plotting method (with 'ggraph').</p></td>
     </tr>
     </table>
 

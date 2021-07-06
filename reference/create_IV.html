@@ -83,7 +83,7 @@ All numeric variables in the dataset are used as predictor variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -237,6 +237,7 @@ All numeric variables in the dataset are used as predictor variables.</p>
   <span class='va'>outcome</span>,
   bins <span class='op'>=</span> <span class='fl'>5</span>,
   siglevel <span class='op'>=</span> <span class='fl'>0.05</span>,
+  exc_sig <span class='op'>=</span> <span class='cn'>FALSE</span>,
   return <span class='op'>=</span> <span class='st'>"plot"</span>
 <span class='op'>)</span></pre>
 
@@ -249,8 +250,9 @@ All numeric variables in the dataset are used as predictor variables.</p>
     </tr>
     <tr>
       <th>predictors</th>
-      <td><p>A character vector specifying the columns to be used as predictors.
-Defaults to NULL, where all numeric vectors in the data will be used as predictors.</p></td>
+      <td><p>A character vector specifying the columns to be used as
+predictors. Defaults to NULL, where all numeric vectors in the data will be
+used as predictors.</p></td>
     </tr>
     <tr>
       <th>outcome</th>
@@ -259,12 +261,17 @@ the values 1 or 0.</p></td>
     </tr>
     <tr>
       <th>bins</th>
-      <td><p>Number of bins to use in <code>Information::create_infotables()</code>, defaults to 5.</p></td>
+      <td><p>Number of bins to use, defaults to 5.</p></td>
     </tr>
     <tr>
       <th>siglevel</th>
-      <td><p>Significance level to use in comparing populations for the outcomes,
-defaults to 0.05</p></td>
+      <td><p>Significance level to use in comparing populations for the
+outcomes, defaults to 0.05</p></td>
+    </tr>
+    <tr>
+      <th>exc_sig</th>
+      <td><p>Logical value determining whether to exclude values where the
+p-value lies below what is set at <code>siglevel</code>. Defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -291,8 +298,8 @@ argument:</p><ul>
 <li><p><code>"list"</code>: list. A list of outputs for all the input variables.</p></li>
 <li><p><code>"plot-WOE"</code>: A list of 'ggplot' objects that show the WOE for each
 predictor used in the model.</p></li>
-<li><p><code>"IV"</code> returns the original Information object returned by
-<code>Information::create_infotables()</code>.</p></li>
+<li><p><code>"IV"</code> returns a list object which mirrors the return
+in <code>Information::create_infotables()</code>.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

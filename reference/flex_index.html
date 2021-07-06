@@ -85,7 +85,7 @@ freedom for employees to work at a time of their choice." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -349,6 +349,17 @@ arrangement. <em>Observed flexibility</em> serves as a proxy to assess whether a
 flexible working arrangement are in place. The Flexibility Index is an
 attempt to create such a proxy for quantifying and measuring flexibility,
 using behavioural data from Workplace Analytics.</p>
+    <h2 class="hasAnchor" id="recurring-disconnection-time"><a class="anchor" href="#recurring-disconnection-time"></a>Recurring disconnection time</h2>
+
+    
+
+<p>The key component of <code>TakeBreaks</code> in the Flexibility Index is best
+interpreted as 'recurring disconnection time'. This denotes an hourly block
+where there is consistently no activity occurring throughout the week. Note
+that this applies a stricter criterion compared to the common definition of
+a break, which is simply a time interval where no active work is being
+done, and thus the more specific terminology 'recurring disconnection time'
+is preferred.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Working Patterns: 
@@ -380,13 +391,13 @@ using behavioural data from Workplace Analytics.</p>
 <span class='co'># Return a summary table with the computed Flexibility Index</span>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'>flex_index</span><span class='op'>(</span>hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 5</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 5</span>
 #&gt;   Organization TakeBreaks ChangeHours ControlHours FlexibilityIndex
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Team 1            0.843       0.912        0.185            0.647
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Team 2            0.793       0.882        0.188            0.621
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Team 3            0.829       0.829        0.198            0.619
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Team 4            0.81        0.92         0.103            0.611</div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Team 1            0.843       0.912        0.185            0.647
+#&gt; <span style='color: #BCBCBC;'>2</span> Team 2            0.793       0.882        0.188            0.621
+#&gt; <span style='color: #BCBCBC;'>3</span> Team 3            0.829       0.829        0.198            0.619
+#&gt; <span style='color: #BCBCBC;'>4</span> Team 4            0.81        0.92         0.103            0.611</div><div class='input'>
 <span class='co'># \donttest{</span>
 <span class='co'># Return the raw data with the computed Flexibility Index</span>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span>
@@ -536,7 +547,7 @@ using behavioural data from Workplace Analytics.</p>
 #&gt; 1122:         TRUE        0.6666667
 #&gt; 1123:        FALSE        0.6666667</div><div class='input'><span class='co'># }</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

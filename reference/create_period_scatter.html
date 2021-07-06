@@ -85,7 +85,7 @@ to return a summary table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -344,6 +344,7 @@ in the package that produce faceted scatter plots.</p>
 <code><a href='create_sankey.html'>create_sankey</a>()</code>,
 <code><a href='create_scatter.html'>create_scatter</a>()</code>,
 <code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_tracking.html'>create_tracking</a>()</code>,
 <code><a href='create_trend.html'>create_trend</a>()</code>,
 <code><a href='email_dist.html'>email_dist</a>()</code>,
 <code><a href='email_fizz.html'>email_fizz</a>()</code>,
@@ -400,6 +401,7 @@ in the package that produce faceted scatter plots.</p>
 <code><a href='create_sankey.html'>create_sankey</a>()</code>,
 <code><a href='create_scatter.html'>create_scatter</a>()</code>,
 <code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_tracking.html'>create_tracking</a>()</code>,
 <code><a href='create_trend.html'>create_trend</a>()</code>,
 <code><a href='period_change.html'>period_change</a>()</code></p>
 <p>Other Time-series: 
@@ -417,25 +419,25 @@ in the package that produce faceted scatter plots.</p>
                       before_end <span class='op'>=</span> <span class='st'>"2019-12-31"</span>,
                       after_start <span class='op'>=</span> <span class='st'>"2020-01-01"</span>,
                       after_end <span class='op'>=</span> <span class='st'>"2020-01-26"</span><span class='op'>)</span>
-</div><div class='img'><img src='create_period_scatter-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; = "none")` instead.</span></div><div class='img'><img src='create_period_scatter-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return a summary table</span>
 <span class='fu'>create_period_scatter</span><span class='op'>(</span><span class='va'>sq_data</span>, before_end <span class='op'>=</span> <span class='st'>"2019-12-31"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 x 5</span><span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; = "none")` instead.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 x 5</span>
 #&gt;    group              Multitasking_meeting_hours Meeting_hours Period       n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz Dev                                 0.257          6.82 Period 1    75
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Customer Service                        0.436          8.60 Period 1    61
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Facilities                              0.484          9.08 Period 1    72
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Finance-Corporate                       0.310          8.19 Period 1    68
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Finance-East                            0.789         11.4  Period 1    70
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Finance-South                           0.617          8.91 Period 1    81
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Finance-West                            0.765         10.5  Period 1    73
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Financial Planning                      0.372          8.24 Period 1    75
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A Central                             0.572          9.03 Period 1    57
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A East                                0.329          7.70 Period 1    65
-#&gt; </span><span style='color: #949494;'># … with 20 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Biz Dev                                 0.257          6.82 Period 1    75
+#&gt; <span style='color: #BCBCBC;'> 2</span> Customer Service                        0.436          8.60 Period 1    61
+#&gt; <span style='color: #BCBCBC;'> 3</span> Facilities                              0.484          9.08 Period 1    72
+#&gt; <span style='color: #BCBCBC;'> 4</span> Finance-Corporate                       0.310          8.19 Period 1    68
+#&gt; <span style='color: #BCBCBC;'> 5</span> Finance-East                            0.789         11.4  Period 1    70
+#&gt; <span style='color: #BCBCBC;'> 6</span> Finance-South                           0.617          8.91 Period 1    81
+#&gt; <span style='color: #BCBCBC;'> 7</span> Finance-West                            0.765         10.5  Period 1    73
+#&gt; <span style='color: #BCBCBC;'> 8</span> Financial Planning                      0.372          8.24 Period 1    75
+#&gt; <span style='color: #BCBCBC;'> 9</span> G&amp;A Central                             0.572          9.03 Period 1    57
+#&gt; <span style='color: #BCBCBC;'>10</span> G&amp;A East                                0.329          7.70 Period 1    65
+#&gt; <span style='color: #949494;'># … with 20 more rows</span></div><div class='input'>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

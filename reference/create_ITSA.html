@@ -51,9 +51,13 @@ applying single-group Interrupted Time-Series Analysis (ITSA) — create_ITSA �
 
 <meta property="og:title" content="Estimate an effect of intervention on every WPA metric in input file by
 applying single-group Interrupted Time-Series Analysis (ITSA) — create_ITSA" />
-<meta property="og:description" content="This function implements ITSA method described in the paper 'Conducting
+<meta property="og:description" content="r lifecycle::badge('experimental')
+This function implements ITSA method described in the paper 'Conducting
 interrupted time-series analysis for single- and multiple-group comparisons',
-Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500" />
+Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500
+This function further requires the installation of 'sandwich', 'portes', and
+'lmtest' in order to work. These packages can be installed from CRAN using
+install.packages()." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -86,7 +90,7 @@ Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -231,9 +235,13 @@ applying single-group Interrupted Time-Series Analysis (ITSA)</h1>
     </div>
 
     <div class="ref-description">
-    <p>This function implements ITSA method described in the paper 'Conducting
+    <p>r lifecycle::badge('experimental')</p>
+<p>This function implements ITSA method described in the paper 'Conducting
 interrupted time-series analysis for single- and multiple-group comparisons',
 Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500</p>
+<p>This function further requires the installation of 'sandwich', 'portes', and
+'lmtest' in order to work. These packages can be installed from CRAN using
+<code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>create_ITSA</span><span class='op'>(</span>
@@ -251,24 +259,36 @@ Ariel Linden, The Stata Journal (2015), 15, Number 2, pp. 480-500</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Person Query as a dataframe including date column named 'Date'
-This function assumes the data format is MM/DD/YYYY as is standard in a WpA query output.</p></td>
+      <td><p>Person Query as a dataframe including date column named <code>Date</code>.
+This function assumes the data format is MM/DD/YYYY as is standard in a WpA
+query output.</p></td>
     </tr>
     <tr>
       <th>before_start</th>
-      <td><p>Start date of 'before' time period in YYYY-MM-DD format as character type. Defaults to earliest date in dataset.</p></td>
+      <td><p>Start date of 'before' time period in MM/DD/YYYY format
+as character type. Before time period is the period before the intervention
+(e.g. training program, re-org, shift to remote work) occurs and bounded by
+before_start and before_end parameters. Longer period increases likelihood
+of achieving more statistically significant results. Defaults to earliest
+date in dataset.</p></td>
     </tr>
     <tr>
       <th>before_end</th>
-      <td><p>End date of 'before' time period in YYYY-MM-DD  format as character type.</p></td>
+      <td><p>End date of 'before' time period in MM/DD/YYYY  format as
+character type.</p></td>
     </tr>
     <tr>
       <th>after_start</th>
-      <td><p>Start date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to day after before_end.</p></td>
+      <td><p>Start date of 'after' time period in MM/DD/YYYY  format as
+character type. After time period is the period after the intervention
+occurs and bounded by after_start and after_end parameters. Longer period
+increases likelihood of achieving more statistically significant results.
+Defaults to date after before_end.</p></td>
     </tr>
     <tr>
       <th>after_end</th>
-      <td><p>End date of 'after' time period in YYYY-MM-DD  format as character type. Defaults to latest date in dataset.</p></td>
+      <td><p>End date of 'after' time period in MM/DD/YYYY  format as
+character type. Defaults to latest date in dataset.</p></td>
     </tr>
     <tr>
       <th>ac_lags_max</th>
@@ -276,23 +296,32 @@ This function assumes the data format is MM/DD/YYYY as is standard in a WpA quer
     </tr>
     <tr>
       <th>return</th>
-      <td><p>String specifying what output to return. Defaults to <code>"table"</code>.
+      <td><p>String specifying what output to return. Defaults to "table".
 Valid return options include:</p><ul>
 <li><p><code>'plot'</code>: return a list of plots.</p></li>
-<li><p><code>'table'</code>: return data.frame with estimated models' coefficients and their corresponding p-values
-You should look for significant p-values in <code>beta_2</code> to indicate an immediate treatment effect,
-and/or in <code>beta_3</code> to indicate a treatment effect over time</p></li>
+<li><p><code>'table'</code>: return data.frame with estimated models' coefficients and
+their corresponding p-values You should look for significant p-values in
+beta_2 to indicate an immediate treatment effect, and/or in beta_3 to
+indicate a treatment effect over time</p></li>
 </ul></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function uses the additional package dependencies 'sandwich', 'lmtest',
+and 'portes'. Please install these separately from CRAN prior to running the
+function.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Flexible Input: 
 <code><a href='period_change.html'>period_change</a>()</code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Aleksey Ashikhmin <a href='mailto:alashi@microsoft.com'>alashi@microsoft.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># Returns summary table</span>
 
 <span class='fu'>create_ITSA</span><span class='op'>(</span>
@@ -303,7 +332,9 @@ and/or in <code>beta_3</code> to indicate a treatment effect over time</p></li>
   after_end <span class='op'>=</span> <span class='st'>"1/26/2020"</span>,
   ac_lags_max <span class='op'>=</span> <span class='fl'>7</span>,
   return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                       metric_name beta_2 beta_3 beta_2_pvalue
+</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'quantmod':</span>
+#&gt; <span class='message'>  method            from</span>
+#&gt; <span class='message'>  as.zoo.data.frame zoo </span></div><div class='output co'>#&gt;                                       metric_name beta_2 beta_3 beta_2_pvalue
 #&gt; 1                                   Workweek_span  1.788  0.972         0.477
 #&gt; 2                        Meetings_with_skip_level  0.010  0.008         0.623
 #&gt; 3                   Meeting_hours_with_skip_level  0.020  0.000         0.159
@@ -482,7 +513,7 @@ and/or in <code>beta_3</code> to indicate a treatment effect over time</p></li>
 
 <span class='co'># Extract a plot as an example</span>
 <span class='va'>plot_list</span><span class='op'>$</span><span class='va'>Workweek_span</span>
-</div><div class='img'><img src='create_ITSA-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='create_ITSA-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

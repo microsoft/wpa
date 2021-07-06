@@ -84,7 +84,7 @@ Additional options available to return a summary table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -305,6 +305,7 @@ following strings:</p><ul>
 <code><a href='create_sankey.html'>create_sankey</a>()</code>,
 <code><a href='create_scatter.html'>create_scatter</a>()</code>,
 <code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_tracking.html'>create_tracking</a>()</code>,
 <code><a href='create_trend.html'>create_trend</a>()</code>,
 <code><a href='email_dist.html'>email_dist</a>()</code>,
 <code><a href='email_fizz.html'>email_fizz</a>()</code>,
@@ -360,16 +361,16 @@ following strings:</p><ul>
 </div><div class='img'><img src='afterhours_summary-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return a summary table</span>
 <span class='fu'>afterhours_summary</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 3</span>
 #&gt;   group     After_hours_collaboration_hours     n
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                               </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Director                             3.07    68
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Executive                            2.87     6
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Junior IC                            2.90   105
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Manager                              3.17   333
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Senior IC                            2.95   103
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Support                              2.71   419</div><div class='input'>
-</div></span></pre>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Director                             3.07    68
+#&gt; <span style='color: #BCBCBC;'>2</span> Executive                            2.87     6
+#&gt; <span style='color: #BCBCBC;'>3</span> Junior IC                            2.90   105
+#&gt; <span style='color: #BCBCBC;'>4</span> Manager                              3.17   333
+#&gt; <span style='color: #BCBCBC;'>5</span> Senior IC                            2.95   103
+#&gt; <span style='color: #BCBCBC;'>6</span> Support                              2.71   419</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

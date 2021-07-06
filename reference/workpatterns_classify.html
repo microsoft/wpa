@@ -85,7 +85,7 @@ the the person-average volume-based ('pav') method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -239,7 +239,7 @@ the the person-average volume-based ('pav') method.</p>
   <span class='va'>data</span>,
   hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
   values <span class='op'>=</span> <span class='st'>"percent"</span>,
-  signals <span class='op'>=</span> <span class='st'>"email"</span>,
+  signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"email"</span>, <span class='st'>"IM"</span><span class='op'>)</span>,
   start_hour <span class='op'>=</span> <span class='st'>"0900"</span>,
   end_hour <span class='op'>=</span> <span class='st'>"1700"</span>,
   mingroup <span class='op'>=</span> <span class='fl'>5</span>,
@@ -280,13 +280,17 @@ use:</p><ul>
     </tr>
     <tr>
       <th>start_hour</th>
-      <td><p>A character vector specifying starting hours, e.g. "0900".
-Note that this currently only supports <strong>hourly</strong> increments.</p></td>
+      <td><p>A character vector specifying starting hours, e.g.
+<code>"0900"</code>. Note that this currently only supports <strong>hourly</strong> increments. If
+the official hours specifying checking in and 9 AM and checking out at 5
+PM, then <code>"0900"</code> should be supplied here.</p></td>
     </tr>
     <tr>
       <th>end_hour</th>
-      <td><p>A character vector specifying starting hours, e.g. "1700".
-Note that this currently only supports <strong>hourly</strong> increments.</p></td>
+      <td><p>A character vector specifying starting hours, e.g. <code>"1700"</code>.
+Note that this currently only supports <strong>hourly</strong> increments. If the
+official hours specifying checking in and 9 AM and checking out at 5 PM,
+then <code>"1700"</code> should be supplied here.</p></td>
     </tr>
     <tr>
       <th>mingroup</th>
@@ -314,6 +318,7 @@ following strings:</p><ul>
 <li><p><code>"table"</code></p></li>
 <li><p><code>"plot-area"</code></p></li>
 <li><p><code>"plot-hrvar"</code> (only for <code>bw</code> method)</p></li>
+<li><p><code>"plot-dist"</code> (only for <code>bw</code> method)</p></li>
 </ul>
 
 <p>See <code>Value</code> for more information.</p></td>
@@ -324,15 +329,22 @@ following strings:</p><ul>
 
     <p>Character vector to specify what to return. Valid options
 include:</p><ul>
-<li><p><code>"plot"</code>: returns a heatmap plot of signal distribution by hour
-and archetypes (default)</p></li>
-<li><p><code>"data"</code>: returns the raw data with the classified archetypes</p></li>
-<li><p><code>"table"</code>: returns a summary table of the archetypes</p></li>
-<li><p><code>"plot-area"</code>: returns an area plot of the percentages of archetypes
-shown over time</p></li>
-<li><p><code>"plot-hrvar"</code>: returns a bar plot showing the count of archetypes,
+<li><p><code>"plot"</code>: ggplot object. With the <code>bw</code> method, this returns a grid
+showing the distribution of archetypes by 'breaks' and number of active
+hours (default). With the <code>pav</code> method, this returns a faceted bar plot
+which shows the percentage of signals sent in each hour, with each facet
+representing an archetype.</p></li>
+<li><p><code>"data"</code>: data frame. The raw data with the classified archetypes.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table of the archetypes.</p></li>
+<li><p><code>"plot-area"</code>: ggplot object. With the <code>bw</code> method, this returns an area
+plot of the percentages of archetypes shown over time. With the <code>pav</code>
+method, this returns an area chart which shows the percentage of signals
+sent in each hour, with each line representing an archetype.</p></li>
+<li><p><code>"plot-hrvar"</code>: ggplot object. A bar plot showing the count of archetypes,
 faceted by the supplied HR attribute. This is only available for the <code>bw</code>
 method.</p></li>
+<li><p><code>"plot-dist"</code>: returns a heatmap plot of signal distribution by hour and
+archetypes. This is only available for the <code>bw</code> method.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -380,6 +392,12 @@ results towards the 'standard working hours'.</p></li>
 'heavy' weeks with respect to workload.</p></li>
 </ol>
 
+<p>The notion of 'breaks' in the 'binary-week' method is best understood as
+'recurring disconnection time'. This denotes an hourly block where there is
+consistently no activity occurring throughout the week. Note that this
+applies a stricter criterion compared to the common definition of a break,
+which is simply a time interval where no active work is being done, and thus
+the more specific terminology 'recurring disconnection time' is preferred.</p>
 <p>In the standard plot output, the archetypes have been abbreviated to show the
 following:</p><ul>
 <li><p><strong>Low Activity</strong> - archetype 0</p></li>
@@ -455,22 +473,22 @@ Hourly Collaboration Flexible Query.</p></li>
 <span class='co'># \donttest{</span>
 
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"bw"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 5</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 5</span>
 #&gt;   Personas                       `Team 1` `Team 2` `Team 3` `Team 4`
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>                             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 0 &lt; 3 hours on                   0.197    0.128    0.187    0.167 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 1 Standard with breaks workday   0.048</span><span style='text-decoration: underline;'>3</span><span>   0.044</span><span style='text-decoration: underline;'>4</span><span>   0.072</span><span style='text-decoration: underline;'>4</span><span>   0.027</span><span style='text-decoration: underline;'>9</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 3 Standard flexible workday      0.364    0.281    0.284    0.265 
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 4 Long flexible workday          0.119    0.219    0.242    0.265 
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 5 Long continuous workday        0.026</span><span style='text-decoration: underline;'>0</span><span>   0.114    0.072</span><span style='text-decoration: underline;'>4</span><span>   0.069</span><span style='text-decoration: underline;'>6</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> 6 Always on (13h+)               0.245    0.214    0.142    0.206 </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 0 &lt; 3 hours on                   0.197    0.128    0.187    0.167 
+#&gt; <span style='color: #BCBCBC;'>2</span> 1 Standard with breaks workday   0.048<span style='text-decoration: underline;'>3</span>   0.044<span style='text-decoration: underline;'>4</span>   0.072<span style='text-decoration: underline;'>4</span>   0.027<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'>3</span> 3 Standard flexible workday      0.364    0.281    0.284    0.265 
+#&gt; <span style='color: #BCBCBC;'>4</span> 4 Long flexible workday          0.119    0.219    0.242    0.265 
+#&gt; <span style='color: #BCBCBC;'>5</span> 5 Long continuous workday        0.026<span style='text-decoration: underline;'>0</span>   0.114    0.072<span style='text-decoration: underline;'>4</span>   0.069<span style='text-decoration: underline;'>6</span>
+#&gt; <span style='color: #BCBCBC;'>6</span> 6 Always on (13h+)               0.245    0.214    0.142    0.206 </div><div class='input'>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"pav"</span><span class='op'>)</span>
 </div><div class='img'><img src='workpatterns_classify-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"pav"</span>, return <span class='op'>=</span> <span class='st'>"plot-area"</span><span class='op'>)</span>
 </div><div class='img'><img src='workpatterns_classify-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># }</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

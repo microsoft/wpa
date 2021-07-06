@@ -83,7 +83,7 @@ a Standard Person Query as an input." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -311,6 +311,7 @@ following strings: - <code>"plot"</code> - <code>"table"</code></p></td>
 <code><a href='create_sankey.html'>create_sankey</a>()</code>,
 <code><a href='create_scatter.html'>create_scatter</a>()</code>,
 <code><a href='create_stacked.html'>create_stacked</a>()</code>,
+<code><a href='create_tracking.html'>create_tracking</a>()</code>,
 <code><a href='create_trend.html'>create_trend</a>()</code>,
 <code><a href='email_dist.html'>email_dist</a>()</code>,
 <code><a href='email_fizz.html'>email_fizz</a>()</code>,
@@ -378,26 +379,26 @@ following strings: - <code>"plot"</code> - <code>"table"</code></p></td>
 </div><div class='img'><img src='meeting_quality-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return summary table</span>
 <span class='fu'>meeting_quality</span><span class='op'>(</span><span class='va'>sq_data</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 8</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 8</span>
 #&gt;    group   After_hours_meet… Low_quality_meet… Conflicting_mee… Multitasking_me…
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Biz Dev             0.722              4.52             2.25            0.264
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Custom…             1.20               6.67             3.21            0.474
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Facili…             1.21               6.79             3.42            0.518
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Financ…             0.959              5.60             2.76            0.331
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Financ…             1.86               8.31             4.94            0.822
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Financ…             1.30               6.48             3.39            0.666
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Financ…             1.55               7.78             4.19            0.751
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Financ…             1.06               6.01             2.92            0.378
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> G&amp;A Ce…             1.23               6.39             3.51            0.556
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> G&amp;A Ea…             0.853              4.99             2.43            0.375
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> G&amp;A So…             1.52               8.00             4.95            0.624
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Human …             1.75               8.78             5.81            0.680
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Invent…             2.08               9.52             6.30            0.750
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> IT-Cor…             1.80               8.17             5.77            0.657
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> IT-East             1.27               7.26             4.43            0.469
-#&gt; </span><span style='color: #949494;'># … with 3 more variables: Meetings &lt;dbl&gt;, Meeting_hours &lt;dbl&gt;, n &lt;int&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Biz Dev             0.722              4.52             2.25            0.264
+#&gt; <span style='color: #BCBCBC;'> 2</span> Custom…             1.20               6.67             3.21            0.474
+#&gt; <span style='color: #BCBCBC;'> 3</span> Facili…             1.21               6.79             3.42            0.518
+#&gt; <span style='color: #BCBCBC;'> 4</span> Financ…             0.959              5.60             2.76            0.331
+#&gt; <span style='color: #BCBCBC;'> 5</span> Financ…             1.86               8.31             4.94            0.822
+#&gt; <span style='color: #BCBCBC;'> 6</span> Financ…             1.30               6.48             3.39            0.666
+#&gt; <span style='color: #BCBCBC;'> 7</span> Financ…             1.55               7.78             4.19            0.751
+#&gt; <span style='color: #BCBCBC;'> 8</span> Financ…             1.06               6.01             2.92            0.378
+#&gt; <span style='color: #BCBCBC;'> 9</span> G&amp;A Ce…             1.23               6.39             3.51            0.556
+#&gt; <span style='color: #BCBCBC;'>10</span> G&amp;A Ea…             0.853              4.99             2.43            0.375
+#&gt; <span style='color: #BCBCBC;'>11</span> G&amp;A So…             1.52               8.00             4.95            0.624
+#&gt; <span style='color: #BCBCBC;'>12</span> Human …             1.75               8.78             5.81            0.680
+#&gt; <span style='color: #BCBCBC;'>13</span> Invent…             2.08               9.52             6.30            0.750
+#&gt; <span style='color: #BCBCBC;'>14</span> IT-Cor…             1.80               8.17             5.77            0.657
+#&gt; <span style='color: #BCBCBC;'>15</span> IT-East             1.27               7.26             4.43            0.469
+#&gt; <span style='color: #949494;'># … with 3 more variables: Meetings &lt;dbl&gt;, Meeting_hours &lt;dbl&gt;, n &lt;int&gt;</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

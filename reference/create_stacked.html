@@ -86,7 +86,7 @@ Additional options available to return a summary table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -344,6 +344,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <code><a href='create_rank.html'>create_rank</a>()</code>,
 <code><a href='create_sankey.html'>create_sankey</a>()</code>,
 <code><a href='create_scatter.html'>create_scatter</a>()</code>,
+<code><a href='create_tracking.html'>create_tracking</a>()</code>,
 <code><a href='create_trend.html'>create_trend</a>()</code>,
 <code><a href='email_dist.html'>email_dist</a>()</code>,
 <code><a href='email_fizz.html'>email_fizz</a>()</code>,
@@ -400,6 +401,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <code><a href='create_rank.html'>create_rank</a>()</code>,
 <code><a href='create_sankey.html'>create_sankey</a>()</code>,
 <code><a href='create_scatter.html'>create_scatter</a>()</code>,
+<code><a href='create_tracking.html'>create_tracking</a>()</code>,
 <code><a href='create_trend.html'>create_trend</a>()</code>,
 <code><a href='period_change.html'>period_change</a>()</code></p></div>
 
@@ -425,19 +427,19 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
                              <span class='st'>"Call_hours"</span>,
                              <span class='st'>"Instant_Message_hours"</span><span class='op'>)</span>,
                  return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8 x 7</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8 x 7</span>
 #&gt;   group       Meeting_hours Email_hours Call_hours Instant_Message_hours Total
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Engineering          9.28       10.3        4.56                 0.621  24.8
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Finance              8.35        8.17       4.28                 0.620  21.4
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> G_and_A              8.11        7.93       4.20                 0.610  20.9
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> IT                   7.02        7.97       3.42                 0.597  19.0
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Marketing           13.1        12.7        7.36                 0.576  33.8
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Operations           9.79        9.33       5.22                 0.655  25.0
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> R_and_D              7.37        7.79       4.05                 0.593  19.8
-#&gt; </span><span style='color: #BCBCBC;'>8</span><span> Sales               16.2        14.7        8.92                 0.538  40.4
-#&gt; </span><span style='color: #949494;'># … with 1 more variable: Employee_Count &lt;int&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Engineering          9.28       10.3        4.56                 0.621  24.8
+#&gt; <span style='color: #BCBCBC;'>2</span> Finance              8.35        8.17       4.28                 0.620  21.4
+#&gt; <span style='color: #BCBCBC;'>3</span> G_and_A              8.11        7.93       4.20                 0.610  20.9
+#&gt; <span style='color: #BCBCBC;'>4</span> IT                   7.02        7.97       3.42                 0.597  19.0
+#&gt; <span style='color: #BCBCBC;'>5</span> Marketing           13.1        12.7        7.36                 0.576  33.8
+#&gt; <span style='color: #BCBCBC;'>6</span> Operations           9.79        9.33       5.22                 0.655  25.0
+#&gt; <span style='color: #BCBCBC;'>7</span> R_and_D              7.37        7.79       4.05                 0.593  19.8
+#&gt; <span style='color: #BCBCBC;'>8</span> Sales               16.2        14.7        8.92                 0.538  40.4
+#&gt; <span style='color: #949494;'># … with 1 more variable: Employee_Count &lt;int&gt;</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
