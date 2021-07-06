@@ -212,6 +212,45 @@ For analysis inspirations, we recommend having a look through our [R playbook](h
 
 If you have an idea for an analysis and would like this to be documented in the Playbook, you are very welcome to create an issue at <https://github.com/microsoft/wpa/issues/> where we can add your idea and we will credit you as a contributor. You can also use the issue to invite discussion on your analysis idea, although we ask to please keep the discussion relevant to analysis via the R package. 
 
+### How do I reorder HR attributes when creating a plot in the package? 
+
+Some functions, such as `create_bar()` , offer an argument (`rank`) for ordering the categorical variable, i.e. the HR attribute when creating the visualisation. Other functions by default perform no ordering, so they show up in the same order as the data is presented. 
+
+For instance, the following code would yield a stacked bar plot with no ordering applied: 
+```R
+library(wpa)
+library(tidyverse)
+
+#### NO REORDERING ####
+sq_data %>%
+  create_dist(hrvar = "LevelDesignation",
+              metric = "Email_hours")
+```
+
+To apply an ordering manually, the best way is to convert the HR attribute into a **factor** variable, where you can specify the _levels_. You can understand _levels_ as a way to specify the order in which the values of your HR attribute should be ranked. The following code will yield an ordered stacked bar plot: 
+```R
+#### ORDERING APPLIED ####
+ld_order <-
+  c( # Order levels
+    "Executive",
+    "Director",
+    "Manager",
+    "Senior IC",
+    "Junior IC",
+    "Support") %>%
+  rev() # Reverse if necessary
+
+
+sq_data %>%
+  mutate(LevelDesignation = factor(
+    LevelDesignation, 
+    levels = ld_order # Specify order
+  )) %>%
+  create_dist(hrvar = "LevelDesignation",
+              metric = "Email_hours")
+```
+Note that the `levels` argument within `factor()` accepts a character vector which matches the values in your HR attribute. 
+
 ## Contributing and Engaging
 
 ### How do I find help if I have questions about using the package?
