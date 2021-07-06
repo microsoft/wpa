@@ -1,8 +1,7 @@
 on:
   push:
     branches:
-      - main
-      - master
+      - cran-mirror
 
 name: pkgdown
 

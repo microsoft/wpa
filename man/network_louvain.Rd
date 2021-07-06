@@ -28,7 +28,7 @@ network_louvain(
 \item{font_col}{String to specify font and link colour.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
-of the nodes.}
+of the nodes. Defaults to 0.7.}
 
 \item{algorithm}{String to specify the node placement algorithm to be used.
 Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
@@ -65,7 +65,7 @@ communities.
 before \code{network_leiden()} switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
 coerce to a fast plotting method every time, and \code{Inf} to always use the
-default plotting method.}
+default plotting method (with 'ggraph').}
 }
 \value{
 See \code{return}.

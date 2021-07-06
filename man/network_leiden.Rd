@@ -39,7 +39,7 @@ list of options.}
 path based on current parameters.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
-of the nodes.}
+of the nodes. Defaults to 0.7.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
 to 0.5.}
@@ -73,7 +73,7 @@ communities.
 before \code{network_leiden()} switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
 coerce to a fast plotting method every time, and \code{Inf} to always use the
-default plotting method.}
+default plotting method (with 'ggraph').}
 }
 \value{
 See \code{return}.

@@ -11,15 +11,17 @@ network_p2p(
   return = "plot",
   path = paste0("network_p2p_", display),
   desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
-  bg_fill = "#000000",
-  font_col = "#FFFFFF",
+  bg_fill = "#FFFFFF",
+  font_col = "grey20",
   legend_pos = "bottom",
   palette = "rainbow",
   node_alpha = 0.7,
+  edge_alpha = 1,
   res = 0.5,
   seed = 1,
   algorithm = "mds",
-  size_threshold = 5000
+  size_threshold = 5000,
+  weight = "StrongTieScore"
 )
 }
 \arguments{
@@ -63,13 +65,23 @@ to use when returning the \code{"describe"} output. See \code{network_describe()
 \item{font_col}{String to specify font and link colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to
-\code{"bottom"}. See \code{ggplot2::theme()}.}
+\code{"bottom"}. See \code{ggplot2::theme()}. This is applicable for both the
+'ggraph' and the fast plotting method. Valid inputs include:
+\itemize{
+\item \code{"bottom"}
+\item \code{"top"}
+\item \code{"left"}
+-\code{"right"}
+}}
 
 \item{palette}{Function for generating a colour palette with a single
 argument \code{n}. Uses "rainbow" by default.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
-of the nodes.}
+of the nodes. Defaults to 0.7.}
+
+\item{edge_alpha}{A numeric value between 0 and 1 to specify the transparency
+of the edges (only for 'ggraph' mode). Defaults to 1.}
 
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
 to 0.5.}
@@ -87,7 +99,11 @@ list of options.}
 before \code{network_leiden()} switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
 coerce to a fast plotting method every time, and \code{Inf} to always use the
-default plotting method.}
+default plotting method (with 'ggraph').}
+
+\item{weight}{String to specify which column to use as weights for the
+network. Defaults to \verb{"StrongTieScore}. To create a graph without weights,
+supply \code{NULL} to this argument.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
@@ -119,12 +135,17 @@ Louvain or the Leiden algorithms.
 
 
 Running Leiden communities requires python dependencies installed.
-You can run the following:\preformatted{# Return a network plot to console, coloured by Leiden communities
+You can run the following:\if{html}{\out{<div class="R">}}\preformatted{# Return a network plot to console, coloured by Leiden communities
   p2p_data \%>\%
     network_p2p(display = "leiden",
                 path = NULL,
                 return = "plot")
-}
+}\if{html}{\out{</div>}}
+
+When installing the 'leiden' package, you may be required to install the Python
+libraries 'python-igraph' and 'leidenalg'. You can install them with:\if{html}{\out{<div class="R">}}\preformatted{reticulate::py_install("python-igraph")
+reticulate::py_install("leidenalg")
+}\if{html}{\out{</div>}}
 }
 
 \examples{

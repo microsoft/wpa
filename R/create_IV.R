@@ -10,13 +10,16 @@
 #' All numeric variables in the dataset are used as predictor variables.
 #'
 #' @param data A Person Query dataset in the form of a data frame.
-#' @param predictors A character vector specifying the columns to be used as predictors.
-#' Defaults to NULL, where all numeric vectors in the data will be used as predictors.
+#' @param predictors A character vector specifying the columns to be used as
+#'   predictors. Defaults to NULL, where all numeric vectors in the data will be
+#'   used as predictors.
 #' @param outcome A string specifying a binary variable, i.e. can only contain
 #' the values 1 or 0.
-#' @param bins Number of bins to use in `Information::create_infotables()`, defaults to 5.
-#' @param siglevel Significance level to use in comparing populations for the outcomes,
-#' defaults to 0.05
+#' @param bins Number of bins to use, defaults to 5.
+#' @param siglevel Significance level to use in comparing populations for the
+#'   outcomes, defaults to 0.05
+#' @param exc_sig Logical value determining whether to exclude values where the
+#'   p-value lies below what is set at `siglevel`. Defaults to `FALSE`.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -36,8 +39,8 @@
 #'   - `"list"`: list. A list of outputs for all the input variables.
 #'   - `"plot-WOE"`: A list of 'ggplot' objects that show the WOE for each
 #'   predictor used in the model.
-#'   - `"IV"` returns the original Information object returned by
-#'   `Information::create_infotables()`.
+#'   - `"IV"` returns a list object which mirrors the return
+#'   in `Information::create_infotables()`.
 #'
 #' @import dplyr
 #'
@@ -68,12 +71,14 @@ create_IV <- function(data,
                       outcome,
                       bins = 5,
                       siglevel = 0.05,
+                      exc_sig = FALSE,
                       return = "plot"){
 
-  # Preserve string
+  # Preserve string ----------------------------------------------------------
   pred_chr <- NULL
   pred_chr <- predictors
 
+  # Select training dataset --------------------------------------------------
 
   if(is.null(tidyselect::all_of(predictors))){
 
@@ -93,14 +98,15 @@ create_IV <- function(data,
 
   }
 
-  # Calculate Odds
+  # Calculate odds -----------------------------------------------------------
+
   odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
   lnodds <- log(odds)
 
-  # Calculate p-value
-  predictors <- data.frame(Variable = unlist(names(train)))
+  # Calculate p-value --------------------------------------------------------
+
   predictors <-
-    predictors %>%
+    data.frame(Variable = unlist(names(train))) %>%
     dplyr::filter(Variable != "outcome") %>%
     mutate(Variable = as.character(Variable)) # Ensure not factor
 
@@ -114,15 +120,29 @@ create_IV <- function(data,
   }
 
 
-  # Filter out variables whose p-value is above the significance level
-  predictors <- predictors %>% dplyr::filter(pval <= siglevel)
+  # Filter out variables whose p-value is above the significance level ------
+
+  if(exc_sig == TRUE){
+
+    predictors <- predictors %>% dplyr::filter(pval <= siglevel)
+
+    if(nrow(predictors) == 0){
+
+      stop("There are no predictors where the p-value lies below the significance level.",
+           "You may set `exc_sig == FALSE` or increase the threshold on `siglevel`.")
+
+    }
+  }
+
   train <- train %>% select(predictors$Variable, outcome)
 
-  # IV Analysis
+  # IV Analysis -------------------------------------------------------------
+
+  ## Following section is equivalent to:
   # IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
 
   IV <- map_IV(data = train,
-               predictors = pred_chr,
+               predictors = predictors$Variable, # filtered set
                outcome = "outcome", # string not variable
                bins = bins)
 

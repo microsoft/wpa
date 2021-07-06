@@ -10,6 +10,8 @@ identify_shifts_wp(
   active_threshold = 1,
   start_hour = 9,
   end_hour = 17,
+  percent = FALSE,
+  n = 10,
   return = "plot"
 )
 }
@@ -29,11 +31,21 @@ use:
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
-\item{start_hour}{A character vector specifying start hours,
-e.g. "0900"}
+\item{start_hour}{A character vector specifying starting hours, e.g.
+\code{"0900"}. Note that this currently only supports \strong{hourly} increments. If
+the official hours specifying checking in and 9 AM and checking out at 5
+PM, then \code{"0900"} should be supplied here.}
 
-\item{end_hour}{A character vector specifying finish hours,
-e.g. "1700"}
+\item{end_hour}{A character vector specifying starting hours, e.g. \code{"1700"}.
+Note that this currently only supports \strong{hourly} increments. If the
+official hours specifying checking in and 9 AM and checking out at 5 PM,
+then \code{"1700"} should be supplied here.}
+
+\item{percent}{Logical value to determine whether to show labels as
+percentage signs. Defaults to \code{FALSE}.}
+
+\item{n}{Numeric value specifying number of shifts to show. Defaults to 10.
+This parameter is only used when \code{return} is set to \code{"plot"},}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -70,6 +82,9 @@ be compared to gauge the accuracy of existing Outlook settings.
 \examples{
 # Return plot
 em_data \%>\% identify_shifts_wp()
+
+# Return plot - showing percentages
+em_data \%>\% identify_shifts_wp(percent = TRUE)
 
 # Return table
 em_data \%>\% identify_shifts_wp(return = "table")
