@@ -38,8 +38,11 @@ This function is called when the \code{mode} argument in \code{create_rank()} is
 specified as \code{"combine"}.
 }
 \examples{
+# Use a small sample for faster runtime
+sq_data_small <- dplyr::slice_sample(sq_data, prop = 0.1)
+
 create_rank_combine(
-  data = sq_data,
+  data = sq_data_small,
   metric = "Email_hours"
 )
 
