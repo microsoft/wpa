@@ -22,6 +22,7 @@ man-roxygen
 ^vignettes/Change-over-time.Rmd$
 ^vignettes/IV-report.Rmd$
 ^vignettes/text-mining-capabilities.Rmd$
+^vignettes/profiles-with-rank.Rmd$
 ^Meta$
 ^cran-comments\.md$
 ^CRAN-RELEASE$

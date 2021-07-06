@@ -1,6 +1,6 @@
 ## Test environments
-* local R installation, R 3.6.3
-* ubuntu 16.04 (on travis-ci), R 3.6.3
+* local R installation, R 4.0.5
+* ubuntu 16.04 (on travis-ci), R 4.0.5
 * win-builder (devel)
 
 ## R CMD check results
@@ -8,6 +8,10 @@
 0 errors | 0 warnings | 0 note
 
 * This is a new release.
+
+## Submission 1.6.0
+
+Minor release implementing several features and fixing bugs logged on GitHub.
 
 ## Submission 1.5.0
 

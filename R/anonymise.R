@@ -26,12 +26,12 @@
 #' rep <- c("Manager+", "Manager", "IC")
 #' unique(anonymise(sq_data$Layer), replacement = rep)
 #'
+#' @seealso jitter
 #' @export
 
 anonymise <- function(x,
                       scramble = FALSE,
-                      replacement = NULL,
-                      jitter = NULL){
+                      replacement = NULL){
 
   n_to_rep <- length(x)
   v_to_rep <- unique(x)
@@ -87,6 +87,7 @@ anonymize <- anonymise
 #'   )
 #' )
 #'
+#' @seealso anonymise
 #' @export
 
 jitter_metrics <- function(data, cols = NULL, ...){
