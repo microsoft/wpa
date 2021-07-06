@@ -23,7 +23,7 @@ remotes::install_github(repo = "microsoft/wpa", upgrade = "never")
 If the above does not work, please also try:
 
 ```R
-remotes::install_github(repo = "microsoft/wpa", upgrade = "never")
+remotes::install_git(url = "https://github.com/microsoft/wpa.git", upgrade = "never")
 ```
 
 For more information regarding installation, please see our [Getting Started](https://microsoft.github.io/wpa/analyst_guide_getting_started.html) page.
