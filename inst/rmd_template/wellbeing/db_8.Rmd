@@ -50,7 +50,7 @@ community2_w1_plot1 <-
 
 community2_w1_plot1 <-
   community2_w1_plot1 +
-  labs(title = "Weekly Chats",
+  labs(title = "weekly Chats",
        subtitle= "Average chats sent per person each week")
 
 community2_w1_plot1 
@@ -95,7 +95,7 @@ KPI_2 <- p_table$Answer %>%
   scales::percent() %>%
   .[[1]] 
 						  
-paste(KPI_2, "Proportion of Chats") %>%
+paste(KPI_2, "proportion of Chats") %>%
   flexdashboard::valueBox(icon = "fa-users",
                           color = rgb2hex(1, 147, 157))
 
@@ -201,7 +201,7 @@ if(
   
 }
 						  
-paste(KPI_2, "Chats across levels") %>%
+paste(KPI_2, "chats across levels") %>%
   flexdashboard::valueBox(icon = "fa-users",
                           color = rgb2hex(0, 43, 73))
 						  
