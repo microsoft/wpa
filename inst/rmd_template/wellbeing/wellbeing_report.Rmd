@@ -144,6 +144,13 @@ flex_index_data <-
 
 ```
 
+```{js, echo=FALSE}
+var scale = 'scale(1)';
+document.body.style.webkitTransform = scale; // Chrome, Opera, Safari
+document.body.style.msTransform = scale; // IE 9
+document.body.style.transform = scale; // General
+```
+
 ```{r child = "db_cover_4.Rmd"}
 
 ```
