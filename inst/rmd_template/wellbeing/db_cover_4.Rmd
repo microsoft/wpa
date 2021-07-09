@@ -29,7 +29,7 @@ Introduction
   </div>
   </div>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#balance" role="button">Start exploring</a>
+    <a class="btn btn-primary btn-lg" href="#collaboration" role="button">Start exploring</a>
   </p>
 </div>
 <br>

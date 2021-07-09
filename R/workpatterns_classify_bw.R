@@ -515,8 +515,8 @@ plot_workpatterns_classify_bw <- function(data){
                                   "13+ hours", ""
                                   )) +
     scale_x_continuous(breaks = 0:4,
-                       labels = c("", "No recurring breaks", "",
-                                  "Take recurring breaks", "")) +
+                       labels = c("", "No quiet hours", "",
+                                  "Take quiet hours", "")) +
     labs(title = "Distribution of Working Patterns",
          subtitle = "Classification of employee-weeks",
          x = "Flexibility level (breaks)",

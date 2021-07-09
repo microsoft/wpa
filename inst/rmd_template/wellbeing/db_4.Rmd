@@ -90,7 +90,7 @@ KPI_3 <-  flex_index_data %>%
   pull(1) %>%
   round(3)*100 
 
-paste(KPI_3, "% recurring disconnection") %>%
+paste(KPI_3, "% define quiet hours") %>%
   flexdashboard::valueBox(icon = "fa-stopwatch",
                           color = rgb2hex(1, 147, 157))
 						  
@@ -113,7 +113,7 @@ flex2_w3_plot <-
   )
 
 flex2_w3_plot +
-  labs(title = "Recurring Disconnection Time",
+  labs(title = "Recurring disconnection time",
        subtitle = paste("% of weeks employees have recurring disconnection"))
 
 ```
