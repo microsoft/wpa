@@ -24,7 +24,7 @@
 subject_scan <- function(data, hrvar, n = 10){
 
   out_tb <-
-    test_mt %>%
+    data %>%
     group_split(!!sym(hrvar)) %>%
     purrr::map(function(x){
 
