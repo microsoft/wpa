@@ -41,7 +41,7 @@ subject_scan <- function(data, hrvar, n = 10){
           !!sym(paste0(dow, "_n")) := "n"
         )
     }) %>%
-    bind_cols() %>%
+    bind_cols()
 
   out_simple <-
     out_tb %>%
