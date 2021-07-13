@@ -4,7 +4,15 @@
 \alias{subject_scan}
 \title{Count top words in subject lines grouped by a custom attribute}
 \usage{
-subject_scan(data, hrvar, n = 10, return = "plot")
+subject_scan(
+  data,
+  hrvar,
+  top_n = 10,
+  token = "words",
+  return = "plot",
+  weight = NULL,
+  ...
+)
 }
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
@@ -12,7 +20,10 @@ subject_scan(data, hrvar, n = 10, return = "plot")
 \item{hrvar}{String containing the name of the HR Variable by which to split
 metrics.}
 
-\item{n}{Numeric value specifying the top number of words to show.}
+\item{top_n}{Numeric value specifying the top number of words to show.}
+
+\item{token}{A character vector accepting either \code{"words"} or \code{"ngrams"},
+determining type of tokenisation to return.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -23,6 +34,10 @@ following strings:
 }
 
 See \code{Value} for more information.}
+
+\item{weight}{String specifying the column name of a numeric variable for
+weighting data, such as \code{"Invitees"}. The column must contain positive
+integers. Defaults to \code{NULL}, where no weighting is applied.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}

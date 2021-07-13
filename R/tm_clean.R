@@ -19,6 +19,7 @@
 #'   determining type of tokenisation to return.
 #' @param stopwords A single-column data frame labelled `'word'` containing
 #'   custom stopwords to remove.
+#' @param ... Additional parameters to pass to `tidytext::unnest_tokens()`.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -41,7 +42,8 @@
 #' @export
 tm_clean <- function(data,
                      token = "words",
-                     stopwords = NULL){
+                     stopwords = NULL,
+                     ...){
 
   # Get a dataset with only subjects and a subject line ID
   text_df <-
@@ -52,7 +54,12 @@ tm_clean <- function(data,
     select(line, text)
 
   # Expand dataset to have each word in the subject as a different observation
-  text_df <- text_df %>% tidytext::unnest_tokens(word, text, token = token)
+  text_df <- text_df %>%
+    tidytext::unnest_tokens(
+      word,
+      text,
+      token = token,
+      ...)
 
   # Remove common English stop words (and, or, at, etc)
   text_df <-

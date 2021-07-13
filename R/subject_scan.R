@@ -15,7 +15,8 @@
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param hrvar String containing the name of the HR Variable by which to split
 #'   metrics.
-#' @param n Numeric value specifying the top number of words to show.
+#' @param top_n Numeric value specifying the top number of words to show.
+#' @inheritParams tm_clean
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -23,6 +24,10 @@
 #'   - `"data"`
 #'
 #' See `Value` for more information.
+#' @param weight String specifying the column name of a numeric variable for
+#'   weighting data, such as `"Invitees"`. The column must contain positive
+#'   integers. Defaults to `NULL`, where no weighting is applied.
+#' @param ... Additional parameters to pass to `tm_clean()`.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
@@ -39,24 +44,50 @@
 #' @export
 subject_scan <- function(data,
                          hrvar,
-                         n = 10,
-                         return = "plot"){
+                         top_n = 10,
+                         token = "words",
+                         return = "plot",
+                         weight = NULL,
+                         ...){
+
+  # weighting -------------------------------------------------------
+
+  if(!is.null(weight)){
+
+    d_weight <- data[[weight]]
+
+    if(any(is.na(d_weight) | d_weight <= 0 | d_weight %% 1 != 0)){
+
+      stop("Please check 'weight' variable.")
+
+    }
+
+    # duplicate rows according to numeric weight
+    # numeric weight must be an integer
+    data_w <- data[rep(seq_len(nrow(data)), d_weight),]
+
+  } else {
+
+    data_w <- data
+
+  }
 
   # long table -------------------------------------------------------
 
   out_tb_long <-
-    data %>%
+    data_w %>%
     group_split(!!sym(hrvar)) %>%
     purrr::map(function(x){
 
       dow <- x[[hrvar]][1]
 
-      long_t <- tm_clean(x)
+      long_t <- tm_clean(x, token = token, ...) %>%
+        filter(!is.na(word))
 
       long_t %>%
         count(word) %>%
         arrange(desc(n)) %>%
-        head(n) %>%
+        head(top_n) %>%
         mutate(group = dow)
     }) %>%
     bind_rows()

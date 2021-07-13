@@ -4,7 +4,7 @@
 \alias{tm_clean}
 \title{Clean subject line text prior to analysis}
 \usage{
-tm_clean(data, token = "words", stopwords = NULL)
+tm_clean(data, token = "words", stopwords = NULL, ...)
 }
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
