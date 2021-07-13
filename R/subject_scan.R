@@ -44,6 +44,7 @@
 #'   - `"data"`: data frame.
 #'
 #' @import dplyr
+#' @import ggplot2
 #'
 #' @examples
 #' mt_data %>% subject_scan(hrvar = "Organizer_Organization")
@@ -166,7 +167,7 @@ subject_scan <- function(data,
   out_simple <-
     out_tb_wide %>%
     select(-ends_with("_n")) %>%
-    set_names(nm = gsub(pattern = "_word", replacement = "",
+    purrr::set_names(nm = gsub(pattern = "_word", replacement = "",
                         x = names(.)))
 
   # return chunk -------------------------------------------------------
