@@ -16,6 +16,20 @@
 #' @param hrvar String containing the name of the HR Variable by which to split
 #'   metrics.
 #' @param n Numeric value specifying the top number of words to show.
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
+#'   - `"plot"`
+#'   - `"table"`
+#'   - `"data"`
+#'
+#' See `Value` for more information.
+#'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `"plot"`: 'ggplot' object. A heatmapped grid.
+#'   - `"table"`: data frame. A summary table for the metric.
+#'   - `"data"`: data frame.
 #'
 #' @import dplyr
 #'
@@ -23,7 +37,10 @@
 #' mt_data %>% subject_scan()
 #'
 #' @export
-subject_scan <- function(data, hrvar, n = 10){
+subject_scan <- function(data,
+                         hrvar,
+                         n = 10,
+                         return = "plot"){
 
   # long table -------------------------------------------------------
 
@@ -62,11 +79,50 @@ subject_scan <- function(data, hrvar, n = 10){
     }) %>%
     bind_cols()
 
+  # return simple table -----------------------------------------------
+
   out_simple <-
-    out_tb %>%
+    out_tb_wide %>%
     select(-ends_with("_n")) %>%
     set_names(nm = gsub(pattern = "_word", replacement = "",
                         x = names(.)))
 
-  return(out_simple)
+  # return chunk -------------------------------------------------------
+
+  if(return == "plot"){
+
+    out_tb_long %>%
+      mutate(n = maxmin(n)) %>%
+      arrange(desc(n)) %>%
+      group_by(group) %>%
+      mutate(id = 1:n()) %>%
+      ungroup() %>%
+      ggplot(aes(x = group, y = id)) +
+      geom_tile(aes(fill = n)) +
+      geom_text(aes(label = word)) +
+      scale_fill_gradient2(low = rgb2hex(7, 111, 161),
+                           mid = rgb2hex(241, 204, 158),
+                           high = rgb2hex(216, 24, 42),
+                           midpoint = 0.5,
+                           breaks = c(0, 0.5, 1),
+                           labels = c("Minimum", "", "Maximum"),
+                           limits = c(0, 1)) +
+      scale_x_discrete(position = "top") +
+      scale_y_reverse() +
+      theme_wpa_basic() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 0),
+            plot.title = element_text(color="grey40", face="bold", size=20),
+            axis.text.y = element_blank()) +
+      labs(
+        title = "Top words",
+        subtitle = "Divided by group",
+        y = "Top words by frequency in Subject",
+        x = "Group"
+      )
+
+  } else if(return == "table"){
+
+    out_simple
+
+  }
 }

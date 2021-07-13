@@ -4,7 +4,7 @@
 \alias{subject_scan}
 \title{Count top words in subject lines grouped by a custom attribute}
 \usage{
-subject_scan(data, hrvar, n = 10)
+subject_scan(data, hrvar, n = 10, return = "plot")
 }
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
@@ -13,6 +13,25 @@ subject_scan(data, hrvar, n = 10)
 metrics.}
 
 \item{n}{Numeric value specifying the top number of words to show.}
+
+\item{return}{String specifying what to return. This must be one of the
+following strings:
+\itemize{
+\item \code{"plot"}
+\item \code{"table"}
+\item \code{"data"}
+}
+
+See \code{Value} for more information.}
+}
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object. A heatmapped grid.
+\item \code{"table"}: data frame. A summary table for the metric.
+\item \code{"data"}: data frame.
+}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
