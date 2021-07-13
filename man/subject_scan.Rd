@@ -69,6 +69,6 @@ grouped by a specified attribute such as organisational attribute, day of the
 week, or hours of the day.
 }
 \examples{
-mt_data \%>\% subject_scan()
+mt_data \%>\% subject_scan(hrvar = "Organizer_Organization")
 
 }

@@ -46,7 +46,7 @@
 #' @import dplyr
 #'
 #' @examples
-#' mt_data %>% subject_scan()
+#' mt_data %>% subject_scan(hrvar = "Organizer_Organization")
 #'
 #' @export
 subject_scan <- function(data,
