@@ -64,7 +64,8 @@ tm_clean <- function(data,
   # Remove common English stop words (and, or, at, etc)
   text_df <-
     text_df %>%
-    dplyr::anti_join(tidytext::stop_words)
+    dplyr::anti_join(tidytext::stop_words) %>%
+    suppressMessages()
 
   # Remove WPI custom irrelevant words
   if(!is.data.frame(stopwords)){
@@ -73,6 +74,8 @@ tm_clean <- function(data,
 
   }
 
-  text_df %>% anti_join(stopwords)
+  text_df %>%
+    anti_join(stopwords) %>%
+    suppressMessages()
 
 }

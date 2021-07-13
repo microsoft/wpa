@@ -14,6 +14,8 @@ determining type of tokenisation to return.}
 
 \item{stopwords}{A single-column data frame labelled \code{'word'} containing
 custom stopwords to remove.}
+
+\item{...}{Additional parameters to pass to \code{tidytext::unnest_tokens()}.}
 }
 \value{
 data frame with two columns:

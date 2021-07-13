@@ -15,6 +15,13 @@
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param hrvar String containing the name of the HR Variable by which to split
 #'   metrics.
+#' @param mode String specifying what variable to use for grouping subject
+#'   words. Valid values include:
+#'   - `"hours"`
+#'   - `"days"`
+#'   - `NULL` (defaults to `hrvar`)
+#' When the value passed to `mode` is not `NULL`, the value passed to `hrvar`
+#' will be discarded and instead be over-written by setting specified in `mode`.
 #' @param top_n Numeric value specifying the top number of words to show.
 #' @inheritParams tm_clean
 #' @param return String specifying what to return. This must be one of the
@@ -44,6 +51,7 @@
 #' @export
 subject_scan <- function(data,
                          hrvar,
+                         mode = NULL,
                          top_n = 10,
                          token = "words",
                          return = "plot",
@@ -69,6 +77,49 @@ subject_scan <- function(data,
   } else {
 
     data_w <- data
+
+  }
+
+  # modes -----------------------------------------------------------
+
+  if(is.null(mode)){
+
+    # do nothing
+
+  } else if(mode == "hours"){
+
+    data_w <-
+      data_w %>%
+      mutate(HourOfDay = substr(StartTimeUTC, start = 1, stop = 2) %>%
+               as.numeric()) %>%
+      mutate(HourOfDay =
+               case_when(HourOfDay > 19 ~ "After 7PM",
+                         HourOfDay >= 17 ~ "5 - 7 PM",
+                         HourOfDay >= 14 ~ "2 - 5 PM",
+                         HourOfDay >= 11 ~ "11AM - 2 PM",
+                         HourOfDay >= 9 ~ "9 - 11 AM",
+                         TRUE ~ "Before 9 AM"
+               ) %>%
+               factor(
+                 levels = c(
+                   "Before 9 AM",
+                   "9 - 11 AM",
+                   "11AM - 2 PM",
+                   "2 - 5 PM",
+                   "5 - 7 PM",
+                   "After 7PM"
+                 )
+               ))
+
+    hrvar <- "HourOfDay"
+
+  } else if(mode == "days"){
+
+    data_w <-
+      data_w %>%
+      mutate(DayOfWeek = weekdays(StartDate))
+
+    hrvar <- "DayOfWeek"
 
   }
 
@@ -130,7 +181,7 @@ subject_scan <- function(data,
       ungroup() %>%
       ggplot(aes(x = group, y = id)) +
       geom_tile(aes(fill = n)) +
-      geom_text(aes(label = word)) +
+      geom_text(aes(label = word), size = 3) +
       scale_fill_gradient2(low = rgb2hex(7, 111, 161),
                            mid = rgb2hex(241, 204, 158),
                            high = rgb2hex(216, 24, 42),

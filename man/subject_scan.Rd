@@ -7,6 +7,7 @@
 subject_scan(
   data,
   hrvar,
+  mode = NULL,
   top_n = 10,
   token = "words",
   return = "plot",
@@ -19,6 +20,16 @@ subject_scan(
 
 \item{hrvar}{String containing the name of the HR Variable by which to split
 metrics.}
+
+\item{mode}{String specifying what variable to use for grouping subject
+words. Valid values include:
+\itemize{
+\item \code{"hours"}
+\item \code{"days"}
+\item \code{NULL} (defaults to \code{hrvar})
+When the value passed to \code{mode} is not \code{NULL}, the value passed to \code{hrvar}
+will be discarded and instead be over-written by setting specified in \code{mode}.
+}}
 
 \item{top_n}{Numeric value specifying the top number of words to show.}
 
@@ -38,6 +49,8 @@ See \code{Value} for more information.}
 \item{weight}{String specifying the column name of a numeric variable for
 weighting data, such as \code{"Invitees"}. The column must contain positive
 integers. Defaults to \code{NULL}, where no weighting is applied.}
+
+\item{...}{Additional parameters to pass to \code{tm_clean()}.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
