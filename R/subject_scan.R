@@ -17,13 +17,17 @@
 #'   metrics.
 #' @param n Numeric value specifying the top number of words to show.
 #'
+#' @import dplyr
+#'
 #' @examples
 #' mt_data %>% subject_scan()
 #'
 #' @export
 subject_scan <- function(data, hrvar, n = 10){
 
-  out_tb <-
+  # long table -------------------------------------------------------
+
+  out_tb_long <-
     data %>%
     group_split(!!sym(hrvar)) %>%
     purrr::map(function(x){
@@ -36,10 +40,25 @@ subject_scan <- function(data, hrvar, n = 10){
         count(word) %>%
         arrange(desc(n)) %>%
         head(n) %>%
+        mutate(group = dow)
+    }) %>%
+    bind_rows()
+
+  # wide table -------------------------------------------------------
+
+  out_tb_wide <-
+    out_tb_long %>%
+    group_split(group) %>%
+    purrr::map(function(x){
+
+      dow <- x[["group"]][1]
+
+      x %>%
         rename(
           !!sym(paste0(dow, "_word")) := "word",
           !!sym(paste0(dow, "_n")) := "n"
-        )
+        ) %>%
+        select(-group)
     }) %>%
     bind_cols()
 
