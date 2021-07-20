@@ -2,9 +2,21 @@
 % Please edit documentation in R/subject_scan.R
 \name{subject_scan}
 \alias{subject_scan}
+\alias{tm_scan}
 \title{Count top words in subject lines grouped by a custom attribute}
 \usage{
 subject_scan(
+  data,
+  hrvar,
+  mode = NULL,
+  top_n = 10,
+  token = "words",
+  return = "plot",
+  weight = NULL,
+  ...
+)
+
+tm_scan(
   data,
   hrvar,
   mode = NULL,

@@ -209,3 +209,7 @@ subject_scan <- function(data,
 
   }
 }
+
+#' @rdname subject_scan
+#' @export
+tm_scan <- subject_scan
