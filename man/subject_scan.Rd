@@ -81,6 +81,23 @@ grouped by a specified attribute such as organisational attribute, day of the
 week, or hours of the day.
 }
 \examples{
+# return a heatmap table for words
 mt_data \%>\% subject_scan(hrvar = "Organizer_Organization")
+
+# return a heatmap table for ngrams
+mt_data \%>\%
+  subject_scan(
+    hrvar = "Organizer_Organization",
+    token = "ngrams",
+    n = 2)
+
+# return raw table format
+mt_data \%>\% subject_scan(hrvar = "Organizer_Organization", return = "table")
+
+# grouped by hours
+mt_data \%>\% subject_scan(hrvar = "Organizer_Organization", mode = "hours")
+
+# grouped by days
+mt_data \%>\% subject_scan(hrvar = "Organizer_Organization", mode = "days")
 
 }

@@ -47,7 +47,24 @@
 #' @import ggplot2
 #'
 #' @examples
+#' # return a heatmap table for words
 #' mt_data %>% subject_scan(hrvar = "Organizer_Organization")
+#'
+#' # return a heatmap table for ngrams
+#' mt_data %>%
+#'   subject_scan(
+#'     hrvar = "Organizer_Organization",
+#'     token = "ngrams",
+#'     n = 2)
+#'
+#' # return raw table format
+#' mt_data %>% subject_scan(hrvar = "Organizer_Organization", return = "table")
+#'
+#' # grouped by hours
+#' mt_data %>% subject_scan(hrvar = "Organizer_Organization", mode = "hours")
+#'
+#' # grouped by days
+#' mt_data %>% subject_scan(hrvar = "Organizer_Organization", mode = "days")
 #'
 #' @export
 subject_scan <- function(data,
@@ -118,7 +135,19 @@ subject_scan <- function(data,
 
     data_w <-
       data_w %>%
-      mutate(DayOfWeek = weekdays(StartDate))
+      mutate(DayOfWeek = weekdays(StartDate) %>%
+               factor(
+                 levels = c(
+                   "Sunday",
+                   "Monday",
+                   "Tuesday",
+                   "Wednesday",
+                   "Thursday",
+                   "Friday",
+                   "Saturday"
+                 )
+               ))
+
 
     hrvar <- "DayOfWeek"
 
@@ -188,8 +217,9 @@ subject_scan <- function(data,
                            high = rgb2hex(216, 24, 42),
                            midpoint = 0.5,
                            breaks = c(0, 0.5, 1),
-                           labels = c("Minimum", "", "Maximum"),
-                           limits = c(0, 1)) +
+                           labels = c("Low", "", "High"),
+                           limits = c(0, 1),
+                           name = "Frequency") +
       scale_x_discrete(position = "top") +
       scale_y_reverse() +
       theme_wpa_basic() +
