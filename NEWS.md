@@ -1,3 +1,7 @@
+# wpa (development version)
+
+- Added `subject_scan()` for for visualising top keywords in meetings by heatmap
+
 # wpa 1.6.0
 
 - Improved visuals on `workpatterns_rank()` and `identify_shifts_wp()` (#160)
