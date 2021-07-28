@@ -106,6 +106,9 @@ subject_scan <- function(data,
 
   } else if(mode == "hours"){
 
+    # Default variable in meeting query
+    StartTimeUTC <- NULL
+
     data_w <-
       data_w %>%
       mutate(HourOfDay = substr(StartTimeUTC, start = 1, stop = 2) %>%
@@ -132,6 +135,9 @@ subject_scan <- function(data,
     hrvar <- "HourOfDay"
 
   } else if(mode == "days"){
+
+    # Variable in meeting data
+    StartDate <- NULL
 
     data_w <-
       data_w %>%
@@ -168,7 +174,7 @@ subject_scan <- function(data,
       long_t %>%
         count(word) %>%
         arrange(desc(n)) %>%
-        head(top_n) %>%
+        utils::head(top_n) %>%
         mutate(group = dow)
     }) %>%
     bind_rows()
