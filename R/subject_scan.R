@@ -227,10 +227,10 @@ subject_scan <- function(data,
             plot.title = element_text(color="grey40", face="bold", size=20),
             axis.text.y = element_blank()) +
       labs(
-        title = "Top words",
-        subtitle = "Divided by group",
-        y = "Top words by frequency in Subject",
-        x = "Group"
+        title = "Top terms",
+        subtitle = paste("By", camel_clean(hrvar)),
+        y = "Top terms by frequency in Subject",
+        x = ""
       )
 
   } else if(return == "table"){
