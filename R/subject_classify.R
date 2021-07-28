@@ -14,7 +14,8 @@
 #' @param var_name String containing the name of the new column to be created.
 #' @param keywords Character vector containing the keywords to match.
 #' @param pattern String to use for regular expression matching instead of
-#' `keywords`.
+#'   `keywords`. When both `keywords` and `pattern` are supplied, `pattern`
+#'   takes priority and is used instead.
 #' @param ignore_case Logical value to determine whether to ignore case when
 #'   performing pattern matching.
 #' @param return String specifying what output to return.
@@ -29,6 +30,8 @@
 #'
 #' class_df %>% dplyr::count(IsSales)
 #'
+#' # Return a table directly
+#' mt_data %>% subject_classify(pattern = "annual", return = "table")
 #'
 #' @export
 subject_classify <- function(data,
@@ -39,11 +42,19 @@ subject_classify <- function(data,
                              return = "data"
                              ){
 
-  if(is.null(pattern)){
+  if(is.null(pattern) & is.null(keywords)){
+
+    stop("Please supply a character vector to either `keywords` or `pattern`.")
+
+  } else if(is.null(pattern)){
+
+    message("Using character vector supplied to `keywords`.")
 
     pattern <- paste(keywords, collapse = "|")
 
   }
+
+  # Create logical variable and match pattern ------------------------------
 
   data[[var_name]] <-
     grepl(
@@ -53,6 +64,9 @@ subject_classify <- function(data,
     )
 
   if(return == "data"){
+
+    message("Returning data frame with additional column: ",
+            var_name)
 
     data
 
