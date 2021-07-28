@@ -22,7 +22,8 @@ subject_classify(
 \item{keywords}{Character vector containing the keywords to match.}
 
 \item{pattern}{String to use for regular expression matching instead of
-\code{keywords}.}
+\code{keywords}. When both \code{keywords} and \code{pattern} are supplied, \code{pattern}
+takes priority and is used instead.}
 
 \item{ignore_case}{Logical value to determine whether to ignore case when
 performing pattern matching.}
@@ -44,5 +45,7 @@ class_df <-
 
 class_df \%>\% dplyr::count(IsSales)
 
+# Return a table directly
+mt_data \%>\% subject_classify(pattern = "annual", return = "table")
 
 }
