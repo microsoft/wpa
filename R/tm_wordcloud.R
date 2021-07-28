@@ -74,7 +74,8 @@ tm_wordcloud <- function(data,
     output <-
       plot_data %>%
       ggplot(aes(label = word, size = freq)) +
-      ggwordcloud::geom_text_wordcloud(rm_outside = TRUE, area_corr = 12, ...) +
+      ggwordcloud::geom_text_wordcloud(rm_outside = TRUE, ...) +
+      scale_size_area(max_size = 15) +
       theme_minimal()
 
     return(output)
