@@ -14,7 +14,8 @@
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param hrvar String containing the name of the HR Variable by which to split
-#'   metrics.
+#'   metrics. Note that the prefix `'Organizer_'` or equivalent will be
+#'   required.
 #' @param mode String specifying what variable to use for grouping subject
 #'   words. Valid values include:
 #'   - `"hours"`
@@ -242,6 +243,14 @@ subject_scan <- function(data,
   } else if(return == "table"){
 
     out_simple
+
+  } else if(return == "data"){
+
+    out_tb_wide
+
+  } else {
+
+    stop("Invalid input to return.")
 
   }
 }

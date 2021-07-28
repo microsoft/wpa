@@ -31,7 +31,8 @@ tm_scan(
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
 \item{hrvar}{String containing the name of the HR Variable by which to split
-metrics.}
+metrics. Note that the prefix \code{'Organizer_'} or equivalent will be
+required.}
 
 \item{mode}{String specifying what variable to use for grouping subject
 words. Valid values include:
