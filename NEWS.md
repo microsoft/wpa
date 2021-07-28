@@ -1,6 +1,7 @@
 # wpa (development version)
 
-- Added `subject_scan()` for for visualising top keywords in meetings by heatmap
+- Added `subject_scan()` (or `tm_scan()`) for for visualising top keywords in meetings by heatmap
+- Added `subject_classify()` for classifying keywords by sring matching
 
 # wpa 1.6.0
 
