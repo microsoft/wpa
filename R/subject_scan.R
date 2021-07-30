@@ -62,10 +62,10 @@
 #' mt_data %>% subject_scan(hrvar = "Organizer_Organization", return = "table")
 #'
 #' # grouped by hours
-#' mt_data %>% subject_scan(hrvar = "Organizer_Organization", mode = "hours")
+#' mt_data %>% subject_scan(mode = "hours")
 #'
 #' # grouped by days
-#' mt_data %>% subject_scan(hrvar = "Organizer_Organization", mode = "days")
+#' mt_data %>% subject_scan(mode = "days")
 #'
 #' @export
 subject_scan <- function(data,
