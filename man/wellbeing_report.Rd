@@ -15,7 +15,8 @@ wellbeing_report(
 }
 \arguments{
 \item{wbq}{Data frame. A custom Wellbeing Query dataset based on the Person
-Query.}
+Query. If certain metrics are missing from the Wellbeing / Person Query,
+the relevant visual will show up with an indicative message.}
 
 \item{hcq}{Data frame. An Hourly Collaboration Query dataset.}
 

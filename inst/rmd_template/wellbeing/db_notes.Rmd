@@ -38,7 +38,7 @@ paste(text1, text2, text3, sep = "\n\n" )%>% md2html()
 Column {data-width=80%}
 -----------------------------------------------------------------------
 
-### Glossary title
+### Glossary
 
 ```{r}
 flexdashboard::valueBox(
