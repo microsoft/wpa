@@ -328,7 +328,7 @@ argument:</p><ul>
 #&gt; <span class='message'>0% (0)  have an Outlook workday shorter than 5 hours, while 100% (13442) have a workday longer than 13 hours.</span></div><div class='input'>
 <span class='co'># Return data</span>
 <span class='fu'>flag_outlooktime</span><span class='op'>(</span><span class='va'>spq_df</span>, threshold <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>13</span><span class='op'>)</span>, return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,442 x 5</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,442 × 5</span>
 #&gt;    PersonId                   WorkdayRange WorkdayFlag WorkdayFlag1 WorkdayFlag2
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>       
 #&gt; <span style='color: #BCBCBC;'> 1</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        

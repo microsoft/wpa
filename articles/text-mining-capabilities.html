@@ -243,7 +243,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span>
-<span class="co">## # A tibble: 50 x 2</span>
+<span class="co">## # A tibble: 50 × 2</span>
 <span class="co">##    word        freq</span>
 <span class="co">##    &lt;chr&gt;      &lt;int&gt;</span>
 <span class="co">##  1 weekly       165</span>
@@ -271,7 +271,7 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">## # A tibble: 539 x 3</span>
+<span class="co">## # A tibble: 539 × 3</span>
 <span class="co">##    item1      item2          n</span>
 <span class="co">##    &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;</span>
 <span class="co">##  1 board      meeting       24</span>
@@ -306,7 +306,7 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">## # A tibble: 158 x 2</span>
+<span class="co">## # A tibble: 158 × 2</span>
 <span class="co">##    word                    n</span>
 <span class="co">##    &lt;chr&gt;               &lt;int&gt;</span>
 <span class="co">##  1 board of directors     19</span>

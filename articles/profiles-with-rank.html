@@ -221,7 +221,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 30 x 4</span>
+<span class="co">#&gt; # A tibble: 30 × 4</span>
 <span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;                              &lt;dbl&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1 FunctionType     Sales                               31.0    82</span>
@@ -241,7 +241,7 @@
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op">%&gt;%</span>  
     <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 30 x 4</span>
+<span class="co">#&gt; # A tibble: 30 × 4</span>
 <span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;                              &lt;dbl&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1 FunctionType     Sales                               31.0    82</span>
@@ -290,7 +290,7 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 382 x 4</span>
+<span class="co">#&gt; # A tibble: 382 × 4</span>
 <span class="co">#&gt;    hrvar    group                                       Collaboration_hou…     n</span>
 <span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                                                    &lt;dbl&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1 Combined [FunctionType] Sales [LevelDesignation] Ma…               33.7    28</span>
@@ -333,7 +333,7 @@
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>At_risk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">20</span> <span class="op">&amp;</span>  <span class="va">Workweek_span</span> <span class="op">&gt;</span> <span class="fl">60</span> , <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
     <span class="fu"><a href="../reference/create_rank.html">create_rank</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"At_risk"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 382 x 4</span>
+<span class="co">#&gt; # A tibble: 382 × 4</span>
 <span class="co">#&gt;    hrvar    group                                                 At_risk     n</span>
 <span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                                                   &lt;dbl&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1 Combined [FunctionType] Sales [LevelDesignation] Junior IC       0.314    13</span>

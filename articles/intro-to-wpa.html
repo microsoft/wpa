@@ -190,7 +190,7 @@
       <h1 data-toc-skip>Introduction to {wpa}</h1>
                         <h4 class="author">Martin Chan</h4>
             
-            <h4 class="date">2021-07-06</h4>
+            <h4 class="date">2021-08-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/master/vignettes/intro-to-wpa.Rmd"><code>vignettes/intro-to-wpa.Rmd</code></a></small>
       <div class="hidden name"><code>intro-to-wpa.Rmd</code></div>
@@ -250,7 +250,7 @@
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function also comes with an option to return summary tables, rather than plots. Just specify “table” in the <code>return</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 5</span>
+<span class="co">#&gt; # A tibble: 6 × 5</span>
 <span class="co">#&gt;   group     Meeting_hours Email_hours Total Employee_Count</span>
 <span class="co">#&gt;   &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;int&gt;</span>
 <span class="co">#&gt; 1 Director           9.22        9.70  18.9             68</span>
@@ -278,7 +278,7 @@
 <p>Summary table:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 19 x 16</span>
+<span class="co">#&gt; # A tibble: 19 × 16</span>
 <span class="co">#&gt;    variable             `Biz Dev` `Customer Servic… Facilities `Finance-Corpora…</span>
 <span class="co">#&gt;    &lt;fct&gt;                    &lt;dbl&gt;             &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 Workweek_span           37.2              41.3       43.1              39.5  </span>
@@ -327,7 +327,7 @@
 <p>Summary table:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 15 x 3</span>
+<span class="co">#&gt; # A tibble: 15 × 3</span>
 <span class="co">#&gt;    group                Meeting_hours     n</span>
 <span class="co">#&gt;    &lt;chr&gt;                        &lt;dbl&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1 Biz Dev                       7.02    75</span>
@@ -356,7 +356,7 @@
 <p>By changing the <code>return</code> argument, you can also return a <strong>summary table</strong>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 20 x 4</span>
+<span class="co">#&gt; # A tibble: 20 × 4</span>
 <span class="co">#&gt;    mgrRel         LevelDesignation     n   perc</span>
 <span class="co">#&gt;    &lt;fct&gt;          &lt;chr&gt;            &lt;int&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 Co-attending   Junior IC           40 0.381 </span>
@@ -382,7 +382,7 @@
 <p>Alternatively, you can return the input data that is used to create the plot:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"chartdata"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 20 x 10</span>
+<span class="co">#&gt; # A tibble: 20 × 10</span>
 <span class="co">#&gt;    LevelDesignation mgr1on1  coattendande     n   perc   xmin  xmax   ymin  ymax</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 Director         &lt; 15 min &lt;50%            45 0.662  -0.813 0     -0.813 0    </span>
@@ -417,7 +417,7 @@
 <p>A table can be generated:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 5</span>
+<span class="co">#&gt; # A tibble: 6 × 5</span>
 <span class="co">#&gt;   group     `0 - 25%` `25 - 50%` `50 - 75%` `75% +`</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Director    1           NA         NA      NA    </span>
