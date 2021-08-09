@@ -2,6 +2,7 @@
 
 - Added `subject_scan()` (or `tm_scan()`) for for visualising top keywords in meetings by heatmap
 - Added `subject_classify()` for classifying keywords by sring matching
+- Refurbished `meeting_tm_report()` to have a dashboard view
 
 # wpa 1.6.0
 
