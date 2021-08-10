@@ -4,7 +4,7 @@
   [![CodeFactor](https://www.codefactor.io/repository/github/microsoft/wpa/badge/)](https://www.codefactor.io/repository/github/microsoft/wpa/)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT/)
   [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-  [![CRAN status](https://www.r-pkg.org/badges/version/wpa/)](https://CRAN.R-project.org/package=wpa/)
+  [![CRAN status](https://www.r-pkg.org/badges/version/wpa)](https://CRAN.R-project.org/package=wpa/)
   [![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/wpa?color=green/)](https://cran.r-project.org/package=wpa/)
 
 ## Analyze and Visualize Workplace Analytics data
