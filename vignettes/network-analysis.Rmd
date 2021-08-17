@@ -1,0 +1,121 @@
+---
+title: "Best Practices: working with Workplace Analytics in R"
+author: "Martin Chan"
+date: "2020-09-23"
+categories: ["R"]
+tags: ["best practices"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+This post details the top best practices for working with Workplace Analytics data in R. Code examples in this post make use of the **wpa** and the **dplyr** packages.
+
+## 1. Use `import_wpa()`
+
+We always recommend using `import_wpa()` for reading in CSV queries as it is optimised for the **wpa** package, applying certain checks as well as variable classifications based on what is expected from the Workplace Analytics data. In effect, `import_wpa()` is a substitute for `read.csv()`, `readr::read_csv()`, or `data.table::fread()`, whichever is your usual go-to CSV reader.
+
+## 2. Validate your data!
+
+Data validation is important - and with the R package, this is as simple as running `validation_report()` on the existing data.
+
+You would simply run it on the data frame containing the query:
+
+```
+library(wpa)
+dv_data %>% validation_report()
+```
+
+## 3. Give informative names to your queries
+
+This is up to individual preferences, but here is a case for giving informative and slightly more elaborative names to queries. First, it will make it easy for you or your fellow analysts to have an idea of what is in the CSV file prior to reading in the data. Moreover, clear and informative names can help analysts avoid errors at the mid-stage of the analysis, where it is likely that numerous queries have been run, and it is imaginably confusing if they all have generic names like _Collaboration Assessment1.csv_ or _Person Query v5a.csv_. 
+
+We propose to get the name right from the start at the tenant, so that the name of the query on the tenant is consistent with the name of the query saved on your local machine. Here is an example of an informative query name:
+
+`SPQ_May18toJune19_SalesOnly_MyInitials_20200923`
+
+where:
+
+- `SPQ` stands for _Standard Person Query_
+- `May18toJune19` stands for the date range in which the query covers
+- `SalesOnly` means that the query is covering the Sales organization only
+- `MyInitials` are the initials of the analyst who ran this query.
+- `20200923` is the date when you ran the query.
+
+## 4. Keep your R files short and use `source()`
+
+Although there isn't an universal guide on what the maximum _length_ of an individual R file should be, there is a good case for keeping an R file within 400 lines of code. The main reason is because it keeps the code easy to navigate, and you won't have to do a lot of scrolling or advanced search to find out where you wrote a specific chunk of code. 
+
+To help keep your R files short, it is recommended that you use `source()`, which tells R to run another R script on your machine. For instance, you could use `source("myscripts/data_cleaning.R")` to run a script called `data_cleaning.R` which contains some upfront code that loads and prepares your data for analysis. You can also achieve the same with functions.
+
+
+## 5. Use person-level averages
+
+It is recommended to use _person-level averages_ where possible. What this means is that for any given metric, you would calculate an average for each employee before you would calculate it for the group. This effectively avoids people who may be represented by more person-weeks in the data (e.g. they have been in the company for longer) to have their results skew the data. In R, this can be replicated by grouping and summarising the data twice:
+
+```{r eval=FALSE, echo=TRUE}
+library(wpa)
+spq %>%
+  group_by(PersonId, Organization) %>%
+  summarise(Collaboration_hours = mean(Collaboration_hours)) %>%
+  group_by(Organization) %>%
+  summarise(Collaboration_hours = mean(Collaboration_hours))
+```
+
+All of the functions in the **wpa** package already calculate averages this way, so it is recommended that you use the package functions directly where possible. The above example is replicated by the following functions from the package:
+
+```{r eval=FALSE, echo=TRUE}
+spq %>% collaboration_sum(hrvar = "Organization", return = "table")
+
+# Or
+
+spq %>% create_bar(metric = "Collaboration_hours", hrvar = "Organization", return = "table")
+
+```
+
+
+## 6. Ensure you adhere to privacy thresholds
+
+Privacy is an essential element of Workplace Analytics, so make sure you respect the privacy thresholds in your analysis. To do this, ensure you always calculate the number of distinct persons (`n_distinct(PersonId)` is one way to do it) for each sub-group that you are analysing, and make sure you do not display any data that goes below the threshold setting. All of the functions in the **wpa** package already do this, and you can adjust the threshold setting with the argument `mingroup`, which defaults to 5.
+
+
+## 7. Comment WHY, not WHAT
+
+To make it easy for others and your future self to understand your code, comments (`#`) are essential. However, it is easy to go overboard and over-comment. The best practice principle here is then to comment on _why_ you are doing something in a certain way, rather than _what_ you are doing, as the rationale is that it is often obvious for the reader _what_ you are doing (e.g. filtering, selecting columns) but less obvious _why_.
+
+## 8. When you’ve written the same code 3 times, write a function
+
+This "best practice" suggestion actually came from a popular [tweet](https://twitter.com/drob/status/928447584712253440) by Data Scientist and R educator David Robinson. This basically captures the DRY (Don't Repeat Yourself) principle in programming. There are several advantages of writing functions, which one of them includes the fact that you can just change the function once, and all the changes would be applied to **everywhere** in your script where that function is used. Just consider the following example:
+
+```{r eval=FALSE, echo=TRUE}
+# Filter Organization by Sales and extract number of distinct people
+spq %>% filter(Organization == "Sales") %>% pull(PersonId) %>% n_distinct()
+
+# Filter Organization by Operations and extract number of distinct people
+spq %>% filter(Organization == "Operations") %>% pull(PersonId) %>% n_distinct()
+
+# Filter Organization by Engineering and extract number of distinct people
+spq %>% filter(Organization == "Engineering") %>% pull(PersonId) %>% n_distinct()
+
+```
+
+versus the following:
+
+```{r eval=FALSE, echo=TRUE}
+filt_org <- function(filter_string){
+  spq %>% filter(Organization == filter_string) %>% pull(PersonId) %>% n_distinct()
+}
+
+filt_org("Sales")
+filt_org("Operations")
+filt_org("Engineering")
+
+```
+
+The second chunk is much more readable, much more easier to edit, and also more elegant than the first approach of explicitly coding out everything.
+
+
+
+
+
