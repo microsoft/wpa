@@ -35,23 +35,23 @@ Network analysis can create a data-driven approach to drive organizational chall
 
 ## Functions and Metrics
 
-Network analysis is quantitative and uses collaboration data to create a matrix of relationships and applies matrix algebra to calculate measures. The wpa R package provides a set of functions (4) that can be used to get started with network analysis. You can start with the `connectivity_report()` which provides a first baseline on the topic “Teaming and Networking”. This report visualizes, among other things, external and internal networks with `external_network_plot()` and `internal_network_plot()`:
+Network analysis is quantitative and uses collaboration data to create a matrix of relationships and applies matrix algebra to calculate measures. The wpa R package provides a set of functions (4) that can be used to get started with network analysis. You can start with the `connectivity_report()` which provides a first baseline on the topic **Teaming and Networking**. This report visualizes, among other things, external and internal networks with `external_network_plot()` and `internal_network_plot()`:
 
-1. `internal_network_plot()`: Plots the internal network metrics for a HR variable as a scatter plot, showing “Internal Network Breadth” as the vertical axis and “Internal Network Size” as the horizontal axis. This function is organization
+1. `internal_network_plot()`: plots the internal network metrics for a HR variable as a scatter plot, showing **Internal Network Breadth** as the vertical axis and **Internal Network Size** as the horizontal axis. This function is organization
 
-2. `external_network_plot()`: Plots the external network metrics for a HR variable as a scatter plot, showing “External Network Breadth” as the vertical axis and “External Network Size” as the horizontal axis.
+2. `external_network_plot()`: plots the external network metrics for a HR variable as a scatter plot, showing **External Network Breadth** as the vertical axis and **External Network Size** as the horizontal axis.
 
    These two functions visualize metrics like network size and network breadth and return either a table or plot as an output:
 
-   - *Network size*: The number of people external or internal to the company with whom the person had at least two [meaningful interactions](https://docs.microsoft.com/en-us/workplace-analytics/use/glossary#meaningful-interaction-define) in the last four weeks.
+   - **Network size**: the number of people external or internal to the company with whom the person had at least two [meaningful interactions](https://docs.microsoft.com/en-us/workplace-analytics/use/glossary#meaningful-interaction-define) in the last four weeks.
 
-   - *Network breadth*: This is synonymous with *Networking outside Organization* or *Networking outside Company*, depending on whether this refers to **internal network breadth** or **external network breadth**. See more from [here](https://docs.microsoft.com/en-us/workplace-analytics/use/metric-definitions). 
+   - **Network breadth**: this is synonymous with *Networking outside Organization* or *Networking outside Company*, depending on whether this refers to **internal network breadth** or **external network breadth**. See more from [here](https://docs.microsoft.com/en-us/workplace-analytics/use/metric-definitions). 
 
-     > Note that the above functions do not manipulate the graph or an edge list directly, but rather on person-level network metrics which have already been computed within Workplace Analytics. Note that the above functions do not manipulate the graph or an edge list directly, but rather on person-level network metrics which have already been computed within Workplace Analytics. 
+     > Note that the above functions do not manipulate the graph or an edge list directly, but rather on person-level network metrics which have already been computed within Workplace Analytics. 
 
-3. `network_g2g()`: A more advanced function, which manipulates a group-to-group collaboration graph. It creates a network plot with the group-to-group query and displays collaboration across your organization. The default metric value is collaboration hours but can be changed as wanted.
+3. `network_g2g()`: an advanced function which manipulates a group-to-group collaboration graph. It creates a network plot with the group-to-group query and displays collaboration across your organization. The default metric value is collaboration hours but can be changed as wanted.
 
-4. `network_p2p()`: Another more advanced function, where you can create a network plot with the person-to-person network query. It is a visualization of network analysis plot based on strong and diverse tie metrics.
+4. `network_p2p()`: another advanced function where you can create a network plot with the person-to-person network query. It is a visualization of network analysis plot based on strong and diverse tie metrics. It also has additional capabilities to perform network community detection.
 
    > Strong and diverse tie metrics are based on collaboration activities and indicates how varied, broad and strong a person’s connections or engagements are. See more from [here](https://docs.microsoft.com/en-us/workplace-analytics/use/metric-definitions#network-metrics).
 
@@ -59,8 +59,8 @@ Summary of the functions:
 
 | Function                  | Description                                                  | Metrics                             |
 | ------------------------- | ------------------------------------------------------------ | ----------------------------------- |
-| `internal_network_plot()` | Plots the internal  network metrics for a HR variable as a scatter plot, showing “Internal  Network Breadth” as the vertical axis and “Internal Network Size” as the  horizontal axis. | Internal Network Size               |
-| `external_network_plot()` | Plots the external  network metrics for a HR variable as a scatter plot, showing “External  Network Breadth” as the vertical axis and “External Network Size” as the  horizontal axis. | External Network Size               |
+| `internal_network_plot()` | Plots the internal network metrics for a HR variable as a scatter plot, showing "Internal  Network Breadth" as the vertical axis and "Internal Network Size" as the  horizontal axis. | Internal Network Size               |
+| `external_network_plot()` | Plots the external network metrics for a HR variable as a scatter plot, showing "External  Network Breadth" as the vertical axis and "External Network Size" as the  horizontal axis. | External Network Size               |
 | `network_g2g()`           | Plots collaboration  across your organization.               | Collaboration Hours                 |
 | `network_p2p()`           | Plots network analysis based  on strong and diverse tie metrics. | Diverse Tie Score  Strong Tie Score |
 
@@ -74,7 +74,7 @@ To use the functions, the input data must be a data frame object in R. Out-of-th
 | Group-to-Group Query            | Query that analyses how  groups collaborate with each other  | `network_g2g()`                                    |
 | Person-to-Person Network  Query | Query that analyses  network connectivity between individuals | `network_p2p()`                                    |
 
-Another parameter that can be specified with the WpA R package is the return parameter, which represents either a “table” (`return = "table"`) or a “plot” (`return = "plot"`). Plots visualize your outcome and can show a large amount of data quickly in a way that is easy to process.
+Another parameter that can be specified with the WpA R package is the return parameter, which represents either a table (`return = "table"`) or a plot (`return = "plot"`). Plots visualize your output and can show a large amount of data quickly in a way that is easy to process.
 
 ```R
 internal_network_plot(sq_data, return = "plot")
@@ -112,7 +112,7 @@ p2p_data %>% network_p2p(display = "louvain", path = NULL, return = "plot")
 
 > The best practice towards network analysis is always to first establish and validate hypotheses with the data, and *then* visualize the result. The reason why one should not start an analysis by interpreting a network visual is that network visualizations are critically affected by inputs such as layout algorithms (of which many are non-deterministic), inputs to those layout algorithms, and visual elements such as the colors and transparencies of the nodes and edges. 
 
-This is particularly pertinent for person-to-person analyses, which typically involve a large number of nodes and misleading conclusions can be drawn if one is not fully aware of the input parameters that have been used in generating the visual. In this case, the recommend interpretative approach would be to: 
+The above point on best practice is particularly pertinent for person-to-person analyses, which typically involve a large number of nodes and misleading conclusions can be drawn if one is not fully aware of the input parameters that have been used in generating the visual. In this case, the recommend interpretative approach would be to: 
 
 1. Run the summary tables or graph statistics by returning ‘`table`’ or ‘`network`’, making use of graph analysis functions that are compatible with an ‘igraph’ object. 
 
