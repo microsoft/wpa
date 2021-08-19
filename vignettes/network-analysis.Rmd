@@ -6,8 +6,18 @@ categories: ["R"]
 tags: ["network analysis"]
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE)
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+   collapse = TRUE,
+   comment = "#>",
+   fig.width=8,
+   fig.height=8
+  )
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(wpa)
+library(dplyr)
 ```
 
 This article provides a beginner’s introduction to Organizational Network Analysis (ONA), its basic concepts, and how to run them with the functions available from the [**wpa** R library](https://microsoft.github.io/wpa/).
@@ -76,7 +86,7 @@ To use the functions, the input data must be a data frame object in R. Out-of-th
 
 Another parameter that can be specified with the WpA R package is the return parameter, which represents either a table (`return = "table"`) or a plot (`return = "plot"`). Plots visualize your output and can show a large amount of data quickly in a way that is easy to process.
 
-```R
+```{r message=FALSE, warning=FALSE}
 internal_network_plot(sq_data, return = "plot")
 ```
 
@@ -85,7 +95,7 @@ internal_network_plot(sq_data, return = "plot")
 
 *Interpretation:  Organizations in the lower left corner have a internal smaller network size and network breadth. This may mean that they do not collaborate as much with other internal organizations and do not show a very large network. In comparison, organizations in the upper right corner have a larger internal network size and also network breadth. It can be inferred that they collaborate very broadly across the whole organization, maintaining many meaningful connections.*
 
-```R
+```{r message=FALSE, warning=FALSE}
 external_network_plot(sq_data, return = "plot")
 ```
 
@@ -94,7 +104,7 @@ external_network_plot(sq_data, return = "plot")
 
 *Interpretation:  Organizations in the lower left corner have a smaller external network size and network breadth. This may mean that they do not collaborate as much with other external collaborator and do not show a very large external network. In comparison, organizations in the upper right corner have a larger external network size and also network breadth. Thus, they collaborate very broadly and often with external collaborators.*
 
-```R
+```{r message=FALSE, warning=FALSE}
 network_g2g(g2g_data, return = "plot")
 ```
 
@@ -103,7 +113,7 @@ network_g2g(g2g_data, return = "plot")
 
 *Interpretation: This visualization can be used to show how strongly different organizations are connected. The connections between the organizations shows the strength of the network and give an indication of how strong this connection is. Organizations that have no connection or only a very weak connection may have a possible risk of exclusion because they are not as strongly connected to other organizations.*
 
-```R
+```{r message=FALSE, warning=FALSE}
 p2p_data <- p2p_data_sim(size = 50)
 p2p_data %>% network_p2p(display = "louvain", path = NULL, return = "plot")
 ```
