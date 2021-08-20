@@ -6,9 +6,10 @@ articles:
   IV-report: IV-report.html
   best-practices: best-practices.html
   intro-to-wpa: intro-to-wpa.html
+  network-analysis: network-analysis.html
   profiles-with-rank: profiles-with-rank.html
   text-mining-capabilities: text-mining-capabilities.html
-last_built: 2021-08-10T13:03Z
+last_built: 2021-08-20T09:05Z
 urls:
   reference: https://microsoft.github.io/wpa//reference
   article: https://microsoft.github.io/wpa//articles
