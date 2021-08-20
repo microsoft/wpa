@@ -86,4 +86,6 @@ navbar:
         href: articles/Change-over-time.html
       - text: Identifying noteworthy groups with rank functions
         href: articles/profiles-with-rank.html
+      - text: Introduction to Organizational Network Analysis
+        href: articles/network-analysis.html
 
