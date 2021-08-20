@@ -23,6 +23,7 @@ man-roxygen
 ^vignettes/IV-report.Rmd$
 ^vignettes/text-mining-capabilities.Rmd$
 ^vignettes/profiles-with-rank.Rmd$
+^vignettes/network-analysis.Rmd$
 ^Meta$
 ^cran-comments\.md$
 ^CRAN-RELEASE$

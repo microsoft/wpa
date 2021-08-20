@@ -7,7 +7,8 @@
 #' query, generating a HTML report on wellbeing.
 #'
 #' @param wbq Data frame. A custom Wellbeing Query dataset based on the Person
-#'   Query.
+#'   Query. If certain metrics are missing from the Wellbeing / Person Query,
+#'   the relevant visual will show up with an indicative message.
 #' @param hcq Data frame. An Hourly Collaboration Query dataset.
 #' @param hrvar String specifying HR attribute to cut by archetypes. Defaults to
 #'   `Organization`.
