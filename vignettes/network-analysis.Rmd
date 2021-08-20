@@ -130,7 +130,15 @@ The above point on best practice is particularly pertinent for person-to-person 
 
 3. Validate hypothesis with the data, using multiple permutations. For instance, the selected date range and population could lead to a different outcome in the data. 
 
-   Iterate with input parameters to create the visual that is most appropriate for communicating your analysis. 
+   Iterate with input parameters to create the visual that is most appropriate for communicating your analysis.
+
+## End Note & Reference
+
+This article is a first introduction to the topic of Organizational Network Analysis but there is a lot more to come. Here are some references that give more information about how to use the wpa R package and the topic of Networks:
+
+- [Overview](https://microsoft.github.io/wpa/reference/index.html) of functions of the wpa R package
+- [Reports](https://microsoft.github.io/wpa/analyst_guide_reports.html) that you can run using the wpa R package
+- [Handbook](https://ona-book.org/index.html) of Graphs and Networks in People Analytics
 
 
 
