@@ -134,11 +134,11 @@ The above point on best practice is particularly pertinent for person-to-person 
 
 ## End Note & Reference
 
-This article is a first introduction to the topic of Organizational Network Analysis but there is a lot more to come. Here are some references that give more information about how to use the wpa R package and the topic of Networks:
+This article is a first introduction to the topic of Organizational Network Analysis but there is more to come. At this point you should know the basic buliding blocks of network analysis and how to run the relevant functions in the wpa R library. Here are some more references on how to use the wpa R package and the topic of networks:
 
-- [Overview](https://microsoft.github.io/wpa/reference/index.html) of functions of the wpa R package
-- [Reports](https://microsoft.github.io/wpa/analyst_guide_reports.html) that you can run using the wpa R package
-- [Handbook](https://ona-book.org/index.html) of Graphs and Networks in People Analytics
+- [Overview of functions of the wpa R package](https://microsoft.github.io/wpa/reference/index.html)
+- [Reports that you can run using the wpa R package](https://microsoft.github.io/wpa/analyst_guide_reports.html)
+- [Handbook of Graphs and Networks in People Analytics](https://ona-book.org/index.html)
 
 
 
