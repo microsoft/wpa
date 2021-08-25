@@ -30,6 +30,10 @@
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
 #'   - `NULL` - uses the original levels of the HR attribute.
 #' @param xlim An option to set max value in x axis.
+#' @param text_just A numeric value controlling for the horizontal position of
+#'   the text labels. Defaults to 0.5.
+#' @param text_colour String to specify colour to use for the text labels.
+#' Defaults to `"#FFFFFF"`.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -82,7 +86,10 @@ create_stacked <- function(data,
                            plot_title = "Collaboration Hours",
                            plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
                            rank = "descending",
-                           xlim = NULL){
+                           xlim = NULL,
+                           text_just = 0.5,
+                           text_colour = "#FFFFFF"
+                           ){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -200,24 +207,24 @@ create_stacked <- function(data,
    geom_bar(position = "stack", stat = "identity") +
    { if(percent == FALSE){
      geom_text(aes(label = round(Value, 1)),
-               position = position_stack(vjust = 0.5),
-               color = "#FFFFFF",
+               position = position_stack(vjust = text_just),
+               color = text_colour,
                fontface = "bold")
    } else if(percent == TRUE){
      geom_text(aes(label = scales::percent(Value, accuracy = 0.1)),
-               position = position_stack(vjust = 0.5),
-               color = "#FFFFFF",
+               position = position_stack(vjust = text_just),
+               color = text_colour,
                fontface = "bold")
    }
    } +
    { if(percent == FALSE){
      scale_y_continuous(expand = c(.01, 0),
-                        limits = c(0, location * 1.25),
+                        limits = c(0, location * 1.3),
                         labels = max_blank,
                         position = "right")
    } else if(percent == TRUE){
      scale_y_continuous(expand = c(.01, 0),
-                        limits = c(0, location * 1.25),
+                        limits = c(0, location * 1.3),
                         labels = max_blank_percent,
                         position = "right")
    }
