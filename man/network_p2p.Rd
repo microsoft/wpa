@@ -127,9 +127,10 @@ at \code{display}.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Pass a data frame containing a person-to-person query and return a network
-visualization. Options are available for community detection using either the
-Louvain or the Leiden algorithms.
+Analyse a person-to-person (P2P) network query, with multiple visualisation
+and analysis output options. Pass a data frame containing a person-to-person
+query and return a network visualization. Options are available for community
+detection using either the Louvain or the Leiden algorithms.
 }
 \section{Running Leiden communities}{
 

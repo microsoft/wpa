@@ -21,12 +21,12 @@ workpatterns_classify(
 \item{data}{A data frame containing data from the Hourly Collaboration query.}
 
 \item{hrvar}{A string specifying the HR attribute to cut the data by.
-Defaults to NULL. This only affects the function when "table" is returned,
-and is only applicable for method = "bw".}
+Defaults to \code{NULL}. This only affects the function when \code{"table"} is
+returned, and is only applicable for \code{method = "bw"}.}
 
 \item{values}{Only valid if using \code{pav} method. Character vector to specify
-whether to return percentages or absolute values in "data" and "plot".
-Valid values are "percent" (default) and "abs".}
+whether to return percentages or absolute values in \code{"data"} and \code{"plot"}.
+Valid values are \code{"percent"} (default) and \code{"abs"}.}
 
 \item{signals}{Character vector to specify which collaboration metrics to
 use:
@@ -56,8 +56,8 @@ signals to be greater than in order to qualify as \emph{active}. Defaults to 0.
 Only applicable for the binary-week method.}
 
 \item{method}{String to pass through specifying which method to use for
-classification. By default, a binary week-based (bw) method is used, with
-options to use the the person-average volume-based (pav) method.}
+classification. By default, a binary week-based (\code{bw}) method is used, with
+options to use the the person-average volume-based (\code{pav}) method.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:

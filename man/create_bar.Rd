@@ -16,7 +16,9 @@ create_bar(
   plot_title = us_to_space(metric),
   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
   rank = "descending",
-  xlim = NULL
+  xlim = NULL,
+  text_just = 0.5,
+  text_colour = "#FFFFFF"
 )
 }
 \arguments{
@@ -64,6 +66,13 @@ percentage signs. Defaults to \code{FALSE}.}
 }}
 
 \item{xlim}{An option to set max value in x axis.}
+
+\item{text_just}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} A numeric value
+controlling for the horizontal position of the text labels. Defaults to
+0.5.}
+
+\item{text_colour}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} String to specify
+colour to use for the text labels. Defaults to \code{"#FFFFFF"}.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:
@@ -86,6 +95,14 @@ create_bar(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 create_bar(sq_data,
            metric = "After_hours_collaboration_hours",
            bar_colour = "alert")
+
+# Custom data label positions and formatting
+sq_data \%>\%
+  create_bar(
+    metric = "Meetings",
+    text_just = 1.1,
+    text_colour = "black",
+    xlim = 20)
 
 # Return a summary table
 create_bar(sq_data,

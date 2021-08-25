@@ -1,3 +1,7 @@
+# wpa 1.6.1
+- Fixed several minor bugs reported on GitHub (#177, #178, #180, #181)
+
+
 # wpa 1.6.0
 
 - Improved visuals on `workpatterns_rank()` and `identify_shifts_wp()` (#160)

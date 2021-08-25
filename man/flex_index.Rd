@@ -28,9 +28,9 @@ a combination of the two \code{c("email", "IM")} (default).}
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
-\item{start_hour}{A character vector specifying starting hours, e.g. "0900"}
+\item{start_hour}{A character vector specifying starting hours, e.g. \code{"0900"}}
 
-\item{end_hour}{A character vector specifying end hours, e.g. "1700"}
+\item{end_hour}{A character vector specifying end hours, e.g. \code{"1700"}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
