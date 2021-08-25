@@ -3,8 +3,11 @@
 #' @description
 #' `r lifecycle::badge('experimental')`
 #'
-#' This function takes a custom Wellbeing Query and an Hourly Collaboration
-#' query, generating a HTML report on wellbeing.
+#' Generate a static HTML report on wellbeing, taking a custom Wellbeing Query
+#' and an Hourly Collaboration query as inputs. See `Required metrics` section
+#' for more details on the required inputs for the Wellbeing Query. Note that
+#' this function is currently still in experimental/development stage and may
+#' experience changes in the near term.
 #'
 #' @param wbq Data frame. A custom Wellbeing Query dataset based on the Person
 #'   Query. If certain metrics are missing from the Wellbeing / Person Query,
@@ -24,6 +27,34 @@
 #'   then `"1700"` should be supplied here.
 #' @param path Pass the file path and the desired file name, _excluding the file
 #'   extension_. Defaults to `"wellbeing_report"`.
+#'
+#' @section Required metrics:
+#'  A full list of the required metrics are as follows:
+#'    - `Urgent_meeting_hours`
+#'    - `IMs_sent_other_level`
+#'    - `IMs_sent_same_level`
+#'    - `Emails_sent_other_level`
+#'    - `Emails_sent_same_level`
+#'    - `Emails_sent`
+#'    - `IMs_sent`
+#'    - `Meeting_hours_intimate_group`
+#'    - `Meeting_hours_1on1`
+#'    - `Urgent_email_hours`
+#'    - `Unscheduled_call_hours`
+#'    - `Meeting_hours`
+#'    - `Instant_Message_hours`
+#'    - `Email_hours`
+#'    - `Total_focus_hours`
+#'    - `Weekend_IMs_sent`
+#'    - `Weekend_emails_sent`
+#'    - `After_hours_collaboration_hours`
+#'    - `After_hours_meeting_hours`
+#'    - `After_hours_instant_messages`
+#'    - `After_hours_in_unscheduled_calls`
+#'    - `After_hours_email_hours`
+#'    - `Collaboration_hours`
+#'    - `Workweek_span`
+#'
 #'
 #' @export
 wellbeing_report <- function(wbq,

@@ -43,6 +43,38 @@ extension}. Defaults to \code{"wellbeing_report"}.}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-This function takes a custom Wellbeing Query and an Hourly Collaboration
-query, generating a HTML report on wellbeing.
+Generate a static HTML report on wellbeing, taking a custom Wellbeing Query
+and an Hourly Collaboration query as inputs. See \verb{Required metrics} section
+for more details on the required inputs for the Wellbeing Query.
 }
+\section{Required metrics}{
+
+A full list of the required metrics are as follows:
+\itemize{
+\item \code{Urgent_meeting_hours}
+\item \code{IMs_sent_other_level}
+\item \code{IMs_sent_same_level}
+\item \code{Emails_sent_other_level}
+\item \code{Emails_sent_same_level}
+\item \code{Emails_sent}
+\item \code{IMs_sent}
+\item \code{Meeting_hours_intimate_group}
+\item \code{Meeting_hours_1on1}
+\item \code{Urgent_email_hours}
+\item \code{Unscheduled_call_hours}
+\item \code{Meeting_hours}
+\item \code{Instant_Message_hours}
+\item \code{Email_hours}
+\item \code{Total_focus_hours}
+\item \code{Weekend_IMs_sent}
+\item \code{Weekend_emails_sent}
+\item \code{After_hours_collaboration_hours}
+\item \code{After_hours_meeting_hours}
+\item \code{After_hours_instant_messages}
+\item \code{After_hours_in_unscheduled_calls}
+\item \code{After_hours_email_hours}
+\item \code{Collaboration_hours}
+\item \code{Workweek_span}
+}
+}
+
