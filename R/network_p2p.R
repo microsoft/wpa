@@ -8,9 +8,11 @@
 #' @description
 #' `r lifecycle::badge('experimental')`
 #'
-#' Pass a data frame containing a person-to-person query and return a network
-#' visualization. Options are available for community detection using either the
-#' Louvain or the Leiden algorithms.
+#'
+#' Analyse a person-to-person (P2P) network query, with multiple visualisation
+#' and analysis output options. Pass a data frame containing a person-to-person
+#' query and return a network visualization. Options are available for community
+#' detection using either the Louvain or the Leiden algorithms.
 #'
 #'
 #' @param data Data frame containing a person-to-person query.
@@ -189,7 +191,7 @@ network_p2p <- function(data,
       data %>%
       select(from = "TieOrigin_PersonId",
              to = "TieDestination_PersonId",
-             weight = "StrongTieScore")
+             weight = weight)
 
   }
 
