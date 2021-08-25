@@ -10,6 +10,7 @@ wellbeing_report(
   hrvar = "Organization",
   mingroup = 5,
   start_hour = "0900",
+  end_hour = "1700",
   path = "wellbeing_report"
 )
 }
@@ -26,8 +27,15 @@ the relevant visual will show up with an indicative message.}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 
-\item{start_hour}{A character vector specifying starting hours, e.g. "0900".
-Note that this currently only supports hourly increments.}
+\item{start_hour}{A character vector specifying starting hours, e.g.
+\code{"0900"}. Note that this currently only supports \strong{hourly} increments. If
+the official hours specifying checking in and 9 AM and checking out at 5
+PM, then \code{"0900"} should be supplied here.}
+
+\item{end_hour}{A character vector specifying starting hours, e.g. \code{"1700"}.
+Note that this currently only supports \strong{hourly} increments. If the
+official hours specifying checking in and 9 AM and checking out at 5 PM,
+then \code{"1700"} should be supplied here.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
 extension}. Defaults to \code{"wellbeing_report"}.}

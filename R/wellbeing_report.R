@@ -14,8 +14,14 @@
 #'   `Organization`.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
-#' @param start_hour 	A character vector specifying starting hours, e.g. "0900".
-#'   Note that this currently only supports hourly increments.
+#' @param start_hour A character vector specifying starting hours, e.g.
+#'   `"0900"`. Note that this currently only supports **hourly** increments. If
+#'   the official hours specifying checking in and 9 AM and checking out at 5
+#'   PM, then `"0900"` should be supplied here.
+#' @param end_hour A character vector specifying starting hours, e.g. `"1700"`.
+#'   Note that this currently only supports **hourly** increments. If the
+#'   official hours specifying checking in and 9 AM and checking out at 5 PM,
+#'   then `"1700"` should be supplied here.
 #' @param path Pass the file path and the desired file name, _excluding the file
 #'   extension_. Defaults to `"wellbeing_report"`.
 #'
@@ -25,6 +31,7 @@ wellbeing_report <- function(wbq,
                              hrvar = "Organization",
                              mingroup = 5,
                              start_hour = "0900",
+                             end_hour = "1700",
                              path = "wellbeing_report"
                              ){
 
@@ -45,6 +52,8 @@ wellbeing_report <- function(wbq,
       flexdashboard::flex_dashboard(orientation = "columns",
                                     vertical_layout = "fill",
                                     css = system.file("rmd_template/wellbeing/custom.css", package = "wpa")),
-    start_hour = start_hour # Additional arguments to param
+    # Additional arguments to param
+    start_hour = start_hour,
+    end_hour = end_hour
   )
 }
