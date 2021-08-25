@@ -56,11 +56,12 @@ percentage signs. Defaults to \code{FALSE}.}
 
 \item{xlim}{An option to set max value in x axis.}
 
-\item{text_just}{A numeric value controlling for the horizontal position of
-the text labels. Defaults to 0.5.}
+\item{text_just}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} A numeric value
+controlling for the horizontal position of the text labels. Defaults to
+0.5.}
 
-\item{text_colour}{String to specify colour to use for the text labels.
-Defaults to \code{"#FFFFFF"}.}
+\item{text_colour}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} String to specify
+colour to use for the text labels. Defaults to \code{"#FFFFFF"}.}
 }
 \value{
 Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.

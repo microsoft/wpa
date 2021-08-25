@@ -38,10 +38,11 @@
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
 #'   - `NULL` - uses the original levels of the HR attribute.
 #' @param xlim An option to set max value in x axis.
-#' @param text_just A numeric value controlling for the horizontal position of
-#'   the text labels. Defaults to 0.5.
-#' @param text_colour String to specify colour to use for the text labels.
-#' Defaults to `"#FFFFFF"`.
+#' @param text_just `r lifecycle::badge('experimental')` A numeric value
+#'   controlling for the horizontal position of the text labels. Defaults to
+#'   0.5.
+#' @param text_colour `r lifecycle::badge('experimental')` String to specify
+#'   colour to use for the text labels. Defaults to `"#FFFFFF"`.
 #'
 #'
 #' @return
