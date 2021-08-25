@@ -329,7 +329,7 @@ workpatterns_classify_bw <- function(data,
       # Character containing groups above the minimum group threshold
       PersonCount <-
         ptn_data_final %>%
-        hrvar_count(return = "table") %>%
+        hrvar_count(hrvar = hrvar, return = "table") %>%
         dplyr::filter(n >= mingroup) %>%
         dplyr::pull(hrvar)
 
@@ -348,7 +348,7 @@ workpatterns_classify_bw <- function(data,
   }
 
 
-  ## Return
+  ## ReturnR
 
   if(return == "data"){
 
