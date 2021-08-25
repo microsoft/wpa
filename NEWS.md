@@ -1,5 +1,5 @@
 # wpa 1.6.1
-- Fixed minor bugs
+- Fixed several minor bugs reported on GitHub (#177, #178, #180, #181)
 
 
 # wpa 1.6.0
