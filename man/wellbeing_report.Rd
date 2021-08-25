@@ -45,7 +45,9 @@ extension}. Defaults to \code{"wellbeing_report"}.}
 
 Generate a static HTML report on wellbeing, taking a custom Wellbeing Query
 and an Hourly Collaboration query as inputs. See \verb{Required metrics} section
-for more details on the required inputs for the Wellbeing Query.
+for more details on the required inputs for the Wellbeing Query. Note that
+this function is currently still in experimental/development stage and may
+experience changes in the near term.
 }
 \section{Required metrics}{
 
