@@ -1,4 +1,6 @@
 # wpa 1.6.1
+- Fixed minor bugs
+
 
 # wpa 1.6.0
 
