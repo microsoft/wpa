@@ -90,7 +90,7 @@ KPI_3 <-  flex_index_data %>%
   pull(1) %>%
   round(3)*100 
 
-paste(KPI_3, "% recurring disconnection") %>%
+paste(KPI_3, "% define quiet hours") %>%
   flexdashboard::valueBox(icon = "fa-stopwatch",
                           color = rgb2hex(1, 147, 157))
 						  
@@ -113,7 +113,7 @@ flex2_w3_plot <-
   )
 
 flex2_w3_plot +
-  labs(title = "Recurring Disconnection Time",
+  labs(title = "Recurring disconnection time",
        subtitle = paste("% of weeks employees have recurring disconnection"))
 
 ```
@@ -144,16 +144,18 @@ paste(KPI_2, "% control active hours") %>%
 ### <B>Are employees able to control their active hours?</B> <br> Employees who choose alternative work schedules should be able to maintain a workload that is broadly equivalent to the standard 8 hours. Flexible working should not result in longer hours spread across the day. 
 
 ```{r}
-
-
 flex2_w2_plot <- flex_index_data %>%
   mutate(Percentage_of_weeks = ControlHours) %>%
-  create_bar(metric = "Percentage_of_weeks",
-             hrvar = hrvar,
-             xlim = 1,
-             rank = NULL,
-             bar_colour = "#00508F",
-             percent = TRUE)
+  create_bar(
+    metric = "Percentage_of_weeks",
+    hrvar = hrvar,
+    xlim = 1,
+    rank = NULL,
+    bar_colour = "#00508F",
+    percent = TRUE,
+    text_just = 2.5,
+    text_colour = "#00508F"
+    )
 
 flex2_w2_plot +
   labs(title = "Control active hours",

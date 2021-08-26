@@ -73,9 +73,9 @@
 #' @param active_threshold A numeric value specifying the minimum number of
 #'   signals to be greater than in order to qualify as _active_. Defaults to 0.
 #'
-#' @param start_hour A character vector specifying starting hours, e.g. "0900"
+#' @param start_hour A character vector specifying starting hours, e.g. `"0900"`
 #'
-#' @param end_hour A character vector specifying end hours, e.g. "1700"
+#' @param end_hour A character vector specifying end hours, e.g. `"1700"`
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:

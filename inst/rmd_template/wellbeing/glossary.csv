@@ -41,3 +41,4 @@ Unscheduled Call hours ,"The number of hours the person spent in unscheduled cal
 Urgent Collaboration,Email hours where subject line includes key words:  urgent; immediately; ASAP; fire drill; immediate action; dringend; urgente; 緊急; pressant; Immédiatement; 直ちに; Sofort; inmediatamente
 Urgent Week,Person weeks where urgent collaboration > 0
 Intimate Meetings,"Number of hours the person spent in meetings with up to 5 attendees, during and outside of working hours."
+Weekend work,Weekend work is defined as having sent at least 1 email or 1 instant message over Saturday or Sunday. Note that the first day of a week is set as Sunday in Workplace Analytics. 

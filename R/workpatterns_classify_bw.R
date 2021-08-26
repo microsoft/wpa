@@ -326,13 +326,21 @@ workpatterns_classify_bw <- function(data,
 
     } else {
 
+      # Character containing groups above the minimum group threshold
+      PersonCount <-
+        ptn_data_final %>%
+        hrvar_count(hrvar = hrvar, return = "table") %>%
+        dplyr::filter(n >= mingroup) %>%
+        dplyr::pull(hrvar)
+
       ptn_data_final %>%
-        # dplyr::left_join(select(data2, PersonId, Date, hrvar), by = c("PersonId", "Date")) # %>%
         data.table::as.data.table() %>%
         .[, .(n = .N), by = c("Personas", hrvar)] %>%
-        .[n >= mingroup, ] %>%
-        .[, prop := n / sum(n), by = hrvar] %>% # % breakdown by HR org
         dplyr::as_tibble() %>%
+        dplyr::filter(!!sym(hrvar) %in% PersonCount) %>%
+        dplyr::group_by(!!sym(hrvar)) %>%
+        dplyr::mutate(prop = n / sum(n, na.rm = TRUE)) %>%
+        dplyr::ungroup() %>%
         dplyr::select(-n) %>% # Remove n
         tidyr::spread(!!sym(hrvar), prop) %>%
         dplyr::arrange(Personas)
@@ -340,7 +348,7 @@ workpatterns_classify_bw <- function(data,
   }
 
 
-  ## Return
+  ## ReturnR
 
   if(return == "data"){
 
@@ -515,8 +523,8 @@ plot_workpatterns_classify_bw <- function(data){
                                   "13+ hours", ""
                                   )) +
     scale_x_continuous(breaks = 0:4,
-                       labels = c("", "No recurring breaks", "",
-                                  "Take recurring breaks", "")) +
+                       labels = c("", "No quiet hours", "",
+                                  "Take quiet hours", "")) +
     labs(title = "Distribution of Working Patterns",
          subtitle = "Classification of employee-weeks",
          x = "Flexibility level (breaks)",

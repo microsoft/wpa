@@ -1,8 +1,6 @@
-# wpa (development version)
+# wpa 1.6.1
+- Fixed several minor bugs reported on GitHub (#177, #178, #180, #181)
 
-- Added `subject_scan()` (or `tm_scan()`) for for visualising top keywords in meetings by heatmap
-- Added `subject_classify()` for classifying keywords by sring matching
-- Refurbished `meeting_tm_report()` to have a dashboard view
 
 # wpa 1.6.0
 
