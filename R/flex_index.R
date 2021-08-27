@@ -121,11 +121,13 @@
 #' em_data %>%
 #'   flex_index(hrvar = "Organization", return = "table")
 #'
-#' \donttest{
-#' # Return the raw data with the computed Flexibility Index
+#' @section Returning the raw data:
+#' The raw data containing the computed Flexibility Index can be returned with
+#' the following:
+#' ```
 #' em_data %>%
 #'   flex_index(return = "data")
-#' }
+#' ```
 #'
 #' @family Working Patterns
 #'
