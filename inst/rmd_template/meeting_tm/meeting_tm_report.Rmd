@@ -124,7 +124,7 @@ Column {data-width=50%}
 ### Top terms - Days
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-data %>% subject_scan(mode = "days")
+data %>% subject_scan(mode = "days", stopwords = stopwords)
 ```
 
 Column {data-width=50%}
@@ -133,7 +133,7 @@ Column {data-width=50%}
 ### Top terms - Hours
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-data %>% subject_scan(mode = "hours")
+data %>% subject_scan(mode = "hours", stopwords = stopwords)
 ```
 
 
