@@ -13,6 +13,7 @@ subject_scan(
   token = "words",
   return = "plot",
   weight = NULL,
+  stopwords = NULL,
   ...
 )
 
@@ -24,6 +25,7 @@ tm_scan(
   token = "words",
   return = "plot",
   weight = NULL,
+  stopwords = NULL,
   ...
 )
 }
@@ -63,6 +65,9 @@ See \code{Value} for more information.}
 weighting data, such as \code{"Invitees"}. The column must contain positive
 integers. Defaults to \code{NULL}, where no weighting is applied.}
 
+\item{stopwords}{A single-column data frame labelled \code{'word'} containing
+custom stopwords to remove.}
+
 \item{...}{Additional parameters to pass to \code{tm_clean()}.}
 }
 \value{
@@ -96,9 +101,9 @@ mt_data \%>\%
 mt_data \%>\% subject_scan(hrvar = "Organizer_Organization", return = "table")
 
 # grouped by hours
-mt_data \%>\% subject_scan(hrvar = "Organizer_Organization", mode = "hours")
+mt_data \%>\% subject_scan(mode = "hours")
 
 # grouped by days
-mt_data \%>\% subject_scan(hrvar = "Organizer_Organization", mode = "days")
+mt_data \%>\% subject_scan(mode = "days")
 
 }

@@ -35,6 +35,8 @@
 #' @param weight String specifying the column name of a numeric variable for
 #'   weighting data, such as `"Invitees"`. The column must contain positive
 #'   integers. Defaults to `NULL`, where no weighting is applied.
+#' @param stopwords A single-column data frame labelled `'word'` containing
+#'   custom stopwords to remove.
 #' @param ... Additional parameters to pass to `tm_clean()`.
 #'
 #' @return
@@ -75,6 +77,7 @@ subject_scan <- function(data,
                          token = "words",
                          return = "plot",
                          weight = NULL,
+                         stopwords = NULL,
                          ...){
 
   # weighting -------------------------------------------------------
@@ -169,7 +172,11 @@ subject_scan <- function(data,
 
       dow <- x[[hrvar]][1]
 
-      long_t <- tm_clean(x, token = token, ...) %>%
+      long_t <- tm_clean(
+        x,
+        token = token,
+        stopwords = stopwords,
+        ...) %>%
         filter(!is.na(word))
 
       long_t %>%
