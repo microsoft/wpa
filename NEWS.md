@@ -1,6 +1,6 @@
 # wpa 1.6.1
 - Fixed several minor bugs reported on GitHub (#177, #178, #180, #181)
-
+- Refurbished `meeting_tm_report()` (#173)
 
 # wpa 1.6.0
 

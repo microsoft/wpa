@@ -120,6 +120,14 @@ done, and thus the more specific terminology 'recurring disconnection time'
 is preferred.
 }
 
+\section{Returning the raw data}{
+
+The raw data containing the computed Flexibility Index can be returned with
+the following:\preformatted{em_data \%>\%
+  flex_index(return = "data")
+}
+}
+
 \examples{
 # Examples of how to test the plotting options individually
 # Sample of 10 work patterns
@@ -137,12 +145,6 @@ em_data \%>\%
 # Return a summary table with the computed Flexibility Index
 em_data \%>\%
   flex_index(hrvar = "Organization", return = "table")
-
-\donttest{
-# Return the raw data with the computed Flexibility Index
-em_data \%>\%
-  flex_index(return = "data")
-}
 
 }
 \seealso{

@@ -9,6 +9,10 @@
 
 * This is a new release.
 
+## Submission 1.6.1
+
+Minor bug fixes.
+
 ## Submission 1.6.0
 
 Minor release implementing several features and fixing bugs logged on GitHub.

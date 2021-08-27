@@ -27,51 +27,83 @@ meeting_tm_report <- function(data,
                               keep = 100,
                               seed = 100){
 
-  ## Create timestamped path (if applicable)
+  ## Check if dependencies are installed
+  check_pkg_installed(pkgname = "flexdashboard")
+
+  ## Add timestamp
   if(timestamp == TRUE){
-    newpath <- paste(path, wpa::tstamp())
-  } else {
-    newpath <- path
+    path <- paste(path, tstamp())
   }
 
-  # Set outputs
-  output_list <-
-    list(md2html(text = read_preamble("blank.md")), # Header
-         data %>% tm_wordcloud(stopwords = stopwords, keep = keep),
-         data %>% tm_freq(token = "words", stopwords = stopwords, keep = keep),
-         data %>% tm_freq(token = "words", stopwords = stopwords, keep = keep, return = "table"),
-         data %>% tm_freq(token = "ngrams", stopwords = stopwords, keep = keep),
-         data %>% tm_freq(token = "ngrams", stopwords = stopwords, keep = keep, return = "table"),
-         data %>% tm_cooc(stopwords = stopwords, seed = seed),
-         data %>% tm_cooc(stopwords = stopwords, seed = seed, return="table")) %>%
-    purrr::map_if(is.data.frame, create_dt)
+  ## Generate report from RMarkdown
+  generate_report2(
+    data = data,
+    stopwords = stopwords,
+    keep = keep,
+    seed = seed,
+    output_file = paste0(path, ".html"),
+    report_title = "Analysis of Meeting Subject Lines",
+    rmd_dir = system.file("rmd_template/meeting_tm/meeting_tm_report.rmd", package = "wpa"),
+    output_format =
+      flexdashboard::flex_dashboard(orientation = "columns",
+                                    vertical_layout = "fill",
+                                    source_code = "embed"),
+  )
 
-  # Set header titles
-  title_list <-
-    c("Text Mining Report", # Section header
-      "Word cloud",
-      "Word Frequency",
-	  "",
-      "Phrase Frequency",
-	  "",
-      "Word Co-occurrence",
-	  "")
 
-  # Set header levels
-  n_title <- length(title_list)
-  levels_list <- rep(3, n_title)
-  levels_list[c(1)] <- 2 # Section header
-
-  # Generate report
-  generate_report(title = "Analysis of Meeting Subject Lines",
-                  filename = newpath,
-                  outputs = output_list,
-                  titles = title_list,
-                  subheaders = rep("", n_title),
-                  echos = rep(FALSE, n_title),
-                  levels = levels_list,
-                  theme = "cosmo",
-                  preamble = read_preamble("meeting_tm_report.md"))
+#   ## Create timestamped path (if applicable)
+#   if(timestamp == TRUE){
+#     newpath <- paste(path, wpa::tstamp())
+#   } else {
+#     newpath <- path
+#   }
+#
+#   # Set outputs
+#   output_list <-
+#     list(
+#       md2html(text = read_preamble("blank.md")), # Header
+#       data %>% tm_wordcloud(stopwords = stopwords, keep = keep),
+#       data %>% tm_freq(token = "words", stopwords = stopwords, keep = keep),
+#       data %>% tm_freq(token = "words", stopwords = stopwords, keep = keep, return = "table"),
+#       data %>% tm_freq(token = "ngrams", stopwords = stopwords, keep = keep),
+#       data %>% tm_freq(token = "ngrams", stopwords = stopwords, keep = keep, return = "table"),
+#       data %>% tm_cooc(stopwords = stopwords, seed = seed),
+#       data %>% tm_cooc(stopwords = stopwords, seed = seed, return = "table"),
+#       data %>% subject_scan(mode = "days"),
+#       data %>% subject_scan(mode = "hours")
+#          ) %>%
+#     purrr::map_if(is.data.frame, create_dt)
+#
+#   # Set header titles
+#   title_list <-
+#     c(
+#       "Text Mining Report", # Section header
+#       "Word cloud",
+#       "Word Frequency",
+# 	    "",
+#       "Phrase Frequency",
+# 	    "",
+#       "Word Co-occurrence",
+# 	    "",
+#       "Top terms",
+#       ""
+#       )
+#
+#   # Set header levels
+#   n_title <- length(title_list)
+#   levels_list <- rep(3, n_title)
+#   levels_list[c(1)] <- 2 # Section header
+#
+#   # Generate report
+#   generate_report(title = "Analysis of Meeting Subject Lines",
+#                   filename = newpath,
+#                   outputs = output_list,
+#                   titles = title_list,
+#                   subheaders = rep("", n_title),
+#                   echos = rep(FALSE, n_title),
+#                   levels = levels_list,
+#                   theme = "cosmo",
+#                   preamble = read_preamble("meeting_tm_report.md"))
 
 }
 
