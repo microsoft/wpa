@@ -61,6 +61,14 @@ See [NEWS.md](https://microsoft.github.io/wpa/news/index.html) for the package c
 
 ---
 
+## Related repositories
+
+- [Viva RMarkdown Report Marketplace](https://github.com/microsoft/VivaRMDReportMarketplace)
+- [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code)
+- [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int)
+
+---
+
 ## Code of Conduct
 
 We would ask you to please read the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) prior to engaging with this package.
