@@ -15,7 +15,9 @@ create_stacked(
   plot_title = "Collaboration Hours",
   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
   rank = "descending",
-  xlim = NULL
+  xlim = NULL,
+  text_just = 0.5,
+  text_colour = "#FFFFFF"
 )
 }
 \arguments{
@@ -53,6 +55,13 @@ percentage signs. Defaults to \code{FALSE}.}
 }}
 
 \item{xlim}{An option to set max value in x axis.}
+
+\item{text_just}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} A numeric value
+controlling for the horizontal position of the text labels. Defaults to
+0.5.}
+
+\item{text_colour}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} String to specify
+colour to use for the text labels. Defaults to \code{"#FFFFFF"}.}
 }
 \value{
 Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.

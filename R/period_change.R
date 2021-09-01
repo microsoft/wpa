@@ -82,7 +82,7 @@ period_change <-
     daterange_2_start <- as.Date(after_start)
     daterange_2_end <- as.Date(after_end)
 
-    # Fix dates format for WpA Queries
+    # Fix dates format for Workplace Analytics Queries
     WpA_dataset <- data %>% mutate(Date = as.Date(Date, "%m/%d/%Y"))
 
 

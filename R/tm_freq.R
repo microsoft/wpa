@@ -86,13 +86,14 @@ tm_freq <- function(data,
       plot.margin = unit(rep(-1,4), "cm") # Adjust the margin to make in sort labels are not truncated!
     ) +
     coord_polar(start = 0) +
-    geom_text(data=text_count,
-              aes(x=word, y=n+10, label=word),
-              color="black",
-              fontface="bold",
-              alpha=0.6,
-              size=2.5,
-              inherit.aes = FALSE)
+    ggrepel::geom_text_repel(
+      data = text_count,
+      aes(x=word, y=n+10, label=word),
+      color = "black",
+      fontface = "bold",
+      alpha = 0.6,
+      size = 2.5,
+      inherit.aes = FALSE)
 
   if(return == "table"){
 

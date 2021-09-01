@@ -4,7 +4,7 @@
 \alias{tm_clean}
 \title{Clean subject line text prior to analysis}
 \usage{
-tm_clean(data, token = "words", stopwords = NULL)
+tm_clean(data, token = "words", stopwords = NULL, ...)
 }
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
@@ -14,6 +14,8 @@ determining type of tokenisation to return.}
 
 \item{stopwords}{A single-column data frame labelled \code{'word'} containing
 custom stopwords to remove.}
+
+\item{...}{Additional parameters to pass to \code{tidytext::unnest_tokens()}.}
 }
 \value{
 data frame with two columns:

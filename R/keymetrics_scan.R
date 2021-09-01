@@ -65,6 +65,11 @@ keymetrics_scan <- function(data,
     hrvar <- "Total"
   }
 
+  ## Omit if metrics do not exist in dataset
+  metrics <- dplyr::intersect(metrics, names(data))
+
+
+  ## Summary table
   myTable <-
     data %>%
     rename(group = !!sym(hrvar)) %>% # Rename HRvar to `group`
