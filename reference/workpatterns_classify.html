@@ -91,7 +91,7 @@ the the person-average volume-based ('pav') method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -276,14 +276,14 @@ the the person-average volume-based ('pav') method.</p>
     <tr>
       <th>hrvar</th>
       <td><p>A string specifying the HR attribute to cut the data by.
-Defaults to NULL. This only affects the function when "table" is returned,
-and is only applicable for method = "bw".</p></td>
+Defaults to <code>NULL</code>. This only affects the function when <code>"table"</code> is
+returned, and is only applicable for <code>method = "bw"</code>.</p></td>
     </tr>
     <tr>
       <th>values</th>
       <td><p>Only valid if using <code>pav</code> method. Character vector to specify
-whether to return percentages or absolute values in "data" and "plot".
-Valid values are "percent" (default) and "abs".</p></td>
+whether to return percentages or absolute values in <code>"data"</code> and <code>"plot"</code>.
+Valid values are <code>"percent"</code> (default) and <code>"abs"</code>.</p></td>
     </tr>
     <tr>
       <th>signals</th>
@@ -324,8 +324,8 @@ Only applicable for the binary-week method.</p></td>
     <tr>
       <th>method</th>
       <td><p>String to pass through specifying which method to use for
-classification. By default, a binary week-based (bw) method is used, with
-options to use the the person-average volume-based (pav) method.</p></td>
+classification. By default, a binary week-based (<code>bw</code>) method is used, with
+options to use the the person-average volume-based (<code>pav</code>) method.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -491,15 +491,16 @@ Hourly Collaboration Flexible Query.</p></li>
 <span class='co'># \donttest{</span>
 
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"bw"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 5</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 × 5</span>
 #&gt;   Personas                       `Team 1` `Team 2` `Team 3` `Team 4`
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 0 &lt; 3 hours on                   0.197    0.128    0.187    0.167 
-#&gt; <span style='color: #BCBCBC;'>2</span> 1 Standard with breaks workday   0.048<span style='text-decoration: underline;'>3</span>   0.044<span style='text-decoration: underline;'>4</span>   0.072<span style='text-decoration: underline;'>4</span>   0.027<span style='text-decoration: underline;'>9</span>
-#&gt; <span style='color: #BCBCBC;'>3</span> 3 Standard flexible workday      0.364    0.281    0.284    0.265 
-#&gt; <span style='color: #BCBCBC;'>4</span> 4 Long flexible workday          0.119    0.219    0.242    0.265 
-#&gt; <span style='color: #BCBCBC;'>5</span> 5 Long continuous workday        0.026<span style='text-decoration: underline;'>0</span>   0.114    0.072<span style='text-decoration: underline;'>4</span>   0.069<span style='text-decoration: underline;'>6</span>
-#&gt; <span style='color: #BCBCBC;'>6</span> 6 Always on (13h+)               0.245    0.214    0.142    0.206 </div><div class='input'>
+#&gt; <span style='color: #BCBCBC;'>1</span> 0 &lt; 3 hours on                   0.197    0.128   0.186    0.167  
+#&gt; <span style='color: #BCBCBC;'>2</span> 1 Standard with breaks workday   0.048<span style='text-decoration: underline;'>3</span>   0.044<span style='text-decoration: underline;'>4</span>  0.072<span style='text-decoration: underline;'>2</span>   0.027<span style='text-decoration: underline;'>8</span> 
+#&gt; <span style='color: #BCBCBC;'>3</span> 2 Standard continuous workday   <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>       0.002<span style='text-decoration: underline;'>78</span>  0.002<span style='text-decoration: underline;'>78</span>
+#&gt; <span style='color: #BCBCBC;'>4</span> 3 Standard flexible workday      0.364    0.281   0.283    0.264  
+#&gt; <span style='color: #BCBCBC;'>5</span> 4 Long flexible workday          0.119    0.219   0.242    0.264  
+#&gt; <span style='color: #BCBCBC;'>6</span> 5 Long continuous workday        0.026<span style='text-decoration: underline;'>0</span>   0.114   0.072<span style='text-decoration: underline;'>2</span>   0.069<span style='text-decoration: underline;'>4</span> 
+#&gt; <span style='color: #BCBCBC;'>7</span> 6 Always on (13h+)               0.245    0.214   0.142    0.206  </div><div class='input'>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"pav"</span><span class='op'>)</span>
 </div><div class='img'><img src='workpatterns_classify-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"pav"</span>, return <span class='op'>=</span> <span class='st'>"plot-area"</span><span class='op'>)</span>

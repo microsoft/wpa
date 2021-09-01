@@ -91,7 +91,7 @@ freedom for employees to work at a time of their choice." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -289,11 +289,11 @@ signals to be greater than in order to qualify as <em>active</em>. Defaults to 0
     </tr>
     <tr>
       <th>start_hour</th>
-      <td><p>A character vector specifying starting hours, e.g. "0900"</p></td>
+      <td><p>A character vector specifying starting hours, e.g. <code>"0900"</code></p></td>
     </tr>
     <tr>
       <th>end_hour</th>
-      <td><p>A character vector specifying end hours, e.g. "1700"</p></td>
+      <td><p>A character vector specifying end hours, e.g. <code>"1700"</code></p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -378,6 +378,15 @@ that this applies a stricter criterion compared to the common definition of
 a break, which is simply a time interval where no active work is being
 done, and thus the more specific terminology 'recurring disconnection time'
 is preferred.</p>
+    <h2 class="hasAnchor" id="returning-the-raw-data"><a class="anchor" href="#returning-the-raw-data"></a>Returning the raw data</h2>
+
+    
+
+<p>The raw data containing the computed Flexibility Index can be returned with
+the following:</p><pre><span class='va'>em_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>flex_index</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>
+</pre>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Working Patterns: 
@@ -416,155 +425,6 @@ is preferred.</p>
 #&gt; <span style='color: #BCBCBC;'>2</span> Team 2            0.793       0.882        0.188            0.621
 #&gt; <span style='color: #BCBCBC;'>3</span> Team 3            0.829       0.829        0.198            0.619
 #&gt; <span style='color: #BCBCBC;'>4</span> Team 4            0.81        0.92         0.103            0.611</div><div class='input'>
-<span class='co'># \donttest{</span>
-<span class='co'># Return the raw data with the computed Flexibility Index</span>
-<span class='va'>em_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>flex_index</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                               PersonId
-#&gt;    1: 0081754E9D461DB3F706887B1C869FF9A74D2C9D51F650024603574B833EAFCA
-#&gt;    2: 0081754E9D461DB3F706887B1C869FF9A74D2C9D51F650024603574B833EAFCA
-#&gt;    3: 0081754E9D461DB3F706887B1C869FF9A74D2C9D51F650024603574B833EAFCA
-#&gt;    4: 0081754E9D461DB3F706887B1C869FF9A74D2C9D51F650024603574B833EAFCA
-#&gt;    5: 0081754E9D461DB3F706887B1C869FF9A74D2C9D51F650024603574B833EAFCA
-#&gt;   ---                                                                 
-#&gt; 1119: FFB27FDDC216FE2B9A4D3127EAE9FFDBA717C4BA6BFC3AEB96869E1EE63BBBC2
-#&gt; 1120: FFB27FDDC216FE2B9A4D3127EAE9FFDBA717C4BA6BFC3AEB96869E1EE63BBBC2
-#&gt; 1121: FFB27FDDC216FE2B9A4D3127EAE9FFDBA717C4BA6BFC3AEB96869E1EE63BBBC2
-#&gt; 1122: FFB27FDDC216FE2B9A4D3127EAE9FFDBA717C4BA6BFC3AEB96869E1EE63BBBC2
-#&gt; 1123: FFB27FDDC216FE2B9A4D3127EAE9FFDBA717C4BA6BFC3AEB96869E1EE63BBBC2
-#&gt;             Date After_end Before_start Within_hours First_signal Last_signal
-#&gt;    1: 2019-10-06         5            2            8            7          24
-#&gt;    2: 2019-10-13         5            2            8            7          22
-#&gt;    3: 2019-10-20         6            3            8            6          23
-#&gt;    4: 2019-10-27         4            3            8            6          21
-#&gt;    5: 2019-11-03         5            3            7            6          23
-#&gt;   ---                                                                        
-#&gt; 1119: 2019-11-03         1            2            7            7          18
-#&gt; 1120: 2019-11-10         1            2            7            1          18
-#&gt; 1121: 2019-11-17         1            1            5            8          22
-#&gt; 1122: 2019-11-24         0            0            3            9          16
-#&gt; 1123: 2019-12-01         2            2            7            7          20
-#&gt;       Day_Span Signals_Break_hours Signals_sent_00_01 Signals_sent_01_02
-#&gt;    1:       17                   2                  0                  0
-#&gt;    2:       15                   0                  0                  0
-#&gt;    3:       17                   0                  0                  0
-#&gt;    4:       15                   0                  0                  0
-#&gt;    5:       17                   2                  0                  0
-#&gt;   ---                                                                   
-#&gt; 1119:       11                   1                  0                  0
-#&gt; 1120:       17                   7                  0                  1
-#&gt; 1121:       14                   7                  0                  0
-#&gt; 1122:        7                   4                  0                  0
-#&gt; 1123:       13                   2                  0                  0
-#&gt;       Signals_sent_02_03 Signals_sent_03_04 Signals_sent_04_05
-#&gt;    1:                  0                  0                  0
-#&gt;    2:                  0                  0                  0
-#&gt;    3:                  0                  0                  0
-#&gt;    4:                  0                  0                  0
-#&gt;    5:                  0                  0                  0
-#&gt;   ---                                                         
-#&gt; 1119:                  0                  0                  0
-#&gt; 1120:                  0                  0                  0
-#&gt; 1121:                  0                  0                  0
-#&gt; 1122:                  0                  0                  0
-#&gt; 1123:                  0                  0                  0
-#&gt;       Signals_sent_05_06 Signals_sent_06_07 Signals_sent_07_08
-#&gt;    1:                  0                  0                  1
-#&gt;    2:                  0                  0                  1
-#&gt;    3:                  0                  1                  1
-#&gt;    4:                  0                  1                  1
-#&gt;    5:                  0                  1                  1
-#&gt;   ---                                                         
-#&gt; 1119:                  0                  0                  1
-#&gt; 1120:                  0                  0                  1
-#&gt; 1121:                  0                  0                  0
-#&gt; 1122:                  0                  0                  0
-#&gt; 1123:                  0                  0                  1
-#&gt;       Signals_sent_08_09 Signals_sent_09_10 Signals_sent_10_11
-#&gt;    1:                  1                  1                  1
-#&gt;    2:                  1                  1                  1
-#&gt;    3:                  1                  1                  1
-#&gt;    4:                  1                  1                  1
-#&gt;    5:                  1                  1                  1
-#&gt;   ---                                                         
-#&gt; 1119:                  1                  1                  0
-#&gt; 1120:                  0                  1                  1
-#&gt; 1121:                  1                  0                  1
-#&gt; 1122:                  0                  1                  0
-#&gt; 1123:                  1                  1                  1
-#&gt;       Signals_sent_11_12 Signals_sent_12_13 Signals_sent_13_14
-#&gt;    1:                  1                  1                  1
-#&gt;    2:                  1                  1                  1
-#&gt;    3:                  1                  1                  1
-#&gt;    4:                  1                  1                  1
-#&gt;    5:                  1                  0                  1
-#&gt;   ---                                                         
-#&gt; 1119:                  1                  1                  1
-#&gt; 1120:                  1                  1                  1
-#&gt; 1121:                  1                  1                  1
-#&gt; 1122:                  0                  0                  0
-#&gt; 1123:                  0                  1                  1
-#&gt;       Signals_sent_14_15 Signals_sent_15_16 Signals_sent_16_17
-#&gt;    1:                  1                  1                  1
-#&gt;    2:                  1                  1                  1
-#&gt;    3:                  1                  1                  1
-#&gt;    4:                  1                  1                  1
-#&gt;    5:                  1                  1                  1
-#&gt;   ---                                                         
-#&gt; 1119:                  1                  1                  1
-#&gt; 1120:                  1                  1                  0
-#&gt; 1121:                  0                  1                  0
-#&gt; 1122:                  1                  1                  0
-#&gt; 1123:                  1                  1                  1
-#&gt;       Signals_sent_17_18 Signals_sent_18_19 Signals_sent_19_20
-#&gt;    1:                  1                  1                  0
-#&gt;    2:                  1                  1                  1
-#&gt;    3:                  1                  1                  1
-#&gt;    4:                  1                  1                  1
-#&gt;    5:                  1                  1                  1
-#&gt;   ---                                                         
-#&gt; 1119:                  1                  0                  0
-#&gt; 1120:                  1                  0                  0
-#&gt; 1121:                  0                  0                  0
-#&gt; 1122:                  0                  0                  0
-#&gt; 1123:                  0                  1                  1
-#&gt;       Signals_sent_20_21 Signals_sent_21_22 Signals_sent_22_23
-#&gt;    1:                  1                  1                  0
-#&gt;    2:                  1                  1                  0
-#&gt;    3:                  1                  1                  1
-#&gt;    4:                  1                  0                  0
-#&gt;    5:                  1                  0                  1
-#&gt;   ---                                                         
-#&gt; 1119:                  0                  0                  0
-#&gt; 1120:                  0                  0                  0
-#&gt; 1121:                  0                  1                  0
-#&gt; 1122:                  0                  0                  0
-#&gt; 1123:                  0                  0                  0
-#&gt;       Signals_sent_23_24 Signals_Total Total TakeBreaks ChangeHours
-#&gt;    1:                  1            15 Total       TRUE        TRUE
-#&gt;    2:                  0            15 Total      FALSE        TRUE
-#&gt;    3:                  0            17 Total      FALSE        TRUE
-#&gt;    4:                  0            15 Total      FALSE        TRUE
-#&gt;    5:                  0            15 Total       TRUE        TRUE
-#&gt;   ---                                                              
-#&gt; 1119:                  0            10 Total       TRUE        TRUE
-#&gt; 1120:                  0            10 Total       TRUE        TRUE
-#&gt; 1121:                  0             7 Total       TRUE        TRUE
-#&gt; 1122:                  0             3 Total       TRUE       FALSE
-#&gt; 1123:                  0            11 Total       TRUE        TRUE
-#&gt;       ControlHours FlexibilityIndex
-#&gt;    1:        FALSE        0.6666667
-#&gt;    2:        FALSE        0.3333333
-#&gt;    3:        FALSE        0.3333333
-#&gt;    4:        FALSE        0.3333333
-#&gt;    5:        FALSE        0.6666667
-#&gt;   ---                              
-#&gt; 1119:        FALSE        0.6666667
-#&gt; 1120:        FALSE        0.6666667
-#&gt; 1121:        FALSE        0.6666667
-#&gt; 1122:         TRUE        0.6666667
-#&gt; 1123:        FALSE        0.6666667</div><div class='input'><span class='co'># }</span>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
