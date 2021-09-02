@@ -226,6 +226,9 @@ network_p2p <- function(data,
                                   directed = TRUE, # Directed, but FALSE for visualization
                                   vertices = unique(vert_ft)) # remove duplicates
 
+  ## Assign weights
+  g_raw$weight <- edges$weight
+
   ## Finalise `g` object
   ## If community detection is selected, this is where the communities are appended
 
