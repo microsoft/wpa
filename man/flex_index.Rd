@@ -22,8 +22,14 @@ flex_index(
 Defaults to NULL. This only affects the function when "table" is returned.}
 
 \item{signals}{Character vector to specify which collaboration metrics to
-use: You may use "email" for emails only, "IM" for Teams messages only, or
-a combination of the two \code{c("email", "IM")} (default).}
+use:
+\itemize{
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+}}
 
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}

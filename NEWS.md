@@ -1,3 +1,8 @@
+# wpa (development version)
+- Added new signal options for `flex_index()` (#183)
+- Minor bugs fixed (#181)
+
+
 # wpa 1.6.1
 - Fixed several minor bugs reported on GitHub (#177, #178, #180, #181)
 - Refurbished `meeting_tm_report()` (#173)
