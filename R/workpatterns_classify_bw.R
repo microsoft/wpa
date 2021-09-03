@@ -122,8 +122,7 @@ workpatterns_classify_bw <- function(data,
   ## e.g. if `end_hour` value is 17, then the reference slot should be 16
   d <- (end_hour - 1) - start_hour
 
-  # Text replacement only for allowed values
-
+  ## Text replacement only for allowed values
   if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
     signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
