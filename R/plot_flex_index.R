@@ -126,7 +126,7 @@ plot_flex_index <- function(data,
       ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
       ggplot2::geom_tile(height=.5) +
       ggplot2::ylab("Work Patterns") +
-      ggplot2::scale_fill_gradient2(low = "white", high = "red") +
+      ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
       ggplot2::scale_y_reverse(breaks=seq(1,10)) +
       wpa::theme_wpa_basic() +
       ggplot2::theme(legend.position = "none") +
@@ -146,14 +146,14 @@ plot_flex_index <- function(data,
                         ymin = 0.5,
                         ymax = 10 + 0.5,
                         alpha = .1,
-                        fill = "red") +
+                        fill = "gray50") +
       ggplot2::annotate("rect",
                         xmin = end_hour + 0.5,
                         xmax = 24.5,
                         ymin = 0.5,
                         ymax = 10 + 0.5,
                         alpha = .1,
-                        fill = "red") +
+                        fill = "gray50") +
       ggplot2::labs(title = "Work Patterns and Flexibility Index",
                     subtitle = paste0(plot_title,
                                       "\n",
