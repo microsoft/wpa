@@ -1,6 +1,6 @@
 # wpa 1.6.2
 - Bug fixes (#184)
-
+- Added signal choice for `flex_index()` (#185)
 
 # wpa 1.6.1
 - Fixed several minor bugs reported on GitHub (#177, #178, #180, #181)
