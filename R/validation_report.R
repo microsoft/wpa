@@ -24,6 +24,10 @@
 #' Person query to the `data` argument, please also use `standardise_pq()` to
 #' make the variable names consistent with a Standard Person Query.
 #'
+#' Since `v1.6.2`, the variable `Call_hours` is no longer a pre-requisite to run
+#' this report. A note is returned in-line instead of an error if the variable
+#' is not available.
+#'
 #' @section Checking functions within `validation_report()`:
 #'   - `check_query()`
 #'   - `flag_ch_ratio()`
