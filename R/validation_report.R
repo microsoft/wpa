@@ -127,6 +127,43 @@ validation_report <- function(data,
     trackhr_obj2 <- ""
   }
 
+  ## Dynamic: create mock `Call_hours` variable
+  callthres_p <- NULL
+  callthres <- NULL
+
+
+  if("Call_hours" %in% names(data)){
+    callthres_p <- paste(
+      ">",
+      data %>%
+        flag_extreme(
+          metric = "Call_hours",
+          threshold = 40,
+          person = TRUE,
+          return = "text"
+        )
+    )
+
+    callthres <-
+      paste(
+        ">",
+        data %>% flag_extreme(
+          metric = "Call_hours",
+          threshold = 40,
+          person = FALSE,
+          return = "text"
+        )
+      )
+
+  } else {
+
+    callthres_p <-
+      "> [Note] Checks for `Call_hours is not available due to missing variable."
+    callthres <- callthres_p
+
+  }
+
+
   ## Outputs as accessed here
   ## Can be data frames, plot objects, or text
   output_list <-
@@ -194,8 +231,8 @@ validation_report <- function(data,
          paste(">",data %>% flag_extreme(metric = "Meeting_hours", threshold = 80, person = TRUE, return = "text")),
          paste(">",data %>% flag_extreme(metric = "Meeting_hours", threshold = 80, person = FALSE, return = "text")),
 
-         paste(">",data %>% flag_extreme(metric = "Call_hours", threshold = 40, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Call_hours", threshold = 40, person = FALSE, return = "text")),
+         callthres_p,
+         callthres,
 
          paste(">",data %>% flag_extreme(metric = "Instant_Message_hours", threshold = 40, person = TRUE, return = "text")),
          paste(">",data %>% flag_extreme(metric = "Instant_Message_hours", threshold = 40, person = FALSE, return = "text")),
