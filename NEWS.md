@@ -1,5 +1,6 @@
 # wpa (development version)
 - Added new signal options for `flex_index()` (#183)
+- Minor feature improvements (#186)
 - Minor bugs fixed (#181)
 
 
