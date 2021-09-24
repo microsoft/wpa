@@ -1,5 +1,6 @@
 # wpa 1.6.2
 - Added new signal options for `flex_index()` (#183, #185)
+- Minor feature improvements (#186)
 - Minor bugs fixed (#181, #184)
 
 # wpa 1.6.1
