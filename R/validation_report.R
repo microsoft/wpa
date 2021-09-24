@@ -24,6 +24,10 @@
 #' Person query to the `data` argument, please also use `standardise_pq()` to
 #' make the variable names consistent with a Standard Person Query.
 #'
+#' Since `v1.6.2`, the variable `Call_hours` is no longer a pre-requisite to run
+#' this report. A note is returned in-line instead of an error if the variable
+#' is not available.
+#'
 #' @section Checking functions within `validation_report()`:
 #'   - `check_query()`
 #'   - `flag_ch_ratio()`
@@ -127,6 +131,43 @@ validation_report <- function(data,
     trackhr_obj2 <- ""
   }
 
+  ## Dynamic: create mock `Call_hours` variable
+  callthres_p <- NULL
+  callthres <- NULL
+
+
+  if("Call_hours" %in% names(data)){
+    callthres_p <- paste(
+      ">",
+      data %>%
+        flag_extreme(
+          metric = "Call_hours",
+          threshold = 40,
+          person = TRUE,
+          return = "text"
+        )
+    )
+
+    callthres <-
+      paste(
+        ">",
+        data %>% flag_extreme(
+          metric = "Call_hours",
+          threshold = 40,
+          person = FALSE,
+          return = "text"
+        )
+      )
+
+  } else {
+
+    callthres_p <-
+      "> [Note] Checks for `Call_hours is not available due to missing variable."
+    callthres <- callthres_p
+
+  }
+
+
   ## Outputs as accessed here
   ## Can be data frames, plot objects, or text
   output_list <-
@@ -194,8 +235,8 @@ validation_report <- function(data,
          paste(">",data %>% flag_extreme(metric = "Meeting_hours", threshold = 80, person = TRUE, return = "text")),
          paste(">",data %>% flag_extreme(metric = "Meeting_hours", threshold = 80, person = FALSE, return = "text")),
 
-         paste(">",data %>% flag_extreme(metric = "Call_hours", threshold = 40, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Call_hours", threshold = 40, person = FALSE, return = "text")),
+         callthres_p,
+         callthres,
 
          paste(">",data %>% flag_extreme(metric = "Instant_Message_hours", threshold = 40, person = TRUE, return = "text")),
          paste(">",data %>% flag_extreme(metric = "Instant_Message_hours", threshold = 40, person = FALSE, return = "text")),
