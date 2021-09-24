@@ -45,9 +45,9 @@
 #' @export
 workpatterns_rank <- function(data,
                               signals = c("email", "IM"),
-							  start_hour = "0900",
+                              start_hour = "0900",
                               end_hour = "1700",
-							  top = 10,
+                              top = 10,
                               return = "plot"){
 
   # Make sure data.table knows we know we're using it
@@ -68,67 +68,39 @@ workpatterns_rank <- function(data,
     data.table::as.data.table() %>%
     data.table::copy()
 
-  ## Select input variable names
-  if("email" %in% signals & "IM" %in% signals){
-  
+  ## Dynamic input for signals
+  ## Text replacement only for allowed values
+  if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
+
+    signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
+    signal_set <- gsub(pattern = "IM", replacement = "IMs_sent", x = signal_set)
+    signal_set <- gsub(pattern = "unscheduled_calls", replacement = "Unscheduled_calls", x = signal_set)
+    signal_set <- gsub(pattern = "meetings", replacement = "Meetings", x = signal_set)
+
     ## Create label for plot subtitle
-	subtitle_signal <- "emails / chats"
-
-    ## Create 24 summed `Signals_sent` columns
-    signal_cols <-
-      purrr::map(0:23, ~combine_signals(data2, hr = .)) %>%
-      dplyr::bind_cols()
-
-    ## Use names for matching
-    input_var <- names(signal_cols)
-
-    ## Signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, c("PersonId", "Date")] %>%
-      cbind(signal_cols)
-
-    ## Signal label
-    sig_label <- "Signals_sent"
-
-  } else if(signals == "IM"){
-
-	## Create label for plot subtitle
-	subtitle_signal <- "chats"
-		
-	match_index <- grepl(pattern = "^IMs_sent", x = names(data2))
-    input_var <- names(data2)[match_index]
-    input_var2 <- c("PersonId", "Date", input_var)
-
-    ## signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, ..input_var2]
-
-    sig_label <- "IMs_sent"
-
-
-  } else if(signals == "email"){
-  
-    ## Create label for plot subtitle
-	subtitle_signal <- "emails"
-	
-    match_index <- grepl(pattern = "^Emails_sent", x = names(data2))
-    input_var <- names(data2)[match_index]
-    input_var2 <- c("PersonId", "Date", input_var)
-
-    ## signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, ..input_var2]
-
-    sig_label <- "Emails_sent"
+    subtitle_signal <- "signals" # placeholder
 
   } else {
 
     stop("Invalid input for `signals`.")
 
   }
+
+  ## Create 24 summed `Signals_sent` columns
+  signal_cols <- purrr::map(0:23, ~combine_signals(data, hr = ., signals = signal_set))
+  signal_cols <- bind_cols(signal_cols)
+
+  ## Use names for matching
+  input_var <- names(signal_cols)
+
+  ## Signals sent by Person and Date
+  signals_df <-
+    data2 %>%
+    .[, c("PersonId", "Date")] %>%
+    cbind(signal_cols)
+
+  ## Signal label
+  sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
 
   ## Create binary variable 0 or 1
   num_cols <- names(which(sapply(signals_df, is.numeric))) # Get numeric columns
@@ -148,7 +120,10 @@ workpatterns_rank <- function(data,
     ## Plot return
     sig_label_ <- paste0(sig_label, "_")
 
-	myTable_return <- myTable_return  %>% arrange(desc(WeekCount)) %>% mutate(patternRank= 1:nrow(.))
+	myTable_return <-
+	  myTable_return %>%
+	  arrange(desc(WeekCount)) %>%
+	  mutate(patternRank= 1:nrow(.))
 
     ## Table for annotation
     myTable_legends <-
@@ -157,28 +132,54 @@ workpatterns_rank <- function(data,
       dplyr::mutate(WeekPercentage = WeekCount / sum(WeekCount, na.rm = TRUE),
                     WeekCount = paste0(scales::percent(WeekPercentage, accuracy = 0.1))) %>%
       utils::head(top)
-	  
-	coverage <- myTable_legends %>% summarize(total=sum(WeekPercentage)) %>% pull(1)  %>% scales::percent(accuracy = 0.1)
 
-    myTable_return %>%
-      dplyr::select(patternRank, dplyr::starts_with(sig_label_))  %>%
-      purrr::set_names(nm = gsub(pattern = sig_label_, replacement = "", x = names(.))) %>%
-      purrr::set_names(nm = gsub(pattern = "_.+", replacement = "", x = names(.))) %>%
-      utils::head(top)  %>%
-      tidyr::gather(Hours, Freq, -patternRank)  %>%
-      ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq )) +
-      ggplot2::geom_tile(height=.5) +
-      ggplot2::ylab(paste("Top", top, "activity patterns")) +
-      #ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
-      ggplot2::scale_y_reverse(expand = c(0, 0), breaks=seq(1,top)) +
-      theme_wpa_basic() +
-	  ggplot2::scale_x_discrete(position = "top") +
-      ggplot2::theme(axis.title.x = element_blank(), axis.line = element_blank(), axis.ticks = element_blank()) +
-	  scale_fill_continuous(guide="legend", low = "white", high = "#1d627e", breaks = 0:1, name="", labels = c("", paste("Observed", subtitle_signal, "activity"))) +
-      ggplot2::annotate("text",
-               y = myTable_legends$patternRank,
-               x = 26.5,
-               label = myTable_legends$WeekCount, size = 3) +
+	coverage <-
+	  myTable_legends %>%
+	  summarize(total = sum(WeekPercentage)) %>%
+	  pull(1) %>%
+	  scales::percent(accuracy = 0.1)
+
+	myTable_return %>%
+	  dplyr::select(patternRank, dplyr::starts_with(sig_label_))  %>%
+	  purrr::set_names(nm = gsub(
+	    pattern = sig_label_,
+	    replacement = "",
+	    x = names(.)
+	  )) %>%
+	  purrr::set_names(nm = gsub(
+	    pattern = "_.+",
+	    replacement = "",
+	    x = names(.)
+	  )) %>%
+	  utils::head(top)  %>%
+	  tidyr::gather(Hours, Freq, -patternRank)  %>%
+	  ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
+	  ggplot2::geom_tile(height = .5) +
+	  ggplot2::ylab(paste("Top", top, "activity patterns")) +
+	  #ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
+	  ggplot2::scale_y_reverse(expand = c(0, 0), breaks = seq(1, top)) +
+	  theme_wpa_basic() +
+	  ggplot2::scale_x_discrete(position = "top")+
+      ggplot2::theme(
+        axis.title.x = element_blank(),
+        axis.line = element_blank(),
+        axis.ticks = element_blank()
+      ) +
+      scale_fill_continuous(
+        guide = "legend",
+        low = "white",
+        high = "#1d627e",
+        breaks = 0:1,
+        name = "",
+        labels = c("", paste("Observed", subtitle_signal, "activity"))
+      ) +
+      ggplot2::annotate(
+        "text",
+        y = myTable_legends$patternRank,
+        x = 26.5,
+        label = myTable_legends$WeekCount,
+        size = 3
+      )+
       ggplot2::annotate("rect",
                xmin = 25,
                xmax = 28,
@@ -199,9 +200,12 @@ workpatterns_rank <- function(data,
                ymax = length(myTable_legends$patternRank) + 0.5,
                alpha = .1,
                fill = "gray50") +
-  labs(title = "Patterns of digital activity",
-       subtitle =paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
-	   caption = paste("Top", top, "patterns represent", coverage, "of workweeks.", extract_date_range(data, return = "text")))
+  labs(
+    title = "Patterns of digital activity",
+    subtitle = paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
+    caption = paste(
+      "Top", top, "patterns represent", coverage, "of workweeks.", extract_date_range(data, return = "text"))
+    )
 
   } else if(return == "table"){
 
