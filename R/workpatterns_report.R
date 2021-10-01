@@ -74,7 +74,13 @@ workpatterns_report <- function(data,
       if(nrow(x) == 0){
         "Low base size for this archetype."
       } else {
-        workpatterns_rank(x, start_hour = start_hour, end_hour = end_hour, return = "plot")
+        workpatterns_rank(
+          x,
+          start_hour = start_hour,
+          end_hour = end_hour,
+          signals = signals,
+          return = "plot"
+          )
       }
     })
 
@@ -112,9 +118,11 @@ workpatterns_report <- function(data,
     list(
       data %>% wpa::check_query(return = "text"),
       data %>%
-        workpatterns_rank(start_hour = start_hour,
-                          end_hour = end_hour,
-                          return = "plot"),
+        workpatterns_rank(
+          start_hour = start_hour,
+          end_hour = end_hour,
+          signals = signals,
+          return = "plot"),
       personas_plot,
       wp_list$table,
       wp_list$plot_area,

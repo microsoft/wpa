@@ -17,8 +17,14 @@ workpatterns_rank(
 \item{data}{A data frame containing hourly collaboration data.}
 
 \item{signals}{Character vector to specify which collaboration metrics to
-use: You may use \code{"email"} (default) for emails only, \code{"IM"} for Teams
-messages only, or a combination of the two \code{c("email", "IM")}.}
+use:
+\itemize{
+\item \code{"email"} (default) for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+\item or a combination of signals, such as \code{c("email", "IM")}
+}}
 
 \item{start_hour}{A character vector specifying starting hours,
 e.g. "\verb{0900"}}
