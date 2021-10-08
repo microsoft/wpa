@@ -55,12 +55,12 @@ Imports:
     proxy,
     ggwordcloud,
     methods,
-    data.table
+    data.table,
+	knitr
 RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Suggests: 
-    knitr,
     extrafont,
     leiden,
     lifecycle,
