@@ -59,7 +59,15 @@ table of working patterns, ranked from the most common to the
 least.
 }
 \examples{
-workpatterns_rank(em_data)
+workpatterns_rank(
+  data = em_data,
+  signals = c(
+    "email",
+    "IM",
+    "unscheduled_calls",
+    "meetings"
+  )
+  )
 
 }
 \seealso{

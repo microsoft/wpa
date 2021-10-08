@@ -41,7 +41,15 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
-#' workpatterns_rank(em_data)
+#' workpatterns_rank(
+#'   data = em_data,
+#'   signals = c(
+#'     "email",
+#'     "IM",
+#'     "unscheduled_calls",
+#'     "meetings"
+#'   )
+#'   )
 #'
 #' @family Visualization
 #' @family Working Patterns
