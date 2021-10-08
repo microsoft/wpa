@@ -76,7 +76,7 @@ Summary of the functions:
 
 ## Queries and Outputs
 
-To use the functions, the input data must be a data frame object in R. Out-of-the-box queries generated through the WpA tool can be read in as a CSV file into a data frame object. However, the functions user different queries as an input parameter and this must be considered whenever using those queries:
+To use the functions, the input data must be a data frame object in R. Out-of-the-box queries generated through the Workplace Analytics tool can be read in as a CSV file into a data frame object. However, the functions user different queries as an input parameter and this must be considered whenever using those queries:
 
 | Query                           | Description Query                                            | Functions                                          |
 | ------------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
