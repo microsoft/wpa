@@ -114,12 +114,13 @@
 #'   \item{Meetings_02_03}{ }
 #'   \item{Meetings_01_02}{ }
 #'   \item{Meetings_00_01}{ }
-#'   \item{Domain}{ }
 #'   \item{LevelDesignation}{ }
-#'   \item{Layer}{ }
 #'   \item{Organization}{ }
-#'   \item{IsInternal}{ }
+#'   \item{TimeZone}{ }
 #'   \item{IsActive}{ }
+#'   \item{WorkingStartTimeSetInOutlook}{ }
+#'   \item{WorkingEndTimeSetInOutlook}{ }
+#'   \item{WorkingDaysSetInOutlook}{ }
 #'
 #'  ...
 #' }
