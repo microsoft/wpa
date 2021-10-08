@@ -109,8 +109,8 @@
 #' @param data A data frame containing data from the Hourly Collaboration query.
 #'
 #' @param hrvar A string specifying the HR attribute to cut the data by.
-#'   Defaults to NULL. This only affects the function when "table" is returned,
-#'   and is only applicable for method = "bw".
+#'   Defaults to `NULL`. This only affects the function when `"table"` is
+#'   returned, and is only applicable for `method = "bw"`.
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -124,12 +124,12 @@
 #' See `Value` for more information.
 #'
 #' @param method String to pass through specifying which method to use for
-#'   classification. By default, a binary week-based (bw) method is used, with
-#'   options to use the the person-average volume-based (pav) method.
+#'   classification. By default, a binary week-based (`bw`) method is used, with
+#'   options to use the the person-average volume-based (`pav`) method.
 #'
 #' @param values Only valid if using `pav` method. Character vector to specify
-#'   whether to return percentages or absolute values in "data" and "plot".
-#'   Valid values are "percent" (default) and "abs".
+#'   whether to return percentages or absolute values in `"data"` and `"plot"`.
+#'   Valid values are `"percent"` (default) and `"abs"`.
 #'
 #' @param signals Character vector to specify which collaboration metrics to
 #'   use:

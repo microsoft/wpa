@@ -1,6 +1,11 @@
+url: https://microsoft.github.io/wpa/
+
 template:
   params:
     bootswatch: cosmo
+    docsearch: 
+      api_key: f45eacc22edb0c386f1f5b9bb89f76be
+      index_name: wpa
   path: "inst/pkgdown"
 
 navbar:
@@ -79,4 +84,8 @@ navbar:
         href: articles/IV-report.html
       - text: Identifying changes over time
         href: articles/Change-over-time.html
+      - text: Identifying noteworthy groups with rank functions
+        href: articles/profiles-with-rank.html
+      - text: Introduction to Organizational Network Analysis
+        href: articles/network-analysis.html
 

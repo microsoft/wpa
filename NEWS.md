@@ -1,3 +1,13 @@
+# wpa 1.6.2
+- Added new signal options for `flex_index()` (#183, #185)
+- Minor feature improvements (#186)
+- Minor bugs fixed (#181, #184)
+- Updated `em_data` with new signals (#191)
+
+# wpa 1.6.1
+- Fixed several minor bugs reported on GitHub (#177, #178, #180, #181)
+- Refurbished `meeting_tm_report()` (#173)
+
 # wpa 1.6.0
 
 - Improved visuals on `workpatterns_rank()` and `identify_shifts_wp()` (#160)

@@ -38,6 +38,11 @@
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
 #'   - `NULL` - uses the original levels of the HR attribute.
 #' @param xlim An option to set max value in x axis.
+#' @param text_just `r lifecycle::badge('experimental')` A numeric value
+#'   controlling for the horizontal position of the text labels. Defaults to
+#'   0.5.
+#' @param text_colour `r lifecycle::badge('experimental')` String to specify
+#'   colour to use for the text labels. Defaults to `"#FFFFFF"`.
 #'
 #'
 #' @return
@@ -63,6 +68,14 @@
 #'            metric = "After_hours_collaboration_hours",
 #'            bar_colour = "alert")
 #'
+#' # Custom data label positions and formatting
+#' sq_data %>%
+#'   create_bar(
+#'     metric = "Meetings",
+#'     text_just = 1.1,
+#'     text_colour = "black",
+#'     xlim = 20)
+#'
 #' # Return a summary table
 #' create_bar(sq_data,
 #'            metric = "Collaboration_hours",
@@ -80,7 +93,9 @@ create_bar <- function(data,
                        plot_title = us_to_space(metric),
                        plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
                        rank = "descending",
-                       xlim = NULL){
+                       xlim = NULL,
+                       text_just = 0.5,
+                       text_colour = "#FFFFFF"){
 
   ## Check inputs
   required_variables <- c("Date",
@@ -132,16 +147,20 @@ create_bar <- function(data,
 
   ## Bar plot
   plot_object <- data %>%
-    create_stacked(metrics=metric,
-                   hrvar = hrvar,
-                   mingroup = mingroup,
-                   stack_colours = bar_colour,
-                   percent = percent,
-                   plot_title = plot_title,
-                   plot_subtitle = plot_subtitle,
-                   return = "plot",
-                   rank = rank,
-				   xlim = xlim)
+    create_stacked(
+      metrics=metric,
+      hrvar = hrvar,
+      mingroup = mingroup,
+      stack_colours = bar_colour,
+      percent = percent,
+      plot_title = plot_title,
+      plot_subtitle = plot_subtitle,
+      return = "plot",
+      rank = rank,
+      xlim = xlim,
+      text_just = text_just,
+      text_colour = text_colour
+      )
 
   summary_table <-
     plot_data %>%

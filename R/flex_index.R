@@ -67,15 +67,19 @@
 #'   Defaults to NULL. This only affects the function when "table" is returned.
 #'
 #' @param signals Character vector to specify which collaboration metrics to
-#'   use: You may use "email" for emails only, "IM" for Teams messages only, or
-#'   a combination of the two `c("email", "IM")` (default).
+#'   use:
+#'   - a combination of signals, such as `c("email", "IM")` (default)
+#'   - `"email"` for emails only
+#'   - `"IM"` for Teams messages only
+#'   - `"unscheduled_calls"` for Unscheduled Calls only
+#'   - `"meetings"` for Meetings only
 #'
 #' @param active_threshold A numeric value specifying the minimum number of
 #'   signals to be greater than in order to qualify as _active_. Defaults to 0.
 #'
-#' @param start_hour A character vector specifying starting hours, e.g. "0900"
+#' @param start_hour A character vector specifying starting hours, e.g. `"0900"`
 #'
-#' @param end_hour A character vector specifying end hours, e.g. "1700"
+#' @param end_hour A character vector specifying end hours, e.g. `"1700"`
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -121,11 +125,13 @@
 #' em_data %>%
 #'   flex_index(hrvar = "Organization", return = "table")
 #'
-#' \donttest{
-#' # Return the raw data with the computed Flexibility Index
+#' @section Returning the raw data:
+#' The raw data containing the computed Flexibility Index can be returned with
+#' the following:
+#' ```
 #' em_data %>%
 #'   flex_index(return = "data")
-#' }
+#' ```
 #'
 #' @family Working Patterns
 #'
@@ -165,52 +171,13 @@ flex_index <- function(data,
     data.table::as.data.table() %>%
     data.table::copy()
 
-  ## Select input variable names
-  if("email" %in% signals & "IM" %in% signals){
+  ## Text replacement only for allowed values
+  if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
-    ## Create 24 summed `Signals_sent` columns
-    signal_cols <-
-      purrr::map(0:23, ~wpa::combine_signals(data2, hr = .)) %>%
-      dplyr::bind_cols()
-
-    ## Use names for matching
-    input_var <- names(signal_cols)
-
-    ## Signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, c("PersonId", "Date")] %>%
-      cbind(signal_cols)
-
-    ## Signal label
-    sig_label <- "Signals_sent"
-
-  } else if(signals == "IM"){
-
-    match_index <- grepl(pattern = "^IMs_sent", x = names(data2))
-    input_var <- names(data2)[match_index]
-    input_var2 <- c("PersonId", "Date", input_var)
-
-    ## signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, ..input_var2]
-
-    sig_label <- "IMs_sent"
-
-
-  } else if(signals == "email"){
-
-    match_index <- grepl(pattern = "^Emails_sent", x = names(data2))
-    input_var <- names(data2)[match_index]
-    input_var2 <- c("PersonId", "Date", input_var)
-
-    ## signals sent by Person and date
-    signals_df <-
-      data2 %>%
-      .[, ..input_var2]
-
-    sig_label <- "Emails_sent"
+    signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
+    signal_set <- gsub(pattern = "IM", replacement = "IMs_sent", x = signal_set)
+    signal_set <- gsub(pattern = "unscheduled_calls", replacement = "Unscheduled_calls", x = signal_set)
+    signal_set <- gsub(pattern = "meetings", replacement = "Meetings", x = signal_set)
 
   } else {
 
@@ -218,6 +185,21 @@ flex_index <- function(data,
 
   }
 
+  ## Create 24 summed `Signals_sent` columns
+  signal_cols <- purrr::map(0:23, ~combine_signals(data, hr = ., signals = signal_set))
+  signal_cols <- bind_cols(signal_cols)
+
+  ## Use names for matching
+  input_var <- names(signal_cols)
+
+  ## Signals sent by Person and Date
+  signals_df <-
+    data2 %>%
+    .[, c("PersonId", "Date")] %>%
+    cbind(signal_cols)
+
+  ## Signal label
+  sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
 
   ## Create binary variable 0 or 1
   num_cols <- names(which(sapply(signals_df, is.numeric))) # Get numeric columns

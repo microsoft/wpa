@@ -127,15 +127,16 @@ at \code{display}.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Pass a data frame containing a person-to-person query and return a network
-visualization. Options are available for community detection using either the
-Louvain or the Leiden algorithms.
+Analyse a person-to-person (P2P) network query, with multiple visualisation
+and analysis output options. Pass a data frame containing a person-to-person
+query and return a network visualization. Options are available for community
+detection using either the Louvain or the Leiden algorithms.
 }
 \section{Running Leiden communities}{
 
 
 Running Leiden communities requires python dependencies installed.
-You can run the following:\if{html}{\out{<div class="R">}}\preformatted{# Return a network plot to console, coloured by Leiden communities
+You can run the following:\if{html}{\out{<div class="sourceCode R">}}\preformatted{# Return a network plot to console, coloured by Leiden communities
   p2p_data \%>\%
     network_p2p(display = "leiden",
                 path = NULL,
@@ -143,7 +144,7 @@ You can run the following:\if{html}{\out{<div class="R">}}\preformatted{# Return
 }\if{html}{\out{</div>}}
 
 When installing the 'leiden' package, you may be required to install the Python
-libraries 'python-igraph' and 'leidenalg'. You can install them with:\if{html}{\out{<div class="R">}}\preformatted{reticulate::py_install("python-igraph")
+libraries 'python-igraph' and 'leidenalg'. You can install them with:\if{html}{\out{<div class="sourceCode R">}}\preformatted{reticulate::py_install("python-igraph")
 reticulate::py_install("leidenalg")
 }\if{html}{\out{</div>}}
 }

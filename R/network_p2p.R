@@ -8,9 +8,11 @@
 #' @description
 #' `r lifecycle::badge('experimental')`
 #'
-#' Pass a data frame containing a person-to-person query and return a network
-#' visualization. Options are available for community detection using either the
-#' Louvain or the Leiden algorithms.
+#'
+#' Analyse a person-to-person (P2P) network query, with multiple visualisation
+#' and analysis output options. Pass a data frame containing a person-to-person
+#' query and return a network visualization. Options are available for community
+#' detection using either the Louvain or the Leiden algorithms.
 #'
 #'
 #' @param data Data frame containing a person-to-person query.
@@ -189,7 +191,7 @@ network_p2p <- function(data,
       data %>%
       select(from = "TieOrigin_PersonId",
              to = "TieDestination_PersonId",
-             weight = "StrongTieScore")
+             weight = weight)
 
   }
 
@@ -224,6 +226,9 @@ network_p2p <- function(data,
                                   directed = TRUE, # Directed, but FALSE for visualization
                                   vertices = unique(vert_ft)) # remove duplicates
 
+  ## Assign weights
+  g_raw$weight <- edges$weight
+
   ## Finalise `g` object
   ## If community detection is selected, this is where the communities are appended
 
@@ -241,7 +246,9 @@ network_p2p <- function(data,
 
     ## Return a numeric vector of partitions / clusters / modules
     ## Set a low resolution parameter to have fewer groups
-    lc <- igraph::cluster_louvain(g_ud)
+    ## weights = NULL means that if the graph as a `weight` edge attribute, this
+    ## will be used by default.
+    lc <- igraph::cluster_louvain(g_ud, weights = NULL)
 
     ## Add cluster
     g <-
@@ -260,7 +267,11 @@ network_p2p <- function(data,
 
     ## Return a numeric vector of partitions / clusters / modules
     ## Set a low resolution parameter to have fewer groups
-    ld <- leiden::leiden(g_raw, resolution_parameter = res, seed = seed) # create partitions
+    ld <- leiden::leiden(
+      g_raw,
+      resolution_parameter = res,
+      seed = seed,
+      weights = g_raw$weight) # create partitions
 
     ## Add cluster
     g <-

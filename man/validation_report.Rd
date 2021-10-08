@@ -55,6 +55,10 @@ standardize format and prepare the data as input for this report.
 If you are passing a Ways of Working Assessment query instead of a Standard
 Person query to the \code{data} argument, please also use \code{standardise_pq()} to
 make the variable names consistent with a Standard Person Query.
+
+Since \code{v1.6.2}, the variable \code{Call_hours} is no longer a pre-requisite to run
+this report. A note is returned in-line instead of an error if the variable
+is not available.
 }
 \section{Checking functions within \code{validation_report()}}{
 

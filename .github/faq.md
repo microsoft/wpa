@@ -212,6 +212,95 @@ For analysis inspirations, we recommend having a look through our [R playbook](h
 
 If you have an idea for an analysis and would like this to be documented in the Playbook, you are very welcome to create an issue at <https://github.com/microsoft/wpa/issues/> where we can add your idea and we will credit you as a contributor. You can also use the issue to invite discussion on your analysis idea, although we ask to please keep the discussion relevant to analysis via the R package. 
 
+### How do I reorder HR attributes when creating a plot in the package? 
+
+Some functions, such as `create_bar()` , offer an argument (`rank`) for ordering the categorical variable, i.e. the HR attribute when creating the visualisation. Other functions by default perform no ordering, so they show up in the same order as the data is presented. 
+
+For instance, the following code would yield a stacked bar plot with no ordering applied: 
+```R
+library(wpa)
+library(tidyverse)
+
+#### NO REORDERING ####
+sq_data %>%
+  create_dist(hrvar = "LevelDesignation",
+              metric = "Email_hours")
+```
+
+To apply an ordering manually, the best way is to convert the HR attribute into a **factor** variable, where you can specify the _levels_. You can understand _levels_ as a way to specify the order in which the values of your HR attribute should be ranked. The following code will yield an ordered stacked bar plot: 
+```R
+#### ORDERING APPLIED ####
+ld_order <-
+  c( # Order levels
+    "Executive",
+    "Director",
+    "Manager",
+    "Senior IC",
+    "Junior IC",
+    "Support") %>%
+  rev() # Reverse if necessary
+
+
+sq_data %>%
+  mutate(LevelDesignation = factor(
+    LevelDesignation, 
+    levels = ld_order # Specify order
+  )) %>%
+  create_dist(hrvar = "LevelDesignation",
+              metric = "Email_hours")
+```
+Note that the `levels` argument within `factor()` accepts a character vector which matches the values in your HR attribute. 
+
+### Can I use visuals from the package within Power BI? 
+
+_Note: this is not a Power BI documentation and therefore will not contain the most recent information on Power BI's capabilities. This information is accurate to the extent of the author's knowledge at the time of writing._ 
+
+To use visuals from the **wpa** R library within Power BI, there are two pre-requisites beyond having R and the package installed:
+
+- R home directories set. Follow the steps described in [Create Power BI visuals using R - Power BI](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals#enable-r-visuals-in-power-bi-desktop). 
+- Query data imported to Power BI 
+
+Only visuals generated from the package of the `ggplot` object type can be embedded within Power BI. In most cases, what this means is that the visual will only display if the value passed to the `return` argument in your function is `"plot"`. For instance, the following is code returns a valid object: 
+
+```R
+sq_data %>% email_dist(return = "plot")
+```
+Note that there are some exceptions to the `"plot"` rule, as some functions return a HTML widget, such as `create_sankey()`. You will also not be able to return data frames, HTML reports, or DataTables objects (the output of `create_dt()`).
+
+The documentation [here](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals#enable-r-visuals-in-power-bi-desktop) provides more details on the limitations of the R visuals. 
+
+Here are a series of steps, slightly abridged, taken from the Power BI documentation, last updated July 6th 2021: 
+
+1.	Select the R Visual icon in the Visualization pane to add an R visual.
+2.	In the`Enable script visuals` window that appears, select `Enable`.
+3.	In the `Values` section of the `Visualization` pane, drag fields from the `Fields` pane that you want to consume in your R script, just as you would with any other Power BI Desktop visual. 
+    - Alternatively, you can also select the fields directly in the `Fields` pane.
+    - Only fields that you've added to the `Values` section are available to your R script.
+    - You can add new fields or remove unneeded fields from the `Values` section while working on your R script in the R script editor. Power BI Desktop automatically detects which fields you've added or removed.
+    - The generated dataframe is named `dataset`, and you access selected columns by their respective names.
+    - Make sure to use OrderDate instead of Date Hierarchy.
+    - Ensure that you have `PersonId`, `Date`, any relevant metrics, and HR attributes included as required as inputs to the R function. 
+4.	In the R script editor, below the line `"# Paste or type your script code here:,"` paste or type: 
+`library(wpa)`
+5.	Continue pasting or typing the scripts
+CAUTION: You can run functions in PBI R visual only when the output is visual `= "plot"`. Otherwise, there will be an error in the R visual placeholder on the report canvas when you run the script.
+6.	Run the script by clicking `Run script` icon in the script editor.
+7.	When you modify the script or change the visual area size, you can refresh the visual by clicking Run script icon.
+8.	You may apply filters just like other Power BI visuals using Filter pane.
+
+A minimal example that you could try on your R script editor is: 
+```R
+library(wpa)
+dataset %>% email_sum()
+```
+
+
+
+
+
+
+
+
 ## Contributing and Engaging
 
 ### How do I find help if I have questions about using the package?

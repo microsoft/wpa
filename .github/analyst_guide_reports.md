@@ -19,6 +19,7 @@ Text in _italics_ indicate the required flexible query to run the report. _SPQ_ 
 - Meeting Text Mining Report - `meeting_tm_report()` - [Demo](https://microsoft.github.io/wpa/report-demo/meeting-text-mining-report.html) - _SMQ_
 - Working Patterns Report - `workpatterns_report()` - [Demo](https://microsoft.github.io/wpa/report-demo/workpatterns-report.html) - _HCQ_
 - Information Value Report - `IV_report()` - [Demo](https://microsoft.github.io/wpa/report-demo/IV-report.html) - _SPQ_
+- Wellbeing Report - `wellbeing_report()` - [Demo](https://microsoft.github.io/wpa/report-demo/wellbeing-report.html)  - _SPQ_ and _HCQ_ (with custom metrics)
 
 ## Example Code
 

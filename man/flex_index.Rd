@@ -22,15 +22,21 @@ flex_index(
 Defaults to NULL. This only affects the function when "table" is returned.}
 
 \item{signals}{Character vector to specify which collaboration metrics to
-use: You may use "email" for emails only, "IM" for Teams messages only, or
-a combination of the two \code{c("email", "IM")} (default).}
+use:
+\itemize{
+\item a combination of signals, such as \code{c("email", "IM")} (default)
+\item \code{"email"} for emails only
+\item \code{"IM"} for Teams messages only
+\item \code{"unscheduled_calls"} for Unscheduled Calls only
+\item \code{"meetings"} for Meetings only
+}}
 
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
 
-\item{start_hour}{A character vector specifying starting hours, e.g. "0900"}
+\item{start_hour}{A character vector specifying starting hours, e.g. \code{"0900"}}
 
-\item{end_hour}{A character vector specifying end hours, e.g. "1700"}
+\item{end_hour}{A character vector specifying end hours, e.g. \code{"1700"}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -120,6 +126,14 @@ done, and thus the more specific terminology 'recurring disconnection time'
 is preferred.
 }
 
+\section{Returning the raw data}{
+
+The raw data containing the computed Flexibility Index can be returned with
+the following:\preformatted{em_data \%>\%
+  flex_index(return = "data")
+}
+}
+
 \examples{
 # Examples of how to test the plotting options individually
 # Sample of 10 work patterns
@@ -137,12 +151,6 @@ em_data \%>\%
 # Return a summary table with the computed Flexibility Index
 em_data \%>\%
   flex_index(hrvar = "Organization", return = "table")
-
-\donttest{
-# Return the raw data with the computed Flexibility Index
-em_data \%>\%
-  flex_index(return = "data")
-}
 
 }
 \seealso{

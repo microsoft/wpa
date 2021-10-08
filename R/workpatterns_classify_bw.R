@@ -122,8 +122,7 @@ workpatterns_classify_bw <- function(data,
   ## e.g. if `end_hour` value is 17, then the reference slot should be 16
   d <- (end_hour - 1) - start_hour
 
-  # Text replacement only for allowed values
-
+  ## Text replacement only for allowed values
   if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
     signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
@@ -326,13 +325,21 @@ workpatterns_classify_bw <- function(data,
 
     } else {
 
+      # Character containing groups above the minimum group threshold
+      PersonCount <-
+        ptn_data_final %>%
+        hrvar_count(hrvar = hrvar, return = "table") %>%
+        dplyr::filter(n >= mingroup) %>%
+        dplyr::pull(hrvar)
+
       ptn_data_final %>%
-        # dplyr::left_join(select(data2, PersonId, Date, hrvar), by = c("PersonId", "Date")) # %>%
         data.table::as.data.table() %>%
         .[, .(n = .N), by = c("Personas", hrvar)] %>%
-        .[n >= mingroup, ] %>%
-        .[, prop := n / sum(n), by = hrvar] %>% # % breakdown by HR org
         dplyr::as_tibble() %>%
+        dplyr::filter(!!sym(hrvar) %in% PersonCount) %>%
+        dplyr::group_by(!!sym(hrvar)) %>%
+        dplyr::mutate(prop = n / sum(n, na.rm = TRUE)) %>%
+        dplyr::ungroup() %>%
         dplyr::select(-n) %>% # Remove n
         tidyr::spread(!!sym(hrvar), prop) %>%
         dplyr::arrange(Personas)
@@ -340,7 +347,7 @@ workpatterns_classify_bw <- function(data,
   }
 
 
-  ## Return
+  ## ReturnR
 
   if(return == "data"){
 
