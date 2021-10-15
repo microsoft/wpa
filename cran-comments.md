@@ -9,6 +9,10 @@
 
 * This is a new release.
 
+## Submission 1.6.2
+
+Minor bug fixes.
+
 ## Submission 1.6.1
 
 Minor bug fixes.
