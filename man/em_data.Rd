@@ -5,7 +5,7 @@
 \alias{em_data}
 \title{Sample Hourly Collaboration data with Email and IMs}
 \format{
-A data frame with 41567 rows and 56 variables:
+A data frame with 2000 rows and 105 variables:
 \describe{
 \item{PersonId}{ }
 \item{Date}{ }

@@ -3,7 +3,7 @@
 \name{period_change}
 \alias{period_change}
 \title{Plot the distribution of percentage change between periods
-of a WpA metric by the number of employees.}
+of a Workplace Analytics metric by the number of employees.}
 \usage{
 period_change(
   data,

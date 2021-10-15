@@ -14,7 +14,7 @@
 #'
 #' @return data frame.
 #'
-#' @format A data frame with 41567 rows and 56 variables:
+#' @format A data frame with 2000 rows and 105 variables:
 #' \describe{
 #'   \item{PersonId}{ }
 #'   \item{Date}{ }

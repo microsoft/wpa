@@ -58,7 +58,6 @@ Imports:
     data.table
 RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
-VignetteBuilder: knitr, rmarkdown
 Suggests: 
     knitr,
     extrafont,

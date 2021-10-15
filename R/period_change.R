@@ -4,7 +4,7 @@
 # --------------------------------------------------------------------------------------------
 
 #' @title Plot the distribution of percentage change between periods
-#' of a WpA metric by the number of employees.
+#' of a Workplace Analytics metric by the number of employees.
 #'
 #' @description
 #' This function also presents the p-value for the null hypothesis

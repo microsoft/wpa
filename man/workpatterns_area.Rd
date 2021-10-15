@@ -70,6 +70,11 @@ Uses the Hourly Collaboration query to produce an area plot of
 Emails sent and IMs sent attended by hour of the day.
 }
 \examples{
+
+# Create a sample small dataset
+orgs <- c("Customer Service", "Financial Planning", "Biz Dev")
+em_data <- em_data[em_data$Organization \%in\% orgs, ]
+
 # Return visualization of percentage distribution
 workpatterns_area(em_data, return = "plot", values = "percent")
 

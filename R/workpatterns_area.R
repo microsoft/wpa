@@ -59,6 +59,11 @@
 #' @family Working Patterns
 #'
 #' @examples
+#'
+#' # Create a sample small dataset
+#' orgs <- c("Customer Service", "Financial Planning", "Biz Dev")
+#' em_data <- em_data[em_data$Organization %in% orgs, ]
+#'
 #' # Return visualization of percentage distribution
 #' workpatterns_area(em_data, return = "plot", values = "percent")
 #'
