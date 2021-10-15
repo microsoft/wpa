@@ -61,7 +61,8 @@
 #' @examples
 #'
 #' # Create a sample small dataset
-#' em_data <- em_data[em_data$Date == as.Date("2020-01-19", "%Y-%m-%d"), ]
+#' orgs <- c("Customer Service", "Financial Planning", "Biz Dev")
+#' em_data <- em_data[em_data$Organization %in% orgs, ]
 #'
 #' # Return visualization of percentage distribution
 #' workpatterns_area(em_data, return = "plot", values = "percent")
