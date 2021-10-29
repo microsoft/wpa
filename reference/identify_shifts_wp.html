@@ -92,7 +92,7 @@ be compared to gauge the accuracy of existing Outlook settings." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -389,20 +389,20 @@ argument:</p><ul>
 </div><div class='img'><img src='identify_shifts_wp-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return table</span>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts_wp</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 195 × 6</span>
-#&gt;    Shifts     DaySpan WeekCount PersonCount `Week%` `Person%`
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 0:00-23:00      23        40          25  0.031<span style='text-decoration: underline;'>8</span>    0.023<span style='text-decoration: underline;'>3</span>
-#&gt; <span style='color: #BCBCBC;'> 2</span> 7:00-22:00      15        36          29  0.028<span style='text-decoration: underline;'>6</span>    0.027<span style='text-decoration: underline;'>1</span>
-#&gt; <span style='color: #BCBCBC;'> 3</span> 7:00-23:00      16        33          25  0.026<span style='text-decoration: underline;'>3</span>    0.023<span style='text-decoration: underline;'>3</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span> 6:00-22:00      16        32          25  0.025<span style='text-decoration: underline;'>5</span>    0.023<span style='text-decoration: underline;'>3</span>
-#&gt; <span style='color: #BCBCBC;'> 5</span> 8:00-16:00       8        30          23  0.023<span style='text-decoration: underline;'>9</span>    0.021<span style='text-decoration: underline;'>5</span>
-#&gt; <span style='color: #BCBCBC;'> 6</span> 8:00-17:00       9        28          19  0.022<span style='text-decoration: underline;'>3</span>    0.017<span style='text-decoration: underline;'>7</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span> 7:00-21:00      14        27          22  0.021<span style='text-decoration: underline;'>5</span>    0.020<span style='text-decoration: underline;'>5</span>
-#&gt; <span style='color: #BCBCBC;'> 8</span> 8:00-20:00      12        27          23  0.021<span style='text-decoration: underline;'>5</span>    0.021<span style='text-decoration: underline;'>5</span>
-#&gt; <span style='color: #BCBCBC;'> 9</span> 8:00-21:00      13        26          23  0.020<span style='text-decoration: underline;'>7</span>    0.021<span style='text-decoration: underline;'>5</span>
-#&gt; <span style='color: #BCBCBC;'>10</span> 8:00-23:00      15        26          17  0.020<span style='text-decoration: underline;'>7</span>    0.015<span style='text-decoration: underline;'>9</span>
-#&gt; <span style='color: #949494;'># … with 185 more rows</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 26 × 6</span>
+#&gt;    Shifts      DaySpan WeekCount PersonCount `Week%` `Person%`
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 7:00-17:00       10       786         340  0.393     0.309 
+#&gt; <span style='color: #BCBCBC;'> 2</span> 8:00-17:00        9       733         380  0.366     0.345 
+#&gt; <span style='color: #BCBCBC;'> 3</span> 0:00-23:00       23       116          91  0.058     0.082<span style='text-decoration: underline;'>7</span>
+#&gt; <span style='color: #BCBCBC;'> 4</span> 11:00-17:00       6       105          67  0.052<span style='text-decoration: underline;'>5</span>    0.060<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'> 5</span> 9:00-17:00        8        73          52  0.036<span style='text-decoration: underline;'>5</span>    0.047<span style='text-decoration: underline;'>3</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span> 0:00-17:00       17        60          54  0.03      0.049<span style='text-decoration: underline;'>1</span>
+#&gt; <span style='color: #BCBCBC;'> 7</span> 6:00-17:00       11        39          28  0.019<span style='text-decoration: underline;'>5</span>    0.025<span style='text-decoration: underline;'>5</span>
+#&gt; <span style='color: #BCBCBC;'> 8</span> 8:00-16:00        8        14          14  0.007     0.012<span style='text-decoration: underline;'>7</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span> 10:00-17:00       7        11          11  0.005<span style='text-decoration: underline;'>5</span>    0.01  
+#&gt; <span style='color: #BCBCBC;'>10</span> 7:00-16:00        9        11          11  0.005<span style='text-decoration: underline;'>5</span>    0.01  
+#&gt; <span style='color: #949494;'># … with 16 more rows</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

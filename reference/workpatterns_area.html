@@ -89,7 +89,7 @@ Emails sent and IMs sent attended by hour of the day." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -422,7 +422,12 @@ argument:</p><ul>
 <code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return visualization of percentage distribution</span>
+    <pre class="examples"><div class='input'>
+<span class='co'># Create a sample small dataset</span>
+<span class='va'>orgs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Customer Service"</span>, <span class='st'>"Financial Planning"</span>, <span class='st'>"Biz Dev"</span><span class='op'>)</span>
+<span class='va'>em_data</span> <span class='op'>&lt;-</span> <span class='va'>em_data</span><span class='op'>[</span><span class='va'>em_data</span><span class='op'>$</span><span class='va'>Organization</span> <span class='op'>%in%</span> <span class='va'>orgs</span>, <span class='op'>]</span>
+
+<span class='co'># Return visualization of percentage distribution</span>
 <span class='fu'>workpatterns_area</span><span class='op'>(</span><span class='va'>em_data</span>, return <span class='op'>=</span> <span class='st'>"plot"</span>, values <span class='op'>=</span> <span class='st'>"percent"</span><span class='op'>)</span>
 </div><div class='img'><img src='workpatterns_area-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return visualization of absolute values</span>
@@ -430,20 +435,20 @@ argument:</p><ul>
 </div><div class='img'><img src='workpatterns_area-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Return summary table</span>
 <span class='fu'>workpatterns_area</span><span class='op'>(</span><span class='va'>em_data</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 96 × 5</span>
-#&gt;    group  Hours Emails_sent IMs_sent     n
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Team 1     0     0.002<span style='text-decoration: underline;'>73</span>  0.003<span style='text-decoration: underline;'>72</span>    30
-#&gt; <span style='color: #BCBCBC;'> 2</span> Team 1     1     0.001<span style='text-decoration: underline;'>42</span>  0.001<span style='text-decoration: underline;'>02</span>    30
-#&gt; <span style='color: #BCBCBC;'> 3</span> Team 1     2     0.002<span style='text-decoration: underline;'>76</span>  0.001<span style='text-decoration: underline;'>31</span>    30
-#&gt; <span style='color: #BCBCBC;'> 4</span> Team 1     3     0.009<span style='text-decoration: underline;'>88</span>  0.010<span style='text-decoration: underline;'>2</span>     30
-#&gt; <span style='color: #BCBCBC;'> 5</span> Team 1     4     0.008<span style='text-decoration: underline;'>61</span>  0.008<span style='text-decoration: underline;'>53</span>    30
-#&gt; <span style='color: #BCBCBC;'> 6</span> Team 1     5     0.013<span style='text-decoration: underline;'>3</span>   0.010<span style='text-decoration: underline;'>5</span>     30
-#&gt; <span style='color: #BCBCBC;'> 7</span> Team 1     6     0.025<span style='text-decoration: underline;'>0</span>   0.022<span style='text-decoration: underline;'>2</span>     30
-#&gt; <span style='color: #BCBCBC;'> 8</span> Team 1     7     0.052<span style='text-decoration: underline;'>3</span>   0.054<span style='text-decoration: underline;'>8</span>     30
-#&gt; <span style='color: #BCBCBC;'> 9</span> Team 1     8     0.080<span style='text-decoration: underline;'>4</span>   0.073<span style='text-decoration: underline;'>3</span>     30
-#&gt; <span style='color: #BCBCBC;'>10</span> Team 1     9     0.091<span style='text-decoration: underline;'>5</span>   0.087<span style='text-decoration: underline;'>2</span>     30
-#&gt; <span style='color: #949494;'># … with 86 more rows</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 72 × 5</span>
+#&gt;    group   Hours Emails_sent IMs_sent     n
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Biz Dev     0      0      0.000<span style='text-decoration: underline;'>223</span>    27
+#&gt; <span style='color: #BCBCBC;'> 2</span> Biz Dev     1      0      0.000<span style='text-decoration: underline;'>227</span>    27
+#&gt; <span style='color: #BCBCBC;'> 3</span> Biz Dev     2      0      0.000<span style='text-decoration: underline;'>212</span>    27
+#&gt; <span style='color: #BCBCBC;'> 4</span> Biz Dev     3      0      0           27
+#&gt; <span style='color: #BCBCBC;'> 5</span> Biz Dev     4      0      0           27
+#&gt; <span style='color: #BCBCBC;'> 6</span> Biz Dev     5      0      0.000<span style='text-decoration: underline;'>394</span>    27
+#&gt; <span style='color: #BCBCBC;'> 7</span> Biz Dev     6      0      0           27
+#&gt; <span style='color: #BCBCBC;'> 8</span> Biz Dev     7      0.023<span style='text-decoration: underline;'>8</span> 0.022<span style='text-decoration: underline;'>6</span>      27
+#&gt; <span style='color: #BCBCBC;'> 9</span> Biz Dev     8      0.105  0.102       27
+#&gt; <span style='color: #BCBCBC;'>10</span> Biz Dev     9      0.095<span style='text-decoration: underline;'>3</span> 0.099<span style='text-decoration: underline;'>4</span>      27
+#&gt; <span style='color: #949494;'># … with 62 more rows</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

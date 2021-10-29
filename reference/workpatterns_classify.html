@@ -91,7 +91,7 @@ the the person-average volume-based ('pav') method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -491,16 +491,17 @@ Hourly Collaboration Flexible Query.</p></li>
 <span class='co'># \donttest{</span>
 
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"bw"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 × 5</span>
-#&gt;   Personas                       `Team 1` `Team 2` `Team 3` `Team 4`
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 0 &lt; 3 hours on                   0.197    0.128   0.186    0.167  
-#&gt; <span style='color: #BCBCBC;'>2</span> 1 Standard with breaks workday   0.048<span style='text-decoration: underline;'>3</span>   0.044<span style='text-decoration: underline;'>4</span>  0.072<span style='text-decoration: underline;'>2</span>   0.027<span style='text-decoration: underline;'>8</span> 
-#&gt; <span style='color: #BCBCBC;'>3</span> 2 Standard continuous workday   <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>       0.002<span style='text-decoration: underline;'>78</span>  0.002<span style='text-decoration: underline;'>78</span>
-#&gt; <span style='color: #BCBCBC;'>4</span> 3 Standard flexible workday      0.364    0.281   0.283    0.264  
-#&gt; <span style='color: #BCBCBC;'>5</span> 4 Long flexible workday          0.119    0.219   0.242    0.264  
-#&gt; <span style='color: #BCBCBC;'>6</span> 5 Long continuous workday        0.026<span style='text-decoration: underline;'>0</span>   0.114   0.072<span style='text-decoration: underline;'>2</span>   0.069<span style='text-decoration: underline;'>4</span> 
-#&gt; <span style='color: #BCBCBC;'>7</span> 6 Always on (13h+)               0.245    0.214   0.142    0.206  </div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 × 16</span>
+#&gt;   Personas `Biz Dev` `Customer Servi… Facilities `Finance-Corpor… `Finance-East`
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 3 Stand…  <span style='color: #BB0000;'>NA</span>                <span style='color: #BB0000;'>NA</span>          0.072<span style='text-decoration: underline;'>6</span>           0.066<span style='text-decoration: underline;'>2</span>         0.029<span style='text-decoration: underline;'>4</span>
+#&gt; <span style='color: #BCBCBC;'>2</span> 4 Long …   0.111             0.093<span style='text-decoration: underline;'>8</span>     0.088<span style='text-decoration: underline;'>7</span>           0.103          0.132 
+#&gt; <span style='color: #BCBCBC;'>3</span> 5 Long …   0.880             0.885      0.766            0.75           0.632 
+#&gt; <span style='color: #BCBCBC;'>4</span> 6 Alway…   0.009<span style='text-decoration: underline;'>26</span>           0.020<span style='text-decoration: underline;'>8</span>     0.072<span style='text-decoration: underline;'>6</span>           0.080<span style='text-decoration: underline;'>9</span>         0.206 
+#&gt; <span style='color: #949494;'># … with 10 more variables: Finance-South &lt;dbl&gt;, Finance-West &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   Financial Planning &lt;dbl&gt;, G&amp;A Central &lt;dbl&gt;, G&amp;A East &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   G&amp;A South &lt;dbl&gt;, Human Resources &lt;dbl&gt;, Inventory Management &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   IT-Corporate &lt;dbl&gt;, IT-East &lt;dbl&gt;</span></div><div class='input'>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"pav"</span><span class='op'>)</span>
 </div><div class='img'><img src='workpatterns_classify-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>workpatterns_classify</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"pav"</span>, return <span class='op'>=</span> <span class='st'>"plot-area"</span><span class='op'>)</span>

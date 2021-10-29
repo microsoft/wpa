@@ -94,7 +94,7 @@ be run without it." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -316,6 +316,9 @@ standardize format and prepare the data as input for this report.</p>
 <p>If you are passing a Ways of Working Assessment query instead of a Standard
 Person query to the <code>data</code> argument, please also use <code><a href='standardise_pq.html'>standardise_pq()</a></code> to
 make the variable names consistent with a Standard Person Query.</p>
+<p>Since <code>v1.6.2</code>, the variable <code>Call_hours</code> is no longer a pre-requisite to run
+this report. A note is returned in-line instead of an error if the variable
+is not available.</p>
     <h2 class="hasAnchor" id="checking-functions-within-validation-report-"><a class="anchor" href="#checking-functions-within-validation-report-"></a>Checking functions within <code>validation_report()</code></h2>
 
     

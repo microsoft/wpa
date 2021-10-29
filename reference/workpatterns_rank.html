@@ -90,7 +90,7 @@ least." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -270,8 +270,13 @@ least.</p>
     <tr>
       <th>signals</th>
       <td><p>Character vector to specify which collaboration metrics to
-use: You may use <code>"email"</code> (default) for emails only, <code>"IM"</code> for Teams
-messages only, or a combination of the two <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code>.</p></td>
+use:</p><ul>
+<li><p><code>"email"</code> (default) for emails only</p></li>
+<li><p><code>"IM"</code> for Teams messages only</p></li>
+<li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
+<li><p><code>"meetings"</code> for Meetings only</p></li>
+<li><p>or a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code></p></li>
+</ul></td>
     </tr>
     <tr>
       <th>start_hour</th>
@@ -393,7 +398,15 @@ working patterns and the x-axis representing each hour of the day.</p></li>
 <code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>workpatterns_rank</span><span class='op'>(</span><span class='va'>em_data</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>workpatterns_rank</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>em_data</span>,
+  signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+    <span class='st'>"email"</span>,
+    <span class='st'>"IM"</span>,
+    <span class='st'>"unscheduled_calls"</span>,
+    <span class='st'>"meetings"</span>
+  <span class='op'>)</span>
+  <span class='op'>)</span>
 </div><div class='img'><img src='workpatterns_rank-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
