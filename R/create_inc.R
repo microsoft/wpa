@@ -96,4 +96,8 @@ create_inc <- function(
   }
 }
 
+#' @rdname create_inc
+#' @export
+create_incidence <- create_inc
+
 

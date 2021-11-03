@@ -2,10 +2,21 @@
 % Please edit documentation in R/create_inc.R
 \name{create_inc}
 \alias{create_inc}
+\alias{create_incidence}
 \title{Create an incidence table reflecting proportion of population scoring above
 or below a threshold for a metric}
 \usage{
 create_inc(
+  data,
+  metric,
+  hrvar,
+  mingroup = 5,
+  threshold,
+  position,
+  return = "plot"
+)
+
+create_incidence(
   data,
   metric,
   hrvar,
