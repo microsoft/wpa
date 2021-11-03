@@ -26,6 +26,17 @@
 #'
 #' See `Value` for more information.
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"plot"`: 'ggplot' object. A heat map.
+#'   - `"table"`: data frame. A summary table.
+#'
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom scales percent
+#'
+#' @family Visualization
+#' @family Flexible
 #'
 #' @examples
 #' create_inc(
