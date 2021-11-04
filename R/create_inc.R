@@ -109,7 +109,7 @@ create_inc <- function(
 
       subtitle_text <-
         paste(
-          "Number and percentage of employees by",
+          "Percentage and number of employees by",
           hrvar[1],
           "and",
           hrvar[2]
