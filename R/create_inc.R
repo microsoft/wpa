@@ -169,7 +169,10 @@ create_inc <- function(
       labs(
         title = title_text,
         subtitle = subtitle_text,
-        caption = extract_date_range(data, return = "text"),
+        caption = paste(
+          extract_date_range(data, return = "text"),
+          "\n",
+          "Percentages reflect incidence with respect to population in cell."),
         fill = "Incidence"
       )
 
