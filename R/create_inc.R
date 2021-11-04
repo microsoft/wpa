@@ -113,7 +113,10 @@ create_inc <- function(
       theme_wpa_basic() +
       labs(
         title = paste("Incidence Table for", us_to_space(metric)),
-        subtitle = paste(us_to_space(metric), position, threshold),
+        subtitle = paste("Reflecting % of those with",
+                         tolower(us_to_space(metric)),
+                         position,
+                         threshold),
         caption = extract_date_range(data, return = "text"),
         fill = "Incidence"
       )
