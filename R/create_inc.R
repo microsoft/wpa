@@ -20,7 +20,7 @@
 #'   - `"above"`: show incidence of those equal to or above the threshold
 #'   - `"below"`: show incidence of those equal to or below the threshold
 #' @param show_n Logical. Toggle to set whether text labels in plot to show the
-#' number of employees (`n`). Defaults to `FALSE`.
+#' number of employees (`n`). Defaults to `TRUE`.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -58,7 +58,7 @@ create_inc <- function(
   mingroup = 5,
   threshold,
   position,
-  show_n = FALSE,
+  show_n = TRUE,
   return = "plot"
 ){
 
@@ -95,6 +95,40 @@ create_inc <- function(
   } else if(return == "plot"){
 
 
+    # Set title text
+    title_text <-
+      paste(
+        "Incidence of",
+        tolower(us_to_space(metric)),
+        position,
+        threshold
+      )
+
+    # Set subtitle text
+    if(show_n == TRUE){
+
+      subtitle_text <-
+        paste(
+          "Number and percentage of employees by",
+          hrvar[1],
+          "and",
+          hrvar[2]
+        )
+
+    } else if(show_n == FALSE){
+
+      subtitle_text <-
+        paste(
+          "Percentage of employees by",
+          hrvar[1],
+          "and",
+          hrvar[2]
+        )
+
+    }
+
+
+
     myTable %>%
       {
         if (show_n == TRUE){
@@ -114,12 +148,12 @@ create_inc <- function(
           geom_text(
             aes(label = metric_text),
             colour = "black",
-            size = 2)
+            size = 3)
         } else {
 
           geom_text(aes(label = scales::percent(!!sym(metric), accuracy = 1)),
                     colour = "black",
-                    size = 2)
+                    size = 3)
         }
       } +
       scale_fill_gradient2(low = rgb2hex(7, 111, 161),
@@ -133,11 +167,8 @@ create_inc <- function(
       scale_y_discrete(labels = us_to_space) +
       theme_wpa_basic() +
       labs(
-        title = paste("Incidence Table for", us_to_space(metric)),
-        subtitle = paste("Reflecting % of those with",
-                         tolower(us_to_space(metric)),
-                         position,
-                         threshold),
+        title = title_text,
+        subtitle = subtitle_text,
         caption = extract_date_range(data, return = "text"),
         fill = "Incidence"
       )
