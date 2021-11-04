@@ -72,14 +72,18 @@ create_inc <- function(
         mutate(., !!sym(metric) := !!sym(metric) <= threshold)
       }
       } %>%
+    group_by(!!sym(hrvar[1]), !!sym(hrvar[2]), PersonId) %>%
+    summarise(
+      !!sym(metric) := mean(!!sym(metric), na.rm = TRUE)
+    ) %>%
     group_by(!!sym(hrvar[1]), !!sym(hrvar[2])) %>%
     summarise(
-      across(
-        .cols = !!sym(metric),
-        .fns = ~mean(., na.rm = TRUE)
-      )
-    )
-  #TODO: mingroup size
+      !!sym(metric) := mean(!!sym(metric), na.rm = TRUE),
+      n = n_distinct(PersonId),
+      .groups = "drop"
+    ) %>%
+    filter(n >= mingroup) %>%
+    arrange(desc(!!sym(metric)))
 
   if(return == "table"){
 
@@ -87,17 +91,31 @@ create_inc <- function(
 
   } else if(return == "plot"){
 
+
     myTable %>%
+      mutate(value_rescaled = maxmin(!!sym(metric))) %>%
       ggplot(aes(x = !!sym(hrvar[1]),
                  y = !!sym(hrvar[2]),
-                 fill = !!sym(metric))) +
+                 fill = value_rescaled)) + # max-min scaling
       geom_tile() +
       geom_text(aes(label = scales::percent(!!sym(metric), accuracy = 1)),
                 colour = "black",
                 size = 2) +
-      scale_fill_gradient(
-        low = "black",
-        high = "green"
+      # Fill is contingent on max-min scaling
+      scale_fill_gradient2(low = rgb2hex(7, 111, 161),
+                           mid = rgb2hex(241, 204, 158),
+                           high = rgb2hex(216, 24, 42),
+                           midpoint = 0.5,
+                           breaks = c(0, 0.5, 1),
+                           labels = c("Minimum", "", "Maximum"),
+                           limits = c(0, 1)) +
+      scale_x_discrete(position = "top", labels = us_to_space) +
+      scale_y_discrete(labels = us_to_space) +
+      theme_wpa_basic() +
+      labs(
+        title = paste("Incidence Table for", us_to_space(metric)),
+        subtitle = paste(us_to_space(metric), position, threshold),
+        caption = extract_date_range(data, return = "text")
       )
 
   } else {
