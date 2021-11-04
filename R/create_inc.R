@@ -93,10 +93,9 @@ create_inc <- function(
 
 
     myTable %>%
-      mutate(value_rescaled = maxmin(!!sym(metric))) %>%
       ggplot(aes(x = !!sym(hrvar[1]),
                  y = !!sym(hrvar[2]),
-                 fill = value_rescaled)) + # max-min scaling
+                 fill = !!sym(metric))) +
       geom_tile() +
       geom_text(aes(label = scales::percent(!!sym(metric), accuracy = 1)),
                 colour = "black",
@@ -107,7 +106,7 @@ create_inc <- function(
                            high = rgb2hex(216, 24, 42),
                            midpoint = 0.5,
                            breaks = c(0, 0.5, 1),
-                           labels = c("Minimum", "", "Maximum"),
+                           labels = c("0%", "", "100%"),
                            limits = c(0, 1)) +
       scale_x_discrete(position = "top", labels = us_to_space) +
       scale_y_discrete(labels = us_to_space) +
@@ -115,7 +114,8 @@ create_inc <- function(
       labs(
         title = paste("Incidence Table for", us_to_space(metric)),
         subtitle = paste(us_to_space(metric), position, threshold),
-        caption = extract_date_range(data, return = "text")
+        caption = extract_date_range(data, return = "text"),
+        fill = "Incidence"
       )
 
   } else {
