@@ -13,6 +13,7 @@ create_inc(
   mingroup = 5,
   threshold,
   position,
+  show_n = FALSE,
   return = "plot"
 )
 
@@ -23,6 +24,7 @@ create_incidence(
   mingroup = 5,
   threshold,
   position,
+  show_n = FALSE,
   return = "plot"
 )
 }
@@ -45,6 +47,9 @@ size. Defaults to 5.}
 \item \code{"above"}: show incidence of those equal to or above the threshold
 \item \code{"below"}: show incidence of those equal to or below the threshold
 }}
+
+\item{show_n}{Logical. Toggle to set whether text labels in plot to show the
+number of employees (\code{n}). Defaults to \code{FALSE}.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:

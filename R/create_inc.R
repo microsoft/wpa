@@ -19,6 +19,8 @@
 #' @param position String containing the below valid values:
 #'   - `"above"`: show incidence of those equal to or above the threshold
 #'   - `"below"`: show incidence of those equal to or below the threshold
+#' @param show_n Logical. Toggle to set whether text labels in plot to show the
+#' number of employees (`n`). Defaults to `FALSE`.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -56,6 +58,7 @@ create_inc <- function(
   mingroup = 5,
   threshold,
   position,
+  show_n = FALSE,
   return = "plot"
 ){
 
@@ -93,14 +96,32 @@ create_inc <- function(
 
 
     myTable %>%
+      {
+        if (show_n == TRUE){
+          mutate(., metric_text = paste0(
+            scales::percent(!!sym(metric), accuracy = 1),
+            " (", n, ")"))
+        } else {
+          .
+        }
+      } %>%
       ggplot(aes(x = !!sym(hrvar[1]),
                  y = !!sym(hrvar[2]),
                  fill = !!sym(metric))) +
       geom_tile() +
-      geom_text(aes(label = scales::percent(!!sym(metric), accuracy = 1)),
-                colour = "black",
-                size = 2) +
-      # Fill is contingent on max-min scaling
+      {
+        if (show_n == TRUE){
+          geom_text(
+            aes(label = metric_text),
+            colour = "black",
+            size = 2)
+        } else {
+
+          geom_text(aes(label = scales::percent(!!sym(metric), accuracy = 1)),
+                    colour = "black",
+                    size = 2)
+        }
+      } +
       scale_fill_gradient2(low = rgb2hex(7, 111, 161),
                            mid = rgb2hex(241, 204, 158),
                            high = rgb2hex(216, 24, 42),
