@@ -54,9 +54,9 @@
 #' create_inc(
 #'   data = sq_data,
 #'   metric = "Collaboration_hours",
-#'   hrvar = c("Organization", "LevelDesignation"),
+#'   hrvar = c("LevelDesignation", "Organization"),
 #'   threshold = 20,
-#'   position = "above"
+#'   position = "below"
 #' )
 #'
 #' @export
@@ -158,7 +158,8 @@ create_inc_bar <- function(
     return = return,
     plot_title = title_text,
     plot_subtitle = subtitle_text,
-    legend_lab = paste(us_to_space(metric),
+    legend_lab = paste("% with",
+                       tolower(us_to_space(metric)),
                        position,
                        threshold),
     percent = TRUE

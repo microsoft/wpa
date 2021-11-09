@@ -83,9 +83,9 @@ create_inc(
 create_inc(
   data = sq_data,
   metric = "Collaboration_hours",
-  hrvar = c("Organization", "LevelDesignation"),
+  hrvar = c("LevelDesignation", "Organization"),
   threshold = 20,
-  position = "above"
+  position = "below"
 )
 
 }
