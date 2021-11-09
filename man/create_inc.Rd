@@ -3,7 +3,7 @@
 \name{create_inc}
 \alias{create_inc}
 \alias{create_incidence}
-\title{Create an incidence table reflecting proportion of population scoring above
+\title{Create an incidence analysis reflecting proportion of population scoring above
 or below a threshold for a metric}
 \usage{
 create_inc(
@@ -13,7 +13,6 @@ create_inc(
   mingroup = 5,
   threshold,
   position,
-  show_n = FALSE,
   return = "plot"
 )
 
@@ -24,7 +23,6 @@ create_incidence(
   mingroup = 5,
   threshold,
   position,
-  show_n = FALSE,
   return = "plot"
 )
 }
@@ -34,8 +32,8 @@ create_incidence(
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
 
-\item{hrvar}{Character vector of length 2 containing the name of the HR
-Variable by which to split metrics.}
+\item{hrvar}{Character vector of at most length 2 containing the name of the
+HR Variable by which to split metrics.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -47,9 +45,6 @@ size. Defaults to 5.}
 \item \code{"above"}: show incidence of those equal to or above the threshold
 \item \code{"below"}: show incidence of those equal to or below the threshold
 }}
-
-\item{show_n}{Logical. Toggle to set whether text labels in plot to show the
-number of employees (\code{n}). Defaults to \code{FALSE}.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -68,12 +63,23 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
-An incidence table is generated, with each value in the table reflecting the
-proportion of the population that is above or below a threshold for a
-specified metric. Two values are required for \code{hrvar} in order to generate
-this incidence table.
+An incidence analysis is generated, with each value in the table reflecting
+the proportion of the population that is above or below a threshold for a
+specified metric. There is an option to only provide a single \code{hrvar} in
+which a bar plot is generated, or two \code{hrvar} values where an incidence table
+(heatmap) is generated.
 }
 \examples{
+# Only a single HR attribute
+create_inc(
+  data = sq_data,
+  metric = "After_hours_collaboration_hours",
+  hrvar = "Organization",
+  threshold = 4,
+  position = "above"
+)
+
+# Two HR attributes
 create_inc(
   data = sq_data,
   metric = "Collaboration_hours",
