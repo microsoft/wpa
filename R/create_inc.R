@@ -158,6 +158,9 @@ create_inc_bar <- function(
     return = return,
     plot_title = title_text,
     plot_subtitle = subtitle_text,
+    legend_lab = paste(us_to_space(metric),
+                       position,
+                       threshold),
     percent = TRUE
   )
 }
@@ -221,6 +224,8 @@ create_inc_grid <- function(
         "and",
         hrvar[2]
       )
+
+    metric_text <- NULL
 
     myTable %>%
       mutate(metric_text = paste0(

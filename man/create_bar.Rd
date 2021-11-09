@@ -15,6 +15,7 @@ create_bar(
   percent = FALSE,
   plot_title = us_to_space(metric),
   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+  legend_lab = NULL,
   rank = "descending",
   xlim = NULL,
   text_just = 0.5,
@@ -57,6 +58,9 @@ percentage signs. Defaults to \code{FALSE}.}
 \item{plot_title}{An option to override plot title.}
 
 \item{plot_subtitle}{An option to override plot subtitle.}
+
+\item{legend_lab}{String. Option to override legend title/label. Defaults to
+\code{NULL}, where the metric name will be populated instead.}
 
 \item{rank}{String specifying how to rank the bars. Valid inputs are:
 \itemize{
