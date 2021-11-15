@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_scatter.R
 \name{create_scatter}
 \alias{create_scatter}
-\title{Create a Scatter plot with two selected Workplace Analytics metrics (General Purpose)}
+\title{Create a Scatter plot with two selected Viva Insights metrics (General Purpose)}
 \usage{
 create_scatter(
   data,

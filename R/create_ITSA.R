@@ -27,7 +27,7 @@
 #'
 #' @param data Person Query as a dataframe including date column named `Date`.
 #'   This function assumes the data format is MM/DD/YYYY as is standard in a
-#'   Workplace Analytics query output.
+#'   Viva Insights query output.
 #' @param before_start Start date of 'before' time period in MM/DD/YYYY format
 #'   as character type. Before time period is the period before the intervention
 #'   (e.g. training program, re-org, shift to remote work) occurs and bounded by

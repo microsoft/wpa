@@ -38,7 +38,7 @@ Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{
-Provides a week by week view of a selected Workplace Analytics metric. By
+Provides a week by week view of a selected Viva Insights metric. By
 default returns a week by week heatmap bar plot, highlighting the points in
 time with most activity. Additional options available to return a summary
 table.

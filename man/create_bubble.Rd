@@ -2,9 +2,8 @@
 % Please edit documentation in R/create_bubble.R
 \name{create_bubble}
 \alias{create_bubble}
-\title{Create a bubble plot with two selected Workplace Analytics metrics
-(General Purpose), with size representing the number of employees in the
-group.}
+\title{Create a bubble plot with two selected Viva Insights metrics (General
+Purpose), with size representing the number of employees in the group.}
 \usage{
 create_bubble(
   data,

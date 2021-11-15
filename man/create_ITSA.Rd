@@ -18,7 +18,7 @@ create_ITSA(
 \arguments{
 \item{data}{Person Query as a dataframe including date column named \code{Date}.
 This function assumes the data format is MM/DD/YYYY as is standard in a
-Workplace Analytics query output.}
+Viva Insights query output.}
 
 \item{before_start}{Start date of 'before' time period in MM/DD/YYYY format
 as character type. Before time period is the period before the intervention
