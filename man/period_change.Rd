@@ -3,7 +3,7 @@
 \name{period_change}
 \alias{period_change}
 \title{Plot the distribution of percentage change between periods
-of a WpA metric by the number of employees.}
+of a Workplace Analytics metric by the number of employees.}
 \usage{
 period_change(
   data,
@@ -83,6 +83,7 @@ Other Visualization:
 \code{\link{create_bubble}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_inc}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
@@ -148,6 +149,7 @@ Other Flexible:
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},
+\code{\link{create_inc}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},

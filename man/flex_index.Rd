@@ -135,6 +135,10 @@ the following:\preformatted{em_data \%>\%
 }
 
 \examples{
+# Create a sample small dataset
+orgs <- c("Customer Service", "Financial Planning", "Biz Dev")
+em_data <- em_data[em_data$Organization \%in\% orgs, ]
+
 # Examples of how to test the plotting options individually
 # Sample of 10 work patterns
 em_data \%>\%
