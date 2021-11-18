@@ -158,7 +158,7 @@ workpatterns_area <- function(data,
   ptn_data_norm <-
     ptn_data_norm %>%
     select(PersonId, group, all_of(input_var)) %>%
-    mutate_all(~tidyr::replace_na(., 0)) # Replace NAs with 0s
+    mutate(across(where(is.numeric), ~tidyr::replace_na(., 0))) # Replace NAs with 0s
 
   # Percentage vs Absolutes
   if(values == "percent"){
