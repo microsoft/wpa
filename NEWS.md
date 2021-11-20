@@ -1,6 +1,7 @@
 # wpa 1.6.3
 
 - Added `create_inc()` for creating incidence analysis
+- Replaced outdated uses of `mutate_all()` in functions (#195)
 
 # wpa 1.6.2
 
