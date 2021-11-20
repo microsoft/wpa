@@ -1,4 +1,4 @@
-# wpa (development version)
+# wpa 1.6.3
 
 - Added `create_inc()` for creating incidence analysis
 
