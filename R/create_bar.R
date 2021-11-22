@@ -33,6 +33,8 @@
 #'   percentage signs. Defaults to `FALSE`.
 #' @param plot_title An option to override plot title.
 #' @param plot_subtitle An option to override plot subtitle.
+#' @param legend_lab String. Option to override legend title/label. Defaults to
+#' `NULL`, where the metric name will be populated instead.
 #' @param rank String specifying how to rank the bars. Valid inputs are:
 #'   - `"descending"` - ranked highest to lowest from top to bottom (default).
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
@@ -92,6 +94,7 @@ create_bar <- function(data,
                        percent = FALSE,
                        plot_title = us_to_space(metric),
                        plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+                       legend_lab = NULL,
                        rank = "descending",
                        xlim = NULL,
                        text_just = 0.5,
@@ -106,6 +109,11 @@ create_bar <- function(data,
   ## Nothing happens if all present
   data %>%
     check_inputs(requirements = required_variables)
+
+  ## Handle `legend_lab`
+  if(is.null(legend_lab)){
+    legend_lab <- gsub("_", " ", metric)
+  }
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
@@ -148,13 +156,14 @@ create_bar <- function(data,
   ## Bar plot
   plot_object <- data %>%
     create_stacked(
-      metrics=metric,
+      metrics = metric,
       hrvar = hrvar,
       mingroup = mingroup,
       stack_colours = bar_colour,
       percent = percent,
       plot_title = plot_title,
       plot_subtitle = plot_subtitle,
+      legend_lab = legend_lab,
       return = "plot",
       rank = rank,
       xlim = xlim,

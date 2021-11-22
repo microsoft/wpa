@@ -66,6 +66,7 @@ Other Visualization:
 \code{\link{create_bubble}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_inc}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},

@@ -1,3 +1,7 @@
+# wpa (development version)
+
+- Added `create_inc()` for creating incidence analysis
+
 # wpa 1.6.2
 
 - Added new signal options for `flex_index()` (#183, #185)

@@ -14,6 +14,7 @@ create_stacked(
   percent = FALSE,
   plot_title = "Collaboration Hours",
   plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+  legend_lab = NULL,
   rank = "descending",
   xlim = NULL,
   text_just = 0.5,
@@ -43,9 +44,12 @@ Valid inputs are "plot" and "table".}
 \item{percent}{Logical value to determine whether to show labels as
 percentage signs. Defaults to \code{FALSE}.}
 
-\item{plot_title}{An option to override plot title.}
+\item{plot_title}{String. Option to override plot title.}
 
-\item{plot_subtitle}{An option to override plot subtitle.}
+\item{plot_subtitle}{String. Option to override plot subtitle.}
+
+\item{legend_lab}{String. Option to override legend title/label. Defaults to
+\code{NULL}, where the metric name will be populated instead.}
 
 \item{rank}{String specifying how to rank the bars. Valid inputs are:
 \itemize{
@@ -119,6 +123,7 @@ Other Visualization:
 \code{\link{create_bubble}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
+\code{\link{create_inc}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
@@ -177,6 +182,7 @@ Other Flexible:
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},
+\code{\link{create_inc}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},

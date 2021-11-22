@@ -23,8 +23,10 @@
 #' A character vector to specify the colour codes for the stacked bar charts.
 #' @param percent Logical value to determine whether to show labels as
 #'   percentage signs. Defaults to `FALSE`.
-#' @param plot_title An option to override plot title.
-#' @param plot_subtitle An option to override plot subtitle.
+#' @param plot_title String. Option to override plot title.
+#' @param plot_subtitle String. Option to override plot subtitle.
+#' @param legend_lab String. Option to override legend title/label. Defaults to
+#' `NULL`, where the metric name will be populated instead.
 #' @param rank String specifying how to rank the bars. Valid inputs are:
 #'   - `"descending"` - ranked highest to lowest from top to bottom (default).
 #'   - `"ascending"` - ranked lowest to highest from top to bottom.
@@ -86,6 +88,7 @@ create_stacked <- function(data,
                            percent = FALSE,
                            plot_title = "Collaboration Hours",
                            plot_subtitle = paste("Average by", tolower(camel_clean(hrvar))),
+                           legend_lab = NULL,
                            rank = "descending",
                            xlim = NULL,
                            text_just = 0.5,
@@ -101,6 +104,11 @@ create_stacked <- function(data,
   ## Nothing happens if all present
   data %>%
     check_inputs(requirements = required_variables)
+
+  ## Handle `legend_lab`
+  if(is.null(legend_lab)){
+    legend_lab <- gsub("_", " ", metrics)
+  }
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
@@ -251,7 +259,7 @@ create_stacked <- function(data,
    scale_fill_manual(name="",
                      values = stack_colours,
                      breaks = metrics,
-                     labels = gsub("_", " ", metrics)) +
+                     labels = legend_lab) +
    coord_flip() +
    theme_wpa_basic() +
    theme(axis.line = element_blank(),
