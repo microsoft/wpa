@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -248,10 +248,10 @@
 <a href="#grouping-individuals" class="anchor"></a>Grouping individuals</h2>
 <p>The <code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code> function produces a 100% stacked bar chart, with all individuals classified in pre-defined groups according to defined ranges of collaboration hours. This function uses a Standard Person Query as input:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 <p>You can specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument, and what output to obtain (either “plot” or “table”) with the <code>return</code> argument.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span> </code></pre></div>
 <p><em>wpa</em> includes a wide range of equivalent functions, that create 100% stacked bar plots for specific metrics. These include:</p>
 <ul>
 <li><code><a href="reference/email_dist.html">email_dist()</a></code></li>
@@ -266,10 +266,10 @@
 <a href="#fizzy-drink-plots" class="anchor"></a>Fizzy Drink Plots</h2>
 <p>You can also explore distributions by using jittered (‘fizzy drink’) scatter plots. The <code><a href="reference/collaboration_fizz.html">collaboration_fizz()</a></code> function illustrates how different individuals fall in a common scale:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_fizz.html">email_fizz</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Fizzy drink plot</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="reference/email_fizz.html">email_fizz</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Fizzy drink plot</span></code></pre></div>
 <p>As usual, you to specify an HR attribute grouping variable and create a table with the <code>return</code> argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/collaboration_fizz.html">collaboration_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_fizz.html">collaboration_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
 <p>Other examples of distribution fizzy drink plots include:</p>
 <ul>
 <li><code><a href="reference/email_fizz.html">email_fizz()</a></code></li>

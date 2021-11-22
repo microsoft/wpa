@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -228,7 +228,7 @@
 <ul>
 <li>The above line of code provides a file path to the CSV file, loads it, and assigns it to <code>mt_df</code>
 </li>
-<li>You will need to update this with your own path, but remember that you must use forward slash (<code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>), not back slash (<code>\</code>)</li>
+<li>You will need to update this with your own path, but remember that you must use forward slash (<code>/</code>), not back slash (<code>\</code>)</li>
 <li>If you are NOT using RStudio Projects: run <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> to check current working directory, use <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> to set current working directory</li>
 </ul>
 <p>If you just wish to test out the examples on this post and don’t want to load in your own dataset (or you do not have access to one), you can also use the inbuilt demo dataset <code>mt_data</code>, which is essentially a Standard Meeting Query. For the subsequent examples, please substitute <code>mt_data</code> with <code>mt_df</code> if you wish to use your own data instead of the inbuilt demo dataset.</p>
@@ -239,13 +239,13 @@
 <p>To create a word cloud with subject lines, you can run the following:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span></code></pre></div>
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
-<p>The <code>keep</code> argument allows you to specify the maximum number of words to keep in the word cloud. The default value is 100, and in the above example we have changed it to 50. You can find out more from the documentation by prepending the function name with <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code>, such as <code><a href="../reference/tm_wordcloud.html">?tm_wordcloud</a></code>.</p>
+<p>The <code>keep</code> argument allows you to specify the maximum number of words to keep in the word cloud. The default value is 100, and in the above example we have changed it to 50. You can find out more from the documentation by prepending the function name with <code>?</code>, such as <code><a href="../reference/tm_wordcloud.html">?tm_wordcloud</a></code>.</p>
 <p>Note that you can also return a summary table instead by adding <code>return == "table"</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span>
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span>
 <span class="co">## # A tibble: 50 × 2</span>
 <span class="co">##    word        freq</span>
 <span class="co">##    &lt;chr&gt;      &lt;int&gt;</span>
@@ -268,12 +268,12 @@
 <p>The following line of code generates a co-occurrence network plot:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <p>Like <code><a href="../reference/tm_wordcloud.html">tm_wordcloud()</a></code>, you can also return a summary table as a data frame, instead of a plot:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">## # A tibble: 539 × 3</span>
 <span class="co">##    item1      item2          n</span>
 <span class="co">##    &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;</span>
@@ -297,18 +297,18 @@
 <p><strong>Words</strong>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p><strong>ngrams</strong>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p>Remember that there is again, an option to return a summary table:</p>
 <p><strong>ngrams</strong>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">## # A tibble: 158 × 2</span>
 <span class="co">##    word                    n</span>
 <span class="co">##    &lt;chr&gt;               &lt;int&gt;</span>
@@ -337,7 +337,7 @@
 <p>If your objective is to validate your subject lines for common exclusion terms, you can run:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/subject_validate.html">subject_validate</a></span><span class="op">(</span><span class="op">)</span> 
+<span class="va">mt_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/subject_validate.html">subject_validate</a></span><span class="op">(</span><span class="op">)</span> 
 <span class="co">## [1] "[Warning]   63  meetings ( 3.1% of  2001 ) require your attention as they contain common exclusion terms."</span></code></pre></div>
 <p>This does a check for common exlusion terms in subject lines, returning a string.</p>
 <p>To run a full report, you can do:</p>

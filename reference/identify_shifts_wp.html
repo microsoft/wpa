@@ -92,7 +92,7 @@ be compared to gauge the accuracy of existing Outlook settings." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -277,7 +277,7 @@ be compared to gauge the accuracy of existing Outlook settings.</p>
       <th>signals</th>
       <td><p>Character vector to specify which collaboration metrics to
 use:</p><ul>
-<li><p>a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code> (default)</p></li>
+<li><p>a combination of signals, such as <code>c("email", "IM")</code> (default)</p></li>
 <li><p><code>"email"</code> for emails only</p></li>
 <li><p><code>"IM"</code> for Teams messages only</p></li>
 <li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
@@ -381,29 +381,32 @@ argument:</p><ul>
 <code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return plot</span>
-<span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts_wp</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='identify_shifts_wp-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return plot - showing percentages</span>
-<span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts_wp</span><span class='op'>(</span>percent <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='img'><img src='identify_shifts_wp-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return table</span>
-<span class='va'>em_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts_wp</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 26 × 6</span>
-#&gt;    Shifts      DaySpan WeekCount PersonCount `Week%` `Person%`
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 7:00-17:00       10       786         340  0.393     0.309 
-#&gt; <span style='color: #BCBCBC;'> 2</span> 8:00-17:00        9       733         380  0.366     0.345 
-#&gt; <span style='color: #BCBCBC;'> 3</span> 0:00-23:00       23       116          91  0.058     0.082<span style='text-decoration: underline;'>7</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span> 11:00-17:00       6       105          67  0.052<span style='text-decoration: underline;'>5</span>    0.060<span style='text-decoration: underline;'>9</span>
-#&gt; <span style='color: #BCBCBC;'> 5</span> 9:00-17:00        8        73          52  0.036<span style='text-decoration: underline;'>5</span>    0.047<span style='text-decoration: underline;'>3</span>
-#&gt; <span style='color: #BCBCBC;'> 6</span> 0:00-17:00       17        60          54  0.03      0.049<span style='text-decoration: underline;'>1</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span> 6:00-17:00       11        39          28  0.019<span style='text-decoration: underline;'>5</span>    0.025<span style='text-decoration: underline;'>5</span>
-#&gt; <span style='color: #BCBCBC;'> 8</span> 8:00-16:00        8        14          14  0.007     0.012<span style='text-decoration: underline;'>7</span>
-#&gt; <span style='color: #BCBCBC;'> 9</span> 10:00-17:00       7        11          11  0.005<span style='text-decoration: underline;'>5</span>    0.01  
-#&gt; <span style='color: #BCBCBC;'>10</span> 7:00-16:00        9        11          11  0.005<span style='text-decoration: underline;'>5</span>    0.01  
-#&gt; <span style='color: #949494;'># … with 16 more rows</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Return plot</span></span>
+<span class='r-in'><span class='va'>em_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'>identify_shifts_wp</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='identify_shifts_wp-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return plot - showing percentages</span></span>
+<span class='r-in'><span class='va'>em_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'>identify_shifts_wp</span><span class='op'>(</span>percent <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='identify_shifts_wp-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return table</span></span>
+<span class='r-in'><span class='va'>em_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'>identify_shifts_wp</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 26 × 6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    Shifts      DaySpan WeekCount PersonCount `Week%` `Person%`</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 7:00-17:00       10       786         340  0.393     0.309 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 8:00-17:00        9       733         380  0.366     0.345 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 0:00-23:00       23       116          91  0.058     0.082<span style='text-decoration: underline;'>7</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 11:00-17:00       6       105          67  0.052<span style='text-decoration: underline;'>5</span>    0.060<span style='text-decoration: underline;'>9</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 9:00-17:00        8        73          52  0.036<span style='text-decoration: underline;'>5</span>    0.047<span style='text-decoration: underline;'>3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 0:00-17:00       17        60          54  0.03      0.049<span style='text-decoration: underline;'>1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 6:00-17:00       11        39          28  0.019<span style='text-decoration: underline;'>5</span>    0.025<span style='text-decoration: underline;'>5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 8:00-16:00        8        14          14  0.007     0.012<span style='text-decoration: underline;'>7</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 10:00-17:00       7        11          11  0.005<span style='text-decoration: underline;'>5</span>    0.01  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 7:00-16:00        9        11          11  0.005<span style='text-decoration: underline;'>5</span>    0.01  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 16 more rows</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -287,16 +287,16 @@ Variable name check:
 `Instant_Message_hours` is used instead of `Instant_message_hours` in the data.</code></pre>
 <p>The below functions are also helpful for exploring your data:</p>
 <ol>
-<li>Get all column names, e.g. <code><a href="https://rdrr.io/r/base/names.html">names(sq_data)</a></code>
+<li>Get all column names, e.g. <code>names(sq_data)</code>
 </li>
-<li>Check object type, e.g. <code><a href="https://rdrr.io/r/base/class.html">class(sq_data$Date)</a></code>
+<li>Check object type, e.g. <code>class(sq_data$Date)</code>
 </li>
-<li>Get summary statistics, e.g. <code><a href="https://rdrr.io/r/base/summary.html">summary(sq_data)</a></code>
+<li>Get summary statistics, e.g. <code>summary(sq_data)</code>
 </li>
-<li>Compute number of unique values, e.g. <code><a href="https://rdrr.io/r/base/length.html">length(unique(sq_data$PersonId))</a></code>
+<li>Compute number of unique values, e.g. <code>length(unique(sq_data$PersonId))</code>
 </li>
-<li>Get an overview of the data, e.g. <code><a href="https://pillar.r-lib.org/reference/glimpse.html">dplyr::glimpse(sq_data)</a></code>, or <code>skimr::skim(sq_data)</code>.</li>
-<li>View the entire dataset - <code><a href="https://rdrr.io/r/utils/View.html">View(sq_data)</a></code> (not recommended for large datasets)</li>
+<li>Get an overview of the data, e.g. <code>dplyr::glimpse(sq_data)</code>, or <code>skimr::skim(sq_data)</code>.</li>
+<li>View the entire dataset - <code>View(sq_data)</code> (not recommended for large datasets)</li>
 </ol>
 <p>Validating the structure of your data is just as important as validating the data itself. You may wish to check that your data is correctly imported into R if you observe certain anomalies, such as:</p>
 <ul>
@@ -377,23 +377,23 @@ Variable name check:
 <p>Below is an example of one might create a ‘clean’ dataset using the functions above:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> <span class="co"># You may also just load dplyr</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># You may also just load dplyr</span>
 
 <span class="va">clean_spq</span> <span class="op">&lt;-</span>
-  <span class="va">raw_wowa</span> <span class="op">%&gt;%</span> <span class="co"># Loaded in as a Ways of Working query</span>
-  <span class="fu"><a href="reference/standardise_pq.html">standardise_pq</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># Standardize variable names - not necessary if SPQ</span>
+  <span class="va">raw_wowa</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="co"># Loaded in as a Ways of Working query</span>
+  <span class="fu"><a href="reference/standardise_pq.html">standardise_pq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>  <span class="co"># Standardize variable names - not necessary if SPQ</span>
   <span class="co"># Force the use of Teams metrics - optional</span>
   <span class="fu">mutate</span><span class="op">(</span>Collaboration_hours <span class="op">=</span>
            <span class="fu">select</span><span class="op">(</span><span class="va">.</span>,
                   <span class="va">Email_hours</span>,
                   <span class="va">Meeting_hours</span>,
                   <span class="va">Unscheduled_Call_hours</span>,
-                  <span class="va">Instant_Message_hours</span><span class="op">)</span> <span class="op">%&gt;%</span>
-           <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/identify_nkw.html">identify_nkw</a></span><span class="op">(</span>collab_threshold <span class="op">=</span> <span class="fl">4.99999</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># &gt;= 5 CH</span>
-  <span class="fu"><a href="reference/identify_inactiveweeks.html">identify_inactiveweeks</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fl">2</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># 2 SD</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"08/30/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Trim start date</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"03/07/2021"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Trim end date</span>
+                  <span class="va">Instant_Message_hours</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
+           <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
+  <span class="fu"><a href="reference/identify_nkw.html">identify_nkw</a></span><span class="op">(</span>collab_threshold <span class="op">=</span> <span class="fl">4.99999</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="co"># &gt;= 5 CH</span>
+  <span class="fu"><a href="reference/identify_inactiveweeks.html">identify_inactiveweeks</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fl">2</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="co"># 2 SD</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"08/30/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="co"># Trim start date</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"03/07/2021"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="co"># Trim end date</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"11/22/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="co"># Remove certain weeks</span></code></pre></div>
 </div>
 </div>

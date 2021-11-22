@@ -92,7 +92,7 @@ bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -349,6 +349,7 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 <code><a href='create_bubble.html'>create_bubble</a>()</code>,
 <code><a href='create_dist.html'>create_dist</a>()</code>,
 <code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_inc.html'>create_inc</a>()</code>,
 <code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
 <code><a href='create_line.html'>create_line</a>()</code>,
 <code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
@@ -409,40 +410,43 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 <code><a href='one2one_trend.html'>one2one_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return plot, mode dist</span>
-<span class='fu'>one2one_freq</span><span class='op'>(</span><span class='va'>sq_data</span>,
-             hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
-             return <span class='op'>=</span> <span class='st'>"plot"</span>,
-             mode <span class='op'>=</span> <span class='st'>"dist"</span><span class='op'>)</span>
-</div><div class='img'><img src='one2one_freq-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return plot, mode sum</span>
-<span class='fu'>one2one_freq</span><span class='op'>(</span><span class='va'>sq_data</span>,
-             hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,
-             return <span class='op'>=</span> <span class='st'>"plot"</span>,
-             mode <span class='op'>=</span> <span class='st'>"sum"</span><span class='op'>)</span>
-</div><div class='img'><img src='one2one_freq-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return summary table</span>
-<span class='fu'>one2one_freq</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 × 6</span>
-#&gt;    group  `Every two month… `Monthly\n(3 - 6… `Quarterly or l… `Twice monthly o…
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> IT-Ea…            0.258              0.274           0.355              0.113
-#&gt; <span style='color: #BCBCBC;'> 2</span> Finan…            0.068<span style='text-decoration: underline;'>5</span>             0.479           0.288              0.164
-#&gt; <span style='color: #BCBCBC;'> 3</span> Human…            0.042<span style='text-decoration: underline;'>3</span>             0.239           0.282              0.437
-#&gt; <span style='color: #BCBCBC;'> 4</span> Finan…            0.28               0.28            0.267              0.173
-#&gt; <span style='color: #BCBCBC;'> 5</span> IT-Co…            0.191              0.279           0.25               0.279
-#&gt; <span style='color: #BCBCBC;'> 6</span> G&amp;A E…            0.2                0.185           0.231              0.385
-#&gt; <span style='color: #BCBCBC;'> 7</span> Facil…            0.208              0.458           0.194              0.139
-#&gt; <span style='color: #BCBCBC;'> 8</span> G&amp;A S…            0.158              0.237           0.184              0.421
-#&gt; <span style='color: #BCBCBC;'> 9</span> Biz D…            0.307              0.347           0.173              0.173
-#&gt; <span style='color: #BCBCBC;'>10</span> Finan…            0.160              0.444           0.148              0.247
-#&gt; <span style='color: #BCBCBC;'>11</span> Custo…            0.115              0.213           0.148              0.525
-#&gt; <span style='color: #BCBCBC;'>12</span> G&amp;A C…            0.105              0.316           0.123              0.456
-#&gt; <span style='color: #BCBCBC;'>13</span> Finan…            0.265              0.441           0.088<span style='text-decoration: underline;'>2</span>             0.206
-#&gt; <span style='color: #BCBCBC;'>14</span> Inven…            0.283              0.433           0.066<span style='text-decoration: underline;'>7</span>             0.217
-#&gt; <span style='color: #BCBCBC;'>15</span> Finan…            0.114              0.457           0.057<span style='text-decoration: underline;'>1</span>             0.371
-#&gt; <span style='color: #949494;'># … with 1 more variable: Employee_Count &lt;int&gt;</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Return plot, mode dist</span></span>
+<span class='r-in'><span class='fu'>one2one_freq</span><span class='op'>(</span><span class='va'>sq_data</span>,</span>
+<span class='r-in'>             hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,</span>
+<span class='r-in'>             return <span class='op'>=</span> <span class='st'>"plot"</span>,</span>
+<span class='r-in'>             mode <span class='op'>=</span> <span class='st'>"dist"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='one2one_freq-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return plot, mode sum</span></span>
+<span class='r-in'><span class='fu'>one2one_freq</span><span class='op'>(</span><span class='va'>sq_data</span>,</span>
+<span class='r-in'>             hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>,</span>
+<span class='r-in'>             return <span class='op'>=</span> <span class='st'>"plot"</span>,</span>
+<span class='r-in'>             mode <span class='op'>=</span> <span class='st'>"sum"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='one2one_freq-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return summary table</span></span>
+<span class='r-in'><span class='fu'>one2one_freq</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 15 × 6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    group  `Every two month… `Monthly\n(3 - 6… `Quarterly or l… `Twice monthly o…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> IT-Ea…            0.258              0.274           0.355              0.113</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> Finan…            0.068<span style='text-decoration: underline;'>5</span>             0.479           0.288              0.164</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> Human…            0.042<span style='text-decoration: underline;'>3</span>             0.239           0.282              0.437</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> Finan…            0.28               0.28            0.267              0.173</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> IT-Co…            0.191              0.279           0.25               0.279</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> G&amp;A E…            0.2                0.185           0.231              0.385</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> Facil…            0.208              0.458           0.194              0.139</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> G&amp;A S…            0.158              0.237           0.184              0.421</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> Biz D…            0.307              0.347           0.173              0.173</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> Finan…            0.160              0.444           0.148              0.247</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> Custo…            0.115              0.213           0.148              0.525</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> G&amp;A C…            0.105              0.316           0.123              0.456</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> Finan…            0.265              0.441           0.088<span style='text-decoration: underline;'>2</span>             0.206</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> Inven…            0.283              0.433           0.066<span style='text-decoration: underline;'>7</span>             0.217</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> Finan…            0.114              0.457           0.057<span style='text-decoration: underline;'>1</span>             0.371</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 1 more variable: Employee_Count &lt;int&gt;</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

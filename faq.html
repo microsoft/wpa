@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -334,9 +334,9 @@
 <li>Open the <code>Rprofile</code> file with your preferred text editor.</li>
 <li>Save a copy of the file in the same directory and name it <code>"RProfileBackup.txt"</code>.</li>
 <li>Reopen the <code>Rprofile</code> file with your preferred text editor.</li>
-<li>Replace the string <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("R_USER")</a></code> with the string <code>"C:/R"</code>
+<li>Replace the string <code>Sys.getenv("R_USER")</code> with the string <code>"C:/R"</code>
 <ul>
-<li>Ensure you are replacing the string <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("R_USER")</a></code> and NOT the string <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("R_LIBS_USER")</a></code>
+<li>Ensure you are replacing the string <code>Sys.getenv("R_USER")</code> and NOT the string <code>Sys.getenv("R_LIBS_USER")</code>
 </li>
 <li>The string <code>"C:/R"</code> should align with the directory where you created the folder in step 3a</li>
 <li>Reference the <code>RProfileBackup.txt</code> as a backup if OneDrive uploads the package files after installation</li>
@@ -349,7 +349,7 @@
 <p>You should then be able to install the <strong>wpa</strong> library by opening RStudio and running the following code:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Check if remotes is installed, if not then install it</span>
-<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"remotes"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"remotes"</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"microsoft/wpa"</span>, upgrade <span class="op">=</span> <span class="st">"never"</span><span class="op">)</span></code></pre></div>
@@ -391,7 +391,7 @@
 <p>We recommend using <strong>dplyr</strong> (which is loaded in as part of <strong>tidyverse</strong>) for data manipulation. To filter down to a specific date range in a Person Query, you can run:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> <span class="co"># Or load dplyr</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># Or load dplyr</span>
 
 <span class="co"># Read Standard Person Query from local directory</span>
 <span class="co"># Assign it to `raw_spq`</span>
@@ -399,16 +399,16 @@
 
 <span class="co"># Assign filtered data frame to `clean_spq`</span>
 <span class="va">clean_spq</span> <span class="op">&lt;-</span>
-    <span class="va">raw_spq</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"08/30/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="va">raw_spq</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"08/30/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
     <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"12/19/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The above example filters the date range from the week commencing 30th of August 2020 to the week ending 19th of November 2020 inclusive. Note that the first date is a Sunday (beginning of the week) and the second date is a Saturday (end of the week). If you query is run by <strong>day</strong>, you should specify the <em>after</em> filter as the exact last day, rather than the Saturday of the week.</p>
 <p>In some scenarios, you may also want to exclude a particular week from the data. You can use a similar approach:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">clean_spq2</span> <span class="op">&lt;-</span>
-    <span class="va">clean_spq</span> <span class="op">%&gt;%</span>
+    <span class="va">clean_spq</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
     <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"11/22/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>The above line of code excludes the week of 22nd of November 2020, using the operator <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code> to denote <em>not equal to</em>. Conversely, you can isolate that single week by replacing <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code> with <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>.</p>
+<p>The above line of code excludes the week of 22nd of November 2020, using the operator <code>!=</code> to denote <em>not equal to</em>. Conversely, you can isolate that single week by replacing <code>!=</code> with <code>==</code>.</p>
 </div>
 <div id="how-do-i-create-a-custom-hr-variable" class="section level3">
 <h3 class="hasAnchor">
@@ -417,10 +417,10 @@
 <p>Here is an example of how to create a categorical variable (<code>N_DirectReports_NET</code>) with a numeric variable representing the number of direct reports, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> .</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> <span class="co"># Or load dplyr</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># Or load dplyr</span>
 
 <span class="va">clean_spq_with_new_var</span> <span class="op">&lt;-</span>
-  <span class="va">clean_spq</span> <span class="op">%&gt;%</span> <span class="co"># Standard Person Query</span>
+  <span class="va">clean_spq</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="co"># Standard Person Query</span>
   <span class="fu">mutate</span><span class="op">(</span>N_DirectReports_NET <span class="op">=</span>
          <span class="fu">case_when</span><span class="op">(</span><span class="va">NumberofDirectReports</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"0"</span>,
                    <span class="va">NumberofDirectReports</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"1"</span>,
@@ -429,10 +429,10 @@
                    <span class="va">NumberofDirectReports</span> <span class="op">&lt;=</span> <span class="fl">20</span> <span class="op">~</span> <span class="st">"Up to 20"</span>,
                    <span class="va">NumberofDirectReports</span> <span class="op">&gt;=</span> <span class="fl">21</span> <span class="op">~</span> <span class="st">"21 +"</span>,
                    <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Not classified"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> creates a new column, whereas <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> runs an if-else operation to classify numeric ranges to the right hand side of the <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> symbol. When the expression on the left hand side evaluates to <code>TRUE</code>, the value on the right hand side is assigned to the new column. At the end of the code, you will see that anything that doesn’t get classified gets an ‘error handling’ value. If a value ends up as “Not classified”, you should check whether there may be gaps in your <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> chunk that is not capturing all the values.</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> creates a new column, whereas <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> runs an if-else operation to classify numeric ranges to the right hand side of the <code>~</code> symbol. When the expression on the left hand side evaluates to <code>TRUE</code>, the value on the right hand side is assigned to the new column. At the end of the code, you will see that anything that doesn’t get classified gets an ‘error handling’ value. If a value ends up as “Not classified”, you should check whether there may be gaps in your <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> chunk that is not capturing all the values.</p>
 <p>Once you have created this new variable and checked that the classifications are correct, you can further your analysis by using it as an HR attribute, such as:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">clean_spq_with_new_var</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">clean_spq_with_new_var</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
     <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"N_DirectReports_NET"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="how-do-i-customize-a-visual-generated-from-a-wpa-function" class="section level3">
@@ -479,10 +479,10 @@
 <p>For instance, the following code would yield a stacked bar plot with no ordering applied:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 
 <span class="co">#### NO REORDERING ####</span>
-<span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<span class="va">sq_data</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="reference/create_dist.html">create_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,
               metric <span class="op">=</span> <span class="st">"Email_hours"</span><span class="op">)</span></code></pre></div>
 <p>To apply an ordering manually, the best way is to convert the HR attribute into a <strong>factor</strong> variable, where you can specify the <em>levels</em>. You can understand <em>levels</em> as a way to specify the order in which the values of your HR attribute should be ranked. The following code will yield an ordered stacked bar plot:</p>
@@ -495,15 +495,15 @@
     <span class="st">"Manager"</span>,
     <span class="st">"Senior IC"</span>,
     <span class="st">"Junior IC"</span>,
-    <span class="st">"Support"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="st">"Support"</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Reverse if necessary</span>
 
 
-<span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<span class="va">sq_data</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu">mutate</span><span class="op">(</span>LevelDesignation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>
     <span class="va">LevelDesignation</span>, 
     levels <span class="op">=</span> <span class="va">ld_order</span> <span class="co"># Specify order</span>
-  <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="reference/create_dist.html">create_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,
               metric <span class="op">=</span> <span class="st">"Email_hours"</span><span class="op">)</span></code></pre></div>
 <p>Note that the <code>levels</code> argument within <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> accepts a character vector which matches the values in your HR attribute.</p>
@@ -519,7 +519,7 @@
 </ul>
 <p>Only visuals generated from the package of the <code>ggplot</code> object type can be embedded within Power BI. In most cases, what this means is that the visual will only display if the value passed to the <code>return</code> argument in your function is <code>"plot"</code>. For instance, the following is code returns a valid object:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_dist.html">email_dist</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="reference/email_dist.html">email_dist</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p>Note that there are some exceptions to the <code>"plot"</code> rule, as some functions return a HTML widget, such as <code><a href="reference/create_sankey.html">create_sankey()</a></code>. You will also not be able to return data frames, HTML reports, or DataTables objects (the output of <code><a href="reference/create_dt.html">create_dt()</a></code>).</p>
 <p>The documentation <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals#enable-r-visuals-in-power-bi-desktop">here</a> provides more details on the limitations of the R visuals.</p>
 <p>Here are a series of steps, slightly abridged, taken from the Power BI documentation, last updated July 6th 2021:</p>
@@ -546,7 +546,7 @@
 <p>A minimal example that you could try on your R script editor is:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
-<span class="va">dataset</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/email_summary.html">email_sum</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">dataset</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="reference/email_summary.html">email_sum</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="contributing-and-engaging" class="section level2">

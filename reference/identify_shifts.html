@@ -92,7 +92,7 @@ WorkingStartTimeSetInOutlook and WorkingEndTimeSetInOutlook." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -326,17 +326,19 @@ argument:</p><ul>
 <code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return plot</span>
-<span class='va'>dv_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='identify_shifts-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return summary table</span>
-<span class='va'>dv_data</span> <span class='op'>%&gt;%</span> <span class='fu'>identify_shifts</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 3</span>
-#&gt;   Shifts      WeekCount PersonCount
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 07:00-23:00       832          64
-#&gt; <span style='color: #BCBCBC;'>2</span> 06:00-18:00        45           5</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Return plot</span></span>
+<span class='r-in'><span class='va'>dv_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'>identify_shifts</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='identify_shifts-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return summary table</span></span>
+<span class='r-in'><span class='va'>dv_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'>identify_shifts</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 2 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Shifts      WeekCount PersonCount</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> 07:00-23:00       832          64</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> 06:00-18:00        45           5</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

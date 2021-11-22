@@ -89,7 +89,7 @@ when provided a standard query in the input." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -296,13 +296,14 @@ when provided a standard query in the input.</p>
 <code><a href='meetingtype_summary.html'>meetingtype_summary</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>meeting_skim</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>There are 134741 total meeting hours across the analysis population.</span>
-#&gt; <span class='message'> &gt;&gt;&gt; 94077 are low quality (70%) </span>
-#&gt; <span class='message'> &gt;&gt;&gt; 62409 are redundant (46%) </span>
-#&gt; <span class='message'> &gt;&gt;&gt; 53777 are conflicting (40%) </span>
-#&gt; <span class='message'> &gt;&gt;&gt; 7457 are multitasking. (6%)</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>meeting_skim</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> There are 134741 total meeting hours across the analysis population.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>  &gt;&gt;&gt; 94077 are low quality (70%) </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>  &gt;&gt;&gt; 62409 are redundant (46%) </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>  &gt;&gt;&gt; 53777 are conflicting (40%) </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>  &gt;&gt;&gt; 7457 are multitasking. (6%)</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

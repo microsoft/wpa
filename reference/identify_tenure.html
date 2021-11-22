@@ -92,7 +92,7 @@ but also have flexibility to select a specific date, e.g. &quot;1/1/2020&quot;."
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -345,17 +345,18 @@ lying outside the threshold.</p></li>
 <code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='co'># Add HireDate to sq_data</span>
-<span class='va'>sq_data2</span> <span class='op'>&lt;-</span>
-  <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>HireDate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"1/1/2015"</span>, format <span class='op'>=</span> <span class='st'>"%m/%d/%Y"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>identify_tenure</span><span class='op'>(</span><span class='va'>sq_data2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>The mean tenure is 5.1 years.</span>
-#&gt; <span class='message'>The max tenure is 5.1.</span>
-#&gt; <span class='message'>There are 0 employees with a tenure greater than 40 years.</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Add HireDate to sq_data</span></span>
+<span class='r-in'><span class='va'>sq_data2</span> <span class='op'>&lt;-</span></span>
+<span class='r-in'>  <span class='va'>sq_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>HireDate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"1/1/2015"</span>, format <span class='op'>=</span> <span class='st'>"%m/%d/%Y"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>identify_tenure</span><span class='op'>(</span><span class='va'>sq_data2</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The mean tenure is 5.1 years.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The max tenure is 5.1.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> There are 0 employees with a tenure greater than 40 years.</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

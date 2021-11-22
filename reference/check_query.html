@@ -90,7 +90,7 @@ identified, etc." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -326,27 +326,28 @@ query. When run, this prints diagnostic data to the R console.</p>
 <code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>check_query</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>The data used is a Person Query</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>There are 1034 employees in this dataset.</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>Date ranges from 2019-11-03 to 2020-01-26.</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>Unique identifiers include: `Domain` is CONTOSO.COM; `IsInternal` is TRUE; `Region` is US; `TimeZone` is Pacific Standard Time</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>There are 4 (estimated) HR attributes in the data:</span>
-#&gt; <span class='message'>`FunctionType`, `LevelDesignation`, `Organization`, `IsActive`</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>There are 1034 active employees out of all in the dataset.</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>Variable name check:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>`Collaboration_hours` is used instead of `Collaboration_hrs` in the data.</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>`Instant_Message_hours` is used instead of `Instant_message_hours` in the data.</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>check_query</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The data used is a Person Query</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> There are 1034 employees in this dataset.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Date ranges from 2019-11-03 to 2020-01-26.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Unique identifiers include: `Domain` is CONTOSO.COM; `IsInternal` is TRUE; `Region` is US; `TimeZone` is Pacific Standard Time</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> There are 4 (estimated) HR attributes in the data:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> `FunctionType`, `LevelDesignation`, `Organization`, `IsActive`</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> There are 1034 active employees out of all in the dataset.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Variable name check:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> `Collaboration_hours` is used instead of `Collaboration_hrs` in the data.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> `Instant_Message_hours` is used instead of `Instant_message_hours` in the data.</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

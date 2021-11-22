@@ -93,7 +93,7 @@ argument." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -312,24 +312,25 @@ the metric, and the corresponding z-score.</p>
 <code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>identify_outlier</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13 × 3</span>
-#&gt;    Date       Collaboration_hours  zscore
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 1/12/2020                 22.6  1.02  
-#&gt; <span style='color: #BCBCBC;'> 2</span> 1/19/2020                 22.8  1.09  
-#&gt; <span style='color: #BCBCBC;'> 3</span> 1/26/2020                 20.0  0.037<span style='text-decoration: underline;'>7</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span> 1/5/2020                  17.5 -<span style='color: #BB0000;'>0.932</span> 
-#&gt; <span style='color: #BCBCBC;'> 5</span> 11/10/2019                21.9  0.766 
-#&gt; <span style='color: #BCBCBC;'> 6</span> 11/17/2019                20.2  0.112 
-#&gt; <span style='color: #BCBCBC;'> 7</span> 11/24/2019                19.6 -<span style='color: #BB0000;'>0.127</span> 
-#&gt; <span style='color: #BCBCBC;'> 8</span> 11/3/2019                 22.3  0.917 
-#&gt; <span style='color: #BCBCBC;'> 9</span> 12/1/2019                 12.8 -<span style='color: #BB0000;'>2.69</span>  
-#&gt; <span style='color: #BCBCBC;'>10</span> 12/15/2019                20.3  0.143 
-#&gt; <span style='color: #BCBCBC;'>11</span> 12/22/2019                20.5  0.214 
-#&gt; <span style='color: #BCBCBC;'>12</span> 12/29/2019                19.4 -<span style='color: #BB0000;'>0.190</span> 
-#&gt; <span style='color: #BCBCBC;'>13</span> 12/8/2019                 19.0 -<span style='color: #BB0000;'>0.359</span> </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>identify_outlier</span><span class='op'>(</span><span class='va'>sq_data</span>, metric <span class='op'>=</span> <span class='st'>"Collaboration_hours"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 13 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    Date       Collaboration_hours  zscore</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 1/12/2020                 22.6  1.02  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 1/19/2020                 22.8  1.09  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 1/26/2020                 20.0  0.037<span style='text-decoration: underline;'>7</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 1/5/2020                  17.5 -<span style='color: #BB0000;'>0.932</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 11/10/2019                21.9  0.766 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 11/17/2019                20.2  0.112 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 11/24/2019                19.6 -<span style='color: #BB0000;'>0.127</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 11/3/2019                 22.3  0.917 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 12/1/2019                 12.8 -<span style='color: #BB0000;'>2.69</span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 12/15/2019                20.3  0.143 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> 12/22/2019                20.5  0.214 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> 12/29/2019                19.4 -<span style='color: #BB0000;'>0.190</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> 12/8/2019                 19.0 -<span style='color: #BB0000;'>0.359</span> </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

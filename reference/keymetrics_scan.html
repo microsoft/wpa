@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -322,6 +322,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <code><a href='create_bubble.html'>create_bubble</a>()</code>,
 <code><a href='create_dist.html'>create_dist</a>()</code>,
 <code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_inc.html'>create_inc</a>()</code>,
 <code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
 <code><a href='create_line.html'>create_line</a>()</code>,
 <code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
@@ -373,34 +374,36 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <code><a href='workpatterns_rank.html'>workpatterns_rank</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Heatmap plot is returned by default</span>
-<span class='fu'>keymetrics_scan</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
-</div><div class='img'><img src='keymetrics_scan-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return summary table</span>
-<span class='fu'>keymetrics_scan</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 19 × 7</span>
-#&gt;    variable           Director Executive `Junior IC` Manager `Senior IC` Support
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Workweek_span       43.7       43.4        41.8    42.9        42.8    41.1  
-#&gt; <span style='color: #BCBCBC;'> 2</span> Collaboration_hou…  18.9       19.0        19.6    21.5        20.1    18.8  
-#&gt; <span style='color: #BCBCBC;'> 3</span> After_hours_colla…   3.07       2.87        2.90    3.17        2.95    2.71 
-#&gt; <span style='color: #BCBCBC;'> 4</span> Meetings            10.1       12.1        10.8    12.1        11.1    10.4  
-#&gt; <span style='color: #BCBCBC;'> 5</span> Meeting_hours        9.22      10.6         9.89   10.9        10.2     9.47 
-#&gt; <span style='color: #BCBCBC;'> 6</span> After_hours_meeti…   1.20       1.23        1.38    1.51        1.40    1.24 
-#&gt; <span style='color: #BCBCBC;'> 7</span> Low_quality_meeti…   7.57       7.69        7.82    7.16        8.15    6.28 
-#&gt; <span style='color: #BCBCBC;'> 8</span> Meeting_hours_wit…   0.184      0.202       0.278   0.262       0.307   0.274
-#&gt; <span style='color: #BCBCBC;'> 9</span> Meeting_hours_wit…   0.255      0.25        6.54    3.85        6.74    6.21 
-#&gt; <span style='color: #BCBCBC;'>10</span> Emails_sent         52.3       46.3        42.9    46.6        43.3    41.8  
-#&gt; <span style='color: #BCBCBC;'>11</span> Email_hours          9.70       8.36        9.73   10.7         9.94    9.37 
-#&gt; <span style='color: #BCBCBC;'>12</span> After_hours_email…   1.86       1.64        1.53    1.66        1.56    1.47 
-#&gt; <span style='color: #BCBCBC;'>13</span> Generated_workloa…   9.24       8.07        9.38   10.4         9.58    8.99 
-#&gt; <span style='color: #BCBCBC;'>14</span> Total_focus_hours   30.5       28.0        30.0    28.6        29.4    30.3  
-#&gt; <span style='color: #BCBCBC;'>15</span> Internal_network_…   4.71       7.45       49.5    64.3        50.6    46.9  
-#&gt; <span style='color: #BCBCBC;'>16</span> Networking_outsid…   0.015<span style='text-decoration: underline;'>8</span>     0.295       4.48    5.41        4.62    4.27 
-#&gt; <span style='color: #BCBCBC;'>17</span> External_network_…   7.20       5.36        5.79    5.83        5.82    5.19 
-#&gt; <span style='color: #BCBCBC;'>18</span> Networking_outsid…   3.56       2.62        3.18    3.17        3.26    2.81 
-#&gt; <span style='color: #BCBCBC;'>19</span> Employee_Count      68          6         105     333         103     419    </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Heatmap plot is returned by default</span></span>
+<span class='r-in'><span class='fu'>keymetrics_scan</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='keymetrics_scan-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return summary table</span></span>
+<span class='r-in'><span class='fu'>keymetrics_scan</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 19 × 7</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    variable           Director Executive `Junior IC` Manager `Senior IC` Support</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> Workweek_span       43.7       43.4        41.8    42.9        42.8    41.1  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> Collaboration_hou…  18.9       19.0        19.6    21.5        20.1    18.8  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> After_hours_colla…   3.07       2.87        2.90    3.17        2.95    2.71 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> Meetings            10.1       12.1        10.8    12.1        11.1    10.4  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> Meeting_hours        9.22      10.6         9.89   10.9        10.2     9.47 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> After_hours_meeti…   1.20       1.23        1.38    1.51        1.40    1.24 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> Low_quality_meeti…   7.57       7.69        7.82    7.16        8.15    6.28 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> Meeting_hours_wit…   0.184      0.202       0.278   0.262       0.307   0.274</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> Meeting_hours_wit…   0.255      0.25        6.54    3.85        6.74    6.21 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> Emails_sent         52.3       46.3        42.9    46.6        43.3    41.8  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> Email_hours          9.70       8.36        9.73   10.7         9.94    9.37 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> After_hours_email…   1.86       1.64        1.53    1.66        1.56    1.47 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> Generated_workloa…   9.24       8.07        9.38   10.4         9.58    8.99 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> Total_focus_hours   30.5       28.0        30.0    28.6        29.4    30.3  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> Internal_network_…   4.71       7.45       49.5    64.3        50.6    46.9  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>16</span> Networking_outsid…   0.015<span style='text-decoration: underline;'>8</span>     0.295       4.48    5.41        4.62    4.27 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>17</span> External_network_…   7.20       5.36        5.79    5.83        5.82    5.19 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>18</span> Networking_outsid…   3.56       2.62        3.18    3.17        3.26    2.81 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>19</span> Employee_Count      68          6         105     333         103     419    </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

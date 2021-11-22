@@ -92,7 +92,7 @@ Returns a character string by default." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -324,19 +324,21 @@ that your query contains a metric with the exact same name.</p>
 <code><a href='validation_report.html'>validation_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>flag_ch_ratio</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>[Pass] The ratio of after-hours collaboration to total collaboration hours is outside the expected threshold for only 0 employees (0 % of the total).</span>
-#&gt; <span class='message'>- 0 employees (0 %) have an unusually high after-hours collaboration (relative to weekly collaboration hours)</span>
-#&gt; <span class='message'>- 0 employees (0 %) have an unusually low after-hours collaboration</span></div><div class='input'>
-
-<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>PersonId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Alice"</span>, <span class='st'>"Bob"</span><span class='op'>)</span>,
-           Collaboration_hours <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='fl'>0.5</span><span class='op'>)</span>,
-           After_hours_collaboration_hours <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>flag_ch_ratio</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>[Warning]  The ratio of after-hours collaboration to total collaboration hours is outside the expected threshold for 2 employees (100 % of the total).</span>
-#&gt; <span class='message'>- 1 employees (50 %) have an unusually high after-hours collaboration (relative to weekly collaboration hours)</span>
-#&gt; <span class='message'>- 1 employees (50 %) have an unusually low after-hours collaboration</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>flag_ch_ratio</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> [Pass] The ratio of after-hours collaboration to total collaboration hours is outside the expected threshold for only 0 employees (0 % of the total).</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> - 0 employees (0 %) have an unusually high after-hours collaboration (relative to weekly collaboration hours)</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> - 0 employees (0 %) have an unusually low after-hours collaboration</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>PersonId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Alice"</span>, <span class='st'>"Bob"</span><span class='op'>)</span>,</span>
+<span class='r-in'>           Collaboration_hours <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='fl'>0.5</span><span class='op'>)</span>,</span>
+<span class='r-in'>           After_hours_collaboration_hours <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'>flag_ch_ratio</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> [Warning]  The ratio of after-hours collaboration to total collaboration hours is outside the expected threshold for 2 employees (100 % of the total).</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> - 1 employees (50 %) have an unusually high after-hours collaboration (relative to weekly collaboration hours)</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> - 1 employees (50 %) have an unusually low after-hours collaboration</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

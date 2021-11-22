@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -193,7 +193,7 @@
       <h1 data-toc-skip>Introduction to {wpa}</h1>
                         <h4 class="author">Martin Chan</h4>
             
-            <h4 class="date">2021-10-29</h4>
+            <h4 class="date">2021-11-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/master/vignettes/intro-to-wpa.Rmd"><code>vignettes/intro-to-wpa.Rmd</code></a></small>
       <div class="hidden name"><code>intro-to-wpa.Rmd</code></div>
@@ -209,7 +209,7 @@
 <div id="setting-up" class="section level3">
 <h3 class="hasAnchor">
 <a href="#setting-up" class="anchor"></a>Setting up</h3>
-<p>To start off using <strong>wpa</strong>, you’ll have to load it by running <code><a href="https://github.com/microsoft/wpa/">library(wpa)</a></code>. For the purpose of our examples, let’s also load <strong>dplyr</strong> as a component package of <strong>tidyverse</strong> (alternatively, you can just run <code><a href="https://rdrr.io/r/base/library.html">library(tidyverse)</a></code>:</p>
+<p>To start off using <strong>wpa</strong>, you’ll have to load it by running <code><a href="https://github.com/microsoft/wpa/">library(wpa)</a></code>. For the purpose of our examples, let’s also load <strong>dplyr</strong> as a component package of <strong>tidyverse</strong> (alternatively, you can just run <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
@@ -218,8 +218,8 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"sq_data"</span><span class="op">)</span> <span class="co"># Standard Query data</span>
 
 <span class="co"># Check what the first ten columns look like</span>
-<span class="va">sq_data</span> <span class="op">%&gt;%</span>
-  <span class="va">.</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op">%&gt;%</span>
+<span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+  <span class="va">.</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 13,442</span>
 <span class="co">#&gt; Columns: 10</span>
@@ -244,15 +244,15 @@
 <a href="#collaboration-summary" class="anchor"></a>Collaboration Summary</h3>
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
 <p>By changing the <code>hrvar()</code> argument, you can change the data being shown easily:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function also comes with an option to return summary tables, rather than plots. Just specify “table” in the <code>return</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 5</span>
 <span class="co">#&gt;   group     Meeting_hours Email_hours Total Employee_Count</span>
 <span class="co">#&gt;   &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;int&gt;</span>
@@ -276,11 +276,11 @@
 <p>And here are what the outputs look like.</p>
 <p>Heatmap:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
 <p>Summary table:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 19 × 16</span>
 <span class="co">#&gt;    variable             `Biz Dev` `Customer Servic… Facilities `Finance-Corpora…</span>
 <span class="co">#&gt;    &lt;fct&gt;                    &lt;dbl&gt;             &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;</span>
@@ -325,11 +325,11 @@
 <p>And here are what the outputs look like, for <code><a href="../reference/meeting_summary.html">meeting_summary()</a></code>.</p>
 <p>Heatmap:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
 <p>Summary table:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 15 × 3</span>
 <span class="co">#&gt;    group                Meeting_hours     n</span>
 <span class="co">#&gt;    &lt;chr&gt;                        &lt;dbl&gt; &lt;int&gt;</span>
@@ -354,11 +354,11 @@
 <a href="#manager-relationship-2x2-matrix" class="anchor"></a>Manager Relationship 2x2 Matrix</h3>
 <p>The <code><a href="../reference/mgrrel_matrix.html">mgrrel_matrix()</a></code> function from {wpa} enables you to plot a 2 by 2 matrix straight from the Standard Query data, which is returned as a ggplot object:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
 <p>By changing the <code>return</code> argument, you can also return a <strong>summary table</strong>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 20 × 4</span>
 <span class="co">#&gt;    mgrRel         LevelDesignation     n   perc</span>
 <span class="co">#&gt;    &lt;fct&gt;          &lt;chr&gt;            &lt;int&gt;  &lt;dbl&gt;</span>
@@ -384,7 +384,7 @@
 <span class="co">#&gt; 20 Under-coached  Support             52 0.124</span></code></pre></div>
 <p>Alternatively, you can return the input data that is used to create the plot:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"chartdata"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"chartdata"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 20 × 10</span>
 <span class="co">#&gt;    LevelDesignation mgr1on1  coattendande     n   perc   xmin  xmax   ymin  ymax</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -415,11 +415,11 @@
 <a href="#distribution-of-time-spent-with-manager" class="anchor"></a>Distribution of Time spent with Manager</h3>
 <p>The <code><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist()</a></code> function generates the distribution of meeting co-attendance rate of staff with managers.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-13-1.png" width="768"></p>
 <p>A table can be generated:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 5</span>
 <span class="co">#&gt;   group     `0 - 25%` `25 - 50%` `50 - 75%` `75% +`</span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;</span>
@@ -436,21 +436,21 @@
 <a href="#customizing-plot-outputs" class="anchor"></a>Customizing plot outputs</h3>
 <p>With a few rare exceptions such as <code><a href="../reference/track_HR_change.html">track_HR_change()</a></code>, the majority of plot outputs returned by <strong>wpa</strong> functions are ggplot outputs. What this means is that there is a lot of flexibility in adding or overriding visual elements in the plots. For instance, you can take the following ‘fizzy drink’ (jittered scatter) plot:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-15-1.png" width="768"></p>
 <p>… and add custom titles, subtitles, and flip the axes by adding ggplot layers:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> <span class="co"># Requires ggplot2 for customizations</span>
 
-<span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a custom title"</span>,
        subtitle <span class="op">=</span> <span class="st">"This is a custom sub-title"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span>
 <span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
-<p>Note that the “pipe” syntax changes from <code><a href="../reference/%&gt;%.html">%&gt;%</a></code> to <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> once you are manipulating a ggplot output, which will return an error if not used correctly.</p>
+<p>Note that the “pipe” syntax changes from <code>%&gt;%</code> to <code>+</code> once you are manipulating a ggplot output, which will return an error if not used correctly.</p>
 <p>Adding customized elements may ‘break’ the visualization, so please exercise caution when doing so.</p>
 <p>For more information on ggplot, please visit <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a>.</p>
 <hr>
@@ -460,7 +460,7 @@
 <a href="#getting-a-quick-overview-of-standard-person-query-data" class="anchor"></a>Getting a quick overview of Standard Person Query data</h3>
 <p>The <code><a href="../reference/collaboration_report.html">collaboration_report()</a></code> function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/collaboration_report.html">collaboration_report</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_report.html">collaboration_report</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Running the function will open up a HTML report in your browser, summarising the key collaboration metrics and plots of the Standard Person Query. You can manually save this report, or only have it open as an ad-hoc reference document.</p>
 <hr>
 </div>

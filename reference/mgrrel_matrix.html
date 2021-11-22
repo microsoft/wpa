@@ -90,7 +90,7 @@ table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -341,6 +341,7 @@ the following columns:</p><ul>
 <code><a href='create_bubble.html'>create_bubble</a>()</code>,
 <code><a href='create_dist.html'>create_dist</a>()</code>,
 <code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_inc.html'>create_inc</a>()</code>,
 <code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
 <code><a href='create_line.html'>create_line</a>()</code>,
 <code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
@@ -404,29 +405,32 @@ the following columns:</p><ul>
     <p>Lucas Hogner <a href='mailto:lucas.hogner@microsoft.com'>lucas.hogner@microsoft.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return matrix</span>
-<span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span>
-</div><div class='img'><img src='mgrrel_matrix-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return stacked bar plot</span>
-<span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
-</div><div class='img'><img src='mgrrel_matrix-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Visualize coaching style types</span>
-<span class='co'># Ensure dplyr is loaded</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-
-<span class='co'># Extract PersonId and Coaching Type</span>
-<span class='va'>match_df</span> <span class='op'>&lt;-</span>
-  <span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mgrrel_matrix</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>PersonId</span>, <span class='va'>Type</span><span class='op'>)</span>
-
-<span class='co'># Join and visualize baseline</span>
-<span class='va'>sq_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>match_df</span>, by <span class='op'>=</span> <span class='st'>"PersonId"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='keymetrics_scan.html'>keymetrics_scan</a></span><span class='op'>(</span>hrvar <span class='op'>=</span> <span class='st'>"Type"</span>,
-                  return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</div><div class='img'><img src='mgrrel_matrix-3.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Return matrix</span></span>
+<span class='r-in'><span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='mgrrel_matrix-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return stacked bar plot</span></span>
+<span class='r-in'><span class='fu'>mgrrel_matrix</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='mgrrel_matrix-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Visualize coaching style types</span></span>
+<span class='r-in'><span class='co'># Ensure dplyr is loaded</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Extract PersonId and Coaching Type</span></span>
+<span class='r-in'><span class='va'>match_df</span> <span class='op'>&lt;-</span></span>
+<span class='r-in'>  <span class='va'>sq_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'>mgrrel_matrix</span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>PersonId</span>, <span class='va'>Type</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Join and visualize baseline</span></span>
+<span class='r-in'><span class='va'>sq_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>match_df</span>, by <span class='op'>=</span> <span class='st'>"PersonId"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='keymetrics_scan.html'>keymetrics_scan</a></span><span class='op'>(</span>hrvar <span class='op'>=</span> <span class='st'>"Type"</span>,</span>
+<span class='r-in'>                  return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='mgrrel_matrix-3.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

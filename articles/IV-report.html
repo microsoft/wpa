@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -454,8 +454,8 @@
 <p><code>bins</code> allows you to define the amount of same-sized bins the data is separated into.</p>
 <p>Using the <code>sq_data</code> dataset, you can have a look at the predictors focus hours, email hours and meeting hours in correlation to collaboration hours:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">12</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">12</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/create_IV.html">create_IV</a></span><span class="op">(</span>
         outcome <span class="op">=</span> <span class="st">"X"</span>,
         predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Email_hours"</span>, <span class="st">"Meeting_hours"</span>, <span class="st">"Total_focus_hours"</span><span class="op">)</span>,
@@ -464,8 +464,8 @@
 <p>You may see, that all three are very strong predictors. Initially it might come as a bit of a surprise, that <code>Total_focus_hours</code> is actually the strongest predictor of those three, even though focus hours (in the context of Workplace Analytics) are a block of at least two hours without any meetings - so pretty much the opposite of <code>Collaboration_hours</code>.</p>
 <p>This is where WOE comes into play, as it describes the <strong>relationship</strong> between a predictor variable and a binary target variable:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">12</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">12</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/create_IV.html">create_IV</a></span><span class="op">(</span>outcome <span class="op">=</span> <span class="st">"X"</span>,
     predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Email_hours"</span>, <span class="st">"Meeting_hours"</span>, <span class="st">"Total_focus_hours"</span><span class="op">)</span>,
     return <span class="op">=</span> <span class="st">"plot-WOE"</span><span class="op">)</span>
@@ -515,8 +515,8 @@
 <code class="sourceCode R"><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="va">myfile</span><span class="op">)</span></code></pre></div>
 <p>The query data might include multiple lines per person per time period. In this example, we only have the current survey responses available. To simplify the analysis, these lines can be grouped by person ID with the result of only having one line per person going forward.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">raw_data</span> <span class="op">%&gt;%</span> 
-      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">raw_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
       <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_if</a></span><span class="op">(</span><span class="va">is.numeric</span>, <span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </code></pre></div>
 <div id="dealing-with-non-numeric-values" class="section level3">
 <h3 class="hasAnchor">
@@ -545,7 +545,7 @@
     <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">survey_data</span><span class="op">$</span><span class="va">survey_response_1</span> <span class="op">==</span> <span class="st">"1"</span>, <span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">)</span> <span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Then, you can easily filter out the neutral answers:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">IV_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">my_outcome</span><span class="op">&lt;</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">IV_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">my_outcome</span><span class="op">&lt;</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="create-iv-and-iv-report" class="section level3">
 <h3 class="hasAnchor">
@@ -553,17 +553,17 @@
 <p>With all the groundwork being done, you can now create the IV and IV report for this specific question (survey_response_1) to see what WPA metrics might be a predictor for the responses.</p>
 <p>To create the IV:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">IV_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/create_IV.html">create_IV</a></span><span class="op">(</span>outcome <span class="op">=</span> <span class="st">"my_outcome"</span>, return<span class="op">=</span><span class="st">"list"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">IV_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/create_IV.html">create_IV</a></span><span class="op">(</span>outcome <span class="op">=</span> <span class="st">"my_outcome"</span>, return<span class="op">=</span><span class="st">"list"</span><span class="op">)</span></code></pre></div>
 <p>To run the IV report:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">IV_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/IV_report.html">IV_report</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">IV_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/IV_report.html">IV_report</a></span><span class="op">(</span>
     outcome <span class="op">=</span> <span class="st">"my_outcome"</span>, 
     path<span class="op">=</span><span class="st">"survey_response_1"</span>, 
     predictors<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Collaboration_hours"</span>, <span class="st">"Call_hours"</span>, <span class="st">"Meeting_hours"</span>, <span class="st">"Instant_Message_hours"</span>, <span class="st">"Email_hours"</span>, <span class="st">"Workweek_span"</span>, <span class="st">"After_hours_instant_messages"</span> ,  <span class="st">"After_hours_in_unscheduled_calls"</span>, <span class="st">"After_hours_collaboration_hours"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This creates an IV report for the survey_response_1 of the whole population. To dive deeper and identify trends for a specific a population you can apply filters (e.g. <code>LevelDesignation</code>, <code>Organization</code>, etc.) before creating the report.</p>
 <p>For example, filtering by <code>LevelDesignation</code>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">IV_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span><span class="op">==</span><span class="st">"1"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/IV_report.html">IV_report</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">IV_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">LevelDesignation</span><span class="op">==</span><span class="st">"1"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/IV_report.html">IV_report</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
 </div>

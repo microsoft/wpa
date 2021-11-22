@@ -90,7 +90,7 @@ attributes) ranked by hours of digital collaboration." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -342,6 +342,7 @@ See <code><a href='create_rank.html'>create_rank()</a></code> for applying the s
 <code><a href='create_bubble.html'>create_bubble</a>()</code>,
 <code><a href='create_dist.html'>create_dist</a>()</code>,
 <code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_inc.html'>create_inc</a>()</code>,
 <code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
 <code><a href='create_line.html'>create_line</a>()</code>,
 <code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
@@ -402,32 +403,34 @@ See <code><a href='create_rank.html'>create_rank()</a></code> for applying the s
 <code><a href='one2one_trend.html'>one2one_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return rank table</span>
-<span class='fu'>one2one_rank</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='va'>sq_data</span>,
-  return <span class='op'>=</span> <span class='st'>"table"</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 × 4</span>
-#&gt;    hrvar            group            Meeting_hours_with_manager_1_on_1     n
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> FunctionType     Engineering                                  0.484    93
-#&gt; <span style='color: #BCBCBC;'> 2</span> FunctionType     IT                                           0.444    51
-#&gt; <span style='color: #BCBCBC;'> 3</span> Organization     Customer Service                             0.354    61
-#&gt; <span style='color: #BCBCBC;'> 4</span> Organization     G&amp;A Central                                  0.342    57
-#&gt; <span style='color: #BCBCBC;'> 5</span> FunctionType     Sales                                        0.341    82
-#&gt; <span style='color: #BCBCBC;'> 6</span> FunctionType     Marketing                                    0.324   207
-#&gt; <span style='color: #BCBCBC;'> 7</span> Organization     Finance-East                                 0.316    70
-#&gt; <span style='color: #BCBCBC;'> 8</span> LevelDesignation Senior IC                                    0.307   103
-#&gt; <span style='color: #BCBCBC;'> 9</span> Organization     Human Resources                              0.301    71
-#&gt; <span style='color: #BCBCBC;'>10</span> Organization     G&amp;A East                                     0.291    65
-#&gt; <span style='color: #949494;'># … with 20 more rows</span></div><div class='input'>
-<span class='co'># Return plot</span>
-<span class='fu'>one2one_rank</span><span class='op'>(</span>
-  data <span class='op'>=</span> <span class='va'>sq_data</span>,
-  return <span class='op'>=</span> <span class='st'>"plot"</span>
-<span class='op'>)</span>
-</div><div class='img'><img src='one2one_rank-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Return rank table</span></span>
+<span class='r-in'><span class='fu'>one2one_rank</span><span class='op'>(</span></span>
+<span class='r-in'>  data <span class='op'>=</span> <span class='va'>sq_data</span>,</span>
+<span class='r-in'>  return <span class='op'>=</span> <span class='st'>"table"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 30 × 4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    hrvar            group            Meeting_hours_with_manager_1_on_1     n</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> FunctionType     Engineering                                  0.484    93</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> FunctionType     IT                                           0.444    51</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> Organization     Customer Service                             0.354    61</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> Organization     G&amp;A Central                                  0.342    57</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> FunctionType     Sales                                        0.341    82</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> FunctionType     Marketing                                    0.324   207</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> Organization     Finance-East                                 0.316    70</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> LevelDesignation Senior IC                                    0.307   103</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> Organization     Human Resources                              0.301    71</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> Organization     G&amp;A East                                     0.291    65</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 20 more rows</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return plot</span></span>
+<span class='r-in'><span class='fu'>one2one_rank</span><span class='op'>(</span></span>
+<span class='r-in'>  data <span class='op'>=</span> <span class='va'>sq_data</span>,</span>
+<span class='r-in'>  return <span class='op'>=</span> <span class='st'>"plot"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-plt img'><img src='one2one_rank-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

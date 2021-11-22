@@ -91,7 +91,7 @@ of agglomeration." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -303,7 +303,7 @@ or absolute values in "data" and "plot". Valid values are:</p><ul>
 <li><p><code>"IM"</code> for Teams messages only</p></li>
 <li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
 <li><p><code>"meetings"</code> for Meetings only</p></li>
-<li><p>or a combination of signals, such as <code><a href='https://rdrr.io/r/base/c.html'>c("email", "IM")</a></code></p></li>
+<li><p>or a combination of signals, such as <code>c("email", "IM")</code></p></li>
 </ul></td>
     </tr>
     <tr>
@@ -354,80 +354,83 @@ are averaged by person and calculated as % of total daily collaboration.</p>
 <code><a href='workpatterns_report.html'>workpatterns_report</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Run clusters, returning plot</span>
-<span class='fu'>workpatterns_hclust</span><span class='op'>(</span><span class='va'>em_data</span>, k <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</div><div class='img'><img src='workpatterns_hclust-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Run clusters, return raw data</span>
-<span class='fu'>workpatterns_hclust</span><span class='op'>(</span><span class='va'>em_data</span>, k <span class='op'>=</span> <span class='fl'>4</span>, return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                           PersonId
-#&gt; 1 0248F8070D89F3CCDCA7274006516ECC173437A839531652A0BF1F41087A224E
-#&gt; 2 024BDDF8FB7C74EBC74C2A97AF92B3285E2DB672A62361E08B6D1892BE9BACCE
-#&gt; 3 0250022146CE0A7AC68A3B0C9DFE91E29234ECBB8609F752CC2EE1C3ADBEFF90
-#&gt; 4 0358DEF2813F6911B73AEE141837040511768BA66E3B0EA5BF3347C93D319213
-#&gt; 5 041A56AAD54F0690E37F0A35AFF71AD59DD46634D15B192EB9BAC36E70132EEC
-#&gt; 6 0421E39EEB90A61A3FC504FC8DF33B15A47AD5228713C9AFBA8DB575C654C145
-#&gt;   Emails_sent_00_01 Emails_sent_01_02 Emails_sent_02_03 Emails_sent_03_04
-#&gt; 1       0.007575758       0.003787879       0.011363636        0.01136364
-#&gt; 2       0.000000000       0.000000000       0.000000000        0.00000000
-#&gt; 3       0.000000000       0.000000000       0.000000000        0.00000000
-#&gt; 4       0.000000000       0.000000000       0.000000000        0.00000000
-#&gt; 5       0.031620553       0.027667984       0.003952569        0.01976285
-#&gt; 6       0.037267081       0.049689441       0.049689441        0.03105590
-#&gt;   Emails_sent_04_05 Emails_sent_05_06 Emails_sent_06_07 Emails_sent_07_08
-#&gt; 1       0.003787879       0.018939394       0.003787879       0.011363636
-#&gt; 2       0.000000000       0.000000000       0.000000000       0.034246575
-#&gt; 3       0.000000000       0.000000000       0.000000000       0.009803922
-#&gt; 4       0.000000000       0.000000000       0.000000000       0.020618557
-#&gt; 5       0.015810277       0.007905138       0.015810277       0.023715415
-#&gt; 6       0.018633540       0.012422360       0.037267081       0.037267081
-#&gt;   Emails_sent_08_09 Emails_sent_09_10 Emails_sent_10_11 Emails_sent_11_12
-#&gt; 1        0.08333333        0.06060606        0.10227273        0.07954545
-#&gt; 2        0.08219178        0.10273973        0.08219178        0.11643836
-#&gt; 3        0.11764706        0.08823529        0.09803922        0.10294118
-#&gt; 4        0.10309278        0.08247423        0.09793814        0.10824742
-#&gt; 5        0.04347826        0.03557312        0.05533597        0.11462451
-#&gt; 6        0.08074534        0.05590062        0.09316770        0.11801242
-#&gt;   Emails_sent_12_13 Emails_sent_13_14 Emails_sent_14_15 Emails_sent_15_16
-#&gt; 1        0.10984848        0.09469697        0.09090909        0.11363636
-#&gt; 2        0.11643836        0.06164384        0.11643836        0.11643836
-#&gt; 3        0.12254902        0.07352941        0.10784314        0.09803922
-#&gt; 4        0.11855670        0.08247423        0.04639175        0.12371134
-#&gt; 5        0.11067194        0.08695652        0.09090909        0.10671937
-#&gt; 6        0.08695652        0.05590062        0.06832298        0.05590062
-#&gt;   Emails_sent_16_17 Emails_sent_17_18 Emails_sent_18_19 Emails_sent_19_20
-#&gt; 1        0.12500000        0.06818182                 0                 0
-#&gt; 2        0.11643836        0.05479452                 0                 0
-#&gt; 3        0.10784314        0.07352941                 0                 0
-#&gt; 4        0.08762887        0.12886598                 0                 0
-#&gt; 5        0.07509881        0.12648221                 0                 0
-#&gt; 6        0.08074534        0.02484472                 0                 0
-#&gt;   Emails_sent_20_21 Emails_sent_21_22 Emails_sent_22_23 Emails_sent_23_24
-#&gt; 1                 0                 0                 0       0.000000000
-#&gt; 2                 0                 0                 0       0.000000000
-#&gt; 3                 0                 0                 0       0.000000000
-#&gt; 4                 0                 0                 0       0.000000000
-#&gt; 5                 0                 0                 0       0.007905138
-#&gt; 6                 0                 0                 0       0.006211180
-#&gt;   cluster
-#&gt; 1       1
-#&gt; 2       2
-#&gt; 3       2
-#&gt; 4       3
-#&gt; 5       1
-#&gt; 6       4</div><div class='input'>
-
-<span class='co'># Run clusters for instant messages only, return hclust object</span>
-<span class='fu'>workpatterns_hclust</span><span class='op'>(</span><span class='va'>em_data</span>, k <span class='op'>=</span> <span class='fl'>4</span>, return <span class='op'>=</span> <span class='st'>"hclust"</span>, signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"IM"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt; Call:
-#&gt; stats::hclust(d = ., method = "ward.D")
-#&gt; 
-#&gt; Cluster method   : ward.D 
-#&gt; Distance         : cosine 
-#&gt; Number of objects: 500 
-#&gt; </div><div class='input'>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Run clusters, returning plot</span></span>
+<span class='r-in'><span class='fu'>workpatterns_hclust</span><span class='op'>(</span><span class='va'>em_data</span>, k <span class='op'>=</span> <span class='fl'>5</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='workpatterns_hclust-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Run clusters, return raw data</span></span>
+<span class='r-in'><span class='fu'>workpatterns_hclust</span><span class='op'>(</span><span class='va'>em_data</span>, k <span class='op'>=</span> <span class='fl'>4</span>, return <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                           PersonId</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 0248F8070D89F3CCDCA7274006516ECC173437A839531652A0BF1F41087A224E</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 024BDDF8FB7C74EBC74C2A97AF92B3285E2DB672A62361E08B6D1892BE9BACCE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 0250022146CE0A7AC68A3B0C9DFE91E29234ECBB8609F752CC2EE1C3ADBEFF90</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 0358DEF2813F6911B73AEE141837040511768BA66E3B0EA5BF3347C93D319213</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 041A56AAD54F0690E37F0A35AFF71AD59DD46634D15B192EB9BAC36E70132EEC</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6 0421E39EEB90A61A3FC504FC8DF33B15A47AD5228713C9AFBA8DB575C654C145</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Emails_sent_00_01 Emails_sent_01_02 Emails_sent_02_03 Emails_sent_03_04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1       0.007575758       0.003787879       0.011363636        0.01136364</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2       0.000000000       0.000000000       0.000000000        0.00000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3       0.000000000       0.000000000       0.000000000        0.00000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4       0.000000000       0.000000000       0.000000000        0.00000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5       0.031620553       0.027667984       0.003952569        0.01976285</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6       0.037267081       0.049689441       0.049689441        0.03105590</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Emails_sent_04_05 Emails_sent_05_06 Emails_sent_06_07 Emails_sent_07_08</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1       0.003787879       0.018939394       0.003787879       0.011363636</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2       0.000000000       0.000000000       0.000000000       0.034246575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3       0.000000000       0.000000000       0.000000000       0.009803922</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4       0.000000000       0.000000000       0.000000000       0.020618557</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5       0.015810277       0.007905138       0.015810277       0.023715415</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6       0.018633540       0.012422360       0.037267081       0.037267081</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Emails_sent_08_09 Emails_sent_09_10 Emails_sent_10_11 Emails_sent_11_12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1        0.08333333        0.06060606        0.10227273        0.07954545</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2        0.08219178        0.10273973        0.08219178        0.11643836</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3        0.11764706        0.08823529        0.09803922        0.10294118</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4        0.10309278        0.08247423        0.09793814        0.10824742</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5        0.04347826        0.03557312        0.05533597        0.11462451</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6        0.08074534        0.05590062        0.09316770        0.11801242</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Emails_sent_12_13 Emails_sent_13_14 Emails_sent_14_15 Emails_sent_15_16</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1        0.10984848        0.09469697        0.09090909        0.11363636</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2        0.11643836        0.06164384        0.11643836        0.11643836</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3        0.12254902        0.07352941        0.10784314        0.09803922</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4        0.11855670        0.08247423        0.04639175        0.12371134</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5        0.11067194        0.08695652        0.09090909        0.10671937</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6        0.08695652        0.05590062        0.06832298        0.05590062</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Emails_sent_16_17 Emails_sent_17_18 Emails_sent_18_19 Emails_sent_19_20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1        0.12500000        0.06818182                 0                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2        0.11643836        0.05479452                 0                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3        0.10784314        0.07352941                 0                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4        0.08762887        0.12886598                 0                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5        0.07509881        0.12648221                 0                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6        0.08074534        0.02484472                 0                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Emails_sent_20_21 Emails_sent_21_22 Emails_sent_22_23 Emails_sent_23_24</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                 0                 0                 0       0.000000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2                 0                 0                 0       0.000000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3                 0                 0                 0       0.000000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4                 0                 0                 0       0.000000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5                 0                 0                 0       0.007905138</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6                 0                 0                 0       0.006211180</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   cluster</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1       1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2       2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3       2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4       3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5       1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6       4</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Run clusters for instant messages only, return hclust object</span></span>
+<span class='r-in'><span class='fu'>workpatterns_hclust</span><span class='op'>(</span><span class='va'>em_data</span>, k <span class='op'>=</span> <span class='fl'>4</span>, return <span class='op'>=</span> <span class='st'>"hclust"</span>, signals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"IM"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Call:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> stats::hclust(d = ., method = "ward.D")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Cluster method   : ward.D </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Distance         : cosine </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Number of objects: 500 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

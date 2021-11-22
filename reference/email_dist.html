@@ -90,7 +90,7 @@ Additional options available to return a table with distribution elements." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -324,6 +324,7 @@ e.g. c(10, 15, 20)</p></td>
 <code><a href='create_bubble.html'>create_bubble</a>()</code>,
 <code><a href='create_dist.html'>create_dist</a>()</code>,
 <code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_inc.html'>create_inc</a>()</code>,
 <code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
 <code><a href='create_line.html'>create_line</a>()</code>,
 <code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
@@ -381,33 +382,36 @@ e.g. c(10, 15, 20)</p></td>
 <code><a href='email_trend.html'>email_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return plot</span>
-<span class='fu'>email_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span>
-</div><div class='img'><img src='email_dist-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return summary table</span>
-<span class='fu'>email_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 × 6</span>
-#&gt;    group   `&lt; 5 hours` `5 - 10 hours` `10 - 15 hours` `15+ hours` Employee_Count
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Biz Dev      0.013<span style='text-decoration: underline;'>3</span>          0.96           0.026<span style='text-decoration: underline;'>7</span>     <span style='color: #BB0000;'>NA</span>                  75
-#&gt; <span style='color: #BCBCBC;'> 2</span> Custom…      0.016<span style='text-decoration: underline;'>4</span>          0.656          0.295       0.032<span style='text-decoration: underline;'>8</span>             61
-#&gt; <span style='color: #BCBCBC;'> 3</span> Facili…     <span style='color: #BB0000;'>NA</span>               0.625          0.375      <span style='color: #BB0000;'>NA</span>                  72
-#&gt; <span style='color: #BCBCBC;'> 4</span> Financ…      0.014<span style='text-decoration: underline;'>7</span>          0.779          0.206      <span style='color: #BB0000;'>NA</span>                  68
-#&gt; <span style='color: #BCBCBC;'> 5</span> Financ…      0.042<span style='text-decoration: underline;'>9</span>          0.329          0.586       0.042<span style='text-decoration: underline;'>9</span>             70
-#&gt; <span style='color: #BCBCBC;'> 6</span> Financ…      0.037<span style='text-decoration: underline;'>0</span>          0.593          0.321       0.049<span style='text-decoration: underline;'>4</span>             81
-#&gt; <span style='color: #BCBCBC;'> 7</span> Financ…     <span style='color: #BB0000;'>NA</span>               0.521          0.425       0.054<span style='text-decoration: underline;'>8</span>             73
-#&gt; <span style='color: #BCBCBC;'> 8</span> Financ…     <span style='color: #BB0000;'>NA</span>               0.84           0.133       0.026<span style='text-decoration: underline;'>7</span>             75
-#&gt; <span style='color: #BCBCBC;'> 9</span> G&amp;A Ce…     <span style='color: #BB0000;'>NA</span>               0.614          0.368       0.017<span style='text-decoration: underline;'>5</span>             57
-#&gt; <span style='color: #BCBCBC;'>10</span> G&amp;A Ea…     <span style='color: #BB0000;'>NA</span>               0.846          0.154      <span style='color: #BB0000;'>NA</span>                  65
-#&gt; <span style='color: #BCBCBC;'>11</span> G&amp;A So…      0.013<span style='text-decoration: underline;'>2</span>          0.25           0.605       0.132              76
-#&gt; <span style='color: #BCBCBC;'>12</span> Human …     <span style='color: #BB0000;'>NA</span>               0.197          0.690       0.113              71
-#&gt; <span style='color: #BCBCBC;'>13</span> Invent…     <span style='color: #BB0000;'>NA</span>               0.15           0.633       0.217              60
-#&gt; <span style='color: #BCBCBC;'>14</span> IT-Cor…      0.014<span style='text-decoration: underline;'>7</span>          0.338          0.5         0.147              68
-#&gt; <span style='color: #BCBCBC;'>15</span> IT-East     <span style='color: #BB0000;'>NA</span>               0.452          0.532       0.016<span style='text-decoration: underline;'>1</span>             62</div><div class='input'>
-<span class='co'># Return result with a custom specified breaks</span>
-<span class='fu'>email_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, cut <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='email_dist-2.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Return plot</span></span>
+<span class='r-in'><span class='fu'>email_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='email_dist-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return summary table</span></span>
+<span class='r-in'><span class='fu'>email_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 15 × 6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    group   `&lt; 5 hours` `5 - 10 hours` `10 - 15 hours` `15+ hours` Employee_Count</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> Biz Dev      0.013<span style='text-decoration: underline;'>3</span>          0.96           0.026<span style='text-decoration: underline;'>7</span>     <span style='color: #BB0000;'>NA</span>                  75</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> Custom…      0.016<span style='text-decoration: underline;'>4</span>          0.656          0.295       0.032<span style='text-decoration: underline;'>8</span>             61</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> Facili…     <span style='color: #BB0000;'>NA</span>               0.625          0.375      <span style='color: #BB0000;'>NA</span>                  72</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> Financ…      0.014<span style='text-decoration: underline;'>7</span>          0.779          0.206      <span style='color: #BB0000;'>NA</span>                  68</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> Financ…      0.042<span style='text-decoration: underline;'>9</span>          0.329          0.586       0.042<span style='text-decoration: underline;'>9</span>             70</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> Financ…      0.037<span style='text-decoration: underline;'>0</span>          0.593          0.321       0.049<span style='text-decoration: underline;'>4</span>             81</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> Financ…     <span style='color: #BB0000;'>NA</span>               0.521          0.425       0.054<span style='text-decoration: underline;'>8</span>             73</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> Financ…     <span style='color: #BB0000;'>NA</span>               0.84           0.133       0.026<span style='text-decoration: underline;'>7</span>             75</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> G&amp;A Ce…     <span style='color: #BB0000;'>NA</span>               0.614          0.368       0.017<span style='text-decoration: underline;'>5</span>             57</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> G&amp;A Ea…     <span style='color: #BB0000;'>NA</span>               0.846          0.154      <span style='color: #BB0000;'>NA</span>                  65</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> G&amp;A So…      0.013<span style='text-decoration: underline;'>2</span>          0.25           0.605       0.132              76</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> Human …     <span style='color: #BB0000;'>NA</span>               0.197          0.690       0.113              71</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> Invent…     <span style='color: #BB0000;'>NA</span>               0.15           0.633       0.217              60</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> IT-Cor…      0.014<span style='text-decoration: underline;'>7</span>          0.338          0.5         0.147              68</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> IT-East     <span style='color: #BB0000;'>NA</span>               0.452          0.532       0.016<span style='text-decoration: underline;'>1</span>             62</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return result with a custom specified breaks</span></span>
+<span class='r-in'><span class='fu'>email_dist</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"LevelDesignation"</span>, cut <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='email_dist-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -90,7 +90,7 @@ Additional options available to return a table with distribution elements." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -318,6 +318,7 @@ that your query contains a metric with the exact same name.</p>
 <code><a href='create_bubble.html'>create_bubble</a>()</code>,
 <code><a href='create_dist.html'>create_dist</a>()</code>,
 <code><a href='create_fizz.html'>create_fizz</a>()</code>,
+<code><a href='create_inc.html'>create_inc</a>()</code>,
 <code><a href='create_line_asis.html'>create_line_asis</a>()</code>,
 <code><a href='create_line.html'>create_line</a>()</code>,
 <code><a href='create_period_scatter.html'>create_period_scatter</a>()</code>,
@@ -377,30 +378,32 @@ that your query contains a metric with the exact same name.</p>
 <code><a href='collaboration_trend.html'>collaboration_trend</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Return plot</span>
-<span class='fu'>collaboration_fizz</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</div><div class='img'><img src='collaboration_fizz-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Return summary table</span>
-<span class='fu'>collaboration_fizz</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 × 8</span>
-#&gt;    group                 mean median    sd   min   max range     n
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Biz Dev               14.7   15.0  2.32  8.46  19.9  11.4    75
-#&gt; <span style='color: #BCBCBC;'> 2</span> Customer Service      18.3   16.9  5.61 10.4   35.6  25.2    61
-#&gt; <span style='color: #BCBCBC;'> 3</span> Facilities            18.6   17.3  4.51 10.9   27.1  16.2    72
-#&gt; <span style='color: #BCBCBC;'> 4</span> Finance-Corporate     16.3   15.2  4.42  9.10  27.6  18.5    68
-#&gt; <span style='color: #BCBCBC;'> 5</span> Finance-East          22.2   25.1  7.33  9.44  33.5  24.1    70
-#&gt; <span style='color: #BCBCBC;'> 6</span> Finance-South         18.6   15.8  6.63  9.34  32.8  23.5    81
-#&gt; <span style='color: #BCBCBC;'> 7</span> Finance-West          20.6   19.6  6.00 11.7   33.5  21.9    73
-#&gt; <span style='color: #BCBCBC;'> 8</span> Financial Planning    17.1   15.9  5.09  9.49  34.2  24.7    75
-#&gt; <span style='color: #BCBCBC;'> 9</span> G&amp;A Central           18.9   16.5  5.66 10.1   30.5  20.4    57
-#&gt; <span style='color: #BCBCBC;'>10</span> G&amp;A East              16.2   16.0  2.84 11.0   23.7  12.7    65
-#&gt; <span style='color: #BCBCBC;'>11</span> G&amp;A South             23.1   24.2  6.81 11.1   37.9  26.8    76
-#&gt; <span style='color: #BCBCBC;'>12</span> Human Resources       24.4   25.0  6.20 10.8   35.8  25.0    71
-#&gt; <span style='color: #BCBCBC;'>13</span> Inventory Management  26.2   25.0  6.18 12.1   41.7  29.6    60
-#&gt; <span style='color: #BCBCBC;'>14</span> IT-Corporate          23.7   23.9  8.70  9.26  43.4  34.1    68
-#&gt; <span style='color: #BCBCBC;'>15</span> IT-East               20.6   21.8  6.05  9.87  35.5  25.7    62</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Return plot</span></span>
+<span class='r-in'><span class='fu'>collaboration_fizz</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='collaboration_fizz-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Return summary table</span></span>
+<span class='r-in'><span class='fu'>collaboration_fizz</span><span class='op'>(</span><span class='va'>sq_data</span>, hrvar <span class='op'>=</span> <span class='st'>"Organization"</span>, return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 15 × 8</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    group                 mean median    sd   min   max range     n</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> Biz Dev               14.7   15.0  2.32  8.46  19.9  11.4    75</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> Customer Service      18.3   16.9  5.61 10.4   35.6  25.2    61</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> Facilities            18.6   17.3  4.51 10.9   27.1  16.2    72</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> Finance-Corporate     16.3   15.2  4.42  9.10  27.6  18.5    68</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> Finance-East          22.2   25.1  7.33  9.44  33.5  24.1    70</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> Finance-South         18.6   15.8  6.63  9.34  32.8  23.5    81</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> Finance-West          20.6   19.6  6.00 11.7   33.5  21.9    73</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> Financial Planning    17.1   15.9  5.09  9.49  34.2  24.7    75</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> G&amp;A Central           18.9   16.5  5.66 10.1   30.5  20.4    57</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> G&amp;A East              16.2   16.0  2.84 11.0   23.7  12.7    65</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span> G&amp;A South             23.1   24.2  6.81 11.1   37.9  26.8    76</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span> Human Resources       24.4   25.0  6.20 10.8   35.8  25.0    71</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span> Inventory Management  26.2   25.0  6.18 12.1   41.7  29.6    60</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span> IT-Corporate          23.7   23.9  8.70  9.26  43.4  34.1    68</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span> IT-East               20.6   21.8  6.05  9.87  35.5  25.7    62</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -91,7 +91,7 @@ values in the categorical variable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -284,13 +284,15 @@ Defaults to <code>NULL</code>, where the replacement would consist of <code>"Tea
     <div class='dont-index'><p>jitter</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'>anonymise</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>$</span><span class='va'>Organization</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "Team A" "Team B" "Team C" "Team D" "Team E" "Team F" "Team G" "Team H"
-#&gt;  [9] "Team I" "Team J" "Team K" "Team L" "Team M" "Team N" "Team O"</div><div class='input'>
-<span class='va'>rep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Manager+"</span>, <span class='st'>"Manager"</span>, <span class='st'>"IC"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'>anonymise</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>$</span><span class='va'>Layer</span><span class='op'>)</span>, replacement <span class='op'>=</span> <span class='va'>rep</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Team A" "Team B" "Team C"</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'>anonymise</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>$</span><span class='va'>Organization</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "Team A" "Team B" "Team C" "Team D" "Team E" "Team F" "Team G" "Team H"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "Team I" "Team J" "Team K" "Team L" "Team M" "Team N" "Team O"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>rep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Manager+"</span>, <span class='st'>"Manager"</span>, <span class='st'>"IC"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'>anonymise</span><span class='op'>(</span><span class='va'>sq_data</span><span class='op'>$</span><span class='va'>Layer</span><span class='op'>)</span>, replacement <span class='op'>=</span> <span class='va'>rep</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Team A" "Team B" "Team C"</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

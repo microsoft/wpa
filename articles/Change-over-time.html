@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -213,7 +213,7 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/create_line.html">create_line</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Domain"</span>, 
               metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></code></pre></div>
 <p><img src="Change-over-time_files/figure-html/unnamed-chunk-2-1.png" width="768"></p>
@@ -227,7 +227,7 @@
 <p>In the scenario with Contoso, we can see that collaboration hours step down throughout November and December – but is this significant?</p>
 <p>First, let’s compare the change in collaboration for the first two weeks of November.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/period_change.html">period_change</a></span><span class="op">(</span>
     compvar <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
@@ -241,7 +241,7 @@
 <p>We also get a <em>p-value</em> (shown at the right of the image caption) that tells us whether the two samples are statistically significantly different. The smaller the value, the more significant the differences. Typically, we look for a significance level of less than 0.05, but the exact threshold you pick depends on how sure you need to be. In this case, the p-value of 0.0629 is too large for us to be sure at the 95% confidence level that there has been a change in collaboration activity between the first two weeks of November.</p>
 <p>However, if we compare November to December, we see a significant difference in collaboration hours:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/period_change.html">period_change</a></span><span class="op">(</span>
     compvar <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
@@ -261,7 +261,7 @@
 <p>Essentially, the <code><a href="../reference/IV_by_period.html">IV_by_period()</a></code> function tells us which metrics in the dataset best differentiate the <code>before</code> and <code>after</code> time periods. The higher the Information Value, the more different that metric is between the two periods (because it better explains the difference between those two groups).</p>
 <p>Looking at the change between the first two weeks of November, we see very small Information Values. This tells us that the collaboration activity is very similar between those two weeks.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/IV_by_period.html">IV_by_period</a></span><span class="op">(</span>
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
     before_end <span class="op">=</span> <span class="st">"2019-11-09"</span>,
@@ -325,7 +325,7 @@
 <span class="co">#&gt; 54                                     HourlyRate 0.000000e+00</span></code></pre></div>
 <p>If we look at the differences between November and December, we see higher Information Values that reflect a big difference in collaboration activity. In this case we see that the Internal Network Size has an Information Value score of 0.28, which means that it is moderately predictive of the difference between the two months. We also see large values for Email and Instant Message activities. Although the Information Value does not tell us how these metrics changed, it provides a good starting point for further analysis to determine what changed in those metrics.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/IV_by_period.html">IV_by_period</a></span><span class="op">(</span>
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
     before_end <span class="op">=</span> <span class="st">"2019-11-30"</span>,

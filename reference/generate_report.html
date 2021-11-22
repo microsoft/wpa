@@ -89,7 +89,7 @@ create a HTML document, using RMarkdown as the engine." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -324,8 +324,8 @@ function.</p>
 <p>The first step is to define the content that will go into a report and assign
 the outputs to a list.</p><pre><span class='co'># Step 1: Define Content</span>
 <span class='va'>output_list</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>sq_data</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='workloads_summary.html'>workloads_summary</a></span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>,
-       <span class='va'>sq_data</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='workloads_summary.html'>workloads_summary</a></span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>sq_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'><a href='workloads_summary.html'>workloads_summary</a></span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>,
+       <span class='va'>sq_data</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> <span class='fu'><a href='workloads_summary.html'>workloads_summary</a></span><span class='op'>(</span>return <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span>
   <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map_if.html'>map_if</a></span><span class='op'>(</span><span class='va'>is.data.frame</span>, <span class='va'>create_dt</span><span class='op'>)</span>
 </pre>
 

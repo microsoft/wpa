@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
       </span>
     </div>
 
@@ -222,7 +222,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
 <p>We will use the <code>sq_data</code> demo dataset, which contains a weekly person query output, and apply the <code><a href="../reference/collaboration_rank.html">collaboration_rank()</a></code> function:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
     <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 30 × 4</span>
 <span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span>
@@ -241,8 +241,8 @@
 <p>The output table contains the results from the automatic group exploration. The rank function has taken all available organisational attributes in this dataset (<code>FunctionType</code>, <code>Organization</code>, <code>LevelDesignation</code>, and <code>IsActive</code>) and calculated the average collaboration hours for each group within each organisational attribute. The table shows the analysed results for all groups, ranked from highest to lowest.</p>
 <p>To view the entire table, we can add the function <code>print</code> to the command above.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op">%&gt;%</span>  
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>  
     <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 30 × 4</span>
 <span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span>
@@ -280,7 +280,7 @@
 <p>This analysis shows us that the 82 employees labelled as <code>"FunctionType = "Sales"</code> have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in <code>Organization = "Inventory Management"</code> with 26.2 hours. On the lower end, the 75 employees labelled as <code>Organization = "Biz Dev"</code> appear to have the lowest collaboration time.</p>
 <p>This output is useful to identify groups that are worth investigating (e.g. employees labelled as <code>"FunctionType = Sales"</code>). It also reveals that splits by <code>FunctionType</code> and <code>Organization</code> are more interesting than those by <code>LevelDesignation</code>, as they have more variation; all groups in <code>LevelDesignation</code> have similar levels of collaboration, between 18 and 22 hours a week. Rank functions can also display this information in visual form. We can get that by changing the <code>return</code> argument from <code>"table"</code> to <code>"plot"</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
     <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p><img src="profiles-with-rank_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
 <p>This plot contains the same information as the table above. Each row corresponds to a different organisational attribute and the bubbles show how the population is split across different subgroups, where bubble size is proportional to the number of individuals. The five groups in orange are clearly the ones spending most time in collaboration, with Sales being far ahead of the other groups. Keep in mind that each row of bubbles represents a different way to slice the same population, so groups across rows are not mutually exclusive.</p>
@@ -291,7 +291,7 @@
 <p>In our baseline analysis, we uncovered that the 82 employees labelled as <code>FunctionType = "Sales"</code> have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration overload, but that are hidden given the structure of the organisational data (for example, the managers within a particular business unit).</p>
 <p>The rank function includes an additional mode called “combine” that allows us to take our analysis one step further by performing on two HR variables the same analysis in a combinatorial manner:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
     <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 382 × 4</span>
 <span class="co">#&gt;    hrvar    group                                       Collaboration_hou…     n</span>
@@ -333,8 +333,8 @@
 <p>Rank functions have an additional use: they can help us identify <strong>what combination of attributes best describe a group that shows a given behaviour</strong>. For example, we may be concerned about individuals that are experiencing both a heavy collaboration load (more than 20 hours a week on average) and long workweeks (workweek span of over 60 hours), and would like to know where in the organisations these individuals sit.</p>
 <p>To answer that question, let’s create a new numeric custom metric (i.e. a binary flag that is only either <code>1</code> or <code>0</code>) and then apply the <code><a href="../reference/create_rank.html">create_rank()</a></code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>At_risk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">20</span> <span class="op">&amp;</span>  <span class="va">Workweek_span</span> <span class="op">&gt;</span> <span class="fl">60</span> , <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>At_risk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">20</span> <span class="op">&amp;</span>  <span class="va">Workweek_span</span> <span class="op">&gt;</span> <span class="fl">60</span> , <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/create_rank.html">create_rank</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"At_risk"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 382 × 4</span>
 <span class="co">#&gt;    hrvar    group                                                 At_risk     n</span>
