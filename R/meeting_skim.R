@@ -80,49 +80,63 @@ meeting_skim <- function(data, return = "message"){
 
   extract_raw <- function(filt_chr){
 
+    key_output %>%
+      filter(HourType == filt_chr) %>%
+      pull(RawHours) %>%
+      round()
+  }
+
+  combine_extracts <- function(filt_chr, keyword){
+
     out <-
       key_output %>%
       filter(HourType == filt_chr)
 
     if(nrow(out) == 0){
 
-      return(NA_integer_)
+      return("")
 
     } else {
 
-      out %>%
-        pull(RawHours) %>%
-        round()
+      paste(
+        ">>>",
+        extract_raw(filt_chr),
+        "are",
+        keyword,
+        bracket(extract_prop(filt_chr))
+      )
 
     }
   }
-
 
   print_text <-
     paste("There are",
           mh_total,
           "total meeting hours across the analysis population.\n",
 
-          ">>>",
-          extract_raw("Low_quality_meeting_hours"),
-          "are low quality",
-          bracket(extract_prop("Low_quality_meeting_hours")),
+          combine_extracts(
+            filt_chr = "Low_quality_meeting_hours",
+            keyword = "low quality"
+          ),
           "\n",
 
-          ">>>",
-          extract_raw("Redundant_meeting_hours__organizational_"),
-          "are redundant",
-          bracket(extract_prop("Redundant_meeting_hours__organizational_")),
+          combine_extracts(
+            filt_chr = "Redundant_meeting_hours__organizational_",
+            keyword = "redundant"
+          ),
           "\n",
-          ">>>",
-          extract_raw("Conflicting_meeting_hours"),
-          "are conflicting",
-          bracket(extract_prop("Conflicting_meeting_hours")),
+
+          combine_extracts(
+            filt_chr = "Conflicting_meeting_hours",
+            keyword = "conflicting"
+          ),
           "\n",
-          ">>>",
-          extract_raw("Multitasking_meeting_hours"),
-          "are multitasking.",
-          bracket(extract_prop("Multitasking_meeting_hours")))
+
+          combine_extracts(
+            filt_chr = "Multitasking_meeting_hours",
+            keyword = "multitasking"
+          )
+          )
 
   if(return == "message"){
 
