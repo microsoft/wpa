@@ -34,20 +34,26 @@
 #' @export
 meeting_skim <- function(data, return = "message"){
 
+  required_vars <-
+    c(
+      "PersonId",
+      "Meeting_hours",
+      "Conflicting_meeting_hours",
+      "Multitasking_meeting_hours",
+      "Redundant_meeting_hours__lower_level_",
+      "Redundant_meeting_hours__organizational_",
+      "Low_quality_meeting_hours"
+    )
+
+  used_vars <- dplyr::intersect(names(data), required_vars)
+
   key_output <-
     data %>%
-    select(PersonId,
-           Meeting_hours,
-           Conflicting_meeting_hours,
-           Multitasking_meeting_hours,
-           Redundant_meeting_hours__lower_level_,
-           Redundant_meeting_hours__organizational_,
-           Low_quality_meeting_hours) %>%
+    select(used_vars) %>%
     summarise_at(vars(-PersonId), ~sum(.)) %>% # sum total
     tidyr::gather(HourType, Hours, -Meeting_hours) %>%
     mutate_at(vars(Hours), ~./Meeting_hours) %>%
     mutate(RawHours = Hours * Meeting_hours)
-
 
   mh_total <- round(key_output$Meeting_hours[1])
 
@@ -73,10 +79,22 @@ meeting_skim <- function(data, return = "message"){
   }
 
   extract_raw <- function(filt_chr){
-    key_output %>%
-      filter(HourType == filt_chr) %>%
-      pull(RawHours) %>%
-      round()
+
+    out <-
+      key_output %>%
+      filter(HourType == filt_chr)
+
+    if(nrow(out) == 0){
+
+      return(NA_integer_)
+
+    } else {
+
+      out %>%
+        pull(RawHours) %>%
+        round()
+
+    }
   }
 
 
