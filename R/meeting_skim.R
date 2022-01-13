@@ -94,7 +94,7 @@ meeting_skim <- function(data, return = "message"){
 
     if(nrow(out) == 0){
 
-      return("")
+      return(NULL)
 
     } else {
 
@@ -109,33 +109,28 @@ meeting_skim <- function(data, return = "message"){
     }
   }
 
+  key_text <- c(
+    combine_extracts(filt_chr = "Low_quality_meeting_hours",
+                     keyword = "low quality"),
+    combine_extracts(filt_chr = "Redundant_meeting_hours__organizational_",
+                     keyword = "redundant"),
+    combine_extracts(filt_chr = "Conflicting_meeting_hours",
+                     keyword = "conflicting"),
+    combine_extracts(filt_chr = "Multitasking_meeting_hours",
+                     keyword = "multitasking")
+  ) %>%
+    .[nchar(.) >= 1] %>% # at least character length >= 1
+    paste(collapse = "\n")
+
   print_text <-
-    paste("There are",
-          mh_total,
-          "total meeting hours across the analysis population.\n",
-
-          combine_extracts(
-            filt_chr = "Low_quality_meeting_hours",
-            keyword = "low quality"
-          ),
-          "\n",
-
-          combine_extracts(
-            filt_chr = "Redundant_meeting_hours__organizational_",
-            keyword = "redundant"
-          ),
-          "\n",
-
-          combine_extracts(
-            filt_chr = "Conflicting_meeting_hours",
-            keyword = "conflicting"
-          ),
-          "\n",
-
-          combine_extracts(
-            filt_chr = "Multitasking_meeting_hours",
-            keyword = "multitasking"
-          )
+    paste(
+      paste(
+        "There are",
+        mh_total,
+        "total meeting hours across the analysis population."
+        ),
+      key_text,
+      sep = "\n"
           )
 
   if(return == "message"){
