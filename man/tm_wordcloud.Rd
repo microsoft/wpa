@@ -16,8 +16,8 @@ tm_wordcloud(
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
-\item{stopwords}{A single-column data frame labelled \code{'word'} containing
-custom stopwords to remove.}
+\item{stopwords}{A character vector OR a single-column data frame labelled
+\code{'word'} containing custom stopwords to remove.}
 
 \item{seed}{A numeric vector to set seed for random generation.}
 
@@ -59,6 +59,9 @@ There is an option to remove stopwords by passing a data frame into the
 }
 \examples{
 tm_wordcloud(mt_data, keep = 30)
+
+# Removing stopwords
+tm_wordcloud(mt_data, keep = 30, stopwords = c("weekly", "update"))
 
 }
 \seealso{

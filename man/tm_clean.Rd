@@ -12,8 +12,8 @@ tm_clean(data, token = "words", stopwords = NULL, ...)
 \item{token}{A character vector accepting either \code{"words"} or \code{"ngrams"},
 determining type of tokenisation to return.}
 
-\item{stopwords}{A single-column data frame labelled \code{'word'} containing
-custom stopwords to remove.}
+\item{stopwords}{A character vector OR a single-column data frame labelled
+\code{'word'} containing custom stopwords to remove.}
 
 \item{...}{Additional parameters to pass to \code{tidytext::unnest_tokens()}.}
 }
