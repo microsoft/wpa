@@ -92,6 +92,8 @@ qui_stan_c <- function(data){
     message("Adding `Collaboration_hours` column based on `Collaboration_hrs`")
 
   }
+
+  return(data)
 }
 
 #' @title Standardise variable names for Standard Person Query Quietly for
@@ -108,4 +110,6 @@ qui_stan_im <- function(data){
     message("Adding `Instant_Message_hours` column based on `Instant_message_hours`")
 
   }
+
+  return(data)
 }

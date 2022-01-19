@@ -75,16 +75,6 @@ collaboration_area <- function(data,
   ## Lower case version of column names
   lnames <- tolower(names(data))
 
-  if("instant_message_hours" %in% lnames){
-
-    names(data) <-
-      gsub(pattern = "instant_message_hours",
-           replacement = "Instant_Message_hours",
-           x = names(data),
-           ignore.case = TRUE) # Case-insensitive
-
-  }
-
   if("unscheduled_call_hours" %in% lnames){
 
     names(data) <-
