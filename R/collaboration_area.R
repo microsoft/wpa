@@ -59,6 +59,10 @@ collaboration_area <- function(data,
                                mingroup=5,
                                return = "plot"){
 
+  ## Handle variable name consistency
+  data <- qui_stan_c(data)
+  data <- qui_stan_im(data)
+
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
     data <- totals_col(data)
