@@ -78,3 +78,34 @@ standardise_pq <- function(data){
 #' @export
 standardize_pq <- standardise_pq
 
+#' @title Standardise variable names for Standard Person Query Quietly for
+#' `Collaboration_hours`
+#'
+#' @noRd
+#'
+qui_stan_c <- function(data){
+
+  if(!("Collaboration_hours" %in% names(data)) &
+     ("Collaboration_hrs" %in% names(data))){
+
+    data <- data %>% mutate(Collaboration_hours = Collaboration_hrs)
+    message("Adding `Collaboration_hours` column based on `Collaboration_hrs`")
+
+  }
+}
+
+#' @title Standardise variable names for Standard Person Query Quietly for
+#' `Instant_Message_hours`
+#'
+#' @noRd
+#'
+qui_stan_im <- function(data){
+
+  if(!("Instant_Message_hours" %in% names(data)) &
+     ("Instant_message_hours" %in% names(data))){
+
+    data <- data %>% mutate(Instant_Message_hours = Instant_message_hours)
+    message("Adding `Instant_Message_hours` column based on `Instant_message_hours`")
+
+  }
+}
