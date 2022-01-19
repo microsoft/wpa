@@ -35,8 +35,8 @@
 #' @param weight String specifying the column name of a numeric variable for
 #'   weighting data, such as `"Invitees"`. The column must contain positive
 #'   integers. Defaults to `NULL`, where no weighting is applied.
-#' @param stopwords A single-column data frame labelled `'word'` containing
-#'   custom stopwords to remove.
+#' @param stopwords A character vector OR a single-column data frame labelled
+#'   `'word'` containing custom stopwords to remove.
 #' @param ... Additional parameters to pass to `tm_clean()`.
 #'
 #' @return

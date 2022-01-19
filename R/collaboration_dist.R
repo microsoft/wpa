@@ -32,6 +32,9 @@ collaboration_dist <- function(data,
                                return = "plot",
                                cut = c(15, 20, 25)) {
 
+  ## Handle variable name consistency
+  data <- qui_stan_c(data)
+
   create_dist(data = data,
               metric = "Collaboration_hours",
               hrvar = hrvar,

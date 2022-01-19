@@ -18,8 +18,8 @@
 #' `stopwords` argument.
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param stopwords A single-column data frame labelled 'word' containing custom
-#'   stopwords to remove.
+#' @param stopwords A character vector OR a single-column data frame labelled
+#'   `'word'` containing custom stopwords to remove.
 #' @param seed A numeric vector to set seed for random generation.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -62,6 +62,8 @@ tm_cooc <- function(data,
   text_df <- suppressMessages(tm_clean(data = data,
                                        token = "words",
                                        stopwords = stopwords))
+
+
 
   # Calculate frequency of pairs
   title_word_pairs <-

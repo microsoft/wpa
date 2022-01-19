@@ -7,6 +7,10 @@
 
 0 errors | 0 warnings | 0 note
 
+## Submission 1.6.4
+
+Minor bug fixes and refactoring.
+
 ## Submission 1.6.3
 
 New visualization feature and refactoring.

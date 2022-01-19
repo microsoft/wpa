@@ -13,8 +13,8 @@ tm_freq(data, token = "words", stopwords = NULL, keep = 100, return = "plot")
 \item{token}{A character vector accepting either \code{"words"} or \code{"ngram"},
 determining type of tokenisation to return.}
 
-\item{stopwords}{A single-column data frame labelled \code{'word'} containing
-custom stopwords to remove.}
+\item{stopwords}{A character vector OR a single-column data frame labelled
+\code{'word'} containing custom stopwords to remove.}
 
 \item{keep}{A numeric vector specifying maximum number of words to keep.}
 

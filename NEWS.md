@@ -1,3 +1,11 @@
+# wpa 1.6.4
+
+- Made `meeting_skim()` dynamic - the function will still run even if not all variables are present. (#198)
+- Enable text mining functions to accept `stopwords` argument as a string
+vector, rather than a data frame (#182)
+- Better handling of errors due to variable name inconsistency when loading in a
+Ways of Working Assessment query as opposed to a Standard Person Query (#201)
+
 # wpa 1.6.3
 
 - Added `create_inc()` for creating incidence analysis

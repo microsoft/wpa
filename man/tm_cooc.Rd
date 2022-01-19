@@ -9,8 +9,8 @@ tm_cooc(data, stopwords = NULL, seed = 100, return = "plot", lmult = 0.05)
 \arguments{
 \item{data}{A Meeting Query dataset in the form of a data frame.}
 
-\item{stopwords}{A single-column data frame labelled 'word' containing custom
-stopwords to remove.}
+\item{stopwords}{A character vector OR a single-column data frame labelled
+\code{'word'} containing custom stopwords to remove.}
 
 \item{seed}{A numeric vector to set seed for random generation.}
 
