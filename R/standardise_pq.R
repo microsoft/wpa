@@ -89,7 +89,7 @@ qui_stan_c <- function(data){
      ("Collaboration_hrs" %in% names(data))){
 
     data <- data %>% mutate(Collaboration_hours = Collaboration_hrs)
-    message("Adding `Collaboration_hours` column based on `Collaboration_hrs`")
+    # message("Adding `Collaboration_hours` column based on `Collaboration_hrs`")
 
   }
 
@@ -107,7 +107,7 @@ qui_stan_im <- function(data){
      ("Instant_message_hours" %in% names(data))){
 
     data <- data %>% mutate(Instant_Message_hours = Instant_message_hours)
-    message("Adding `Instant_Message_hours` column based on `Instant_message_hours`")
+    # message("Adding `Instant_Message_hours` column based on `Instant_message_hours`")
 
   }
 

@@ -90,7 +90,11 @@ validation_report <- function(data,
     newpath <- path
   }
 
-   ## Dynamic: if meeting data is not available
+  ## Handle variable name consistency
+  data <- qui_stan_c(data)
+  data <- qui_stan_im(data)
+
+  ## Dynamic: if meeting data is not available
   if(is.null(meeting_data)){
     subline_obj <- "[Note] Subject line analysis is unavailable as no meeting query is supplied."
     subline_obj2 <- ""
