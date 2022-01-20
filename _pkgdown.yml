@@ -6,7 +6,6 @@ template:
     docsearch: 
       api_key: f45eacc22edb0c386f1f5b9bb89f76be
       index_name: wpa
-  path: "inst/pkgdown"
 
 navbar:
   structure:
