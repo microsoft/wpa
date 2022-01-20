@@ -1,525 +1,591 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://microsoft.github.io/wpa//index.html</loc>
+    <loc>https://microsoft.github.io/wpa/404.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/IV_by_period.html</loc>
+    <loc>https://microsoft.github.io/wpa/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/IV_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/afterhours_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/afterhours_fizz.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide_data_validation.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/afterhours_line.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide_distribution.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/afterhours_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide_getting_started.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/afterhours_summary.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide_network.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/afterhours_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide_reports.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/anonymise.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide_summary.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/calculate_IV.html</loc>
+    <loc>https://microsoft.github.io/wpa/analyst_guide_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/camel_clean.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/Change-over-time.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/capacity_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/IV-report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/check_inputs.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/best-practices.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/check_query.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/coaching_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/intro-to-wpa.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_area.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/network-analysis.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/profiles-with-rank.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_fizz.html</loc>
+    <loc>https://microsoft.github.io/wpa/articles/text-mining-capabilities.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_line.html</loc>
+    <loc>https://microsoft.github.io/wpa/authors.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/contributors.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/developer_guide.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_sum.html</loc>
+    <loc>https://microsoft.github.io/wpa/faq.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/collaboration_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/index.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/combine_signals.html</loc>
+    <loc>https://microsoft.github.io/wpa/news/index.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/comma.html</loc>
+    <loc>https://microsoft.github.io/wpa/package_structure.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/connectivity_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/playbook_intro.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/copy_df.html</loc>
+    <loc>https://microsoft.github.io/wpa/pull_request_template.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_ITSA.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/IV_by_period.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_IV.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/IV_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_bar.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/afterhours_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_bar_asis.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/afterhours_fizz.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_boxplot.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/afterhours_line.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_bubble.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/afterhours_rank.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/afterhours_summary.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_dt.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/afterhours_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_fizz.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/anonymise.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_hist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/calculate_IV.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_inc.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/camel_clean.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_line.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/capacity_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_line_asis.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/check_inputs.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_period_scatter.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/check_query.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/coaching_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_rank_combine.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_area.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_sankey.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_scatter.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_fizz.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_stacked.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_line.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_tracking.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_rank.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/create_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/cut_hour.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_sum.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/dv_data.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/collaboration_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/em_data.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/combine_signals.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/email_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/comma.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/email_fizz.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/connectivity_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/email_line.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/copy_df.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/email_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_ITSA.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/email_summary.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_IV.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/email_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_bar.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/export.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_bar_asis.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/external_network_plot.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_boxplot.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/extract_date_range.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_bubble.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/extract_hr.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/flag_ch_ratio.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_dt.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/flag_em_ratio.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_fizz.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/flag_extreme.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_hist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/flag_outlooktime.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_inc.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/flex_index.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_line.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/g2g_data.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_line_asis.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/generate_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_period_scatter.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/generate_report2.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_rank.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/heat_colours.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_rank_combine.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/hr_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_sankey.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/hrvar_count.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_scatter.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/hrvar_count_all.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_stacked.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/hrvar_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_tracking.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_churn.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/create_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_holidayweeks.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/cut_hour.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_inactiveweeks.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/dv_data.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_nkw.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/em_data.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_outlier.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/email_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_privacythreshold.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/email_fizz.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_query.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/email_line.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_shifts.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/email_rank.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_shifts_wp.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/email_summary.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/identify_tenure.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/email_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/import_to_fst.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/export.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/import_wpa.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/external_network_plot.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/internal_network_plot.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/extract_date_range.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/is_date_format.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/extract_hr.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/jitter_metrics.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/flag_ch_ratio.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/keymetrics_scan.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/flag_em_ratio.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/map_IV.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/flag_extreme.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/maxmin.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/flag_outlooktime.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/flex_index.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_extract.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/g2g_data.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_fizz.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/generate_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_line.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/generate_report2.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_quality.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/heat_colours.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/hr_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_skim.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/hrvar_count.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_summary.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/hrvar_count_all.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_tm_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/hrvar_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meeting_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_churn.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meetingtype_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_holidayweeks.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meetingtype_dist_ca.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_inactiveweeks.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meetingtype_dist_mt.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_nkw.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/meetingtype_summary.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_outlier.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/mgrcoatt_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_privacythreshold.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/mgrrel_matrix.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_query.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/mt_data.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_shifts.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/network_describe.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_shifts_wp.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/network_g2g.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/identify_tenure.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/network_leiden.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/import_to_fst.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/network_louvain.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/import_wpa.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/network_p2p.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/one2one_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/internal_network_plot.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/one2one_fizz.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/is_date_format.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/one2one_freq.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/jitter_metrics.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/one2one_line.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/keymetrics_scan.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/one2one_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/map_IV.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/one2one_sum.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/maxmin.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/one2one_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/p2p_data_sim.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_extract.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/p_test.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_fizz.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/pairwise_count.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_line.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/period_change.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_quality.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/personas_hclust.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_rank.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/pipe.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_skim.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/plot_WOE.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_summary.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/plot_flex_index.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_tm_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/read_preamble.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meeting_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/remove_outliers.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meetingtype_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/rgb2hex.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meetingtype_dist_ca.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/sq_data.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meetingtype_dist_mt.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/standardise_pq.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/meetingtype_summary.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/subject_classify.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/mgrcoatt_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/subject_scan.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/mgrrel_matrix.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/subject_validate.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/mt_data.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/subject_validate_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/network_describe.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/theme_wpa.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/network_g2g.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/theme_wpa_basic.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/network_leiden.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/tm_clean.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/network_louvain.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/tm_cooc.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/network_p2p.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/tm_freq.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/one2one_dist.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/tm_wordcloud.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/one2one_fizz.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/totals_bind.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/one2one_freq.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/totals_col.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/one2one_line.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/totals_reorder.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/one2one_rank.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/track_HR_change.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/one2one_sum.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/tstamp.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/one2one_trend.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/us_to_space.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/p2p_data_sim.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/validation_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/p_test.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/wellbeing_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/pairwise_count.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workloads_dist.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/period_change.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workloads_fizz.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/personas_hclust.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workloads_line.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workloads_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/plot_WOE.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workloads_summary.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/plot_flex_index.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workloads_trend.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/read_preamble.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workpatterns_area.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/remove_outliers.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workpatterns_classify.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/rgb2hex.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workpatterns_classify_bw.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/sq_data.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workpatterns_classify_pav.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/standardise_pq.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workpatterns_hclust.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/subject_classify.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workpatterns_rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/subject_scan.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/workpatterns_report.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/subject_validate.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//reference/wrap.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/subject_validate_report.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//articles/Change-over-time.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/theme_wpa.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//articles/IV-report.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/theme_wpa_basic.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//articles/best-practices.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/tm_clean.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//articles/intro-to-wpa.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/tm_cooc.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//articles/network-analysis.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/tm_freq.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//articles/profiles-with-rank.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/tm_wordcloud.html</loc>
   </url>
   <url>
-    <loc>https://microsoft.github.io/wpa//articles/text-mining-capabilities.html</loc>
+    <loc>https://microsoft.github.io/wpa/reference/totals_bind.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/totals_col.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/totals_reorder.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/track_HR_change.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/tstamp.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/us_to_space.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/validation_report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/wellbeing_report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workloads_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workloads_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workloads_line.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workloads_rank.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workloads_summary.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workloads_trend.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workpatterns_area.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workpatterns_classify.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workpatterns_classify_bw.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workpatterns_classify_pav.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workpatterns_hclust.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workpatterns_rank.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/workpatterns_report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/wrap.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reporting_security_issues.html</loc>
   </url>
 </urlset>

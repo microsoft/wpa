@@ -28,6 +28,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
       </span>
     </div>
 
@@ -160,13 +162,10 @@
     </li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/microsoft/wpa/">
+  <a href="https://github.com/microsoft/wpa/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -191,11 +190,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to Organizational Network Analysis with wpa in R</h1>
-                        <h4 class="author">Julia Kasper</h4>
+                        <h4 data-toc-skip class="author">Julia Kasper</h4>
             
-            <h4 class="date">2021-08-18</h4>
+            <h4 data-toc-skip class="date">2021-08-18</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/master/vignettes/network-analysis.Rmd"><code>vignettes/network-analysis.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/HEAD/vignettes/network-analysis.Rmd" class="external-link"><code>vignettes/network-analysis.Rmd</code></a></small>
       <div class="hidden name"><code>network-analysis.Rmd</code></div>
 
     </div>
@@ -203,48 +202,48 @@
     
     
 <p>This article provides a beginner’s introduction to Organizational Network Analysis (ONA), its basic concepts, and how to run them with the functions available from the <a href="https://microsoft.github.io/wpa/"><strong>wpa</strong> R library</a>.</p>
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p><strong>Organizational Network Analysis (ONA)</strong>, in the context of Workplace Analytics, is a family of methods to understand patterns of collaboration by examining the strength, frequency and nature of interactions between people. Analyzing and visualizing network connectivity in your organization can help you shape business strategy that unlocks success for individual and team productivity, innovation, employee engagement and organizational change, thereby helping your business become more resilient and effective.</p>
 <p>Most valuable information in organizations is not codified. As employees collaborate, information flows from one person to the other or they generate knowledge together. These connections deliver value when information is exchanged and visualizing these relationships can provide us with a holistic view of how information flows through an organization. ONA can help us reveal central network collaborators, critical connections, and potential barriers to information flow.</p>
-<div id="basic-building-blocks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#basic-building-blocks" class="anchor"></a>Basic Building Blocks</h3>
-<p>We will start with the basic building blocks of networks. Networks consist of two primary aspects, a multitude of separate entities (“nodes”) and the connections between them (“edges”). Nodes and edges provide a foundation on how information in your organization is flowing, and also strategize on how they can flow and should flow. Nodes in ONA visualizations typically represent individual employees or groups of employees (e.g. <code>Organization</code>, <code>Region</code> etc.), serving as important hubs for the exchange of ideas and information. In addition to these nodes, you have connections (so-called “edges”) between them. These edges indicate there is some relationship between the nodes, meaning these individuals or groups have a connection to each other when they collaborate. In the context of Workplace Analytics, we identify these connections between nodes in the network based on collaboration activities (emails, meetings, calls, instant messages). In a network analysis, we also need to understand the strength of the tie. For this calculation we are using time spent together in collaboration. In addition, we have to consider the <strong>direction</strong> in which collaboration is operated. For meetings there is no direction, but for emails, chats and calls we have a sense of direction which we can look at.</p>
+<div class="section level3">
+<h3 id="basic-building-blocks">Basic Building Blocks<a class="anchor" aria-label="anchor" href="#basic-building-blocks"></a>
+</h3>
+<p>We will start with the basic building blocks of networks. Networks consist of two primary aspects, a multitude of separate entities (“nodes”) and the connections between them (“edges”). Nodes and edges provide a foundation for understanding how information flows in your organization, and also strategizing on how they can flow and should flow. Nodes in ONA visualizations typically represent individual employees or groups of employees (e.g. <code>Organization</code>, <code>Region</code> etc.), serving as important hubs for the exchange of ideas and information. In addition to these nodes, you have connections between them called <strong>edges</strong>. These edges represent a connection between nodes, which in turn represents a collaboration relationship between individuals or groups. In the context of Workplace Analytics, these connections between nodes in the network represent collaboration activities (emails, meetings, calls, instant messages). In a network analysis, we also need to understand the strength of the tie. For this calculation we are using time spent together in collaboration. In addition, we have to consider the <strong>direction</strong> in which collaboration is operated. For meetings there is no direction, but for emails, chats and calls we have a sense of direction which we can look at.</p>
 <blockquote>
 <p>Workplace Analytics provides a powerful data source for performing network analysis and for surfacing insights about information flows in your organization. The <strong>wpa</strong> R library contains several powerful features that enables you to create such analysis and visualizations.</p>
 </blockquote>
 </div>
 </div>
-<div id="scenarios" class="section level2">
-<h2 class="hasAnchor">
-<a href="#scenarios" class="anchor"></a>Scenarios</h2>
-<p>Network analysis can create a data-driven approach to drive organizational challenges. Practical scenarios include:</p>
+<div class="section level2">
+<h2 id="scenarios">Scenarios<a class="anchor" aria-label="anchor" href="#scenarios"></a>
+</h2>
+<p>Network analysis provides a data-driven approach to address organizational challenges. Practical scenarios include:</p>
 <ul>
 <li>
-<strong>Identifying silos</strong>: ONA can help revealing critical silos where collaboration improvements can be generated. By tapping into this data, organizations can rebalance collaboration loads, expand capacity and integrate expertise on the edge of the network to break down those silos.</li>
+<strong>Identifying silos</strong>: ONA can help reveal critical silos where collaboration improvements can be generated. By tapping into this data, organizations can rebalance collaboration loads, expand capacity, and integrate expertise on the edge of the network to break down those silos.</li>
 <li>
-<strong>Identifying influencers</strong>: By understanding the depth and intensity of collaboration, organizations can identify influencers. To boost their employee engagement and prevent possible fluctuation they can reduce collaborative overload on those central collaborators in the network and better leverage top talent.</li>
+<strong>Identifying influencers</strong>: By understanding the depth and intensity of collaboration, organizations can identify influencers. To boost employee engagement and prevent potential attrition, they can reduce collaborative overload on those central collaborators in the network and better leverage top talent.</li>
 <li>
-<strong>Workspace planning</strong>: ONA can surface the ‘organic’ patterns of how individuals and groups collaborate with each other, which helps decision-makers determine how workspaces and seating should be allocated as organizations move back to the office.</li>
+<strong>Workspace planning</strong>: ONA can surface the ‘organic’ patterns of how individuals and groups collaborate with each other, and help decision-makers determine how workspaces and seating should be allocated as organizations move back to the office.</li>
 <li>
-<strong>Improve organizational culture</strong>: Through insights into where information flows efficiently and flags where it flows inefficiently, this approach offers a great opportunity to reduce effort and improve value creation. With this information, key work activities can be enhanced, innovation can be driven, and network behavior can be aligned to organizational strategies.</li>
+<strong>Improve organizational culture</strong>: Through insights into where information flows efficiently and flags where it flows inefficiently, this approach offers a great opportunity to reduce effort and improve value creation. With this information, key work activities can be enhanced, innovation can be driven, and network behaviour can be aligned to organizational strategies.</li>
 </ul>
 </div>
-<div id="functions-and-metrics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functions-and-metrics" class="anchor"></a>Functions and Metrics</h2>
-<p>Network analysis is quantitative and uses collaboration data to create a matrix of relationships and applies matrix algebra to calculate measures. The wpa R package provides a set of functions (4) that can be used to get started with network analysis. You can start with the <code><a href="../reference/connectivity_report.html">connectivity_report()</a></code> which provides a first baseline on the topic <strong>Teaming and Networking</strong>. This report visualizes, among other things, external and internal networks with <code><a href="../reference/external_network_plot.html">external_network_plot()</a></code> and <code><a href="../reference/internal_network_plot.html">internal_network_plot()</a></code>:</p>
+<div class="section level2">
+<h2 id="functions-and-metrics">Functions and Metrics<a class="anchor" aria-label="anchor" href="#functions-and-metrics"></a>
+</h2>
+<p>Network analysis is quantitative and uses collaboration data to create a matrix of relationships and applies matrix algebra to calculate measures. The wpa R package provides a set of functions (4) that can be used to get started with network analysis. You can start with the <code><a href="../reference/connectivity_report.html">connectivity_report()</a></code> which provides a baseline on the topic <strong>Teaming and Networking</strong>. This report visualizes, among other things, external and internal networks with <code><a href="../reference/external_network_plot.html">external_network_plot()</a></code> and <code><a href="../reference/internal_network_plot.html">internal_network_plot()</a></code>:</p>
 <ol style="list-style-type: decimal">
 <li><p><code><a href="../reference/internal_network_plot.html">internal_network_plot()</a></code>: plots the internal network metrics for a HR variable as a scatter plot, showing <strong>Internal Network Breadth</strong> as the vertical axis and <strong>Internal Network Size</strong> as the horizontal axis. This function is organization</p></li>
 <li>
 <p><code><a href="../reference/external_network_plot.html">external_network_plot()</a></code>: plots the external network metrics for a HR variable as a scatter plot, showing <strong>External Network Breadth</strong> as the vertical axis and <strong>External Network Size</strong> as the horizontal axis.</p>
 <p>These two functions visualize metrics like network size and network breadth and return either a table or plot as an output:</p>
 <ul>
-<li><p><strong>Network size</strong>: the number of people external or internal to the company with whom the person had at least two <a href="https://docs.microsoft.com/en-us/workplace-analytics/use/glossary#meaningful-interaction-define">meaningful interactions</a> in the last four weeks.</p></li>
+<li><p><strong>Network size</strong>: the number of people external or internal to the company with whom the person had at least two <a href="https://docs.microsoft.com/en-us/workplace-analytics/use/glossary#meaningful-interaction-define" class="external-link">meaningful interactions</a> in the last four weeks.</p></li>
 <li>
-<p><strong>Network breadth</strong>: this is synonymous with <em>Networking outside Organization</em> or <em>Networking outside Company</em>, depending on whether this refers to <strong>internal network breadth</strong> or <strong>external network breadth</strong>. See more from <a href="https://docs.microsoft.com/en-us/workplace-analytics/use/metric-definitions">here</a>.</p>
+<p><strong>Network breadth</strong>: this is synonymous with <em>Networking outside Organization</em> or <em>Networking outside Company</em>, depending on whether this refers to <strong>internal network breadth</strong> or <strong>external network breadth</strong>. See more from <a href="https://docs.microsoft.com/en-us/workplace-analytics/use/metric-definitions" class="external-link">here</a>.</p>
 <blockquote>
 <p>Note that the above functions do not manipulate the graph or an edge list directly, but rather on person-level network metrics which have already been computed within Workplace Analytics.</p>
 </blockquote>
@@ -255,7 +254,7 @@
 <li>
 <p><code><a href="../reference/network_p2p.html">network_p2p()</a></code>: another advanced function where you can create a network plot with the person-to-person network query. It is a visualization of network analysis plot based on strong and diverse tie metrics. It also has additional capabilities to perform network community detection.</p>
 <blockquote>
-<p>Strong and diverse tie metrics are based on collaboration activities and indicates how varied, broad and strong a person’s connections or engagements are. See more from <a href="https://docs.microsoft.com/en-us/workplace-analytics/use/metric-definitions#network-metrics">here</a>.</p>
+<p>Strong and diverse tie metrics are based on collaboration activities and indicates how varied, broad and strong a person’s connections or engagements are. See more from <a href="https://docs.microsoft.com/en-us/workplace-analytics/use/metric-definitions#network-metrics" class="external-link">here</a>.</p>
 </blockquote>
 </li>
 </ol>
@@ -263,7 +262,7 @@
 <table class="table">
 <colgroup>
 <col width="20%">
-<col width="50%">
+<col width="49%">
 <col width="29%">
 </colgroup>
 <thead><tr class="header">
@@ -290,14 +289,14 @@
 <tr class="even">
 <td><code><a href="../reference/network_p2p.html">network_p2p()</a></code></td>
 <td>Plots network analysis based on strong and diverse tie metrics.</td>
-<td>Diverse Tie Score Strong Tie Score</td>
+<td>Diverse Tie Score, Strong Tie Score</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="queries-and-outputs" class="section level2">
-<h2 class="hasAnchor">
-<a href="#queries-and-outputs" class="anchor"></a>Queries and Outputs</h2>
+<div class="section level2">
+<h2 id="queries-and-outputs">Queries and Outputs<a class="anchor" aria-label="anchor" href="#queries-and-outputs"></a>
+</h2>
 <p>To use the functions, the input data must be a data frame object in R. Out-of-the-box queries generated through the Workplace Analytics tool can be read in as a CSV file into a data frame object. However, the functions user different queries as an input parameter and this must be considered whenever using those queries:</p>
 <table class="table">
 <colgroup>
@@ -334,8 +333,7 @@
 <p><img src="network-analysis_files/figure-html/unnamed-chunk-2-1.png" width="768"></p>
 <ul>
 <li>You can change the HR variable by which to split the metrics, defaults to “Organization” but accepts any character vector</li>
-<li>The size range of the bubbles can also be adjusted. See more from <a href="https://microsoft.github.io/wpa/reference/internal_network_plot.html">here.</a>
-</li>
+<li>The size range of the bubbles can also be adjusted. See more from <a href="https://microsoft.github.io/wpa/reference/internal_network_plot.html">here</a>.</li>
 </ul>
 <p><em>Interpretation: Organizations in the lower left corner have a internal smaller network size and network breadth. This may mean that they do not collaborate as much with other internal organizations and do not show a very large network. In comparison, organizations in the upper right corner have a larger internal network size and also network breadth. It can be inferred that they collaborate very broadly across the whole organization, maintaining many meaningful connections.</em></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -356,18 +354,18 @@
 <p><em>Interpretation: This visualization can be used to show how strongly different organizations are connected. The connections between the organizations shows the strength of the network and give an indication of how strong this connection is. Organizations that have no connection or only a very weak connection may have a possible risk of exclusion because they are not as strongly connected to other organizations.</em></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>
-<span class="va">p2p_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>, path <span class="op">=</span> <span class="cn">NULL</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<span class="va">p2p_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>, path <span class="op">=</span> <span class="cn">NULL</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
 <p><img src="network-analysis_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
 <ul>
 <li>
 <code>display</code> lets you decide on what algorithm you want your output to be based on. Find more information here.</li>
 </ul>
 <blockquote>
-<p>The best practice towards network analysis is always to first establish and validate hypotheses with the data, and <em>then</em> visualize the result. The reason why one should not start an analysis by interpreting a network visual is that network visualizations are critically affected by inputs such as layout algorithms (of which many are non-deterministic), inputs to those layout algorithms, and visual elements such as the colors and transparencies of the nodes and edges.</p>
+<p>The best practice towards network analysis is always to first establish and validate hypotheses with the data, and <em>then</em> visualize the result. The reason why one should not start an analysis by interpreting a network visual is that network visualizations are critically affected by inputs such as layout algorithms (of which many are non-deterministic), inputs to those layout algorithms, and visual elements such as the colours and transparencies of the nodes and edges.</p>
 </blockquote>
 <p>The above point on best practice is particularly pertinent for person-to-person analyses, which typically involve a large number of nodes and misleading conclusions can be drawn if one is not fully aware of the input parameters that have been used in generating the visual. In this case, the recommend interpretative approach would be to:</p>
 <ol style="list-style-type: decimal">
-<li><p>Run the summary tables or graph statistics by returning ‘<code>table</code>’ or ‘<code>network</code>’, making use of graph analysis functions that are compatible with an ‘igraph’ object.</p></li>
+<li><p>Run the summary tables or graph statistics by returning <code>'table'</code> or <code>'network'</code>, making use of graph analysis functions that are compatible with an <code>'igraph'</code> object.</p></li>
 <li><p>Develop a series of hypotheses based on your knowledge of the organization and the data you are seeing. For instance, the hypothesis could be that Team A and Team B have very few ties with each other, but Region C maintain very strong ties with both of those regions, making it potentially a less optimal solution to allocate Team A and B together on ‘office day’ rotations. The same principle applies when generating communities.</p></li>
 <li>
 <p>Validate hypothesis with the data, using multiple permutations. For instance, the selected date range and population could lead to a different outcome in the data.</p>
@@ -375,14 +373,14 @@
 </li>
 </ol>
 </div>
-<div id="end-note-reference" class="section level2">
-<h2 class="hasAnchor">
-<a href="#end-note-reference" class="anchor"></a>End Note &amp; Reference</h2>
-<p>This article is a first introduction to the topic of Organizational Network Analysis but there is more to come. At this point you should know the basic buliding blocks of network analysis and how to run the relevant functions in the wpa R library. Here are some more references on how to use the wpa R package and the topic of networks:</p>
+<div class="section level2">
+<h2 id="end-note-reference">End Note &amp; Reference<a class="anchor" aria-label="anchor" href="#end-note-reference"></a>
+</h2>
+<p>This article is a first introduction to the topic of Organizational Network Analysis but there is more to come. At this point you should know the basic building blocks of network analysis and how to run the relevant functions in the wpa R library. Here are some more references on how to use the wpa R package and the topic of networks:</p>
 <ul>
 <li><a href="https://microsoft.github.io/wpa/reference/index.html">Overview of functions of the wpa R package</a></li>
 <li><a href="https://microsoft.github.io/wpa/analyst_guide_reports.html">Reports that you can run using the wpa R package</a></li>
-<li><a href="https://ona-book.org/index.html">Handbook of Graphs and Networks in People Analytics</a></li>
+<li><a href="https://ona-book.org/index.html" class="external-link">Handbook of Graphs and Networks in People Analytics</a></li>
 </ul>
 </div>
   </div>
@@ -397,15 +395,15 @@
 
 
 
-      <footer><p>
-  This website was automatically generated by the
-  <a href="%5C%22https://github.com/r-lib/pkgdown%5C%22">pkgdown</a> package.
-  Websites like this one are a customary, prevalent, and widely-expected
-  community standard for the documentation of
-  publicly-available R packages.
-  Copyright is the same as for the
-  <a href="%5C%22https://github.com/microsoft/wpa%5C%22"></a> package itself.
-</p>
+      <footer><div class="copyright">
+  <p></p>
+<p>Developed by Martin Chan, Carlos Morales.</p>
+</div>
+
+<div class="pkgdown">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+</div>
 
       </footer>
 </div>

@@ -28,6 +28,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
       </span>
     </div>
 
@@ -160,13 +162,10 @@
     </li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/microsoft/wpa/">
+  <a href="https://github.com/microsoft/wpa/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -191,11 +190,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Best Practices: working with Workplace Analytics in R</h1>
-                        <h4 class="author">Martin Chan</h4>
+                        <h4 data-toc-skip class="author">Martin Chan</h4>
             
-            <h4 class="date">2020-09-23</h4>
+            <h4 data-toc-skip class="date">2020-09-23</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/master/vignettes/best-practices.Rmd"><code>vignettes/best-practices.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/HEAD/vignettes/best-practices.Rmd" class="external-link"><code>vignettes/best-practices.Rmd</code></a></small>
       <div class="hidden name"><code>best-practices.Rmd</code></div>
 
     </div>
@@ -203,23 +202,22 @@
     
     
 <p>This post details the top best practices for working with Workplace Analytics data in R. Code examples in this post make use of the <strong>wpa</strong> and the <strong>dplyr</strong> packages.</p>
-<div id="use-import_wpa" class="section level2">
-<h2 class="hasAnchor">
-<a href="#use-import_wpa" class="anchor"></a>1. Use <code>import_wpa()</code>
+<div class="section level2">
+<h2 id="use-import_wpa">1. Use <code>import_wpa()</code><a class="anchor" aria-label="anchor" href="#use-import_wpa"></a>
 </h2>
-<p>We always recommend using <code><a href="../reference/import_wpa.html">import_wpa()</a></code> for reading in CSV queries as it is optimised for the <strong>wpa</strong> package, applying certain checks as well as variable classifications based on what is expected from the Workplace Analytics data. In effect, <code><a href="../reference/import_wpa.html">import_wpa()</a></code> is a substitute for <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>, <code>readr::read_csv()</code>, or <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread()</a></code>, whichever is your usual go-to CSV reader.</p>
+<p>We always recommend using <code><a href="../reference/import_wpa.html">import_wpa()</a></code> for reading in CSV queries as it is optimised for the <strong>wpa</strong> package, applying certain checks as well as variable classifications based on what is expected from the Workplace Analytics data. In effect, <code><a href="../reference/import_wpa.html">import_wpa()</a></code> is a substitute for <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code>, <code>readr::read_csv()</code>, or <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">data.table::fread()</a></code>, whichever is your usual go-to CSV reader.</p>
 </div>
-<div id="validate-your-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#validate-your-data" class="anchor"></a>2. Validate your data!</h2>
+<div class="section level2">
+<h2 id="validate-your-data">2. Validate your data!<a class="anchor" aria-label="anchor" href="#validate-your-data"></a>
+</h2>
 <p>Data validation is important - and with the R package, this is as simple as running <code><a href="../reference/validation_report.html">validation_report()</a></code> on the existing data.</p>
 <p>You would simply run it on the data frame containing the query:</p>
-<pre><code><a href="https://github.com/microsoft/wpa/">library(wpa)
-dv_data %&gt;% validation_report()</a></code></pre>
+<pre><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
+<span class="va">dv_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/validation_report.html">validation_report</a></span><span class="op">(</span><span class="op">)</span></code></pre>
 </div>
-<div id="give-informative-names-to-your-queries" class="section level2">
-<h2 class="hasAnchor">
-<a href="#give-informative-names-to-your-queries" class="anchor"></a>3. Give informative names to your queries</h2>
+<div class="section level2">
+<h2 id="give-informative-names-to-your-queries">3. Give informative names to your queries<a class="anchor" aria-label="anchor" href="#give-informative-names-to-your-queries"></a>
+</h2>
 <p>This is up to individual preferences, but here is a case for giving informative and slightly more elaborative names to queries. First, it will make it easy for you or your fellow analysts to have an idea of what is in the CSV file prior to reading in the data. Moreover, clear and informative names can help analysts avoid errors at the mid-stage of the analysis, where it is likely that numerous queries have been run, and it is imaginably confusing if they all have generic names like <em>Collaboration Assessment1.csv</em> or <em>Person Query v5a.csv</em>.</p>
 <p>We propose to get the name right from the start at the tenant, so that the name of the query on the tenant is consistent with the name of the query saved on your local machine. Here is an example of an informative query name:</p>
 <p><code>SPQ_May18toJune19_SalesOnly_MyInitials_20200923</code></p>
@@ -238,59 +236,58 @@ dv_data %&gt;% validation_report()</a></code></pre>
 <code>20200923</code> is the date when you ran the query.</li>
 </ul>
 </div>
-<div id="keep-your-r-files-short-and-use-source" class="section level2">
-<h2 class="hasAnchor">
-<a href="#keep-your-r-files-short-and-use-source" class="anchor"></a>4. Keep your R files short and use <code>source()</code>
+<div class="section level2">
+<h2 id="keep-your-r-files-short-and-use-source">4. Keep your R files short and use <code>source()</code><a class="anchor" aria-label="anchor" href="#keep-your-r-files-short-and-use-source"></a>
 </h2>
 <p>Although there isn’t an universal guide on what the maximum <em>length</em> of an individual R file should be, there is a good case for keeping an R file within 400 lines of code. The main reason is because it keeps the code easy to navigate, and you won’t have to do a lot of scrolling or advanced search to find out where you wrote a specific chunk of code.</p>
-<p>To help keep your R files short, it is recommended that you use <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, which tells R to run another R script on your machine. For instance, you could use <code>source("myscripts/data_cleaning.R")</code> to run a script called <code>data_cleaning.R</code> which contains some upfront code that loads and prepares your data for analysis. You can also achieve the same with functions.</p>
+<p>To help keep your R files short, it is recommended that you use <code><a href="https://rdrr.io/r/base/source.html" class="external-link">source()</a></code>, which tells R to run another R script on your machine. For instance, you could use <code>source("myscripts/data_cleaning.R")</code> to run a script called <code>data_cleaning.R</code> which contains some upfront code that loads and prepares your data for analysis. You can also achieve the same with functions.</p>
 </div>
-<div id="use-person-level-averages" class="section level2">
-<h2 class="hasAnchor">
-<a href="#use-person-level-averages" class="anchor"></a>5. Use person-level averages</h2>
+<div class="section level2">
+<h2 id="use-person-level-averages">5. Use person-level averages<a class="anchor" aria-label="anchor" href="#use-person-level-averages"></a>
+</h2>
 <p>It is recommended to use <em>person-level averages</em> where possible. What this means is that for any given metric, you would calculate an average for each employee before you would calculate it for the group. This effectively avoids people who may be represented by more person-weeks in the data (e.g. they have been in the company for longer) to have their results skew the data. In R, this can be replicated by grouping and summarising the data twice:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">PersonId</span>, <span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
+<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">PersonId</span>, <span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>All of the functions in the <strong>wpa</strong> package already calculate averages this way, so it is recommended that you use the package functions directly where possible. The above example is replicated by the following functions from the package:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">spq</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 
 <span class="co"># Or</span>
 
-<span class="va">spq</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="../reference/create_bar.html">create_bar</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/create_bar.html">create_bar</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="ensure-you-adhere-to-privacy-thresholds" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ensure-you-adhere-to-privacy-thresholds" class="anchor"></a>6. Ensure you adhere to privacy thresholds</h2>
+<div class="section level2">
+<h2 id="ensure-you-adhere-to-privacy-thresholds">6. Ensure you adhere to privacy thresholds<a class="anchor" aria-label="anchor" href="#ensure-you-adhere-to-privacy-thresholds"></a>
+</h2>
 <p>Privacy is an essential element of Workplace Analytics, so make sure you respect the privacy thresholds in your analysis. To do this, ensure you always calculate the number of distinct persons (<code>n_distinct(PersonId)</code> is one way to do it) for each sub-group that you are analysing, and make sure you do not display any data that goes below the threshold setting. All of the functions in the <strong>wpa</strong> package already do this, and you can adjust the threshold setting with the argument <code>mingroup</code>, which defaults to 5.</p>
 </div>
-<div id="comment-why-not-what" class="section level2">
-<h2 class="hasAnchor">
-<a href="#comment-why-not-what" class="anchor"></a>7. Comment WHY, not WHAT</h2>
+<div class="section level2">
+<h2 id="comment-why-not-what">7. Comment WHY, not WHAT<a class="anchor" aria-label="anchor" href="#comment-why-not-what"></a>
+</h2>
 <p>To make it easy for others and your future self to understand your code, comments (<code>#</code>) are essential. However, it is easy to go overboard and over-comment. The best practice principle here is then to comment on <em>why</em> you are doing something in a certain way, rather than <em>what</em> you are doing, as the rationale is that it is often obvious for the reader <em>what</em> you are doing (e.g. filtering, selecting columns) but less obvious <em>why</em>.</p>
 </div>
-<div id="when-youve-written-the-same-code-3-times-write-a-function" class="section level2">
-<h2 class="hasAnchor">
-<a href="#when-youve-written-the-same-code-3-times-write-a-function" class="anchor"></a>8. When you’ve written the same code 3 times, write a function</h2>
-<p>This “best practice” suggestion actually came from a popular <a href="https://twitter.com/drob/status/928447584712253440">tweet</a> by Data Scientist and R educator David Robinson. This basically captures the DRY (Don’t Repeat Yourself) principle in programming. There are several advantages of writing functions, which one of them includes the fact that you can just change the function once, and all the changes would be applied to <strong>everywhere</strong> in your script where that function is used. Just consider the following example:</p>
+<div class="section level2">
+<h2 id="when-youve-written-the-same-code-3-times-write-a-function">8. When you’ve written the same code 3 times, write a function<a class="anchor" aria-label="anchor" href="#when-youve-written-the-same-code-3-times-write-a-function"></a>
+</h2>
+<p>This “best practice” suggestion actually came from a popular <a href="https://twitter.com/drob/status/928447584712253440" class="external-link">tweet</a> by Data Scientist and R educator David Robinson. This basically captures the DRY (Don’t Repeat Yourself) principle in programming. There are several advantages of writing functions, which one of them includes the fact that you can just change the function once, and all the changes would be applied to <strong>everywhere</strong> in your script where that function is used. Just consider the following example:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter Organization by Sales and extract number of distinct people</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Sales"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Sales"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># Filter Organization by Operations and extract number of distinct people</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Operations"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Operations"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># Filter Organization by Engineering and extract number of distinct people</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Engineering"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Engineering"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>versus the following:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">filt_org</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">filter_string</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">spq</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="va">filter_string</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="va">filter_string</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="fu">filt_org</span><span class="op">(</span><span class="st">"Sales"</span><span class="op">)</span>
@@ -310,15 +307,15 @@ dv_data %&gt;% validation_report()</a></code></pre>
 
 
 
-      <footer><p>
-  This website was automatically generated by the
-  <a href="%5C%22https://github.com/r-lib/pkgdown%5C%22">pkgdown</a> package.
-  Websites like this one are a customary, prevalent, and widely-expected
-  community standard for the documentation of
-  publicly-available R packages.
-  Copyright is the same as for the
-  <a href="%5C%22https://github.com/microsoft/wpa%5C%22"></a> package itself.
-</p>
+      <footer><div class="copyright">
+  <p></p>
+<p>Developed by Martin Chan, Carlos Morales.</p>
+</div>
+
+<div class="pkgdown">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+</div>
 
       </footer>
 </div>

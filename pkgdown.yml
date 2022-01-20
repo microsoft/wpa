@@ -1,5 +1,5 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   Change-over-time: Change-over-time.html
@@ -9,8 +9,8 @@ articles:
   network-analysis: network-analysis.html
   profiles-with-rank: profiles-with-rank.html
   text-mining-capabilities: text-mining-capabilities.html
-last_built: 2021-11-22T12:24Z
+last_built: 2022-01-20T20:27Z
 urls:
-  reference: https://microsoft.github.io/wpa//reference
-  article: https://microsoft.github.io/wpa//articles
+  reference: https://microsoft.github.io/wpa/reference
+  article: https://microsoft.github.io/wpa/articles
 

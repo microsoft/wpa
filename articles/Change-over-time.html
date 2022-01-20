@@ -28,6 +28,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
       </span>
     </div>
 
@@ -160,13 +162,10 @@
     </li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/microsoft/wpa/">
+  <a href="https://github.com/microsoft/wpa/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -191,43 +190,43 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to identify changes over time in Workplace Analytics data</h1>
-                        <h4 class="author">Mark Powers</h4>
+                        <h4 data-toc-skip class="author">Mark Powers</h4>
             
-            <h4 class="date">2021-01-15</h4>
+            <h4 data-toc-skip class="date">2021-01-15</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/master/vignettes/Change-over-time.Rmd"><code>vignettes/Change-over-time.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/HEAD/vignettes/Change-over-time.Rmd" class="external-link"><code>vignettes/Change-over-time.Rmd</code></a></small>
       <div class="hidden name"><code>Change-over-time.Rmd</code></div>
 
     </div>
 
     
     
-<div id="what-has-changed" class="section level2">
-<h2 class="hasAnchor">
-<a href="#what-has-changed" class="anchor"></a>What has changed?</h2>
+<div class="section level2">
+<h2 id="what-has-changed">What has changed?<a class="anchor" aria-label="anchor" href="#what-has-changed"></a>
+</h2>
 <p>What has changed?</p>
 <p>Business leaders often want to understand how their business is performing so they can make data-driven decisions about how to work more efficiently and effectively. Identifying what has changed, and why, can lead business leaders to update their operations and strategy to improve business results. This means that one of the most common analytical asks for Workplace Analytics analysts is, “What has changed?” The <strong>wpa</strong> package offers two techniques to identify significant changes in Workplace Analytics metrics over time: <code><a href="../reference/period_change.html">period_change()</a></code> and <code><a href="../reference/IV_by_period.html">IV_by_period()</a></code>.</p>
 <p>For example, leaders at Contoso Corporation might be interested in how overall levels of digital collaboration are changing as they approach the end-of-year holidays. We can look at this question with the built-in <code>sq_data</code> dataset and the <code>Collaboration_hours</code> metric to show how an analyst could answer that.</p>
 <p>First, let’s load the <strong>wpa</strong> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/create_line.html">create_line</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Domain"</span>, 
               metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></code></pre></div>
 <p><img src="Change-over-time_files/figure-html/unnamed-chunk-2-1.png" width="768"></p>
 <p>This chart provides us with a good starting point, as we can see a change in collaboration activity throughout. We will study the change between November and December. The next step is to refine that insight, which we’ll do with the <code><a href="../reference/period_change.html">period_change()</a></code> function.</p>
 </div>
-<div id="period_change" class="section level2">
-<h2 class="hasAnchor">
-<a href="#period_change" class="anchor"></a><code>period_change()</code>
+<div class="section level2">
+<h2 id="period_change">
+<code>period_change()</code><a class="anchor" aria-label="anchor" href="#period_change"></a>
 </h2>
 <p>The <code><a href="../reference/period_change.html">period_change()</a></code> function returns a histogram of how many people changed a specific metric over two time periods, the <code>before</code> and <code>after</code> periods. It calculates the number or percentage of people whose metric changed by a particular percentage, and then helps us understand whether this overall change is statistically significant.</p>
 <p>In the scenario with Contoso, we can see that collaboration hours step down throughout November and December – but is this significant?</p>
 <p>First, let’s compare the change in collaboration for the first two weeks of November.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/period_change.html">period_change</a></span><span class="op">(</span>
     compvar <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
@@ -241,7 +240,7 @@
 <p>We also get a <em>p-value</em> (shown at the right of the image caption) that tells us whether the two samples are statistically significantly different. The smaller the value, the more significant the differences. Typically, we look for a significance level of less than 0.05, but the exact threshold you pick depends on how sure you need to be. In this case, the p-value of 0.0629 is too large for us to be sure at the 95% confidence level that there has been a change in collaboration activity between the first two weeks of November.</p>
 <p>However, if we compare November to December, we see a significant difference in collaboration hours:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/period_change.html">period_change</a></span><span class="op">(</span>
     compvar <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
@@ -253,15 +252,15 @@
 <p>The p-value here is close to zero. This change is unsurprising as we saw collaboration hours decrease sharply during the first week of December.</p>
 <p>This analysis can be helpful because looking casually at how the mean has changed might not uncover significant changes in behavior. For example, if, in comparing two months of data, we saw that the average collaboration hours stayed the same, we would also want to see the underlying distribution to know whether that means everyone was collaborating for the same length of time (at one extreme), whether half the employees had stopped collaborating and half had doubled their collaboration, or something in between.</p>
 </div>
-<div id="iv_by_period" class="section level2">
-<h2 class="hasAnchor">
-<a href="#iv_by_period" class="anchor"></a><code>IV_by_period()</code>
+<div class="section level2">
+<h2 id="iv_by_period">
+<code>IV_by_period()</code><a class="anchor" aria-label="anchor" href="#iv_by_period"></a>
 </h2>
 <p>While <code><a href="../reference/period_change.html">period_change()</a></code> is great for looking at a specific collaboration metric, we sometimes want to use <strong>wpa</strong> to tell us all the metrics that have changed significantly. The <code><a href="../reference/IV_by_period.html">IV_by_period()</a></code> function does just that by using the Information Value method (see more here: <a href="https://microsoft.github.io/wpa/articles/IV-report.html">How to identify potential predictors for survey results using information value</a>. With over 60 metrics in the <code>sq_data</code> dataset, it might not be practical to look at each metric individually, and this is where the <code><a href="../reference/IV_by_period.html">IV_by_period()</a></code> function can be helpful.</p>
 <p>Essentially, the <code><a href="../reference/IV_by_period.html">IV_by_period()</a></code> function tells us which metrics in the dataset best differentiate the <code>before</code> and <code>after</code> time periods. The higher the Information Value, the more different that metric is between the two periods (because it better explains the difference between those two groups).</p>
 <p>Looking at the change between the first two weeks of November, we see very small Information Values. This tells us that the collaboration activity is very similar between those two weeks.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/IV_by_period.html">IV_by_period</a></span><span class="op">(</span>
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
     before_end <span class="op">=</span> <span class="st">"2019-11-09"</span>,
@@ -325,7 +324,7 @@
 <span class="co">#&gt; 54                                     HourlyRate 0.000000e+00</span></code></pre></div>
 <p>If we look at the differences between November and December, we see higher Information Values that reflect a big difference in collaboration activity. In this case we see that the Internal Network Size has an Information Value score of 0.28, which means that it is moderately predictive of the difference between the two months. We also see large values for Email and Instant Message activities. Although the Information Value does not tell us how these metrics changed, it provides a good starting point for further analysis to determine what changed in those metrics.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/IV_by_period.html">IV_by_period</a></span><span class="op">(</span>
     before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,
     before_end <span class="op">=</span> <span class="st">"2019-11-30"</span>,
@@ -389,16 +388,16 @@
 <span class="co">#&gt; 54                                     HourlyRate 0.000000e+00</span></code></pre></div>
 <p>We can use this method to answer the Contoso leadership’s question about how collaboration activity has changed. Now that we know the top metrics that have changed, we can look at each of them in more detail, including with the <code><a href="../reference/period_change.html">period_change()</a></code> function, to more fully describe how collaboration differs going into the end of the year.</p>
 </div>
-<div id="conclusion" class="section level2">
-<h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h2>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
 <p>We’ve introduced two functions in the <strong>wpa</strong> package that help analysts identify changes in collaboration behavior over time. <code><a href="../reference/period_change.html">period_change()</a></code> can identify the changes in a specific metric, while <code><a href="../reference/IV_by_period.html">IV_by_period()</a></code> will help the analyst find the metrics with the biggest changes.</p>
 <hr>
 </div>
-<div id="feedback" class="section level2">
-<h2 class="hasAnchor">
-<a href="#feedback" class="anchor"></a>Feedback</h2>
-<p>Hope you found this useful! If you have any suggestions or feedback, please visit <a href="https://github.com/microsoft/wpa/issues" class="uri">https://github.com/microsoft/wpa/issues</a>.</p>
+<div class="section level2">
+<h2 id="feedback">Feedback<a class="anchor" aria-label="anchor" href="#feedback"></a>
+</h2>
+<p>Hope you found this useful! If you have any suggestions or feedback, please visit <a href="https://github.com/microsoft/wpa/issues" class="external-link uri">https://github.com/microsoft/wpa/issues</a>.</p>
 </div>
   </div>
 
@@ -412,15 +411,15 @@
 
 
 
-      <footer><p>
-  This website was automatically generated by the
-  <a href="%5C%22https://github.com/r-lib/pkgdown%5C%22">pkgdown</a> package.
-  Websites like this one are a customary, prevalent, and widely-expected
-  community standard for the documentation of
-  publicly-available R packages.
-  Copyright is the same as for the
-  <a href="%5C%22https://github.com/microsoft/wpa%5C%22"></a> package itself.
-</p>
+      <footer><div class="copyright">
+  <p></p>
+<p>Developed by Martin Chan, Carlos Morales.</p>
+</div>
+
+<div class="pkgdown">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+</div>
 
       </footer>
 </div>

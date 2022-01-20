@@ -2,21 +2,21 @@
   "index_name": "wpa",
   "start_urls": [
     {
-      "url": "https://microsoft.github.io/wpa//index.html",
+      "url": "https://microsoft.github.io/wpa/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "https://microsoft.github.io/wpa//reference",
+      "url": "https://microsoft.github.io/wpa/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "https://microsoft.github.io/wpa//articles",
+      "url": "https://microsoft.github.io/wpa/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "https://microsoft.github.io/wpa//sitemap.xml"
+    "https://microsoft.github.io/wpa/sitemap.xml"
   ],
   "selectors": {
     "homepage": {
