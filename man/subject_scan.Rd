@@ -65,8 +65,8 @@ See \code{Value} for more information.}
 weighting data, such as \code{"Invitees"}. The column must contain positive
 integers. Defaults to \code{NULL}, where no weighting is applied.}
 
-\item{stopwords}{A single-column data frame labelled \code{'word'} containing
-custom stopwords to remove.}
+\item{stopwords}{A character vector OR a single-column data frame labelled
+\code{'word'} containing custom stopwords to remove.}
 
 \item{...}{Additional parameters to pass to \code{tm_clean()}.}
 }

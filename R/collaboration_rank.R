@@ -42,9 +42,11 @@ collaboration_rank <- function(data,
                                plot_mode = 1,
                                return = "plot"){
 
+  ## Handle variable name consistency
+  data <- qui_stan_c(data)
 
   create_rank(data,
-              metric="Collaboration_hours",
+              metric = "Collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,
               mode = mode,

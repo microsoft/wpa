@@ -28,6 +28,9 @@ collaboration_trend <- function(data,
                                 mingroup = 5,
                                 return = "plot"){
 
+  ## Handle variable name consistency
+  data <- qui_stan_c(data)
+
   create_trend(data,
                metric = "Collaboration_hours",
                hrvar = hrvar,

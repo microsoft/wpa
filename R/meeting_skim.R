@@ -34,20 +34,26 @@
 #' @export
 meeting_skim <- function(data, return = "message"){
 
+  required_vars <-
+    c(
+      "PersonId",
+      "Meeting_hours",
+      "Conflicting_meeting_hours",
+      "Multitasking_meeting_hours",
+      "Redundant_meeting_hours__lower_level_",
+      "Redundant_meeting_hours__organizational_",
+      "Low_quality_meeting_hours"
+    )
+
+  used_vars <- dplyr::intersect(names(data), required_vars)
+
   key_output <-
     data %>%
-    select(PersonId,
-           Meeting_hours,
-           Conflicting_meeting_hours,
-           Multitasking_meeting_hours,
-           Redundant_meeting_hours__lower_level_,
-           Redundant_meeting_hours__organizational_,
-           Low_quality_meeting_hours) %>%
+    select(used_vars) %>%
     summarise_at(vars(-PersonId), ~sum(.)) %>% # sum total
     tidyr::gather(HourType, Hours, -Meeting_hours) %>%
     mutate_at(vars(Hours), ~./Meeting_hours) %>%
     mutate(RawHours = Hours * Meeting_hours)
-
 
   mh_total <- round(key_output$Meeting_hours[1])
 
@@ -73,38 +79,59 @@ meeting_skim <- function(data, return = "message"){
   }
 
   extract_raw <- function(filt_chr){
+
     key_output %>%
       filter(HourType == filt_chr) %>%
       pull(RawHours) %>%
       round()
   }
 
+  combine_extracts <- function(filt_chr, keyword){
+
+    out <-
+      key_output %>%
+      filter(HourType == filt_chr)
+
+    if(nrow(out) == 0){
+
+      return(NULL)
+
+    } else {
+
+      paste(
+        ">>>",
+        extract_raw(filt_chr),
+        "are",
+        keyword,
+        bracket(extract_prop(filt_chr))
+      )
+
+    }
+  }
+
+  key_text <- c(
+    combine_extracts(filt_chr = "Low_quality_meeting_hours",
+                     keyword = "low quality"),
+    combine_extracts(filt_chr = "Redundant_meeting_hours__organizational_",
+                     keyword = "redundant"),
+    combine_extracts(filt_chr = "Conflicting_meeting_hours",
+                     keyword = "conflicting"),
+    combine_extracts(filt_chr = "Multitasking_meeting_hours",
+                     keyword = "multitasking")
+  ) %>%
+    .[nchar(.) >= 1] %>% # at least character length >= 1
+    paste(collapse = "\n")
 
   print_text <-
-    paste("There are",
-          mh_total,
-          "total meeting hours across the analysis population.\n",
-
-          ">>>",
-          extract_raw("Low_quality_meeting_hours"),
-          "are low quality",
-          bracket(extract_prop("Low_quality_meeting_hours")),
-          "\n",
-
-          ">>>",
-          extract_raw("Redundant_meeting_hours__organizational_"),
-          "are redundant",
-          bracket(extract_prop("Redundant_meeting_hours__organizational_")),
-          "\n",
-          ">>>",
-          extract_raw("Conflicting_meeting_hours"),
-          "are conflicting",
-          bracket(extract_prop("Conflicting_meeting_hours")),
-          "\n",
-          ">>>",
-          extract_raw("Multitasking_meeting_hours"),
-          "are multitasking.",
-          bracket(extract_prop("Multitasking_meeting_hours")))
+    paste(
+      paste(
+        "There are",
+        mh_total,
+        "total meeting hours across the analysis population."
+        ),
+      key_text,
+      sep = "\n"
+          )
 
   if(return == "message"){
 

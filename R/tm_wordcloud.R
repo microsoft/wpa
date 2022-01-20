@@ -21,8 +21,8 @@
 #' `stopwords` argument.
 #'
 #' @param data A Meeting Query dataset in the form of a data frame.
-#' @param stopwords A single-column data frame labelled `'word'` containing
-#'   custom stopwords to remove.
+#' @param stopwords A character vector OR a single-column data frame labelled
+#'   `'word'` containing custom stopwords to remove.
 #' @param seed A numeric vector to set seed for random generation.
 #' @param keep A numeric vector specifying maximum number of words to keep.
 #' @param return String specifying what to return. This must be one of the
@@ -44,6 +44,9 @@
 #' @examples
 #' tm_wordcloud(mt_data, keep = 30)
 #'
+#' # Removing stopwords
+#' tm_wordcloud(mt_data, keep = 30, stopwords = c("weekly", "update"))
+#'
 #' @family Text-mining
 #'
 #' @export
@@ -57,7 +60,12 @@ tm_wordcloud <- function(data,
 
   set.seed(seed)
 
-  clean_data <- suppressMessages(tm_clean(data = data, token = "words", stopwords = stopwords))
+  clean_data <-
+    suppressMessages(tm_clean(
+      data = data,
+      token = "words",
+      stopwords = stopwords
+    ))
 
   plot_data <-
     clean_data %>% # Remove additional stop words

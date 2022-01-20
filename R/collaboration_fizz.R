@@ -32,6 +32,9 @@ collaboration_fizz <- function(data,
                        mingroup = 5,
                        return = "plot"){
 
+  ## Handle variable name consistency
+  data <- qui_stan_c(data)
+
   create_fizz(data = data,
               metric = "Collaboration_hours",
               hrvar = hrvar,
