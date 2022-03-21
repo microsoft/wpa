@@ -32,7 +32,7 @@ the the person-average volume-based ('pav') method."><meta property="og:image" c
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Analyst Guide
      
     <span class="caret"></span>
@@ -63,7 +63,7 @@ the the person-average volume-based ('pav') method."><meta property="og:image" c
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Reference
      
     <span class="caret"></span>
@@ -82,7 +82,7 @@ the the person-average volume-based ('pav') method."><meta property="og:image" c
   <a href="../playbook_intro.html">Playbook</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Contribute
      
     <span class="caret"></span>
@@ -104,7 +104,7 @@ the the person-average volume-based ('pav') method."><meta property="og:image" c
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -370,16 +370,16 @@ Hourly Collaboration Flexible Query.</p></li>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bw"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 16</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Personas `Biz Dev` `Customer Servi… Facilities `Finance-Corpor… `Finance-East`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Personas `Biz Dev` `Customer Serv…` Facilities `Finance-Corpo…` `Finance-East`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 3 Stand…  <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span>          0.072<span style="text-decoration: underline;">6</span>           0.066<span style="text-decoration: underline;">2</span>         0.029<span style="text-decoration: underline;">4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 4 Long …   0.111             0.093<span style="text-decoration: underline;">8</span>     0.088<span style="text-decoration: underline;">7</span>           0.103          0.132 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 5 Long …   0.880             0.885      0.766            0.75           0.632 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 6 Alway…   0.009<span style="text-decoration: underline;">26</span>           0.020<span style="text-decoration: underline;">8</span>     0.072<span style="text-decoration: underline;">6</span>           0.080<span style="text-decoration: underline;">9</span>         0.206 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 10 more variables: Finance-South &lt;dbl&gt;, Finance-West &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Financial Planning &lt;dbl&gt;, G&amp;A Central &lt;dbl&gt;, G&amp;A East &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   G&amp;A South &lt;dbl&gt;, Human Resources &lt;dbl&gt;, IT-Corporate &lt;dbl&gt;, IT-East &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Inventory Management &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 10 more variables: `Finance-South` &lt;dbl&gt;, `Finance-West` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Financial Planning` &lt;dbl&gt;, `G&amp;A Central` &lt;dbl&gt;, `G&amp;A East` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `G&amp;A South` &lt;dbl&gt;, `Human Resources` &lt;dbl&gt;, `IT-Corporate` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `IT-East` &lt;dbl&gt;, `Inventory Management` &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pav"</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="workpatterns_classify-3.png" alt="" width="700" height="433"></span>

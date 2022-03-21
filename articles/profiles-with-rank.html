@@ -55,7 +55,7 @@
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Analyst Guide
      
     <span class="caret"></span>
@@ -88,7 +88,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Reference
      
     <span class="caret"></span>
@@ -109,7 +109,7 @@
   <a href="../playbook_intro.html">Playbook</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Contribute
      
     <span class="caret"></span>
@@ -133,7 +133,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -293,18 +293,18 @@
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
     <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 382 × 4</span></span>
-<span class="co">#&gt;    hrvar    group                                       Collaboration_hou…     n</span>
+<span class="co">#&gt;    hrvar    group                                         Collaboration_h…     n</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Ma…               33.7    28</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Ju…               31.0    13</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Su…               29.5    24</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Di…               29.2     6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Se…               28.2    11</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation…               27.4    72</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation…               25.9    17</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation…               25.1    14</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation…               25.1    81</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation…               24.3    22</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Mana…             33.7    28</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Juni…             31.0    13</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Supp…             29.5    24</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Dire…             29.2     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Seni…             28.2    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] …             27.4    72</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.9    17</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    14</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    81</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] …             24.3    22</span>
 <span class="co">#&gt; <span style="color: #949494;"># … with 372 more rows</span></span></code></pre></div>
 <p>The output table contains similar results from the group exploration above, but with more granularity. The function has automatically created smaller groups by combining two distinct groups from the organisational attributes in scope. In this case, it seems that the 28 managers in Sales are the worst affected group, with a weekly average of 33.7 hours in collaboration per week - that sounds like a lot of meetings!</p>
 </div>

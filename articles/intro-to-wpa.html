@@ -55,7 +55,7 @@
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Analyst Guide
      
     <span class="caret"></span>
@@ -88,7 +88,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Reference
      
     <span class="caret"></span>
@@ -109,7 +109,7 @@
   <a href="../playbook_intro.html">Playbook</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Contribute
      
     <span class="caret"></span>
@@ -133,7 +133,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -192,7 +192,7 @@
       <h1 data-toc-skip>Introduction to {wpa}</h1>
                         <h4 data-toc-skip class="author">Martin Chan</h4>
             
-            <h4 data-toc-skip class="date">2022-01-20</h4>
+            <h4 data-toc-skip class="date">2022-03-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/HEAD/vignettes/intro-to-wpa.Rmd" class="external-link"><code>vignettes/intro-to-wpa.Rmd</code></a></small>
       <div class="hidden name"><code>intro-to-wpa.Rmd</code></div>
@@ -219,7 +219,7 @@
 <span class="co"># Check what the first ten columns look like</span>
 <span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="va">.</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 13,442</span>
 <span class="co">#&gt; Columns: 10</span>
 <span class="co">#&gt; $ PersonId                                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "93F763956FFC939A5DDE7D…</span>
@@ -281,31 +281,31 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 19 × 16</span></span>
-<span class="co">#&gt;    variable             `Biz Dev` `Customer Servic… Facilities `Finance-Corpora…</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Workweek_span           37.2              41.3       43.1              39.5  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Collaboration_hours     14.7              18.3       18.6              16.3  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> After_hours_collabo…     2.00              2.78       2.85              2.36 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Meetings                 7.63              9.72       9.96              8.73 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Meeting_hours            7.02              8.78       9.39              8.16 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> After_hours_meeting…     0.722             1.20       1.21              0.959</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Low_quality_meeting…     4.52              6.67       6.79              5.60 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Meeting_hours_with_…     0.237             0.354      0.255             0.241</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Meeting_hours_with_…     3.60              5.10       5.53              4.44 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Emails_sent             39.3              45.4       44.5              40.3  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Email_hours              7.72              9.49       9.20              8.13 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> After_hours_email_h…     1.27              1.58       1.64              1.40 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Generated_workload_…     7.98             10.0        9.53              8.34 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Total_focus_hours       33.1              31.3       30.5              31.9  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Internal_network_si…    41.5              41.5       37.0              37.4  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Networking_outside_…     3.47              3.53       3.21              3.31 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> External_network_si…     4.07              4.40       6.19              4.80 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Networking_outside_…     2.09              2.29       3.38              2.69 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Employee_Count          75                61         72                68    </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 11 more variables: Finance-East &lt;dbl&gt;, Finance-South &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Finance-West &lt;dbl&gt;, Financial Planning &lt;dbl&gt;, G&amp;A Central &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   G&amp;A East &lt;dbl&gt;, G&amp;A South &lt;dbl&gt;, Human Resources &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Inventory Management &lt;dbl&gt;, IT-Corporate &lt;dbl&gt;, IT-East &lt;dbl&gt;</span></span></code></pre></div>
+<span class="co">#&gt;    variable               `Biz Dev` `Customer Serv…` Facilities `Finance-Corpo…`</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Workweek_span             37.2             41.3       43.1             39.5  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Collaboration_hours       14.7             18.3       18.6             16.3  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> After_hours_collabora…     2.00             2.78       2.85             2.36 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Meetings                   7.63             9.72       9.96             8.73 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Meeting_hours              7.02             8.78       9.39             8.16 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> After_hours_meeting_h…     0.722            1.20       1.21             0.959</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Low_quality_meeting_h…     4.52             6.67       6.79             5.60 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Meeting_hours_with_ma…     0.237            0.354      0.255            0.241</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Meeting_hours_with_ma…     3.60             5.10       5.53             4.44 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Emails_sent               39.3             45.4       44.5             40.3  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Email_hours                7.72             9.49       9.20             8.13 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> After_hours_email_hou…     1.27             1.58       1.64             1.40 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Generated_workload_em…     7.98            10.0        9.53             8.34 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Total_focus_hours         33.1             31.3       30.5             31.9  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Internal_network_size     41.5             41.5       37.0             37.4  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Networking_outside_or…     3.47             3.53       3.21             3.31 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> External_network_size      4.07             4.40       6.19             4.80 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Networking_outside_co…     2.09             2.29       3.38             2.69 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Employee_Count            75               61         72               68    </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 11 more variables: `Finance-East` &lt;dbl&gt;, `Finance-South` &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   `Finance-West` &lt;dbl&gt;, `Financial Planning` &lt;dbl&gt;, `G&amp;A Central` &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   `G&amp;A East` &lt;dbl&gt;, `G&amp;A South` &lt;dbl&gt;, `Human Resources` &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   `Inventory Management` &lt;dbl&gt;, `IT-Corporate` &lt;dbl&gt;, `IT-East` &lt;dbl&gt;</span></span></code></pre></div>
 <hr>
 </div>
 </div>
