@@ -3,7 +3,7 @@
 \docType{data}
 \name{em_data}
 \alias{em_data}
-\title{Sample Hourly Collaboration data with Email and IMs}
+\title{Sample Hourly Collaboration data}
 \format{
 A data frame with 2000 rows and 105 variables:
 \describe{
@@ -126,9 +126,10 @@ em_data
 data frame.
 }
 \description{
-A sample dataset generated from an Hourly Collaboration query from the
-Workplace Analytics demo tenant. The data is grouped by week and contains
-columns for both IMs sent and Emails sent.
+A sample dataset representing an Hourly Collaboration query. The data is
+grouped by week and contains columns for unscheduled calls, IMs sent, emails
+sent, and meetings. There are 24 columns per collaboration signal,
+representing each hour of the day.
 }
 \seealso{
 Other Data: 

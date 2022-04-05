@@ -36,8 +36,9 @@ function.
 \description{
 The function generates an interactive HTML report using Standard Person Query
 data as an input. The report contains a series of summary analysis and
-visualisations relating to key \strong{connectivity} metrics in Workplace
-Analytics, including external/internal network size vs breadth.
+visualisations relating to key \strong{connectivity} metrics, including
+external/internal network size vs breadth
+(\code{Networking_outside_organization}, \code{Networking_outside_domain}).
 }
 \seealso{
 Other Reports: 

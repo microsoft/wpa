@@ -36,8 +36,8 @@ function.
 \description{
 The function generates an interactive HTML report using Standard Person Query
 data as an input. The report contains a series of summary analysis and
-visualisations relating to key \strong{collaboration} metrics in Workplace
-Analytics,including email and meeting hours.
+visualisations relating to key \strong{collaboration} metrics,including email and
+meeting hours.
 }
 \seealso{
 Other Reports: 

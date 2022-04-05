@@ -9,11 +9,11 @@
 
 ## Analyze and Visualize Viva Leader Insights data
 
-This is an R package for analyzing and visualizing data from [Microsoft Viva Leader Insights](https://docs.microsoft.com/en-us/workplace-analytics/) (previously Microsoft Workplace Analytics). 
+This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://docs.microsoft.com/en-us/workplace-analytics/) (previously Microsoft Workplace Analytics). 
 
 ## With the **wpa** package, you can...
 
-1. **Run prebuilt analysis and visualizations** off Leader Insights data with settings for HR variables, privacy threshold, etc.
+1. **Run prebuilt analysis and visualizations** off advanced insights data with settings for HR variables, privacy threshold, etc.
 
 2. **Generate prebuilt interactive HTML reports**, which cover specific areas e.g. collaboration, connectivity 
 

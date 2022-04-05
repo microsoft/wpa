@@ -272,9 +272,8 @@ create_rank <- function(data,
 
 #' @title Create combination pairs of HR variables and run 'create_rank()'
 #'
-#' @description
-#' Create pairwise combinations of HR variables and compute an average of a
-#' specified Workplace Analytics metric.
+#' @description Create pairwise combinations of HR variables and compute an
+#' average of a specified advanced insights metric.
 #'
 #' @details
 #' This function is called when the `mode` argument in `create_rank()` is

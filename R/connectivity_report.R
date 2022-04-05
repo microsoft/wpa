@@ -8,8 +8,9 @@
 #' @description
 #' The function generates an interactive HTML report using Standard Person Query
 #' data as an input. The report contains a series of summary analysis and
-#' visualisations relating to key **connectivity** metrics in Workplace
-#' Analytics, including external/internal network size vs breadth.
+#' visualisations relating to key **connectivity** metrics, including
+#' external/internal network size vs breadth
+#' (`Networking_outside_organization`, `Networking_outside_domain`).
 #'
 #' @template spq-params
 #' @param path Pass the file path and the desired file name, _excluding the file

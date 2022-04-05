@@ -6,7 +6,11 @@
 #' @title Sample Standard Person Query dataset for Data Validation
 #'
 #' @description
-#' A dataset generated from a Standard Person Query from Workplace Analytics.
+#' A dataset generated from a Standard Person Query from advanced insights in
+#' Viva Insights. Note that this is largely interchangeable with a **Ways of
+#' Working Assessment** query, with the exception of some additional variables
+#' and the different variable names used for `Collaboration_hours` and
+#' `Instant_Message_hours`.
 #'
 #' @family Data
 #'

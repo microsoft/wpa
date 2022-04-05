@@ -8,8 +8,8 @@
 #' @description
 #' The function generates an interactive HTML report using Standard Person Query
 #' data as an input. The report contains a series of summary analysis and
-#' visualisations relating to key **collaboration** metrics in Workplace
-#' Analytics,including email and meeting hours.
+#' visualisations relating to key **collaboration** metrics,including email and
+#' meeting hours.
 #'
 #' @template spq-params
 #' @param path Pass the file path and the desired file name, _excluding the file
