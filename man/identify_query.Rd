@@ -7,9 +7,9 @@
 identify_query(data, threshold = 2)
 }
 \arguments{
-\item{data}{A Workplace Analytics dataset in the form of a data frame.
-If the data is not identified as a Workplace Analytics dataset, the function
-will return an error.}
+\item{data}{An advanced insights query dataset in the form of a data frame.
+If the data is not identified as a valid dataset, the function will return
+an error.}
 
 \item{threshold}{Debugging use only. Increase to raise the 'strictness' of
 the guessing algorithm. Defaults to 2.}
@@ -18,9 +18,9 @@ the guessing algorithm. Defaults to 2.}
 String. A diagnostic message is returned.
 }
 \description{
-Pass a Workplace Analytics dataset and return the identified
-query type as a string. This function uses variable name string
-matching to 'guess' the query type of the data frame.
+Pass an advanced insights query dataset and return the identified query type
+as a string. This function uses variable name string matching to 'guess' the
+query type of the data frame.
 }
 \examples{
 identify_query(sq_data) # Standard query
