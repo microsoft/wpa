@@ -1,3 +1,8 @@
+# wpa 1.7.0
+
+- Renamed 'Workplace Analytics' to 'Viva Insights'
+
+
 # wpa 1.6.4
 
 - Made `meeting_skim()` dynamic - the function will still run even if not all variables are present. (#198)
