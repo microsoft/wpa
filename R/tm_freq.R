@@ -18,8 +18,8 @@
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param token A character vector accepting either `"words"` or `"ngram"`,
 #'   determining type of tokenisation to return.
-#' @param stopwords A single-column data frame labelled `'word'` containing
-#'   custom stopwords to remove.
+#' @param stopwords A character vector OR a single-column data frame labelled
+#'   `'word'` containing custom stopwords to remove.
 #' @param keep A numeric vector specifying maximum number of words to keep.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:

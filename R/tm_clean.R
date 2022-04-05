@@ -17,8 +17,8 @@
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param token A character vector accepting either `"words"` or `"ngrams"`,
 #'   determining type of tokenisation to return.
-#' @param stopwords A single-column data frame labelled `'word'` containing
-#'   custom stopwords to remove.
+#' @param stopwords A character vector OR a single-column data frame labelled
+#'   `'word'` containing custom stopwords to remove.
 #' @param ... Additional parameters to pass to `tidytext::unnest_tokens()`.
 #'
 #' @import dplyr
@@ -52,6 +52,14 @@ tm_clean <- function(data,
     mutate(line = 1:n(),
            text = as.character(Subject)) %>%
     select(line, text)
+
+  # If `stopwords` is passed as a character vector, convert to data frame
+  if(is.character(stopwords)){
+    stopwords <-
+      data.frame(
+        word = stopwords
+      )
+  }
 
   # Expand dataset to have each word in the subject as a different observation
   text_df <- text_df %>%

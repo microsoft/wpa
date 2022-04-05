@@ -131,7 +131,7 @@ workpatterns_hclust <- function(data,
     mutate_at(vars(input_var), ~./Signals_Total) %>%
     filter(Signals_Total > 0) %>%
     select(PersonId, all_of(input_var)) %>%
-    mutate_all(~tidyr::replace_na(., 0)) # Replace NAs with 0s
+    mutate(across(where(is.numeric), ~tidyr::replace_na(., 0))) # Replace NAs with 0s
 
   ## Distance matrix
   dist_m <-

@@ -104,7 +104,7 @@ workpatterns_classify_pav <- function(data,
     mutate_at(vars(all_of(input_var)), ~./Signals_Total) %>%
     #filter(Signals_Total > 0) %>%
     select(all_of(input_var)) %>%
-    mutate_all(~tidyr::replace_na(., 0)) # Replace NAs with 0s
+    mutate(across(where(is.numeric), ~tidyr::replace_na(., 0))) # Replace NAs with 0s
 
 
   ## Normalised pattern data

@@ -28,6 +28,8 @@ utils::globalVariables(
     "Metric",
     "Hours",
     "Collaboration_hours",
+    "Collaboration_hrs",
+    "Instant_message_hours",
     "bucket_hours",
     "Employees",
     "Total",
