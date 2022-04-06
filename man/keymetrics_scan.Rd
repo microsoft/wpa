@@ -16,6 +16,9 @@ keymetrics_scan(
     "Total_focus_hours", "Internal_network_size", "Networking_outside_organization",
     "External_network_size", "Networking_outside_company"),
   return = "plot",
+  low = rgb2hex(7, 111, 161),
+  mid = rgb2hex(241, 204, 158),
+  high = rgb2hex(216, 24, 42),
   textsize = 2
 )
 }
@@ -35,11 +38,17 @@ averages of.}
 \item{return}{Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".}
 
+\item{low}{String specifying colour HEX code to use for low-value metrics.}
+
+\item{mid}{String specifying colour HEX code to use for mid-value metrics.}
+
+\item{high}{String specifying colour HEX code to use for high-value metrics.}
+
 \item{textsize}{A numeric value specifying the text size to show in the plot.}
 }
 \value{
-Returns a ggplot object by default, where 'plot' is passed in \code{return}.
-When 'table' is passed, a summary table is returned as a data frame.
+Returns a ggplot object by default, when \code{'plot'} is passed in \code{return}.
+When \code{'table'} is passed, a summary table is returned as a data frame.
 }
 \description{
 Returns a heatmapped table by default, with options to return a table.
