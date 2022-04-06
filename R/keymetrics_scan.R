@@ -13,9 +13,12 @@
 #'   averages of.
 #' @param return Character vector specifying what to return, defaults to "plot".
 #'   Valid inputs are "plot" and "table".
-#' @param low String specifying colour HEX code to use for low-value metrics.
-#' @param mid String specifying colour HEX code to use for mid-value metrics.
-#' @param high String specifying colour HEX code to use for high-value metrics.
+#' @param low String specifying colour code to use for low-value metrics.
+#'   Arguments are passed directly to `ggplot2::scale_fill_gradient2()`.
+#' @param mid String specifying colour code to use for mid-value metrics.
+#'   Arguments are passed directly to `ggplot2::scale_fill_gradient2()`.
+#' @param high String specifying colour code to use for high-value metrics.
+#'   Arguments are passed directly to `ggplot2::scale_fill_gradient2()`.
 #' @param textsize A numeric value specifying the text size to show in the plot.
 #'
 #' @import dplyr
@@ -32,6 +35,9 @@
 #' @examples
 #' # Heatmap plot is returned by default
 #' keymetrics_scan(sq_data)
+#'
+#' # Heatmap plot with custom colours
+#' keymetrics_scan(sq_data, low = "purple", high = "yellow")
 #'
 #' # Return summary table
 #' keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
