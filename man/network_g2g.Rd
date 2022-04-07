@@ -49,9 +49,15 @@ Reingold. See
 \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
 list of options.}
 
-\item{node_colour}{String to specify the colour to be used for displaying
-nodes. Defaults to \code{"lightblue"}. If \code{"vary"} is supplied, a different colour
-is shown for each node at random.}
+\item{node_colour}{String or named vector to specify the colour to be used for displaying
+nodes. Defaults to \code{"lightblue"}.
+\itemize{
+\item If \code{"vary"} is supplied, a different colour is shown for each node at
+random.
+\item If a named vector is supplied, the names must match the values of the
+variable provided for the \code{time_investor} and \code{collaborator} columns. See
+example section for details.
+}}
 
 \item{exc_threshold}{Numeric value between 0 and 1 specifying the exclusion
 threshold to apply. Defaults to 0.1, which means that the plot will only
@@ -106,6 +112,24 @@ g2g_data \%>\%
               collaborator = "Collaborators_Organization",
               metric = "Meeting_hours",
               exc_threshold = 0.05)
+
+# Return a network plot - custom-specific colours
+# Get labels of orgs and assign random colours
+org_str <- unique(g2g_data$TimeInvestors_Organization)
+
+col_str <-
+  sample(
+    x = c("red", "green", "blue"),
+    size = length(org_str),
+    replace = TRUE
+  )
+
+# Create and supply a named vector to `node_colour`
+names(col_str) <- org_str
+
+g2g_data \%>\%
+  network_g2g(node_colour = col_str)
+
 
 # Return a network plot with circle layout
 # Vary node colours and add org sizes
