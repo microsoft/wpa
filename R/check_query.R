@@ -92,11 +92,21 @@ check_person_query <- function(data, return){
 
   ## Date
   if(!("Date" %in% names(data))){
+
     stop("There is no `Date` variable in the input.")
+
+  } else if("Influence_rank" %in% names(data)){
+
+    # Omit date conversion
+    new_chunk <- paste0("Date ranges from ", min(data$Date), " to ", max(data$Date), ".")
+    main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+
   } else {
+
     data$Date <- as.Date(data$Date, "%m/%d/%Y")
     new_chunk <- paste0("Date ranges from ", min(data$Date), " to ", max(data$Date), ".")
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
+
   }
 
  ## Extract unique identifiers of query ------------------------------------
