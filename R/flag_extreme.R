@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Warn if a certain metric exceeds an arbitrary threshold
+#' @title Warn for extreme values by checking against a threshold
 #'
 #' @description
 #' This is used as part of data validation to check if there are extreme values
@@ -14,6 +14,10 @@
 #' @param person A logical value to specify whether to calculate
 #'   person-averages. Defaults to `TRUE` (person-averages calculated).
 #' @param threshold Numeric value specifying the threshold for flagging.
+#' @param mode String determining mode to use for identifying extreme values.
+#'   - `"above"`: checks whether value is great than the threshold (default)
+#'   - `"equal"`: checks whether value is equal to the threshold
+#'   - `"below"`: checks whether value is below the threshold
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"text"`
@@ -44,29 +48,93 @@
 #' # Person-week level
 #' flag_extreme(sq_data, "Email_hours", person = FALSE, threshold = 15)
 #'
+#' # Check for values equal to threshold
+#' flag_extreme(sq_data, "Email_hours", person = TRUE, mode = "equal", threshold = 0)
+#'
+#' # Check for values below threshold
+#' flag_extreme(sq_data, "Email_hours", person = TRUE, mode = "below", threshold = 5)
+#'
 #'
 #' @export
 flag_extreme <- function(data,
                          metric,
                          person = TRUE,
                          threshold,
+                         mode = "above",
                          return = "message"){
+
+  ## Define relational term/string and input checks
+
+  if(mode == "above"){
+
+    rel_str <- " exceeds "
+
+  } else if(mode == "equal"){
+
+    rel_str <- " are equal to "
+
+  } else if(mode == "below"){
+
+    rel_str <- " are less than "
+
+  } else {
+
+    stop("invalid input to `mode`")
+
+  }
 
   ## Data frame containing the extreme values
   if(person == TRUE){
+
     extreme_df <-
       data %>%
       rename(metric = !!sym(metric)) %>%
       group_by(PersonId) %>%
       summarise_at(vars(metric), ~mean(.)) %>%
-      filter(metric > threshold) %>%
+
+      # Begin mode chunk
+      {
+        if(mode == "above"){
+
+          filter(., metric > threshold)
+
+        } else if(mode == "equal"){
+
+          filter(., metric == threshold)
+
+        } else if(mode == "below"){
+
+          filter(., metric < threshold)
+
+        }
+
+      } %>%
       rename(!!sym(metric) := "metric")
+
   } else if(person == FALSE){
+
     extreme_df <-
       data %>%
       rename(metric = !!sym(metric)) %>%
-      filter(metric > threshold) %>%
+      # Begin mode chunk
+      {
+        if(mode == "above"){
+
+          filter(., metric > threshold)
+
+        } else if(mode == "equal"){
+
+          filter(., metric == threshold)
+
+        } else if(mode == "below"){
+
+          filter(., metric < threshold)
+
+        }
+
+      } %>%
       rename(!!sym(metric) := "metric")
+
   }
 
 
@@ -75,19 +143,23 @@ flag_extreme <- function(data,
 
   ## Define MessageLevel
   if(person == TRUE){
+
     MessageLevel <- " persons where their average "
+
   } else if(person == FALSE){
+
     MessageLevel <- " rows where their value of "
+
   }
 
   ## Define FlagMessage
 
   if(nrow(extreme_df) == 0){
     FlagMessage <-
-      paste0("[Pass] There are no ",
+      paste0("[Pass] There are no",
              MessageLevel,
              metric_nm,
-             " exceeds ",
+             rel_str,
              threshold, ".")
   } else {
     FlagMessage <-
@@ -95,7 +167,7 @@ flag_extreme <- function(data,
              nrow(extreme_df),
              MessageLevel,
              metric_nm,
-             " exceeds ",
+             rel_str,
              threshold, ".")
   }
 

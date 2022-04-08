@@ -246,7 +246,11 @@ validation_report <- function(data,
          paste(">",data %>% flag_extreme(metric = "Instant_Message_hours", threshold = 40, person = FALSE, return = "text")),
 
          paste(">",data %>% flag_extreme(metric = "Conflicting_meeting_hours", threshold = 70, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Conflicting_meeting_hours", threshold = 70, person = FALSE, return = "text"))) %>%
+         paste(">",data %>% flag_extreme(metric = "Conflicting_meeting_hours", threshold = 70, person = FALSE, return = "text")),
+
+		     paste(">",data %>% flag_extreme(metric = "Collaboration_hours", threshold = 0, person = TRUE, mode = "equal", return = "text")),
+		     paste(">",data %>% flag_extreme(metric = "Collaboration_hours", threshold = 0, person = FALSE, mode = "equal", return = "text"))
+		     ) %>%
 
     purrr::map_if(is.data.frame, create_dt, rounding = 0) %>%
     purrr::map_if(is.character, md2html)
@@ -312,7 +316,10 @@ validation_report <- function(data,
       "3.5.4 Extreme values: IM",
       "",
       "3.5.5 Extreme values: Conflicting Meetings",
-      "")
+      "",
+      "3.5.6 Extreme values: Zero collaboration",
+      ""
+      )
 
   # Set header levels
   n_title <- length(title_list)

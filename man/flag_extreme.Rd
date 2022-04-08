@@ -2,9 +2,16 @@
 % Please edit documentation in R/flag_extreme.R
 \name{flag_extreme}
 \alias{flag_extreme}
-\title{Warn if a certain metric exceeds an arbitrary threshold}
+\title{Warn for extreme values by checking against a threshold}
 \usage{
-flag_extreme(data, metric, person = TRUE, threshold, return = "message")
+flag_extreme(
+  data,
+  metric,
+  person = TRUE,
+  threshold,
+  mode = "above",
+  return = "message"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
@@ -15,6 +22,13 @@ flag_extreme(data, metric, person = TRUE, threshold, return = "message")
 person-averages. Defaults to \code{TRUE} (person-averages calculated).}
 
 \item{threshold}{Numeric value specifying the threshold for flagging.}
+
+\item{mode}{String determining mode to use for identifying extreme values.
+\itemize{
+\item \code{"above"}: checks whether value is great than the threshold (default)
+\item \code{"equal"}: checks whether value is equal to the threshold
+\item \code{"below"}: checks whether value is below the threshold
+}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -49,6 +63,12 @@ flag_extreme(sq_data, "Email_hours", threshold = 15, return = "table")
 
 # Person-week level
 flag_extreme(sq_data, "Email_hours", person = FALSE, threshold = 15)
+
+# Check for values equal to threshold
+flag_extreme(sq_data, "Email_hours", person = TRUE, mode = "equal", threshold = 0)
+
+# Check for values below threshold
+flag_extreme(sq_data, "Email_hours", person = TRUE, mode = "below", threshold = 5)
 
 
 }
