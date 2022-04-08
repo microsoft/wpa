@@ -9,6 +9,7 @@ create_trend(
   metric,
   hrvar = "Organization",
   mingroup = 5,
+  palette = c("steelblue4", "aliceblue", "white", "mistyrose1", "tomato1"),
   return = "plot",
   legend_title = "Hours"
 )
@@ -25,6 +26,10 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
+
+\item{palette}{Character vector containing colour codes, ranked from the
+lowest value to the highest value. This is passed directly to
+\code{ggplot2::scale_fill_gradientn()}.}
 
 \item{return}{Character vector specifying what to return, defaults to
 \code{"plot"}.
@@ -45,6 +50,19 @@ table.
 }
 \examples{
 create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
+
+# custom colours
+create_trend(
+  sq_data,
+  metric = "Collaboration_hours",
+  hrvar = "LevelDesignation",
+  palette = c(
+    "#FB6107",
+    "#F3DE2C",
+    "#7CB518",
+    "#5C8001"
+  )
+  )
 
 }
 \seealso{

@@ -14,6 +14,9 @@
 #' @template spq-params
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
+#' @param palette Character vector containing colour codes, ranked from the
+#' lowest value to the highest value. This is passed directly to
+#' `ggplot2::scale_fill_gradientn()`.
 #' @param return Character vector specifying what to return, defaults to
 #' `"plot"`.
 #' Valid inputs are "plot" and "table".
@@ -32,6 +35,19 @@
 #' @examples
 #' create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 #'
+#' # custom colours
+#' create_trend(
+#'   sq_data,
+#'   metric = "Collaboration_hours",
+#'   hrvar = "LevelDesignation",
+#'   palette = c(
+#'     "#FB6107",
+#'     "#F3DE2C",
+#'     "#7CB518",
+#'     "#5C8001"
+#'   )
+#'   )
+#'
 #' @return
 #' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
@@ -42,6 +58,11 @@ create_trend <- function(data,
                          metric,
                          hrvar = "Organization",
                          mingroup = 5,
+                         palette = c("steelblue4",
+                                    "aliceblue",
+                                    "white",
+                                    "mistyrose1",
+                                    "tomato1"),
                          return = "plot",
                          legend_title = "Hours"){
 
@@ -89,11 +110,7 @@ create_trend <- function(data,
     geom_tile(height=.5) +
     scale_x_date(position = "top") +
     scale_fill_gradientn(name = legend_title,
-                         colours = c("steelblue4",
-                                     "aliceblue",
-                                     "white",
-                                     "mistyrose1",
-                                     "tomato1")) +
+                         colours = palette) +
     theme_wpa_basic() +
     theme(axis.line.y = element_blank(), axis.title.y = element_blank()) +
     labs(title = clean_nm,
