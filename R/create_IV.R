@@ -19,7 +19,8 @@
 #' @param siglevel Significance level to use in comparing populations for the
 #'   outcomes, defaults to 0.05
 #' @param exc_sig Logical value determining whether to exclude values where the
-#'   p-value lies below what is set at `siglevel`. Defaults to `FALSE`.
+#'   p-value lies below what is set at `siglevel`. Defaults to `NULL`, where
+#'   p-value calculation does not happen.
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -103,6 +104,15 @@ create_IV <- function(data,
   odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
   lnodds <- log(odds)
 
+  # Assert -------------------------------------------------------------------
+  # Must either be logical or NULL for `exc_sig`
+
+  if(!is.null(exc_sig) | !is.logical(exc_sig)){
+
+    stop("invalid input to `exc_sig`")
+
+  }
+
   # Calculate p-value --------------------------------------------------------
 
   predictors <-
@@ -110,15 +120,18 @@ create_IV <- function(data,
     dplyr::filter(Variable != "outcome") %>%
     mutate(Variable = as.character(Variable)) # Ensure not factor
 
-  for (i in 1:(nrow(predictors))){
+  if(exc_sig == TRUE | exc_sig == FALSE){
 
-     predictors$pval[i] <-
-       p_test(train,
-              outcome = "outcome",
-              behavior = predictors$Variable[i])
+    for (i in 1:(nrow(predictors))){
+
+      predictors$pval[i] <-
+        p_test(train,
+               outcome = "outcome",
+               behavior = predictors$Variable[i])
+
+    }
 
   }
-
 
   # Filter out variables whose p-value is above the significance level ------
 
