@@ -219,3 +219,33 @@ check_pkg_installed <- function(pkgname) {
       )
   }
 }
+
+#' @title Wrap text based on character threshold
+#'
+#' @description Wrap text in visualizations according to a preset character
+#' threshold. The next space in the string is replaced with `\n`, which will
+#' render as next line in plots and messages.
+#'
+#' @param x String to wrap text
+#' @param threshold Numeric, defaults to 15. Number of character units by which
+#' the next space would be replaced with `\n` to move text to next line.
+#'
+#' @examples
+#' wrapped <- wrap_text("The second law of thermodynamics states that the total entropy of an isolated system can never decrease.")
+#' message(wrapped)
+#'
+#' @export
+wrap_text <- function(x, threshold = 15){
+
+  patt <- paste0(
+    '(.{1,',
+    threshold,
+    '})(\\s|$)'
+  )
+
+  gsub(
+    pattern = patt,
+    replacement = '\\1\n',
+    x = x
+  )
+}
