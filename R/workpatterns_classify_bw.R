@@ -123,13 +123,31 @@ workpatterns_classify_bw <- function(data,
   d <- (end_hour - 1) - start_hour
 
   ## Warning message
-  if(d >= 11){
+  if(d >= 23){
+
+    stop(
+      glue::glue(
+        "the total working hours is {d + 1}.
+        Please provide a valid range."
+        )
+    )
+
+  } else if(d >= 11){
 
     message(
       glue::glue(
         "Note: the total working hours is {d + 1}.
-        Output archetypes may be misrepresented as the total number of hours is greater than or equal to 12."
-        )
+        Output archetypes will be reduced as the total number of hours is greater than or equal to 12."
+      )
+    )
+
+  } else if(d <= 3){
+
+    message(
+      glue::glue(
+        "Note: the total working hours is {d + 1}.
+        Output archetypes will be reduced as the total number of hours is fewer than or equal to 3."
+      )
     )
 
   }
