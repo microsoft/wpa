@@ -122,6 +122,18 @@ workpatterns_classify_bw <- function(data,
   ## e.g. if `end_hour` value is 17, then the reference slot should be 16
   d <- (end_hour - 1) - start_hour
 
+  ## Warning message
+  if(d >= 11){
+
+    message(
+      glue::glue(
+        "Note: the total working hours is {d + 1}.
+        Output archetypes may be misrepresented as the total number of hours is greater than or equal to 12."
+        )
+    )
+
+  }
+
   ## Text replacement only for allowed values
   if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
@@ -356,7 +368,7 @@ workpatterns_classify_bw <- function(data,
 
   } else if(return == "plot"){
 
-    plot_workpatterns_classify_bw(ptn_data_final)
+    plot_workpatterns_classify_bw(ptn_data_final, range = d)
 
   } else if(return == "plot-dist"){
 
@@ -379,7 +391,7 @@ workpatterns_classify_bw <- function(data,
   } else if (return == "list"){
 
     list(data = return_data(),
-         plot = plot_workpatterns_classify_bw(ptn_data_final),
+         plot = plot_workpatterns_classify_bw(ptn_data_final, range = d),
          plot_hrvar = plot_wp_bw_hrvar(x = return_table()),
          plot_area = return_plot_area(),
          table = return_table())
@@ -395,9 +407,12 @@ workpatterns_classify_bw <- function(data,
 #'
 #' @description Internal use only.
 #'
+#' @param range Numeric. Accepts `d` from the main `workpatterns_classify_bw()`
+#'   function. Used to update labels on main plot.
+#'
 #' @noRd
 
-plot_workpatterns_classify_bw <- function(data){
+plot_workpatterns_classify_bw <- function(data, range){
 
   plot_table <-
     data %>%
@@ -500,6 +515,40 @@ plot_workpatterns_classify_bw <- function(data){
   # ) %>%
   #   print()
 
+  # Vertical labels conditional --------------------------------------------
+
+  if(range <= 12){
+
+    v_labels <-
+      c("",
+        "< 3 hours",
+        "",
+        glue::glue("3 - {range} hours"),
+        "",
+        glue::glue("{range + 1} - 12 hours"),
+        "",
+        "13+ hours",
+        ""
+      )
+
+  } else {
+
+    v_labels <-
+      c("",
+        "< 3 hours",
+        "",
+        glue::glue("3 - {range} hours"),
+        "",
+        "",
+        "",
+        glue::glue("{range}+ hours"),
+        ""
+      )
+
+  }
+
+
+
   main_plot_df %>%
     ggplot(aes(x = Flexibility, y = ActivityLevel)) +
     geom_polygon(
@@ -516,12 +565,7 @@ plot_workpatterns_classify_bw <- function(data){
               size = 5) +
     scale_colour_manual(values = text_v) +
     scale_y_continuous(breaks = 0:8,
-                       labels = c("",
-                                  "< 3 hours", "",
-                                  "3 - 9 hours", "",
-                                  "9 - 12 hours", "",
-                                  "13+ hours", ""
-                                  )) +
+                       labels = v_labels) +
     scale_x_continuous(breaks = 0:4,
                        labels = c("", "No quiet hours", "",
                                   "Take quiet hours", "")) +
