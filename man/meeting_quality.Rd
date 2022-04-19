@@ -26,7 +26,10 @@ returning a plot. Must be one of the following:
 \item \code{"Conflicting_meeting_hours"}
 \item \code{"Multitasking_meeting_hours"}
 \item Any \emph{meeting hour} variable that can be divided by \code{Meeting_hours}
-}}
+}
+
+If the provided metric name is not found in the data, the function will use
+the first matched metric from the above list.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}

@@ -43,6 +43,20 @@ collaboration_report <- function(data,
     hrvar <- myrank[[1,1]]
   }
 
+  ## Placeholder for variables not there
+  if("Time_in_self_organized_meetings" %in% names(data)){
+
+    som_obj <- data %>%
+      mutate(Percentage_of_self_organized_meetings = replace_na(Time_in_self_organized_meetings / Meeting_hours,0)) %>%
+      create_bar(metric = "Percentage_of_self_organized_meetings", hrvar = hrvar, mingroup = mingroup, return = "plot")
+
+  } else {
+
+    som_obj <- "> [Note] Plot for `Time_in_self_organized_meetings` is not available due to missing variable."
+
+  }
+
+
   # Set outputs
   output_list <-
     list(
@@ -77,7 +91,7 @@ collaboration_report <- function(data,
       data %>% meeting_rank(mingroup = mingroup, return = "table"),
       data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
       data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
-      data %>% mutate(Percentage_of_self_organized_meetings = replace_na(Time_in_self_organized_meetings / Meeting_hours,0))  %>%  create_bar(metric = "Percentage_of_self_organized_meetings", hrvar = hrvar, mingroup = mingroup, return = "plot"),
+      som_obj,
       data %>% meeting_quality(hrvar = hrvar, mingroup = mingroup, return = "plot"),
       data %>% meeting_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
 		  paste("---"),

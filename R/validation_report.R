@@ -166,7 +166,7 @@ validation_report <- function(data,
   } else {
 
     callthres_p <-
-      "> [Note] Checks for `Call_hours is not available due to missing variable."
+      "> [Note] Checks for `Call_hours` is not available due to missing variable."
     callthres <- callthres_p
 
   }
