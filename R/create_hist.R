@@ -14,9 +14,16 @@
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #'
+#' @param hvar String containing the name of the attribute to use,
+#' e.g. "Organization"
+#'
+#' @param mingroup Numeric value setting the privacy threshold / minimum group
+#'   size. Defaults to 5.
 #'
 #' @param binwidth Numeric value for setting `binwidth` argument within
 #'   `ggplot2::geom_histogram()`. Defaults to 1.
+#'
+#' @param ncol Numeric value setting the number of columns on the plot. Defaults to NULL (Automatic).
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -65,6 +72,7 @@ create_hist <- function(data,
                         hrvar = "Organization",
                         mingroup = 5,
                         binwidth = 1,
+						ncol = NULL,
                         return = "plot") {
 
   ## Check inputs
@@ -114,7 +122,7 @@ create_hist <- function(data,
     plot_data %>%
     ggplot(aes(x = !!sym(metric))) +
     geom_histogram(binwidth = binwidth, colour = "white", fill="#34b1e2") +
-    facet_wrap(group ~ .) +
+    facet_wrap(group ~ ., ncol = ncol) +
     theme_wpa_basic() +
     theme(strip.background = element_rect(color = "#1d627e",
                                           fill = "#1d627e"),
