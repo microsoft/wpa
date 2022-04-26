@@ -10,6 +10,7 @@ create_hist(
   hrvar = "Organization",
   mingroup = 5,
   binwidth = 1,
+  ncol = NULL,
   return = "plot"
 )
 }
@@ -29,6 +30,8 @@ size. Defaults to 5.}
 \item{binwidth}{Numeric value for setting \code{binwidth} argument within
 \code{ggplot2::geom_histogram()}. Defaults to 1.}
 
+\item{ncol}{Numeric value setting the number of columns on the plot. Defaults to NULL (Automatic).}
+
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
@@ -39,6 +42,9 @@ following strings:
 }
 
 See \code{Value} for more information.}
+
+\item{hvar}{String containing the name of the attribute to use,
+e.g. "Organization"}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}

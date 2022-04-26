@@ -9,6 +9,7 @@ create_density(
   metric,
   hrvar = "Organization",
   mingroup = 5,
+  ncol = NULL,
   return = "plot"
 )
 }
@@ -25,6 +26,8 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 
+\item{ncol}{Numeric value setting the number of columns on the plot. Defaults to NULL (Automatic).}
+
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
@@ -35,6 +38,9 @@ following strings:
 }
 
 See \code{Value} for more information.}
+
+\item{hvar}{String containing the name of the attribute to use,
+e.g. "Organization"}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
@@ -58,6 +64,9 @@ create_density(sq_data, metric = "Collaboration_hours", hrvar = NULL)
 
 # Return plot
 create_density(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
+
+# Return plot but coerce plot to two columns
+create_density(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 2)
 
 # Return summary table
 create_density(sq_data,

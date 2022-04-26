@@ -57,6 +57,9 @@
 #' # Return plot
 #' create_density(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 #'
+#' # Return plot but coerce plot to two columns
+#' create_density(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 2)
+#'
 #' # Return summary table
 #' create_density(sq_data,
 #'             metric = "Collaboration_hours",
@@ -68,7 +71,7 @@ create_density <- function(data,
                         metric,
                         hrvar = "Organization",
                         mingroup = 5,
-						ncol = NULL,
+                        ncol = NULL,
                         return = "plot") {
 
   ## Check inputs
