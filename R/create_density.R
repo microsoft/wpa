@@ -20,7 +20,8 @@
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #'
-#' @param ncol Numeric value setting the number of columns on the plot. Defaults to NULL (Automatic).
+#' @param ncol Numeric value setting the number of columns on the plot. Defaults
+#'   to `NULL` (automatic).
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:

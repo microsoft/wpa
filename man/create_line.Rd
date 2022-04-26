@@ -9,6 +9,7 @@ create_line(
   metric,
   hrvar = "Organization",
   mingroup = 5,
+  ncol = NULL,
   return = "plot"
 )
 }
@@ -24,6 +25,9 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
+
+\item{ncol}{Numeric value setting the number of columns on the plot. Defaults
+to \code{NULL} (automatic).}
 
 \item{return}{String specifying what to return. This must be one of the following strings:
 \itemize{
@@ -56,6 +60,14 @@ sq_data \%>\% create_line(metric = "Email_hours", return = "plot")
 
 # Return plot of Collaboration Hours
 sq_data \%>\% create_line(metric = "Collaboration_hours", return = "plot")
+
+# Return plot but coerce plot to two columns
+sq_data \%>\%
+  create_line(
+    metric = "Collaboration_hours",
+    hrvar = "Organization",
+    ncol = 2
+    )
 
 # Return plot of Work week span and cut by `LevelDesignation`
 sq_data \%>\% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")

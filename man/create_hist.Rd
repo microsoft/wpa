@@ -30,7 +30,8 @@ size. Defaults to 5.}
 \item{binwidth}{Numeric value for setting \code{binwidth} argument within
 \code{ggplot2::geom_histogram()}. Defaults to 1.}
 
-\item{ncol}{Numeric value setting the number of columns on the plot. Defaults to NULL (Automatic).}
+\item{ncol}{Numeric value setting the number of columns on the plot. Defaults
+to \code{NULL} (automatic).}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -68,6 +69,9 @@ create_hist(sq_data, metric = "Collaboration_hours", hrvar = NULL)
 
 # Return plot
 create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
+
+# Return plot but coerce plot to two columns
+create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 2)
 
 # Return summary table
 create_hist(sq_data,

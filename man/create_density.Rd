@@ -26,7 +26,8 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 
-\item{ncol}{Numeric value setting the number of columns on the plot. Defaults to NULL (Automatic).}
+\item{ncol}{Numeric value setting the number of columns on the plot. Defaults
+to \code{NULL} (automatic).}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:

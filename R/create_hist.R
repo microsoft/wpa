@@ -23,7 +23,8 @@
 #' @param binwidth Numeric value for setting `binwidth` argument within
 #'   `ggplot2::geom_histogram()`. Defaults to 1.
 #'
-#' @param ncol Numeric value setting the number of columns on the plot. Defaults to NULL (Automatic).
+#' @param ncol Numeric value setting the number of columns on the plot. Defaults
+#'   to `NULL` (automatic).
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -59,6 +60,9 @@
 #'
 #' # Return plot
 #' create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
+#'
+#' # Return plot but coerce plot to two columns
+#' create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 2)
 #'
 #' # Return summary table
 #' create_hist(sq_data,
