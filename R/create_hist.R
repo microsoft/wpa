@@ -147,7 +147,8 @@ create_hist <- function(data,
       mean = mean(!!sym(metric), na.rm = TRUE),
       median = median(!!sym(metric), na.rm = TRUE),
       max = max(!!sym(metric), na.rm = TRUE),
-      min = min(!!sym(metric), na.rm = TRUE)
+      min = min(!!sym(metric), na.rm = TRUE),
+      .groups = "drop"
     ) %>%
     left_join(data %>%
                 rename(group = !!sym(hrvar)) %>%
@@ -173,7 +174,7 @@ create_hist <- function(data,
              xmin,
              xmax,
              y) %>%
-      group_split(group)
+      group_split(PANEL)
 
   } else if(return == "data"){
 

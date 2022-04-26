@@ -116,60 +116,66 @@ create_density <- function(data,
     summarize(Employee_Count = first(Employee_Count)) %>%
     mutate(Employee_Count = paste("n=",Employee_Count))
 
-  ## Bar plot
-
-  plot_object <-
-    plot_data %>%
-    ggplot(aes(x = !!sym(metric))) +
-	geom_density(lwd = 1, colour = 4, fill = 4, alpha = 0.25) +
-    facet_wrap(group ~ ., ncol = ncol) +
-    theme_wpa_basic() +
-    theme(strip.background = element_rect(color = "#1d627e",
-                                          fill = "#1d627e"),
-          strip.text = element_text(size = 10,
-                                    colour = "#FFFFFF",
-                                    face = "bold")) +
-    labs(title = clean_nm,
-         subtitle = paste("Distribution of", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
-    xlab(clean_nm) +
-    ylab("Density") +
-    labs(caption = extract_date_range(data, return = "text"))
-
-  ## Table to return
-  return_table <-
-    plot_data %>%
-    group_by(group) %>%
-    summarise(
-      mean = mean(!!sym(metric), na.rm = TRUE),
-      median = median(!!sym(metric), na.rm = TRUE),
-      max = max(!!sym(metric), na.rm = TRUE),
-      min = min(!!sym(metric), na.rm = TRUE)
-    ) %>%
-    left_join(data %>%
-                rename(group = !!sym(hrvar)) %>%
-                group_by(group) %>%
-                summarise(Employee_Count = n_distinct(PersonId)),
-              by = "group")
-
 
   if(return == "table"){
 
-    return_table
+    ## Table to return
+
+    plot_data %>%
+      group_by(group) %>%
+      summarise(
+        mean = mean(!!sym(metric), na.rm = TRUE),
+        median = median(!!sym(metric), na.rm = TRUE),
+        max = max(!!sym(metric), na.rm = TRUE),
+        min = min(!!sym(metric), na.rm = TRUE)
+      ) %>%
+      left_join(data %>%
+                  rename(group = !!sym(hrvar)) %>%
+                  group_by(group) %>%
+                  summarise(Employee_Count = n_distinct(PersonId)),
+                by = "group")
 
   } else if(return == "plot"){
 
-    return(plot_object)
+    ## Density plot
+
+    plot_data %>%
+      ggplot(aes(x = !!sym(metric))) +
+      geom_density(lwd = 1, colour = 4, fill = 4, alpha = 0.25) +
+      facet_wrap(group ~ ., ncol = ncol) +
+      theme_wpa_basic() +
+      theme(strip.background = element_rect(color = "#1d627e",
+                                            fill = "#1d627e"),
+            strip.text = element_text(size = 10,
+                                      colour = "#FFFFFF",
+                                      face = "bold")) +
+      labs(title = clean_nm,
+           subtitle = paste("Distribution of", tolower(clean_nm), "by", tolower(camel_clean(hrvar)))) +
+      xlab(clean_nm) +
+      ylab("Density") +
+      labs(caption = extract_date_range(data, return = "text"))
 
   } else if(return == "frequency"){
 
-    ggplot2::ggplot_build(plot_object)$data[[1]] %>%
-      select(group,
-             PANEL,
-             x,
-             xmin,
-             xmax,
-             y) %>%
-      group_split(group)
+    hist_obj <-
+      plot_data %>%
+      ggplot(aes(x = !!sym(metric))) +
+      geom_density() +
+      facet_wrap(group ~ ., ncol = ncol)
+
+    ggplot2::ggplot_build(hist_obj)$data[[1]] %>%
+      select(
+        group,
+        PANEL,
+        y,
+        x,
+        density,
+        scaled,
+        ndensity,
+        count,
+        n
+      ) %>%
+      group_split(PANEL)
 
   } else if(return == "data"){
 
