@@ -18,6 +18,8 @@
 #'   the rows of the heatmapped table.
 #' @param col_var String containing name of the grouping variable that will form
 #'   the columns of the heatmapped table.
+#' @param group_var String containing name of the grouping variable by which
+#' heatmapping would apply. Defaults to `col_var`.
 #' @param value_var String containing name of the value variable that will form
 #' the values of the heatmapped table. Defaults to `"value"`.
 #' @param title Title of the plot.
@@ -34,6 +36,9 @@
 #' @param high String specifying colour code to use for high-value metrics.
 #'   Arguments are passed directly to `ggplot2::scale_fill_gradient2()`.
 #' @param textsize A numeric value specifying the text size to show in the plot.
+#'
+#' @return
+#' ggplot object for a heatmap table.
 #'
 #' @examples
 #'
@@ -64,12 +69,21 @@
 #'   row_var = "Organization"
 #' )
 #'
+#' # Show data the other way round
+#' keymetrics_scan_asis(
+#'   data = out_df,
+#'   col_var = "Organization",
+#'   row_var = "metrics",
+#'   group_var = "metrics"
+#' )
+#'
 #' @export
 #'
 keymetrics_scan_asis <- function(
   data,
   row_var,
   col_var,
+  group_var = col_var,
   value_var = "value",
   title = NULL,
   subtitle = NULL,
@@ -86,8 +100,8 @@ keymetrics_scan_asis <- function(
   # Transform to long data format
   myTable_long <-
     data %>%
-    mutate(!!sym(col_var) := factor(!!sym(col_var))) %>%
-    group_by(!!sym(col_var)) %>%
+    mutate(!!sym(group_var) := factor(!!sym(group_var))) %>%
+    group_by(!!sym(group_var)) %>%
     # Heatmap by row
     mutate(value_rescaled = maxmin(!!sym(value_var))) %>%
     ungroup()

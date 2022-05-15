@@ -8,6 +8,7 @@ keymetrics_scan_asis(
   data,
   row_var,
   col_var,
+  group_var = col_var,
   value_var = "value",
   title = NULL,
   subtitle = NULL,
@@ -31,6 +32,9 @@ the rows of the heatmapped table.}
 
 \item{col_var}{String containing name of the grouping variable that will form
 the columns of the heatmapped table.}
+
+\item{group_var}{String containing name of the grouping variable by which
+heatmapping would apply. Defaults to \code{col_var}.}
 
 \item{value_var}{String containing name of the value variable that will form
 the values of the heatmapped table. Defaults to \code{"value"}.}
@@ -58,6 +62,9 @@ Arguments are passed directly to \code{ggplot2::scale_fill_gradient2()}.}
 Arguments are passed directly to \code{ggplot2::scale_fill_gradient2()}.}
 
 \item{textsize}{A numeric value specifying the text size to show in the plot.}
+}
+\value{
+ggplot object for a heatmap table.
 }
 \description{
 Return a heatmapped table directly from the aggregated / summarised data.
@@ -92,6 +99,14 @@ keymetrics_scan_asis(
   data = out_df,
   col_var = "metrics",
   row_var = "Organization"
+)
+
+# Show data the other way round
+keymetrics_scan_asis(
+  data = out_df,
+  col_var = "Organization",
+  row_var = "metrics",
+  group_var = "metrics"
 )
 
 }
