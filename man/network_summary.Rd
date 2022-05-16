@@ -15,7 +15,9 @@ network_summary(graph, hrvar = NULL, return = "table")
 \item \code{"table"}
 \item \code{"network"}
 \item \code{"plot"}
-}}
+}
+
+See \code{Value} for more information.}
 }
 \value{
 By default, a data frame containing centrality statistics. Available
@@ -61,3 +63,16 @@ g2 <- g2g_data \%>\% network_g2g(return = "network")
 network_summary(graph = g2, return = "table")
 
 }
+\seealso{
+Other Network: 
+\code{\link{external_network_plot}()},
+\code{\link{g2g_data}},
+\code{\link{internal_network_plot}()},
+\code{\link{network_describe}()},
+\code{\link{network_g2g}()},
+\code{\link{network_leiden}()},
+\code{\link{network_louvain}()},
+\code{\link{network_p2p}()},
+\code{\link{p2p_data_sim}()}
+}
+\concept{Network}

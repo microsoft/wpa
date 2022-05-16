@@ -16,6 +16,8 @@
 #'   - `"network"`
 #'   - `"plot"`
 #'
+#' See `Value` for more information.
+#'
 #' @return
 #' By default, a data frame containing centrality statistics. Available
 #' statistics include:
@@ -33,6 +35,8 @@
 #' When `"plot"` is passed to `"return"`, a summary table is returned showing
 #' the average centrality scores by HR attribute. This is currently available if
 #' there is a valid HR attribute.
+#'
+#' @family Network
 #'
 #' @examples
 #' # Simulate a p2p network
