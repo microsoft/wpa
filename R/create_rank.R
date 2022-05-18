@@ -8,8 +8,9 @@
 #'
 #' @description
 #' This function scans a standard Person query output for groups with high
-#' levels of a given Viva Insights Metric. Returns a table with all groups
-#' (across multiple HR attributes) ranked by the specified metric.
+#' levels of a given Viva Insights Metric. Returns a plot by default, with an
+#' option to return a table with all groups (across multiple HR attributes)
+#' ranked by the specified metric.
 #'
 #' @author Carlos Morales Torrado <carlos.morales@@microsoft.com>
 #' @author Martin Chan <martin.chan@@microsoft.com>
@@ -20,8 +21,8 @@
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
-#'   - `"table"` (default)
-#'   - `"plot"`
+#'   - `"plot"` (default)
+#'   - `"table"`
 #'
 #' See `Value` for more information.
 #'

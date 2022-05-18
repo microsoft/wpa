@@ -10,7 +10,7 @@ email_rank(
   mingroup = 5,
   mode = "simple",
   plot_mode = 1,
-  return = "table"
+  return = "plot"
 )
 }
 \arguments{
@@ -39,8 +39,8 @@ be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
-\item \code{"table"} (default)
-\item \code{"plot"}
+\item \code{"plot"} (default)
+\item \code{"table"}
 }
 
 See \code{Value} for more information.}
@@ -58,8 +58,9 @@ plot output if \code{mode} is set to \code{"combine"}.
 }
 \description{
 This function scans a standard query output for groups with high levels of
-'Weekly Email Collaboration'. Returns a table with a all of groups (across
-multiple HR attributes) ranked by hours of digital collaboration.
+'Weekly Email Collaboration'. Returns a plot by default, with an option to
+return a table with a all of groups (across multiple HR attributes) ranked by
+hours of digital collaboration.
 }
 \details{
 Uses the metric \code{Email_hours}.

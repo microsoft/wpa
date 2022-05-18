@@ -7,8 +7,9 @@
 #'
 #' @description
 #' This function scans a standard query output for groups with high levels of
-#' Weekly Meeting Collaboration. Returns a table with a all of groups (across
-#' multiple HR attributes) ranked by hours of digital collaboration.
+#' Weekly Meeting Collaboration. Returns a plot by default, with an option to
+#' return a table with a all of groups (across multiple HR attributes) ranked by
+#' hours of digital collaboration.
 #'
 #' @details
 #' Uses the metric `Meeting_hours`.
@@ -40,7 +41,7 @@ meeting_rank <- function(data,
                          mingroup = 5,
                          mode = "simple",
                          plot_mode = 1,
-                         return = "table"){
+                         return = "plot"){
   data %>%
     create_rank(metric = "Meeting_hours",
                 hrvar = hrvar,

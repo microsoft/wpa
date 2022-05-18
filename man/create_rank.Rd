@@ -30,8 +30,8 @@ size. Defaults to 5.}
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
-\item \code{"table"} (default)
-\item \code{"plot"}
+\item \code{"plot"} (default)
+\item \code{"table"}
 }
 
 See \code{Value} for more information.}
@@ -62,8 +62,9 @@ plot output if \code{mode} is set to \code{"combine"}.
 }
 \description{
 This function scans a standard Person query output for groups with high
-levels of a given Viva Insights Metric. Returns a table with all groups
-(across multiple HR attributes) ranked by the specified metric.
+levels of a given Viva Insights Metric. Returns a plot by default, with an
+option to return a table with all groups (across multiple HR attributes)
+ranked by the specified metric.
 }
 \examples{
 sq_data_small <- dplyr::slice_sample(sq_data, prop = 0.1)
