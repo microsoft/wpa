@@ -43,9 +43,6 @@ following strings:
 }
 
 See \code{Value} for more information.}
-
-\item{hvar}{String containing the name of the attribute to use,
-e.g. "Organization"}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}

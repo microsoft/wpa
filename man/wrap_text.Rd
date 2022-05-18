@@ -18,7 +18,9 @@ threshold. The next space in the string is replaced with \verb{\\n}, which will
 render as next line in plots and messages.
 }
 \examples{
-wrapped <- wrap_text("The second law of thermodynamics states that the total entropy of an isolated system can never decrease.")
+wrapped <- wrap_text(
+  "The total entropy of an isolated system can never decrease."
+  )
 message(wrapped)
 
 }

@@ -14,12 +14,6 @@
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #'
-#' @param hvar String containing the name of the attribute to use,
-#' e.g. "Organization"
-#'
-#' @param mingroup Numeric value setting the privacy threshold / minimum group
-#'   size. Defaults to 5.
-#'
 #' @param binwidth Numeric value for setting `binwidth` argument within
 #'   `ggplot2::geom_histogram()`. Defaults to 1.
 #'

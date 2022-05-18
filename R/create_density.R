@@ -14,12 +14,6 @@
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #'
-#' @param hvar String containing the name of the attribute to use,
-#' e.g. "Organization"
-#'
-#' @param mingroup Numeric value setting the privacy threshold / minimum group
-#'   size. Defaults to 5.
-#'
 #' @param ncol Numeric value setting the number of columns on the plot. Defaults
 #'   to `NULL` (automatic).
 #'
@@ -69,11 +63,11 @@
 #' @export
 
 create_density <- function(data,
-                        metric,
-                        hrvar = "Organization",
-                        mingroup = 5,
-                        ncol = NULL,
-                        return = "plot") {
+                           metric,
+                           hrvar = "Organization",
+                           mingroup = 5,
+                           ncol = NULL,
+                           return = "plot") {
 
   ## Check inputs
   required_variables <- c("Date",

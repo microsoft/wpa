@@ -10,6 +10,9 @@ network_summary(graph, hrvar = NULL, return = "table")
 \item{graph}{'igraph' object that can be returned from \code{network_g2g()} or
 \code{network_p2p()}when the \code{return} argument is set to \code{"network"}.}
 
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{NULL}.}
+
 \item{return}{String specifying what output to return. Valid inputs include:
 \itemize{
 \item \code{"table"}

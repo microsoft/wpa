@@ -231,7 +231,9 @@ check_pkg_installed <- function(pkgname) {
 #' the next space would be replaced with `\n` to move text to next line.
 #'
 #' @examples
-#' wrapped <- wrap_text("The second law of thermodynamics states that the total entropy of an isolated system can never decrease.")
+#' wrapped <- wrap_text(
+#'   "The total entropy of an isolated system can never decrease."
+#'   )
 #' message(wrapped)
 #'
 #' @export

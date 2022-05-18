@@ -11,6 +11,10 @@
 #'
 #' @param graph 'igraph' object that can be returned from `network_g2g()` or
 #'   `network_p2p()`when the `return` argument is set to `"network"`.
+#'
+#' @param hrvar String containing the name of the HR Variable by which to split
+#'   metrics. Defaults to `NULL`.
+#'
 #' @param return String specifying what output to return. Valid inputs include:
 #'   - `"table"`
 #'   - `"network"`
