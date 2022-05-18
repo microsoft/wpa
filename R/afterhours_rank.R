@@ -32,11 +32,15 @@
 afterhours_rank <- function(data,
                             hrvar = extract_hr(data),
                             mingroup = 5,
+                            mode = "simple",
+                            plot_mode = 1,
                             return = "table"){
 
   data %>%
     create_rank(metric = "After_hours_collaboration_hours",
                 hrvar = hrvar,
                 mingroup = mingroup,
+                mode = mode,
+                plot_mode = plot_mode,
                 return = return)
 }
