@@ -13,7 +13,7 @@ keymetrics_scan_asis(
   title = NULL,
   subtitle = NULL,
   caption = NULL,
-  ylab = row_bar,
+  ylab = row_var,
   xlab = "Metrics",
   rounding = 1,
   low = rgb2hex(7, 111, 161),

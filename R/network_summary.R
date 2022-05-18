@@ -64,8 +64,11 @@
 
 network_summary <- function(graph, hrvar = NULL, return = "table"){
 
-  # Calculate summary table
+  ## NULL variables
+  node_id <- NULL
 
+
+  ## Calculate summary table
   sum_tb <-
     dplyr::tibble(
       node_id = igraph::vertex.attributes(graph = graph)$name,
@@ -80,7 +83,7 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
     sum_tb <-
       cbind(
         sum_tb,
-        hrvar = igraph::get.vertex.attribute(graph = g, name = hrvar)
+        hrvar = igraph::get.vertex.attribute(graph = graph, name = hrvar)
       )
 
     sum_tb <- dplyr::rename(sum_tb, !!sym(hrvar) := "hrvar")

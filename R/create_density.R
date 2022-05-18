@@ -79,6 +79,9 @@ create_density <- function(data,
   data %>%
     check_inputs(requirements = required_variables)
 
+  ## Create NULL variables
+  density <- scaled <- ndensity <- NULL
+
   ## Clean metric name
   clean_nm <- us_to_space(metric)
 
