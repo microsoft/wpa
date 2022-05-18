@@ -4,7 +4,7 @@
 # --------------------------------------------------------------------------------------------
 
 #' @title Plot the distribution of percentage change between periods
-#' of a Workplace Analytics metric by the number of employees.
+#' of a Viva Insights metric by the number of employees.
 #'
 #' @description
 #' This function also presents the p-value for the null hypothesis
@@ -14,8 +14,8 @@
 #'
 #' @param data Person Query as a dataframe including date column named `"Date"`
 #'   This function assumes the data format is `MM/DD/YYYY` as is standard in a
-#'   Workplace Analytics query output.
-#' @param compvar WpA comparison variable to compare person change before and
+#'   Viva Insights query output.
+#' @param compvar comparison variable to compare person change before and
 #'   after For example, `"Collaboration_hours"`
 #' @param before_start Start date of "before" time period in `YYYY-MM-DD`
 #' @param before_end End date of "before" time period in `YYYY-MM-DD`
@@ -23,9 +23,9 @@
 #' @param after_end End date of "after" time period in `YYYY-MM-DD`
 #' @param return Character vector specifying whether to return plot as Count or
 #'   Percentage of Employees. Valid inputs include:
-#'    - "count" (default)
-#'    - "percentage"
-#'    - "table"
+#'    - `"count"` (default)
+#'    - `"percentage"`
+#'    - `"table"`
 #'
 #' @return
 #' ggplot object showing a bar plot (histogram) of change for two time
