@@ -52,7 +52,9 @@
 #'   Note that this currently only supports **hourly** increments. If the
 #'   official hours specifying checking in and 9 AM and checking out at 5 PM,
 #'   then `"1700"` should be supplied here.
-#'
+#' @param exp_hour Numeric value representing the number of hours the population
+#'   is expected to be active for throughout the workday. By default, this uses
+#'   the difference between `end_hour` and `start_hour`.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #'
@@ -76,14 +78,17 @@
 #'
 #' @family Working Patterns
 #'
-workpatterns_classify_bw <- function(data,
-                                     hrvar = NULL,
-                                     signals = c("email","IM"),
-                                     start_hour = "0900",
-                                     end_hour = "1700",
-                                     mingroup = 5,
-                                     active_threshold = 0,
-                                     return = "plot"){
+workpatterns_classify_bw_temp <-
+  function(data,
+           hrvar = NULL,
+           signals = c("email","IM"),
+           start_hour = "0900",
+           end_hour = "1700",
+           exp_hour = end_hour - start_hour,
+           mingroup = 5,
+           active_threshold = 0,
+           return = "plot"
+           ){
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
