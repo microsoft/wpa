@@ -110,42 +110,38 @@ workpatterns_classify_bw <- function(data,
   # Make sure data.table knows we know we're using it
   .datatable.aware = TRUE
 
-  ## Save original
-  start_hour_o <- start_hour
-  end_hour_o <- end_hour
-
   ## Coerce to numeric, remove trailing zeros
   start_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = start_hour))
   end_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = end_hour))
 
   ## Calculate hours within working hours
   ## e.g. if `end_hour` value is 17, then the reference slot should be 16
-  d <- (end_hour - 1) - start_hour
+  exp_hours <- end_hour - start_hour
 
   ## Warning message
-  if(d >= 23){
+  if(exp_hours >= 23){
 
     stop(
       glue::glue(
-        "the total working hours is {d + 1}.
+        "the total working hours is {exp_hours + 1}.
         Please provide a valid range."
         )
     )
 
-  } else if(d >= 11){
+  } else if(exp_hours >= 11){
 
     message(
       glue::glue(
-        "Note: the total working hours is {d + 1}.
+        "Note: the total working hours is {exp_hours + 1}.
         Output archetypes will be reduced as the total number of hours is greater than or equal to 12."
       )
     )
 
-  } else if(d <= 3){
+  } else if(exp_hours <= 3){
 
     message(
       glue::glue(
-        "Note: the total working hours is {d + 1}.
+        "Note: the total working hours is {exp_hours + 1}.
         Output archetypes will be reduced as the total number of hours is fewer than or equal to 3."
       )
     )
@@ -190,13 +186,13 @@ workpatterns_classify_bw <- function(data,
     data.table::as.data.table() %>%
     # active_threshold: minimum signals to qualify as active
     .[, (num_cols) := lapply(.SD, function(x) ifelse(x > active_threshold, 1, 0)), .SDcols = num_cols] %>%
-    .[, ("Signals_Total") := apply(.SD, 1, sum), .SDcols = input_var]
+    .[, ("Active_Hours") := apply(.SD, 1, sum), .SDcols = input_var]
 
   ## Classify PersonId-Signal data by time of day
 
   WpA_classify <-
     signals_df %>%
-    tidyr::gather(!!sym(sig_label), sent, -PersonId,-Date,-Signals_Total) %>%
+    tidyr::gather(!!sym(sig_label), sent, -PersonId,-Date,-Active_Hours) %>%
     data.table::as.data.table()
 
   WpA_classify[, StartEnd := gsub(pattern = "[^[:digit:]]", replacement = "", x = get(sig_label))]
@@ -212,8 +208,8 @@ workpatterns_classify_bw <- function(data,
 
 
   WpA_classify <-
-    WpA_classify[, c("PersonId", "Date", "Signals_Total", "HourType", "sent")] %>%
-    .[, .(sent = sum(sent)), by = c("PersonId", "Date", "Signals_Total", "HourType")] %>%
+    WpA_classify[, c("PersonId", "Date", "Active_Hours", "HourType", "sent")] %>%
+    .[, .(sent = sum(sent)), by = c("PersonId", "Date", "Active_Hours", "HourType")] %>%
     tidyr::spread(HourType, sent)%>%
     left_join(WpA_classify%>%   ## Calculate first and last activity for day_span
                 filter(sent>0)%>%
@@ -222,7 +218,7 @@ workpatterns_classify_bw <- function(data,
                           Last_signal=max(End)),
               by=c("PersonId","Date"))%>%
     mutate(Day_Span = Last_signal - First_signal,
-           Signals_Break_hours = Day_Span - Signals_Total)
+           Signals_Break_hours = Day_Span - Active_Hours)
 
 
   personas_levels <-
@@ -236,13 +232,13 @@ workpatterns_classify_bw <- function(data,
 
   ptn_data_personas <- data.table::copy(WpA_classify)
   ptn_data_personas[, Personas := "Unclassified"]
-  ptn_data_personas[Signals_Total > d & Signals_Total==Day_Span , Personas := "5 Long continuous workday"]
-  ptn_data_personas[Signals_Total > d & Signals_Total<Day_Span, Personas := "4 Long flexible workday"]
-  ptn_data_personas[Signals_Total <= d & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
-  ptn_data_personas[Signals_Total == d+1 & Within_hours ==d+1, Personas := "2 Standard continuous workday"]
-  ptn_data_personas[Signals_Total<= d & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
-  ptn_data_personas[Signals_Total >= 13, Personas := "6 Always on (13h+)"]
-  ptn_data_personas[Signals_Total < 3, Personas := "0 < 3 hours on"]
+  ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas := "5 Long continuous workday"]
+  ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "4 Long flexible workday"]
+  ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
+  ptn_data_personas[Active_Hours == exp_hours & Within_hours ==exp_hours , Personas := "2 Standard continuous workday"]
+  ptn_data_personas[Active_Hours<= exp_hours & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
+  ptn_data_personas[Active_Hours >= 13, Personas := "6 Always on (13h+)"]
+  ptn_data_personas[Active_Hours < 3, Personas := "0 < 3 hours on"]
   ptn_data_personas[, Personas := factor(Personas, levels = personas_levels)]
 
   # bind cut tree to data frame
@@ -250,7 +246,7 @@ workpatterns_classify_bw <- function(data,
     ptn_data_personas %>%
     left_join(
       signals_df %>%
-        select(-Signals_Total), # Avoid duplication
+        select(-Active_Hours), # Avoid duplication
       by = c("PersonId","Date")) %>%
     left_join(
       data2 %>%
@@ -386,7 +382,7 @@ workpatterns_classify_bw <- function(data,
 
   } else if(return == "plot"){
 
-    plot_workpatterns_classify_bw(ptn_data_final, range = d)
+    plot_workpatterns_classify_bw(ptn_data_final, range = exp_hours)
 
   } else if(return == "plot-dist"){
 
@@ -409,7 +405,7 @@ workpatterns_classify_bw <- function(data,
   } else if (return == "list"){
 
     list(data = return_data(),
-         plot = plot_workpatterns_classify_bw(ptn_data_final, range = d),
+         plot = plot_workpatterns_classify_bw(ptn_data_final, range = exp_hours),
          plot_hrvar = plot_wp_bw_hrvar(x = return_table()),
          plot_area = return_plot_area(),
          table = return_table())
@@ -425,7 +421,7 @@ workpatterns_classify_bw <- function(data,
 #'
 #' @description Internal use only.
 #'
-#' @param range Numeric. Accepts `d` from the main `workpatterns_classify_bw()`
+#' @param range Numeric. Accepts `exp_hours` from the main `workpatterns_classify_bw()`
 #'   function. Used to update labels on main plot.
 #'
 #' @noRd
