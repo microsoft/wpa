@@ -82,10 +82,12 @@ You can browse each individual function for details on calculations.
 \section{Creating a report}{
 
 
-Below is an example on how to run the report.\preformatted{validation_report(dv_data,
+Below is an example on how to run the report.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{validation_report(dv_data,
                   meeting_data = mt_data,
                   hrvar = "Organization")
-}
+}\if{html}{\out{</div>}}
 }
 
 \seealso{

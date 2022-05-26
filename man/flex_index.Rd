@@ -129,9 +129,11 @@ is preferred.
 \section{Returning the raw data}{
 
 The raw data containing the computed Flexibility Index can be returned with
-the following:\preformatted{em_data \%>\%
+the following:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{em_data \%>\%
   flex_index(return = "data")
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

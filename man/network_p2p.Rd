@@ -136,7 +136,9 @@ detection using either the Louvain or the Leiden algorithms.
 
 
 Running Leiden communities requires python dependencies installed.
-You can run the following:\if{html}{\out{<div class="sourceCode R">}}\preformatted{# Return a network plot to console, coloured by Leiden communities
+You can run the following:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{# Return a network plot to console, coloured by Leiden communities
   p2p_data \%>\%
     network_p2p(display = "leiden",
                 path = NULL,
@@ -144,7 +146,9 @@ You can run the following:\if{html}{\out{<div class="sourceCode R">}}\preformatt
 }\if{html}{\out{</div>}}
 
 When installing the 'leiden' package, you may be required to install the Python
-libraries 'python-igraph' and 'leidenalg'. You can install them with:\if{html}{\out{<div class="sourceCode R">}}\preformatted{reticulate::py_install("python-igraph")
+libraries 'python-igraph' and 'leidenalg'. You can install them with:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{reticulate::py_install("python-igraph")
 reticulate::py_install("leidenalg")
 }\if{html}{\out{</div>}}
 }
