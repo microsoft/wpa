@@ -25,6 +25,9 @@
 #' and 'portes'. Please install these separately from CRAN prior to running the
 #' function.
 #'
+#' As of May 2022, the 'portes' package was archived from CRAN. This may be
+#' installed from CRAN archives or GitHub.
+#'
 #' @param data Person Query as a dataframe including date column named `Date`.
 #'   This function assumes the data format is MM/DD/YYYY as is standard in a
 #'   Viva Insights query output.
@@ -59,8 +62,8 @@
 #' @family Interrupted Time-Series Analysis
 #'
 #'
-#' @examples
-#' \donttest{
+#' @section Examples:
+#' ```
 #' # Returns summary table
 #'
 #' create_ITSA(
@@ -86,7 +89,8 @@
 #'
 #' # Extract a plot as an example
 #' plot_list$Workweek_span
-#' }
+#' ```
+#'
 #' @export
 
 create_ITSA <-

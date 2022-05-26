@@ -66,10 +66,14 @@ This function further requires the installation of 'sandwich', 'portes', and
 This function uses the additional package dependencies 'sandwich', 'lmtest',
 and 'portes'. Please install these separately from CRAN prior to running the
 function.
+
+As of May 2022, the 'portes' package was archived from CRAN. This may be
+installed from CRAN archives or GitHub.
 }
-\examples{
-\donttest{
-# Returns summary table
+\section{Examples}{
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# Returns summary table
 
 create_ITSA(
   data = sq_data,
@@ -94,8 +98,9 @@ plot_list <-
 
 # Extract a plot as an example
 plot_list$Workweek_span
+}\if{html}{\out{</div>}}
 }
-}
+
 \seealso{
 Other Flexible Input: 
 \code{\link{period_change}()}
