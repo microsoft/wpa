@@ -10,7 +10,7 @@
 #'
 #' This function enables you to create a summary table to validate
 #' organizational data. This table will provide a summary of the data found in
-#' the Workplace Analytics Sources page. This function will return a summary
+#' the Viva Insights _Data sources_ page. This function will return a summary
 #' table with the count of distinct fields per HR attribute and the percentage
 #' of employees with missing values for that attribute. See `hrvar_count()`
 #' function for more detail on the specific HR attribute of interest.
@@ -49,7 +49,12 @@ hrvar_count_all <- function(data,
                             ){
 
   ## Character vector of HR attributes
-  extracted_chr <- extract_hr(data, return = "names", max_unique = threshold, exclude_constants = FALSE)
+  extracted_chr <- extract_hr(
+    data,
+    return = "names",
+    max_unique = threshold,
+    exclude_constants = FALSE
+    )
 
   summary_table_n <-
     data %>%

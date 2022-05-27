@@ -8,7 +8,7 @@
 #' @description
 #' The function generates an interactive HTML report using Standard Person Query
 #' data as an input. The report contains a series of summary analysis and
-#' visualisations relating to key **coaching** metrics in Workplace Analytics,
+#' visualisations relating to key **coaching** metrics in Viva Insights,
 #' specifically relating to the time spent between managers and their direct
 #' reports.
 #'

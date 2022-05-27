@@ -7,8 +7,9 @@
 #'
 #' @description
 #' This function scans a standard query output for groups with high levels of
-#' Work Week Span. Returns a table with a all of groups (across multiple HR
-#' attributes) ranked by work week span.
+#' Work Week Span. Returns a plot by default, with an option to return a table
+#' with a all of groups (across multiple HR attributes) ranked by work week
+#' span.
 #'
 #' @details
 #' Uses the metric `Workweek_span`.

@@ -3,7 +3,8 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create a Scatter plot with two selected Workplace Analytics metrics (General Purpose)
+#' @title
+#' Create a Scatter plot with two selected Viva Insights metrics (General Purpose)
 #'
 #' @description
 #' Returns a scatter plot of two selected metrics, using colour to map
@@ -94,7 +95,7 @@ create_scatter <- function(data,
                y = !!sym(metric_y),
                colour = !!sym(hrvar))) +
     geom_point(alpha = 0.5) +
-    labs(title = paste0(clean_x, " and ", clean_y), 
+    labs(title = paste0(clean_x, " and ", clean_y),
 	subtitle = paste("Distribution of employees by", tolower(camel_clean(hrvar))),
          caption = extract_date_range(data, return = "text")) +
     xlab(clean_x) +

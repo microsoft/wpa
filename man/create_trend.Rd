@@ -9,6 +9,7 @@ create_trend(
   metric,
   hrvar = "Organization",
   mingroup = 5,
+  palette = c("steelblue4", "aliceblue", "white", "mistyrose1", "tomato1"),
   return = "plot",
   legend_title = "Hours"
 )
@@ -26,6 +27,10 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 
+\item{palette}{Character vector containing colour codes, ranked from the
+lowest value to the highest value. This is passed directly to
+\code{ggplot2::scale_fill_gradientn()}.}
+
 \item{return}{Character vector specifying what to return, defaults to
 \code{"plot"}.
 Valid inputs are "plot" and "table".}
@@ -38,13 +43,26 @@ Returns a 'ggplot' object by default, where 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 }
 \description{
-Provides a week by week view of a selected Workplace Analytics metric. By
+Provides a week by week view of a selected Viva Insights metric. By
 default returns a week by week heatmap bar plot, highlighting the points in
 time with most activity. Additional options available to return a summary
 table.
 }
 \examples{
 create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
+
+# custom colours
+create_trend(
+  sq_data,
+  metric = "Collaboration_hours",
+  hrvar = "LevelDesignation",
+  palette = c(
+    "#FB6107",
+    "#F3DE2C",
+    "#7CB518",
+    "#5C8001"
+  )
+  )
 
 }
 \seealso{
@@ -124,6 +142,7 @@ Other Flexible:
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
+\code{\link{create_density}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},

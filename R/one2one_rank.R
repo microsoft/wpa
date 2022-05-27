@@ -7,8 +7,9 @@
 #'
 #' @description
 #' This function scans a standard query output for groups with high levels of
-#' 'Manager 1:1 Time'. Returns a table with a all of groups (across multiple HR
-#' attributes) ranked by hours of digital collaboration.
+#' 'Manager 1:1 Time'. Returns a plot by default, with an option to return a
+#' table with a all of groups (across multiple HR attributes) ranked by manager
+#' 1:1 time.
 #'
 #' @details
 #' Uses the metric `Meeting_hours_with_manager_1_on_1`.
@@ -40,7 +41,7 @@ one2one_rank <- function(data,
                          mingroup = 5,
                          mode = "simple",
                          plot_mode = 1,
-                         return = "table"){
+                         return = "plot"){
 
   data %>%
     create_rank(metric = "Meeting_hours_with_manager_1_on_1",

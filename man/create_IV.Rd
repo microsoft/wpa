@@ -30,7 +30,8 @@ the values 1 or 0.}
 outcomes, defaults to 0.05}
 
 \item{exc_sig}{Logical value determining whether to exclude values where the
-p-value lies below what is set at \code{siglevel}. Defaults to \code{FALSE}.}
+p-value lies below what is set at \code{siglevel}. Defaults to \code{FALSE}, where
+p-value calculation does not happen altogether.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:

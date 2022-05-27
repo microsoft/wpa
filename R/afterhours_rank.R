@@ -6,8 +6,10 @@
 #' @title Rank groups with high After-Hours Collaboration Hours
 #'
 #' @description
-#' This function scans a Standard Person Query for groups with high levels of After-Hours Collaboration.
-#' Returns a table with a all of groups (across multiple HR attributes) ranked by hours of After-Hours Collaboration Hours.
+#' This function scans a Standard Person Query for groups with high levels of
+#' After-Hours Collaboration. Returns a plot by default, with an option to
+#' return a table with all groups (across multiple HR attributes) ranked by
+#' hours of After-Hours Collaboration Hours.
 #'
 #' @details
 #' Uses the metric \code{After_hours_collaboration_hours}.
@@ -32,11 +34,15 @@
 afterhours_rank <- function(data,
                             hrvar = extract_hr(data),
                             mingroup = 5,
-                            return = "table"){
+                            mode = "simple",
+                            plot_mode = 1,
+                            return = "plot"){
 
   data %>%
     create_rank(metric = "After_hours_collaboration_hours",
                 hrvar = hrvar,
                 mingroup = mingroup,
+                mode = mode,
+                plot_mode = plot_mode,
                 return = return)
 }

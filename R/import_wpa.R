@@ -45,9 +45,9 @@ import_wpa <- function(x,
   dateCols <- sapply(return_data, function(x) all(is_date_format(x)))
   dateCols <- dateCols[dateCols == TRUE]
 
-  return_data <-
-    return_data %>%
-    dplyr::mutate_at(dplyr::vars(names(dateCols)), ~as.Date(., format = "%m/%d/%Y"))
+    return_data <-
+      return_data %>%
+      dplyr::mutate_at(dplyr::vars(names(dateCols)), ~as.Date(., format = "%m/%d/%Y"))
 
   message("Query has been imported successfully!")
 

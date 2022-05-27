@@ -27,6 +27,10 @@
 one2one_dist <- function(data,
                          hrvar = "Organization",
                          mingroup = 5,
+                         dist_colours = c("#facebc",
+                                          "#fcf0eb",
+                                          "#b4d5dd",
+                                          "#bfe5ee"),
                          return = "plot",
                          cut = c(5, 15, 30)) {
 
@@ -38,6 +42,7 @@ one2one_dist <- function(data,
               metric = "Scheduled 1:1 meeting minutes with manager",
               hrvar = hrvar,
               mingroup = mingroup,
+              dist_colours = dist_colours,
               return = return,
               cut = cut,
               unit = "minutes")

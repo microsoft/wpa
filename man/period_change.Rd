@@ -3,7 +3,7 @@
 \name{period_change}
 \alias{period_change}
 \title{Plot the distribution of percentage change between periods
-of a Workplace Analytics metric by the number of employees.}
+of a Viva Insights metric by the number of employees.}
 \usage{
 period_change(
   data,
@@ -18,9 +18,9 @@ period_change(
 \arguments{
 \item{data}{Person Query as a dataframe including date column named \code{"Date"}
 This function assumes the data format is \code{MM/DD/YYYY} as is standard in a
-Workplace Analytics query output.}
+Viva Insights query output.}
 
-\item{compvar}{WpA comparison variable to compare person change before and
+\item{compvar}{comparison variable to compare person change before and
 after For example, \code{"Collaboration_hours"}}
 
 \item{before_start}{Start date of "before" time period in \code{YYYY-MM-DD}}
@@ -34,9 +34,9 @@ after For example, \code{"Collaboration_hours"}}
 \item{return}{Character vector specifying whether to return plot as Count or
 Percentage of Employees. Valid inputs include:
 \itemize{
-\item "count" (default)
-\item "percentage"
-\item "table"
+\item \code{"count"} (default)
+\item \code{"percentage"}
+\item \code{"table"}
 }}
 }
 \value{
@@ -146,6 +146,7 @@ Other Flexible:
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
+\code{\link{create_density}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},

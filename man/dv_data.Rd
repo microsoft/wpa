@@ -90,7 +90,11 @@ dv_data
 data frame.
 }
 \description{
-A dataset generated from a Standard Person Query from Workplace Analytics.
+A dataset generated from a Standard Person Query from advanced insights in
+Viva Insights. Note that this is largely interchangeable with a \strong{Ways of
+Working Assessment} query, with the exception of some additional variables
+and the different variable names used for \code{Collaboration_hours} and
+\code{Instant_Message_hours}.
 }
 \seealso{
 Other Data: 

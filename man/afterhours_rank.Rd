@@ -4,7 +4,14 @@
 \alias{afterhours_rank}
 \title{Rank groups with high After-Hours Collaboration Hours}
 \usage{
-afterhours_rank(data, hrvar = extract_hr(data), mingroup = 5, return = "table")
+afterhours_rank(
+  data,
+  hrvar = extract_hr(data),
+  mingroup = 5,
+  mode = "simple",
+  plot_mode = 1,
+  return = "plot"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
@@ -16,11 +23,24 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 
+\item{mode}{String to specify calculation mode. Must be either:
+\itemize{
+\item \code{"simple"}
+\item \code{"combine"}
+}}
+
+\item{plot_mode}{Numeric vector to determine which plot mode to return. Must
+be either \code{1} or \code{2}, and is only used when \code{return = "plot"}.
+\itemize{
+\item \code{1}: Top and bottom five groups across the data population are highlighted
+\item \code{2}: Top and bottom groups \emph{per} organizational attribute are highlighted
+}}
+
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
-\item \code{"table"} (default)
-\item \code{"plot"}
+\item \code{"plot"} (default)
+\item \code{"table"}
 }
 
 See \code{Value} for more information.}
@@ -29,8 +49,10 @@ See \code{Value} for more information.}
 When 'table' is passed in \code{return}, a summary table is returned as a data frame.
 }
 \description{
-This function scans a Standard Person Query for groups with high levels of After-Hours Collaboration.
-Returns a table with a all of groups (across multiple HR attributes) ranked by hours of After-Hours Collaboration Hours.
+This function scans a Standard Person Query for groups with high levels of
+After-Hours Collaboration. Returns a plot by default, with an option to
+return a table with all groups (across multiple HR attributes) ranked by
+hours of After-Hours Collaboration Hours.
 }
 \details{
 Uses the metric \code{After_hours_collaboration_hours}.

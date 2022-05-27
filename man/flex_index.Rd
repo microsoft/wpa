@@ -76,11 +76,11 @@ freedom for employees to work at a time of their choice.
 }
 \details{
 The \strong{Flexibility Index} is a metric that has been developed to quantify and
-measure flexibility using behavioural data from Workplace Analytics.
-Flexibility here refers to the freedom of employees to adopt a working
-arrangement of their own choice, and more specifically refers to \strong{time}
-flexibility (\emph{whenever} I want) as opposed to \strong{geographical} flexibility
-(\emph{wherever} I want).
+measure flexibility using behavioural data from Viva Insights. Flexibility
+here refers to the freedom of employees to adopt a working arrangement of
+their own choice, and more specifically refers to \strong{time} flexibility
+(\emph{whenever} I want) as opposed to \strong{geographical} flexibility (\emph{wherever} I
+want).
 
 The \strong{Flexibility Index} is a score between 0 and 1, and is calculated based
 on three component measures:
@@ -112,7 +112,7 @@ that it is the employee rather the employer who chooses the working
 arrangement. \emph{Observed flexibility} serves as a proxy to assess whether a
 flexible working arrangement are in place. The Flexibility Index is an
 attempt to create such a proxy for quantifying and measuring flexibility,
-using behavioural data from Workplace Analytics.
+using behavioural data from Viva Insights.
 }
 
 \section{Recurring disconnection time}{
@@ -129,9 +129,11 @@ is preferred.
 \section{Returning the raw data}{
 
 The raw data containing the computed Flexibility Index can be returned with
-the following:\preformatted{em_data \%>\%
+the following:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{em_data \%>\%
   flex_index(return = "data")
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -3,12 +3,13 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Sample Hourly Collaboration data with Email and IMs
+#' @title Sample Hourly Collaboration data
 #'
 #' @description
-#' A sample dataset generated from an Hourly Collaboration query from the
-#' Workplace Analytics demo tenant. The data is grouped by week and contains
-#' columns for both IMs sent and Emails sent.
+#' A sample dataset representing an Hourly Collaboration query. The data is
+#' grouped by week and contains columns for unscheduled calls, IMs sent, emails
+#' sent, and meetings. There are 24 columns per collaboration signal,
+#' representing each hour of the day.
 #'
 #' @family Data
 #'

@@ -1,3 +1,13 @@
+# wpa 1.7.0
+
+- Renamed 'Workplace Analytics' to 'Viva Insights'
+- Improved features for multiple functions, e.g. centrality calculations for `network_p2p()`
+- Improved compatibility of functions with new queries
+- Introduced new functions, e.g. `create_density()`, `keymetrics_scan_asis()`, `network_summary()`
+- Removed 'portes' dependency, which was removed from CRAN
+- Bug fixes
+
+
 # wpa 1.6.4
 
 - Made `meeting_skim()` dynamic - the function will still run even if not all variables are present. (#198)

@@ -51,13 +51,15 @@ variable.
 \section{Creating a report}{
 
 
-Below is an example on how to run the report.\preformatted{library(dplyr)
+Below is an example on how to run the report.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{library(dplyr)
 
 sq_data \%>\%
   mutate(CH_binary = ifelse(Collaboration_hours > 12, 1, 0)) \%>\% # Simulate binary variable
   IV_report(outcome =  "CH_binary",
             predictors = c("Email_hours", "Workweek_span"))
-}
+}\if{html}{\out{</div>}}
 }
 
 \seealso{

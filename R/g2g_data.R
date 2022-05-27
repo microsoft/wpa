@@ -6,7 +6,10 @@
 #' @title Sample Group-to-Group dataset
 #'
 #' @description
-#' A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
+#' A demo dataset representing a Group-to-Group Query. The grouping
+#' organizational attribute used here is `Organization`, where the variable have
+#' been prefixed with `TimeInvestors_` and `Collaborators_` to represent the
+#' direction of collaboration.
 #'
 #' @family Data
 #' @family Network

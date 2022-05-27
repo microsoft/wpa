@@ -8,8 +8,8 @@
 #' @description
 #' The function generates an interactive HTML report using Standard Person Query
 #' data as an input. The report contains a series of summary analysis and
-#' visualisations relating to key **collaboration** metrics in Workplace
-#' Analytics,including email and meeting hours.
+#' visualisations relating to key **collaboration** metrics,including email and
+#' meeting hours.
 #'
 #' @template spq-params
 #' @param path Pass the file path and the desired file name, _excluding the file
@@ -42,6 +42,20 @@ collaboration_report <- function(data,
     myrank <- data %>% collaboration_rank(mingroup = mingroup, return = "table")
     hrvar <- myrank[[1,1]]
   }
+
+  ## Placeholder for variables not there
+  if("Time_in_self_organized_meetings" %in% names(data)){
+
+    som_obj <- data %>%
+      mutate(Percentage_of_self_organized_meetings = replace_na(Time_in_self_organized_meetings / Meeting_hours,0)) %>%
+      create_bar(metric = "Percentage_of_self_organized_meetings", hrvar = hrvar, mingroup = mingroup, return = "plot")
+
+  } else {
+
+    som_obj <- "> [Note] Plot for `Time_in_self_organized_meetings` is not available due to missing variable."
+
+  }
+
 
   # Set outputs
   output_list <-
@@ -77,7 +91,7 @@ collaboration_report <- function(data,
       data %>% meeting_rank(mingroup = mingroup, return = "table"),
       data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "plot"),
       data %>% meeting_dist(hrvar = hrvar, mingroup = mingroup, return = "table"),
-      data %>% mutate(Percentage_of_self_organized_meetings = replace_na(Time_in_self_organized_meetings / Meeting_hours,0))  %>%  create_bar(metric = "Percentage_of_self_organized_meetings", hrvar = hrvar, mingroup = mingroup, return = "plot"),
+      som_obj,
       data %>% meeting_quality(hrvar = hrvar, mingroup = mingroup, return = "plot"),
       data %>% meeting_trend(hrvar = hrvar, mingroup = mingroup, return = "plot"),
 		  paste("---"),

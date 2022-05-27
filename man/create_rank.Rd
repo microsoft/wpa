@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_rank.R
 \name{create_rank}
 \alias{create_rank}
-\title{Rank all groups across HR attributes on a selected Workplace Analytics metric}
+\title{Rank all groups across HR attributes on a selected Viva Insights metric}
 \usage{
 create_rank(
   data,
@@ -30,8 +30,8 @@ size. Defaults to 5.}
 \item{return}{String specifying what to return. This must be one of the
 following strings:
 \itemize{
-\item \code{"table"} (default)
-\item \code{"plot"}
+\item \code{"plot"} (default)
+\item \code{"table"}
 }
 
 See \code{Value} for more information.}
@@ -62,8 +62,9 @@ plot output if \code{mode} is set to \code{"combine"}.
 }
 \description{
 This function scans a standard Person query output for groups with high
-levels of a given Workplace Analytics Metric. Returns a table with all groups
-(across multiple HR attributes) ranked by the specified metric.
+levels of a given Viva Insights Metric. Returns a plot by default, with an
+option to return a table with all groups (across multiple HR attributes)
+ranked by the specified metric.
 }
 \examples{
 sq_data_small <- dplyr::slice_sample(sq_data, prop = 0.1)
@@ -181,6 +182,7 @@ Other Flexible:
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
+\code{\link{create_density}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},

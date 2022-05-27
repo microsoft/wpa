@@ -3,9 +3,8 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Create a bubble plot with two selected Workplace Analytics metrics
-#'   (General Purpose), with size representing the number of employees in the
-#'   group.
+#' @title Create a bubble plot with two selected Viva Insights metrics (General
+#'   Purpose), with size representing the number of employees in the group.
 #'
 #' @description Returns a bubble plot of two selected metrics, using size to map
 #'   the number of employees.

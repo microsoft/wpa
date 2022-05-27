@@ -22,9 +22,13 @@
 #'   Reingold. See
 #'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
 #'   list of options.
-#' @param node_colour String to specify the colour to be used for displaying
-#' nodes. Defaults to `"lightblue"`. If `"vary"` is supplied, a different colour
-#' is shown for each node at random.
+#' @param node_colour String or named vector to specify the colour to be used for displaying
+#' nodes. Defaults to `"lightblue"`.
+#'   - If `"vary"` is supplied, a different colour is shown for each node at
+#' random.
+#'   - If a named vector is supplied, the names must match the values of the
+#'   variable provided for the `time_investor` and `collaborator` columns. See
+#'   example section for details.
 #' @param exc_threshold Numeric value between 0 and 1 specifying the exclusion
 #'   threshold to apply. Defaults to 0.1, which means that the plot will only
 #'   display collaboration above 10% of a node's total collaboration. This
@@ -70,6 +74,24 @@
 #'               collaborator = "Collaborators_Organization",
 #'               metric = "Meeting_hours",
 #'               exc_threshold = 0.05)
+#'
+#' # Return a network plot - custom-specific colours
+#' # Get labels of orgs and assign random colours
+#' org_str <- unique(g2g_data$TimeInvestors_Organization)
+#'
+#' col_str <-
+#'   sample(
+#'     x = c("red", "green", "blue"),
+#'     size = length(org_str),
+#'     replace = TRUE
+#'   )
+#'
+#' # Create and supply a named vector to `node_colour`
+#' names(col_str) <- org_str
+#'
+#' g2g_data %>%
+#'   network_g2g(node_colour = col_str)
+#'
 #'
 #' # Return a network plot with circle layout
 #' # Vary node colours and add org sizes
@@ -220,7 +242,15 @@ network_g2g <- function(data,
     } else {
 
       # Custom node colours ----------------------------------------------
-      if(node_colour == "vary"){
+
+      # String vector with length greater than 1
+      if(is.character(node_colour) & length(node_colour) > 1){
+
+        names(node_colour) <-
+          gsub(
+            pattern = " ",
+            replacement = "\n",
+            x = names(node_colour))
 
         plot_obj <-
           plot_obj +
@@ -228,7 +258,23 @@ network_g2g <- function(data,
             aes(color = name,
                 size = org_size),
             alpha = 0.9
-            )
+            ) +
+          scale_colour_manual(
+            # Enable matching
+            values = node_colour
+          )
+
+        # Auto assign colours
+
+        } else if(node_colour == "vary"){
+
+        plot_obj <-
+          plot_obj +
+          ggraph::geom_node_point(
+            aes(color = name,
+                size = org_size),
+            alpha = 0.9
+          )
 
       } else {
 

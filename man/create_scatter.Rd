@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_scatter.R
 \name{create_scatter}
 \alias{create_scatter}
-\title{Create a Scatter plot with two selected Workplace Analytics metrics (General Purpose)}
+\title{Create a Scatter plot with two selected Viva Insights metrics (General Purpose)}
 \usage{
 create_scatter(
   data,
@@ -133,6 +133,7 @@ Other Flexible:
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
+\code{\link{create_density}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},

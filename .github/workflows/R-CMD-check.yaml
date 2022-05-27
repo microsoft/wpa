@@ -15,6 +15,6 @@ jobs:
         shell: Rscript {0}
       - name: Check
         env:
-          _R_CHECK_FORCE_SUGGESTS_: false
+          _R_CHECK_FORCE_SUGGESTS_: true
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}

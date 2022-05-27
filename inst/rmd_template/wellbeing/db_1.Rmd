@@ -17,16 +17,23 @@ Column {data-width=30%}
 
 ```{r}
 
-
-KPI_1 <- 
-  my_sq_data %>%
-  create_bar(metric = "Work_time",
-             hrvar = NULL,
-             return="table") %>%
-  select(Work_time) %>%
-  pull(1) %>%
-  round(1) 
+if(sum(my_sq_data$Work_time, na.rm = TRUE) == 0){
   
+  KPI_1 <- "0 "
+  
+} else {
+
+  KPI_1 <- 
+    my_sq_data %>%
+    create_bar(metric = "Work_time",
+               hrvar = NULL,
+               return = "table") %>%
+    select(Work_time) %>%
+    pull(1) %>%
+    round(1) 
+  
+}
+
 paste(KPI_1, "hr work days") %>%
   flexdashboard::valueBox(icon = "fa-calendar", color = "#34b1e2")
   
@@ -36,16 +43,26 @@ paste(KPI_1, "hr work days") %>%
 
 ```{r}
 
-balance1_w1_plot1 <- 
-  my_sq_data %>%
-  mutate(Personal_time = 16-Work_time) %>%
-  create_stacked(metric = c("Work_time", "Personal_time"),
-                 hrvar = hrvar,
-                 rank = NULL) +
-  labs(title = "Employee workday",
-       subtitle = "Average hours per person per day")
-		 
-balance1_w1_plot1 
+if(sum(my_sq_data$Work_time, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
+  
+  balance1_w1_plot1 <- 
+    my_sq_data %>%
+    mutate(Personal_time = 16 - Work_time) %>%
+    create_stacked(metric = c("Work_time", "Personal_time"),
+                   hrvar = hrvar,
+                   rank = NULL) +
+    labs(title = "Employee workday",
+         subtitle = "Average hours per person per day")
+  		 
+  balance1_w1_plot1 
+  
+  
+}
 
 ```
 
