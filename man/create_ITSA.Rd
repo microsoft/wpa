@@ -2,8 +2,8 @@
 % Please edit documentation in R/create_ITSA.R
 \name{create_ITSA}
 \alias{create_ITSA}
-\title{Estimate an effect of intervention on every WPA metric in input file by
-applying single-group Interrupted Time-Series Analysis (ITSA)}
+\title{Estimate an effect of intervention on every Viva Insights metric in input
+file by applying single-group Interrupted Time-Series Analysis (ITSA)}
 \usage{
 create_ITSA(
   data,

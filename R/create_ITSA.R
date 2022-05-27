@@ -4,8 +4,8 @@
 # --------------------------------------------------------------------------------------------
 
 #' @title
-#' Estimate an effect of intervention on every WPA metric in input file by
-#' applying single-group Interrupted Time-Series Analysis (ITSA)
+#' Estimate an effect of intervention on every Viva Insights metric in input
+#' file by applying single-group Interrupted Time-Series Analysis (ITSA)
 #'
 #' @author Aleksey Ashikhmin <alashi@@microsoft.com>
 #'
