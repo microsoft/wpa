@@ -109,7 +109,7 @@ LjungBox <- function(
 
     if (TestType == "1")
 
-      res <- as.ts(obj)
+      res <- stats::as.ts(obj)
 
     else {
 
@@ -208,7 +208,7 @@ GetResiduals <- function(obj){
     if (all(class.obj=="ar")){
 
       order <- obj$order
-      res <- ts(as.matrix(obj$resid)[-(1:order),])
+      res <- stats::ts(as.matrix(obj$resid)[-(1:order),])
 
     } else if (all(class.obj == "arima0") || all(class.obj == "Arima")|| all (class.obj == "ARIMA")) {
 
@@ -218,12 +218,12 @@ GetResiduals <- function(obj){
       ps <- pdq[3]
       qs <- pdq[4]
       order <- p+q+ps+qs
-      res <- ts(obj$residuals)
+      res <- stats::ts(obj$residuals)
 
     } else if (all(class.obj=="varest")){
 
       order <- obj$p
-      res <- resid(obj)
+      res <- stats::resid(obj)
 
     } else if (all(class.obj == "list")){
 
