@@ -63,17 +63,16 @@ This function further requires the installation of 'sandwich', 'portes', and
 \code{install.packages()}.
 }
 \details{
-This function uses the additional package dependencies 'sandwich', 'lmtest',
-and 'portes'. Please install these separately from CRAN prior to running the
+This function uses the additional package dependencies 'sandwich' and
+'lmtest'. Please install these separately from CRAN prior to running the
 function.
 
-As of May 2022, the 'portes' package was archived from CRAN. This may be
-installed from CRAN archives or GitHub.
+As of May 2022, the 'portes' package was archived from CRAN. The dependency
+has since been removed and dependent functions \code{Ljungbox()} incorporated into
+the \strong{wpa} package.
 }
-\section{Examples}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{# Returns summary table
+\examples{
+# Returns summary table
 
 create_ITSA(
   data = sq_data,
@@ -98,9 +97,8 @@ plot_list <-
 
 # Extract a plot as an example
 plot_list$Workweek_span
-}\if{html}{\out{</div>}}
-}
 
+}
 \seealso{
 Other Flexible Input: 
 \code{\link{period_change}()}
