@@ -12,6 +12,7 @@ workpatterns_classify_bw(
   start_hour = "0900",
   end_hour = "1700",
   mingroup = 5,
+  exp_hour = NULL,
   active_threshold = 0,
   return = "plot"
 )
@@ -63,6 +64,10 @@ shown over time
 \item \code{"plot-hrvar"}: returns a bar plot showing the count of archetypes,
 faceted by the supplied HR attribute.
 }}
+
+\item{exp_hours}{Numeric value representing the number of hours the population
+is expected to be active for throughout the workday. By default, this uses
+the difference between \code{end_hour} and \code{start_hour}.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
