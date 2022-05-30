@@ -90,6 +90,7 @@ Other Visualization:
 \code{\link{email_rank}()},
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
+\code{\link{external_dist}()},
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
@@ -125,6 +126,9 @@ Other Visualization:
 \code{\link{workloads_trend}()},
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_rank}()}
+
+Other External: 
+\code{\link{external_dist}()}
 }
 \concept{External}
 \concept{Visualization}

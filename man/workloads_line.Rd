@@ -82,6 +82,7 @@ Other Visualization:
 \code{\link{email_rank}()},
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
+\code{\link{external_dist}()},
 \code{\link{external_network_plot}()},
 \code{\link{external_sum}()},
 \code{\link{hr_trend}()},
