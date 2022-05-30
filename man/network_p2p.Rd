@@ -86,8 +86,10 @@ of the edges (only for 'ggraph' mode). Defaults to 1.}
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
 to 0.5.}
 
-\item{seed}{Seed for the random number generator passed to \code{leiden::leiden()}
-to ensure consistency. Only applicable when \code{display} is set to \code{"leiden"}.}
+\item{seed}{Seed for the random number generator passed to either
+\code{set.seed()} when the Louvain algorithm is used, or \code{leiden::leiden()} when
+the Leiden algorithm is used, to ensure consistency. Only applicable when
+\code{display} is set to \code{"louvain"} or \code{"leiden"}.}
 
 \item{algorithm}{String to specify the node placement algorithm to be used.
 Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of

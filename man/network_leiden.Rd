@@ -44,8 +44,10 @@ of the nodes. Defaults to 0.7.}
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
 to 0.5.}
 
-\item{seed}{Seed for the random number generator passed to \code{leiden::leiden()}
-to ensure consistency. Only applicable when \code{display} is set to \code{"leiden"}.}
+\item{seed}{Seed for the random number generator passed to either
+\code{set.seed()} when the Louvain algorithm is used, or \code{leiden::leiden()} when
+the Leiden algorithm is used, to ensure consistency. Only applicable when
+\code{display} is set to \code{"louvain"} or \code{"leiden"}.}
 
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes
 to use when returning the \code{"describe"} output. See \code{network_describe()}.}
