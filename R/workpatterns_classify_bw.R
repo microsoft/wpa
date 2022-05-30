@@ -53,6 +53,10 @@
 #'   official hours specifying checking in and 9 AM and checking out at 5 PM,
 #'   then `"1700"` should be supplied here.
 #'
+#' @param exp_hours Numeric value representing the number of hours the population
+#'   is expected to be active for throughout the workday. By default, this uses
+#'   the difference between `end_hour` and `start_hour`.
+#'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #'
@@ -82,6 +86,7 @@ workpatterns_classify_bw <- function(data,
                                      start_hour = "0900",
                                      end_hour = "1700",
                                      mingroup = 5,
+                                     exp_hour = NULL,
                                      active_threshold = 0,
                                      return = "plot"){
 
@@ -114,11 +119,18 @@ workpatterns_classify_bw <- function(data,
   start_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = start_hour))
   end_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = end_hour))
 
-  ## Calculate hours within working hours
-  ## e.g. if `end_hour` value is 17, then the reference slot should be 16
-  exp_hours <- end_hour - start_hour
+  ## Total expected hours --------------------------------------------------
+  ## If `NULL`, use the difference between `end_hour` and `start_hour`
 
-  ## Warning message
+  if(is.null(exp_hours)){
+
+    exp_hours <- end_hour - start_hour
+
+  }
+
+
+  ## Warning message for extreme values of `exp_hours` ---------------------
+
   if(exp_hours >= 23){
 
     stop(
