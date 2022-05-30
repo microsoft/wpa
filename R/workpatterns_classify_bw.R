@@ -135,16 +135,16 @@ workpatterns_classify_bw <- function(data,
 
     stop(
       glue::glue(
-        "the total working hours is {exp_hours + 1}.
+        "the total working hours is {exp_hours}.
         Please provide a valid range."
         )
     )
 
-  } else if(exp_hours >= 11){
+  } else if(exp_hours >= 12){
 
     message(
       glue::glue(
-        "Note: the total working hours is {exp_hours + 1}.
+        "Note: the total working hours is {exp_hours}.
         Output archetypes will be reduced as the total number of hours is greater than or equal to 12."
       )
     )
@@ -153,7 +153,7 @@ workpatterns_classify_bw <- function(data,
 
     message(
       glue::glue(
-        "Note: the total working hours is {exp_hours + 1}.
+        "Note: the total working hours is {exp_hours}.
         Output archetypes will be reduced as the total number of hours is fewer than or equal to 3."
       )
     )
