@@ -66,7 +66,6 @@ Other Visualization:
 \code{\link{afterhours_summary}()},
 \code{\link{afterhours_trend}()},
 \code{\link{collaboration_dist}()},
-\code{\link{collaboration_external}()},
 \code{\link{collaboration_fizz}()},
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},
@@ -95,6 +94,7 @@ Other Visualization:
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
 \code{\link{external_network_plot}()},
+\code{\link{external_sum}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
 \code{\link{hrvar_trend}()},
@@ -132,7 +132,6 @@ Other Visualization:
 
 Other Collaboration: 
 \code{\link{collaboration_dist}()},
-\code{\link{collaboration_external}()},
 \code{\link{collaboration_fizz}()},
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},

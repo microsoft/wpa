@@ -14,7 +14,7 @@
 #' @inherit create_stacked return
 #'
 #' @family Visualization
-#' @family Collaboration
+#' @family External
 #'
 #' @examples
 #' # Return a  plot
@@ -26,7 +26,7 @@
 #' @export
 
 external_sum <- function(data,
-                                hrvar = "Organization",
+								hrvar = "Organization",
                                 mingroup = 5,
 								stack_colours = c("#1d327e", "#1d7e6a"),
                                 return = "plot"){
@@ -39,7 +39,3 @@ plot_data <-  data %>% mutate(Internal_hours=  Collaboration_hours - Collaborati
 plot_data %>%  create_stacked(hrvar = hrvar, metrics = c("Internal_hours", "External_hours"),   plot_title = "Internal and External Collaboration Hours",  stack_colours = stack_colours, mingroup = mingroup, return = return)
 
 }
-
-#' @rdname external_sum
-#' @export
-external_summary <- external_sum
