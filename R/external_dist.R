@@ -32,12 +32,13 @@ external_dist <- function(data,
                        hrvar = "Organization",
                        mingroup = 5,
                        return = "plot",
-                       cut = c(15, 20, 25)) {
+                       cut = c(5, 10, 15)) {
 
   create_dist(data = data,
               metric = "Collaboration_hours_external",
               hrvar = hrvar,
               mingroup = mingroup,
               return = return,
-              cut = cut)
+              cut = cut,
+			  dist_colours = c("#124e42", "#218e77", "#7ee1cd", "#bef0e6"))
 }
