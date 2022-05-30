@@ -67,6 +67,5 @@ Suggests:
     glue,
     flexdashboard,
     lmtest,
-    portes,
     sandwich
 Language: en-US
