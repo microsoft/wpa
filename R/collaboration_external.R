@@ -35,7 +35,6 @@ collaboration_external <- function(data,
 plot_data <-  data %>% mutate(Internal_collaboration_hours =  Collaboration_hours - Collaboration_hours_external)   %>%  mutate(External_collaboration_hours =  Collaboration_hours_external) 
   
 # Plot Internal / External Collaboration time by Organization
-plot_data %>%  create_stacked(hrvar = hrvar, metrics = c("Internal_collaboration_hours", "External_collaboration_hours"),   plot_title = "Collaboration Hours",  mingroup = mingroup, return = return)
-
+plot_data %>%  create_stacked(hrvar = hrvar, metrics = c("Internal_collaboration_hours", "External_collaboration_hours"),   plot_title = "Collaboration Hours (Internal / External)",  stack_colours = c("#1d7e6a","#1d327e"), mingroup = mingroup, return = return)
 
 }
