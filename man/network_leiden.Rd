@@ -88,7 +88,9 @@ To run this function, you will require all the pre-requisites of the
 \section{Simulating and running Leiden Community Detection}{
 
 
-Below is an example on how to simulate a network and run the function.\preformatted{# Simulate a small person-to-person dataset
+Below is an example on how to simulate a network and run the function.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
 
 # Return leiden, console, plot
@@ -97,7 +99,7 @@ p2p_data \%>\%
                  return = "plot")
 ```
 
-}
+}\if{html}{\out{</div>}}
 }
 
 \seealso{

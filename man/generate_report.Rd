@@ -58,27 +58,33 @@ create a HTML document, using RMarkdown as the engine.
 Below is an example on how to set up a custom report.
 
 The first step is to define the content that will go into a report and assign
-the outputs to a list.\preformatted{# Step 1: Define Content
+the outputs to a list.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# Step 1: Define Content
 output_list <-
   list(sq_data \%>\% workloads_summary(return = "plot"),
        sq_data \%>\% workloads_summary(return = "table")) \%>\%
   purrr::map_if(is.data.frame, create_dt)
-}
+}\if{html}{\out{</div>}}
 
-The next step is to add a list of titles for each of the objects on the list:\preformatted{# Step 2: Add Corresponding Titles
+The next step is to add a list of titles for each of the objects on the list:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# Step 2: Add Corresponding Titles
 title_list <- c("Workloads Summary - Plot", "Workloads Summary - Table")
 n_title <- length(title_list)
-}
+}\if{html}{\out{</div>}}
 
 The final step is to run \code{generate_report()}. This can all be wrapped within
-a function such that the function can be used to generate a HTML report.\preformatted{# Step 3: Generate Report
+a function such that the function can be used to generate a HTML report.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# Step 3: Generate Report
 generate_report(title = "My First Report",
                 filename = "My First Report",
                 outputs = output_list,
                 titles = title_list,
                 subheaders = rep("", n_title),
                 echos = rep(FALSE, n_title
-}
+}\if{html}{\out{</div>}}
 }
 
 \seealso{

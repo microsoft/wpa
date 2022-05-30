@@ -129,9 +129,11 @@ is preferred.
 \section{Returning the raw data}{
 
 The raw data containing the computed Flexibility Index can be returned with
-the following:\preformatted{em_data \%>\%
+the following:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{em_data \%>\%
   flex_index(return = "data")
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{
@@ -163,7 +165,6 @@ Other Working Patterns:
 \code{\link{identify_shifts}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
-\code{\link{workpatterns_classify_bw_temp}()},
 \code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify_pav}()},
 \code{\link{workpatterns_classify}()},
