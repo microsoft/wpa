@@ -63,6 +63,7 @@ Other Visualization:
 \code{\link{afterhours_trend}()},
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_dist}()},
+\code{\link{collaboration_external}()},
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},
 \code{\link{collaboration_sum}()},
@@ -128,6 +129,7 @@ Other Visualization:
 Other Collaboration: 
 \code{\link{collaboration_area}()},
 \code{\link{collaboration_dist}()},
+\code{\link{collaboration_external}()},
 \code{\link{collaboration_line}()},
 \code{\link{collaboration_rank}()},
 \code{\link{collaboration_sum}()},
