@@ -2,9 +2,18 @@
 % Please edit documentation in R/external_sum.R
 \name{external_sum}
 \alias{external_sum}
+\alias{external_summary}
 \title{External Collaboration Summary}
 \usage{
 external_sum(
+  data,
+  hrvar = "Organization",
+  mingroup = 5,
+  stack_colours = c("#1d327e", "#1d7e6a"),
+  return = "plot"
+)
+
+external_summary(
   data,
   hrvar = "Organization",
   mingroup = 5,

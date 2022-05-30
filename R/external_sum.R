@@ -39,3 +39,10 @@ plot_data <-  data %>% mutate(Internal_hours=  Collaboration_hours - Collaborati
 plot_data %>%  create_stacked(hrvar = hrvar, metrics = c("Internal_hours", "External_hours"),   plot_title = "Internal and External Collaboration Hours",  stack_colours = stack_colours, mingroup = mingroup, return = return)
 
 }
+
+
+#' @rdname external_sum
+#' @export
+external_summary <- external_sum
+
+
