@@ -86,7 +86,7 @@ workpatterns_classify_bw <- function(data,
                                      start_hour = "0900",
                                      end_hour = "1700",
                                      mingroup = 5,
-                                     exp_hour = NULL,
+                                     exp_hours = NULL,
                                      active_threshold = 0,
                                      return = "plot"){
 
