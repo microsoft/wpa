@@ -90,7 +90,10 @@ workpatterns_classify_bw <- function(data,
                                      active_threshold = 0,
                                      return = "plot"){
 
-  ## Handling NULL values passed to hrvar
+  ## set up variable -------------------------------------------------------
+  Active_Hours <- NULL
+
+  ## Handling NULL values passed to hrvar ----------------------------------
   if(is.null(hrvar)){
     data <- totals_col(data)
 
@@ -105,7 +108,7 @@ workpatterns_classify_bw <- function(data,
 
   }
 
-  ## convert to data.table
+  ## convert to data.table -------------------------------------------------
   data2 <-
     data %>%
     dplyr::mutate(Date = as.Date(Date, format = "%m/%d/%Y")) %>%
@@ -160,7 +163,8 @@ workpatterns_classify_bw <- function(data,
 
   }
 
-  ## Text replacement only for allowed values
+  ## Text replacement only for allowed values ------------------------------
+
   if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
     signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
@@ -174,7 +178,8 @@ workpatterns_classify_bw <- function(data,
 
   }
 
-  ## Create 24 summed `Signals_sent` columns
+  ## Create 24 summed `Signals_sent` columns -------------------------------
+
   signal_cols <- purrr::map(0:23, ~combine_signals(data, hr = ., signals = signal_set))
   signal_cols <- bind_cols(signal_cols)
 
@@ -182,15 +187,20 @@ workpatterns_classify_bw <- function(data,
   input_var <- names(signal_cols)
 
   ## Signals sent by Person and Date
+  ## Data frame with `PersonId`, `Date`, and the 24 signal columns
+
   signals_df <-
     data2 %>%
     .[, c("PersonId", "Date")] %>%
     cbind(signal_cols)
 
   ## Signal label
+  ## Only show as `Signals_sent` if more than one signal, i.e. if there is
+  ## aggregation of multiple signals
   sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
 
-  ## Create binary variable 0 or 1
+  ## Create binary variable 0 or 1  ----------------------------------------
+
   num_cols <- names(which(sapply(signals_df, is.numeric))) # Get numeric columns
 
   signals_df <-
@@ -200,7 +210,9 @@ workpatterns_classify_bw <- function(data,
     .[, (num_cols) := lapply(.SD, function(x) ifelse(x > active_threshold, 1, 0)), .SDcols = num_cols] %>%
     .[, ("Active_Hours") := apply(.SD, 1, sum), .SDcols = input_var]
 
-  ## Classify PersonId-Signal data by time of day
+  ## Classify PersonId-Signal data by time of day --------------------------
+  ## Long format table that classifies each hour of the day on whether it is
+  ## before, within, or after standard hours
 
   WpA_classify <-
     signals_df %>%
@@ -223,15 +235,17 @@ workpatterns_classify_bw <- function(data,
     WpA_classify[, c("PersonId", "Date", "Active_Hours", "HourType", "sent")] %>%
     .[, .(sent = sum(sent)), by = c("PersonId", "Date", "Active_Hours", "HourType")] %>%
     tidyr::spread(HourType, sent)%>%
-    left_join(WpA_classify%>%   ## Calculate first and last activity for day_span
-                filter(sent>0)%>%
-                group_by(PersonId,Date)%>%
-                summarise(First_signal=min(Start),
-                          Last_signal=max(End)),
-              by=c("PersonId","Date"))%>%
+    left_join(WpA_classify %>%   ## Calculate first and last activity for day_span
+                filter(sent > 0)%>%
+                group_by(PersonId, Date)%>%
+                summarise(First_signal = min(Start),
+                          Last_signal = max(End)),
+              by = c("PersonId","Date"))%>%
     mutate(Day_Span = Last_signal - First_signal,
            Signals_Break_hours = Day_Span - Active_Hours)
 
+
+  ## Working patterns classification ---------------------------------------
 
   personas_levels <-
     c("0 < 3 hours on",
@@ -247,7 +261,7 @@ workpatterns_classify_bw <- function(data,
   ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas := "5 Long continuous workday"]
   ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "4 Long flexible workday"]
   ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
-  ptn_data_personas[Active_Hours == exp_hours & Within_hours ==exp_hours , Personas := "2 Standard continuous workday"]
+  ptn_data_personas[Active_Hours == exp_hours & Within_hours == exp_hours , Personas := "2 Standard continuous workday"]
   ptn_data_personas[Active_Hours<= exp_hours & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
   ptn_data_personas[Active_Hours >= 13, Personas := "6 Always on (13h+)"]
   ptn_data_personas[Active_Hours < 3, Personas := "0 < 3 hours on"]
