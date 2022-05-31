@@ -35,9 +35,9 @@ external_dist <- function(data,
                        cut = c(5, 10, 15)) {
 
 # Calculate Internal / External Collaboration time 
-plot_data <-  data %>% mutate(External_collaboration_hours= Collaboration_hours_external) 
+plot_data <-  data %>% mutate(External_collaboration_hours = Collaboration_hours_external) 
 
-plot_data  %>% create_dist(metric = "External_Collaboration_hours",
+plot_data  %>% create_dist(metric = "External_collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,
               return = return,
