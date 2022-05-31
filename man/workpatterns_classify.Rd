@@ -11,6 +11,7 @@ workpatterns_classify(
   signals = c("email", "IM"),
   start_hour = "0900",
   end_hour = "1700",
+  exp_hours = NULL,
   mingroup = 5,
   active_threshold = 0,
   method = "bw",
@@ -47,6 +48,11 @@ PM, then \code{"0900"} should be supplied here.}
 Note that this currently only supports \strong{hourly} increments. If the
 official hours specifying checking in and 9 AM and checking out at 5 PM,
 then \code{"1700"} should be supplied here.}
+
+\item{exp_hours}{Numeric value representing the number of hours the
+population is expected to be active for throughout the workday. By default,
+this uses the difference between \code{end_hour} and \code{start_hour}. Only
+applicable with the 'bw' method.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -206,7 +212,13 @@ Hourly Collaboration Flexible Query.
 em_data \%>\% workpatterns_classify(method = "bw")
 
 # Return an area plot
-em_data \%>\% workpatterns_classify(method = "bw", return = "plot-area")
+# With custom expected hours
+em_data \%>\%
+  workpatterns_classify(
+    method = "bw",
+    return = "plot-area",
+    exp_hours = 7
+      )
 
 \donttest{
 

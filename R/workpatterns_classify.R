@@ -148,6 +148,11 @@
 #'   official hours specifying checking in and 9 AM and checking out at 5 PM,
 #'   then `"1700"` should be supplied here.
 #'
+#' @param exp_hours Numeric value representing the number of hours the
+#'   population is expected to be active for throughout the workday. By default,
+#'   this uses the difference between `end_hour` and `start_hour`. Only
+#'   applicable with the 'bw' method.
+#'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #'
@@ -184,7 +189,13 @@
 #' em_data %>% workpatterns_classify(method = "bw")
 #'
 #' # Return an area plot
-#' em_data %>% workpatterns_classify(method = "bw", return = "plot-area")
+#' # With custom expected hours
+#' em_data %>%
+#'   workpatterns_classify(
+#'     method = "bw",
+#'     return = "plot-area",
+#'     exp_hours = 7
+#'       )
 #'
 #' \donttest{
 #'
@@ -206,6 +217,7 @@ workpatterns_classify <- function(data,
                                   signals = c("email", "IM"),
                                   start_hour = "0900",
                                   end_hour = "1700",
+                                  exp_hours = NULL,
                                   mingroup = 5,
                                   active_threshold = 0,
                                   method = "bw",
@@ -232,14 +244,17 @@ workpatterns_classify <- function(data,
   # Method flow -------------------------------------------------------------
 
   if(method == "bw"){
+
     workpatterns_classify_bw(data = data,
                              hrvar = hrvar,
                              signals = signals,
                              start_hour = start_hour,
                              end_hour = end_hour,
+                             exp_hours = exp_hours,
                              mingroup = mingroup,
                              active_threshold = active_threshold,
                              return = return)
+
   } else if(method == "pav"){
 
     workpatterns_classify_pav(data = data,
