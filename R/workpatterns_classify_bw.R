@@ -262,7 +262,7 @@ workpatterns_classify_bw <- function(data,
   ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "4 Long flexible workday"]
   ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
   ptn_data_personas[Active_Hours == exp_hours & Within_hours == exp_hours , Personas := "2 Standard continuous workday"]
-  ptn_data_personas[Active_Hours<= exp_hours & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
+  ptn_data_personas[Active_Hours < exp_hours & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
   ptn_data_personas[Active_Hours >= 13, Personas := "6 Always on (13h+)"]
   ptn_data_personas[Active_Hours < 3, Personas := "0 < 3 hours on"]
   ptn_data_personas[, Personas := factor(Personas, levels = personas_levels)]
