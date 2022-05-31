@@ -6,7 +6,7 @@
 #' @title Distribution of Email Hours as a 100% stacked bar
 #'
 #' @description
-#' Analyze External Collaboration Hours distribution.
+#' Analyze the distribution of External Collaboration Hours.
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a table with distribution elements.
 #'
@@ -34,11 +34,13 @@ external_dist <- function(data,
                        return = "plot",
                        cut = c(5, 10, 15)) {
 
-  create_dist(data = data,
-              metric = "Collaboration_hours_external",
+# Calculate Internal / External Collaboration time 
+plot_data <-  data %>% mutate(External_collaboration_hours= Collaboration_hours_external) 
+
+plot_data  %>% create_dist(metric = "External_Collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,
               return = return,
               cut = cut,
-			  dist_colours = c("#124e42", "#218e77", "#7ee1cd", "#bef0e6"))
+			  dist_colours = c("#3F7066", "#64B4A4", "#B1EDE1","#CBF3EB"))
 }
