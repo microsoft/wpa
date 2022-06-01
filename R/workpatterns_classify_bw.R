@@ -279,7 +279,30 @@ workpatterns_classify_bw <- function(data,
         select(PersonId, Date, hrvar_str), # Avoid duplication
       by = c("PersonId","Date"))
 
-  ## Return-chunks
+  ## Long caption -----------------------------------------------------------
+  ## Parameters used in creating visualization
+
+  ## Change first character to upper case
+  firstup <- function(x){
+    substr(x, start = 1, stop = 1) <- toupper(substr(x, start = 1, stop = 1))
+    x
+  }
+
+
+
+  signals_str <- firstup(paste(signals, collapse = ", "))
+
+  cap_long <-
+    glue::glue(
+      "Signals used: {signals_str}.
+      The official hours are {start_hour}:00 and {end_hour}:00, with a total of {exp_hours} expected hours.
+      \n"
+    ) %>%
+    paste(extract_date_range(data2, return = "text"))
+
+
+  ## Return-chunks ----------------------------------------------------------
+
   return_data <- function(){
     dplyr::as_tibble(ptn_data_final)
   }
@@ -359,7 +382,7 @@ workpatterns_classify_bw <- function(data,
       theme_wpa_basic() +
       labs(title = "Distribution of Working Patterns over time",
            y = "Percentage",
-           caption = extract_date_range(data2, return = "text")) +
+           caption = cap_long) +
       theme(legend.position = "right") +
       scale_y_continuous(labels = scales::percent)
   }
@@ -408,7 +431,11 @@ workpatterns_classify_bw <- function(data,
 
   } else if(return == "plot"){
 
-    plot_workpatterns_classify_bw(ptn_data_final, range = exp_hours)
+    plot_workpatterns_classify_bw(
+      ptn_data_final,
+      range = exp_hours,
+      caption = cap_long
+      )
 
   } else if(return == "plot-dist"){
 
@@ -421,7 +448,8 @@ workpatterns_classify_bw <- function(data,
   } else if(return == "plot-hrvar"){
 
     plot_wp_bw_hrvar(
-      x = return_table()
+      x = return_table(),
+      caption = cap_long
     )
 
   } else if (return == "table"){
@@ -431,8 +459,15 @@ workpatterns_classify_bw <- function(data,
   } else if (return == "list"){
 
     list(data = return_data(),
-         plot = plot_workpatterns_classify_bw(ptn_data_final, range = exp_hours),
-         plot_hrvar = plot_wp_bw_hrvar(x = return_table()),
+         plot = plot_workpatterns_classify_bw(
+           ptn_data_final,
+           range = exp_hours,
+           caption = cap_long
+           ),
+         plot_hrvar = plot_wp_bw_hrvar(
+           x = return_table(),
+           caption = cap_long
+           ),
          plot_area = return_plot_area(),
          table = return_table())
 
@@ -449,10 +484,11 @@ workpatterns_classify_bw <- function(data,
 #'
 #' @param range Numeric. Accepts `exp_hours` from the main `workpatterns_classify_bw()`
 #'   function. Used to update labels on main plot.
+#' @param caption String to override plot captions.
 #'
 #' @noRd
 
-plot_workpatterns_classify_bw <- function(data, range){
+plot_workpatterns_classify_bw <- function(data, range, caption){
 
   plot_table <-
     data %>%
@@ -613,7 +649,7 @@ plot_workpatterns_classify_bw <- function(data, range){
          subtitle = "Classification of employee-weeks",
          x = "Flexibility level (breaks)",
          y = "Average activity level",
-         caption = extract_date_range(data, return = "text")) +
+         caption = caption) +
     theme_wpa_basic() +
     theme(
       legend.position = "none",
@@ -633,7 +669,7 @@ plot_workpatterns_classify_bw <- function(data, range){
 #' @import ggplot2
 #'
 #' @noRd
-plot_wp_bw_hrvar <- function(x){
+plot_wp_bw_hrvar <- function(x, caption){
 
   x %>%
     tidyr::pivot_longer(cols = -Personas) %>%
@@ -647,7 +683,8 @@ plot_wp_bw_hrvar <- function(x){
     coord_flip() +
     scale_y_continuous(labels = scales::percent,
                        limits = c(NA, 1)) +
-    theme_wpa_basic()
+    theme_wpa_basic() +
+    labs(caption = caption)
 
 }
 
