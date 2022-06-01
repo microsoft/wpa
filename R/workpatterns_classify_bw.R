@@ -92,6 +92,7 @@ workpatterns_classify_bw <- function(data,
 
   ## set up variable -------------------------------------------------------
   Active_Hours <- NULL
+  Personas_L2 <- NULL
 
   ## Handling NULL values passed to hrvar ----------------------------------
   if(is.null(hrvar)){
