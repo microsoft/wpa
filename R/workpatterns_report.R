@@ -58,14 +58,14 @@ workpatterns_report <- function(data,
   pd_id <-
     wp_list$data %>%
     mutate(PersonWeekId = paste0(PersonId,"_",Date)) %>%
-    select(PersonWeekId, Personas)
+    select(PersonWeekId, Personas, Personas_L2)
 
   ## plot table for `workpatterns_rank`
   plot_table_list <-
     data %>%
     mutate(PersonWeekId = paste0(PersonId,"_",Date)) %>%
     left_join(pd_id, by = "PersonWeekId") %>%
-    split(.$Personas)
+    split(.$Personas_L2)
 
   plot_rank_list <-
     plot_table_list %>%
@@ -132,7 +132,9 @@ workpatterns_report <- function(data,
       plot_rank_list[[4]],
       plot_rank_list[[5]],
       plot_rank_list[[6]],
-      plot_rank_list[[7]]) %>% # Expand objects to this list
+      plot_rank_list[[7]],
+      plot_rank_list[[8]]
+      ) %>% # Expand objects to this list
     purrr::map_if(is.data.frame, wpa::create_dt, rounding = 2) %>%
     purrr::map_if(is.character, md2html)
 
@@ -150,7 +152,9 @@ workpatterns_report <- function(data,
       paste(names(plot_table_list)[[4]]),
       paste(names(plot_table_list)[[5]]),
       paste(names(plot_table_list)[[6]]),
-      paste(names(plot_table_list)[[7]]))
+      paste(names(plot_table_list)[[7]]),
+      paste(names(plot_table_list)[[8]])
+      )
 
   ## Set header levels
   ## Makes use of level/header system for Markdown syntax
