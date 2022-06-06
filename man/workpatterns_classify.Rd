@@ -152,6 +152,12 @@ hours}, with activity happening in a continuous block (no breaks)
 13
 }
 
+\emph{Standard} here denotes the behaviour of not exhibiting total number of
+active hours which exceed the expected total number of hours, as supplied by
+\code{exp_hours}. \emph{Continuous} refers to the behaviour of \emph{not} taking breaks,
+i.e. no inactive hours between the first and last active hours of the day,
+where \emph{flexible} refers to the contrary.
+
 This is the recommended method over \code{pav} for several reasons:
 \enumerate{
 \item \code{bw} ignores \emph{volume effects}, where activity volume can still bias the
@@ -171,11 +177,11 @@ In the standard plot output, the archetypes have been abbreviated to show the
 following:
 \itemize{
 \item \strong{Low Activity} - archetype 0
-\item \strong{Standard} - archetype 2
-\item \strong{Flexible} - archetypes 1 and 3
-\item \strong{Long continuous} - archetype 5
-\item \strong{Long flexible} - archetype 4
-\item \strong{Always On} - archetype 6
+\item \strong{Standard} - archetypes 1.1 and 1.2
+\item \strong{Flexible} - archetypes 2.1 and 2.2
+\item \strong{Long continuous} - archetype 4
+\item \strong{Long flexible} - archetype 3
+\item \strong{Always On} - archetype 5
 }
 }
 
