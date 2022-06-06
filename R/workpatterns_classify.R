@@ -57,7 +57,13 @@
 #'   - **5 Always on (13h+)**: number of active hours greater than or equal to
 #'   13
 #'
-#'   This is the recommended method over `pav` for several reasons:
+#'  _Standard_ here denotes the behaviour of not exhibiting total number of
+#'  active hours which exceed the expected total number of hours, as supplied by
+#'  `exp_hours`. _Continuous_ refers to the behaviour of _not_ taking breaks,
+#'  i.e. no inactive hours between the first and last active hours of the day,
+#'  where _flexible_ refers to the contrary.
+#'
+#'  This is the recommended method over `pav` for several reasons:
 #'   1. `bw` ignores _volume effects_, where activity volume can still bias the
 #'   results towards the 'standard working hours'.
 #'   2. It captures the intuition that each individual can have 'light' and
@@ -73,11 +79,11 @@
 #' In the standard plot output, the archetypes have been abbreviated to show the
 #' following:
 #'   - **Low Activity** - archetype 0
-#'   - **Standard** - archetype 2
-#'   - **Flexible** - archetypes 1 and 3
-#'   - **Long continuous** - archetype 5
-#'   - **Long flexible** - archetype 4
-#'   - **Always On** - archetype 6
+#'   - **Standard** - archetypes 1.1 and 1.2
+#'   - **Flexible** - archetypes 2.1 and 2.2
+#'   - **Long continuous** - archetype 4
+#'   - **Long flexible** - archetype 3
+#'   - **Always On** - archetype 5
 #'
 #' @section Person Average method:
 #'
