@@ -58,14 +58,14 @@ workpatterns_report <- function(data,
   pd_id <-
     wp_list$data %>%
     mutate(PersonWeekId = paste0(PersonId,"_",Date)) %>%
-    select(PersonWeekId, Personas, Personas_L2)
+    select(PersonWeekId, Personas)
 
   ## plot table for `workpatterns_rank`
   plot_table_list <-
     data %>%
     mutate(PersonWeekId = paste0(PersonId,"_",Date)) %>%
     left_join(pd_id, by = "PersonWeekId") %>%
-    split(.$Personas_L2)
+    split(.$Personas)
 
   plot_rank_list <-
     plot_table_list %>%
