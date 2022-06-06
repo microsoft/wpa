@@ -128,21 +128,27 @@ implementations.
 \section{Binary Week method}{
 
 
-This method classifies each \strong{person-week} into one of the seven
+This method classifies each \strong{person-week} into one of the eight
 archetypes:
 \itemize{
-\item \strong{0 < 3 hours on}: fewer than 3 hours of active hours
-\item \strong{1 Standard with breaks workday}: active for fewer than \emph{expected
-hours}, with no activity outside working hours
-\item \strong{2 Standard continuous workday}: number of active hours equal \emph{expected
-hours}, with no activity outside working hours
-\item \strong{3 Standard flexible workday}: number of active hours are less than or
-equal to \emph{expected hours}, with some activity outside working hours
-\item \strong{4 Long flexible workday}: number of active hours exceed \emph{expected
+\item \strong{0 Low Activity (< 3 hours on)}: fewer than 3 hours of active hours
+\item \strong{1.1 Standard continuous (expected schedule)}: active hours equal to
+\emph{expected hours}, with all activity confined within the expected start and
+end time
+\item \strong{1.2 Standard continuous (shifted schedule)}: active hours equal to
+\emph{expected hours}, with activity occurring beyond either the expected start
+or end time.
+\item \strong{2.1 Standard flexible (expected schedule)}: active hours less than or
+equal to \emph{expected hours}, with all activity confined within the expected
+start and end time
+\item \strong{2.2 Standard flexible (shifted schedule)}: active hours less than or
+equal to \emph{expected hours}, with activity occurring beyond either the
+expected start or end time.
+\item \strong{3 Long flexible workday}: number of active hours exceed \emph{expected
 hours}, with breaks occurring throughout
-\item \strong{5 Long continuous workday}: number of active hours exceed \emph{expected
+\item \strong{4 Long continuous workday}: number of active hours exceed \emph{expected
 hours}, with activity happening in a continuous block (no breaks)
-\item \strong{6 Always on (13h+)}: number of active hours greater than or equal to
+\item \strong{5 Always on (13h+)}: number of active hours greater than or equal to
 13
 }
 

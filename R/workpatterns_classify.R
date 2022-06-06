@@ -35,20 +35,26 @@
 #'
 #' @section Binary Week method:
 #'
-#'   This method classifies each **person-week** into one of the seven
+#'   This method classifies each **person-week** into one of the eight
 #'   archetypes:
-#'   - **0 < 3 hours on**: fewer than 3 hours of active hours
-#'   - **1 Standard with breaks workday**: active for fewer than _expected
-#'   hours_, with no activity outside working hours
-#'   - **2 Standard continuous workday**: number of active hours equal _expected
-#'   hours_, with no activity outside working hours
-#'   - **3 Standard flexible workday**: number of active hours are less than or
-#'   equal to _expected hours_, with some activity outside working hours
-#'   - **4 Long flexible workday**: number of active hours exceed _expected
+#'   - **0 Low Activity (< 3 hours on)**: fewer than 3 hours of active hours
+#'   - **1.1 Standard continuous (expected schedule)**: active hours equal to
+#'   _expected hours_, with all activity confined within the expected start and
+#'   end time
+#'   - **1.2 Standard continuous (shifted schedule)**: active hours equal to
+#'   _expected hours_, with activity occurring beyond either the expected start
+#'   or end time.
+#'   - **2.1 Standard flexible (expected schedule)**: active hours less than or
+#'   equal to _expected hours_, with all activity confined within the expected
+#'   start and end time
+#'   - **2.2 Standard flexible (shifted schedule)**: active hours less than or
+#'   equal to _expected hours_, with activity occurring beyond either the
+#'   expected start or end time.
+#'   - **3 Long flexible workday**: number of active hours exceed _expected
 #'   hours_, with breaks occurring throughout
-#'   - **5 Long continuous workday**: number of active hours exceed _expected
+#'   - **4 Long continuous workday**: number of active hours exceed _expected
 #'   hours_, with activity happening in a continuous block (no breaks)
-#'   - **6 Always on (13h+)**: number of active hours greater than or equal to
+#'   - **5 Always on (13h+)**: number of active hours greater than or equal to
 #'   13
 #'
 #'   This is the recommended method over `pav` for several reasons:

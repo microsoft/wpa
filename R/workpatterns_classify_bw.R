@@ -92,7 +92,6 @@ workpatterns_classify_bw <- function(data,
 
   ## set up variable -------------------------------------------------------
   Active_Hours <- NULL
-  Personas_L2 <- NULL
 
   ## Handling NULL values passed to hrvar ----------------------------------
   if(is.null(hrvar)){
@@ -248,29 +247,29 @@ workpatterns_classify_bw <- function(data,
 
   ## Working patterns classification ---------------------------------------
 
-  # Level 1 with 7 personas
-  personas_levels <-
-    c("0 < 3 hours on",
-      "1 Standard with breaks workday",
-      "2 Standard continuous workday",
-      "3 Standard flexible workday",
-      "4 Long flexible workday",
-      "5 Long continuous workday",
-      "6 Always on (13h+)")
-
-  ptn_data_personas <- data.table::copy(WpA_classify)
-  ptn_data_personas[, Personas := "Unclassified"]
-  ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas := "5 Long continuous workday"]
-  ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "4 Long flexible workday"]
-  ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
-  ptn_data_personas[Active_Hours == exp_hours & Within_hours == exp_hours , Personas := "2 Standard continuous workday"]
-  ptn_data_personas[Active_Hours < exp_hours & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
-  ptn_data_personas[Active_Hours >= 13, Personas := "6 Always on (13h+)"]
-  ptn_data_personas[Active_Hours < 3, Personas := "0 < 3 hours on"]
-  ptn_data_personas[, Personas := factor(Personas, levels = personas_levels)]
+  # # Level 1 with 7 personas
+  # personas_levels <-
+  #   c("0 < 3 hours on",
+  #     "1 Standard with breaks workday",
+  #     "2 Standard continuous workday",
+  #     "3 Standard flexible workday",
+  #     "4 Long flexible workday",
+  #     "5 Long continuous workday",
+  #     "6 Always on (13h+)")
+  #
+  # ptn_data_personas <- data.table::copy(WpA_classify)
+  # ptn_data_personas[, Personas := "Unclassified"]
+  # ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas := "5 Long continuous workday"]
+  # ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "4 Long flexible workday"]
+  # ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
+  # ptn_data_personas[Active_Hours == exp_hours & Within_hours == exp_hours , Personas := "2 Standard continuous workday"]
+  # ptn_data_personas[Active_Hours < exp_hours & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
+  # ptn_data_personas[Active_Hours >= 13, Personas := "6 Always on (13h+)"]
+  # ptn_data_personas[Active_Hours < 3, Personas := "0 < 3 hours on"]
+  # ptn_data_personas[, Personas := factor(Personas, levels = personas_levels)]
 
   # Level 2 with 8 personas
-  personas_levels_l2 <-
+  personas_levels <-
     c(
       "0 Low Activity (< 3 hours on)",
       "1.1 Standard continuous (expected schedule)",
@@ -282,16 +281,17 @@ workpatterns_classify_bw <- function(data,
       "5 Always on (13h+)"
     )
 
-  ptn_data_personas[, Personas_L2 := "Unclassified"]
-  ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas_L2 := "4 Long continuous workday"]
-  ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas_L2 := "3 Long flexible workday"]
-  ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas_L2 := "2.2 Standard flexible (shifted schedule)"]
-  ptn_data_personas[Active_Hours <= exp_hours & Before_start == 0 & After_end == 0, Personas_L2 := "2.1 Standard flexible (expected schedule)"]
-  ptn_data_personas[Active_Hours == exp_hours & (Before_start > 0 | After_end > 0) & Active_Hours == Day_Span, Personas_L2 := "1.2 Standard continuous (shifted schedule)"]
-  ptn_data_personas[Active_Hours == exp_hours & Before_start == 0 & After_end == 0 & Active_Hours == Day_Span, Personas_L2 := "1.1 Standard continuous (expected schedule)"]
-  ptn_data_personas[Active_Hours >= 13, Personas_L2 := "5 Always on (13h+)"]
-  ptn_data_personas[Active_Hours < 3, Personas_L2 := "0 Low Activity (< 3 hours on)"]
-  ptn_data_personas[, Personas_L2 := factor(Personas_L2, levels = personas_levels_l2)]
+  ptn_data_personas <- data.table::copy(WpA_classify)
+  ptn_data_personas[, Personas := "Unclassified"]
+  ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas := "4 Long continuous workday"]
+  ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "3 Long flexible workday"]
+  ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "2.2 Standard flexible (shifted schedule)"]
+  ptn_data_personas[Active_Hours <= exp_hours & Before_start == 0 & After_end == 0, Personas := "2.1 Standard flexible (expected schedule)"]
+  ptn_data_personas[Active_Hours == exp_hours & (Before_start > 0 | After_end > 0) & Active_Hours == Day_Span, Personas := "1.2 Standard continuous (shifted schedule)"]
+  ptn_data_personas[Active_Hours == exp_hours & Before_start == 0 & After_end == 0 & Active_Hours == Day_Span, Personas := "1.1 Standard continuous (expected schedule)"]
+  ptn_data_personas[Active_Hours >= 13, Personas := "5 Always on (13h+)"]
+  ptn_data_personas[Active_Hours < 3, Personas := "0 Low Activity (< 3 hours on)"]
+  ptn_data_personas[, Personas := factor(Personas, levels = personas_levels)]
 
 
 
@@ -523,13 +523,14 @@ plot_workpatterns_classify_bw <- function(data, range, caption){
     dplyr::mutate(
       PersonasNet =
         case_when(
-          Personas == "0 < 3 hours on" ~ "Low activity",
-          Personas == "1 Standard with breaks workday" ~ "Flexible",
-          Personas == "2 Standard continuous workday" ~ "Standard",
-          Personas == "3 Standard flexible workday" ~ "Flexible",
-          Personas == "4 Long flexible workday" ~ "Long flexible",
-          Personas == "5 Long continuous workday" ~ "Long continuous",
-          Personas == "6 Always on (13h+)" ~ "Always On",
+          Personas == "0 Low Activity (< 3 hours on)" ~ "Low activity",
+          Personas == "2.1 Standard flexible (expected schedule)" ~ "Flexible",
+          Personas == "2.2 Standard flexible (shifted schedule)" ~ "Flexible",
+          Personas == "1.1 Standard continuous (expected schedule)" ~ "Standard",
+          Personas == "1.2 Standard continuous (shifted schedule)" ~ "Standard",
+          Personas == "3 Long flexible workday" ~ "Long flexible",
+          Personas == "4 Long continuous workday" ~ "Long continuous",
+          Personas == "5 Always on (13h+)" ~ "Always On",
           TRUE ~ NA_character_
           )
     ) %>%
