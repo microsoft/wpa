@@ -4,7 +4,7 @@
 \alias{create_dt}
 \title{Create interactive tables in HTML with 'download' buttons.}
 \usage{
-create_dt(x, rounding = 1, freeze = 2)
+create_dt(x, rounding = 1, freeze = 2, percent = FALSE)
 }
 \arguments{
 \item{x}{Data frame to be passed through.}
@@ -13,6 +13,9 @@ create_dt(x, rounding = 1, freeze = 2)
 
 \item{freeze}{Number of columns from the left to 'freeze'. Defaults to 2,
 which includes the row number column.}
+
+\item{percent}{Logical value specifying whether to display numeric columns
+as percentages.}
 }
 \value{
 Returns an HTML widget displaying rectangular data.
