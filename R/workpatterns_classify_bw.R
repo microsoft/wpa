@@ -332,7 +332,12 @@ workpatterns_classify_bw <- function(data,
   ## Return-chunks ----------------------------------------------------------
 
   return_data <- function(){
-    dplyr::as_tibble(ptn_data_final)
+    dplyr::as_tibble(ptn_data_final) %>%
+      dplyr::mutate(
+        Start_hour = start_hour,
+        End_hour = end_hour,
+        Exp_hours = exp_hours
+      )
   }
 
   # NOW DEFUNCT - NOT USED ---------------------------------------------------
