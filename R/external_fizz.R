@@ -11,7 +11,7 @@
 #' Additional options available to return a table with distribution elements.
 #'
 #' @details
-#' Uses the metric `External_collaboration_hours`.
+#' Uses the metric `Collaboration_hours_external`.
 #' See `create_fizz()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_fizz
