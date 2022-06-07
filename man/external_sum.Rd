@@ -92,6 +92,7 @@ Other Visualization:
 \code{\link{email_trend}()},
 \code{\link{external_dist}()},
 \code{\link{external_fizz}()},
+\code{\link{external_line}()},
 \code{\link{external_network_plot}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
