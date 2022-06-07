@@ -439,9 +439,11 @@ workpatterns_classify_bw <- function(data,
         ptn_data_final %>%
         hrvar_count(hrvar = hrvar, return = "table") %>%
         dplyr::filter(n >= mingroup) %>%
-        dplyr::pull(hrvar)
+        dplyr::pull(hrvar) %>%
+        c("Total") # Ensure included in filter
 
       ptn_data_final %>%
+        totals_bind(target_col = hrvar, target_value = "Total") %>%
         data.table::as.data.table() %>%
         .[, .(n = .N), by = c("Personas", hrvar)] %>%
         dplyr::as_tibble() %>%
