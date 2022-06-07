@@ -2,14 +2,14 @@
 % Please edit documentation in R/external_dist.R
 \name{external_dist}
 \alias{external_dist}
-\title{Distribution of Email Hours as a 100\% stacked bar}
+\title{Distribution of External Collaboration Hours as a 100\% stacked bar}
 \usage{
 external_dist(
   data,
   hrvar = "Organization",
   mingroup = 5,
   return = "plot",
-  cut = c(15, 20, 25)
+  cut = c(5, 10, 15)
 )
 }
 \arguments{
@@ -43,9 +43,13 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
-Analyze External Collaboration Hours distribution.
+Analyze the distribution of External Collaboration Hours.
 Returns a stacked bar plot by default.
 Additional options available to return a table with distribution elements.
+}
+\details{
+Uses the metric \code{External_collaboration_hours}.
+See \code{create_dist()} for applying the same analysis to a different metric.
 }
 \examples{
 # Return plot
@@ -95,6 +99,7 @@ Other Visualization:
 \code{\link{email_rank}()},
 \code{\link{email_summary}()},
 \code{\link{email_trend}()},
+\code{\link{external_fizz}()},
 \code{\link{external_network_plot}()},
 \code{\link{external_sum}()},
 \code{\link{hr_trend}()},
