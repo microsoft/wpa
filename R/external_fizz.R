@@ -33,7 +33,10 @@ external_fizz <- function(data,
                        mingroup = 5,
                        return = "plot"){
 
-  create_fizz(data = data,
+plot_data <-  data %>% mutate(External_collaboration_hours = Collaboration_hours_external) 
+
+
+  create_fizz(data = plot_data,
               metric = "External_collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,
