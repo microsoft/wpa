@@ -3,12 +3,16 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Distribution of Email Hours as a 100% stacked bar
+#' @title Distribution of External Collaboration Hours as a 100% stacked bar
 #'
 #' @description
 #' Analyze the distribution of External Collaboration Hours.
 #' Returns a stacked bar plot by default.
 #' Additional options available to return a table with distribution elements.
+#'
+#' @details
+#' Uses the metric `External_collaboration_hours`.
+#' See `create_dist()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_dist
 #' @inherit create_dist return
