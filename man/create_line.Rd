@@ -113,6 +113,7 @@ Other Visualization:
 \code{\link{external_fizz}()},
 \code{\link{external_line}()},
 \code{\link{external_network_plot}()},
+\code{\link{external_rank}()},
 \code{\link{external_sum}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},

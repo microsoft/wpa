@@ -37,7 +37,7 @@ a 'fizzy' scatter plot by default.
 Additional options available to return a table with distribution elements.
 }
 \details{
-Uses the metric \code{External_collaboration_hours}.
+Uses the metric \code{Collaboration_hours_external}.
 See \code{create_fizz()} for applying the same analysis to a different metric.
 }
 \examples{
@@ -87,6 +87,7 @@ Other Visualization:
 \code{\link{external_dist}()},
 \code{\link{external_line}()},
 \code{\link{external_network_plot}()},
+\code{\link{external_rank}()},
 \code{\link{external_sum}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},

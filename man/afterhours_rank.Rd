@@ -98,6 +98,7 @@ Other Visualization:
 \code{\link{external_fizz}()},
 \code{\link{external_line}()},
 \code{\link{external_network_plot}()},
+\code{\link{external_rank}()},
 \code{\link{external_sum}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count}()},
@@ -139,7 +140,8 @@ Other After-hours Collaboration:
 \code{\link{afterhours_fizz}()},
 \code{\link{afterhours_line}()},
 \code{\link{afterhours_summary}()},
-\code{\link{afterhours_trend}()}
+\code{\link{afterhours_trend}()},
+\code{\link{external_rank}()}
 }
 \concept{After-hours Collaboration}
 \concept{Visualization}
