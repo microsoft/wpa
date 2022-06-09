@@ -6,8 +6,10 @@
 #' @title Collaboration Ranking
 #'
 #' @description
-#' This function scans a standard query output for groups with high levels of 'Weekly Digital Collaboration'.
-#' Returns a table with a all of groups (across multiple HR attributes) ranked by hours of digital collaboration.
+#' This function scans a standard query output for groups with high levels of
+#' 'Weekly Digital Collaboration'. Returns a plot by default, with an option to
+#' return a table with a all of groups (across multiple HR attributes) ranked by
+#' hours of digital collaboration.
 #'
 #' @details
 #' Uses the metric `Collaboration_hours`.

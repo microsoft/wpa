@@ -14,11 +14,11 @@
 #'
 #' @details
 #' The **Flexibility Index** is a metric that has been developed to quantify and
-#' measure flexibility using behavioural data from Workplace Analytics.
-#' Flexibility here refers to the freedom of employees to adopt a working
-#' arrangement of their own choice, and more specifically refers to **time**
-#' flexibility (_whenever_ I want) as opposed to **geographical** flexibility
-#' (_wherever_ I want).
+#' measure flexibility using behavioural data from Viva Insights. Flexibility
+#' here refers to the freedom of employees to adopt a working arrangement of
+#' their own choice, and more specifically refers to **time** flexibility
+#' (_whenever_ I want) as opposed to **geographical** flexibility (_wherever_ I
+#' want).
 #'
 #' The **Flexibility Index** is a score between 0 and 1, and is calculated based
 #' on three component measures:
@@ -50,7 +50,7 @@
 #'   arrangement. _Observed flexibility_ serves as a proxy to assess whether a
 #'   flexible working arrangement are in place. The Flexibility Index is an
 #'   attempt to create such a proxy for quantifying and measuring flexibility,
-#'   using behavioural data from Workplace Analytics.
+#'   using behavioural data from Viva Insights.
 #'
 #' @section Recurring disconnection time:
 #'   The key component of `TakeBreaks` in the Flexibility Index is best

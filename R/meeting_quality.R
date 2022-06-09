@@ -18,6 +18,9 @@
 #'   - `"Multitasking_meeting_hours"`
 #'   - Any _meeting hour_ variable that can be divided by `Meeting_hours`
 #'
+#' If the provided metric name is not found in the data, the function will use
+#' the first matched metric from the above list.
+#'
 #' @inherit create_bubble return
 #'
 #' @import dplyr
@@ -45,6 +48,26 @@ meeting_quality <- function(data,
                             mingroup = 5,
                             return = "plot"){
 
+  ## Check whether provided metric is available
+  metric_vec <- c(
+    "Low_quality_meeting_hours",
+    "After_hours_meeting_hours",
+    "Conflicting_meeting_hours",
+    "Multitasking_meeting_hours"
+  )
+
+  if(!(metric_x %in% names(data))){
+
+    metric_x <- dplyr::intersect(metric_vec, names(data))[1]
+
+    message(
+      glue::glue(
+        "Using {metric_x} instead due to missing variables in input data."
+      )
+    )
+
+  }
+
   ## Wrapper around summary table
   if(return == "table"){
 
@@ -56,7 +79,8 @@ meeting_quality <- function(data,
         "Meetings",
         "Meeting_hours",
         metric_x) %>%
-      unique()
+      unique() %>%
+      dplyr::intersect(names(data)) # Use only available metrics
 
 
     data %>%

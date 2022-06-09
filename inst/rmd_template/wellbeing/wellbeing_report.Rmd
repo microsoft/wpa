@@ -83,6 +83,7 @@ my_sq_data <-
   col_checker(col = "Collaboration_hrs", replacement = "Collaboration_hours") %>%
   col_checker(col = "Unscheduled_call_hours", replacement = "Unscheduled_Call_hours") %>%
   col_checker(col = "Urgent_email_hours") %>%
+  col_checker(col = "Urgent_meeting_hours") %>%
   col_checker(col = "Weekend_Email", replacement = "Weekend_emails_sent") %>%
   col_checker(col = "Weekend_IMs_sent") %>%
   col_checker(col = "IMs_sent_same_level") %>%
@@ -91,6 +92,7 @@ my_sq_data <-
   col_checker(col = "Meeting_hours_intimate_group",
               replacement = "Intimate_group_meeting_hours") %>%
   col_checker(col = "IMs_sent", replacement = "Instant_messages_sent") %>%
+  col_checker(col = "Workweek_span") %>%
   
   # Daily estimates --------------------------------------------------------
   
@@ -100,8 +102,8 @@ my_sq_data <-
   
   # Urgent collaboration ---------------------------------------------------
   
-  mutate(Urgent_collaboration_hours = Urgent_email_hours) %>%
-  # mutate(Urgent_collaboration_hours = Urgent_meeting_hours + Urgent_email_hours) %>%
+  # mutate(Urgent_collaboration_hours = Urgent_email_hours) %>%
+  mutate(Urgent_collaboration_hours = Urgent_meeting_hours + Urgent_email_hours) %>%
   mutate(IsUrgent = ifelse(Urgent_collaboration_hours > 0, TRUE, FALSE)) %>%
   
   # Weekend work ------------------------------------------------------------

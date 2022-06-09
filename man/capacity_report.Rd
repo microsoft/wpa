@@ -34,11 +34,10 @@ generated in the working directory. No outputs are directly returned by the
 function.
 }
 \description{
-The function generates an interactive HTML report using the
-Standard Person Query data as an input. The report contains a series
-of summary analysis and visualisations relating to key \strong{capacity}
-metrics in Workplace Analytics,including length of week and
-time in after-hours collaboration.
+The function generates an interactive HTML report using the Standard Person
+Query data as an input. The report contains a series of summary analysis and
+visualisations relating to key \strong{capacity} metrics in Viva
+Insights,including length of week and time in after-hours collaboration.
 }
 \seealso{
 Other Reports: 

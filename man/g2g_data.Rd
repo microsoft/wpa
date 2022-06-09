@@ -28,7 +28,10 @@ g2g_data
 data frame.
 }
 \description{
-A demo dataset generated from a Group-to-Group Query from Workplace Analytics.
+A demo dataset representing a Group-to-Group Query. The grouping
+organizational attribute used here is \code{Organization}, where the variable have
+been prefixed with \code{TimeInvestors_} and \code{Collaborators_} to represent the
+direction of collaboration.
 }
 \seealso{
 Other Data: 
@@ -46,6 +49,7 @@ Other Network:
 \code{\link{network_leiden}()},
 \code{\link{network_louvain}()},
 \code{\link{network_p2p}()},
+\code{\link{network_summary}()},
 \code{\link{p2p_data_sim}()}
 }
 \concept{Data}

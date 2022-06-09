@@ -60,8 +60,10 @@
 #'   of the edges (only for 'ggraph' mode). Defaults to 1.
 #' @param res Resolution parameter to be passed to `leiden::leiden()`. Defaults
 #'   to 0.5.
-#' @param seed Seed for the random number generator passed to `leiden::leiden()`
-#'   to ensure consistency. Only applicable when `display` is set to `"leiden"`.
+#' @param seed Seed for the random number generator passed to either
+#'   `set.seed()` when the Louvain algorithm is used, or `leiden::leiden()` when
+#'   the Leiden algorithm is used, to ensure consistency. Only applicable when
+#'   `display` is set to `"louvain"` or `"leiden"`.
 #' @param algorithm String to specify the node placement algorithm to be used.
 #'   Defaults to `"mds"` for the deterministic multi-dimensional scaling of
 #'   nodes. See
@@ -241,24 +243,26 @@ network_p2p <- function(data,
 
     } else if(display == "louvain"){
 
-    ## Convert to undirected
-    g_ud <- igraph::as.undirected(g_raw)
+      set.seed(seed = seed)
 
-    ## Return a numeric vector of partitions / clusters / modules
-    ## Set a low resolution parameter to have fewer groups
-    ## weights = NULL means that if the graph as a `weight` edge attribute, this
-    ## will be used by default.
-    lc <- igraph::cluster_louvain(g_ud, weights = NULL)
+      ## Convert to undirected
+      g_ud <- igraph::as.undirected(g_raw)
 
-    ## Add cluster
-    g <-
-      g_ud %>%
-      # Add louvain partitions to graph object
-      igraph::set_vertex_attr("cluster", value = as.character(igraph::membership(lc))) %>% # Return membership - diff from Leiden
-      igraph::simplify()
+      ## Return a numeric vector of partitions / clusters / modules
+      ## Set a low resolution parameter to have fewer groups
+      ## weights = NULL means that if the graph as a `weight` edge attribute, this
+      ## will be used by default.
+      lc <- igraph::cluster_louvain(g_ud, weights = NULL)
 
-    ## Name of vertex attribute
-    v_attr <- "cluster"
+      ## Add cluster
+      g <-
+        g_ud %>%
+        # Add louvain partitions to graph object
+        igraph::set_vertex_attr("cluster", value = as.character(igraph::membership(lc))) %>% # Return membership - diff from Leiden
+        igraph::simplify()
+
+      ## Name of vertex attribute
+      v_attr <- "cluster"
 
   } else if(display == "leiden"){
 

@@ -59,7 +59,7 @@ dates accordingly before running this function.
 Another assumption that is in place is that any employee whose \code{PersonId} is
 not available in the data has churned. Note that there may be other reasons
 why an employee's \code{PersonId} may not be present, e.g. maternity/paternity
-leave, Workplace Analytics license has been removed, shift to a
+leave, Viva Insights license has been removed, shift to a
 low-collaboration role (to the extent that he/she becomes inactive).
 }
 \examples{

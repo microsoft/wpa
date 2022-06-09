@@ -7,6 +7,10 @@
 
 0 errors | 0 warnings | 0 note
 
+## Submission 1.7.0
+
+Bug fixes, new features, and removal of archived dependency 'portes'
+
 ## Submission 1.6.4
 
 Minor bug fixes and refactoring.

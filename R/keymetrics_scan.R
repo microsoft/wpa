@@ -13,6 +13,12 @@
 #'   averages of.
 #' @param return Character vector specifying what to return, defaults to "plot".
 #'   Valid inputs are "plot" and "table".
+#' @param low String specifying colour code to use for low-value metrics.
+#'   Arguments are passed directly to `ggplot2::scale_fill_gradient2()`.
+#' @param mid String specifying colour code to use for mid-value metrics.
+#'   Arguments are passed directly to `ggplot2::scale_fill_gradient2()`.
+#' @param high String specifying colour code to use for high-value metrics.
+#'   Arguments are passed directly to `ggplot2::scale_fill_gradient2()`.
 #' @param textsize A numeric value specifying the text size to show in the plot.
 #'
 #' @import dplyr
@@ -21,14 +27,17 @@
 #' @importFrom stats reorder
 #'
 #' @return
-#' Returns a ggplot object by default, where 'plot' is passed in `return`.
-#' When 'table' is passed, a summary table is returned as a data frame.
+#' Returns a ggplot object by default, when `'plot'` is passed in `return`.
+#' When `'table'` is passed, a summary table is returned as a data frame.
 #'
 #' @family Visualization
 #'
 #' @examples
 #' # Heatmap plot is returned by default
 #' keymetrics_scan(sq_data)
+#'
+#' # Heatmap plot with custom colours
+#' keymetrics_scan(sq_data, low = "purple", high = "yellow")
 #'
 #' # Return summary table
 #' keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
@@ -57,6 +66,9 @@ keymetrics_scan <- function(data,
                                         "External_network_size",
                                         "Networking_outside_company"),
                             return = "plot",
+                            low = rgb2hex(7, 111, 161),
+                            mid = rgb2hex(241, 204, 158),
+                            high = rgb2hex(216, 24, 42),
                             textsize = 2){
 
   ## Handling NULL values passed to hrvar
@@ -103,9 +115,9 @@ keymetrics_scan <- function(data,
               size = 2) +
     geom_text(aes(label=round(value, 1)), size = textsize) +
     # Fill is contingent on max-min scaling
-    scale_fill_gradient2(low = rgb2hex(7, 111, 161),
-                         mid = rgb2hex(241, 204, 158),
-                         high = rgb2hex(216, 24, 42),
+    scale_fill_gradient2(low = low,
+                         mid = mid,
+                         high = high,
                          midpoint = 0.5,
                          breaks = c(0, 0.5, 1),
                          labels = c("Minimum", "", "Maximum"),

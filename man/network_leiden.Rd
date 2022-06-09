@@ -44,8 +44,10 @@ of the nodes. Defaults to 0.7.}
 \item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
 to 0.5.}
 
-\item{seed}{Seed for the random number generator passed to \code{leiden::leiden()}
-to ensure consistency. Only applicable when \code{display} is set to \code{"leiden"}.}
+\item{seed}{Seed for the random number generator passed to either
+\code{set.seed()} when the Louvain algorithm is used, or \code{leiden::leiden()} when
+the Leiden algorithm is used, to ensure consistency. Only applicable when
+\code{display} is set to \code{"louvain"} or \code{"leiden"}.}
 
 \item{desc_hrvar}{Character vector of length 3 containing the HR attributes
 to use when returning the \code{"describe"} output. See \code{network_describe()}.}
@@ -88,7 +90,9 @@ To run this function, you will require all the pre-requisites of the
 \section{Simulating and running Leiden Community Detection}{
 
 
-Below is an example on how to simulate a network and run the function.\preformatted{# Simulate a small person-to-person dataset
+Below is an example on how to simulate a network and run the function.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# Simulate a small person-to-person dataset
 p2p_data <- p2p_data_sim(size = 50)
 
 # Return leiden, console, plot
@@ -97,7 +101,7 @@ p2p_data \%>\%
                  return = "plot")
 ```
 
-}
+}\if{html}{\out{</div>}}
 }
 
 \seealso{
@@ -109,6 +113,7 @@ Other Network:
 \code{\link{network_g2g}()},
 \code{\link{network_louvain}()},
 \code{\link{network_p2p}()},
+\code{\link{network_summary}()},
 \code{\link{p2p_data_sim}()}
 }
 \concept{Network}

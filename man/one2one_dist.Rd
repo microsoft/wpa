@@ -8,6 +8,7 @@ one2one_dist(
   data,
   hrvar = "Organization",
   mingroup = 5,
+  dist_colours = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee"),
   return = "plot",
   cut = c(5, 15, 30)
 )
@@ -21,6 +22,9 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
+
+\item{dist_colours}{A character vector of length four to specify colour
+codes for the stacked bars.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:

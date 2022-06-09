@@ -3,12 +3,14 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Rank all groups across HR attributes on a selected Workplace Analytics metric
+#' @title
+#' Rank all groups across HR attributes on a selected Viva Insights metric
 #'
 #' @description
 #' This function scans a standard Person query output for groups with high
-#' levels of a given Workplace Analytics Metric. Returns a table with all groups
-#' (across multiple HR attributes) ranked by the specified metric.
+#' levels of a given Viva Insights Metric. Returns a plot by default, with an
+#' option to return a table with all groups (across multiple HR attributes)
+#' ranked by the specified metric.
 #'
 #' @author Carlos Morales Torrado <carlos.morales@@microsoft.com>
 #' @author Martin Chan <martin.chan@@microsoft.com>
@@ -19,8 +21,8 @@
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
-#'   - `"table"` (default)
-#'   - `"plot"`
+#'   - `"plot"` (default)
+#'   - `"table"`
 #'
 #' See `Value` for more information.
 #'
@@ -271,9 +273,8 @@ create_rank <- function(data,
 
 #' @title Create combination pairs of HR variables and run 'create_rank()'
 #'
-#' @description
-#' Create pairwise combinations of HR variables and compute an average of a
-#' specified Workplace Analytics metric.
+#' @description Create pairwise combinations of HR variables and compute an
+#' average of a specified advanced insights metric.
 #'
 #' @details
 #' This function is called when the `mode` argument in `create_rank()` is

@@ -30,8 +30,8 @@ in square brackets followed by the value of the HR attribute.
 }
 }
 \description{
-Create pairwise combinations of HR variables and compute an average of a
-specified Workplace Analytics metric.
+Create pairwise combinations of HR variables and compute an
+average of a specified advanced insights metric.
 }
 \details{
 This function is called when the \code{mode} argument in \code{create_rank()} is

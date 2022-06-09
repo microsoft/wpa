@@ -4,8 +4,8 @@
 # --------------------------------------------------------------------------------------------
 
 #' @title
-#' Estimate an effect of intervention on every WPA metric in input file by
-#' applying single-group Interrupted Time-Series Analysis (ITSA)
+#' Estimate an effect of intervention on every Viva Insights metric in input
+#' file by applying single-group Interrupted Time-Series Analysis (ITSA)
 #'
 #' @author Aleksey Ashikhmin <alashi@@microsoft.com>
 #'
@@ -21,13 +21,17 @@
 #' `install.packages()`.
 #'
 #' @details
-#' This function uses the additional package dependencies 'sandwich', 'lmtest',
-#' and 'portes'. Please install these separately from CRAN prior to running the
+#' This function uses the additional package dependencies 'sandwich' and
+#' 'lmtest'. Please install these separately from CRAN prior to running the
 #' function.
+#'
+#' As of May 2022, the 'portes' package was archived from CRAN. The dependency
+#' has since been removed and dependent functions `Ljungbox()` incorporated into
+#' the **wpa** package.
 #'
 #' @param data Person Query as a dataframe including date column named `Date`.
 #'   This function assumes the data format is MM/DD/YYYY as is standard in a
-#'   Workplace Analytics query output.
+#'   Viva Insights query output.
 #' @param before_start Start date of 'before' time period in MM/DD/YYYY format
 #'   as character type. Before time period is the period before the intervention
 #'   (e.g. training program, re-org, shift to remote work) occurs and bounded by
@@ -60,7 +64,6 @@
 #'
 #'
 #' @examples
-#' \donttest{
 #' # Returns summary table
 #'
 #' create_ITSA(
@@ -86,7 +89,7 @@
 #'
 #' # Extract a plot as an example
 #' plot_list$Workweek_span
-#' }
+#'
 #' @export
 
 create_ITSA <-
@@ -110,7 +113,7 @@ create_ITSA <-
     ## Check if dependencies are installed
     check_pkg_installed(pkgname = "sandwich")
     check_pkg_installed(pkgname = "lmtest")
-    check_pkg_installed(pkgname = "portes")
+    # check_pkg_installed(pkgname = "portes") # Removed from CRAN
 
     ## Check required columns in data
     required_variables <- c("Date",
@@ -229,7 +232,14 @@ create_ITSA <-
         N <- length(residuals)
 
         # Run Ljung and Box Test to test for autocorrelation
-        lb_test <- portes::LjungBox(single_itsa, lags=seq(1, ac_lags_max), order=4, season=1, squared.residuals=FALSE)
+        lb_test <- wpa::LjungBox(
+          single_itsa,
+          lags = seq(1, ac_lags_max),
+          order = 4,
+          season = 1,
+          squared.residuals = FALSE
+          )
+
         ind_stat_significant_coeff <- which(lb_test[,'p-value'] <= 0.05)
 
         # LjungBox test identifies statistically significant lags then we use Newey-West method

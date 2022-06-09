@@ -14,9 +14,11 @@
 #' @param metric String containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #'
-#'
 #' @param binwidth Numeric value for setting `binwidth` argument within
 #'   `ggplot2::geom_histogram()`. Defaults to 1.
+#'
+#' @param ncol Numeric value setting the number of columns on the plot. Defaults
+#'   to `NULL` (automatic).
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -53,6 +55,9 @@
 #' # Return plot
 #' create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
 #'
+#' # Return plot but coerce plot to two columns
+#' create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 2)
+#'
 #' # Return summary table
 #' create_hist(sq_data,
 #'             metric = "Collaboration_hours",
@@ -65,6 +70,7 @@ create_hist <- function(data,
                         hrvar = "Organization",
                         mingroup = 5,
                         binwidth = 1,
+						ncol = NULL,
                         return = "plot") {
 
   ## Check inputs
@@ -114,7 +120,7 @@ create_hist <- function(data,
     plot_data %>%
     ggplot(aes(x = !!sym(metric))) +
     geom_histogram(binwidth = binwidth, colour = "white", fill="#34b1e2") +
-    facet_wrap(group ~ .) +
+    facet_wrap(group ~ ., ncol = ncol) +
     theme_wpa_basic() +
     theme(strip.background = element_rect(color = "#1d627e",
                                           fill = "#1d627e"),
@@ -135,7 +141,8 @@ create_hist <- function(data,
       mean = mean(!!sym(metric), na.rm = TRUE),
       median = median(!!sym(metric), na.rm = TRUE),
       max = max(!!sym(metric), na.rm = TRUE),
-      min = min(!!sym(metric), na.rm = TRUE)
+      min = min(!!sym(metric), na.rm = TRUE),
+      .groups = "drop"
     ) %>%
     left_join(data %>%
                 rename(group = !!sym(hrvar)) %>%
@@ -161,7 +168,7 @@ create_hist <- function(data,
              xmin,
              xmax,
              y) %>%
-      group_split(group)
+      group_split(PANEL)
 
   } else if(return == "data"){
 

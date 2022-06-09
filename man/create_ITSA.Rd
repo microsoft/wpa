@@ -2,8 +2,8 @@
 % Please edit documentation in R/create_ITSA.R
 \name{create_ITSA}
 \alias{create_ITSA}
-\title{Estimate an effect of intervention on every WPA metric in input file by
-applying single-group Interrupted Time-Series Analysis (ITSA)}
+\title{Estimate an effect of intervention on every Viva Insights metric in input
+file by applying single-group Interrupted Time-Series Analysis (ITSA)}
 \usage{
 create_ITSA(
   data,
@@ -18,7 +18,7 @@ create_ITSA(
 \arguments{
 \item{data}{Person Query as a dataframe including date column named \code{Date}.
 This function assumes the data format is MM/DD/YYYY as is standard in a
-Workplace Analytics query output.}
+Viva Insights query output.}
 
 \item{before_start}{Start date of 'before' time period in MM/DD/YYYY format
 as character type. Before time period is the period before the intervention
@@ -63,12 +63,15 @@ This function further requires the installation of 'sandwich', 'portes', and
 \code{install.packages()}.
 }
 \details{
-This function uses the additional package dependencies 'sandwich', 'lmtest',
-and 'portes'. Please install these separately from CRAN prior to running the
+This function uses the additional package dependencies 'sandwich' and
+'lmtest'. Please install these separately from CRAN prior to running the
 function.
+
+As of May 2022, the 'portes' package was archived from CRAN. The dependency
+has since been removed and dependent functions \code{Ljungbox()} incorporated into
+the \strong{wpa} package.
 }
 \examples{
-\donttest{
 # Returns summary table
 
 create_ITSA(
@@ -94,7 +97,7 @@ plot_list <-
 
 # Extract a plot as an example
 plot_list$Workweek_span
-}
+
 }
 \seealso{
 Other Flexible Input: 
