@@ -114,16 +114,35 @@ workpatterns_rank <- function(data,
   ## Signal label
   sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
 
-  ## Create binary variable 0 or 1
+
+  ## This should only pick up `Signals_sent_` prefixed columns
+  ## This is run on `signals_df`
   num_cols <- names(which(sapply(signals_df, is.numeric))) # Get numeric columns
 
+  ## Save original `signals_df` before manipulating
+  ## Rename `Signals_sent` columns to prevent conflict
+  signals_df_o <- signals_df %>%
+    set_names(
+      nm = gsub(x = names(.),
+                replacement = "_ori_",
+                pattern = "_sent_")
+    ) %>%
+    cbind(select(signals_df, num_cols)) %>% # duplicate signals
+    # Convert `Signals_sent_` prefixed to binary. `Signals_ori_` are intact
+    # Create binary variable 0 or 1
+    .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols] %>%
+    # Use `mutate()` method
+    .[, `:=`(WeekCount = .N,
+             PersonCount = dplyr::n_distinct(PersonId)),
+      by = num_cols]
+
+
+  ## Summarized table performed on `signals_df`
   signals_df <-
     signals_df %>%
     data.table::as.data.table() %>%
-    .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols]
-
-  signals_df <- signals_df[, list(WeekCount = .N,
-                                  PersonCount = dplyr::n_distinct(PersonId)), by = input_var]
+    .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols] %>%
+    .[, list(WeekCount = .N, PersonCount = dplyr::n_distinct(PersonId)), by = input_var]
 
   myTable_return <- data.table::setorder(signals_df, -PersonCount)
 
@@ -132,10 +151,10 @@ workpatterns_rank <- function(data,
     ## Plot return
     sig_label_ <- paste0(sig_label, "_")
 
-	myTable_return <-
-	  myTable_return %>%
-	  arrange(desc(WeekCount)) %>%
-	  mutate(patternRank= 1:nrow(.))
+  	myTable_return <-
+  	  myTable_return %>%
+  	  arrange(desc(WeekCount)) %>%
+  	  mutate(patternRank= 1:nrow(.))
 
     ## Table for annotation
     myTable_legends <-
@@ -222,6 +241,10 @@ workpatterns_rank <- function(data,
   } else if(return == "table"){
 
     dplyr::as_tibble(myTable_return)
+
+  } else if(return == "test"){
+
+    signals_df_o
 
   } else {
 
