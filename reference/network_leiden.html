@@ -22,7 +22,7 @@ To run this function, you will require all the pre-requisites of the
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
       </span>
     </div>
 
@@ -209,8 +209,10 @@ of the nodes. Defaults to 0.7.</p></dd>
 <dd><p>Resolution parameter to be passed to <code><a href="https://rdrr.io/pkg/leiden/man/leiden.html" class="external-link">leiden::leiden()</a></code>. Defaults
 to 0.5.</p></dd>
 <dt>seed</dt>
-<dd><p>Seed for the random number generator passed to <code><a href="https://rdrr.io/pkg/leiden/man/leiden.html" class="external-link">leiden::leiden()</a></code>
-to ensure consistency. Only applicable when <code>display</code> is set to <code>"leiden"</code>.</p></dd>
+<dd><p>Seed for the random number generator passed to either
+<code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> when the Louvain algorithm is used, or <code><a href="https://rdrr.io/pkg/leiden/man/leiden.html" class="external-link">leiden::leiden()</a></code> when
+the Leiden algorithm is used, to ensure consistency. Only applicable when
+<code>display</code> is set to <code>"louvain"</code> or <code>"leiden"</code>.</p></dd>
 <dt>desc_hrvar</dt>
 <dd><p>Character vector of length 3 containing the HR attributes
 to use when returning the <code>"describe"</code> output. See <code><a href="network_describe.html">network_describe()</a></code>.</p></dd>
@@ -247,17 +249,8 @@ default plotting method (with 'ggraph').</p></dd>
     
 
 
-<p>Below is an example on how to simulate a network and run the function.</p><div class="sourceCode"><pre><code># Simulate a small person-to-person dataset
-p2p_data &lt;- p2p_data_sim(size = 50)
-
-# Return leiden, console, plot
-p2p_data %&gt;%
-  network_leiden(path = NULL,
-                 return = "plot")
-```
-
-</code></pre></div>
-
+<p>Below is an example on how to simulate a network and run the function.</p>
+<p></p><div class="sourceCode"><pre><code></code></pre><p></p></div>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -269,6 +262,7 @@ p2p_data %&gt;%
 <code><a href="network_g2g.html">network_g2g</a>()</code>,
 <code><a href="network_louvain.html">network_louvain</a>()</code>,
 <code><a href="network_p2p.html">network_p2p</a>()</code>,
+<code><a href="network_summary.html">network_summary</a>()</code>,
 <code><a href="p2p_data_sim.html">p2p_data_sim</a>()</code></p></div>
     </div>
 
@@ -284,7 +278,7 @@ p2p_data %&gt;%
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

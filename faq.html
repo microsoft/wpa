@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
       </span>
     </div>
 
@@ -153,7 +153,6 @@
 
 
 <div id="frequently-asked-questions" class="section level1">
-
 <div class="section level2">
 <h2 id="general">General<a class="anchor" aria-label="anchor" href="#general"></a></h2>
 <div class="section level3">
@@ -210,8 +209,7 @@
 <li>Change the default RStudio package installation location so that it does not save to OneDrive, or another cloud drive. This ensures that OneDrive doesn’t attempt to upload the thousands of files that will be downloaded via the installation of the packages. The R folder where these packages install to is by default created in the Documents folder, which by automatically syncs with OneDrive. We will be moving the installation path to our local <code>C:</code> drive instead to prevent this.</li>
 <li>Create a local folder. Open <code>File Explorer</code> -&gt; <code>C:</code> drive -&gt; <code>Create New Folder</code> -&gt; Name it <code>"R"</code>
 </li>
-<li>Change permissions:
-<ul><li>If you installed RStudio in the default directory, the path to your RProfile file is <code>C:\Program Files\R\R-4.X.X\library\base\R\Rprofile</code>
+<li>Change permissions:<ul><li>If you installed RStudio in the default directory, the path to your RProfile file is <code>C:\Program Files\R\R-4.X.X\library\base\R\Rprofile</code>
 </li>
 <li>Navigate to <code>C:\Program Files\R\R-4.X.X\library\base\</code>
 </li>
@@ -223,15 +221,13 @@
 <li>In the <code>Permissions for users</code> pane, click on the <code>Full Control</code> checkbox under <code>Allow</code>.</li>
 <li>Click OK and OK again to save and exit these windows.</li>
 </ul></li>
-<li>Edit the <code>Rprofile</code> file:
-<ul><li>Ensure that RStudio is closed.</li>
+<li>Edit the <code>Rprofile</code> file:<ul><li>Ensure that RStudio is closed.</li>
 <li>Navigate to <code>C:\Program Files\R\R-4.X.X\library\base\R\</code>
 </li>
 <li>Open the <code>Rprofile</code> file with your preferred text editor.</li>
 <li>Save a copy of the file in the same directory and name it <code>"RProfileBackup.txt"</code>.</li>
 <li>Reopen the <code>Rprofile</code> file with your preferred text editor.</li>
-<li>Replace the string <code>Sys.getenv("R_USER")</code> with the string <code>"C:/R"</code>
-<ul><li>Ensure you are replacing the string <code>Sys.getenv("R_USER")</code> and NOT the string <code>Sys.getenv("R_LIBS_USER")</code>
+<li>Replace the string <code>Sys.getenv("R_USER")</code> with the string <code>"C:/R"</code><ul><li>Ensure you are replacing the string <code>Sys.getenv("R_USER")</code> and NOT the string <code>Sys.getenv("R_LIBS_USER")</code>
 </li>
 <li>The string <code>"C:/R"</code> should align with the directory where you created the folder in step 3a</li>
 <li>Reference the <code>RProfileBackup.txt</code> as a backup if OneDrive uploads the package files after installation</li>
@@ -393,8 +389,7 @@
 <p>Here are a series of steps, slightly abridged, taken from the Power BI documentation, last updated July 6th 2021:</p>
 <ol style="list-style-type: decimal"><li>Select the R Visual icon in the Visualization pane to add an R visual.</li>
 <li>In the<code>Enable script visuals</code> window that appears, select <code>Enable</code>.</li>
-<li>In the <code>Values</code> section of the <code>Visualization</code> pane, drag fields from the <code>Fields</code> pane that you want to consume in your R script, just as you would with any other Power BI Desktop visual.
-<ul><li>Alternatively, you can also select the fields directly in the <code>Fields</code> pane.</li>
+<li>In the <code>Values</code> section of the <code>Visualization</code> pane, drag fields from the <code>Fields</code> pane that you want to consume in your R script, just as you would with any other Power BI Desktop visual.<ul><li>Alternatively, you can also select the fields directly in the <code>Fields</code> pane.</li>
 <li>Only fields that you’ve added to the <code>Values</code> section are available to your R script.</li>
 <li>You can add new fields or remove unneeded fields from the <code>Values</code> section while working on your R script in the R script editor. Power BI Desktop automatically detects which fields you’ve added or removed.</li>
 <li>The generated dataframe is named <code>dataset</code>, and you access selected columns by their respective names.</li>
@@ -430,8 +425,7 @@
 </div>
 </div>
 <div class="footnotes">
-<hr><ol><li id="fn1"><p>This answer references Jenny Bryan’s original response <a href="https://community.rstudio.com/t/meaning-of-common-message-when-install-a-package-there-are-binary-versions-available-but-the-source-versions-are-later/2431/2" class="external-link">here</a> on RStudio Community.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol></div>
+<hr><ol><li id="fn1"><p>This answer references Jenny Bryan’s original response <a href="https://community.rstudio.com/t/meaning-of-common-message-when-install-a-package-there-are-binary-versions-available-but-the-source-versions-are-later/2431/2" class="external-link">here</a> on RStudio Community.<a href="#fnref1" class="footnote-back">↩︎</a></p></li></ol></div>
 
 
   </div>
@@ -449,7 +443,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

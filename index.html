@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tools for Analysing and Visualising Workplace Analytics Data • wpa</title>
+<title>Tools for Analysing and Visualising Viva Insights Data • wpa</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -19,13 +19,13 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><script src="extra.js"></script><meta property="og:title" content="Tools for Analysing and Visualising Workplace Analytics Data">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><script src="extra.js"></script><meta property="og:title" content="Tools for Analysing and Visualising Viva Insights Data">
 <meta property="og:description" content="Opinionated functions that enable easier and faster
-    analysis of Workplace Analytics data. There are three main types of functions in wpa:
+    analysis of Viva Insights data. There are three main types of functions in wpa:
     (i) Standard functions create a ggplot visual or a summary table based on a specific
-    Workplace Analytics metric; (2) Report Generation functions generate HTML reports on
+    Viva Insights metric; (2) Report Generation functions generate HTML reports on
     a specific analysis area, e.g. Collaboration; (3) Other miscellaneous functions cover
-    more specific applications (e.g. Subject Line text mining) of Workplace Analytics data.
+    more specific applications (e.g. Subject Line text mining) of Viva Insights data.
     This package adheres to tidyverse principles and works well with the pipe syntax.
     wpa is built with the beginner-to-intermediate R users in mind, and is optimised for
     simplicity. ">
@@ -50,7 +50,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
       </span>
     </div>
 
@@ -201,18 +201,18 @@
 </h1></div>
 
 <div class="section level2">
-<h2 id="analyze-and-visualize-workplace-analytics-data">Analyze and Visualize Workplace Analytics data<a class="anchor" aria-label="anchor" href="#analyze-and-visualize-workplace-analytics-data"></a>
+<h2 id="analyze-and-visualize-viva-leader-insights-data">Analyze and Visualize Viva Leader Insights data<a class="anchor" aria-label="anchor" href="#analyze-and-visualize-viva-leader-insights-data"></a>
 </h2>
-<p>This is an R package for analyzing and visualizing data from <a href="https://docs.microsoft.com/en-us/workplace-analytics/" class="external-link">Microsoft Workplace Analytics</a>.</p>
+<p>This is an R package for analyzing and visualizing data from <a href="https://docs.microsoft.com/en-us/workplace-analytics/" class="external-link">Microsoft Viva Advanced Insights</a> (previously Microsoft Workplace Analytics).</p>
 </div>
 <div class="section level2">
 <h2 id="with-the-wpa-package-you-can">With the <strong>wpa</strong> package, you can…<a class="anchor" aria-label="anchor" href="#with-the-wpa-package-you-can"></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li><p><strong>Run prebuilt analysis and visualizations</strong> off Workplace Analytics data with settings for HR variables, privacy threshold, etc.</p></li>
+<li><p><strong>Run prebuilt analysis and visualizations</strong> off advanced insights data with settings for HR variables, privacy threshold, etc.</p></li>
 <li><p><strong>Generate prebuilt interactive HTML reports</strong>, which cover specific areas e.g. collaboration, connectivity</p></li>
 <li><p>Leverage <strong>advanced analytics functions</strong>, such as text mining and hierarchical clustering, which are built for Workplace Analytics metrics</p></li>
-<li><p>Integrate analysis of Workplace Analytics data with your R workflow seamlessly</p></li>
+<li><p>Integrate analysis of Leader Insights data with your R workflow seamlessly</p></li>
 </ol>
 <p>Here is an example of <strong>wpa</strong> in action:</p>
 <p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/output2.gif" align="center" width="80%"></p>
@@ -355,7 +355,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

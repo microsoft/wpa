@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
       </span>
     </div>
 
@@ -156,6 +156,10 @@
           <p class="section-desc"></p>
         </th>
       </tr></tbody><tbody><tr><td>
+          <p><code><a href="GetResiduals.html">GetResiduals()</a></code> </p>
+        </td>
+        <td><p>Extract Residuals from ARIMA, VAR, or any Simulated Fitted Time Series Model</p></td>
+      </tr><tr><td>
           <p><code><a href="IV_by_period.html">IV_by_period()</a></code> </p>
         </td>
         <td><p>Identify the WPA metrics that have the biggest change between two
@@ -164,6 +168,10 @@ periods.</p></td>
           <p><code><a href="IV_report.html">IV_report()</a></code> </p>
         </td>
         <td><p>Generate a Information Value HTML Report</p></td>
+      </tr><tr><td>
+          <p><code><a href="LjungBox.html">LjungBox()</a></code> </p>
+        </td>
+        <td><p>Ljung and Box Portmanteau Test</p></td>
       </tr><tr><td>
           <p><code><a href="afterhours_dist.html">afterhours_dist()</a></code> </p>
         </td>
@@ -268,8 +276,8 @@ single predictor and a single outcome variable.</p></td>
       </tr><tr><td>
           <p><code><a href="create_ITSA.html">create_ITSA()</a></code> </p>
         </td>
-        <td><p>Estimate an effect of intervention on every WPA metric in input file by
-applying single-group Interrupted Time-Series Analysis (ITSA)</p></td>
+        <td><p>Estimate an effect of intervention on every Viva Insights metric in input
+file by applying single-group Interrupted Time-Series Analysis (ITSA)</p></td>
       </tr><tr><td>
           <p><code><a href="create_IV.html">create_IV()</a></code> </p>
         </td>
@@ -289,9 +297,12 @@ applying single-group Interrupted Time-Series Analysis (ITSA)</p></td>
       </tr><tr><td>
           <p><code><a href="create_bubble.html">create_bubble()</a></code> </p>
         </td>
-        <td><p>Create a bubble plot with two selected Workplace Analytics metrics
-(General Purpose), with size representing the number of employees in the
-group.</p></td>
+        <td><p>Create a bubble plot with two selected Viva Insights metrics (General
+Purpose), with size representing the number of employees in the group.</p></td>
+      </tr><tr><td>
+          <p><code><a href="create_density.html">create_density()</a></code> </p>
+        </td>
+        <td><p>Create a density plot for any metric</p></td>
       </tr><tr><td>
           <p><code><a href="create_dist.html">create_dist()</a></code> </p>
         </td>
@@ -328,7 +339,7 @@ or below a threshold for a metric</p></td>
       </tr><tr><td>
           <p><code><a href="create_rank.html">create_rank()</a></code> </p>
         </td>
-        <td><p>Rank all groups across HR attributes on a selected Workplace Analytics metric</p></td>
+        <td><p>Rank all groups across HR attributes on a selected Viva Insights metric</p></td>
       </tr><tr><td>
           <p><code><a href="create_rank_combine.html">create_rank_combine()</a></code> </p>
         </td>
@@ -340,7 +351,7 @@ or below a threshold for a metric</p></td>
       </tr><tr><td>
           <p><code><a href="create_scatter.html">create_scatter()</a></code> </p>
         </td>
-        <td><p>Create a Scatter plot with two selected Workplace Analytics metrics (General Purpose)</p></td>
+        <td><p>Create a Scatter plot with two selected Viva Insights metrics (General Purpose)</p></td>
       </tr><tr><td>
           <p><code><a href="create_stacked.html">create_stacked()</a></code> </p>
         </td>
@@ -365,7 +376,7 @@ rolling average</p></td>
       </tr><tr><td>
           <p><code><a href="em_data.html">em_data</a></code> </p>
         </td>
-        <td><p>Sample Hourly Collaboration data with Email and IMs</p></td>
+        <td><p>Sample Hourly Collaboration data</p></td>
       </tr><tr><td>
           <p><code><a href="email_dist.html">email_dist()</a></code> </p>
         </td>
@@ -418,7 +429,7 @@ hours ratio</p></td>
       </tr><tr><td>
           <p><code><a href="flag_extreme.html">flag_extreme()</a></code> </p>
         </td>
-        <td><p>Warn if a certain metric exceeds an arbitrary threshold</p></td>
+        <td><p>Warn for extreme values by checking against a threshold</p></td>
       </tr><tr><td>
           <p><code><a href="flag_outlooktime.html">flag_outlooktime()</a></code> </p>
         </td>
@@ -529,6 +540,10 @@ file in the same directory for faster reading</p></td>
         </td>
         <td><p>Run a summary of Key Metrics from the Standard Person Query data</p></td>
       </tr><tr><td>
+          <p><code><a href="keymetrics_scan_asis.html">keymetrics_scan_asis()</a></code> </p>
+        </td>
+        <td><p>Run a summary of Key Metrics without aggregation</p></td>
+      </tr><tr><td>
           <p><code><a href="map_IV.html">map_IV()</a></code> </p>
         </td>
         <td><p>Calculate Weight of Evidence (WOE) and Information Value (IV) between
@@ -631,6 +646,10 @@ network query</p></td>
         </td>
         <td><p>Create a network plot with the person-to-person query</p></td>
       </tr><tr><td>
+          <p><code><a href="network_summary.html">network_summary()</a></code> </p>
+        </td>
+        <td><p>Summarise node centrality statistics with an igraph object</p></td>
+      </tr><tr><td>
           <p><code><a href="one2one_dist.html">one2one_dist()</a></code> </p>
         </td>
         <td><p>Distribution of Manager 1:1 Time as a 100% stacked bar</p></td>
@@ -675,7 +694,7 @@ same dataset</p></td>
           <p><code><a href="period_change.html">period_change()</a></code> </p>
         </td>
         <td><p>Plot the distribution of percentage change between periods
-of a Workplace Analytics metric by the number of employees.</p></td>
+of a Viva Insights metric by the number of employees.</p></td>
       </tr><tr><td>
           <p><code><a href="personas_hclust.html">personas_hclust()</a></code> </p>
         </td>
@@ -841,6 +860,10 @@ the person-average volume-based ('pav') method.</p></td>
           <p><code><a href="wrap.html">wrap()</a></code> </p>
         </td>
         <td><p>Add a character at the start and end of a character string</p></td>
+      </tr><tr><td>
+          <p><code><a href="wrap_text.html">wrap_text()</a></code> </p>
+        </td>
+        <td><p>Wrap text based on character threshold</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -854,7 +877,7 @@ the person-average volume-based ('pav') method.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

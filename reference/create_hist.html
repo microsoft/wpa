@@ -19,7 +19,7 @@ Additional options available to return the underlying frequency table."><meta pr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
       </span>
     </div>
 
@@ -168,6 +168,7 @@ Additional options available to return the underlying frequency table.</p>
   hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
   mingroup <span class="op">=</span> <span class="fl">5</span>,
   binwidth <span class="op">=</span> <span class="fl">1</span>,
+  ncol <span class="op">=</span> <span class="cn">NULL</span>,
   return <span class="op">=</span> <span class="st">"plot"</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -189,6 +190,9 @@ size. Defaults to 5.</p></dd>
 <dt>binwidth</dt>
 <dd><p>Numeric value for setting <code>binwidth</code> argument within
 <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">ggplot2::geom_histogram()</a></code>. Defaults to 1.</p></dd>
+<dt>ncol</dt>
+<dd><p>Numeric value setting the number of columns on the plot. Defaults
+to <code>NULL</code> (automatic).</p></dd>
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
@@ -212,6 +216,7 @@ frequencies used in each panel of the plotted histogram.</p></li>
 <code><a href="create_bar.html">create_bar</a>()</code>,
 <code><a href="create_boxplot.html">create_boxplot</a>()</code>,
 <code><a href="create_bubble.html">create_bubble</a>()</code>,
+<code><a href="create_density.html">create_density</a>()</code>,
 <code><a href="create_dist.html">create_dist</a>()</code>,
 <code><a href="create_fizz.html">create_fizz</a>()</code>,
 <code><a href="create_inc.html">create_inc</a>()</code>,
@@ -236,6 +241,10 @@ frequencies used in each panel of the plotted histogram.</p></li>
 <span class="r-in"><span class="co"># Return plot</span></span>
 <span class="r-in"><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="create_hist-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Return plot but coerce plot to two columns</span></span>
+<span class="r-in"><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span class="r-plt img"><img src="create_hist-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Return summary table</span></span>
 <span class="r-in"><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>,</span>
@@ -274,7 +283,7 @@ frequencies used in each panel of the plotted histogram.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

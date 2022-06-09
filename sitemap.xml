@@ -10,6 +10,9 @@
     <loc>https://microsoft.github.io/wpa/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/wpa/SECURITY.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/wpa/analyst_guide.html</loc>
   </url>
   <url>
@@ -85,10 +88,16 @@
     <loc>https://microsoft.github.io/wpa/pull_request_template.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/wpa/reference/GetResiduals.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/wpa/reference/IV_by_period.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/IV_report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/LjungBox.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/afterhours_dist.html</loc>
@@ -182,6 +191,9 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/create_bubble.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/create_density.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/create_dist.html</loc>
@@ -358,6 +370,9 @@
     <loc>https://microsoft.github.io/wpa/reference/keymetrics_scan.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/wpa/reference/keymetrics_scan_asis.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/wpa/reference/map_IV.html</loc>
   </url>
   <url>
@@ -428,6 +443,9 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/network_p2p.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/network_summary.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/one2one_dist.html</loc>
@@ -584,6 +602,9 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/wrap.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/wrap_text.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reporting_security_issues.html</loc>

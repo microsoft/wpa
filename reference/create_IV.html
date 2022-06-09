@@ -18,7 +18,7 @@ All numeric variables in the dataset are used as predictor variables."><meta pro
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
       </span>
     </div>
 
@@ -189,7 +189,8 @@ the values 1 or 0.</p></dd>
 outcomes, defaults to 0.05</p></dd>
 <dt>exc_sig</dt>
 <dd><p>Logical value determining whether to exclude values where the
-p-value lies below what is set at <code>siglevel</code>. Defaults to <code>FALSE</code>.</p></dd>
+p-value lies below what is set at <code>siglevel</code>. Defaults to <code>FALSE</code>, where
+p-value calculation does not happen altogether.</p></dd>
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
@@ -241,9 +242,9 @@ in <code>Information::create_infotables()</code>.</p></li>
 <span class="r-in">  <span class="fu">create_IV</span><span class="op">(</span>outcome <span class="op">=</span> <span class="st">"X"</span>,</span>
 <span class="r-in">            predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Email_hours"</span>, <span class="st">"Meeting_hours"</span><span class="op">)</span>,</span>
 <span class="r-in">            return <span class="op">=</span> <span class="st">"summary"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Variable       IV       pval</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Meeting_hours 1.303955 0.01601973</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   Email_hours 1.288803 0.01440754</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Variable       IV</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Meeting_hours 1.303955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   Email_hours 1.288803</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
@@ -259,7 +260,7 @@ in <code>Information::create_infotables()</code>.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

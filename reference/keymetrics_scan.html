@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
       </span>
     </div>
 
@@ -170,6 +170,9 @@
     <span class="st">"Total_focus_hours"</span>, <span class="st">"Internal_network_size"</span>, <span class="st">"Networking_outside_organization"</span>,
     <span class="st">"External_network_size"</span>, <span class="st">"Networking_outside_company"</span><span class="op">)</span>,
   return <span class="op">=</span> <span class="st">"plot"</span>,
+  low <span class="op">=</span> <span class="fu"><a href="rgb2hex.html">rgb2hex</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">111</span>, <span class="fl">161</span><span class="op">)</span>,
+  mid <span class="op">=</span> <span class="fu"><a href="rgb2hex.html">rgb2hex</a></span><span class="op">(</span><span class="fl">241</span>, <span class="fl">204</span>, <span class="fl">158</span><span class="op">)</span>,
+  high <span class="op">=</span> <span class="fu"><a href="rgb2hex.html">rgb2hex</a></span><span class="op">(</span><span class="fl">216</span>, <span class="fl">24</span>, <span class="fl">42</span><span class="op">)</span>,
   textsize <span class="op">=</span> <span class="fl">2</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -191,13 +194,22 @@ averages of.</p></dd>
 <dt>return</dt>
 <dd><p>Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".</p></dd>
+<dt>low</dt>
+<dd><p>String specifying colour code to use for low-value metrics.
+Arguments are passed directly to <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">ggplot2::scale_fill_gradient2()</a></code>.</p></dd>
+<dt>mid</dt>
+<dd><p>String specifying colour code to use for mid-value metrics.
+Arguments are passed directly to <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">ggplot2::scale_fill_gradient2()</a></code>.</p></dd>
+<dt>high</dt>
+<dd><p>String specifying colour code to use for high-value metrics.
+Arguments are passed directly to <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">ggplot2::scale_fill_gradient2()</a></code>.</p></dd>
 <dt>textsize</dt>
 <dd><p>A numeric value specifying the text size to show in the plot.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a ggplot object by default, where 'plot' is passed in <code>return</code>.
-When 'table' is passed, a summary table is returned as a data frame.</p>
+    <p>Returns a ggplot object by default, when <code>'plot'</code> is passed in <code>return</code>.
+When <code>'table'</code> is passed, a summary table is returned as a data frame.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -279,6 +291,10 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <span class="r-in"><span class="fu">keymetrics_scan</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="keymetrics_scan-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
+<span class="r-in"><span class="co"># Heatmap plot with custom colours</span></span>
+<span class="r-in"><span class="fu">keymetrics_scan</span><span class="op">(</span><span class="va">sq_data</span>, low <span class="op">=</span> <span class="st">"purple"</span>, high <span class="op">=</span> <span class="st">"yellow"</span><span class="op">)</span></span>
+<span class="r-plt img"><img src="keymetrics_scan-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"></span>
 <span class="r-in"><span class="co"># Return summary table</span></span>
 <span class="r-in"><span class="fu">keymetrics_scan</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19 × 7</span></span>
@@ -318,7 +334,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>
