@@ -122,7 +122,7 @@ workpatterns_rank <- function(data,
   ## Save original `signals_df` before manipulating ------------------------
   ## Rename `Signals_sent` columns to prevent conflict
   signals_df_o <- signals_df %>%
-    set_names(
+    purrr::set_names(
       nm = gsub(x = names(.),
                 replacement = "_ori_",
                 pattern = "_sent_")
