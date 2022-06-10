@@ -119,7 +119,7 @@ workpatterns_rank <- function(data,
   ## This is run on `signals_df`
   num_cols <- names(which(sapply(signals_df, is.numeric))) # Get numeric columns
 
-  ## Save original `signals_df` before manipulating
+  ## Save original `signals_df` before manipulating ------------------------
   ## Rename `Signals_sent` columns to prevent conflict
   signals_df_o <- signals_df %>%
     set_names(
@@ -133,7 +133,8 @@ workpatterns_rank <- function(data,
     .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols] %>%
     # Use `mutate()` method
     .[, `:=`(WeekCount = .N,
-             PersonCount = dplyr::n_distinct(PersonId)),
+             PersonCount = dplyr::n_distinct(PersonId),
+             Id = .GRP), # group id assignment
       by = num_cols]
 
 
