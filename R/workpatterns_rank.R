@@ -61,10 +61,10 @@
 #'   )
 #'   )
 #'
-#' # Plot with binary mode
+#' # Plot with prop / heatmap mode
 #' workpatterns_rank(
 #'   data = em_data,
-#'   mode = "binary"
+#'   mode = "prop"
 #' )
 #'
 #'
@@ -77,7 +77,7 @@ workpatterns_rank <- function(data,
                               start_hour = "0900",
                               end_hour = "1700",
                               top = 10,
-                              mode = "prop",
+                              mode = "binary",
                               return = "plot"){
 
   # Make sure data.table knows we know we're using it
@@ -169,6 +169,9 @@ workpatterns_rank <- function(data,
                PersonCount = dplyr::n_distinct(PersonId),
                Id = .GRP), # group id assignment
         by = num_cols]
+
+    ## 00, 01, 02, etc.
+    hours_col <- stringr::str_pad(seq(0,23), width = 2, pad = 0)
 
     # Wide table showing proportion of signals by hour
     # Ranked descending by `WeekCount`
