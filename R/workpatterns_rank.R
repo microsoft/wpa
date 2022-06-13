@@ -22,8 +22,17 @@
 #' e.g. "`0900"`
 #' @param end_hour A character vector specifying starting hours,
 #' e.g. `"1700"`
-#' @param top number specifying how many top working patterns to display in plot,
+#' @param top numeric value specifying how many top working patterns to display in plot,
 #' e.g. `"10"`
+#'
+#' @param mode string specifying aggregation method for plot. Valid
+#' options include:
+#'   - `"binary"`: convert hourly activity into binary blocks. In the plot, each
+#'   block would display as solid.
+#'   - `"prop"`: calculate proportion of signals in each hour over total signals
+#'   across 24 hours, then average across all work weeks. In the plot, each
+#'   block would display as a heatmap.
+#'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
 #'   - `"plot"`
@@ -41,6 +50,7 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
+#' # Plot by default
 #' workpatterns_rank(
 #'   data = em_data,
 #'   signals = c(
@@ -51,6 +61,13 @@
 #'   )
 #'   )
 #'
+#' # Plot with binary mode
+#' workpatterns_rank(
+#'   data = em_data,
+#'   mode = "binary"
+#' )
+#'
+#'
 #' @family Visualization
 #' @family Working Patterns
 #'
@@ -60,6 +77,7 @@ workpatterns_rank <- function(data,
                               start_hour = "0900",
                               end_hour = "1700",
                               top = 10,
+                              mode = "prop",
                               return = "plot"){
 
   # Make sure data.table knows we know we're using it
@@ -119,35 +137,70 @@ workpatterns_rank <- function(data,
   ## This is run on `signals_df`
   num_cols <- names(which(sapply(signals_df, is.numeric))) # Get numeric columns
 
-  ## Save original `signals_df` before manipulating ------------------------
-  ## Rename `Signals_sent` columns to prevent conflict
-  signals_df_o <- signals_df %>%
-    purrr::set_names(
-      nm = gsub(x = names(.),
-                replacement = "_ori_",
-                pattern = "_sent_")
-    ) %>%
-    cbind(select(signals_df, num_cols)) %>% # duplicate signals
-    # Convert `Signals_sent_` prefixed to binary. `Signals_ori_` are intact
-    # Create binary variable 0 or 1
-    .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols] %>%
-    # Use `mutate()` method
-    .[, `:=`(WeekCount = .N,
-             PersonCount = dplyr::n_distinct(PersonId),
-             Id = .GRP), # group id assignment
-      by = num_cols]
+  if(mode == "binary"){
+
+    ## Summarized table performed on `signals_df` ----------------------------
+    ## Section ignoring `signals_df_o`
+
+    signals_df <-
+      signals_df %>%
+      data.table::as.data.table() %>%
+      .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols] %>%
+      .[, list(WeekCount = .N, PersonCount = dplyr::n_distinct(PersonId)), by = input_var]
+
+    myTable_return <- data.table::setorder(signals_df, -PersonCount)
+
+  } else if(mode == "prop"){
+
+    ## Save original `signals_df` before manipulating ------------------------
+    ## Rename `Signals_sent` columns to prevent conflict
+    signals_df_o <- signals_df %>%
+      purrr::set_names(
+        nm = gsub(x = names(.),
+                  replacement = "_ori_",
+                  pattern = "_sent_")
+      ) %>%
+      cbind(select(signals_df, num_cols)) %>% # duplicate signals
+      # Convert `Signals_sent_` prefixed to binary. `Signals_ori_` are intact
+      # Create binary variable 0 or 1
+      .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols] %>%
+      # Use `mutate()` method
+      .[, `:=`(WeekCount = .N,
+               PersonCount = dplyr::n_distinct(PersonId),
+               Id = .GRP), # group id assignment
+        by = num_cols]
+
+    # Wide table showing proportion of signals by hour
+    # Ranked descending by `WeekCount`
+    wp_prop_tb <-
+      signals_df_o %>%
+      arrange(desc(WeekCount)) %>%
+      dplyr::select(Id, dplyr::starts_with("Signals_ori_"), WeekCount)  %>%
+      purrr::set_names(nm = gsub(
+        pattern = "Signals_ori_",
+        replacement = "",
+        x = names(.)
+      )) %>%
+      purrr::set_names(nm = gsub(
+        pattern = "_.+",
+        replacement = "",
+        x = names(.)
+      )) %>%
+      # Need aggregation
+      .[, Signals_Total := rowSums(.SD), .SDcols = hours_col] %>%
+      .[, c(hours_col) := .SD / Signals_Total, .SDcols = hours_col] %>%
+      .[, Signals_Total := NULL] %>% # Remove unneeded column
+      .[, lapply(.SD, mean, na.rm = TRUE), .SDcols = hours_col, by = list(Id, WeekCount)]
 
 
-  ## Summarized table performed on `signals_df`
-  signals_df <-
-    signals_df %>%
-    data.table::as.data.table() %>%
-    .[, (num_cols) := lapply(.SD, function(x) ifelse(x > 0, 1, 0)), .SDcols = num_cols] %>%
-    .[, list(WeekCount = .N, PersonCount = dplyr::n_distinct(PersonId)), by = input_var]
+  } else {
 
-  myTable_return <- data.table::setorder(signals_df, -PersonCount)
+    stop("invalid value to `mode`.")
 
-  if(return == "plot"){
+  }
+
+
+  if(return == "plot" & mode == "binary"){
 
     ## Plot return
     sig_label_ <- paste0(sig_label, "_")
@@ -238,6 +291,85 @@ workpatterns_rank <- function(data,
     caption = paste(
       "Top", top, "patterns represent", coverage, "of workweeks.", extract_date_range(data, return = "text"))
     )
+
+  } else if(return == "plot" & mode == "prop"){
+
+
+    ## Table for annotation
+    myTable_legends <-
+      wp_prop_tb %>%
+      arrange(desc(WeekCount)) %>%
+      mutate(patternRank= 1:nrow(.)) %>%
+      dplyr::select(patternRank, WeekCount) %>%
+      dplyr::mutate(WeekPercentage = WeekCount / sum(WeekCount, na.rm = TRUE),
+                    WeekCount = paste0(scales::percent(WeekPercentage, accuracy = 0.1))) %>%
+      utils::head(top)
+
+    ## Coverage
+    coverage <-
+      myTable_legends %>%
+      summarize(total = sum(WeekPercentage)) %>%
+      pull(1) %>%
+      scales::percent(accuracy = 0.1)
+
+
+    ## Run plot
+    wp_prop_tb %>%
+      utils::head(top)  %>%
+      dplyr::mutate(Id = 1:nrow(.)) %>% # Overwrite Id with row number
+      tidyr::gather(Hours, Freq, -Id, -WeekCount) %>%
+      ggplot2::ggplot(ggplot2::aes(x = Hours, y = Id, fill = Freq)) +
+      ggplot2::geom_tile(height = .5) +
+      ggplot2::ylab(paste("Top", top, "activity patterns")) +
+      ggplot2::scale_y_reverse(expand = c(0, 0), breaks = seq(1, top)) +
+      theme_wpa_basic() +
+      ggplot2::scale_x_discrete(position = "top")+
+      ggplot2::theme(
+        axis.title.x = element_blank(),
+        axis.line = element_blank(),
+        axis.ticks = element_blank()
+      ) +
+      scale_fill_continuous(
+        guide = "legend",
+        low = "white",
+        high = "#1d627e",
+        breaks = 0:1,
+        name = "",
+        labels = c("", paste("Observed activity"))
+      ) +
+      ggplot2::annotate(
+        "text",
+        y = myTable_legends$patternRank,
+        x = 26.5,
+        label = myTable_legends$WeekCount,
+        size = 3
+      ) +
+      ggplot2::annotate("rect",
+                        xmin = 25,
+                        xmax = 28,
+                        ymin = 0.5,
+                        ymax = top + 0.5,
+                        alpha = .2) +
+      ggplot2::annotate("rect",
+                        xmin = 0.5,
+                        xmax = 17 + 0.5,
+                        ymin = 0.5,
+                        ymax = top + 0.5,
+                        alpha = .1,
+                        fill = "gray50") +
+      ggplot2::annotate("rect",
+                        xmin = 9 + 0.5,
+                        xmax = 24.5,
+                        ymin = 0.5,
+                        ymax = top + 0.5,
+                        alpha = .1,
+                        fill = "gray50") +
+      labs(
+        title = "Patterns of digital activity",
+        subtitle = paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
+        caption = paste(
+          "Top", top, "patterns represent", coverage, "of workweeks.", extract_date_range(data, return = "text"))
+      )
 
   } else if(return == "table"){
 

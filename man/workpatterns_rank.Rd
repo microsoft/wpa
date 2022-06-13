@@ -10,6 +10,7 @@ workpatterns_rank(
   start_hour = "0900",
   end_hour = "1700",
   top = 10,
+  mode = "prop",
   return = "plot"
 )
 }
@@ -32,8 +33,18 @@ e.g. "\verb{0900"}}
 \item{end_hour}{A character vector specifying starting hours,
 e.g. \code{"1700"}}
 
-\item{top}{number specifying how many top working patterns to display in plot,
+\item{top}{numeric value specifying how many top working patterns to display in plot,
 e.g. \code{"10"}}
+
+\item{mode}{string specifying aggregation method for plot. Valid
+options include:
+\itemize{
+\item \code{"binary"}: convert hourly activity into binary blocks. In the plot, each
+block would display as solid.
+\item \code{"prop"}: calculate proportion of signals in each hour over total signals
+across 24 hours, then average across all work weeks. In the plot, each
+block would display as a heatmap.
+}}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
@@ -59,6 +70,7 @@ table of working patterns, ranked from the most common to the
 least.
 }
 \examples{
+# Plot by default
 workpatterns_rank(
   data = em_data,
   signals = c(
@@ -68,6 +80,13 @@ workpatterns_rank(
     "meetings"
   )
   )
+
+# Plot with binary mode
+workpatterns_rank(
+  data = em_data,
+  mode = "binary"
+)
+
 
 }
 \seealso{
