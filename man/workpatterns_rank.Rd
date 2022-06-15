@@ -10,7 +10,7 @@ workpatterns_rank(
   start_hour = "0900",
   end_hour = "1700",
   top = 10,
-  mode = "prop",
+  mode = "binary",
   return = "plot"
 )
 }
@@ -81,10 +81,10 @@ workpatterns_rank(
   )
   )
 
-# Plot with binary mode
+# Plot with prop / heatmap mode
 workpatterns_rank(
   data = em_data,
-  mode = "binary"
+  mode = "prop"
 )
 
 
