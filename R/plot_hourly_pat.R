@@ -19,6 +19,8 @@
 #' @param legend_label String specifying column to display in the grey label
 #' box
 #'
+#' @param legend_text String to be used in the bottom legend label.
+#'
 #' @param rows Number of rows to show in plot.
 #' @noRd
 #'
@@ -30,6 +32,7 @@ plot_hourly_pat <- function(
     end_hour,
     legend,
     legend_label,
+    legend_text = "Observed activity",
     rows,
     title,
     subtitle,
@@ -65,13 +68,13 @@ plot_hourly_pat <- function(
       high = "#1d627e",
       breaks = 0:1,
       name = "",
-      labels = c("", paste("Observed", subtitle_signal, "activity"))
+      labels = c("", legend_text)
     ) +
     ggplot2::annotate(
       "text",
-      y = myTable_legends$patternRank,
+      y = legend$patternRank,
       x = 26.5,
-      label = myTable_legends[[legend_label]],
+      label = legend[[legend_label]],
       size = 3
     )+
     ggplot2::annotate("rect",

@@ -290,7 +290,7 @@ workpatterns_rank <- function(data,
                fill = "gray50") +
   labs(
     title = "Patterns of digital activity",
-    subtitle = paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
+    subtitle = paste("Hourly activity based on", subtitle_signal, "sent over a week"),
     caption = paste(
       "Top", top, "patterns represent", coverage, "of workweeks.", extract_date_range(data, return = "text"))
     )
@@ -317,62 +317,31 @@ workpatterns_rank <- function(data,
 
 
     ## Run plot
+
     wp_prop_tb %>%
-      utils::head(top)  %>%
-      dplyr::mutate(Id = 1:nrow(.)) %>% # Overwrite Id with row number
-      tidyr::gather(Hours, Freq, -Id, -WeekCount) %>%
-      ggplot2::ggplot(ggplot2::aes(x = Hours, y = Id, fill = Freq)) +
-      ggplot2::geom_tile(height = .5) +
-      ggplot2::ylab(paste("Top", top, "activity patterns")) +
-      ggplot2::scale_y_reverse(expand = c(0, 0), breaks = seq(1, top)) +
-      theme_wpa_basic() +
-      ggplot2::scale_x_discrete(position = "top")+
-      ggplot2::theme(
-        axis.title.x = element_blank(),
-        axis.line = element_blank(),
-        axis.ticks = element_blank()
-      ) +
-      scale_fill_continuous(
-        guide = "legend",
-        low = "white",
-        high = "#1d627e",
-        breaks = 0:1,
-        name = "",
-        labels = c("", paste("Observed activity"))
-      ) +
-      ggplot2::annotate(
-        "text",
-        y = myTable_legends$patternRank,
-        x = 26.5,
-        label = myTable_legends$WeekCount,
-        size = 3
-      ) +
-      ggplot2::annotate("rect",
-                        xmin = 25,
-                        xmax = 28,
-                        ymin = 0.5,
-                        ymax = top + 0.5,
-                        alpha = .2) +
-      ggplot2::annotate("rect",
-                        xmin = 0.5,
-                        xmax = 17 + 0.5,
-                        ymin = 0.5,
-                        ymax = top + 0.5,
-                        alpha = .1,
-                        fill = "gray50") +
-      ggplot2::annotate("rect",
-                        xmin = 9 + 0.5,
-                        xmax = 24.5,
-                        ymin = 0.5,
-                        ymax = top + 0.5,
-                        alpha = .1,
-                        fill = "gray50") +
-      labs(
+      dplyr::mutate(patternRank = 1:nrow(.)) %>%
+      plot_hourly_pat(
+        start_hour = start_hour,
+        end_hour = end_hour,
+        legend = myTable_legends,
+        legend_label = "WeekCount",
+        legend_text = paste("Observed", subtitle_signal, "activity"),
+        rows = top,
         title = "Patterns of digital activity",
-        subtitle = paste("Hourly activity based on", subtitle_signal ,"sent over a week"),
+        subtitle = paste(
+          "Hourly activity based on",
+          subtitle_signal,
+          "sent over a week"),
         caption = paste(
-          "Top", top, "patterns represent", coverage, "of workweeks.", extract_date_range(data, return = "text"))
-      )
+          "Top",
+          top,
+          "patterns represent",
+          coverage,
+          "of workweeks.\n",
+          extract_date_range(data, return = "text")
+        ),
+        ylab = paste("Top", top, "activity patterns")
+    )
 
   } else if(return == "table"){
 
