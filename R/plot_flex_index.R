@@ -60,11 +60,18 @@ plot_flex_index <- function(data,
     dplyr::mutate(FlexibilityIndex = select(., TakeBreaks, ChangeHours, ControlHours) %>% apply(1, mean),
            patternRank = 5) # 5 so that it shows right in the middle
 
+
   ## Used for captions
   score_tb <-
     myTable_legends %>%
     dplyr::mutate_at(vars(FlexibilityIndex), ~round(.*100)) %>%
     dplyr::mutate_at(vars(TakeBreaks, ChangeHours, ControlHours), ~scales::percent(.))
+
+  ## Make for pretty printing
+  myTable_legends <-
+    myTable_legends %>%
+    dplyr::mutate(FlexibilityIndex = scales::percent(FlexibilityIndex))
+
 
   ## Main plot
   ## Different plots if different `method` is specified
@@ -122,46 +129,73 @@ plot_flex_index <- function(data,
       dplyr::select(patternRank, dplyr::starts_with(sig_label_))  %>%
       purrr::set_names(nm = gsub(pattern = sig_label_, replacement = "", x = names(.))) %>%
       purrr::set_names(nm = gsub(pattern = "_.+", replacement = "", x = names(.))) %>%
-      tidyr::gather(Hours, Freq, -patternRank) %>%
-      ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
-      ggplot2::geom_tile(height=.5) +
-      ggplot2::ylab("Work Patterns") +
-      ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
-      ggplot2::scale_y_reverse(breaks=seq(1,10)) +
-      wpa::theme_wpa_basic() +
-      ggplot2::theme(legend.position = "none") +
-      ggplot2::annotate("text",
-                        y = myTable_legends$patternRank,
-                        x = 26.5,
-                        label = scales::percent(myTable_legends$FlexibilityIndex), size = 3) +
-      ggplot2::annotate("rect",
-                        xmin = 25,
-                        xmax = 28,
-                        ymin = 0.5,
-                        ymax = 10 + 0.5,
-                        alpha = .2) +
-      ggplot2::annotate("rect",
-                        xmin = 0.5,
-                        xmax = start_hour + 0.5,
-                        ymin = 0.5,
-                        ymax = 10 + 0.5,
-                        alpha = .1,
-                        fill = "gray50") +
-      ggplot2::annotate("rect",
-                        xmin = end_hour + 0.5,
-                        xmax = 24.5,
-                        ymin = 0.5,
-                        ymax = 10 + 0.5,
-                        alpha = .1,
-                        fill = "gray50") +
-      ggplot2::labs(title = "Work Patterns and Flexibility Index",
-                    subtitle = paste0(plot_title,
-                                      "\n",
-                                      "Group Flexibility Index: ", score_tb$FlexibilityIndex),
-                    caption = paste0("% Taking Breaks: ", score_tb$TakeBreaks, "\n",
-                                     "% Change Hours: ", score_tb$ChangeHours, "\n",
-                                     "% Keep Hours Under Control: ", score_tb$ControlHours, "\n",
-                                     extract_date_range(data, return = "text")))
+      plot_hourly_pat(
+        start_hour = start_hour,
+        end_hour = end_hour,
+        legend = myTable_legends,
+        legend_label = "FlexibilityIndex",
+        legend_text = paste("Observed activity"),
+        rows = 10, # static
+        title = "Work Patterns and Flexibility Index",
+        subtitle = paste0(plot_title,
+                          "\n",
+                          "Group Flexibility Index: ",
+                          score_tb$FlexibilityIndex),
+        caption = paste0("% Taking Breaks: ", score_tb$TakeBreaks, "\n",
+                         "% Change Hours: ", score_tb$ChangeHours, "\n",
+                         "% Keep Hours Under Control: ", score_tb$ControlHours, "\n",
+                         extract_date_range(data, return = "text")),
+        ylab = "Work patterns"
+      )
+
+
+
+
+    # plot_data %>%
+    #   mutate(patternRank = 1:nrow(.)) %>%
+    #   dplyr::select(patternRank, dplyr::starts_with(sig_label_))  %>%
+    #   purrr::set_names(nm = gsub(pattern = sig_label_, replacement = "", x = names(.))) %>%
+    #   purrr::set_names(nm = gsub(pattern = "_.+", replacement = "", x = names(.))) %>%
+    #   tidyr::gather(Hours, Freq, -patternRank) %>%
+    #   ggplot2::ggplot(ggplot2::aes(x = Hours, y = patternRank, fill = Freq)) +
+    #   ggplot2::geom_tile(height=.5) +
+    #   ggplot2::ylab("Work Patterns") +
+    #   ggplot2::scale_fill_gradient2(low = "white", high = "#1d627e") +
+    #   ggplot2::scale_y_reverse(breaks=seq(1,10)) +
+    #   wpa::theme_wpa_basic() +
+    #   ggplot2::theme(legend.position = "none") +
+    #   ggplot2::annotate("text",
+    #                     y = myTable_legends$patternRank,
+    #                     x = 26.5,
+    #                     label = scales::percent(myTable_legends$FlexibilityIndex), size = 3) +
+    #   ggplot2::annotate("rect",
+    #                     xmin = 25,
+    #                     xmax = 28,
+    #                     ymin = 0.5,
+    #                     ymax = 10 + 0.5,
+    #                     alpha = .2) +
+    #   ggplot2::annotate("rect",
+    #                     xmin = 0.5,
+    #                     xmax = start_hour + 0.5,
+    #                     ymin = 0.5,
+    #                     ymax = 10 + 0.5,
+    #                     alpha = .1,
+    #                     fill = "gray50") +
+    #   ggplot2::annotate("rect",
+    #                     xmin = end_hour + 0.5,
+    #                     xmax = 24.5,
+    #                     ymin = 0.5,
+    #                     ymax = 10 + 0.5,
+    #                     alpha = .1,
+    #                     fill = "gray50") +
+    #   ggplot2::labs(title = "Work Patterns and Flexibility Index",
+    #                 subtitle = paste0(plot_title,
+    #                                   "\n",
+    #                                   "Group Flexibility Index: ", score_tb$FlexibilityIndex),
+    #                 caption = paste0("% Taking Breaks: ", score_tb$TakeBreaks, "\n",
+    #                                  "% Change Hours: ", score_tb$ChangeHours, "\n",
+    #                                  "% Keep Hours Under Control: ", score_tb$ControlHours, "\n",
+    #                                  extract_date_range(data, return = "text")))
 
   } else if(method == "time"){
 
