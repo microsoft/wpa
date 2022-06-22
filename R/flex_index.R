@@ -94,6 +94,14 @@
 #'   - `"common"` plots the ten most common working patterns
 #'   - `"time"` plots the Flexibility Index for the group over time
 #'
+#' @param mode String specifying aggregation method for plot. Only applicable
+#'   when `return = "plot"`. Valid options include:
+#'   - `"binary"`: convert hourly activity into binary blocks. In the plot, each
+#'   block would display as solid.
+#'   - `"prop"`: calculate proportion of signals in each hour over total signals
+#'   across 24 hours, then average across all work weeks. In the plot, each
+#'   block would display as a heatmap.
+#'
 #' @return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
@@ -103,6 +111,7 @@
 #'   Flexibility Index and the component scores. Can be used with
 #'   `plot_flex_index()` to recreate visuals found in `flex_index()`.
 #'   - `"table"`: data frame. A summary table for the metric.
+#'
 #'
 #' @import dplyr
 #' @importFrom data.table ":=" "%like%" "%between%"
@@ -147,7 +156,8 @@ flex_index <- function(data,
                        start_hour = "0900",
                        end_hour = "1700",
                        return = "plot",
-                       plot_method = "common"){
+                       plot_method = "common",
+                       mode = "binary"){
 
   ## Bindings for variables
   TakeBreaks <- NULL
@@ -201,6 +211,15 @@ flex_index <- function(data,
     data2 %>%
     .[, c("PersonId", "Date")] %>%
     cbind(signal_cols)
+
+  ## Save original `signals_df` before manipulating ------------------------
+  ## Rename `Signals_sent` columns to prevent conflict
+  signals_df_o <- signals_df %>%
+    purrr::set_names(
+      nm = gsub(x = names(.),
+                replacement = "_ori_",
+                pattern = "_sent_")
+    )
 
   ## Signal label
   sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
@@ -275,6 +294,7 @@ flex_index <- function(data,
     WpA_classify %>%
     left_join(signals_df, by = c("PersonId","Date")) %>%
     left_join(hr_dt, by = c("PersonId","Date")) %>%
+    left_join(signals_df_o, by = c("PersonId","Date")) %>%
     filter(Signals_Total >= 3) %>% # At least 3 signals required
 
     ## Additional calculations for Flexibility Index
@@ -306,7 +326,8 @@ flex_index <- function(data,
                     sig_label = sig_label_,
                     start_hour = start_hour,
                     end_hour = end_hour,
-                    method = plot_method)
+                    method = plot_method,
+                    mode = mode)
 
   } else if(return == "data"){
 
