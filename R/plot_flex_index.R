@@ -12,7 +12,7 @@
 #' working patterns; "time" plots the Flexibility Index for the group over time.
 #' @param start_hour See `flex_index()`.
 #' @param end_hour See `flex_index()`.
-#'
+#' @param mode See `flex_index()`.
 #' @import dplyr
 #' @import ggplot2
 #' @importFrom data.table ":=" "%like%" "%between%"
@@ -41,7 +41,8 @@ plot_flex_index <- function(data,
                             sig_label = "Signals_sent_",
                             method = "sample",
                             start_hour = 9,
-                            end_hour = 17){
+                            end_hour = 17,
+                            mode = "binary"){
 
   ## Bindings for variables
   TakeBreaks <- NULL
@@ -95,18 +96,6 @@ plot_flex_index <- function(data,
 
     data_tb <- data.table::as.data.table(data)
 
-    input_var <- names(data)[grepl(sig_label_, names(data))]
-
-    data_tb <- data_tb[, list(WeekCount = .N,
-                              PersonCount = dplyr::n_distinct(PersonId)),
-                       by = input_var]
-
-    plot_data <-
-      data_tb %>%
-      as.data.frame() %>%
-      dplyr::arrange(desc(WeekCount)) %>%
-      slice(1:10)
-
     plot_title <- "Top 10 Most Common Working patterns"
 
   } else if(method == "time"){
@@ -124,11 +113,85 @@ plot_flex_index <- function(data,
 
   if(method %in% c("sample", "common")){
 
-    plot_data %>%
-      mutate(patternRank = 1:nrow(.)) %>%
-      dplyr::select(patternRank, dplyr::starts_with(sig_label_))  %>%
-      purrr::set_names(nm = gsub(pattern = sig_label_, replacement = "", x = names(.))) %>%
-      purrr::set_names(nm = gsub(pattern = "_.+", replacement = "", x = names(.))) %>%
+
+    if(mode == "binary"){
+
+      input_var <- names(data)[grepl(sig_label_, names(data))]
+
+      data_tb <- data_tb[, list(WeekCount = .N,
+                                PersonCount = dplyr::n_distinct(PersonId)),
+                         by = input_var]
+
+      plot_data <-
+        data_tb %>%
+        as.data.frame() %>%
+        dplyr::arrange(desc(WeekCount)) %>%
+        slice(1:10)
+
+      plot_data_long <-
+        plot_data %>%
+        mutate(patternRank = 1:nrow(.)) %>%
+        dplyr::select(patternRank, dplyr::starts_with(sig_label_))  %>%
+        purrr::set_names(nm = gsub(pattern = sig_label_, replacement = "", x = names(.))) %>%
+        purrr::set_names(nm = gsub(pattern = "_.+", replacement = "", x = names(.)))
+
+    } else if(mode == "prop"){
+
+      input_var <- names(data)[grepl(sig_label_, names(data))]
+
+      sig_label_ <- gsub(
+        pattern = "_sent_",
+        replacement = "_ori_",
+        x = sig_label_
+      )
+
+      ## 00, 01, 02, etc.
+      hours_col <- stringr::str_pad(seq(0,23), width = 2, pad = 0)
+
+      # Use `mutate()` method
+      # Will get 10 IDs, not 10 rows
+      # NOTE: `input_var` is used to identify a distinct work pattern
+      plot_data <-
+        data_tb %>%
+        data.table::as.data.table() %>%
+        .[, `:=`(WeekCount = .N,
+                 PersonCount = dplyr::n_distinct(PersonId),
+                 Id = .GRP), # group id assignment
+          by = input_var] %>%
+        dplyr::arrange(desc(WeekCount))
+
+      plot_data <-
+        plot_data %>%
+        dplyr::select(Id, dplyr::contains("_ori_"), WeekCount)  %>%
+        purrr::set_names(nm = gsub(
+          pattern = ".+_ori_",
+          replacement = "",
+          x = names(.)
+        )) %>%
+        purrr::set_names(nm = gsub(
+          pattern = "_.+",
+          replacement = "",
+          x = names(.)
+        )) %>%
+        # Need aggregation
+        .[, Signals_Total := rowSums(.SD), .SDcols = hours_col] %>%
+        .[, c(hours_col) := .SD / Signals_Total, .SDcols = hours_col] %>%
+        .[, Signals_Total := NULL] %>% # Remove unneeded column
+        .[, lapply(.SD, mean, na.rm = TRUE), .SDcols = hours_col, by = list(Id, WeekCount)]
+
+      plot_data_long <-
+        plot_data %>%
+        dplyr::arrange(desc(WeekCount)) %>%
+        dplyr::mutate(patternRank = 1:nrow(.)) %>%
+        slice(1:10)
+
+    } else {
+
+      stop("Invalid value to `mode`")
+    }
+
+
+    plot_data_long %>%
       plot_hourly_pat(
         start_hour = start_hour,
         end_hour = end_hour,
