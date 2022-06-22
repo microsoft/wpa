@@ -178,9 +178,9 @@ workpatterns_rank <- function(data,
     wp_prop_tb <-
       signals_df_o %>%
       arrange(desc(WeekCount)) %>%
-      dplyr::select(Id, dplyr::starts_with("Signals_ori_"), WeekCount)  %>%
+      dplyr::select(Id, dplyr::contains("_ori_"), WeekCount)  %>%
       purrr::set_names(nm = gsub(
-        pattern = "Signals_ori_",
+        pattern = ".+_ori_",
         replacement = "",
         x = names(.)
       )) %>%
