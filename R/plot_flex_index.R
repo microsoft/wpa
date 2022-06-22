@@ -85,6 +85,11 @@ plot_flex_index <- function(data,
       data %>%
       .[sample(nrow(.), size = 10), ]
 
+    ## Make sure data.table knows we know we're using it
+    .datatable.aware = TRUE
+
+    data_tb <- data.table::as.data.table(data)
+
     plot_title <- "Random sample of 10 Working patterns"
 
   } else if(method == "common"){
