@@ -67,5 +67,7 @@ Suggests:
     glue,
     flexdashboard,
     lmtest,
-    sandwich
+    sandwich,
+    testthat (>= 3.0.0)
 Language: en-US
+Config/testthat/edition: 3
