@@ -1,3 +1,5 @@
+# wpa (development version)
+
 # wpa 1.7.0
 
 - Renamed 'Workplace Analytics' to 'Viva Insights'
