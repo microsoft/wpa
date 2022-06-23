@@ -1,5 +1,8 @@
 # wpa (development version)
 
+- Updated and improved output and algorithm for `workpatterns_classify()`
+- Additional visual options for `workpatterns_classify()` and `flex_index()`
+
 # wpa 1.7.0
 
 - Renamed 'Workplace Analytics' to 'Viva Insights'
