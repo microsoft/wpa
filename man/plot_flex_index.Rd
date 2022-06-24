@@ -9,7 +9,8 @@ plot_flex_index(
   sig_label = "Signals_sent_",
   method = "sample",
   start_hour = 9,
-  end_hour = 17
+  end_hour = 17,
+  mode = "binary"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ working patterns; "time" plots the Flexibility Index for the group over time.}
 \item{start_hour}{See \code{flex_index()}.}
 
 \item{end_hour}{See \code{flex_index()}.}
+
+\item{mode}{See \code{flex_index()}.}
 }
 \value{
 ggplot object. See \code{method}.

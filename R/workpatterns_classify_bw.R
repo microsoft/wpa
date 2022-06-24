@@ -53,6 +53,10 @@
 #'   official hours specifying checking in and 9 AM and checking out at 5 PM,
 #'   then `"1700"` should be supplied here.
 #'
+#' @param exp_hours Numeric value representing the number of hours the population
+#'   is expected to be active for throughout the workday. By default, this uses
+#'   the difference between `end_hour` and `start_hour`.
+#'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #'
@@ -82,10 +86,14 @@ workpatterns_classify_bw <- function(data,
                                      start_hour = "0900",
                                      end_hour = "1700",
                                      mingroup = 5,
+                                     exp_hours = NULL,
                                      active_threshold = 0,
                                      return = "plot"){
 
-  ## Handling NULL values passed to hrvar
+  ## set up variable -------------------------------------------------------
+  Active_Hours <- NULL
+
+  ## Handling NULL values passed to hrvar ----------------------------------
   if(is.null(hrvar)){
     data <- totals_col(data)
 
@@ -100,7 +108,7 @@ workpatterns_classify_bw <- function(data,
 
   }
 
-  ## convert to data.table
+  ## convert to data.table -------------------------------------------------
   data2 <-
     data %>%
     dplyr::mutate(Date = as.Date(Date, format = "%m/%d/%Y")) %>%
@@ -110,49 +118,53 @@ workpatterns_classify_bw <- function(data,
   # Make sure data.table knows we know we're using it
   .datatable.aware = TRUE
 
-  ## Save original
-  start_hour_o <- start_hour
-  end_hour_o <- end_hour
-
   ## Coerce to numeric, remove trailing zeros
   start_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = start_hour))
   end_hour <- as.numeric(gsub(pattern = "00$", replacement = "", x = end_hour))
 
-  ## Calculate hours within working hours
-  ## e.g. if `end_hour` value is 17, then the reference slot should be 16
-  d <- (end_hour - 1) - start_hour
+  ## Total expected hours --------------------------------------------------
+  ## If `NULL`, use the difference between `end_hour` and `start_hour`
 
-  ## Warning message
-  if(d >= 23){
+  if(is.null(exp_hours)){
+
+    exp_hours <- end_hour - start_hour
+
+  }
+
+
+  ## Warning message for extreme values of `exp_hours` ---------------------
+
+  if(exp_hours >= 23){
 
     stop(
       glue::glue(
-        "the total working hours is {d + 1}.
+        "the total working hours is {exp_hours}.
         Please provide a valid range."
         )
     )
 
-  } else if(d >= 11){
+  } else if(exp_hours >= 12){
 
     message(
       glue::glue(
-        "Note: the total working hours is {d + 1}.
+        "Note: the total working hours is {exp_hours}.
         Output archetypes will be reduced as the total number of hours is greater than or equal to 12."
       )
     )
 
-  } else if(d <= 3){
+  } else if(exp_hours <= 3){
 
     message(
       glue::glue(
-        "Note: the total working hours is {d + 1}.
+        "Note: the total working hours is {exp_hours}.
         Output archetypes will be reduced as the total number of hours is fewer than or equal to 3."
       )
     )
 
   }
 
-  ## Text replacement only for allowed values
+  ## Text replacement only for allowed values ------------------------------
+
   if(any(signals %in% c("email", "IM", "unscheduled_calls", "meetings"))){
 
     signal_set <- gsub(pattern = "email", replacement = "Emails_sent", x = signals) # case-sensitive
@@ -166,7 +178,8 @@ workpatterns_classify_bw <- function(data,
 
   }
 
-  ## Create 24 summed `Signals_sent` columns
+  ## Create 24 summed `Signals_sent` columns -------------------------------
+
   signal_cols <- purrr::map(0:23, ~combine_signals(data, hr = ., signals = signal_set))
   signal_cols <- bind_cols(signal_cols)
 
@@ -174,15 +187,20 @@ workpatterns_classify_bw <- function(data,
   input_var <- names(signal_cols)
 
   ## Signals sent by Person and Date
+  ## Data frame with `PersonId`, `Date`, and the 24 signal columns
+
   signals_df <-
     data2 %>%
     .[, c("PersonId", "Date")] %>%
     cbind(signal_cols)
 
   ## Signal label
+  ## Only show as `Signals_sent` if more than one signal, i.e. if there is
+  ## aggregation of multiple signals
   sig_label <- ifelse(length(signal_set) > 1, "Signals_sent", signal_set)
 
-  ## Create binary variable 0 or 1
+  ## Create binary variable 0 or 1  ----------------------------------------
+
   num_cols <- names(which(sapply(signals_df, is.numeric))) # Get numeric columns
 
   signals_df <-
@@ -190,13 +208,15 @@ workpatterns_classify_bw <- function(data,
     data.table::as.data.table() %>%
     # active_threshold: minimum signals to qualify as active
     .[, (num_cols) := lapply(.SD, function(x) ifelse(x > active_threshold, 1, 0)), .SDcols = num_cols] %>%
-    .[, ("Signals_Total") := apply(.SD, 1, sum), .SDcols = input_var]
+    .[, ("Active_Hours") := apply(.SD, 1, sum), .SDcols = input_var]
 
-  ## Classify PersonId-Signal data by time of day
+  ## Classify PersonId-Signal data by time of day --------------------------
+  ## Long format table that classifies each hour of the day on whether it is
+  ## before, within, or after standard hours
 
   WpA_classify <-
     signals_df %>%
-    tidyr::gather(!!sym(sig_label), sent, -PersonId,-Date,-Signals_Total) %>%
+    tidyr::gather(!!sym(sig_label), sent, -PersonId,-Date,-Active_Hours) %>%
     data.table::as.data.table()
 
   WpA_classify[, StartEnd := gsub(pattern = "[^[:digit:]]", replacement = "", x = get(sig_label))]
@@ -212,54 +232,112 @@ workpatterns_classify_bw <- function(data,
 
 
   WpA_classify <-
-    WpA_classify[, c("PersonId", "Date", "Signals_Total", "HourType", "sent")] %>%
-    .[, .(sent = sum(sent)), by = c("PersonId", "Date", "Signals_Total", "HourType")] %>%
+    WpA_classify[, c("PersonId", "Date", "Active_Hours", "HourType", "sent")] %>%
+    .[, .(sent = sum(sent)), by = c("PersonId", "Date", "Active_Hours", "HourType")] %>%
     tidyr::spread(HourType, sent)%>%
-    left_join(WpA_classify%>%   ## Calculate first and last activity for day_span
-                filter(sent>0)%>%
-                group_by(PersonId,Date)%>%
-                summarise(First_signal=min(Start),
-                          Last_signal=max(End)),
-              by=c("PersonId","Date"))%>%
+    left_join(WpA_classify %>%   ## Calculate first and last activity for day_span
+                filter(sent > 0)%>%
+                group_by(PersonId, Date)%>%
+                summarise(First_signal = min(Start),
+                          Last_signal = max(End)),
+              by = c("PersonId","Date"))%>%
     mutate(Day_Span = Last_signal - First_signal,
-           Signals_Break_hours = Day_Span - Signals_Total)
+           Signals_Break_hours = Day_Span - Active_Hours)
 
 
+  ## Working patterns classification ---------------------------------------
+
+  # # Level 1 with 7 personas
+  # personas_levels <-
+  #   c("0 < 3 hours on",
+  #     "1 Standard with breaks workday",
+  #     "2 Standard continuous workday",
+  #     "3 Standard flexible workday",
+  #     "4 Long flexible workday",
+  #     "5 Long continuous workday",
+  #     "6 Always on (13h+)")
+  #
+  # ptn_data_personas <- data.table::copy(WpA_classify)
+  # ptn_data_personas[, Personas := "Unclassified"]
+  # ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas := "5 Long continuous workday"]
+  # ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "4 Long flexible workday"]
+  # ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
+  # ptn_data_personas[Active_Hours == exp_hours & Within_hours == exp_hours , Personas := "2 Standard continuous workday"]
+  # ptn_data_personas[Active_Hours < exp_hours & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
+  # ptn_data_personas[Active_Hours >= 13, Personas := "6 Always on (13h+)"]
+  # ptn_data_personas[Active_Hours < 3, Personas := "0 < 3 hours on"]
+  # ptn_data_personas[, Personas := factor(Personas, levels = personas_levels)]
+
+  # Level 2 with 8 personas
   personas_levels <-
-    c("0 < 3 hours on",
-      "1 Standard with breaks workday",
-      "2 Standard continuous workday",
-      "3 Standard flexible workday",
-      "4 Long flexible workday",
-      "5 Long continuous workday",
-      "6 Always on (13h+)")
+    c(
+      "0 Low Activity (< 3 hours on)",
+      "1.1 Standard continuous (expected schedule)",
+      "1.2 Standard continuous (shifted schedule)",
+      "2.1 Standard flexible (expected schedule)",
+      "2.2 Standard flexible (shifted schedule)",
+      "3 Long flexible workday",
+      "4 Long continuous workday",
+      "5 Always on (13h+)"
+    )
 
   ptn_data_personas <- data.table::copy(WpA_classify)
   ptn_data_personas[, Personas := "Unclassified"]
-  ptn_data_personas[Signals_Total > d & Signals_Total==Day_Span , Personas := "5 Long continuous workday"]
-  ptn_data_personas[Signals_Total > d & Signals_Total<Day_Span, Personas := "4 Long flexible workday"]
-  ptn_data_personas[Signals_Total <= d & (Before_start>0|After_end>0), Personas := "3 Standard flexible workday"] #do we want to split betwen block and non block?
-  ptn_data_personas[Signals_Total == d+1 & Within_hours ==d+1, Personas := "2 Standard continuous workday"]
-  ptn_data_personas[Signals_Total<= d & Before_start==0 & After_end == 0, Personas := "1 Standard with breaks workday"]
-  ptn_data_personas[Signals_Total >= 13, Personas := "6 Always on (13h+)"]
-  ptn_data_personas[Signals_Total < 3, Personas := "0 < 3 hours on"]
+  ptn_data_personas[Active_Hours > exp_hours & Active_Hours==Day_Span , Personas := "4 Long continuous workday"]
+  ptn_data_personas[Active_Hours > exp_hours & Active_Hours<Day_Span, Personas := "3 Long flexible workday"]
+  ptn_data_personas[Active_Hours <= exp_hours & (Before_start>0|After_end>0), Personas := "2.2 Standard flexible (shifted schedule)"]
+  ptn_data_personas[Active_Hours <= exp_hours & Before_start == 0 & After_end == 0, Personas := "2.1 Standard flexible (expected schedule)"]
+  ptn_data_personas[Active_Hours == exp_hours & (Before_start > 0 | After_end > 0) & Active_Hours == Day_Span, Personas := "1.2 Standard continuous (shifted schedule)"]
+  ptn_data_personas[Active_Hours == exp_hours & Before_start == 0 & After_end == 0 & Active_Hours == Day_Span, Personas := "1.1 Standard continuous (expected schedule)"]
+  ptn_data_personas[Active_Hours >= 13, Personas := "5 Always on (13h+)"]
+  ptn_data_personas[Active_Hours < 3, Personas := "0 Low Activity (< 3 hours on)"]
   ptn_data_personas[, Personas := factor(Personas, levels = personas_levels)]
+
+
 
   # bind cut tree to data frame
   ptn_data_final <-
     ptn_data_personas %>%
     left_join(
       signals_df %>%
-        select(-Signals_Total), # Avoid duplication
+        select(-Active_Hours), # Avoid duplication
       by = c("PersonId","Date")) %>%
     left_join(
       data2 %>%
         select(PersonId, Date, hrvar_str), # Avoid duplication
       by = c("PersonId","Date"))
 
-  ## Return-chunks
+  ## Long caption -----------------------------------------------------------
+  ## Parameters used in creating visualization
+
+  ## Change first character to upper case
+  firstup <- function(x){
+    substr(x, start = 1, stop = 1) <- toupper(substr(x, start = 1, stop = 1))
+    x
+  }
+
+
+
+  signals_str <- firstup(paste(signals, collapse = ", "))
+
+  cap_long <-
+    glue::glue(
+      "Signals used: {signals_str}.
+      The official hours are {start_hour}:00 and {end_hour}:00, with a total of {exp_hours} expected hours.
+      \n"
+    ) %>%
+    paste(extract_date_range(data2, return = "text"))
+
+
+  ## Return-chunks ----------------------------------------------------------
+
   return_data <- function(){
-    dplyr::as_tibble(ptn_data_final)
+    dplyr::as_tibble(ptn_data_final) %>%
+      dplyr::mutate(
+        Start_hour = start_hour,
+        End_hour = end_hour,
+        Exp_hours = exp_hours
+      )
   }
 
   # NOW DEFUNCT - NOT USED ---------------------------------------------------
@@ -337,7 +415,7 @@ workpatterns_classify_bw <- function(data,
       theme_wpa_basic() +
       labs(title = "Distribution of Working Patterns over time",
            y = "Percentage",
-           caption = extract_date_range(data2, return = "text")) +
+           caption = cap_long) +
       theme(legend.position = "right") +
       scale_y_continuous(labels = scales::percent)
   }
@@ -361,9 +439,11 @@ workpatterns_classify_bw <- function(data,
         ptn_data_final %>%
         hrvar_count(hrvar = hrvar, return = "table") %>%
         dplyr::filter(n >= mingroup) %>%
-        dplyr::pull(hrvar)
+        dplyr::pull(hrvar) %>%
+        c("Total") # Ensure included in filter
 
       ptn_data_final %>%
+        totals_bind(target_col = hrvar, target_value = "Total") %>%
         data.table::as.data.table() %>%
         .[, .(n = .N), by = c("Personas", hrvar)] %>%
         dplyr::as_tibble() %>%
@@ -386,7 +466,11 @@ workpatterns_classify_bw <- function(data,
 
   } else if(return == "plot"){
 
-    plot_workpatterns_classify_bw(ptn_data_final, range = d)
+    plot_workpatterns_classify_bw(
+      ptn_data_final,
+      range = exp_hours,
+      caption = cap_long
+      )
 
   } else if(return == "plot-dist"){
 
@@ -399,7 +483,8 @@ workpatterns_classify_bw <- function(data,
   } else if(return == "plot-hrvar"){
 
     plot_wp_bw_hrvar(
-      x = return_table()
+      x = return_table(),
+      caption = cap_long
     )
 
   } else if (return == "table"){
@@ -409,8 +494,15 @@ workpatterns_classify_bw <- function(data,
   } else if (return == "list"){
 
     list(data = return_data(),
-         plot = plot_workpatterns_classify_bw(ptn_data_final, range = d),
-         plot_hrvar = plot_wp_bw_hrvar(x = return_table()),
+         plot = plot_workpatterns_classify_bw(
+           ptn_data_final,
+           range = exp_hours,
+           caption = cap_long
+           ),
+         plot_hrvar = plot_wp_bw_hrvar(
+           x = return_table(),
+           caption = cap_long
+           ),
          plot_area = return_plot_area(),
          table = return_table())
 
@@ -425,25 +517,27 @@ workpatterns_classify_bw <- function(data,
 #'
 #' @description Internal use only.
 #'
-#' @param range Numeric. Accepts `d` from the main `workpatterns_classify_bw()`
+#' @param range Numeric. Accepts `exp_hours` from the main `workpatterns_classify_bw()`
 #'   function. Used to update labels on main plot.
+#' @param caption String to override plot captions.
 #'
 #' @noRd
 
-plot_workpatterns_classify_bw <- function(data, range){
+plot_workpatterns_classify_bw <- function(data, range, caption){
 
   plot_table <-
     data %>%
     dplyr::mutate(
       PersonasNet =
         case_when(
-          Personas == "0 < 3 hours on" ~ "Low activity",
-          Personas == "1 Standard with breaks workday" ~ "Flexible",
-          Personas == "2 Standard continuous workday" ~ "Standard",
-          Personas == "3 Standard flexible workday" ~ "Flexible",
-          Personas == "4 Long flexible workday" ~ "Long flexible",
-          Personas == "5 Long continuous workday" ~ "Long continuous",
-          Personas == "6 Always on (13h+)" ~ "Always On",
+          Personas == "0 Low Activity (< 3 hours on)" ~ "Low activity",
+          Personas == "2.1 Standard flexible (expected schedule)" ~ "Flexible",
+          Personas == "2.2 Standard flexible (shifted schedule)" ~ "Flexible",
+          Personas == "1.1 Standard continuous (expected schedule)" ~ "Standard",
+          Personas == "1.2 Standard continuous (shifted schedule)" ~ "Standard",
+          Personas == "3 Long flexible workday" ~ "Long flexible",
+          Personas == "4 Long continuous workday" ~ "Long continuous",
+          Personas == "5 Always on (13h+)" ~ "Always On",
           TRUE ~ NA_character_
           )
     ) %>%
@@ -591,7 +685,7 @@ plot_workpatterns_classify_bw <- function(data, range){
          subtitle = "Classification of employee-weeks",
          x = "Flexibility level (breaks)",
          y = "Average activity level",
-         caption = extract_date_range(data, return = "text")) +
+         caption = caption) +
     theme_wpa_basic() +
     theme(
       legend.position = "none",
@@ -611,7 +705,7 @@ plot_workpatterns_classify_bw <- function(data, range){
 #' @import ggplot2
 #'
 #' @noRd
-plot_wp_bw_hrvar <- function(x){
+plot_wp_bw_hrvar <- function(x, caption){
 
   x %>%
     tidyr::pivot_longer(cols = -Personas) %>%
@@ -625,7 +719,8 @@ plot_wp_bw_hrvar <- function(x){
     coord_flip() +
     scale_y_continuous(labels = scales::percent,
                        limits = c(NA, 1)) +
-    theme_wpa_basic()
+    theme_wpa_basic() +
+    labs(caption = caption)
 
 }
 

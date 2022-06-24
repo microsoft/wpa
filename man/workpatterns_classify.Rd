@@ -11,6 +11,7 @@ workpatterns_classify(
   signals = c("email", "IM"),
   start_hour = "0900",
   end_hour = "1700",
+  exp_hours = NULL,
   mingroup = 5,
   active_threshold = 0,
   method = "bw",
@@ -47,6 +48,11 @@ PM, then \code{"0900"} should be supplied here.}
 Note that this currently only supports \strong{hourly} increments. If the
 official hours specifying checking in and 9 AM and checking out at 5 PM,
 then \code{"1700"} should be supplied here.}
+
+\item{exp_hours}{Numeric value representing the number of hours the
+population is expected to be active for throughout the workday. By default,
+this uses the difference between \code{end_hour} and \code{start_hour}. Only
+applicable with the 'bw' method.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -122,23 +128,35 @@ implementations.
 \section{Binary Week method}{
 
 
-This method classifies each \strong{person-week} into one of the seven
+This method classifies each \strong{person-week} into one of the eight
 archetypes:
 \itemize{
-\item \strong{0 < 3 hours on}: fewer than 3 hours of active hours
-\item \strong{1 Standard with breaks workday}: active for fewer than \emph{expected
-hours}, with no activity outside working hours
-\item \strong{2 Standard continuous workday}: number of active hours equal \emph{expected
-hours}, with no activity outside working hours
-\item \strong{3 Standard flexible workday}: number of active hours are less than or
-equal to \emph{expected hours}, with some activity outside working hours
-\item \strong{4 Long flexible workday}: number of active hours exceed \emph{expected
+\item \strong{0 Low Activity (< 3 hours on)}: fewer than 3 hours of active hours
+\item \strong{1.1 Standard continuous (expected schedule)}: active hours equal to
+\emph{expected hours}, with all activity confined within the expected start and
+end time
+\item \strong{1.2 Standard continuous (shifted schedule)}: active hours equal to
+\emph{expected hours}, with activity occurring beyond either the expected start
+or end time.
+\item \strong{2.1 Standard flexible (expected schedule)}: active hours less than or
+equal to \emph{expected hours}, with all activity confined within the expected
+start and end time
+\item \strong{2.2 Standard flexible (shifted schedule)}: active hours less than or
+equal to \emph{expected hours}, with activity occurring beyond either the
+expected start or end time.
+\item \strong{3 Long flexible workday}: number of active hours exceed \emph{expected
 hours}, with breaks occurring throughout
-\item \strong{5 Long continuous workday}: number of active hours exceed \emph{expected
+\item \strong{4 Long continuous workday}: number of active hours exceed \emph{expected
 hours}, with activity happening in a continuous block (no breaks)
-\item \strong{6 Always on (13h+)}: number of active hours greater than or equal to
+\item \strong{5 Always on (13h+)}: number of active hours greater than or equal to
 13
 }
+
+\emph{Standard} here denotes the behaviour of not exhibiting total number of
+active hours which exceed the expected total number of hours, as supplied by
+\code{exp_hours}. \emph{Continuous} refers to the behaviour of \emph{not} taking breaks,
+i.e. no inactive hours between the first and last active hours of the day,
+where \emph{flexible} refers to the contrary.
 
 This is the recommended method over \code{pav} for several reasons:
 \enumerate{
@@ -159,11 +177,11 @@ In the standard plot output, the archetypes have been abbreviated to show the
 following:
 \itemize{
 \item \strong{Low Activity} - archetype 0
-\item \strong{Standard} - archetype 2
-\item \strong{Flexible} - archetypes 1 and 3
-\item \strong{Long continuous} - archetype 5
-\item \strong{Long flexible} - archetype 4
-\item \strong{Always On} - archetype 6
+\item \strong{Standard} - archetypes 1.1 and 1.2
+\item \strong{Flexible} - archetypes 2.1 and 2.2
+\item \strong{Long continuous} - archetype 4
+\item \strong{Long flexible} - archetype 3
+\item \strong{Always On} - archetype 5
 }
 }
 
@@ -206,7 +224,13 @@ Hourly Collaboration Flexible Query.
 em_data \%>\% workpatterns_classify(method = "bw")
 
 # Return an area plot
-em_data \%>\% workpatterns_classify(method = "bw", return = "plot-area")
+# With custom expected hours
+em_data \%>\%
+  workpatterns_classify(
+    method = "bw",
+    return = "plot-area",
+    exp_hours = 7
+      )
 
 \donttest{
 

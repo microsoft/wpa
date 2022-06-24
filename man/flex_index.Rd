@@ -12,7 +12,8 @@ flex_index(
   start_hour = "0900",
   end_hour = "1700",
   return = "plot",
-  plot_method = "common"
+  plot_method = "common",
+  mode = "binary"
 )
 }
 \arguments{
@@ -53,6 +54,16 @@ See \code{Value} for more information.}
 \item \code{"sample"} plots a sample of ten working pattern
 \item \code{"common"} plots the ten most common working patterns
 \item \code{"time"} plots the Flexibility Index for the group over time
+}}
+
+\item{mode}{String specifying aggregation method for plot. Only applicable
+when \code{return = "plot"}. Valid options include:
+\itemize{
+\item \code{"binary"}: convert hourly activity into binary blocks. In the plot, each
+block would display as solid.
+\item \code{"prop"}: calculate proportion of signals in each hour over total signals
+across 24 hours, then average across all work weeks. In the plot, each
+block would display as a heatmap.
 }}
 }
 \value{
