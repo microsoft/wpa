@@ -14,6 +14,8 @@
 #' @param rounding Numeric vector to specify the number of decimal points to display
 #' @param freeze Number of columns from the left to 'freeze'. Defaults to 2,
 #' which includes the row number column.
+#' @param percent Logical value specifying whether to display numeric columns
+#' as percentages.
 #'
 #' @import DT
 #' @importFrom dplyr mutate_if
@@ -24,14 +26,15 @@
 #' Returns an HTML widget displaying rectangular data.
 #'
 #' @export
-create_dt <- function(x, rounding = 1, freeze = 2){
+create_dt <- function(x, rounding = 1, freeze = 2, percent = FALSE){
 
   # Round all numeric to "rounding" number of dp
   num_cols <- dplyr::select_if(x, is.numeric) %>% names()
 
   if(length(num_cols) == 0){ # No numeric columns
 
-    DT::datatable(x,
+    out <-
+      DT::datatable(x,
                   extensions = c('Buttons',
                                  'FixedColumns'),
                   options = list(dom = 'Blfrtip',
@@ -43,7 +46,8 @@ create_dt <- function(x, rounding = 1, freeze = 2){
 
   } else {
 
-    DT::datatable(x,
+    out <-
+      DT::datatable(x,
                   extensions = c('Buttons',
                                  'FixedColumns'),
                   options = list(dom = 'Blfrtip',
@@ -54,6 +58,15 @@ create_dt <- function(x, rounding = 1, freeze = 2){
                                                    c(10,25,50,"All")))) %>%
       DT::formatRound(columns = num_cols, rounding)
 
+    if(percent == TRUE){
 
+      out <-
+        out %>%
+        DT::formatPercentage(columns = num_cols, rounding)
+
+    }
   }
+
+
+  out
 }

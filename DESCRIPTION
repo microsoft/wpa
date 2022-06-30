@@ -1,7 +1,7 @@
 Package: wpa
 Type: Package
 Title: Tools for Analysing and Visualising Viva Insights Data
-Version: 1.7.0
+Version: 1.7.0.9000
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com"),
@@ -67,5 +67,7 @@ Suggests:
     glue,
     flexdashboard,
     lmtest,
-    sandwich
+    sandwich,
+    testthat (>= 3.0.0)
 Language: en-US
+Config/testthat/edition: 3

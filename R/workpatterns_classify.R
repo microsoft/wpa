@@ -35,23 +35,35 @@
 #'
 #' @section Binary Week method:
 #'
-#'   This method classifies each **person-week** into one of the seven
+#'   This method classifies each **person-week** into one of the eight
 #'   archetypes:
-#'   - **0 < 3 hours on**: fewer than 3 hours of active hours
-#'   - **1 Standard with breaks workday**: active for fewer than _expected
-#'   hours_, with no activity outside working hours
-#'   - **2 Standard continuous workday**: number of active hours equal _expected
-#'   hours_, with no activity outside working hours
-#'   - **3 Standard flexible workday**: number of active hours are less than or
-#'   equal to _expected hours_, with some activity outside working hours
-#'   - **4 Long flexible workday**: number of active hours exceed _expected
+#'   - **0 Low Activity (< 3 hours on)**: fewer than 3 hours of active hours
+#'   - **1.1 Standard continuous (expected schedule)**: active hours equal to
+#'   _expected hours_, with all activity confined within the expected start and
+#'   end time
+#'   - **1.2 Standard continuous (shifted schedule)**: active hours equal to
+#'   _expected hours_, with activity occurring beyond either the expected start
+#'   or end time.
+#'   - **2.1 Standard flexible (expected schedule)**: active hours less than or
+#'   equal to _expected hours_, with all activity confined within the expected
+#'   start and end time
+#'   - **2.2 Standard flexible (shifted schedule)**: active hours less than or
+#'   equal to _expected hours_, with activity occurring beyond either the
+#'   expected start or end time.
+#'   - **3 Long flexible workday**: number of active hours exceed _expected
 #'   hours_, with breaks occurring throughout
-#'   - **5 Long continuous workday**: number of active hours exceed _expected
+#'   - **4 Long continuous workday**: number of active hours exceed _expected
 #'   hours_, with activity happening in a continuous block (no breaks)
-#'   - **6 Always on (13h+)**: number of active hours greater than or equal to
+#'   - **5 Always on (13h+)**: number of active hours greater than or equal to
 #'   13
 #'
-#'   This is the recommended method over `pav` for several reasons:
+#'  _Standard_ here denotes the behaviour of not exhibiting total number of
+#'  active hours which exceed the expected total number of hours, as supplied by
+#'  `exp_hours`. _Continuous_ refers to the behaviour of _not_ taking breaks,
+#'  i.e. no inactive hours between the first and last active hours of the day,
+#'  where _flexible_ refers to the contrary.
+#'
+#'  This is the recommended method over `pav` for several reasons:
 #'   1. `bw` ignores _volume effects_, where activity volume can still bias the
 #'   results towards the 'standard working hours'.
 #'   2. It captures the intuition that each individual can have 'light' and
@@ -67,11 +79,11 @@
 #' In the standard plot output, the archetypes have been abbreviated to show the
 #' following:
 #'   - **Low Activity** - archetype 0
-#'   - **Standard** - archetype 2
-#'   - **Flexible** - archetypes 1 and 3
-#'   - **Long continuous** - archetype 5
-#'   - **Long flexible** - archetype 4
-#'   - **Always On** - archetype 6
+#'   - **Standard** - archetypes 1.1 and 1.2
+#'   - **Flexible** - archetypes 2.1 and 2.2
+#'   - **Long continuous** - archetype 4
+#'   - **Long flexible** - archetype 3
+#'   - **Always On** - archetype 5
 #'
 #' @section Person Average method:
 #'
@@ -148,6 +160,11 @@
 #'   official hours specifying checking in and 9 AM and checking out at 5 PM,
 #'   then `"1700"` should be supplied here.
 #'
+#' @param exp_hours Numeric value representing the number of hours the
+#'   population is expected to be active for throughout the workday. By default,
+#'   this uses the difference between `end_hour` and `start_hour`. Only
+#'   applicable with the 'bw' method.
+#'
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #'
@@ -184,7 +201,13 @@
 #' em_data %>% workpatterns_classify(method = "bw")
 #'
 #' # Return an area plot
-#' em_data %>% workpatterns_classify(method = "bw", return = "plot-area")
+#' # With custom expected hours
+#' em_data %>%
+#'   workpatterns_classify(
+#'     method = "bw",
+#'     return = "plot-area",
+#'     exp_hours = 7
+#'       )
 #'
 #' \donttest{
 #'
@@ -206,6 +229,7 @@ workpatterns_classify <- function(data,
                                   signals = c("email", "IM"),
                                   start_hour = "0900",
                                   end_hour = "1700",
+                                  exp_hours = NULL,
                                   mingroup = 5,
                                   active_threshold = 0,
                                   method = "bw",
@@ -232,14 +256,17 @@ workpatterns_classify <- function(data,
   # Method flow -------------------------------------------------------------
 
   if(method == "bw"){
+
     workpatterns_classify_bw(data = data,
                              hrvar = hrvar,
                              signals = signals,
                              start_hour = start_hour,
                              end_hour = end_hour,
+                             exp_hours = exp_hours,
                              mingroup = mingroup,
                              active_threshold = active_threshold,
                              return = return)
+
   } else if(method == "pav"){
 
     workpatterns_classify_pav(data = data,

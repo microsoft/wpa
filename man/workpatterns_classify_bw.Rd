@@ -12,6 +12,7 @@ workpatterns_classify_bw(
   start_hour = "0900",
   end_hour = "1700",
   mingroup = 5,
+  exp_hours = NULL,
   active_threshold = 0,
   return = "plot"
 )
@@ -44,6 +45,10 @@ then \code{"1700"} should be supplied here.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
+
+\item{exp_hours}{Numeric value representing the number of hours the population
+is expected to be active for throughout the workday. By default, this uses
+the difference between \code{end_hour} and \code{start_hour}.}
 
 \item{active_threshold}{A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as \emph{active}. Defaults to 0.}
