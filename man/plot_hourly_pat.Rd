@@ -42,6 +42,14 @@ box}
 \item{legend_text}{String to be used in the bottom legend label.}
 
 \item{rows}{Number of rows to show in plot.}
+
+\item{title}{String to specify plot title.}
+
+\item{subtitle}{String to specify plot subtitle.}
+
+\item{caption}{String to specify plot caption.}
+
+\item{ylab}{String to specify plot y-axis label.}
 }
 \description{
 This is used within \code{plot_flex_index()} and \code{workpatterns_rank()}.

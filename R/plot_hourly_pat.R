@@ -22,6 +22,10 @@
 #' @param legend_text String to be used in the bottom legend label.
 #'
 #' @param rows Number of rows to show in plot.
+#' @param title String to specify plot title.
+#' @param subtitle String to specify plot subtitle.
+#' @param caption String to specify plot caption.
+#' @param ylab String to specify plot y-axis label.
 #'
 #' @export
 
