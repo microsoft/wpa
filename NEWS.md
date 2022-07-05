@@ -1,7 +1,9 @@
-# wpa (development version)
+# wpa 1.8.0
 
 - Updated and improved output and algorithm for `workpatterns_classify()`
 - Additional visual options for `workpatterns_classify()` and `flex_index()`
+- Added the `external_*` family of functions to visualize the metric `Collaboration_hours_external`
+- Added experimental function `identify_datefreq()` for detecting date frequency (#131)
 
 # wpa 1.7.0
 

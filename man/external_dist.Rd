@@ -139,8 +139,10 @@ Other Visualization:
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_rank}()}
 
-Other External: 
+Other External Collaboration: 
+\code{\link{external_fizz}()},
+\code{\link{external_line}()},
 \code{\link{external_sum}()}
 }
-\concept{External}
+\concept{External Collaboration}
 \concept{Visualization}

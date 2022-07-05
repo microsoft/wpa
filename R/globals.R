@@ -257,6 +257,9 @@ utils::globalVariables(
     "HRAttribute",
     "identifier",
     "PersonasNet",
-    "Unique values"
+    "Unique values",
+    "Collaboration_hours_external",
+    ".GRP",
+    "Id"
     )
 )

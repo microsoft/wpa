@@ -22,7 +22,10 @@
 #' @param legend_text String to be used in the bottom legend label.
 #'
 #' @param rows Number of rows to show in plot.
-#' @noRd
+#' @param title String to specify plot title.
+#' @param subtitle String to specify plot subtitle.
+#' @param caption String to specify plot caption.
+#' @param ylab String to specify plot y-axis label.
 #'
 #' @export
 
@@ -41,7 +44,7 @@ plot_hourly_pat <- function(
 ){
 
   ## 00, 01, 02, etc.
-  hours_col <- stringr::str_pad(seq(0,23), width = 2, pad = 0)
+  hours_col <- pad2(x = seq(0,23))
 
   data %>%
     utils::head(rows)  %>%

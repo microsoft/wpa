@@ -46,7 +46,7 @@ Returns a stacked bar plot of internal and external collaboration.
 Additional options available to return a summary table.
 }
 \examples{
-# Return a  plot
+# Return a plot
 external_sum(sq_data, hrvar = "LevelDesignation")
 
 # Return summary table
@@ -130,8 +130,10 @@ Other Visualization:
 \code{\link{workpatterns_area}()},
 \code{\link{workpatterns_rank}()}
 
-Other External: 
-\code{\link{external_dist}()}
+Other External Collaboration: 
+\code{\link{external_dist}()},
+\code{\link{external_fizz}()},
+\code{\link{external_line}()}
 }
-\concept{External}
+\concept{External Collaboration}
 \concept{Visualization}

@@ -295,14 +295,6 @@ plot_signal_clust <- function(data,
     mutate_at("Hours", ~sub(pattern = paste0(sig_label, "_"), replacement = "", x = .)) %>%
     mutate_at("Hours", ~sub(pattern = "_.+", replacement = "", x = .))
 
-  ## Create the two-digit zero-padded format
-  ## Used in `scale_x_continuous()`
-  pad2 <- function(x){
-    ifelse(nchar(x) == 1,
-           paste0(0, x),
-           x)
-  }
-
   ## bar plot
   output_bar <-
     plot_data %>%

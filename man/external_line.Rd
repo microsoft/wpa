@@ -127,7 +127,9 @@ Other Visualization:
 \code{\link{workpatterns_rank}()}
 
 Other External Collaboration: 
-\code{\link{external_fizz}()}
+\code{\link{external_dist}()},
+\code{\link{external_fizz}()},
+\code{\link{external_sum}()}
 }
 \concept{External Collaboration}
 \concept{Visualization}
