@@ -10,6 +10,7 @@ workpatterns_report(
   signals = c("email", "IM"),
   start_hour = "0900",
   end_hour = "1700",
+  exp_hours = NULL,
   path = "workpatterns report",
   timestamp = TRUE
 )
@@ -25,6 +26,8 @@ workpatterns_report(
 \item{start_hour}{See \code{workpatterns_classify()}.}
 
 \item{end_hour}{See \code{workpatterns_classify()}.}
+
+\item{exp_hours}{See \code{workpatterns_classify()}.}
 
 \item{path}{Pass the file path and the desired file name, \emph{excluding the file
 extension}. For example, \code{"scope report"}.}

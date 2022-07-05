@@ -66,6 +66,7 @@ See [NEWS.md](https://microsoft.github.io/wpa/news/index.html) for the package c
 - [Viva RMarkdown Report Marketplace](https://github.com/microsoft/VivaRMDReportMarketplace)
 - [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code)
 - [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int)
+- [Viva Insights OData Query Download](https://github.com/microsoft/vivainsights-odatadl)
 
 ---
 

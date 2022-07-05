@@ -13,6 +13,8 @@
 #' @param signals See `workpatterns_classify()`.
 #' @param start_hour See `workpatterns_classify()`.
 #' @param end_hour See `workpatterns_classify()`.
+#' @param exp_hours See `workpatterns_classify()`.
+#'
 #' @param path Pass the file path and the desired file name, _excluding the file
 #'   extension_. For example, `"scope report"`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in
@@ -32,6 +34,7 @@ workpatterns_report <- function(data,
                                 signals = c("email", "IM"),
                                 start_hour = "0900",
                                 end_hour = "1700",
+                                exp_hours = NULL,
                                 path = "workpatterns report",
                                 timestamp = TRUE){
 
@@ -52,6 +55,7 @@ workpatterns_report <- function(data,
                              signals = signals,
                              start_hour = start_hour,
                              end_hour = end_hour,
+                             exp_hours = exp_hours,
                              return = "list")
 
   ## plot for `workpatterns_rank`
@@ -132,8 +136,10 @@ workpatterns_report <- function(data,
       plot_rank_list[[4]],
       plot_rank_list[[5]],
       plot_rank_list[[6]],
-      plot_rank_list[[7]]) %>% # Expand objects to this list
-    purrr::map_if(is.data.frame, wpa::create_dt, rounding = 2) %>%
+      plot_rank_list[[7]],
+      plot_rank_list[[8]]
+      ) %>% # Expand objects to this list
+    purrr::map_if(is.data.frame, wpa::create_dt, rounding = 1, percent = TRUE) %>%
     purrr::map_if(is.character, md2html)
 
   ## Set header titles
@@ -150,7 +156,9 @@ workpatterns_report <- function(data,
       paste(names(plot_table_list)[[4]]),
       paste(names(plot_table_list)[[5]]),
       paste(names(plot_table_list)[[6]]),
-      paste(names(plot_table_list)[[7]]))
+      paste(names(plot_table_list)[[7]]),
+      paste(names(plot_table_list)[[8]])
+      )
 
   ## Set header levels
   ## Makes use of level/header system for Markdown syntax

@@ -251,3 +251,19 @@ wrap_text <- function(x, threshold = 15){
     x = x
   )
 }
+
+#' @title
+#' Create the two-digit zero-padded format
+#'
+#' @param x numeric value or vector with maximum two characters.
+#'
+#' @return
+#' Numeric value containing two-digit zero-padded values.
+#'
+#' @export
+
+pad2 <- function(x){
+  x <- as.character(x)
+
+  ifelse(nchar(x) == 1, paste0("0", x), x)
+}

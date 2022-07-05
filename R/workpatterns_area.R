@@ -191,14 +191,6 @@ workpatterns_area <- function(data,
     mutate(Signals = sub(pattern = "_\\d.+", replacement = "", x = Signals)) %>%
     spread(Signals, Value)
 
-  ## Create the two-digit zero-padded format
-  ## Used in `scale_x_continuous()`
-  pad2 <- function(x){
-    x <- as.character(x)
-
-    ifelse(nchar(x) == 1, paste0("0", x), x)
-  }
-
   ## Return
   if(return == "data"){
 
