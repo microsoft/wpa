@@ -1,4 +1,4 @@
-# wpa (development version)
+# wpa 1.8.0
 
 - Updated and improved output and algorithm for `workpatterns_classify()`
 - Additional visual options for `workpatterns_classify()` and `flex_index()`
