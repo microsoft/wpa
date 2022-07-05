@@ -103,7 +103,7 @@ identify_datefreq <- function(x){
   check_nsun <- sum(date_df$n[date_df$weekdays == "Sunday"])
 
   ifelse(
-    length(months(month_seq)) == length(x),
+    length(months(x)) == length(x),
     "monthly",
     ifelse(
       check_nsun == length(x),
