@@ -7,7 +7,7 @@
   [![CRAN status](https://www.r-pkg.org/badges/version/wpa)](https://CRAN.R-project.org/package=wpa/)
   [![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/wpa?color=green/)](https://cran.r-project.org/package=wpa/)
 
-## Analyze and Visualize Viva Leader Insights data
+## Analyze and Visualize Advanced Insights data from Viva Insights
 
 This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://docs.microsoft.com/en-us/workplace-analytics/) (previously Microsoft Workplace Analytics). 
 
@@ -17,9 +17,9 @@ This is an R package for analyzing and visualizing data from [Microsoft Viva Adv
 
 2. **Generate prebuilt interactive HTML reports**, which cover specific areas e.g. collaboration, connectivity 
 
-3. Leverage **advanced analytics functions**, such as text mining and hierarchical clustering, which are built for Workplace Analytics metrics
+3. Leverage **advanced analytics functions**, such as text mining, network analysis, and hierarchical clustering, which are built for advanced insights metrics
 
-4. Integrate analysis of Leader Insights data with your R workflow seamlessly
+4. Integrate analysis of advanced insights data with your R workflow seamlessly
 
 Here is an example of **wpa** in action:
 

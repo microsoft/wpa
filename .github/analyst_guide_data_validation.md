@@ -1,6 +1,6 @@
 # Data validation
 
-This section covers the topic of **how to validate Workplace Analytics data**. Before you apply any functions to your data set and start looking for new insights, it is recommended that you perform data validation. This best practice is applicable regardless of whether your aim is to explore the data, to establish a baseline, or to perform advanced analytics.
+This section covers the topic of **how to validate Flexible Query data from Viva Insights**. Before you apply any functions to your data set and start looking for new insights, it is recommended that you perform data validation. This best practice is applicable regardless of whether your aim is to explore the data, to establish a baseline, or to perform advanced analytics.
 
 ## Why validate?
 
@@ -144,7 +144,7 @@ Below is an example of one might create a 'clean' dataset using the functions ab
 
 ```R
 library(wpa)
-library(tidyverse) # You may also just load dplyr
+library(dplyr)
 
 clean_spq <-
   raw_wowa %>% # Loaded in as a Ways of Working query
