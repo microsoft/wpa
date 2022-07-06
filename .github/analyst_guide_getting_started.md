@@ -44,11 +44,7 @@ library(wpa)
 
 You only need to install the package once; however, you will need to load it every time you start a new R session. 
 
-**wpa** is designed to work side by side with other Data Science R packages from [tidyverse](https://www.tidyverse.org/). We generally recommend to load that package too:
-
-```
-library(tidyverse)
-```
+**wpa** is designed to work side by side with other Data Science R packages from [tidyverse](https://www.tidyverse.org/). We generally recommend to load that package too with `library(tidyverse)`.
 
 ## Importing Workplace Analytics data
 To read data into R, you can use the `import_wpa()` function. This function accepts any query file in CSV format and performs variable type conversions optimized for Workplace Analytics.
