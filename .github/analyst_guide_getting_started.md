@@ -46,7 +46,7 @@ You only need to install the package once; however, you will need to load it eve
 
 **wpa** is designed to work side by side with other Data Science R packages from [tidyverse](https://www.tidyverse.org/). We generally recommend to load that package too:
 
-```R
+```
 library(tidyverse)
 ```
 
