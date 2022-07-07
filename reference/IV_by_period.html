@@ -21,7 +21,7 @@ which Workplace Analytics metrics are most explained by the change in dates."><m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -165,15 +165,15 @@ which Workplace Analytics metrics are most explained by the change in dates.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">IV_by_period</span><span class="op">(</span>
-  <span class="va">data</span>,
-  before_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,
-  <span class="va">before_end</span>,
-  after_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">before_end</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span>,
-  after_end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,
-  mybins <span class="op">=</span> <span class="fl">10</span>,
-  return <span class="op">=</span> <span class="st">"table"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">IV_by_period</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  before_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="va">before_end</span>,</span>
+<span>  after_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">before_end</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span>,</span>
+<span>  after_end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  mybins <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"table"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -182,27 +182,42 @@ which Workplace Analytics metrics are most explained by the change in dates.</p>
 <dd><p>Person Query as a dataframe including date column named "Date"
 This function assumes the data format is <code>MM/DD/YYYY</code> as is standard in a
 Workplace Analytics query output.</p></dd>
+
+
 <dt>before_start</dt>
 <dd><p>Start date of "before" time period in <code>YYYY-MM-DD</code>.
 Defaults to earliest date in dataset.</p></dd>
+
+
 <dt>before_end</dt>
 <dd><p>End date of "before" time period in <code>YYYY-MM-DD</code></p></dd>
+
+
 <dt>after_start</dt>
 <dd><p>Start date of "after" time period in <code>YYYY-MM-DD</code>.
 Defaults to day after before_end.</p></dd>
+
+
 <dt>after_end</dt>
 <dd><p>End date of "after" time period in <code>YYYY-MM-DD</code>. Defaults to
 latest date in dataset.</p></dd>
+
+
 <dt>mybins</dt>
 <dd><p>Number of bins to cut the data into for Information Value
 analysis. Defaults to 10.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. The current only valid
 option is <code>"table"</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>data frame containing all the variables and the corresponding Information
+    
+
+<p>data frame containing all the variables and the corresponding Information
 Value.</p>
     </div>
     <div id="see-also">
@@ -229,14 +244,14 @@ Value.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Returns a data frame</span></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">IV_by_period</span><span class="op">(</span></span>
-<span class="r-in">    before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,</span>
-<span class="r-in">    before_end <span class="op">=</span> <span class="st">"2019-11-09"</span>,</span>
-<span class="r-in">    after_start <span class="op">=</span> <span class="st">"2019-11-10"</span>,</span>
-<span class="r-in">    after_end <span class="op">=</span> <span class="st">"2019-11-16"</span></span>
-<span class="r-in">  <span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Returns a data frame</span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">IV_by_period</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,</span></span>
+<span class="r-in"><span>    before_end <span class="op">=</span> <span class="st">"2019-11-09"</span>,</span></span>
+<span class="r-in"><span>    after_start <span class="op">=</span> <span class="st">"2019-11-10"</span>,</span></span>
+<span class="r-in"><span>    after_end <span class="op">=</span> <span class="st">"2019-11-16"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                          Variable           IV</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                       After_hours_meeting_hours 4.063198e-02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                 After_hours_collaboration_hours 3.214857e-02</span>
@@ -292,7 +307,7 @@ Value.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52          Redundant_meeting_hours__lower_level_ 0.000000e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 53                                          Layer 0.000000e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 54                                     HourlyRate 0.000000e+00</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -307,7 +322,7 @@ Value.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -21,7 +21,7 @@ original 'portes' package."><meta property="og:image" content="https://microsoft
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -166,13 +166,13 @@ original 'portes' package.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">LjungBox</span><span class="op">(</span>
-  <span class="va">obj</span>,
-  lags <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>,
-  order <span class="op">=</span> <span class="fl">0</span>,
-  season <span class="op">=</span> <span class="fl">1</span>,
-  squared.residuals <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">LjungBox</span><span class="op">(</span></span>
+<span>  <span class="va">obj</span>,</span>
+<span>  lags <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  order <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  season <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  squared.residuals <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -183,9 +183,13 @@ original 'portes' package.</p>
 time-series model with class "ar", "arima0", "Arima", ("ARIMA forecast
 ARIMA Arima"), "lm", ("glm" "lm"), or "varest". obj may also an object with
 class "list" (see details and following examples).</p></dd>
+
+
 <dt>lags</dt>
 <dd><p>vector of lag auto-cross correlation coefficients used for
 <code>Hosking</code> test.</p></dd>
+
+
 <dt>order</dt>
 <dd><p>Default is zero for testing the randomness of a given sequence
 with class "numeric", "matrix", "ts", or ("mts" "ts"). In general order
@@ -194,19 +198,29 @@ an object with class "ar", "arima0", "Arima", "varest", ("ARIMA forecast
 ARIMA Arima"), or "list" then no need to enter the value of order as it
 will be automatically determined. For obj with other classes, the order is
 needed for degrees of freedom of asymptotic chi-square distribution.</p></dd>
+
+
 <dt>season</dt>
 <dd><p>seasonal periodicity for testing seasonality. Default is 1 for
 testing the non seasonality cases.</p></dd>
+
+
 <dt>squared.residuals</dt>
 <dd><p>if <code>TRUE</code> then apply the test on the squared values.
 This checks for Autoregressive Conditional Heteroscedastic, <code>ARCH</code>,
 effects. When <code>squared.residuals = FALSE</code>, then apply the test on the usual
 residuals.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The Ljung and Box test statistic with the associated p-values for different
-lags based on the asymptotic chi-square distribution with <code>k^2(lags-order)</code>degrees of freedom.</p>
+    
+
+<p>The Ljung and Box test statistic with the associated p-values for different
+lags based on the asymptotic chi-square distribution with <code>k^2(lags-order)</code></p>
+
+
+<p>degrees of freedom.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -241,26 +255,26 @@ Series Models". Biometrika, 65, 297-303.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">LjungBox</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># univariate test</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">LjungBox</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># univariate test</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  lags statistic df   p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     5  3.201864  5 0.6688964</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    10  8.470260 10 0.5830029</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    15 12.827732 15 0.6156019</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    20 17.422061 20 0.6254218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    25 22.080481 25 0.6310925</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    30 24.637334 30 0.7424579</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">LjungBox</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># multivariate test</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5  6.047684  5 0.3016067</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    10 10.746921 10 0.3775722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    15 13.570146 15 0.5583478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    20 21.296301 20 0.3798807</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    25 23.690044 25 0.5373358</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    30 28.477472 30 0.5451503</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">LjungBox</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># multivariate test</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  lags statistic  df   p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     5  10.24603  20 0.9634882</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    10  20.55482  40 0.9953726</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    15  35.18563  60 0.9956222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    20  55.01829  80 0.9851645</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    25  85.46461 100 0.8495600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    30 110.22224 120 0.7276789</span>
-<span class="r-in"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5  12.67671  20 0.8908200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    10  37.63032  40 0.5774456</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    15  63.44248  60 0.3560419</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    20  89.93882  80 0.2096668</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    25 105.05144 100 0.3451988</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    30 126.02761 120 0.3351911</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -275,7 +289,7 @@ Series Models". Biometrika, 65, 297-303.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

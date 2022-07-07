@@ -19,7 +19,7 @@ identified, etc."><meta property="og:image" content="https://microsoft.github.io
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,7 +162,7 @@ identified, etc.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">check_query</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"message"</span>, validation <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">check_query</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"message"</span>, validation <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -172,18 +172,28 @@ identified, etc.</p>
 <li><p>Ways of Working Assessment Query</p></li>
 <li><p>Hourly Collaboration Query</p></li>
 </ul><p>All person-level query have a <code>PersonId</code> column and a <code>Date</code> column.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"message"</code> (default)</p></li>
 <li><p><code>"text"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>validation</dt>
 <dd><p>Logical value to specify whether to show summarized version. Defaults to <code>FALSE</code>. To hide checks on variable
 names, set <code>validation</code> to <code>TRUE</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"message"</code>: a message is returned to the console.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"message"</code>: a message is returned to the console.</p></li>
 <li><p><code>"text"</code>: string containing the diagnostic message.</p></li>
 </ul></div>
     <div id="details">
@@ -224,7 +234,7 @@ query. When run, this prints diagnostic data to the R console.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">check_query</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">check_query</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The data used is a Person Query</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -244,7 +254,7 @@ query. When run, this prints diagnostic data to the R console.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `Collaboration_hours` is used instead of `Collaboration_hrs` in the data.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `Instant_Message_hours` is used instead of `Instant_message_hours` in the data.</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -259,7 +269,7 @@ query. When run, this prints diagnostic data to the R console.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

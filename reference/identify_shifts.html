@@ -21,7 +21,7 @@ WorkingStartTimeSetInOutlook and WorkingEndTimeSetInOutlook."><meta property="og
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -165,23 +165,31 @@ day to identify work shifts. The relevant variables are
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">identify_shifts</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">identify_shifts</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame containing data from the Hourly Collaboration query.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 <li><p><code>"data"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. A bar plot for the weekly count of shifts.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. A bar plot for the weekly count of shifts.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the count of shifts.</p></li>
 <li><p><code>"data</code>: data frame. Input data appended with the <code>Shifts</code> columns.</p></li>
 </ul></div>
@@ -228,18 +236,18 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return plot</span></span>
-<span class="r-in"><span class="va">dv_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">identify_shifts</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return plot</span></span></span>
+<span class="r-in"><span><span class="va">dv_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">identify_shifts</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="identify_shifts-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary table</span></span>
-<span class="r-in"><span class="va">dv_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">identify_shifts</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="va">dv_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">identify_shifts</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Shifts      WeekCount PersonCount</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 07:00-23:00       832          64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 06:00-18:00        45           5</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -254,7 +262,7 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

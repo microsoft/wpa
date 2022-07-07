@@ -18,7 +18,7 @@ corresponding to the heat map palette."><meta property="og:image" content="https
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,25 +160,32 @@ corresponding to the heat map palette.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">heat_colours</span><span class="op">(</span><span class="va">n</span>, <span class="va">alpha</span>, rev <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">heat_colors</span><span class="op">(</span><span class="va">n</span>, <span class="va">alpha</span>, rev <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">heat_colours</span><span class="op">(</span><span class="va">n</span>, <span class="va">alpha</span>, rev <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">heat_colors</span><span class="op">(</span><span class="va">n</span>, <span class="va">alpha</span>, rev <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>n</dt>
 <dd><p>the number of colors (&gt;= 1) to be in the palette.</p></dd>
+
+
 <dt>alpha</dt>
 <dd><p>an alpha-transparency level in the range of 0 to 1
 (0 means transparent and 1 means opaque)</p></dd>
+
+
 <dt>rev</dt>
 <dd><p>logical indicating whether the ordering of the colors should be
 reversed.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A character vector containing the HEX codes and the same length as <code>n</code> is
+    
+
+<p>A character vector containing the HEX codes and the same length as <code>n</code> is
 returned.</p>
     </div>
     <div id="see-also">
@@ -207,13 +214,13 @@ returned.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span><span class="op">)</span>, col <span class="op">=</span> <span class="fu">heat_colours</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span><span class="op">)</span>, col <span class="op">=</span> <span class="fu">heat_colours</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heat_colours-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span><span class="op">)</span>, col <span class="op">=</span> <span class="fu">heat_colours</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span><span class="op">)</span>, col <span class="op">=</span> <span class="fu">heat_colours</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heat_colours-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -228,7 +235,7 @@ returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

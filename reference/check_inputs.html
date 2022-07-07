@@ -19,7 +19,7 @@ functions in the package. Not used directly."><meta property="og:image" content=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,22 +162,29 @@ functions in the package. Not used directly.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">check_inputs</span><span class="op">(</span><span class="va">input</span>, <span class="va">requirements</span>, return <span class="op">=</span> <span class="st">"stop"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">check_inputs</span><span class="op">(</span><span class="va">input</span>, <span class="va">requirements</span>, return <span class="op">=</span> <span class="st">"stop"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>input</dt>
 <dd><p>Pass a data frame for checking</p></dd>
+
+
 <dt>requirements</dt>
 <dd><p>A character vector specifying the required variable names</p></dd>
+
+
 <dt>return</dt>
 <dd><p>A character string specifying what to return.
 The default value is "stop". Also accepts "names" and "warning".</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The default behaviour is to return an error message, informing the
+    
+
+<p>The default behaviour is to return an error message, informing the
 user what variables are not included. When <code>return</code> is set to "names", a
 character vector containing the unmatched variable names is returned.</p>
     </div>
@@ -207,21 +214,21 @@ character vector containing the unmatched variable names is returned.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co"># Return error message</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">check_inputs</span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal.Length"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#' # Return warning message</span></span>
-<span class="r-in"><span class="fu">check_inputs</span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal.Length"</span>, <span class="st">"mpg"</span><span class="op">)</span>, return <span class="op">=</span> <span class="st">"warning"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return error message</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">check_inputs</span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal.Length"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#' # Return warning message</span></span></span>
+<span class="r-in"><span><span class="fu">check_inputs</span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal.Length"</span>, <span class="st">"mpg"</span><span class="op">)</span>, return <span class="op">=</span> <span class="st">"warning"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following variables are not included in the input data frame:</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>  mpg</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return variable names</span></span>
-<span class="r-in"><span class="fu">check_inputs</span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>, <span class="st">"RandomVariable"</span><span class="op">)</span>, return <span class="op">=</span> <span class="st">"names"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return variable names</span></span></span>
+<span class="r-in"><span><span class="fu">check_inputs</span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>, <span class="st">"RandomVariable"</span><span class="op">)</span>, return <span class="op">=</span> <span class="st">"names"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RandomVariable"</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -236,7 +243,7 @@ character vector containing the unmatched variable names is returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

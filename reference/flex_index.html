@@ -20,7 +20,7 @@ freedom for employees to work at a time of their choice."><meta property="og:ima
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,25 +164,30 @@ freedom for employees to work at a time of their choice.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">flex_index</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="cn">NULL</span>,
-  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,
-  active_threshold <span class="op">=</span> <span class="fl">0</span>,
-  start_hour <span class="op">=</span> <span class="st">"0900"</span>,
-  end_hour <span class="op">=</span> <span class="st">"1700"</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  plot_method <span class="op">=</span> <span class="st">"common"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">flex_index</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,</span>
+<span>  active_threshold <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  start_hour <span class="op">=</span> <span class="st">"0900"</span>,</span>
+<span>  end_hour <span class="op">=</span> <span class="st">"1700"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  plot_method <span class="op">=</span> <span class="st">"common"</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"binary"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Hourly Collaboration query to be passed through as data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>A string specifying the HR attribute to cut the data by.
 Defaults to NULL. This only affects the function when "table" is returned.</p></dd>
+
+
 <dt>signals</dt>
 <dd><p>Character vector to specify which collaboration metrics to
 use:</p><ul><li><p>a combination of signals, such as <code>c("email", "IM")</code> (default)</p></li>
@@ -191,28 +196,54 @@ use:</p><ul><li><p>a combination of signals, such as <code>c("email", "IM")</cod
 <li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
 <li><p><code>"meetings"</code> for Meetings only</p></li>
 </ul></dd>
+
+
 <dt>active_threshold</dt>
 <dd><p>A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as <em>active</em>. Defaults to 0.</p></dd>
+
+
 <dt>start_hour</dt>
 <dd><p>A character vector specifying starting hours, e.g. <code>"0900"</code></p></dd>
+
+
 <dt>end_hour</dt>
 <dd><p>A character vector specifying end hours, e.g. <code>"1700"</code></p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"data"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>plot_method</dt>
 <dd><p>Character string for determining which plot to return.</p><ul><li><p><code>"sample"</code> plots a sample of ten working pattern</p></li>
 <li><p><code>"common"</code> plots the ten most common working patterns</p></li>
 <li><p><code>"time"</code> plots the Flexibility Index for the group over time</p></li>
 </ul></dd>
+
+
+<dt>mode</dt>
+<dd><p>String specifying aggregation method for plot. Only applicable
+when <code>return = "plot"</code>. Valid options include:</p><ul><li><p><code>"binary"</code>: convert hourly activity into binary blocks. In the plot, each
+block would display as solid.</p></li>
+<li><p><code>"prop"</code>: calculate proportion of signals in each hour over total signals
+across 24 hours, then average across all work weeks. In the plot, each
+block would display as a heatmap.</p></li>
+</ul></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A random of ten working patterns are displayed,
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A random of ten working patterns are displayed,
 with diagnostic data and the Flexibility Index shown on the plot.</p></li>
 <li><p><code>"data"</code>: data frame. The original input data appended with the
 Flexibility Index and the component scores. Can be used with
@@ -275,7 +306,8 @@ is preferred.</p>
 
 <p>The raw data containing the computed Flexibility Index can be returned with
 the following:</p>
-<p></p><div class="sourceCode"><pre><code></code></pre><p></p></div>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1"></a>em_data <span class="op">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="st">  </span><span class="kw">flex_index</span>(<span class="dt">return =</span> <span class="st">"data"</span>)</span></code></pre><p></p></div>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -294,36 +326,36 @@ the following:</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Create a sample small dataset</span></span>
-<span class="r-in"><span class="va">orgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Customer Service"</span>, <span class="st">"Financial Planning"</span>, <span class="st">"Biz Dev"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op">&lt;-</span> <span class="va">em_data</span><span class="op">[</span><span class="va">em_data</span><span class="op">$</span><span class="va">Organization</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">orgs</span>, <span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Examples of how to test the plotting options individually</span></span>
-<span class="r-in"><span class="co"># Sample of 10 work patterns</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">flex_index</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span>, plot_method <span class="op">=</span> <span class="st">"sample"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create a sample small dataset</span></span></span>
+<span class="r-in"><span><span class="va">orgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Customer Service"</span>, <span class="st">"Financial Planning"</span>, <span class="st">"Biz Dev"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op">&lt;-</span> <span class="va">em_data</span><span class="op">[</span><span class="va">em_data</span><span class="op">$</span><span class="va">Organization</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">orgs</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Examples of how to test the plotting options individually</span></span></span>
+<span class="r-in"><span><span class="co"># Sample of 10 work patterns</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">flex_index</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span>, plot_method <span class="op">=</span> <span class="st">"sample"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="flex_index-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># 10 most common work patterns</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">flex_index</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span>, plot_method <span class="op">=</span> <span class="st">"common"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># 10 most common work patterns</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">flex_index</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span>, plot_method <span class="op">=</span> <span class="st">"common"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="flex_index-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Plot Flexibility Index over time</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">flex_index</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span>, plot_method <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Plot Flexibility Index over time</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">flex_index</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span>, plot_method <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="flex_index-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a summary table with the computed Flexibility Index</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">flex_index</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a summary table with the computed Flexibility Index</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">flex_index</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Organization       TakeBreaks ChangeHours ControlHours FlexibilityIndex</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Biz Dev                0.120        1                0            0.373</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Customer Service       0.115        0.948            0            0.354</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Financial Planning     0.083<span style="text-decoration: underline;">3</span>       0.954            0            0.346</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -338,7 +370,7 @@ the following:</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -19,7 +19,7 @@ Additional options available to return the underlying frequency table."><meta pr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,37 +162,49 @@ Additional options available to return the underlying frequency table.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_hist</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">metric</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  binwidth <span class="op">=</span> <span class="fl">1</span>,
-  ncol <span class="op">=</span> <span class="cn">NULL</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_hist</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">metric</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  binwidth <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>String containing the name of the metric,
 e.g. "Collaboration_hours"</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
 instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>binwidth</dt>
 <dd><p>Numeric value for setting <code>binwidth</code> argument within
 <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">ggplot2::geom_histogram()</a></code>. Defaults to 1.</p></dd>
+
+
 <dt>ncol</dt>
 <dd><p>Numeric value setting the number of columns on the plot. Defaults
 to <code>NULL</code> (automatic).</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
@@ -200,10 +212,16 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"data"</code></p></li>
 <li><p><code>"frequency"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A faceted histogram for the metric.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A faceted histogram for the metric.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 <li><p><code>"data"</code>: data frame. Data with calculated person averages.</p></li>
 <li><p><code>"frequency</code>: list of data frames. Each data frame contains the
@@ -234,23 +252,23 @@ frequencies used in each panel of the plotted histogram.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return plot for whole organization</span></span>
-<span class="r-in"><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return plot for whole organization</span></span></span>
+<span class="r-in"><span><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_hist-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return plot</span></span>
-<span class="r-in"><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return plot</span></span></span>
+<span class="r-in"><span><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_hist-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return plot but coerce plot to two columns</span></span>
-<span class="r-in"><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return plot but coerce plot to two columns</span></span></span>
+<span class="r-in"><span><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_hist-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary table</span></span>
-<span class="r-in"><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>,</span>
-<span class="r-in">            metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span>
-<span class="r-in">            hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
-<span class="r-in">            return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="fu">create_hist</span><span class="op">(</span><span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>            metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span></span>
+<span class="r-in"><span>            hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span></span>
+<span class="r-in"><span>            return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    group                 mean median   max   min Employee_Count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
@@ -283,7 +301,7 @@ frequencies used in each panel of the plotted histogram.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ Working Assessment Query with core Workplace Analytics variables as an input."><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,26 +160,38 @@ Working Assessment Query with core Workplace Analytics variables as an input.</p
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meetingtype_dist_ca</span><span class="op">(</span><span class="va">data</span>, hrvar <span class="op">=</span> <span class="cn">NULL</span>, mingroup <span class="op">=</span> <span class="fl">5</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meetingtype_dist_ca</span><span class="op">(</span><span class="va">data</span>, hrvar <span class="op">=</span> <span class="cn">NULL</span>, mingroup <span class="op">=</span> <span class="fl">5</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Meeting Query data frame. Must contain the variables <code>Attendee</code> and <code>DurationHours</code></p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>Character string to specify the HR attribute to split the data by.</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group size. Defaults to 5.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. A matrix of meeting types with duration and the
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. A matrix of meeting types with duration and the
 number of attendees. If using a Ways of Working Assessment query with
 <code>meetingtype_dist_ca()</code> and an HR attribute with more than one unique value
 is passed to <code>hrvar</code>, a stacked bar plot is returned.</p></li>
@@ -223,7 +235,12 @@ is passed to <code>hrvar</code>, a stacked bar plot is returned.</p></li>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -285,7 +302,7 @@ is passed to <code>hrvar</code>, a stacked bar plot is returned.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

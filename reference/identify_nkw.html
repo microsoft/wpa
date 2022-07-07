@@ -23,7 +23,7 @@ added."><meta property="og:image" content="https://microsoft.github.io/wpa/logo.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -169,13 +169,15 @@ added.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">identify_nkw</span><span class="op">(</span><span class="va">data</span>, collab_threshold <span class="op">=</span> <span class="fl">5</span>, return <span class="op">=</span> <span class="st">"data_summary"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">identify_nkw</span><span class="op">(</span><span class="va">data</span>, collab_threshold <span class="op">=</span> <span class="fl">5</span>, return <span class="op">=</span> <span class="st">"data_summary"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>collab_threshold</dt>
 <dd><p>Positive numeric value representing the collaboration
 hours threshold that should be exceeded as an average for the entire
@@ -183,6 +185,8 @@ analysis period for the employee to be categorized as a knowledge worker
 ("kw"). Default is set to 5 collaboration hours. Any versions after v1.4.3,
 this uses a "greater than or equal to" logic (<code>&gt;=</code>), in which case persons
 with exactly 5 collaboration hours will pass.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"text"</code></p></li>
@@ -190,10 +194,16 @@ following strings:</p><ul><li><p><code>"text"</code></p></li>
 <li><p><code>"data_clean"</code></p></li>
 <li><p><code>"data_summary"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"text"</code>: string. Returns a diagnostic message.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"text"</code>: string. Returns a diagnostic message.</p></li>
 <li><p><code>"data_with_flag"</code>: data frame. Original input data with an additional
 column containing the <code>kw</code>/<code>nkw</code> flag.</p></li>
 <li><p><code>"data_clean"</code>: data frame. Data frame with non-knowledge workers
@@ -243,7 +253,7 @@ the number and % of non-knowledge workers.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

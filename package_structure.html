@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -159,7 +159,7 @@
 <p>Examples: - <code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code> - <code><a href="reference/meeting_summary.html">meeting_summary()</a></code> - <code><a href="reference/email_trend.html">email_trend()</a></code> - <code><a href="reference/collaboration_sum.html">collaboration_sum()</a></code></p>
 <p>Here is an example of <code><a href="reference/collaboration_sum.html">collaboration_sum()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/collaboration_sum2.jpg" align="center" width="80%"></p>
 <p>For the standard functions, there are six basic <strong>plot types</strong> which could be paired with six different <strong>key metrics</strong>. The six plot types are:</p>
 <ol style="list-style-type: decimal"><li>
@@ -190,7 +190,7 @@
 </ol><p>You can combine the <strong>plot types</strong> and the <strong>key metrics</strong> (as prefixes and suffixes) to generate the desired output, e.g. <code>email_</code> and <code>dist</code> for <code><a href="reference/email_dist.html">email_dist()</a></code>.</p>
 <p>For more advanced users, there are also a number of <strong>flexible analysis</strong> functions which allow you to generate the plots with <em>any</em> Workplace Analytics metric, where the metric name needs to be supplied in addition to the function. For instance,</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/create_bar.html">create_bar</a></span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Email_hours"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/create_bar.html">create_bar</a></span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Email_hours"</span><span class="op">)</span></span></code></pre></div>
 <p>would return a similar result as <code>email_summary(sq_data)</code>, but where you can replace the metric with one of your own choice. Here are some of the available flexible analysis functions, which are typically prefixed with <code>create_</code>:</p>
 <ul><li><code><a href="reference/create_bar.html">create_bar()</a></code></li>
 <li><code><a href="reference/create_bar_asis.html">create_bar_asis()</a></code></li>
@@ -253,7 +253,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

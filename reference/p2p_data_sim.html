@@ -20,7 +20,7 @@ City."><meta property="og:image" content="https://microsoft.github.io/wpa/logo.p
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,24 +164,33 @@ data fields are also simulated for <code>Organization</code>, <code>LevelDesigna
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">p2p_data_sim</span><span class="op">(</span>dim <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">300</span>, nei <span class="op">=</span> <span class="fl">5</span>, p <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">p2p_data_sim</span><span class="op">(</span>dim <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">300</span>, nei <span class="op">=</span> <span class="fl">5</span>, p <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dim</dt>
 <dd><p>Integer constant, the dimension of the starting lattice.</p></dd>
+
+
 <dt>size</dt>
 <dd><p>Integer constant, the size of the lattice along each dimension.</p></dd>
+
+
 <dt>nei</dt>
 <dd><p>Integer constant, the neighborhood within which the vertices of
 the lattice will be connected.</p></dd>
+
+
 <dt>p</dt>
 <dd><p>Real constant between zero and one, the rewiring probability.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>data frame with the same column structure as a person-to-person flexible
+    
+
+<p>data frame with the same column structure as a person-to-person flexible
 query. This has an edgelist structure and can be used directly as an input
 to <code><a href="network_p2p.html">network_p2p()</a></code>.</p>
     </div>
@@ -213,8 +222,8 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Simulate a p2p dataset with 800 edges</span></span>
-<span class="r-in"><span class="fu">p2p_data_sim</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">200</span>, nei <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simulate a p2p dataset with 800 edges</span></span></span>
+<span class="r-in"><span><span class="fu">p2p_data_sim</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">200</span>, nei <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     TieOrigin_PersonId TieDestination_PersonId TieOrigin_Organization</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1             SIM_ID_1              SIM_ID_166                  Org F</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2             SIM_ID_2                SIM_ID_3                  Org F</span>
@@ -3419,7 +3428,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 <span class="r-out co"><span class="r-pr">#&gt;</span> 798              1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 799              1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 800              1</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -3434,7 +3443,7 @@ disabled. Size of the network can be changing the arguments <code>size</code> an
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

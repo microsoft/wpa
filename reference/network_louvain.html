@@ -21,7 +21,7 @@ method. The 'igraph' implementation of the Louvain method is used."><meta proper
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -165,45 +165,61 @@ method. The 'igraph' implementation of the Louvain method is used.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">network_louvain</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  bg_fill <span class="op">=</span> <span class="st">"#000000"</span>,
-  font_col <span class="op">=</span> <span class="st">"#FFFFFF"</span>,
-  node_alpha <span class="op">=</span> <span class="fl">0.8</span>,
-  algorithm <span class="op">=</span> <span class="st">"mds"</span>,
-  path <span class="op">=</span> <span class="st">"network_p2p_louvain"</span>,
-  desc_hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Organization"</span>, <span class="st">"LevelDesignation"</span>, <span class="st">"FunctionType"</span><span class="op">)</span>,
-  return <span class="op">=</span> <span class="st">"plot-louvain"</span>,
-  size_threshold <span class="op">=</span> <span class="fl">5000</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">network_louvain</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  bg_fill <span class="op">=</span> <span class="st">"#000000"</span>,</span>
+<span>  font_col <span class="op">=</span> <span class="st">"#FFFFFF"</span>,</span>
+<span>  node_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>  algorithm <span class="op">=</span> <span class="st">"mds"</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"network_p2p_louvain"</span>,</span>
+<span>  desc_hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Organization"</span>, <span class="st">"LevelDesignation"</span>, <span class="st">"FunctionType"</span><span class="op">)</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot-louvain"</span>,</span>
+<span>  size_threshold <span class="op">=</span> <span class="fl">5000</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data frame containing a person-to-person query.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the label for the HR attribute.</p></dd>
+
+
 <dt>bg_fill</dt>
 <dd><p>String to specify background fill colour.</p></dd>
+
+
 <dt>font_col</dt>
 <dd><p>String to specify font and link colour.</p></dd>
+
+
 <dt>node_alpha</dt>
 <dd><p>A numeric value between 0 and 1 to specify the transparency
 of the nodes. Defaults to 0.7.</p></dd>
+
+
 <dt>algorithm</dt>
 <dd><p>String to specify the node placement algorithm to be used.
 Defaults to <code>"mds"</code> for the deterministic multi-dimensional scaling of
 nodes. See
 <a href="https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html" class="external-link">https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a full
 list of options.</p></dd>
+
+
 <dt>path</dt>
 <dd><p>File path for saving the PDF output. Defaults to a timestamped
 path based on current parameters.</p></dd>
+
+
 <dt>desc_hrvar</dt>
 <dd><p>Character vector of length 3 containing the HR attributes
 to use when returning the <code>"describe"</code> output. See <code><a href="network_describe.html">network_describe()</a></code>.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what output to return. Defaults to "plot-louvain". Valid
 return options include:</p><ul><li><p><code>'plot-louvain'</code>: return a network plot coloured by Louvain communities,
@@ -221,16 +237,21 @@ identified communities. The first data frame is a summary table of all the
 communities.</p></li>
 <li><p><code>'network'</code>: return 'igraph' object.</p></li>
 </ul></dd>
+
+
 <dt>size_threshold</dt>
 <dd><p>Numeric value representing the maximum number of edges
 before <code><a href="network_leiden.html">network_leiden()</a></code> switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as <code>0</code> to
 coerce to a fast plotting method every time, and <code>Inf</code> to always use the
 default plotting method (with 'ggraph').</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>See <code>return</code>.</p>
+    
+
+<p>See <code>return</code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -248,15 +269,15 @@ default plotting method (with 'ggraph').</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Simulate a small person-to-person dataset</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return louvain, console, plot</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_louvain</span><span class="op">(</span>path <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span class="r-in">                  return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simulate a small person-to-person dataset</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return louvain, console, plot</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_louvain</span><span class="op">(</span>path <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>                  return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="network_louvain-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -271,7 +292,7 @@ default plotting method (with 'ggraph').</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

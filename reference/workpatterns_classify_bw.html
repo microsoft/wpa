@@ -21,7 +21,7 @@ week-based ('bw') method."><meta property="og:image" content="https://microsoft.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -165,25 +165,30 @@ week-based ('bw') method.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">workpatterns_classify_bw</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="cn">NULL</span>,
-  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,
-  start_hour <span class="op">=</span> <span class="st">"0900"</span>,
-  end_hour <span class="op">=</span> <span class="st">"1700"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  active_threshold <span class="op">=</span> <span class="fl">0</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">workpatterns_classify_bw</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,</span>
+<span>  start_hour <span class="op">=</span> <span class="st">"0900"</span>,</span>
+<span>  end_hour <span class="op">=</span> <span class="st">"1700"</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  exp_hours <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  active_threshold <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame containing email by hours data.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>A string specifying the HR attribute to cut the data by.
 Defaults to NULL. This only affects the function when "table" is returned.</p></dd>
+
+
 <dt>signals</dt>
 <dd><p>Character vector to specify which collaboration metrics to
 use:</p><ul><li><p>a combination of signals, such as <code>c("email", "IM")</code> (default)</p></li>
@@ -192,22 +197,38 @@ use:</p><ul><li><p>a combination of signals, such as <code>c("email", "IM")</cod
 <li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
 <li><p><code>"meetings"</code> for Meetings only</p></li>
 </ul></dd>
+
+
 <dt>start_hour</dt>
 <dd><p>A character vector specifying starting hours, e.g.
 <code>"0900"</code>. Note that this currently only supports <strong>hourly</strong> increments. If
 the official hours specifying checking in and 9 AM and checking out at 5
 PM, then <code>"0900"</code> should be supplied here.</p></dd>
+
+
 <dt>end_hour</dt>
 <dd><p>A character vector specifying starting hours, e.g. <code>"1700"</code>.
 Note that this currently only supports <strong>hourly</strong> increments. If the
 official hours specifying checking in and 9 AM and checking out at 5 PM,
 then <code>"1700"</code> should be supplied here.</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
+<dt>exp_hours</dt>
+<dd><p>Numeric value representing the number of hours the population
+is expected to be active for throughout the workday. By default, this uses
+the difference between <code>end_hour</code> and <code>start_hour</code>.</p></dd>
+
+
 <dt>active_threshold</dt>
 <dd><p>A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as <em>active</em>. Defaults to 0.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>Character vector to specify what to return.
 Valid options include:</p><ul><li><p><code>"plot"</code>: returns a grid showing the distribution of archetypes by
@@ -222,10 +243,16 @@ shown over time</p></li>
 <li><p><code>"plot-hrvar"</code>: returns a bar plot showing the count of archetypes,
 faceted by the supplied HR attribute.</p></li>
 </ul></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: returns a summary grid plot of the classified archetypes
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: returns a summary grid plot of the classified archetypes
 (default). A 'ggplot' object.</p></li>
 <li><p><code>"data"</code>: returns a data frame of the raw data with the classified
 archetypes</p></li>
@@ -266,7 +293,7 @@ faceted by the supplied HR attribute. A 'ggplot' object.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

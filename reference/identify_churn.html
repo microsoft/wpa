@@ -19,7 +19,7 @@ n (n1) weeks of the data is present in the last n (n2) weeks of the data."><meta
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,35 +162,49 @@ from the dataset by measuring whether an employee who is present in the first
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">identify_churn</span><span class="op">(</span><span class="va">data</span>, n1 <span class="op">=</span> <span class="fl">6</span>, n2 <span class="op">=</span> <span class="fl">6</span>, return <span class="op">=</span> <span class="st">"message"</span>, flip <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">identify_churn</span><span class="op">(</span><span class="va">data</span>, n1 <span class="op">=</span> <span class="fl">6</span>, n2 <span class="op">=</span> <span class="fl">6</span>, return <span class="op">=</span> <span class="st">"message"</span>, flip <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Person Query as a data frame. Must contain a <code>PersonId</code>.</p></dd>
+
+
 <dt>n1</dt>
 <dd><p>A numeric value specifying the number of weeks at the beginning of
 the period that defines the measured employee set. Defaults to 6.</p></dd>
+
+
 <dt>n2</dt>
 <dd><p>A numeric value specifying the number of weeks at the end of the
 period to calculate whether employees have churned from the data. Defaults
 to 6.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"message"</code> (default)</p></li>
 <li><p><code>"text"</code></p></li>
 <li><p><code>"data"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>flip</dt>
 <dd><p>Logical, defaults to FALSE. This determines whether to reverse
 the logic of identifying the non-overlapping set. If set to <code>TRUE</code>, this
 effectively identifies new-joiners, or those who were not present in the
 first n weeks of the data but were present in the final n weeks.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"message"</code>: Message on console. A diagnostic message.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"message"</code>: Message on console. A diagnostic message.</p></li>
 <li><p><code>"text"</code>: String. A diagnostic message.</p></li>
 <li><p><code>"data"</code>: Character vector containing the the <code>PersonId</code> of
 employees who have been identified as churned.</p></li>
@@ -242,10 +256,10 @@ low-collaboration role (to the extent that he/she becomes inactive).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">identify_churn</span><span class="op">(</span>n1 <span class="op">=</span> <span class="fl">3</span>, n2 <span class="op">=</span> <span class="fl">3</span>, return <span class="op">=</span> <span class="st">"message"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">identify_churn</span><span class="op">(</span>n1 <span class="op">=</span> <span class="fl">3</span>, n2 <span class="op">=</span> <span class="fl">3</span>, return <span class="op">=</span> <span class="st">"message"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Churn:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> There are 0 employees from 2019-11-03 to 2019-11-17 (3 weeks) who are no longer present in 2020-01-12 to 2020-01-26 (3 weeks).</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -260,7 +274,7 @@ low-collaboration role (to the extent that he/she becomes inactive).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

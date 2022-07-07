@@ -20,7 +20,7 @@ This function is used within meeting_tm_report()."><meta property="og:image" con
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -163,30 +163,44 @@ This function is used within <code><a href="meeting_tm_report.html">meeting_tm_r
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tm_freq</span><span class="op">(</span><span class="va">data</span>, token <span class="op">=</span> <span class="st">"words"</span>, stopwords <span class="op">=</span> <span class="cn">NULL</span>, keep <span class="op">=</span> <span class="fl">100</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tm_freq</span><span class="op">(</span><span class="va">data</span>, token <span class="op">=</span> <span class="st">"words"</span>, stopwords <span class="op">=</span> <span class="cn">NULL</span>, keep <span class="op">=</span> <span class="fl">100</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Meeting Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>token</dt>
 <dd><p>A character vector accepting either <code>"words"</code> or <code>"ngram"</code>,
 determining type of tokenisation to return.</p></dd>
+
+
 <dt>stopwords</dt>
 <dd><p>A character vector OR a single-column data frame labelled
 <code>'word'</code> containing custom stopwords to remove.</p></dd>
+
+
 <dt>keep</dt>
 <dd><p>A numeric vector specifying maximum number of words to keep.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A circular bar plot.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A circular bar plot.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table.</p></li>
 </ul></div>
     <div id="details">
@@ -209,15 +223,15 @@ There is an option to remove stopwords by passing a data frame into the
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tm_freq</span><span class="op">(</span><span class="va">mt_data</span>, token <span class="op">=</span> <span class="st">"words"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tm_freq</span><span class="op">(</span><span class="va">mt_data</span>, token <span class="op">=</span> <span class="st">"words"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Selecting by n</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>ggrepel: 2 unlabeled data points (too many overlaps). Consider increasing max.overlaps</span>
 <span class="r-plt img"><img src="tm_freq-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">tm_freq</span><span class="op">(</span><span class="va">mt_data</span>, token <span class="op">=</span> <span class="st">"ngrams"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">tm_freq</span><span class="op">(</span><span class="va">mt_data</span>, token <span class="op">=</span> <span class="st">"ngrams"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Selecting by n</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>ggrepel: 55 unlabeled data points (too many overlaps). Consider increasing max.overlaps</span>
 <span class="r-plt img"><img src="tm_freq-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -232,7 +246,7 @@ There is an option to remove stopwords by passing a data frame into the
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

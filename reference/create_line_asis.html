@@ -20,7 +20,7 @@ into the function. The only requirement is that a date_var is provided for the x
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,45 +164,64 @@ into the function. The only requirement is that a <code>date_var</code> is provi
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_line_asis</span><span class="op">(</span>
-  <span class="va">data</span>,
-  date_var <span class="op">=</span> <span class="st">"Date"</span>,
-  <span class="va">metric</span>,
-  title <span class="op">=</span> <span class="cn">NULL</span>,
-  subtitle <span class="op">=</span> <span class="cn">NULL</span>,
-  caption <span class="op">=</span> <span class="cn">NULL</span>,
-  ylab <span class="op">=</span> <span class="va">date_var</span>,
-  xlab <span class="op">=</span> <span class="va">metric</span>,
-  line_colour <span class="op">=</span> <span class="fu"><a href="rgb2hex.html">rgb2hex</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span>, <span class="fl">212</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_line_asis</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  date_var <span class="op">=</span> <span class="st">"Date"</span>,</span>
+<span>  <span class="va">metric</span>,</span>
+<span>  title <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  subtitle <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  caption <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="va">date_var</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="va">metric</span>,</span>
+<span>  line_colour <span class="op">=</span> <span class="fu"><a href="rgb2hex.html">rgb2hex</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span>, <span class="fl">212</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Plotting data as a data frame.</p></dd>
+
+
 <dt>date_var</dt>
 <dd><p>String containing name of variable for the horizontal axis.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>String containing name of variable representing the line.</p></dd>
+
+
 <dt>title</dt>
 <dd><p>Title of the plot.</p></dd>
+
+
 <dt>subtitle</dt>
 <dd><p>Subtitle of the plot.</p></dd>
+
+
 <dt>caption</dt>
 <dd><p>Caption of the plot.</p></dd>
+
+
 <dt>ylab</dt>
 <dd><p>Y-axis label for the plot (group axis)</p></dd>
+
+
 <dt>xlab</dt>
 <dd><p>X-axis label of the plot (bar axis).</p></dd>
+
+
 <dt>line_colour</dt>
 <dd><p>String to specify colour to use for the line.
 Hex codes are accepted. You can also supply
 RGB values via <code><a href="rgb2hex.html">rgb2hex()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a 'ggplot' object representing a line plot.</p>
+    
+
+<p>Returns a 'ggplot' object representing a line plot.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -241,7 +260,12 @@ RGB values via <code><a href="rgb2hex.html">rgb2hex()</a></code>.</p></dd>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -305,25 +329,25 @@ RGB values via <code><a href="rgb2hex.html">rgb2hex()</a></code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Median `Emails_sent` grouped by `Date`</span></span>
-<span class="r-in"><span class="co"># Without Person Averaging</span></span>
-<span class="r-in"><span class="va">med_df</span> <span class="op">&lt;-</span></span>
-<span class="r-in">  <span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Date</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Emails_sent_median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">Emails_sent</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">med_df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">create_line_asis</span><span class="op">(</span></span>
-<span class="r-in">    date_var <span class="op">=</span> <span class="st">"Date"</span>,</span>
-<span class="r-in">    metric <span class="op">=</span> <span class="st">"Emails_sent_median"</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Median Emails Sent"</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"Person Averaging Not Applied"</span>,</span>
-<span class="r-in">    caption <span class="op">=</span> <span class="fu"><a href="extract_date_range.html">extract_date_range</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Median `Emails_sent` grouped by `Date`</span></span></span>
+<span class="r-in"><span><span class="co"># Without Person Averaging</span></span></span>
+<span class="r-in"><span><span class="va">med_df</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Date</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Emails_sent_median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">Emails_sent</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">med_df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_line_asis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    date_var <span class="op">=</span> <span class="st">"Date"</span>,</span></span>
+<span class="r-in"><span>    metric <span class="op">=</span> <span class="st">"Emails_sent_median"</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Median Emails Sent"</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"Person Averaging Not Applied"</span>,</span></span>
+<span class="r-in"><span>    caption <span class="op">=</span> <span class="fu"><a href="extract_date_range.html">extract_date_range</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_line_asis-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -338,7 +362,7 @@ RGB values via <code><a href="rgb2hex.html">rgb2hex()</a></code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

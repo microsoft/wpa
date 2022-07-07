@@ -25,7 +25,7 @@ longer runtime compared to identify_outlier()."><meta property="og:image" conten
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -174,20 +174,25 @@ longer runtime compared to <code><a href="identify_outlier.html">identify_outlie
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">remove_outliers</span><span class="op">(</span><span class="va">data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">remove_outliers</span><span class="op">(</span><span class="va">data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>Character string containing the name of the metric,
 e.g. "Collaboration_hours"</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a new data frame, "cleaned_data" with all metrics,
+    
+
+<p>Returns a new data frame, "cleaned_data" with all metrics,
 having removed the person-weeks that are below 2 standard
 deviations of each individual's collaboration activity.</p>
     </div>
@@ -243,7 +248,7 @@ deviations of each individual's collaboration activity.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

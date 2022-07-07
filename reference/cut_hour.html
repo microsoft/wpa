@@ -18,7 +18,7 @@ vector."><meta property="og:image" content="https://microsoft.github.io/wpa/logo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,29 +160,40 @@ vector.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cut_hour</span><span class="op">(</span><span class="va">metric</span>, <span class="va">cuts</span>, unit <span class="op">=</span> <span class="st">"hours"</span>, lbound <span class="op">=</span> <span class="fl">0</span>, ubound <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cut_hour</span><span class="op">(</span><span class="va">metric</span>, <span class="va">cuts</span>, unit <span class="op">=</span> <span class="st">"hours"</span>, lbound <span class="op">=</span> <span class="fl">0</span>, ubound <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>metric</dt>
 <dd><p>A numeric variable representing hours.</p></dd>
+
+
 <dt>cuts</dt>
 <dd><p>A numeric vector of minimum length 3 to represent the
 cut points required. The minimum and maximum values provided in the vector
 are inclusive.</p></dd>
+
+
 <dt>unit</dt>
 <dd><p>String to specify the unit of the labels. Defaults to "hours".</p></dd>
+
+
 <dt>lbound</dt>
 <dd><p>Numeric. Specifies the lower bound (inclusive) value for the
 minimum label. Defaults to 0.</p></dd>
+
+
 <dt>ubound</dt>
 <dd><p>Numeric. Specifies the upper bound (inclusive) value for the
 maximum label. Defaults to 100.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Character vector representing a converted categorical variable, appended
+    
+
+<p>Character vector representing a converted categorical variable, appended
 with the label of the unit. See <code>examples</code> for more information.</p>
     </div>
     <div id="details">
@@ -215,8 +226,8 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Direct use</span></span>
-<span class="r-in"><span class="fu">cut_hour</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, cuts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Direct use</span></span></span>
+<span class="r-in"><span><span class="fu">cut_hour</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, cuts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt; 15 hours    &lt; 15 hours    &lt; 15 hours    &lt; 15 hours    &lt; 15 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt; 15 hours    &lt; 15 hours    &lt; 15 hours    &lt; 15 hours    &lt; 15 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt; 15 hours    &lt; 15 hours    &lt; 15 hours    &lt; 15 hours    &lt; 15 hours   </span>
@@ -224,9 +235,9 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [21] 20 - 25 hours 20 - 25 hours 20 - 25 hours 20 - 25 hours 20 - 25 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [26] 25+ hours     25+ hours     25+ hours     25+ hours     25+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: &lt; 15 hours 15 - 20 hours 20 - 25 hours 25+ hours</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Use on a query</span></span>
-<span class="r-in"><span class="fu">cut_hour</span><span class="op">(</span><span class="va">sq_data</span><span class="op">$</span><span class="va">Collaboration_hours</span>, cuts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Use on a query</span></span></span>
+<span class="r-in"><span><span class="fu">cut_hour</span><span class="op">(</span><span class="va">sq_data</span><span class="op">$</span><span class="va">Collaboration_hours</span>, cuts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     [1] 15 - 20 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     [6] 15 - 20 hours 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [11] 15 - 20 hours 15 - 20 hours 15 - 20 hours 20+ hours     15 - 20 hours</span>
@@ -2917,7 +2928,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [13436] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [13441] 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: &lt; 10 hours 10 - 15 hours 15 - 20 hours 20+ hours</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -2932,7 +2943,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

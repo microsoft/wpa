@@ -18,7 +18,7 @@ classifications optimised for other 'wpa' functions."><meta property="og:image" 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,7 +160,7 @@ classifications optimised for other 'wpa' functions.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">import_wpa</span><span class="op">(</span><span class="va">x</span>, standardise <span class="op">=</span> <span class="cn">FALSE</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">import_wpa</span><span class="op">(</span><span class="va">x</span>, standardise <span class="op">=</span> <span class="cn">FALSE</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -169,20 +169,27 @@ classifications optimised for other 'wpa' functions.</p>
 <dd><p>String containing the path to the Workplace Analytics query to be
 imported. The input file must be a CSV file, and the file extension must be
 explicitly entered, e.g. <code>"/files/standard query.csv"</code></p></dd>
+
+
 <dt>standardise</dt>
 <dd><p>logical. If TRUE, <code>import_wpa()</code> runs <code><a href="standardise_pq.html">standardise_pq()</a></code>
 to make a Collaboration Assessment query's columns name standard and
 consistent with a Standard Person Query. Note that this will have no effect
 if the query being imported is not a Ways of Working Assessment query.
 Defaults as FALSE.</p></dd>
+
+
 <dt>encoding</dt>
 <dd><p>String to specify encoding to be used within
 <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">data.table::fread()</a></code>. See <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">data.table::fread()</a></code> documentation for more
 information. Defaults to <code>'UTF-8'</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>tibble</code> is returned.</p>
+    
+
+<p>A <code>tibble</code> is returned.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -212,7 +219,7 @@ A data frame is returned by the function (not a <code>data.table</code>).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

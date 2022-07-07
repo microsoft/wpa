@@ -21,7 +21,7 @@ Additional options available to return a summary table."><meta property="og:imag
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -166,73 +166,102 @@ Additional options available to return a summary table.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_stacked</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>, <span class="st">"Email_hours"</span><span class="op">)</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  stack_colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#1d627e"</span>, <span class="st">"#34b1e2"</span>, <span class="st">"#b4d5dd"</span>, <span class="st">"#adc0cb"</span><span class="op">)</span>,
-  percent <span class="op">=</span> <span class="cn">FALSE</span>,
-  plot_title <span class="op">=</span> <span class="st">"Collaboration Hours"</span>,
-  plot_subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Average by"</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu"><a href="camel_clean.html">camel_clean</a></span><span class="op">(</span><span class="va">hrvar</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
-  legend_lab <span class="op">=</span> <span class="cn">NULL</span>,
-  rank <span class="op">=</span> <span class="st">"descending"</span>,
-  xlim <span class="op">=</span> <span class="cn">NULL</span>,
-  text_just <span class="op">=</span> <span class="fl">0.5</span>,
-  text_colour <span class="op">=</span> <span class="st">"#FFFFFF"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_stacked</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>, <span class="st">"Email_hours"</span><span class="op">)</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  stack_colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#1d627e"</span>, <span class="st">"#34b1e2"</span>, <span class="st">"#b4d5dd"</span>, <span class="st">"#adc0cb"</span><span class="op">)</span>,</span>
+<span>  percent <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  plot_title <span class="op">=</span> <span class="st">"Collaboration Hours"</span>,</span>
+<span>  plot_subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Average by"</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu"><a href="camel_clean.html">camel_clean</a></span><span class="op">(</span><span class="va">hrvar</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  legend_lab <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  rank <span class="op">=</span> <span class="st">"descending"</span>,</span>
+<span>  xlim <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  text_just <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  text_colour <span class="op">=</span> <span class="st">"#FFFFFF"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
 instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></dd>
+
+
 <dt>metrics</dt>
 <dd><p>A character vector to specify variables to be used
 in calculating the "Total" value, e.g. c("Meeting_hours", "Email_hours").
 The order of the variable names supplied determine the order in which they
 appear on the stacked plot.</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>Character vector specifying what to return, defaults to "plot".
 Valid inputs are "plot" and "table".</p></dd>
+
+
 <dt>stack_colours</dt>
 <dd><p>A character vector to specify the colour codes for the stacked bar charts.</p></dd>
+
+
 <dt>percent</dt>
 <dd><p>Logical value to determine whether to show labels as
 percentage signs. Defaults to <code>FALSE</code>.</p></dd>
+
+
 <dt>plot_title</dt>
 <dd><p>String. Option to override plot title.</p></dd>
+
+
 <dt>plot_subtitle</dt>
 <dd><p>String. Option to override plot subtitle.</p></dd>
+
+
 <dt>legend_lab</dt>
 <dd><p>String. Option to override legend title/label. Defaults to
 <code>NULL</code>, where the metric name will be populated instead.</p></dd>
+
+
 <dt>rank</dt>
 <dd><p>String specifying how to rank the bars. Valid inputs are:</p><ul><li><p><code>"descending"</code> - ranked highest to lowest from top to bottom (default).</p></li>
 <li><p><code>"ascending"</code> - ranked lowest to highest from top to bottom.</p></li>
 <li><p><code>NULL</code> - uses the original levels of the HR attribute.</p></li>
 </ul></dd>
+
+
 <dt>xlim</dt>
 <dd><p>An option to set max value in x axis.</p></dd>
+
+
 <dt>text_just</dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a> A numeric value
 controlling for the horizontal position of the text labels. Defaults to
 0.5.</p></dd>
+
+
 <dt>text_colour</dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a> String to specify
 colour to use for the text labels. Defaults to <code>"#FFFFFF"</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a 'ggplot' object by default, where 'plot' is passed in <code>return</code>.
+    
+
+<p>Returns a 'ggplot' object by default, where 'plot' is passed in <code>return</code>.
 When 'table' is passed, a summary table is returned as a data frame.</p>
     </div>
     <div id="see-also">
@@ -272,7 +301,12 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -330,29 +364,29 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">create_stacked</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span>
-<span class="r-in">                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>, <span class="st">"Email_hours"</span><span class="op">)</span>,</span>
-<span class="r-in">                 return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_stacked</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span></span>
+<span class="r-in"><span>                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>, <span class="st">"Email_hours"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                 return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_stacked-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">create_stacked</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"FunctionType"</span>,</span>
-<span class="r-in">                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>,</span>
-<span class="r-in">                             <span class="st">"Email_hours"</span>,</span>
-<span class="r-in">                             <span class="st">"Call_hours"</span>,</span>
-<span class="r-in">                             <span class="st">"Instant_Message_hours"</span><span class="op">)</span>,</span>
-<span class="r-in">                 return <span class="op">=</span> <span class="st">"plot"</span>,</span>
-<span class="r-in">                 rank <span class="op">=</span> <span class="st">"ascending"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_stacked</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"FunctionType"</span>,</span></span>
+<span class="r-in"><span>                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>,</span></span>
+<span class="r-in"><span>                             <span class="st">"Email_hours"</span>,</span></span>
+<span class="r-in"><span>                             <span class="st">"Call_hours"</span>,</span></span>
+<span class="r-in"><span>                             <span class="st">"Instant_Message_hours"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                 return <span class="op">=</span> <span class="st">"plot"</span>,</span></span>
+<span class="r-in"><span>                 rank <span class="op">=</span> <span class="st">"ascending"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_stacked-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">create_stacked</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"FunctionType"</span>,</span>
-<span class="r-in">                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>,</span>
-<span class="r-in">                             <span class="st">"Email_hours"</span>,</span>
-<span class="r-in">                             <span class="st">"Call_hours"</span>,</span>
-<span class="r-in">                             <span class="st">"Instant_Message_hours"</span><span class="op">)</span>,</span>
-<span class="r-in">                 return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_stacked</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"FunctionType"</span>,</span></span>
+<span class="r-in"><span>                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Meeting_hours"</span>,</span></span>
+<span class="r-in"><span>                             <span class="st">"Email_hours"</span>,</span></span>
+<span class="r-in"><span>                             <span class="st">"Call_hours"</span>,</span></span>
+<span class="r-in"><span>                             <span class="st">"Instant_Message_hours"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                 return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group       Meeting_hours Email_hours Call_hours Instant_Message_hours Total</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -365,7 +399,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> R_and_D              7.37        7.79       4.05                 0.593  19.8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Sales               16.2        14.7        8.92                 0.538  40.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: Employee_Count &lt;int&gt;</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -380,7 +414,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

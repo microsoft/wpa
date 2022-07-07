@@ -20,7 +20,7 @@ All numeric variables in the dataset are used as predictor variables."><meta pro
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -163,26 +163,35 @@ All numeric variables in the dataset are used as predictor variables.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">p_test</span><span class="op">(</span><span class="va">data</span>, <span class="va">outcome</span>, <span class="va">behavior</span>, paired <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">p_test</span><span class="op">(</span><span class="va">data</span>, <span class="va">outcome</span>, <span class="va">behavior</span>, paired <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>outcome</dt>
 <dd><p>A string specifying the name of a binary variable, i.e. can
 only contain the values 1 or 0. Used to group the two distributions.</p></dd>
+
+
 <dt>behavior</dt>
 <dd><p>A character vector specifying the column to be used as the
 behavior to test.</p></dd>
+
+
 <dt>paired</dt>
 <dd><p>Specify whether the dataset is paired or not. Defaults to
 <code>TRUE</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a numeric value representing the p-value outcome of the test.</p>
+    
+
+<p>Returns a numeric value representing the p-value outcome of the test.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -218,14 +227,14 @@ behavior to test.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Simulate a binary variable X</span></span>
-<span class="r-in"><span class="co"># Returns a single p-value</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">Email_hours</span> <span class="op">&gt;</span> <span class="fl">6</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">p_test</span><span class="op">(</span>outcome <span class="op">=</span> <span class="st">"X"</span>, behavior <span class="op">=</span> <span class="st">"External_network_size"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simulate a binary variable X</span></span></span>
+<span class="r-in"><span><span class="co"># Returns a single p-value</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">Email_hours</span> <span class="op">&gt;</span> <span class="fl">6</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">p_test</span><span class="op">(</span>outcome <span class="op">=</span> <span class="st">"X"</span>, behavior <span class="op">=</span> <span class="st">"External_network_size"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.847578e-82</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -240,7 +249,7 @@ behavior to test.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

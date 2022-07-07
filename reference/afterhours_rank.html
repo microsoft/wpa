@@ -20,7 +20,7 @@ hours of After-Hours Collaboration Hours."><meta property="og:image" content="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,45 +164,58 @@ hours of After-Hours Collaboration Hours.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">afterhours_rank</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="fu"><a href="extract_hr.html">extract_hr</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  mode <span class="op">=</span> <span class="st">"simple"</span>,
-  plot_mode <span class="op">=</span> <span class="fl">1</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">afterhours_rank</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="fu"><a href="extract_hr.html">extract_hr</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"simple"</span>,</span>
+<span>  plot_mode <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
 instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>mode</dt>
 <dd><p>String to specify calculation mode. Must be either:</p><ul><li><p><code>"simple"</code></p></li>
 <li><p><code>"combine"</code></p></li>
 </ul></dd>
+
+
 <dt>plot_mode</dt>
 <dd><p>Numeric vector to determine which plot mode to return. Must
 be either <code>1</code> or <code>2</code>, and is only used when <code>return = "plot"</code>.</p><ul><li><p><code>1</code>: Top and bottom five groups across the data population are highlighted</p></li>
 <li><p><code>2</code>: Top and bottom groups <em>per</em> organizational attribute are highlighted</p></li>
 </ul></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code> (default)</p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>When 'table' is passed in <code>return</code>, a summary table is returned as a data frame.</p>
+    
+
+<p>When 'table' is passed in <code>return</code>, a summary table is returned as a data frame.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -246,7 +259,12 @@ See <code><a href="create_rank.html">create_rank()</a></code> for applying the s
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -286,7 +304,8 @@ See <code><a href="create_rank.html">create_rank()</a></code> for applying the s
 <code><a href="afterhours_fizz.html">afterhours_fizz</a>()</code>,
 <code><a href="afterhours_line.html">afterhours_line</a>()</code>,
 <code><a href="afterhours_summary.html">afterhours_summary</a>()</code>,
-<code><a href="afterhours_trend.html">afterhours_trend</a>()</code></p></div>
+<code><a href="afterhours_trend.html">afterhours_trend</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code></p></div>
     </div>
 
   </div>
@@ -301,7 +320,7 @@ See <code><a href="create_rank.html">create_rank()</a></code> for applying the s
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

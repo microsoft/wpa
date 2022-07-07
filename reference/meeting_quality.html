@@ -18,7 +18,7 @@ a Standard Person Query as an input."><meta property="og:image" content="https:/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,22 +160,26 @@ a Standard Person Query as an input.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meeting_quality</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  metric_x <span class="op">=</span> <span class="st">"Low_quality_meeting_hours"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meeting_quality</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  metric_x <span class="op">=</span> <span class="st">"Low_quality_meeting_hours"</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>HR Variable by which to split metrics, defaults to
 "Organization" but accepts any character vector, e.g. "LevelDesignation"</p></dd>
+
+
 <dt>metric_x</dt>
 <dd><p>String specifying which variable to show in the x-axis when
 returning a plot. Must be one of the following:</p><ul><li><p><code>"Low_quality_meeting_hours"</code> (default)</p></li>
@@ -185,16 +189,23 @@ returning a plot. Must be one of the following:</p><ul><li><p><code>"Low_quality
 <li><p>Any <em>meeting hour</em> variable that can be divided by <code>Meeting_hours</code></p></li>
 </ul><p>If the provided metric name is not found in the data, the function will use
 the first matched metric from the above list.</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings: - <code>"plot"</code> - <code>"table"</code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the
+    
+
+<p>A different output is returned depending on the value passed to the
 <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A bubble plot for the metric.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul></div>
@@ -236,7 +247,12 @@ following strings: - <code>"plot"</code> - <code>"table"</code></p></dd>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -288,18 +304,18 @@ following strings: - <code>"plot"</code> - <code>"table"</code></p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return plot</span></span>
-<span class="r-in"><span class="fu">meeting_quality</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return plot</span></span></span>
+<span class="r-in"><span><span class="fu">meeting_quality</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="meeting_quality-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return plot - showing multi-tasking %</span></span>
-<span class="r-in"><span class="fu">meeting_quality</span><span class="op">(</span><span class="va">sq_data</span>,</span>
-<span class="r-in">                metric_x <span class="op">=</span> <span class="st">"Multitasking_meeting_hours"</span>,</span>
-<span class="r-in">                return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return plot - showing multi-tasking %</span></span></span>
+<span class="r-in"><span><span class="fu">meeting_quality</span><span class="op">(</span><span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>                metric_x <span class="op">=</span> <span class="st">"Multitasking_meeting_hours"</span>,</span></span>
+<span class="r-in"><span>                return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="meeting_quality-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary table</span></span>
-<span class="r-in"><span class="fu">meeting_quality</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="fu">meeting_quality</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    group     After_hours_mee… Low_quality_mee… Conflicting_mee… Multitasking_me…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -319,7 +335,7 @@ following strings: - <code>"plot"</code> - <code>"table"</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> IT-East              1.27              7.26             4.43            0.469</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Inventor…            2.08              9.52             6.30            0.750</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 3 more variables: Meetings &lt;dbl&gt;, Meeting_hours &lt;dbl&gt;, n &lt;int&gt;</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -334,7 +350,7 @@ following strings: - <code>"plot"</code> - <code>"table"</code></p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

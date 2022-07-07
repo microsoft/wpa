@@ -19,7 +19,7 @@ the centralization functions in 'igraph'."><meta property="og:image" content="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,7 +162,7 @@ the centralization functions in 'igraph'.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">network_summary</span><span class="op">(</span><span class="va">graph</span>, hrvar <span class="op">=</span> <span class="cn">NULL</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">network_summary</span><span class="op">(</span><span class="va">graph</span>, hrvar <span class="op">=</span> <span class="cn">NULL</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -170,18 +170,25 @@ the centralization functions in 'igraph'.</p>
     <dl><dt>graph</dt>
 <dd><p>'igraph' object that can be returned from <code><a href="network_g2g.html">network_g2g()</a></code> or
 <code><a href="network_p2p.html">network_p2p()</a></code>when the <code>return</code> argument is set to <code>"network"</code>.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>NULL</code>.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what output to return. Valid inputs include:</p><ul><li><p><code>"table"</code></p></li>
 <li><p><code>"network"</code></p></li>
 <li><p><code>"plot"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>By default, a data frame containing centrality statistics. Available
+    
+
+<p>By default, a data frame containing centrality statistics. Available
 statistics include:</p><ul><li><p>betweenness: number of shortest paths going through a node.</p></li>
 <li><p>closeness: number of steps required to access every other node from a
 given node.</p></li>
@@ -190,8 +197,10 @@ given node.</p></li>
 Please refer to the igraph package documentation for the detailed technical
 definition.</p></li>
 </ul><p>When <code>"network"</code> is passed to <code>"return"</code>, an 'igraph' object is returned with
-additional node attributes containing centrality scores.
-When <code>"plot"</code> is passed to <code>"return"</code>, a summary table is returned showing
+additional node attributes containing centrality scores.</p>
+
+
+<p>When <code>"plot"</code> is passed to <code>"return"</code>, a summary table is returned showing
 the average centrality scores by HR attribute. This is currently available if
 there is a valid HR attribute.</p>
     </div>
@@ -211,12 +220,12 @@ there is a valid HR attribute.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Simulate a p2p network</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="network_p2p.html">network_p2p</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">p2p_data</span>, return <span class="op">=</span> <span class="st">"network"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary table</span></span>
-<span class="r-in"><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simulate a p2p network</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="network_p2p.html">network_p2p</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">p2p_data</span>, return <span class="op">=</span> <span class="st">"network"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 300 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    node_id   betweenness closeness degree eigenvector</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -231,13 +240,13 @@ there is a valid HR attribute.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> SIM_ID_10       110.      0.217     10       0.646</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> SIM_ID_12       444.      0.232     11       0.650</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 290 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return network with node centrality statistics</span></span>
-<span class="r-in"><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"network"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IGRAPH bc52d38 DNW- 300 1500 -- </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return network with node centrality statistics</span></span></span>
+<span class="r-in"><span><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"network"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IGRAPH d6c651f DNW- 300 1500 -- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + attr: weight (g/n), name (v/c), Organization (v/c), betweenness</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | (v/n), closeness (v/n), degree (v/n), eigenvector (v/n), weight (e/n)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + edges from bc52d38 (vertex names):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + edges from d6c651f (vertex names):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] SIM_ID_1-&gt;SIM_ID_2   SIM_ID_1-&gt;SIM_ID_4   SIM_ID_1-&gt;SIM_ID_6  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] SIM_ID_1-&gt;SIM_ID_207 SIM_ID_1-&gt;SIM_ID_296 SIM_ID_1-&gt;SIM_ID_297</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] SIM_ID_1-&gt;SIM_ID_298 SIM_ID_1-&gt;SIM_ID_299 SIM_ID_1-&gt;SIM_ID_3  </span>
@@ -246,16 +255,16 @@ there is a valid HR attribute.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [16] SIM_ID_2-&gt;SIM_ID_294 SIM_ID_2-&gt;SIM_ID_297 SIM_ID_2-&gt;SIM_ID_298</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [19] SIM_ID_2-&gt;SIM_ID_299 SIM_ID_2-&gt;SIM_ID_3   SIM_ID_2-&gt;SIM_ID_300</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + ... omitted several edges</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary plot</span></span>
-<span class="r-in"><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"plot"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary plot</span></span></span>
+<span class="r-in"><span><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"plot"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="network_summary-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Simulate a g2g network and return table</span></span>
-<span class="r-in"><span class="va">g2</span> <span class="op">&lt;-</span> <span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu"><a href="network_g2g.html">network_g2g</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"network"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Simulate a g2g network and return table</span></span></span>
+<span class="r-in"><span><span class="va">g2</span> <span class="op">&lt;-</span> <span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu"><a href="network_g2g.html">network_g2g</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"network"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `time_investor` field not provided. Assuming `TimeInvestors_Organization` as the `time_investor` variable.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `collaborator` field not provided. Assuming `Collaborators_Organization` as the `collaborator` variable.</span>
-<span class="r-in"><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g2</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g2</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    node_id                 betweenness closeness degree eigenvector</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -274,7 +283,7 @@ there is a valid HR attribute.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> <span style="color: #949494;">"</span>IT-Corporate<span style="color: #949494;">"</span>                4.67      0.462      5       0.469</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> <span style="color: #949494;">"</span>IT-East<span style="color: #949494;">"</span>                     0.417     0.429      4       0.490</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> <span style="color: #949494;">"</span>Inventory\nManagement<span style="color: #949494;">"</span>      12.5       0.545      7       0.922</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -289,7 +298,7 @@ there is a valid HR attribute.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

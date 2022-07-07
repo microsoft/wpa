@@ -22,7 +22,7 @@ is used internally within network_p2p()."><meta property="og:image" content="htt
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -167,23 +167,28 @@ is used internally within <code><a href="network_p2p.html">network_p2p()</a></co
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">network_describe</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Organization"</span>, <span class="st">"LevelDesignation"</span>, <span class="st">"FunctionType"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">network_describe</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Organization"</span>, <span class="st">"LevelDesignation"</span>, <span class="st">"FunctionType"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data frame containing a vertex table output from <code><a href="network_p2p.html">network_p2p()</a></code>.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>Character vector of length 3 containing the HR attributes to be
 used. Defaults to <code>c("Organization", "LevelDesignation", "FunctionType")</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>data frame. A summary table giving the percentage of group
+    
+
+<p>data frame. A summary table giving the percentage of group
 combinations that best represent the provided data.</p>
     </div>
     <div id="see-also">
@@ -206,39 +211,39 @@ combinations that best represent the provided data.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Simulate a P2P edge list</span></span>
-<span class="r-in"><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Perform Louvain Community Detection and return vertices</span></span>
-<span class="r-in"><span class="va">lc_df</span> <span class="op">&lt;-</span></span>
-<span class="r-in">  <span class="va">sim_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="network_p2p.html">network_p2p</a></span><span class="op">(</span></span>
-<span class="r-in">    display <span class="op">=</span> <span class="st">"louvain"</span>,</span>
-<span class="r-in">    return <span class="op">=</span> <span class="st">"data"</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Join org data from input edge list</span></span>
-<span class="r-in"><span class="va">joined_df</span> <span class="op">&lt;-</span></span>
-<span class="r-in">  <span class="va">lc_df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">sim_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">      <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">TieOrigin_PersonId</span>,</span>
-<span class="r-in">                    <span class="va">TieOrigin_Organization</span>,</span>
-<span class="r-in">                    <span class="va">TieOrigin_LevelDesignation</span>,</span>
-<span class="r-in">                    <span class="va">TieOrigin_City</span><span class="op">)</span>,</span>
-<span class="r-in">    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"name"</span> <span class="op">=</span> <span class="st">"TieOrigin_PersonId"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Describe cluster 2</span></span>
-<span class="r-in"><span class="va">joined_df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="co"># dplyr::filter(cluster == "2") %&gt;%</span></span>
-<span class="r-in">  <span class="fu">network_describe</span><span class="op">(</span></span>
-<span class="r-in">    hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">      <span class="st">"Organization"</span>,</span>
-<span class="r-in">      <span class="st">"LevelDesignation"</span>,</span>
-<span class="r-in">      <span class="st">"City"</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simulate a P2P edge list</span></span></span>
+<span class="r-in"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Perform Louvain Community Detection and return vertices</span></span></span>
+<span class="r-in"><span><span class="va">lc_df</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">sim_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="network_p2p.html">network_p2p</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    display <span class="op">=</span> <span class="st">"louvain"</span>,</span></span>
+<span class="r-in"><span>    return <span class="op">=</span> <span class="st">"data"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Join org data from input edge list</span></span></span>
+<span class="r-in"><span><span class="va">joined_df</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">lc_df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">sim_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>      <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">TieOrigin_PersonId</span>,</span></span>
+<span class="r-in"><span>                    <span class="va">TieOrigin_Organization</span>,</span></span>
+<span class="r-in"><span>                    <span class="va">TieOrigin_LevelDesignation</span>,</span></span>
+<span class="r-in"><span>                    <span class="va">TieOrigin_City</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"name"</span> <span class="op">=</span> <span class="st">"TieOrigin_PersonId"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Describe cluster 2</span></span></span>
+<span class="r-in"><span><span class="va">joined_df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="co"># dplyr::filter(cluster == "2") %&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="fu">network_describe</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="st">"Organization"</span>,</span></span>
+<span class="r-in"><span>      <span class="st">"LevelDesignation"</span>,</span></span>
+<span class="r-in"><span>      <span class="st">"City"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 679</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ feature_1       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "TieOrigin_Organization", "TieOrigin_Organization", "T…</span>
@@ -248,7 +253,7 @@ combinations that best represent the provided data.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ feature_3       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ feature_3_value <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ Percentage      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.22077922, 0.20779221, 0.19480519, 0.11688312, 0.1038…</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -263,7 +268,7 @@ combinations that best represent the provided data.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

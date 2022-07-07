@@ -20,7 +20,7 @@ week, or hours of the day."><meta property="og:image" content="https://microsoft
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,39 +164,43 @@ week, or hours of the day.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">subject_scan</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">hrvar</span>,
-  mode <span class="op">=</span> <span class="cn">NULL</span>,
-  top_n <span class="op">=</span> <span class="fl">10</span>,
-  token <span class="op">=</span> <span class="st">"words"</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  weight <span class="op">=</span> <span class="cn">NULL</span>,
-  stopwords <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">tm_scan</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">hrvar</span>,
-  mode <span class="op">=</span> <span class="cn">NULL</span>,
-  top_n <span class="op">=</span> <span class="fl">10</span>,
-  token <span class="op">=</span> <span class="st">"words"</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  weight <span class="op">=</span> <span class="cn">NULL</span>,
-  stopwords <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">subject_scan</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">hrvar</span>,</span>
+<span>  mode <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  top_n <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  token <span class="op">=</span> <span class="st">"words"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  weight <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  stopwords <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">tm_scan</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">hrvar</span>,</span>
+<span>  mode <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  top_n <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  token <span class="op">=</span> <span class="st">"words"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  weight <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  stopwords <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Meeting Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Note that the prefix <code>'Organizer_'</code> or equivalent will be
 required.</p></dd>
+
+
 <dt>mode</dt>
 <dd><p>String specifying what variable to use for grouping subject
 words. Valid values include:</p><ul><li><p><code>"hours"</code></p></li>
@@ -205,50 +209,68 @@ words. Valid values include:</p><ul><li><p><code>"hours"</code></p></li>
 When the value passed to <code>mode</code> is not <code>NULL</code>, the value passed to <code>hrvar</code>
 will be discarded and instead be over-written by setting specified in <code>mode</code>.</p></li>
 </ul></dd>
+
+
 <dt>top_n</dt>
 <dd><p>Numeric value specifying the top number of words to show.</p></dd>
+
+
 <dt>token</dt>
 <dd><p>A character vector accepting either <code>"words"</code> or <code>"ngrams"</code>,
 determining type of tokenisation to return.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 <li><p><code>"data"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>weight</dt>
 <dd><p>String specifying the column name of a numeric variable for
 weighting data, such as <code>"Invitees"</code>. The column must contain positive
 integers. Defaults to <code>NULL</code>, where no weighting is applied.</p></dd>
+
+
 <dt>stopwords</dt>
 <dd><p>A character vector OR a single-column data frame labelled
 <code>'word'</code> containing custom stopwords to remove.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional parameters to pass to <code><a href="tm_clean.html">tm_clean()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A heatmapped grid.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A heatmapped grid.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 <li><p><code>"data"</code>: data frame.</p></li>
 </ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># return a heatmap table for words</span></span>
-<span class="r-in"><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organizer_Organization"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># return a heatmap table for words</span></span></span>
+<span class="r-in"><span><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organizer_Organization"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="subject_scan-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># return a heatmap table for ngrams</span></span>
-<span class="r-in"><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">subject_scan</span><span class="op">(</span></span>
-<span class="r-in">    hrvar <span class="op">=</span> <span class="st">"Organizer_Organization"</span>,</span>
-<span class="r-in">    token <span class="op">=</span> <span class="st">"ngrams"</span>,</span>
-<span class="r-in">    n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># return a heatmap table for ngrams</span></span></span>
+<span class="r-in"><span><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">subject_scan</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    hrvar <span class="op">=</span> <span class="st">"Organizer_Organization"</span>,</span></span>
+<span class="r-in"><span>    token <span class="op">=</span> <span class="st">"ngrams"</span>,</span></span>
+<span class="r-in"><span>    n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="subject_scan-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># return raw table format</span></span>
-<span class="r-in"><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organizer_Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># return raw table format</span></span></span>
+<span class="r-in"><span><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organizer_Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 16</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    `Biz Dev`  CEO    `Customer Serv…` Facilities `Finance-Corpo…` `Finance-East`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span>
@@ -266,15 +288,15 @@ integers. Defaults to <code>NULL</code>, where no weighting is applied.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Financial Planning` &lt;chr&gt;, `G&amp;A Central` &lt;chr&gt;, `G&amp;A East` &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `G&amp;A South` &lt;chr&gt;, `Human Resources` &lt;chr&gt;, `IT-Corporate` &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `IT-East` &lt;chr&gt;, `Inventory Management` &lt;chr&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># grouped by hours</span></span>
-<span class="r-in"><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"hours"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># grouped by hours</span></span></span>
+<span class="r-in"><span><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"hours"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="subject_scan-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># grouped by days</span></span>
-<span class="r-in"><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"days"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># grouped by days</span></span></span>
+<span class="r-in"><span><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">subject_scan</span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"days"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="subject_scan-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -289,7 +311,7 @@ integers. Defaults to <code>NULL</code>, where no weighting is applied.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -214,14 +214,14 @@
 </h3>
 <p>The first step is to load the <strong>wpa</strong> package. We would also recommend loading <strong>tidyverse</strong> or its component packages for any handy data manipulation that you will need.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span> <span class="co"># For data manipulation</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span> <span class="co"># For data manipulation</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="loading-the-datasets">Loading the datasets<a class="anchor" aria-label="anchor" href="#loading-the-datasets"></a>
 </h3>
 <p>For subject line text mining analysis, you will require a meeting query. To load a dataset, we always recommend using <code><a href="../reference/import_wpa.html">import_wpa()</a></code> as checks are run to ensure that the variables are of the right class. Here is an example of how to load in a CSV file called <code>MeetingQuery.csv</code> and assign it to an object called <code>mt_df</code>:</p>
-<pre><code><span class="va">mt_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"data/Meeting Query.csv"</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">mt_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/import_wpa.html">import_wpa</a></span><span class="op">(</span><span class="st">"data/Meeting Query.csv"</span><span class="op">)</span></span></code></pre>
 <p>A couple of notes on the above:</p>
 <ul>
 <li>The above line of code provides a file path to the CSV file, loads it, and assigns it to <code>mt_df</code>
@@ -236,28 +236,28 @@
 </h3>
 <p>To create a word cloud with subject lines, you can run the following:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span></span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <p>The <code>keep</code> argument allows you to specify the maximum number of words to keep in the word cloud. The default value is 100, and in the above example we have changed it to 50. You can find out more from the documentation by prepending the function name with <code>?</code>, such as <code><a href="../reference/tm_wordcloud.html">?tm_wordcloud</a></code>.</p>
 <p>Note that you can also return a summary table instead by adding <code>return == "table"</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span>
-<span class="co">## <span style="color: #949494;"># A tibble: 50 × 2</span></span>
-<span class="co">##    word        freq</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> weekly       165</span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> update       151</span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> updated      147</span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> volometrix   137</span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> interview    106</span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> meeting      100</span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> visit         98</span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> review        92</span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> messaging     85</span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> volo          82</span>
-<span class="co">## <span style="color: #949494;"># … with 40 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_wordcloud.html">tm_wordcloud</a></span><span class="op">(</span>keep <span class="op">=</span> <span class="fl">50</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="co"># Using the inbuilt demo dataset</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 50 × 2</span></span></span>
+<span><span class="co">##    word        freq</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> weekly       165</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> update       151</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> updated      147</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> volometrix   137</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> interview    106</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> meeting      100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> visit         98</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> review        92</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> messaging     85</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> volo          82</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 40 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="co-occurrence-network-plot">Co-occurrence Network Plot<a class="anchor" aria-label="anchor" href="#co-occurrence-network-plot"></a>
@@ -265,27 +265,27 @@
 <p>The key function for co-occurrence analysis is <code><a href="../reference/tm_cooc.html">tm_cooc()</a></code>. As its name suggest, this looks at whether pairs of words co-occur in the same subject line.</p>
 <p>The following line of code generates a co-occurrence network plot:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <p>Like <code><a href="../reference/tm_wordcloud.html">tm_wordcloud()</a></code>, you can also return a summary table as a data frame, instead of a plot:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">## <span style="color: #949494;"># A tibble: 539 × 3</span></span>
-<span class="co">##    item1      item2          n</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> board      meeting       24</span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> annual     report        24</span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> sql        server        20</span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> board      directors     19</span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> updated    interview     15</span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> weekly     plan          13</span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> volometrix interview     12</span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> updated    discussion    12</span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> weekly     messaging     10</span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> weekly     meeting        9</span>
-<span class="co">## <span style="color: #949494;"># … with 529 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_cooc.html">tm_cooc</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 539 × 3</span></span></span>
+<span><span class="co">##    item1      item2          n</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> board      meeting       24</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> annual     report        24</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> sql        server        20</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> board      directors     19</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> updated    interview     15</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> weekly     plan          13</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> volometrix interview     12</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> updated    discussion    12</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> weekly     messaging     10</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> weekly     meeting        9</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 529 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="circular-bar-plot">Circular Bar Plot<a class="anchor" aria-label="anchor" href="#circular-bar-plot"></a>
@@ -294,52 +294,52 @@
 <p>With <code><a href="../reference/tm_freq.html">tm_freq()</a></code>, you can choose to tokenize the text either as individual <strong>words</strong> or <strong>ngrams</strong>.</p>
 <p><strong>Words</strong>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p><strong>ngrams</strong>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="text-mining-capabilities_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p>Remember that there is again, an option to return a summary table:</p>
 <p><strong>ngrams</strong>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">## <span style="color: #949494;"># A tibble: 158 × 2</span></span>
-<span class="co">##    word                    n</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> board of directors     19</span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> and a status            6</span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> r d and                 6</span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> the sales and           6</span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> the status and          6</span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> a project and           5</span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> a sales and             5</span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> and every messaging     5</span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> and every sales         5</span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> the board meeting       5</span>
-<span class="co">## <span style="color: #949494;"># … with 148 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/tm_freq.html">tm_freq</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"ngrams"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 158 × 2</span></span></span>
+<span><span class="co">##    word                    n</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> board of directors     19</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> and a status            6</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> r d and                 6</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> the sales and           6</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> the status and          6</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> a project and           5</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> a sales and             5</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> and every messaging     5</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> and every sales         5</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> the board meeting       5</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 148 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="meeting-text-mining-report">Meeting Text Mining Report<a class="anchor" aria-label="anchor" href="#meeting-text-mining-report"></a>
 </h3>
 <p>The <code><a href="../reference/meeting_tm_report.html">meeting_tm_report()</a></code> function brings everything together: it will run a HTML report and save it in your current working directory.</p>
 <p>You can simply run:</p>
-<pre><code><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_tm_report.html">meeting_tm_report</a></span><span class="op">(</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_tm_report.html">meeting_tm_report</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="subject-line-validation-report">Subject Line Validation Report<a class="anchor" aria-label="anchor" href="#subject-line-validation-report"></a>
 </h3>
 <p>If your objective is to validate your subject lines for common exclusion terms, you can run:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/subject_validate.html">subject_validate</a></span><span class="op">(</span><span class="op">)</span> 
-<span class="co">## [1] "[Warning]   63  meetings ( 3.1% of  2001 ) require your attention as they contain common exclusion terms."</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/subject_validate.html">subject_validate</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="co">## [1] "[Warning]   63  meetings ( 3.1% of  2001 ) require your attention as they contain common exclusion terms."</span></span></code></pre></div>
 <p>This does a check for common exlusion terms in subject lines, returning a string.</p>
 <p>To run a full report, you can do:</p>
-<pre><code><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/subject_validate_report.html">subject_validate_report</a></span><span class="op">(</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">mt_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/subject_validate_report.html">subject_validate_report</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre>
 <p>This runs a text mining report based on the common exclusion terms in subject lines.</p>
 </div>
 </div>
@@ -362,7 +362,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

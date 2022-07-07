@@ -25,7 +25,7 @@ function for more detail on the specific HR attribute of interest."><meta proper
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -173,34 +173,45 @@ function for more detail on the specific HR attribute of interest.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">hrvar_count_all</span><span class="op">(</span>
-  <span class="va">data</span>,
-  n_var <span class="op">=</span> <span class="fl">50</span>,
-  return <span class="op">=</span> <span class="st">"message"</span>,
-  threshold <span class="op">=</span> <span class="fl">100</span>,
-  maxna <span class="op">=</span> <span class="fl">20</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">hrvar_count_all</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  n_var <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"message"</span>,</span>
+<span>  threshold <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  maxna <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>n_var</dt>
 <dd><p>number of HR variables to include in report as rows. Default is
 set to 50 HR variables.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String to specify what to return</p></dd>
+
+
 <dt>threshold</dt>
 <dd><p>The max number of unique values allowed for any attribute.
 Default is 100.</p></dd>
+
+
 <dt>maxna</dt>
 <dd><p>The max percentage of NAs allowable for any column. Default is
 20.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns an error message by default, where 'text' is passed in <code>return</code>.</p><ul><li><p><code>'table'</code>: data frame. A summary table listing the number of distinct
+    
+
+<p>Returns an error message by default, where 'text' is passed in <code>return</code>.</p><ul><li><p><code>'table'</code>: data frame. A summary table listing the number of distinct
 fields and percentage of missing values for the specified number of HR
 attributes will be returned.</p></li>
 <li><p><code>'message'</code>: outputs a message indicating which values are
@@ -238,8 +249,8 @@ beyond the specified thresholds.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return a summary table of all HR attributes</span></span>
-<span class="r-in"><span class="fu">hrvar_count_all</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return a summary table of all HR attributes</span></span></span>
+<span class="r-in"><span><span class="fu">hrvar_count_all</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Attributes       `Unique values` `Total missing values` `% missing values`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -252,7 +263,7 @@ beyond the specified thresholds.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Region                         1                      0                  0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> TimeZone                       1                      0                  0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> attainment                     0                  <span style="text-decoration: underline;">13</span>442                100</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -267,7 +278,7 @@ beyond the specified thresholds.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -212,8 +212,8 @@
 </h2>
 <p>Data validation is important - and with the R package, this is as simple as running <code><a href="../reference/validation_report.html">validation_report()</a></code> on the existing data.</p>
 <p>You would simply run it on the data frame containing the query:</p>
-<pre><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
-<span class="va">dv_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/validation_report.html">validation_report</a></span><span class="op">(</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
+<span><span class="va">dv_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/validation_report.html">validation_report</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="give-informative-names-to-your-queries">3. Give informative names to your queries<a class="anchor" aria-label="anchor" href="#give-informative-names-to-your-queries"></a>
@@ -247,19 +247,19 @@
 </h2>
 <p>It is recommended to use <em>person-level averages</em> where possible. What this means is that for any given metric, you would calculate an average for each employee before you would calculate it for the group. This effectively avoids people who may be represented by more person-weeks in the data (e.g. they have been in the company for longer) to have their results skew the data. In R, this can be replicated by grouping and summarising the data twice:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">PersonId</span>, <span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
+<span><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">PersonId</span>, <span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Organization</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">Collaboration_hours</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>All of the functions in the <strong>wpa</strong> package already calculate averages this way, so it is recommended that you use the package functions directly where possible. The above example is replicated by the following functions from the package:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-
-<span class="co"># Or</span>
-
-<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/create_bar.html">create_bar</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_sum</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or</span></span>
+<span></span>
+<span><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/create_bar.html">create_bar</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="ensure-you-adhere-to-privacy-thresholds">6. Ensure you adhere to privacy thresholds<a class="anchor" aria-label="anchor" href="#ensure-you-adhere-to-privacy-thresholds"></a>
@@ -276,23 +276,23 @@
 </h2>
 <p>This “best practice” suggestion actually came from a popular <a href="https://twitter.com/drob/status/928447584712253440" class="external-link">tweet</a> by Data Scientist and R educator David Robinson. This basically captures the DRY (Don’t Repeat Yourself) principle in programming. There are several advantages of writing functions, which one of them includes the fact that you can just change the function once, and all the changes would be applied to <strong>everywhere</strong> in your script where that function is used. Just consider the following example:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Filter Organization by Sales and extract number of distinct people</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Sales"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Filter Organization by Operations and extract number of distinct people</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Operations"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Filter Organization by Engineering and extract number of distinct people</span>
-<span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Engineering"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Filter Organization by Sales and extract number of distinct people</span></span>
+<span><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Sales"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Filter Organization by Operations and extract number of distinct people</span></span>
+<span><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Operations"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Filter Organization by Engineering and extract number of distinct people</span></span>
+<span><span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="st">"Engineering"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>versus the following:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">filt_org</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">filter_string</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="va">filter_string</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu">filt_org</span><span class="op">(</span><span class="st">"Sales"</span><span class="op">)</span>
-<span class="fu">filt_org</span><span class="op">(</span><span class="st">"Operations"</span><span class="op">)</span>
-<span class="fu">filt_org</span><span class="op">(</span><span class="st">"Engineering"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">filt_org</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">filter_string</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">spq</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Organization</span> <span class="op">==</span> <span class="va">filter_string</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">PersonId</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">filt_org</span><span class="op">(</span><span class="st">"Sales"</span><span class="op">)</span></span>
+<span><span class="fu">filt_org</span><span class="op">(</span><span class="st">"Operations"</span><span class="op">)</span></span>
+<span><span class="fu">filt_org</span><span class="op">(</span><span class="st">"Engineering"</span><span class="op">)</span></span></code></pre></div>
 <p>The second chunk is much more readable, much more easier to edit, and also more elegant than the first approach of explicitly coding out everything.</p>
 </div>
   </div>
@@ -314,7 +314,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

@@ -18,7 +18,7 @@ in the dataset."><meta property="og:image" content="https://microsoft.github.io/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,42 +160,58 @@ in the dataset.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">flag_extreme</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">metric</span>,
-  person <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">threshold</span>,
-  mode <span class="op">=</span> <span class="st">"above"</span>,
-  return <span class="op">=</span> <span class="st">"message"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">flag_extreme</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">metric</span>,</span>
+<span>  person <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">threshold</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"above"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"message"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>A character string specifying the metric to test.</p></dd>
+
+
 <dt>person</dt>
 <dd><p>A logical value to specify whether to calculate
 person-averages. Defaults to <code>TRUE</code> (person-averages calculated).</p></dd>
+
+
 <dt>threshold</dt>
 <dd><p>Numeric value specifying the threshold for flagging.</p></dd>
+
+
 <dt>mode</dt>
 <dd><p>String determining mode to use for identifying extreme values.</p><ul><li><p><code>"above"</code>: checks whether value is great than the threshold (default)</p></li>
 <li><p><code>"equal"</code>: checks whether value is equal to the threshold</p></li>
 <li><p><code>"below"</code>: checks whether value is below the threshold</p></li>
 </ul></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"text"</code></p></li>
 <li><p><code>"message"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"text"</code>: string. A diagnostic message.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"text"</code>: string. A diagnostic message.</p></li>
 <li><p><code>"message"</code>: message on console. A diagnostic message.</p></li>
 <li><p><code>"table"</code>: data frame. A person-level table with <code>PersonId</code> and the
 extreme values of the selected metric.</p></li>
@@ -232,12 +248,12 @@ extreme values of the selected metric.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># The threshold values are intentionally set low to trigger messages.</span></span>
-<span class="r-in"><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, threshold <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># The threshold values are intentionally set low to trigger messages.</span></span></span>
+<span class="r-in"><span><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, threshold <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [Warning] There are 58 persons where their average Email hours exceeds 15.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a summary table</span></span>
-<span class="r-in"><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, threshold <span class="op">=</span> <span class="fl">15</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a summary table</span></span></span>
+<span class="r-in"><span><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, threshold <span class="op">=</span> <span class="fl">15</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 58 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    PersonId                                                         Email_hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -252,20 +268,20 @@ extreme values of the selected metric.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2087D9D11ECC9B33440A36A702043B7F81913BA9572B3053F38DAA9C5FC52EDB        15.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 24E9403ACF368A82EAE889DBAFF9785200C4D635DA7E034A3745FD72C6E1B3A9        19.7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 48 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Person-week level</span></span>
-<span class="r-in"><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, person <span class="op">=</span> <span class="cn">FALSE</span>, threshold <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Person-week level</span></span></span>
+<span class="r-in"><span><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, person <span class="op">=</span> <span class="cn">FALSE</span>, threshold <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [Warning] There are 1641 rows where their value of Email hours exceeds 15.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Check for values equal to threshold</span></span>
-<span class="r-in"><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, person <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="st">"equal"</span>, threshold <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Check for values equal to threshold</span></span></span>
+<span class="r-in"><span><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, person <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="st">"equal"</span>, threshold <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [Pass] There are no persons where their average Email hours are equal to 0.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Check for values below threshold</span></span>
-<span class="r-in"><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, person <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="st">"below"</span>, threshold <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Check for values below threshold</span></span></span>
+<span class="r-in"><span><span class="fu">flag_extreme</span><span class="op">(</span><span class="va">sq_data</span>, <span class="st">"Email_hours"</span>, person <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="st">"below"</span>, threshold <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [Warning] There are 11 persons where their average Email hours are less than 5.</span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -280,7 +296,7 @@ extreme values of the selected metric.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

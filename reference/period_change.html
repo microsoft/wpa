@@ -20,7 +20,7 @@ that the variable has not changed, using a Wilcox signed-rank test."><meta prope
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -163,15 +163,15 @@ that the variable has not changed, using a Wilcox signed-rank test.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">period_change</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">compvar</span>,
-  before_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,
-  <span class="va">before_end</span>,
-  after_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">before_end</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span>,
-  after_end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,
-  return <span class="op">=</span> <span class="st">"count"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">period_change</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">compvar</span>,</span>
+<span>  before_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="va">before_end</span>,</span>
+<span>  after_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">before_end</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span>,</span>
+<span>  after_end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Date</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"count"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -180,27 +180,42 @@ that the variable has not changed, using a Wilcox signed-rank test.</p>
 <dd><p>Person Query as a dataframe including date column named <code>"Date"</code>
 This function assumes the data format is <code>MM/DD/YYYY</code> as is standard in a
 Viva Insights query output.</p></dd>
+
+
 <dt>compvar</dt>
 <dd><p>comparison variable to compare person change before and
 after For example, <code>"Collaboration_hours"</code></p></dd>
+
+
 <dt>before_start</dt>
 <dd><p>Start date of "before" time period in <code>YYYY-MM-DD</code></p></dd>
+
+
 <dt>before_end</dt>
 <dd><p>End date of "before" time period in <code>YYYY-MM-DD</code></p></dd>
+
+
 <dt>after_start</dt>
 <dd><p>Start date of "after" time period in <code>YYYY-MM-DD</code></p></dd>
+
+
 <dt>after_end</dt>
 <dd><p>End date of "after" time period in <code>YYYY-MM-DD</code></p></dd>
+
+
 <dt>return</dt>
 <dd><p>Character vector specifying whether to return plot as Count or
 Percentage of Employees. Valid inputs include:</p><ul><li><p><code>"count"</code> (default)</p></li>
 <li><p><code>"percentage"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>ggplot object showing a bar plot (histogram) of change for two time
+    
+
+<p>ggplot object showing a bar plot (histogram) of change for two time
 intervals.</p>
     </div>
     <div id="see-also">
@@ -241,7 +256,12 @@ intervals.</p>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -310,21 +330,21 @@ intervals.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Run plot</span></span>
-<span class="r-in"><span class="fu">period_change</span><span class="op">(</span><span class="va">sq_data</span>, compvar <span class="op">=</span> <span class="st">"Workweek_span"</span>, before_end <span class="op">=</span> <span class="st">"2019-11-16"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Run plot</span></span></span>
+<span class="r-in"><span><span class="fu">period_change</span><span class="op">(</span><span class="va">sq_data</span>, compvar <span class="op">=</span> <span class="st">"Workweek_span"</span>, before_end <span class="op">=</span> <span class="st">"2019-11-16"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="period_change-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># Run plot with more specific arguments</span></span>
-<span class="r-in"><span class="fu">period_change</span><span class="op">(</span><span class="va">sq_data</span>,</span>
-<span class="r-in">              compvar <span class="op">=</span> <span class="st">"Workweek_span"</span>,</span>
-<span class="r-in">              before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,</span>
-<span class="r-in">              before_end <span class="op">=</span> <span class="st">"2019-11-16"</span>,</span>
-<span class="r-in">              after_start <span class="op">=</span> <span class="st">"2019-12-03"</span>,</span>
-<span class="r-in">              after_end <span class="op">=</span> <span class="st">"2019-12-16"</span>,</span>
-<span class="r-in">              return <span class="op">=</span> <span class="st">"percentage"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Run plot with more specific arguments</span></span></span>
+<span class="r-in"><span><span class="fu">period_change</span><span class="op">(</span><span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>              compvar <span class="op">=</span> <span class="st">"Workweek_span"</span>,</span></span>
+<span class="r-in"><span>              before_start <span class="op">=</span> <span class="st">"2019-11-03"</span>,</span></span>
+<span class="r-in"><span>              before_end <span class="op">=</span> <span class="st">"2019-11-16"</span>,</span></span>
+<span class="r-in"><span>              after_start <span class="op">=</span> <span class="st">"2019-12-03"</span>,</span></span>
+<span class="r-in"><span>              after_end <span class="op">=</span> <span class="st">"2019-12-16"</span>,</span></span>
+<span class="r-in"><span>              return <span class="op">=</span> <span class="st">"percentage"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="period_change-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -339,7 +359,7 @@ intervals.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

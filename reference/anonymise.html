@@ -20,7 +20,7 @@ values in the categorical variable."><meta property="og:image" content="https://
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,24 +164,29 @@ values in the categorical variable.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">anonymise</span><span class="op">(</span><span class="va">x</span>, scramble <span class="op">=</span> <span class="cn">FALSE</span>, replacement <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">anonymize</span><span class="op">(</span><span class="va">x</span>, scramble <span class="op">=</span> <span class="cn">FALSE</span>, replacement <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">anonymise</span><span class="op">(</span><span class="va">x</span>, scramble <span class="op">=</span> <span class="cn">FALSE</span>, replacement <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">anonymize</span><span class="op">(</span><span class="va">x</span>, scramble <span class="op">=</span> <span class="cn">FALSE</span>, replacement <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Character vector to be passed through.</p></dd>
+
+
 <dt>scramble</dt>
 <dd><p>Logical value determining whether to randomise values in the
 categorical variable.</p></dd>
+
+
 <dt>replacement</dt>
 <dd><p>Character vector containing the values to replace original
 values in the categorical variable. The length of the vector must be at
 least as great as the number of unique values in the original variable.
 Defaults to <code>NULL</code>, where the replacement would consist of <code>"Team A"</code>,
 <code>"Team B"</code>, etc.</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -190,14 +195,14 @@ Defaults to <code>NULL</code>, where the replacement would consist of <code>"Tea
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu">anonymise</span><span class="op">(</span><span class="va">sq_data</span><span class="op">$</span><span class="va">Organization</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu">anonymise</span><span class="op">(</span><span class="va">sq_data</span><span class="op">$</span><span class="va">Organization</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Team A" "Team B" "Team C" "Team D" "Team E" "Team F" "Team G" "Team H"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Team I" "Team J" "Team K" "Team L" "Team M" "Team N" "Team O"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">rep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Manager+"</span>, <span class="st">"Manager"</span>, <span class="st">"IC"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu">anonymise</span><span class="op">(</span><span class="va">sq_data</span><span class="op">$</span><span class="va">Layer</span><span class="op">)</span>, replacement <span class="op">=</span> <span class="va">rep</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">rep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Manager+"</span>, <span class="st">"Manager"</span>, <span class="st">"IC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu">anonymise</span><span class="op">(</span><span class="va">sq_data</span><span class="op">$</span><span class="va">Layer</span><span class="op">)</span>, replacement <span class="op">=</span> <span class="va">rep</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Team A" "Team B" "Team C"</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -212,7 +217,7 @@ Defaults to <code>NULL</code>, where the replacement would consist of <code>"Tea
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

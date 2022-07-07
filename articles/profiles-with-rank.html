@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -217,70 +217,70 @@
 </h3>
 <p>To get started, let’s open a new session in R and load the <a href="https://microsoft.github.io/wpa"><strong>wpa</strong> R package</a>. We will also use <strong>dplyr</strong> to facilitate data manipulation:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 <p>We will use the <code>sq_data</code> demo dataset, which contains a weekly person query output, and apply the <code><a href="../reference/collaboration_rank.html">collaboration_rank()</a></code> function:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 30 × 4</span></span>
-<span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> FunctionType     Sales                               31.0    82</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Organization     Inventory Management                26.2    60</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> FunctionType     Marketing                           25.8   207</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Organization     Human Resources                     24.4    71</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Organization     IT-Corporate                        23.7    68</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Organization     G&amp;A South                           23.1    76</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Organization     Finance-East                        22.2    70</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> LevelDesignation Manager                             21.5   333</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Organization     Finance-West                        20.6    73</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Organization     IT-East                             20.6    62</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 20 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 30 × 4</span></span></span>
+<span><span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> FunctionType     Sales                               31.0    82</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Organization     Inventory Management                26.2    60</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> FunctionType     Marketing                           25.8   207</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Organization     Human Resources                     24.4    71</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Organization     IT-Corporate                        23.7    68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Organization     G&amp;A South                           23.1    76</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Organization     Finance-East                        22.2    70</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> LevelDesignation Manager                             21.5   333</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Organization     Finance-West                        20.6    73</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Organization     IT-East                             20.6    62</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 20 more rows</span></span></span></code></pre></div>
 <p>The output table contains the results from the automatic group exploration. The rank function has taken all available organisational attributes in this dataset (<code>FunctionType</code>, <code>Organization</code>, <code>LevelDesignation</code>, and <code>IsActive</code>) and calculated the average collaboration hours for each group within each organisational attribute. The table shows the analysed results for all groups, ranked from highest to lowest.</p>
 <p>To view the entire table, we can add the function <code>print</code> to the command above.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>  
-    <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 30 × 4</span></span>
-<span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> FunctionType     Sales                               31.0    82</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Organization     Inventory Management                26.2    60</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> FunctionType     Marketing                           25.8   207</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Organization     Human Resources                     24.4    71</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Organization     IT-Corporate                        23.7    68</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Organization     G&amp;A South                           23.1    76</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Organization     Finance-East                        22.2    70</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> LevelDesignation Manager                             21.5   333</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Organization     Finance-West                        20.6    73</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Organization     IT-East                             20.6    62</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> LevelDesignation Senior IC                           20.1   103</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> IsActive         TRUE                                19.9  <span style="text-decoration: underline;">1</span>034</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> LevelDesignation Junior IC                           19.6   105</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> FunctionType     Engineering                         19.6    93</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> FunctionType     Operations                          19.1   176</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> LevelDesignation Executive                           19.0     6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Organization     G&amp;A Central                         18.9    57</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> LevelDesignation Director                            18.9    68</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">19</span> LevelDesignation Support                             18.8   419</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">20</span> Organization     Finance-South                       18.6    81</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">21</span> Organization     Facilities                          18.6    72</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">22</span> Organization     Customer Service                    18.3    61</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">23</span> Organization     Financial Planning                  17.1    75</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">24</span> FunctionType     Finance                             16.5   146</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">25</span> Organization     Finance-Corporate                   16.3    68</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">26</span> Organization     G&amp;A East                            16.2    65</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">27</span> FunctionType     G_and_A                             16.0   128</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">28</span> FunctionType     R_and_D                             15.2   151</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">29</span> FunctionType     IT                                  15.0    51</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">30</span> Organization     Biz Dev                             14.7    75</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>  </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 30 × 4</span></span></span>
+<span><span class="co">#&gt;    hrvar            group                Collaboration_hours     n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> FunctionType     Sales                               31.0    82</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Organization     Inventory Management                26.2    60</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> FunctionType     Marketing                           25.8   207</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Organization     Human Resources                     24.4    71</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Organization     IT-Corporate                        23.7    68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Organization     G&amp;A South                           23.1    76</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Organization     Finance-East                        22.2    70</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> LevelDesignation Manager                             21.5   333</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Organization     Finance-West                        20.6    73</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Organization     IT-East                             20.6    62</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> LevelDesignation Senior IC                           20.1   103</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> IsActive         TRUE                                19.9  <span style="text-decoration: underline;">1</span>034</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> LevelDesignation Junior IC                           19.6   105</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> FunctionType     Engineering                         19.6    93</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> FunctionType     Operations                          19.1   176</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> LevelDesignation Executive                           19.0     6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Organization     G&amp;A Central                         18.9    57</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> LevelDesignation Director                            18.9    68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> LevelDesignation Support                             18.8   419</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span> Organization     Finance-South                       18.6    81</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">21</span> Organization     Facilities                          18.6    72</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">22</span> Organization     Customer Service                    18.3    61</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">23</span> Organization     Financial Planning                  17.1    75</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">24</span> FunctionType     Finance                             16.5   146</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">25</span> Organization     Finance-Corporate                   16.3    68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">26</span> Organization     G&amp;A East                            16.2    65</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">27</span> FunctionType     G_and_A                             16.0   128</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">28</span> FunctionType     R_and_D                             15.2   151</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">29</span> FunctionType     IT                                  15.0    51</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">30</span> Organization     Biz Dev                             14.7    75</span></span></code></pre></div>
 <p>This analysis shows us that the 82 employees labelled as <code>"FunctionType = "Sales"</code> have the highest collaboration hours, with a weekly average of 31 hours. In second place, there are 60 individuals in <code>Organization = "Inventory Management"</code> with 26.2 hours. On the lower end, the 75 employees labelled as <code>Organization = "Biz Dev"</code> appear to have the lowest collaboration time.</p>
 <p>This output is useful to identify groups that are worth investigating (e.g. employees labelled as <code>"FunctionType = Sales"</code>). It also reveals that splits by <code>FunctionType</code> and <code>Organization</code> are more interesting than those by <code>LevelDesignation</code>, as they have more variation; all groups in <code>LevelDesignation</code> have similar levels of collaboration, between 18 and 22 hours a week. Rank functions can also display this information in visual form. We can get that by changing the <code>return</code> argument from <code>"table"</code> to <code>"plot"</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="profiles-with-rank_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
 <p>This plot contains the same information as the table above. Each row corresponds to a different organisational attribute and the bubbles show how the population is split across different subgroups, where bubble size is proportional to the number of individuals. The five groups in orange are clearly the ones spending most time in collaboration, with Sales being far ahead of the other groups. Keep in mind that each row of bubbles represents a different way to slice the same population, so groups across rows are not mutually exclusive.</p>
 </div>
@@ -290,22 +290,22 @@
 <p>In our baseline analysis, we uncovered that the 82 employees labelled as <code>FunctionType = "Sales"</code> have the highest average collaboration hours. However, it is likely that some employees in this group are more affected than others. Furthermore, there may be pockets in other parts of this company that may be experiencing similar levels of collaboration overload, but that are hidden given the structure of the organisational data (for example, the managers within a particular business unit).</p>
 <p>The rank function includes an additional mode called “combine” that allows us to take our analysis one step further by performing on two HR variables the same analysis in a combinatorial manner:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 382 × 4</span></span>
-<span class="co">#&gt;    hrvar    group                                         Collaboration_h…     n</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Mana…             33.7    28</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Juni…             31.0    13</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Supp…             29.5    24</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Dire…             29.2     6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Seni…             28.2    11</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] …             27.4    72</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.9    17</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    14</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    81</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] …             24.3    22</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 372 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 382 × 4</span></span></span>
+<span><span class="co">#&gt;    hrvar    group                                         Collaboration_h…     n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Mana…             33.7    28</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Juni…             31.0    13</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Supp…             29.5    24</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Dire…             29.2     6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Seni…             28.2    11</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] …             27.4    72</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.9    17</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    14</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    81</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] …             24.3    22</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 372 more rows</span></span></span></code></pre></div>
 <p>The output table contains similar results from the group exploration above, but with more granularity. The function has automatically created smaller groups by combining two distinct groups from the organisational attributes in scope. In this case, it seems that the 28 managers in Sales are the worst affected group, with a weekly average of 33.7 hours in collaboration per week - that sounds like a lot of meetings!</p>
 </div>
 <div class="section level3">
@@ -332,23 +332,23 @@
 <p>Rank functions have an additional use: they can help us identify <strong>what combination of attributes best describe a group that shows a given behaviour</strong>. For example, we may be concerned about individuals that are experiencing both a heavy collaboration load (more than 20 hours a week on average) and long workweeks (workweek span of over 60 hours), and would like to know where in the organisations these individuals sit.</p>
 <p>To answer that question, let’s create a new numeric custom metric (i.e. a binary flag that is only either <code>1</code> or <code>0</code>) and then apply the <code><a href="../reference/create_rank.html">create_rank()</a></code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>At_risk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">20</span> <span class="op">&amp;</span>  <span class="va">Workweek_span</span> <span class="op">&gt;</span> <span class="fl">60</span> , <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="../reference/create_rank.html">create_rank</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"At_risk"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 382 × 4</span></span>
-<span class="co">#&gt;    hrvar    group                                                 At_risk     n</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC       0.314    13</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Manager         0.286    28</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Marketing [LevelDesignation] Director    0.280    14</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Support         0.272    24</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Director        0.269     6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Sales [LevelDesignation] Senior IC       0.266    11</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] Manager     0.254    72</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] Senior IC   0.252    22</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] Support     0.232    81</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] Junior IC   0.190    17</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 372 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>At_risk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">Collaboration_hours</span> <span class="op">&gt;</span> <span class="fl">20</span> <span class="op">&amp;</span>  <span class="va">Workweek_span</span> <span class="op">&gt;</span> <span class="fl">60</span> , <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="../reference/create_rank.html">create_rank</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"At_risk"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 382 × 4</span></span></span>
+<span><span class="co">#&gt;    hrvar    group                                                 At_risk     n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC       0.314    13</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Manager         0.286    28</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Marketing [LevelDesignation] Director    0.280    14</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Support         0.272    24</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Director        0.269     6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Sales [LevelDesignation] Senior IC       0.266    11</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] Manager     0.254    72</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] Senior IC   0.252    22</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] Support     0.232    81</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] Junior IC   0.190    17</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 372 more rows</span></span></span></code></pre></div>
 <p>The custom <code>At_risk</code> variable identifies whether any particular person-week exhibits high collaboration hours and long workweeks. By combining this with <code><a href="../reference/create_rank.html">create_rank()</a></code>, the analysis reveals that the combination of heavy collaboration load plus long workweeks is most prevalent among the 13 employees in <code>FunctionType = "Sales"</code> and <code>LevelDesignation = "Junior IC"</code>. In other words, the average employee of these groups experience high collaboration load and long workweeks 31% of the time.</p>
 </div>
 <div class="section level2">
@@ -395,7 +395,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

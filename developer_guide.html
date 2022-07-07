@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -227,32 +227,32 @@
 <div class="section level4">
 <h4 id="31-generating-documentation">3.1. Generating documentation<a class="anchor" aria-label="anchor" href="#31-generating-documentation"></a></h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">roxygen2</span><span class="fu">::</span><span class="fu">roxygenise</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">roxygen2</span><span class="fu">::</span><span class="fu">roxygenise</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><code>roxygenise()</code> generates documentation files for the R package, and makes them available to the user.</p>
 </div>
 <div class="section level4">
 <h4 id="32-r-cmd-checks">3.2. R CMD Checks<a class="anchor" aria-label="anchor" href="#32-r-cmd-checks"></a></h4>
 <p>Next, run this to build and check the package. You will need <strong>devtools</strong> installed.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">check</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">check</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This step runs a R CMD check against the package, to check that there will be no errors and issues if somebody installs the package. This step can take around 5 minutes long, and usually it is worth running this only after you’ve implemented all the desired changes towards the end.</p>
 </div>
 <div class="section level4">
 <h4 id="33-install-the-package">3.3. Install the package<a class="anchor" aria-label="anchor" href="#33-install-the-package"></a></h4>
 <p>If everything runs smoothly, run this final line to install the local package. Make sure that your working directory is set to the package!</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="other-installation-methods">Other installation methods<a class="anchor" aria-label="anchor" href="#other-installation-methods"></a></h4>
 <p>Note that <code>devtools::install()</code> would install the package directly from the directory in your local machine, i.e. the version that you are developing. If you would like to install the stable GitHub version from the <code>main</code> branch, you will need to run:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span><span class="op">)</span></span></code></pre></div>
 <p>If you’d like to install from a particular branch or install vignettes, you can leverage the additional arguments available with <code>devtools::install_git()</code>, for example:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span>,
-                      branch <span class="op">=</span> <span class="st">"feature/network-functions"</span>,
-                      build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_git</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/microsoft/wpa.git"</span>,</span>
+<span>                      branch <span class="op">=</span> <span class="st">"feature/network-functions"</span>,</span>
+<span>                      build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -274,17 +274,17 @@
 <p>Our current protocol for package release is to distribute it as a zipped file or a tar ball. The advantage of this approach is that users do not need to have a GitHub account, and this package release can be distributed via SharePoint or even email. Our current approach is to offer <strong>both</strong> options for installation.</p>
 <p>Once you are happy with the package and all checks have passed, you can run the following to generate a <strong>zipped</strong> distribution of the package. If your platform is Windows, this should generate a zipped file one level above your project directory:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span>binary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span>binary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>The code to generate a <strong>tarball</strong> distribution is similar:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span>binary <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span>binary <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>After the <strong>zipped file</strong> and the <strong>tarball</strong> files have been generated, they are ready for distribution.</p>
 </div>
 <div class="section level2">
 <h2 id="how-to-build-the-pdf-documentation">How to build the PDF documentation<a class="anchor" aria-label="anchor" href="#how-to-build-the-pdf-documentation"></a></h2>
 <p>It is good practice to distribute a package with an updated version of the documentation, so users won’t be using outdated documentation. You can generate the familiar PDF documentation by running the following:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build_manual</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build_manual</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="documenting-functions-with-roxygen2">Documenting functions with {roxygen2}<a class="anchor" aria-label="anchor" href="#documenting-functions-with-roxygen2"></a></h2>
@@ -314,7 +314,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

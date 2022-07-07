@@ -18,7 +18,7 @@ average of a specified advanced insights metric."><meta property="og:image" cont
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,27 +160,36 @@ average of a specified advanced insights metric.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_rank_combine</span><span class="op">(</span><span class="va">data</span>, hrvar <span class="op">=</span> <span class="fu"><a href="extract_hr.html">extract_hr</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>, <span class="va">metric</span>, mingroup <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_rank_combine</span><span class="op">(</span><span class="va">data</span>, hrvar <span class="op">=</span> <span class="fu"><a href="extract_hr.html">extract_hr</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>, <span class="va">metric</span>, mingroup <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
 instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>Character string containing the name of the metric,
 e.g. "Collaboration_hours"</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Data frame containing the following variables:</p><ul><li><p><code>hrvar</code>: placeholder column that denotes the output as <code>"Combined"</code>.</p></li>
+    
+
+<p>Data frame containing the following variables:</p><ul><li><p><code>hrvar</code>: placeholder column that denotes the output as <code>"Combined"</code>.</p></li>
 <li><p><code>group</code>: pairwise combinations of HR attributes with the HR attribute
 in square brackets followed by the value of the HR attribute.</p></li>
 <li><p>Name of the metric (as passed to <code>metric</code>)</p></li>
@@ -194,28 +203,28 @@ specified as <code>"combine"</code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Use a small sample for faster runtime</span></span>
-<span class="r-in"><span class="va">sq_data_small</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span><span class="va">sq_data</span>, prop <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">create_rank_combine</span><span class="op">(</span></span>
-<span class="r-in">  data <span class="op">=</span> <span class="va">sq_data_small</span>,</span>
-<span class="r-in">  metric <span class="op">=</span> <span class="st">"Email_hours"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Use a small sample for faster runtime</span></span></span>
+<span class="r-in"><span><span class="va">sq_data_small</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span><span class="va">sq_data</span>, prop <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">create_rank_combine</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">sq_data_small</span>,</span></span>
+<span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Email_hours"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 292 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar    group                                              Email_hours     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Manager           15.3    20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Support           15.0    19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Senior IC         14.1    11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Marketing [LevelDesignation] Manag…        13.9    55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Director          13.9     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] Junio…        13.3    13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC         13.0     9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] Senio…        12.2    19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] Direc…        12.1    12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] Suppo…        12.0    61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Manager           15.8    17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Support           13.9    21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC         13.9    10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Marketing [LevelDesignation] Junio…        13.8    14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Senior IC         13.3     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] Manag…        13.1    54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Engineering [LevelDesignation] Jun…        12.8     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] Suppo…        12.6    63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Sales [LevelDesignation] Director          12.3     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] Direc…        12.1    12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 282 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -230,7 +239,7 @@ specified as <code>"combine"</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

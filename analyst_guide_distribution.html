@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -157,41 +157,43 @@
 <h2 id="grouping-individuals">Grouping individuals<a class="anchor" aria-label="anchor" href="#grouping-individuals"></a></h2>
 <p>The <code><a href="reference/collaboration_dist.html">collaboration_dist()</a></code> function produces a 100% stacked bar chart, with all individuals classified in pre-defined groups according to defined ranges of collaboration hours. This function uses a Standard Person Query as input:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <p>You can specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument, and what output to obtain (either “plot” or “table”) with the <code>return</code> argument.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_dist.html">collaboration_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return<span class="op">=</span><span class="st">"table"</span><span class="op">)</span> </span></code></pre></div>
 <p><em>wpa</em> includes a wide range of equivalent functions, that create 100% stacked bar plots for specific metrics. These include:</p>
 <ul><li><code><a href="reference/email_dist.html">email_dist()</a></code></li>
 <li><code><a href="reference/meeting_dist.html">meeting_dist()</a></code></li>
 <li><code><a href="reference/one2one_dist.html">one2one_dist()</a></code></li>
 <li><code><a href="reference/afterhours_dist.html">afterhours_dist()</a></code></li>
 <li><code><a href="reference/workloads_dist.html">workloads_dist()</a></code></li>
+<li><code><a href="reference/external_dist.html">external_dist()</a></code></li>
 </ul></div>
 <div class="section level2">
 <h2 id="fizzy-drink-plots">Fizzy Drink Plots<a class="anchor" aria-label="anchor" href="#fizzy-drink-plots"></a></h2>
 <p>You can also explore distributions by using jittered (‘fizzy drink’) scatter plots. The <code><a href="reference/collaboration_fizz.html">collaboration_fizz()</a></code> function illustrates how different individuals fall in a common scale:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/email_fizz.html">email_fizz</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Fizzy drink plot</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/email_fizz.html">email_fizz</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Fizzy drink plot</span></span></code></pre></div>
 <p>As usual, you to specify an HR attribute grouping variable and create a table with the <code>return</code> argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_fizz.html">collaboration_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_fizz.html">collaboration_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></code></pre></div>
 <p>Other examples of distribution fizzy drink plots include:</p>
 <ul><li><code><a href="reference/email_fizz.html">email_fizz()</a></code></li>
 <li><code><a href="reference/meeting_fizz.html">meeting_fizz()</a></code></li>
 <li><code><a href="reference/one2one_fizz.html">one2one_fizz()</a></code></li>
 <li><code><a href="reference/afterhours_fizz.html">afterhours_fizz()</a></code></li>
 <li><code><a href="reference/workloads_fizz.html">workloads_fizz()</a></code></li>
+<li><code><a href="reference/external_fizz.html">external_fizz()</a></code></li>
 </ul></div>
 <div class="section level2">
 <h2 id="custom-bar-charts-and-tables">Custom bar charts and tables<a class="anchor" aria-label="anchor" href="#custom-bar-charts-and-tables"></a></h2>
 <p>Not all metrics include their own dist and fizz functions. However, you can obtain the equivalent graphs using the <code><a href="reference/create_dist.html">create_dist()</a></code> and <code><a href="reference/create_fizz.html">create_fizz()</a></code>. These functions requires you to include a character string containing the name of the metric you want to analyze. Additionall, the <code><a href="reference/create_boxplot.html">create_boxplot()</a></code> function allows you to create a box plot.</p>
 <p>For example, using “Generated_workload_email_hours”:</p>
-<pre><code><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_dist.html">create_dist</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span>
-
-<span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_fizz.html">create_fizz</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span>
-
-<span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_boxplot.html">create_boxplot</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_dist.html">create_dist</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_fizz.html">create_fizz</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_boxplot.html">create_boxplot</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="exploring-changes-over-time">Exploring changes over time<a class="anchor" aria-label="anchor" href="#exploring-changes-over-time"></a></h2>
@@ -241,7 +243,7 @@ div.desc {
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

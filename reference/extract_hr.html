@@ -19,7 +19,7 @@ to extract HR / organisational attributes from a data frame."><meta property="og
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,28 +162,40 @@ to extract HR / organisational attributes from a data frame.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">extract_hr</span><span class="op">(</span><span class="va">data</span>, max_unique <span class="op">=</span> <span class="fl">50</span>, exclude_constants <span class="op">=</span> <span class="cn">TRUE</span>, return <span class="op">=</span> <span class="st">"names"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_hr</span><span class="op">(</span><span class="va">data</span>, max_unique <span class="op">=</span> <span class="fl">50</span>, exclude_constants <span class="op">=</span> <span class="cn">TRUE</span>, return <span class="op">=</span> <span class="st">"names"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame to be passed through.</p></dd>
+
+
 <dt>max_unique</dt>
 <dd><p>A numeric value representing the maximum
 number of unique values to accept for an HR attribute. Defaults to 50.</p></dd>
+
+
 <dt>exclude_constants</dt>
 <dd><p>Logical value to specify whether single-value HR
 attributes are to be excluded. Defaults to <code>TRUE</code>.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"names"</code></p></li>
 <li><p><code>"vars"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"names"</code>: character vector identifying all the names of HR variables
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"names"</code>: character vector identifying all the names of HR variables
 present in the data.</p></li>
 <li><p><code>"vars"</code>: data frame containing all the columns of HR variables present
 in the data.</p></li>
@@ -240,10 +252,10 @@ in the data.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">extract_hr</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"names"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">extract_hr</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"names"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "FunctionType"     "LevelDesignation" "Organization"     "IsActive"        </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">extract_hr</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"vars"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">extract_hr</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"vars"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13,442 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    FunctionType LevelDesignation Organization     IsActive</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   </span>
@@ -258,7 +270,7 @@ in the data.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> G_and_A      Junior IC        Customer Service TRUE    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> G_and_A      Junior IC        Customer Service TRUE    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13,432 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -273,7 +285,7 @@ in the data.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

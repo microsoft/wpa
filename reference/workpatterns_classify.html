@@ -20,7 +20,7 @@ the the person-average volume-based ('pav') method."><meta property="og:image" c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,32 +164,39 @@ the the person-average volume-based ('pav') method.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">workpatterns_classify</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  values <span class="op">=</span> <span class="st">"percent"</span>,
-  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,
-  start_hour <span class="op">=</span> <span class="st">"0900"</span>,
-  end_hour <span class="op">=</span> <span class="st">"1700"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  active_threshold <span class="op">=</span> <span class="fl">0</span>,
-  method <span class="op">=</span> <span class="st">"bw"</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">workpatterns_classify</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  values <span class="op">=</span> <span class="st">"percent"</span>,</span>
+<span>  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,</span>
+<span>  start_hour <span class="op">=</span> <span class="st">"0900"</span>,</span>
+<span>  end_hour <span class="op">=</span> <span class="st">"1700"</span>,</span>
+<span>  exp_hours <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  active_threshold <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"bw"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame containing data from the Hourly Collaboration query.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>A string specifying the HR attribute to cut the data by.
 Defaults to <code>NULL</code>. This only affects the function when <code>"table"</code> is
 returned, and is only applicable for <code>method = "bw"</code>.</p></dd>
+
+
 <dt>values</dt>
 <dd><p>Only valid if using <code>pav</code> method. Character vector to specify
 whether to return percentages or absolute values in <code>"data"</code> and <code>"plot"</code>.
 Valid values are <code>"percent"</code> (default) and <code>"abs"</code>.</p></dd>
+
+
 <dt>signals</dt>
 <dd><p>Character vector to specify which collaboration metrics to
 use:</p><ul><li><p><code>"email"</code> (default) for emails only</p></li>
@@ -198,27 +205,46 @@ use:</p><ul><li><p><code>"email"</code> (default) for emails only</p></li>
 <li><p><code>"meetings"</code> for Meetings only</p></li>
 <li><p>or a combination of signals, such as <code>c("email", "IM")</code></p></li>
 </ul></dd>
+
+
 <dt>start_hour</dt>
 <dd><p>A character vector specifying starting hours, e.g.
 <code>"0900"</code>. Note that this currently only supports <strong>hourly</strong> increments. If
 the official hours specifying checking in and 9 AM and checking out at 5
 PM, then <code>"0900"</code> should be supplied here.</p></dd>
+
+
 <dt>end_hour</dt>
 <dd><p>A character vector specifying starting hours, e.g. <code>"1700"</code>.
 Note that this currently only supports <strong>hourly</strong> increments. If the
 official hours specifying checking in and 9 AM and checking out at 5 PM,
 then <code>"1700"</code> should be supplied here.</p></dd>
+
+
+<dt>exp_hours</dt>
+<dd><p>Numeric value representing the number of hours the
+population is expected to be active for throughout the workday. By default,
+this uses the difference between <code>end_hour</code> and <code>start_hour</code>. Only
+applicable with the 'bw' method.</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>active_threshold</dt>
 <dd><p>A numeric value specifying the minimum number of
 signals to be greater than in order to qualify as <em>active</em>. Defaults to 0.
 Only applicable for the binary-week method.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>String to pass through specifying which method to use for
 classification. By default, a binary week-based (<code>bw</code>) method is used, with
 options to use the the person-average volume-based (<code>pav</code>) method.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
@@ -228,10 +254,13 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"plot-hrvar"</code> (only for <code>bw</code> method)</p></li>
 <li><p><code>"plot-dist"</code> (only for <code>bw</code> method)</p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Character vector to specify what to return. Valid options
+    
+
+<p>Character vector to specify what to return. Valid options
 include:</p><ul><li><p><code>"plot"</code>: ggplot object. With the <code>bw</code> method, this returns a grid
 showing the distribution of archetypes by 'breaks' and number of active
 hours (default). With the <code>pav</code> method, this returns a faceted bar plot
@@ -271,21 +300,32 @@ implementations.</p>
     
 
 
-<p>This method classifies each <strong>person-week</strong> into one of the seven
-archetypes:</p><ul><li><p><strong>0 &lt; 3 hours on</strong>: fewer than 3 hours of active hours</p></li>
-<li><p><strong>1 Standard with breaks workday</strong>: active for fewer than <em>expected
-hours</em>, with no activity outside working hours</p></li>
-<li><p><strong>2 Standard continuous workday</strong>: number of active hours equal <em>expected
-hours</em>, with no activity outside working hours</p></li>
-<li><p><strong>3 Standard flexible workday</strong>: number of active hours are less than or
-equal to <em>expected hours</em>, with some activity outside working hours</p></li>
-<li><p><strong>4 Long flexible workday</strong>: number of active hours exceed <em>expected
+<p>This method classifies each <strong>person-week</strong> into one of the eight
+archetypes:</p><ul><li><p><strong>0 Low Activity (&lt; 3 hours on)</strong>: fewer than 3 hours of active hours</p></li>
+<li><p><strong>1.1 Standard continuous (expected schedule)</strong>: active hours equal to
+<em>expected hours</em>, with all activity confined within the expected start and
+end time</p></li>
+<li><p><strong>1.2 Standard continuous (shifted schedule)</strong>: active hours equal to
+<em>expected hours</em>, with activity occurring beyond either the expected start
+or end time.</p></li>
+<li><p><strong>2.1 Standard flexible (expected schedule)</strong>: active hours less than or
+equal to <em>expected hours</em>, with all activity confined within the expected
+start and end time</p></li>
+<li><p><strong>2.2 Standard flexible (shifted schedule)</strong>: active hours less than or
+equal to <em>expected hours</em>, with activity occurring beyond either the
+expected start or end time.</p></li>
+<li><p><strong>3 Long flexible workday</strong>: number of active hours exceed <em>expected
 hours</em>, with breaks occurring throughout</p></li>
-<li><p><strong>5 Long continuous workday</strong>: number of active hours exceed <em>expected
+<li><p><strong>4 Long continuous workday</strong>: number of active hours exceed <em>expected
 hours</em>, with activity happening in a continuous block (no breaks)</p></li>
-<li><p><strong>6 Always on (13h+)</strong>: number of active hours greater than or equal to
+<li><p><strong>5 Always on (13h+)</strong>: number of active hours greater than or equal to
 13</p></li>
-</ul><p>This is the recommended method over <code>pav</code> for several reasons:</p><ol><li><p><code>bw</code> ignores <em>volume effects</em>, where activity volume can still bias the
+</ul><p><em>Standard</em> here denotes the behaviour of not exhibiting total number of
+active hours which exceed the expected total number of hours, as supplied by
+<code>exp_hours</code>. <em>Continuous</em> refers to the behaviour of <em>not</em> taking breaks,
+i.e. no inactive hours between the first and last active hours of the day,
+where <em>flexible</em> refers to the contrary.</p>
+<p>This is the recommended method over <code>pav</code> for several reasons:</p><ol><li><p><code>bw</code> ignores <em>volume effects</em>, where activity volume can still bias the
 results towards the 'standard working hours'.</p></li>
 <li><p>It captures the intuition that each individual can have 'light' and
 'heavy' weeks with respect to workload.</p></li>
@@ -297,11 +337,11 @@ which is simply a time interval where no active work is being done, and thus
 the more specific terminology 'recurring disconnection time' is preferred.</p>
 <p>In the standard plot output, the archetypes have been abbreviated to show the
 following:</p><ul><li><p><strong>Low Activity</strong> - archetype 0</p></li>
-<li><p><strong>Standard</strong> - archetype 2</p></li>
-<li><p><strong>Flexible</strong> - archetypes 1 and 3</p></li>
-<li><p><strong>Long continuous</strong> - archetype 5</p></li>
-<li><p><strong>Long flexible</strong> - archetype 4</p></li>
-<li><p><strong>Always On</strong> - archetype 6</p></li>
+<li><p><strong>Standard</strong> - archetypes 1.1 and 1.2</p></li>
+<li><p><strong>Flexible</strong> - archetypes 2.1 and 2.2</p></li>
+<li><p><strong>Long continuous</strong> - archetype 4</p></li>
+<li><p><strong>Long flexible</strong> - archetype 3</p></li>
+<li><p><strong>Always On</strong> - archetype 5</p></li>
 </ul></div>
     <div id="person-average-method">
     <h2>Person Average method</h2>
@@ -357,38 +397,45 @@ Hourly Collaboration Flexible Query.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co"># Returns a plot by default</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bw"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Returns a plot by default</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bw"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="workpatterns_classify-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return an area plot</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bw"</span>, return <span class="op">=</span> <span class="st">"plot-area"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return an area plot</span></span></span>
+<span class="r-in"><span><span class="co"># With custom expected hours</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">workpatterns_classify</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    method <span class="op">=</span> <span class="st">"bw"</span>,</span></span>
+<span class="r-in"><span>    return <span class="op">=</span> <span class="st">"plot-area"</span>,</span></span>
+<span class="r-in"><span>    exp_hours <span class="op">=</span> <span class="fl">7</span></span></span>
+<span class="r-in"><span>      <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="workpatterns_classify-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bw"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 16</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bw"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 17</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Personas `Biz Dev` `Customer Serv…` Facilities `Finance-Corpo…` `Finance-East`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 3 Stand…  <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span>          0.072<span style="text-decoration: underline;">6</span>           0.066<span style="text-decoration: underline;">2</span>         0.029<span style="text-decoration: underline;">4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 4 Long …   0.111             0.093<span style="text-decoration: underline;">8</span>     0.088<span style="text-decoration: underline;">7</span>           0.103          0.132 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 5 Long …   0.880             0.885      0.766            0.75           0.632 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 6 Alway…   0.009<span style="text-decoration: underline;">26</span>           0.020<span style="text-decoration: underline;">8</span>     0.072<span style="text-decoration: underline;">6</span>           0.080<span style="text-decoration: underline;">9</span>         0.206 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 10 more variables: `Finance-South` &lt;dbl&gt;, `Finance-West` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1.2 Sta…  <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span>         0.008<span style="text-decoration: underline;">06</span>          <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 2.2 Sta…  <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span>         0.105             0.073<span style="text-decoration: underline;">5</span>         0.051<span style="text-decoration: underline;">5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 3 Long …   0.111             0.093<span style="text-decoration: underline;">8</span>    0.056<span style="text-decoration: underline;">5</span>            0.095<span style="text-decoration: underline;">6</span>         0.110 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 4 Long …   0.880             0.885     0.758             0.75           0.632 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 5 Alway…   0.009<span style="text-decoration: underline;">26</span>           0.020<span style="text-decoration: underline;">8</span>    0.072<span style="text-decoration: underline;">6</span>            0.080<span style="text-decoration: underline;">9</span>         0.206 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 11 more variables: `Finance-South` &lt;dbl&gt;, `Finance-West` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Financial Planning` &lt;dbl&gt;, `G&amp;A Central` &lt;dbl&gt;, `G&amp;A East` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `G&amp;A South` &lt;dbl&gt;, `Human Resources` &lt;dbl&gt;, `IT-Corporate` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `IT-East` &lt;dbl&gt;, `Inventory Management` &lt;dbl&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pav"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `IT-East` &lt;dbl&gt;, `Inventory Management` &lt;dbl&gt;, Total &lt;dbl&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pav"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="workpatterns_classify-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pav"</span>, return <span class="op">=</span> <span class="st">"plot-area"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">workpatterns_classify</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pav"</span>, return <span class="op">=</span> <span class="st">"plot-area"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="workpatterns_classify-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -403,7 +450,7 @@ Hourly Collaboration Flexible Query.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

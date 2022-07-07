@@ -22,7 +22,7 @@ collaboration weeks from your dataset."><meta property="og:image" content="https
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -168,17 +168,21 @@ collaboration weeks from your dataset.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">identify_holidayweeks</span><span class="op">(</span><span class="va">data</span>, sd <span class="op">=</span> <span class="fl">1</span>, return <span class="op">=</span> <span class="st">"message"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">identify_holidayweeks</span><span class="op">(</span><span class="va">data</span>, sd <span class="op">=</span> <span class="fl">1</span>, return <span class="op">=</span> <span class="st">"message"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>sd</dt>
 <dd><p>The standard deviation below the mean for collaboration hours that
 should define an outlier week. Enter a positive number. Default is 1
 standard deviation.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"message"</code> (default)</p></li>
@@ -187,10 +191,16 @@ following strings:</p><ul><li><p><code>"message"</code> (default)</p></li>
 <li><p><code>"data_dirty"</code></p></li>
 <li><p><code>"plot"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"message"</code>: message on console. a message is printed identifying holiday
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"message"</code>: message on console. a message is printed identifying holiday
 weeks.</p></li>
 <li><p><code>"data"</code>: data frame. A dataset with outlier weeks flagged in a new
 column is returned as a dataframe.</p></li>
@@ -240,15 +250,15 @@ that your query contains a metric with the exact same name.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return a message by default</span></span>
-<span class="r-in"><span class="fu">identify_holidayweeks</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return a message by default</span></span></span>
+<span class="r-in"><span><span class="fu">identify_holidayweeks</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The weeks where collaboration was 1 standard deviations below the mean (19.9) are: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `2019-12-01`</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return plot</span></span>
-<span class="r-in"><span class="fu">identify_holidayweeks</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return plot</span></span></span>
+<span class="r-in"><span><span class="fu">identify_holidayweeks</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="identify_holidayweeks-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -263,7 +273,7 @@ that your query contains a metric with the exact same name.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

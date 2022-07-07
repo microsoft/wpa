@@ -20,7 +20,7 @@ Additional options available to return a summary table."><meta property="og:imag
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,80 +164,111 @@ Additional options available to return a summary table.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_bar</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">metric</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  bar_colour <span class="op">=</span> <span class="st">"default"</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
-  percent <span class="op">=</span> <span class="cn">FALSE</span>,
-  plot_title <span class="op">=</span> <span class="fu"><a href="us_to_space.html">us_to_space</a></span><span class="op">(</span><span class="va">metric</span><span class="op">)</span>,
-  plot_subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Average by"</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu"><a href="camel_clean.html">camel_clean</a></span><span class="op">(</span><span class="va">hrvar</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
-  legend_lab <span class="op">=</span> <span class="cn">NULL</span>,
-  rank <span class="op">=</span> <span class="st">"descending"</span>,
-  xlim <span class="op">=</span> <span class="cn">NULL</span>,
-  text_just <span class="op">=</span> <span class="fl">0.5</span>,
-  text_colour <span class="op">=</span> <span class="st">"#FFFFFF"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_bar</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">metric</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  bar_colour <span class="op">=</span> <span class="st">"default"</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  percent <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  plot_title <span class="op">=</span> <span class="fu"><a href="us_to_space.html">us_to_space</a></span><span class="op">(</span><span class="va">metric</span><span class="op">)</span>,</span>
+<span>  plot_subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Average by"</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu"><a href="camel_clean.html">camel_clean</a></span><span class="op">(</span><span class="va">hrvar</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  legend_lab <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  rank <span class="op">=</span> <span class="st">"descending"</span>,</span>
+<span>  xlim <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  text_just <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  text_colour <span class="op">=</span> <span class="st">"#FFFFFF"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>Character string containing the name of the metric,
 e.g. "Collaboration_hours"</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
 instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>bar_colour</dt>
 <dd><p>String to specify colour to use for bars.
 In-built accepted values include <code>"default"</code> (default), <code>"alert"</code> (red), and
 <code>"darkblue"</code>. Otherwise, hex codes are also accepted. You can also supply
 RGB values via <code><a href="rgb2hex.html">rgb2hex()</a></code>.</p></dd>
+
+
 <dt>na.rm</dt>
 <dd><p>A logical value indicating whether <code>NA</code> should be stripped
 before the computation proceeds. Defaults to <code>FALSE</code>.</p></dd>
+
+
 <dt>percent</dt>
 <dd><p>Logical value to determine whether to show labels as
 percentage signs. Defaults to <code>FALSE</code>.</p></dd>
+
+
 <dt>plot_title</dt>
 <dd><p>An option to override plot title.</p></dd>
+
+
 <dt>plot_subtitle</dt>
 <dd><p>An option to override plot subtitle.</p></dd>
+
+
 <dt>legend_lab</dt>
 <dd><p>String. Option to override legend title/label. Defaults to
 <code>NULL</code>, where the metric name will be populated instead.</p></dd>
+
+
 <dt>rank</dt>
 <dd><p>String specifying how to rank the bars. Valid inputs are:</p><ul><li><p><code>"descending"</code> - ranked highest to lowest from top to bottom (default).</p></li>
 <li><p><code>"ascending"</code> - ranked lowest to highest from top to bottom.</p></li>
 <li><p><code>NULL</code> - uses the original levels of the HR attribute.</p></li>
 </ul></dd>
+
+
 <dt>xlim</dt>
 <dd><p>An option to set max value in x axis.</p></dd>
+
+
 <dt>text_just</dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a> A numeric value
 controlling for the horizontal position of the text labels. Defaults to
 0.5.</p></dd>
+
+
 <dt>text_colour</dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a> String to specify
 colour to use for the text labels. Defaults to <code>"#FFFFFF"</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A bar plot for the metric.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A bar plot for the metric.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul></div>
     <div id="see-also">
@@ -277,7 +308,12 @@ colour to use for the text labels. Defaults to <code>"#FFFFFF"</code>.</p></dd>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -335,30 +371,30 @@ colour to use for the text labels. Defaults to <code>"#FFFFFF"</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return a ggplot bar chart</span></span>
-<span class="r-in"><span class="fu">create_bar</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return a ggplot bar chart</span></span></span>
+<span class="r-in"><span><span class="fu">create_bar</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_bar-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change bar colour</span></span>
-<span class="r-in"><span class="fu">create_bar</span><span class="op">(</span><span class="va">sq_data</span>,</span>
-<span class="r-in">           metric <span class="op">=</span> <span class="st">"After_hours_collaboration_hours"</span>,</span>
-<span class="r-in">           bar_colour <span class="op">=</span> <span class="st">"alert"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change bar colour</span></span></span>
+<span class="r-in"><span><span class="fu">create_bar</span><span class="op">(</span><span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>           metric <span class="op">=</span> <span class="st">"After_hours_collaboration_hours"</span>,</span></span>
+<span class="r-in"><span>           bar_colour <span class="op">=</span> <span class="st">"alert"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_bar-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Custom data label positions and formatting</span></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">create_bar</span><span class="op">(</span></span>
-<span class="r-in">    metric <span class="op">=</span> <span class="st">"Meetings"</span>,</span>
-<span class="r-in">    text_just <span class="op">=</span> <span class="fl">1.1</span>,</span>
-<span class="r-in">    text_colour <span class="op">=</span> <span class="st">"black"</span>,</span>
-<span class="r-in">    xlim <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Custom data label positions and formatting</span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_bar</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    metric <span class="op">=</span> <span class="st">"Meetings"</span>,</span></span>
+<span class="r-in"><span>    text_just <span class="op">=</span> <span class="fl">1.1</span>,</span></span>
+<span class="r-in"><span>    text_colour <span class="op">=</span> <span class="st">"black"</span>,</span></span>
+<span class="r-in"><span>    xlim <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_bar-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a summary table</span></span>
-<span class="r-in"><span class="fu">create_bar</span><span class="op">(</span><span class="va">sq_data</span>,</span>
-<span class="r-in">           metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span>
-<span class="r-in">           hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span>
-<span class="r-in">           return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a summary table</span></span></span>
+<span class="r-in"><span><span class="fu">create_bar</span><span class="op">(</span><span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>           metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span></span>
+<span class="r-in"><span>           hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span></span>
+<span class="r-in"><span>           return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group     Collaboration_hours     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
@@ -382,7 +418,7 @@ colour to use for the text labels. Defaults to <code>"#FFFFFF"</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

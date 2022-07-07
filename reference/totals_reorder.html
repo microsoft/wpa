@@ -21,7 +21,7 @@ which is used to create a "Total" row in the data.'><meta property="og:image" co
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -166,21 +166,28 @@ which is used to create a "Total" row in the data.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">totals_reorder</span><span class="op">(</span><span class="va">data</span>, <span class="va">target_col</span>, target_value <span class="op">=</span> <span class="st">"Total"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">totals_reorder</span><span class="op">(</span><span class="va">data</span>, <span class="va">target_col</span>, target_value <span class="op">=</span> <span class="st">"Total"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Summary table in the form of a data frame.</p></dd>
+
+
 <dt>target_col</dt>
 <dd><p>Character value of the column in which to reorder</p></dd>
+
+
 <dt>target_value</dt>
 <dd><p>Character value of the value in <code>target_col</code> to match</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>data frame with the 'Total' row reordered to the bottom.</p>
+    
+
+<p>data frame with the 'Total' row reordered to the bottom.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -208,12 +215,12 @@ which is used to create a "Total" row in the data.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="totals_bind.html">totals_bind</a></span><span class="op">(</span>target_col <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span>
-<span class="r-in">              target_value <span class="op">=</span> <span class="st">"Total"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="collaboration_sum.html">collab_sum</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span>
-<span class="r-in">             return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">totals_reorder</span><span class="op">(</span>target_col <span class="op">=</span> <span class="st">"group"</span>, target_value <span class="op">=</span> <span class="st">"Total"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="totals_bind.html">totals_bind</a></span><span class="op">(</span>target_col <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span></span>
+<span class="r-in"><span>              target_value <span class="op">=</span> <span class="st">"Total"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="collaboration_sum.html">collab_sum</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span></span>
+<span class="r-in"><span>             return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">totals_reorder</span><span class="op">(</span>target_col <span class="op">=</span> <span class="st">"group"</span>, target_value <span class="op">=</span> <span class="st">"Total"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group     Meeting_hours Email_hours Total Employee_Count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
@@ -224,7 +231,7 @@ which is used to create a "Total" row in the data.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Manager           10.9        10.7   21.5            333</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Senior IC         10.2         9.94  20.1            103</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Support            9.47        9.37  18.8            419</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -239,7 +246,7 @@ which is used to create a "Total" row in the data.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

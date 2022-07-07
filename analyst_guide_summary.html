@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -157,8 +157,8 @@
 <h2 id="exploring-key-metrics">Exploring key metrics<a class="anchor" aria-label="anchor" href="#exploring-key-metrics"></a></h2>
 <p>The <code><a href="reference/keymetrics_scan.html">keymetrics_scan()</a></code> function allows you to produce a summary table with a wide range of metrics from an Standard Person Query. Just like in the function we studied in the previous section, you can specify which HR attribute/variable to use as a grouping variable with the <code>hrvar</code> argument, and what output to obtain (either “plot” or “table”) with the <code>return</code> argument.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span>
-<span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+<span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></code></pre></div>
 <p>The resulting table, will provide a averages for 18 key Workplace Analytics Metrics. You can customised what specific indicators to include, with the <code>metrics</code> argument:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>sq_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">keymetrics_scan</span>(<span class="dt">hrvar =</span> <span class="st">"Organization"</span>, <span class="dt">return =</span> <span class="st">"plot"</span>, </span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="dt">metrics=</span> <span class="kw">c</span>(<span class="st">"Workweek_span"</span>, <span class="st">"Collaboration_hours"</span>, <span class="st">"After_hours_collaboration_hours"</span>)</span></code></pre></div>
@@ -167,13 +167,13 @@
 <div class="section level2">
 <h2 id="average-email-and-meeting-hours">Average email and meeting hours<a class="anchor" aria-label="anchor" href="#average-email-and-meeting-hours"></a></h2>
 <p>The <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> function generates a stacked bar plot summarising the email and meeting hours by an HR attribute you specify. If no HR attribute is specified, “organization” will be used by default:</p>
-<pre class="{r}"><code><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span></code></pre>
+<pre class="{r}"><code><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p>By changing the <code>hrvar()</code> argument, you can change the groups being shown easily:</p>
-<pre class="{r}"><code><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre>
+<pre class="{r}"><code><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></code></pre>
 <p>By default, all summary functions exclude groups with less that five individuals. This is also something that can be adjusted, using the <code>mingroup()</code> argument:</p>
-<pre><code><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, mingroup <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, mingroup <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre>
 <p>Finally, you can also use “table” in the <code>return</code> argument, to obtain summary table instead of a plot. The <code><a href="reference/export.html">export()</a></code> function will copy all contents to the clipboard.</p>
-<pre class="{r}"><code><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre>
+<pre class="{r}"><code><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="other-summary-functions">Other summary functions<a class="anchor" aria-label="anchor" href="#other-summary-functions"></a></h2>
@@ -190,19 +190,19 @@
 <code><a href="reference/afterhours_summary.html">afterhours_summary()</a></code>: Bar plot summarising after-hours collaboration hours by an HR attribute.</li>
 </ul><p>All of these functions work equivalently to the <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> function: they use Standard Person Query data as an input, and accept <code>hrvar</code>, <code>return</code> and <code>mingroup</code> arguments.</p>
 <p>For example,</p>
-<pre><code><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/afterhours_summary.html">afterhours_summary</a></span><span class="op">(</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/afterhours_summary.html">afterhours_summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="custom-bar-charts-and-tables">Custom bar charts and tables<a class="anchor" aria-label="anchor" href="#custom-bar-charts-and-tables"></a></h2>
 <p>For other metrics, the <code><a href="reference/create_bar.html">create_bar()</a></code> function is a good way to obtain a summary bar chart for any metric. This function requires you to include a character string containing the name of the metric you want to analyze, e.g. “Generated_workload_email_hours”:</p>
-<pre><code><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_bar.html">create_bar</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/create_bar.html">create_bar</a></span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Generated_workload_email_hours"</span><span class="op">)</span></span></code></pre>
 <p>The <code><a href="reference/create_bar.html">create_bar()</a></code> function also accepts <code>hrvar</code>, <code>return</code> and <code>mingroup</code> arguments.</p>
 </div>
 <div class="section level2">
 <h2 id="customizing-plots">Customizing plots<a class="anchor" aria-label="anchor" href="#customizing-plots"></a></h2>
 <p>All plots in <strong>wpa</strong> are <a href="https://rafalab.github.io/dsbook/ggplot2.html" class="external-link">ggplot objects</a>. This means you can customize them by adding ggplot arguments and layers. For instance, you can change the title of a <code><a href="reference/collaboration_sum.html">collaboration_summary()</a></code> plot:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"This is a custom title"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="going-beyond-averages">Going beyond averages<a class="anchor" aria-label="anchor" href="#going-beyond-averages"></a></h2>
@@ -258,7 +258,7 @@ div.desc {
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

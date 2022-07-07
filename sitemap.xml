@@ -271,7 +271,22 @@
     <loc>https://microsoft.github.io/wpa/reference/export.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/wpa/reference/external_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/external_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/external_line.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/wpa/reference/external_network_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/external_rank.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/external_sum.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/extract_date_range.html</loc>
@@ -320,6 +335,9 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/identify_churn.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/identify_datefreq.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/identify_holidayweeks.html</loc>
@@ -475,6 +493,9 @@
     <loc>https://microsoft.github.io/wpa/reference/p_test.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/wpa/reference/pad2.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/wpa/reference/pairwise_count.html</loc>
   </url>
   <url>
@@ -491,6 +512,9 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/plot_flex_index.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/reference/plot_hourly_pat.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/read_preamble.html</loc>
@@ -605,6 +629,30 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reference/wrap_text.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/IV-report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/capacity-report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/coaching-report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/connectivity-report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/meeting-text-mining-report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/validation-report-demo.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/wellbeing-report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/wpa/report-demo/workpatterns-report.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/wpa/reporting_security_issues.html</loc>

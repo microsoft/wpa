@@ -19,7 +19,7 @@ plot. Automatically handles "Collaborators_within_group" and
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,52 +162,62 @@ plot. Automatically handles <code>"Collaborators_within_group"</code> and
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">network_g2g</span><span class="op">(</span>
-  <span class="va">data</span>,
-  time_investor <span class="op">=</span> <span class="cn">NULL</span>,
-  collaborator <span class="op">=</span> <span class="cn">NULL</span>,
-  metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,
-  algorithm <span class="op">=</span> <span class="st">"fr"</span>,
-  node_colour <span class="op">=</span> <span class="st">"lightblue"</span>,
-  exc_threshold <span class="op">=</span> <span class="fl">0.1</span>,
-  org_count <span class="op">=</span> <span class="cn">NULL</span>,
-  subtitle <span class="op">=</span> <span class="st">"Collaboration Across Organizations"</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>
-<span class="op">)</span>
-
-<span class="fu">g2g_network</span><span class="op">(</span>
-  <span class="va">data</span>,
-  time_investor <span class="op">=</span> <span class="cn">NULL</span>,
-  collaborator <span class="op">=</span> <span class="cn">NULL</span>,
-  metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,
-  algorithm <span class="op">=</span> <span class="st">"fr"</span>,
-  node_colour <span class="op">=</span> <span class="st">"lightblue"</span>,
-  exc_threshold <span class="op">=</span> <span class="fl">0.1</span>,
-  org_count <span class="op">=</span> <span class="cn">NULL</span>,
-  subtitle <span class="op">=</span> <span class="st">"Collaboration Across Organizations"</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">network_g2g</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  time_investor <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  collaborator <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span>
+<span>  algorithm <span class="op">=</span> <span class="st">"fr"</span>,</span>
+<span>  node_colour <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
+<span>  exc_threshold <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  org_count <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  subtitle <span class="op">=</span> <span class="st">"Collaboration Across Organizations"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">g2g_network</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  time_investor <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  collaborator <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span>
+<span>  algorithm <span class="op">=</span> <span class="st">"fr"</span>,</span>
+<span>  node_colour <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
+<span>  exc_threshold <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  org_count <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  subtitle <span class="op">=</span> <span class="st">"Collaboration Across Organizations"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data frame containing a G2G query.</p></dd>
+
+
 <dt>time_investor</dt>
 <dd><p>String containing the variable name for the Time
 Investor column.</p></dd>
+
+
 <dt>collaborator</dt>
 <dd><p>String containing the variable name for the Collaborator
 column.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>String containing the variable name for metric. Defaults to
 <code>Collaboration_hours</code>.</p></dd>
+
+
 <dt>algorithm</dt>
 <dd><p>String to specify the node placement algorithm to be used.
 Defaults to <code>"fr"</code> for the force-directed algorithm of Fruchterman and
 Reingold. See
 <a href="https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html" class="external-link">https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a full
 list of options.</p></dd>
+
+
 <dt>node_colour</dt>
 <dd><p>String or named vector to specify the colour to be used for displaying
 nodes. Defaults to <code>"lightblue"</code>.</p><ul><li><p>If <code>"vary"</code> is supplied, a different colour is shown for each node at
@@ -216,11 +226,15 @@ random.</p></li>
 variable provided for the <code>time_investor</code> and <code>collaborator</code> columns. See
 example section for details.</p></li>
 </ul></dd>
+
+
 <dt>exc_threshold</dt>
 <dd><p>Numeric value between 0 and 1 specifying the exclusion
 threshold to apply. Defaults to 0.1, which means that the plot will only
 display collaboration above 10% of a node's total collaboration. This
 argument has no impact on <code>"data"</code> or <code>"table"</code> return.</p></dd>
+
+
 <dt>org_count</dt>
 <dd><p>Optional data frame to provide the size of each organization
 in the <code>collaborator</code> attribute. The data frame should contain only two
@@ -229,8 +243,12 @@ columns:</p><ul><li><p>Name of the <code>collaborator</code> attribute excluding
 <li><p><code>"n"</code>. Must be of numeric type.
 Defaults to <code>NULL</code>, where node sizes will be fixed.</p></li>
 </ul></dd>
+
+
 <dt>subtitle</dt>
 <dd><p>String to override default plot subtitle.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
@@ -238,10 +256,16 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"network"</code></p></li>
 <li><p><code>"data"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A group-to-group network plot.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A group-to-group network plot.</p></li>
 <li><p><code>"table"</code>: data frame. An interactive matrix of the network.</p></li>
 <li><p><code>"network</code>: 'igraph' object used for creating the network plot.</p></li>
 <li><p><code>"data"</code>: data frame. A long table of the underlying data.</p></li>
@@ -262,61 +286,61 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return a network plot</span></span>
-<span class="r-in"><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">network_g2g</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return a network plot</span></span></span>
+<span class="r-in"><span><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">network_g2g</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `time_investor` field not provided. Assuming `TimeInvestors_Organization` as the `time_investor` variable.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `collaborator` field not provided. Assuming `Collaborators_Organization` as the `collaborator` variable.</span>
 <span class="r-plt img"><img src="network_g2g-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a network plot - Meeting hours and 5% threshold</span></span>
-<span class="r-in"><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_g2g</span><span class="op">(</span>time_investor <span class="op">=</span> <span class="st">"TimeInvestors_Organization"</span>,</span>
-<span class="r-in">              collaborator <span class="op">=</span> <span class="st">"Collaborators_Organization"</span>,</span>
-<span class="r-in">              metric <span class="op">=</span> <span class="st">"Meeting_hours"</span>,</span>
-<span class="r-in">              exc_threshold <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a network plot - Meeting hours and 5% threshold</span></span></span>
+<span class="r-in"><span><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_g2g</span><span class="op">(</span>time_investor <span class="op">=</span> <span class="st">"TimeInvestors_Organization"</span>,</span></span>
+<span class="r-in"><span>              collaborator <span class="op">=</span> <span class="st">"Collaborators_Organization"</span>,</span></span>
+<span class="r-in"><span>              metric <span class="op">=</span> <span class="st">"Meeting_hours"</span>,</span></span>
+<span class="r-in"><span>              exc_threshold <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="network_g2g-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a network plot - custom-specific colours</span></span>
-<span class="r-in"><span class="co"># Get labels of orgs and assign random colours</span></span>
-<span class="r-in"><span class="va">org_str</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">g2g_data</span><span class="op">$</span><span class="va">TimeInvestors_Organization</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">col_str</span> <span class="op">&lt;-</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span></span>
-<span class="r-in">    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span><span class="op">)</span>,</span>
-<span class="r-in">    size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">org_str</span><span class="op">)</span>,</span>
-<span class="r-in">    replace <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Create and supply a named vector to `node_colour`</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">col_str</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">org_str</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_g2g</span><span class="op">(</span>node_colour <span class="op">=</span> <span class="va">col_str</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a network plot - custom-specific colours</span></span></span>
+<span class="r-in"><span><span class="co"># Get labels of orgs and assign random colours</span></span></span>
+<span class="r-in"><span><span class="va">org_str</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">g2g_data</span><span class="op">$</span><span class="va">TimeInvestors_Organization</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">col_str</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">org_str</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    replace <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create and supply a named vector to `node_colour`</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">col_str</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">org_str</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_g2g</span><span class="op">(</span>node_colour <span class="op">=</span> <span class="va">col_str</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `time_investor` field not provided. Assuming `TimeInvestors_Organization` as the `time_investor` variable.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `collaborator` field not provided. Assuming `Collaborators_Organization` as the `collaborator` variable.</span>
 <span class="r-plt img"><img src="network_g2g-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a network plot with circle layout</span></span>
-<span class="r-in"><span class="co"># Vary node colours and add org sizes</span></span>
-<span class="r-in"><span class="va">org_tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="hrvar_count.html">hrvar_count</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="va">sq_data</span>,</span>
-<span class="r-in">  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
-<span class="r-in">  return <span class="op">=</span> <span class="st">"table"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_g2g</span><span class="op">(</span>algorithm <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span class="r-in">              node_colour <span class="op">=</span> <span class="st">"vary"</span>,</span>
-<span class="r-in">              org_count <span class="op">=</span> <span class="va">org_tb</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a network plot with circle layout</span></span></span>
+<span class="r-in"><span><span class="co"># Vary node colours and add org sizes</span></span></span>
+<span class="r-in"><span><span class="va">org_tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="hrvar_count.html">hrvar_count</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span></span>
+<span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_g2g</span><span class="op">(</span>algorithm <span class="op">=</span> <span class="st">"circle"</span>,</span></span>
+<span class="r-in"><span>              node_colour <span class="op">=</span> <span class="st">"vary"</span>,</span></span>
+<span class="r-in"><span>              org_count <span class="op">=</span> <span class="va">org_tb</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `time_investor` field not provided. Assuming `TimeInvestors_Organization` as the `time_investor` variable.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `collaborator` field not provided. Assuming `Collaborators_Organization` as the `collaborator` variable.</span>
 <span class="r-plt img"><img src="network_g2g-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return an interaction matrix</span></span>
-<span class="r-in"><span class="co"># Minimum arguments specified</span></span>
-<span class="r-in"><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_g2g</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return an interaction matrix</span></span></span>
+<span class="r-in"><span><span class="co"># Minimum arguments specified</span></span></span>
+<span class="r-in"><span><span class="va">g2g_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_g2g</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `time_investor` field not provided. Assuming `TimeInvestors_Organization` as the `time_investor` variable.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `collaborator` field not provided. Assuming `Collaborators_Organization` as the `collaborator` variable.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 17</span></span>
@@ -343,8 +367,8 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `G&amp;A Central` &lt;dbl&gt;, `G&amp;A East` &lt;dbl&gt;, `G&amp;A South` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Human Resources` &lt;dbl&gt;, `IT-Corporate` &lt;dbl&gt;, `IT-East` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Inventory Management` &lt;dbl&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -359,7 +383,7 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

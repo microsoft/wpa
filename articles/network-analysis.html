@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -329,7 +329,7 @@
 </table>
 <p>Another parameter that can be specified with the WpA R package is the return parameter, which represents either a table (<code>return = "table"</code>) or a plot (<code>return = "plot"</code>). Plots visualize your output and can show a large amount of data quickly in a way that is easy to process.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/internal_network_plot.html">internal_network_plot</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/internal_network_plot.html">internal_network_plot</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="network-analysis_files/figure-html/unnamed-chunk-2-1.png" width="768"></p>
 <ul>
 <li>You can change the HR variable by which to split the metrics, defaults to “Organization” but accepts any character vector</li>
@@ -337,7 +337,7 @@
 </ul>
 <p><em>Interpretation: Organizations in the lower left corner have a internal smaller network size and network breadth. This may mean that they do not collaborate as much with other internal organizations and do not show a very large network. In comparison, organizations in the upper right corner have a larger internal network size and also network breadth. It can be inferred that they collaborate very broadly across the whole organization, maintaining many meaningful connections.</em></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/external_network_plot.html">external_network_plot</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/external_network_plot.html">external_network_plot</a></span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="network-analysis_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
 <ul>
 <li>You can change the HR variable by which to split the metrics, defaults to “Organization” but accepts any character vector</li>
@@ -345,7 +345,7 @@
 </ul>
 <p><em>Interpretation: Organizations in the lower left corner have a smaller external network size and network breadth. This may mean that they do not collaborate as much with other external collaborator and do not show a very large external network. In comparison, organizations in the upper right corner have a larger external network size and also network breadth. Thus, they collaborate very broadly and often with external collaborators.</em></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/network_g2g.html">network_g2g</a></span><span class="op">(</span><span class="va">g2g_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/network_g2g.html">network_g2g</a></span><span class="op">(</span><span class="va">g2g_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="network-analysis_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
 <ul>
 <li>You can specify the metric being used for this visualization (Default: metric = “Collaboration_hours”)</li>
@@ -353,8 +353,8 @@
 </ul>
 <p><em>Interpretation: This visualization can be used to show how strongly different organizations are connected. The connections between the organizations shows the strength of the network and give an indication of how strong this connection is. Organizations that have no connection or only a very weak connection may have a possible risk of exclusion because they are not as strongly connected to other organizations.</em></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>
-<span class="va">p2p_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>, path <span class="op">=</span> <span class="cn">NULL</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="va">p2p_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>, path <span class="op">=</span> <span class="cn">NULL</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="network-analysis_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
 <ul>
 <li>
@@ -402,7 +402,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

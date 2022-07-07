@@ -19,7 +19,7 @@ string, which is used in the caption of plots in this package."><meta property="
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,7 +162,7 @@ string, which is used in the caption of plots in this package.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">extract_date_range</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_date_range</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -171,14 +171,22 @@ string, which is used in the caption of plots in this package.</p>
 <dd><p>Data frame containing a query to pass through.
 The data frame must contain a <code>Date</code> column.
 Accepts a Person query or a Meeting query.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what output to return.
 Returns a table by default ("table"), but allows returning
 a descriptive string ("text").</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"table"</code>: data frame. A summary table containing the start and end date
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"table"</code>: data frame. A summary table containing the start and end date
 for the dataset.</p></li>
 <li><p><code>"text"</code>: string. Contains a descriptive string on the start and end date
 for the dataset.</p></li>
@@ -219,7 +227,7 @@ for the dataset.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

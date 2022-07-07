@@ -22,7 +22,7 @@ argument."><meta property="og:image" content="https://microsoft.github.io/wpa/lo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -168,23 +168,30 @@ argument.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">identify_outlier</span><span class="op">(</span><span class="va">data</span>, group_var <span class="op">=</span> <span class="st">"Date"</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">identify_outlier</span><span class="op">(</span><span class="va">data</span>, group_var <span class="op">=</span> <span class="st">"Date"</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>group_var</dt>
 <dd><p>A string with the name of the grouping variable.
 Defaults to <code>Date</code>.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>Character string containing the name of the metric,
 e.g. "Collaboration_hours"</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a data frame with <code>Date</code> (if grouping variable is not set),
+    
+
+<p>Returns a data frame with <code>Date</code> (if grouping variable is not set),
 the metric, and the corresponding z-score.</p>
     </div>
     <div id="see-also">
@@ -219,7 +226,7 @@ the metric, and the corresponding z-score.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">identify_outlier</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">identify_outlier</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Date       Collaboration_hours  zscore</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -236,7 +243,7 @@ the metric, and the corresponding z-score.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 12/22/2019                20.5  0.214 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 12/29/2019                19.4 -<span style="color: #BB0000;">0.190</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 12/8/2019                 19.0 -<span style="color: #BB0000;">0.359</span> </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -251,7 +258,7 @@ the metric, and the corresponding z-score.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

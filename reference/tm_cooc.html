@@ -18,7 +18,7 @@ return a table. This function is used within meeting_tm_report()."><meta propert
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,30 +160,44 @@ return a table. This function is used within <code><a href="meeting_tm_report.ht
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tm_cooc</span><span class="op">(</span><span class="va">data</span>, stopwords <span class="op">=</span> <span class="cn">NULL</span>, seed <span class="op">=</span> <span class="fl">100</span>, return <span class="op">=</span> <span class="st">"plot"</span>, lmult <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tm_cooc</span><span class="op">(</span><span class="va">data</span>, stopwords <span class="op">=</span> <span class="cn">NULL</span>, seed <span class="op">=</span> <span class="fl">100</span>, return <span class="op">=</span> <span class="st">"plot"</span>, lmult <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Meeting Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>stopwords</dt>
 <dd><p>A character vector OR a single-column data frame labelled
 <code>'word'</code> containing custom stopwords to remove.</p></dd>
+
+
 <dt>seed</dt>
 <dd><p>A numeric vector to set seed for random generation.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>lmult</dt>
 <dd><p>A multiplier to adjust the line width in the output plot.
 Defaults to 0.05.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' and 'ggraph' object. A network plot.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' and 'ggraph' object. A network plot.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table.</p></li>
 </ul></div>
     <div id="details">
@@ -210,13 +224,13 @@ There is an option to remove stopwords by passing a data frame into the
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Demo using a subset of `mt_data`</span></span>
-<span class="r-in"><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">tm_cooc</span><span class="op">(</span>lmult <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Demo using a subset of `mt_data`</span></span></span>
+<span class="r-in"><span><span class="va">mt_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">tm_cooc</span><span class="op">(</span>lmult <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Selecting by n</span>
 <span class="r-plt img"><img src="tm_cooc-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -231,7 +245,7 @@ There is an option to remove stopwords by passing a data frame into the
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

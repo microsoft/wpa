@@ -20,7 +20,7 @@ a PersonId is flagged as unusual."><meta property="og:image" content="https://mi
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -164,25 +164,35 @@ a <code>PersonId</code> is flagged as unusual.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">flag_em_ratio</span><span class="op">(</span><span class="va">data</span>, threshold <span class="op">=</span> <span class="fl">1</span>, return <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">flag_em_ratio</span><span class="op">(</span><span class="va">data</span>, threshold <span class="op">=</span> <span class="fl">1</span>, return <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame containing a Person Query.</p></dd>
+
+
 <dt>threshold</dt>
 <dd><p>Numeric value specifying the threshold for flagging.
 Defaults to 1.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"text"</code></p></li>
 <li><p><code>"data"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"text"</code>: string. A diagnostic message.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"text"</code>: string. A diagnostic message.</p></li>
 <li><p><code>"data"</code>: data frame. Person-level data with those flagged with unusual
 ratios.</p></li>
 </ul></div>
@@ -218,9 +228,9 @@ ratios.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">flag_em_ratio</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">flag_em_ratio</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0 % (0) of the population have an unusually high email hours to emails sent ratio."</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -235,7 +245,7 @@ ratios.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -192,7 +192,7 @@
       <h1 data-toc-skip>Introduction to {wpa}</h1>
                         <h4 data-toc-skip class="author">Martin Chan</h4>
             
-            <h4 data-toc-skip class="date">2022-06-09</h4>
+            <h4 data-toc-skip class="date">2022-07-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/HEAD/vignettes/intro-to-wpa.Rmd" class="external-link"><code>vignettes/intro-to-wpa.Rmd</code></a></small>
       <div class="hidden name"><code>intro-to-wpa.Rmd</code></div>
@@ -210,28 +210,28 @@
 </h3>
 <p>To start off using <strong>wpa</strong>, you’ll have to load it by running <code><a href="https://github.com/microsoft/wpa/" class="external-link">library(wpa)</a></code>. For the purpose of our examples, let’s also load <strong>dplyr</strong> as a component package of <strong>tidyverse</strong> (alternatively, you can just run <code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 <p>The package ships with a standard Person query dataset <code>sq_data</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sq_data"</span><span class="op">)</span> <span class="co"># Standard Query data</span>
-
-<span class="co"># Check what the first ten columns look like</span>
-<span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="va">.</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 13,442</span>
-<span class="co">#&gt; Columns: 10</span>
-<span class="co">#&gt; $ PersonId                                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "93F763956FFC939A5DDE7D…</span>
-<span class="co">#&gt; $ Date                                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "11/3/2019", "11/10/201…</span>
-<span class="co">#&gt; $ Workweek_span                                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 42.50652, 39.78644, 42.…</span>
-<span class="co">#&gt; $ Meetings_with_skip_level                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 1,…</span>
-<span class="co">#&gt; $ Meeting_hours_with_skip_level                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00, 0.00, 0.00, 0.00,…</span>
-<span class="co">#&gt; $ Generated_workload_email_hours                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.283767, 11.890209, 9…</span>
-<span class="co">#&gt; $ Generated_workload_email_recipients            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 179, 171, 131, 108, 78,…</span>
-<span class="co">#&gt; $ Generated_workload_instant_messages_hours      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.0815250, 1.1650000, 0…</span>
-<span class="co">#&gt; $ Generated_workload_instant_messages_recipients <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 96, 94, 60, 61, 39, 64,…</span>
-<span class="co">#&gt; $ Generated_workload_call_hours                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.5000000, 0.0000000, 5…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sq_data"</span><span class="op">)</span> <span class="co"># Standard Query data</span></span>
+<span></span>
+<span><span class="co"># Check what the first ten columns look like</span></span>
+<span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="va">.</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 13,442</span></span>
+<span><span class="co">#&gt; Columns: 10</span></span>
+<span><span class="co">#&gt; $ PersonId                                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "93F763956FFC939A5DDE7D…</span></span>
+<span><span class="co">#&gt; $ Date                                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "11/3/2019", "11/10/201…</span></span>
+<span><span class="co">#&gt; $ Workweek_span                                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 42.50652, 39.78644, 42.…</span></span>
+<span><span class="co">#&gt; $ Meetings_with_skip_level                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 1,…</span></span>
+<span><span class="co">#&gt; $ Meeting_hours_with_skip_level                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00, 0.00, 0.00, 0.00,…</span></span>
+<span><span class="co">#&gt; $ Generated_workload_email_hours                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.283767, 11.890209, 9…</span></span>
+<span><span class="co">#&gt; $ Generated_workload_email_recipients            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 179, 171, 131, 108, 78,…</span></span>
+<span><span class="co">#&gt; $ Generated_workload_instant_messages_hours      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.0815250, 1.1650000, 0…</span></span>
+<span><span class="co">#&gt; $ Generated_workload_instant_messages_recipients <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 96, 94, 60, 61, 39, 64,…</span></span>
+<span><span class="co">#&gt; $ Generated_workload_call_hours                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.5000000, 0.0000000, 5…</span></span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -243,24 +243,24 @@
 </h3>
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
 <p>By changing the <code>hrvar()</code> argument, you can change the data being shown easily:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function also comes with an option to return summary tables, rather than plots. Just specify “table” in the <code>return</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span>
-<span class="co">#&gt;   group     Meeting_hours Email_hours Total Employee_Count</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Director           9.22        9.70  18.9             68</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Executive         10.6         8.36  19.0              6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Junior IC          9.89        9.73  19.6            105</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Manager           10.9        10.7   21.5            333</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Senior IC         10.2         9.94  20.1            103</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Support            9.47        9.37  18.8            419</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt;   group     Meeting_hours Email_hours Total Employee_Count</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Director           9.22        9.70  18.9             68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Executive         10.6         8.36  19.0              6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Junior IC          9.89        9.73  19.6            105</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Manager           10.9        10.7   21.5            333</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Senior IC         10.2         9.94  20.1            103</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Support            9.47        9.37  18.8            419</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
@@ -275,37 +275,37 @@
 <p>And here are what the outputs look like.</p>
 <p>Heatmap:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
 <p>Summary table:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 19 × 16</span></span>
-<span class="co">#&gt;    variable               `Biz Dev` `Customer Serv…` Facilities `Finance-Corpo…`</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Workweek_span             37.2             41.3       43.1             39.5  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Collaboration_hours       14.7             18.3       18.6             16.3  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> After_hours_collabora…     2.00             2.78       2.85             2.36 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Meetings                   7.63             9.72       9.96             8.73 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Meeting_hours              7.02             8.78       9.39             8.16 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> After_hours_meeting_h…     0.722            1.20       1.21             0.959</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Low_quality_meeting_h…     4.52             6.67       6.79             5.60 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Meeting_hours_with_ma…     0.237            0.354      0.255            0.241</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Meeting_hours_with_ma…     3.60             5.10       5.53             4.44 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Emails_sent               39.3             45.4       44.5             40.3  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Email_hours                7.72             9.49       9.20             8.13 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> After_hours_email_hou…     1.27             1.58       1.64             1.40 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Generated_workload_em…     7.98            10.0        9.53             8.34 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Total_focus_hours         33.1             31.3       30.5             31.9  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Internal_network_size     41.5             41.5       37.0             37.4  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Networking_outside_or…     3.47             3.53       3.21             3.31 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> External_network_size      4.07             4.40       6.19             4.80 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Networking_outside_co…     2.09             2.29       3.38             2.69 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Employee_Count            75               61         72               68    </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 11 more variables: `Finance-East` &lt;dbl&gt;, `Finance-South` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `Finance-West` &lt;dbl&gt;, `Financial Planning` &lt;dbl&gt;, `G&amp;A Central` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `G&amp;A East` &lt;dbl&gt;, `G&amp;A South` &lt;dbl&gt;, `Human Resources` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `Inventory Management` &lt;dbl&gt;, `IT-Corporate` &lt;dbl&gt;, `IT-East` &lt;dbl&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 19 × 16</span></span></span>
+<span><span class="co">#&gt;    variable               `Biz Dev` `Customer Serv…` Facilities `Finance-Corpo…`</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Workweek_span             37.2             41.3       43.1             39.5  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Collaboration_hours       14.7             18.3       18.6             16.3  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> After_hours_collabora…     2.00             2.78       2.85             2.36 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Meetings                   7.63             9.72       9.96             8.73 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Meeting_hours              7.02             8.78       9.39             8.16 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> After_hours_meeting_h…     0.722            1.20       1.21             0.959</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Low_quality_meeting_h…     4.52             6.67       6.79             5.60 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Meeting_hours_with_ma…     0.237            0.354      0.255            0.241</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Meeting_hours_with_ma…     3.60             5.10       5.53             4.44 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Emails_sent               39.3             45.4       44.5             40.3  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Email_hours                7.72             9.49       9.20             8.13 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> After_hours_email_hou…     1.27             1.58       1.64             1.40 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Generated_workload_em…     7.98            10.0        9.53             8.34 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Total_focus_hours         33.1             31.3       30.5             31.9  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Internal_network_size     41.5             41.5       37.0             37.4  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Networking_outside_or…     3.47             3.53       3.21             3.31 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> External_network_size      4.07             4.40       6.19             4.80 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Networking_outside_co…     2.09             2.29       3.38             2.69 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Employee_Count            75               61         72               68    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 11 more variables: `Finance-East` &lt;dbl&gt;, `Finance-South` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `Finance-West` &lt;dbl&gt;, `Financial Planning` &lt;dbl&gt;, `G&amp;A Central` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `G&amp;A East` &lt;dbl&gt;, `G&amp;A South` &lt;dbl&gt;, `Human Resources` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `Inventory Management` &lt;dbl&gt;, `IT-Corporate` &lt;dbl&gt;, `IT-East` &lt;dbl&gt;</span></span></span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -324,110 +324,110 @@
 <p>And here are what the outputs look like, for <code><a href="../reference/meeting_summary.html">meeting_summary()</a></code>.</p>
 <p>Heatmap:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
 <p>Summary table:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 15 × 3</span></span>
-<span class="co">#&gt;    group                Meeting_hours     n</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Biz Dev                       7.02    75</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Customer Service              8.78    61</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Facilities                    9.39    72</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Finance-Corporate             8.16    68</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Finance-East                 11.4     70</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Finance-South                 9.27    81</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Finance-West                 10.4     73</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Financial Planning            8.36    75</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> G&amp;A Central                   9.28    57</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> G&amp;A East                      7.84    65</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> G&amp;A South                    11.6     76</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Human Resources              12.6     71</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Inventory Management         13.7     60</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> IT-Corporate                 12.3     68</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> IT-East                      10.8     62</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 15 × 3</span></span></span>
+<span><span class="co">#&gt;    group                Meeting_hours     n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Biz Dev                       7.02    75</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Customer Service              8.78    61</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Facilities                    9.39    72</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Finance-Corporate             8.16    68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Finance-East                 11.4     70</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Finance-South                 9.27    81</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Finance-West                 10.4     73</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Financial Planning            8.36    75</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> G&amp;A Central                   9.28    57</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> G&amp;A East                      7.84    65</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> G&amp;A South                    11.6     76</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Human Resources              12.6     71</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Inventory Management         13.7     60</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> IT-Corporate                 12.3     68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> IT-East                      10.8     62</span></span></code></pre></div>
 <hr>
 <div class="section level3">
 <h3 id="manager-relationship-2x2-matrix">Manager Relationship 2x2 Matrix<a class="anchor" aria-label="anchor" href="#manager-relationship-2x2-matrix"></a>
 </h3>
 <p>The <code><a href="../reference/mgrrel_matrix.html">mgrrel_matrix()</a></code> function from {wpa} enables you to plot a 2 by 2 matrix straight from the Standard Query data, which is returned as a ggplot object:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
 <p>By changing the <code>return</code> argument, you can also return a <strong>summary table</strong>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 4</span></span>
-<span class="co">#&gt;    mgrRel         LevelDesignation     n   perc</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Co-attending   Junior IC           40 0.381 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Co-attending   Manager             78 0.234 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Co-attending   Senior IC           32 0.311 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Co-attending   Support            159 0.379 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Coaching       Director            23 0.338 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Coaching       Executive            2 0.333 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Coaching       Junior IC            4 0.038<span style="text-decoration: underline;">1</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Coaching       Manager             67 0.201 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Coaching       Senior IC           10 0.097<span style="text-decoration: underline;">1</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Coaching       Support             24 0.057<span style="text-decoration: underline;">3</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Highly managed Junior IC           51 0.486 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Highly managed Manager             82 0.246 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Highly managed Senior IC           47 0.456 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Highly managed Support            184 0.439 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Under-coached  Director            45 0.662 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Under-coached  Executive            4 0.667 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Under-coached  Junior IC           10 0.095<span style="text-decoration: underline;">2</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Under-coached  Manager            106 0.318 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Under-coached  Senior IC           14 0.136 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">20</span> Under-coached  Support             52 0.124</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 4</span></span></span>
+<span><span class="co">#&gt;    mgrRel         LevelDesignation     n   perc</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Co-attending   Junior IC           40 0.381 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Co-attending   Manager             78 0.234 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Co-attending   Senior IC           32 0.311 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Co-attending   Support            159 0.379 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Coaching       Director            23 0.338 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Coaching       Executive            2 0.333 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Coaching       Junior IC            4 0.038<span style="text-decoration: underline;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Coaching       Manager             67 0.201 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Coaching       Senior IC           10 0.097<span style="text-decoration: underline;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Coaching       Support             24 0.057<span style="text-decoration: underline;">3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Highly managed Junior IC           51 0.486 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Highly managed Manager             82 0.246 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Highly managed Senior IC           47 0.456 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Highly managed Support            184 0.439 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Under-coached  Director            45 0.662 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Under-coached  Executive            4 0.667 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Under-coached  Junior IC           10 0.095<span style="text-decoration: underline;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Under-coached  Manager            106 0.318 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Under-coached  Senior IC           14 0.136 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span> Under-coached  Support             52 0.124</span></span></code></pre></div>
 <p>Alternatively, you can return the input data that is used to create the plot:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"chartdata"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 10</span></span>
-<span class="co">#&gt;    LevelDesignation mgr1on1  coattendande     n   perc   xmin  xmax   ymin  ymax</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Director         &lt; 15 min &lt;50%            45 0.662  -<span style="color: #BB0000;">0.813</span> 0     -<span style="color: #BB0000;">0.813</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Director         &gt;= 15 m… &lt;50%            23 0.338   0     0.582 -<span style="color: #BB0000;">0.582</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Executive        &lt; 15 min &lt;50%             4 0.667  -<span style="color: #BB0000;">0.816</span> 0     -<span style="color: #BB0000;">0.816</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Executive        &gt;= 15 m… &lt;50%             2 0.333   0     0.577 -<span style="color: #BB0000;">0.577</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Junior IC        &lt; 15 min &lt;50%            10 0.095<span style="text-decoration: underline;">2</span> -<span style="color: #BB0000;">0.309</span> 0     -<span style="color: #BB0000;">0.309</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Junior IC        &lt; 15 min &gt;=50%           40 0.381  -<span style="color: #BB0000;">0.617</span> 0      0     0.617</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Junior IC        &gt;= 15 m… &lt;50%             4 0.038<span style="text-decoration: underline;">1</span>  0     0.195 -<span style="color: #BB0000;">0.195</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Junior IC        &gt;= 15 m… &gt;=50%           51 0.486   0     0.697  0     0.697</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Manager          &lt; 15 min &lt;50%           106 0.318  -<span style="color: #BB0000;">0.564</span> 0     -<span style="color: #BB0000;">0.564</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Manager          &lt; 15 min &gt;=50%           78 0.234  -<span style="color: #BB0000;">0.484</span> 0      0     0.484</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Manager          &gt;= 15 m… &lt;50%            67 0.201   0     0.449 -<span style="color: #BB0000;">0.449</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Manager          &gt;= 15 m… &gt;=50%           82 0.246   0     0.496  0     0.496</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Senior IC        &lt; 15 min &lt;50%            14 0.136  -<span style="color: #BB0000;">0.369</span> 0     -<span style="color: #BB0000;">0.369</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Senior IC        &lt; 15 min &gt;=50%           32 0.311  -<span style="color: #BB0000;">0.557</span> 0      0     0.557</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Senior IC        &gt;= 15 m… &lt;50%            10 0.097<span style="text-decoration: underline;">1</span>  0     0.312 -<span style="color: #BB0000;">0.312</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Senior IC        &gt;= 15 m… &gt;=50%           47 0.456   0     0.676  0     0.676</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Support          &lt; 15 min &lt;50%            52 0.124  -<span style="color: #BB0000;">0.352</span> 0     -<span style="color: #BB0000;">0.352</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Support          &lt; 15 min &gt;=50%          159 0.379  -<span style="color: #BB0000;">0.616</span> 0      0     0.616</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Support          &gt;= 15 m… &lt;50%            24 0.057<span style="text-decoration: underline;">3</span>  0     0.239 -<span style="color: #BB0000;">0.239</span> 0    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">20</span> Support          &gt;= 15 m… &gt;=50%          184 0.439   0     0.663  0     0.663</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 1 more variable: mgrRel &lt;fct&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"chartdata"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 10</span></span></span>
+<span><span class="co">#&gt;    LevelDesignation mgr1on1  coattendande     n   perc   xmin  xmax   ymin  ymax</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Director         &lt; 15 min &lt;50%            45 0.662  -<span style="color: #BB0000;">0.813</span> 0     -<span style="color: #BB0000;">0.813</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Director         &gt;= 15 m… &lt;50%            23 0.338   0     0.582 -<span style="color: #BB0000;">0.582</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Executive        &lt; 15 min &lt;50%             4 0.667  -<span style="color: #BB0000;">0.816</span> 0     -<span style="color: #BB0000;">0.816</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Executive        &gt;= 15 m… &lt;50%             2 0.333   0     0.577 -<span style="color: #BB0000;">0.577</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Junior IC        &lt; 15 min &lt;50%            10 0.095<span style="text-decoration: underline;">2</span> -<span style="color: #BB0000;">0.309</span> 0     -<span style="color: #BB0000;">0.309</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Junior IC        &lt; 15 min &gt;=50%           40 0.381  -<span style="color: #BB0000;">0.617</span> 0      0     0.617</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Junior IC        &gt;= 15 m… &lt;50%             4 0.038<span style="text-decoration: underline;">1</span>  0     0.195 -<span style="color: #BB0000;">0.195</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Junior IC        &gt;= 15 m… &gt;=50%           51 0.486   0     0.697  0     0.697</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Manager          &lt; 15 min &lt;50%           106 0.318  -<span style="color: #BB0000;">0.564</span> 0     -<span style="color: #BB0000;">0.564</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Manager          &lt; 15 min &gt;=50%           78 0.234  -<span style="color: #BB0000;">0.484</span> 0      0     0.484</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Manager          &gt;= 15 m… &lt;50%            67 0.201   0     0.449 -<span style="color: #BB0000;">0.449</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Manager          &gt;= 15 m… &gt;=50%           82 0.246   0     0.496  0     0.496</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Senior IC        &lt; 15 min &lt;50%            14 0.136  -<span style="color: #BB0000;">0.369</span> 0     -<span style="color: #BB0000;">0.369</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Senior IC        &lt; 15 min &gt;=50%           32 0.311  -<span style="color: #BB0000;">0.557</span> 0      0     0.557</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Senior IC        &gt;= 15 m… &lt;50%            10 0.097<span style="text-decoration: underline;">1</span>  0     0.312 -<span style="color: #BB0000;">0.312</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Senior IC        &gt;= 15 m… &gt;=50%           47 0.456   0     0.676  0     0.676</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Support          &lt; 15 min &lt;50%            52 0.124  -<span style="color: #BB0000;">0.352</span> 0     -<span style="color: #BB0000;">0.352</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Support          &lt; 15 min &gt;=50%          159 0.379  -<span style="color: #BB0000;">0.616</span> 0      0     0.616</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Support          &gt;= 15 m… &lt;50%            24 0.057<span style="text-decoration: underline;">3</span>  0     0.239 -<span style="color: #BB0000;">0.239</span> 0    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span> Support          &gt;= 15 m… &gt;=50%          184 0.439   0     0.663  0     0.663</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more variable: mgrRel &lt;fct&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="distribution-of-time-spent-with-manager">Distribution of Time spent with Manager<a class="anchor" aria-label="anchor" href="#distribution-of-time-spent-with-manager"></a>
 </h3>
 <p>The <code><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist()</a></code> function generates the distribution of meeting co-attendance rate of staff with managers.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-13-1.png" width="768"></p>
 <p>A table can be generated:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span>
-<span class="co">#&gt;   group     `0 - 25%` `25 - 50%` `50 - 75%` `75% +`</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Director    1           <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Executive   1           <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Junior IC  <span style="color: #BB0000;">NA</span>            0.133      0.524   0.343</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Manager     0.417        0.102      0.282   0.198</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Senior IC  <span style="color: #BB0000;">NA</span>            0.233      0.417   0.350</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Support     0.002<span style="text-decoration: underline;">39</span>      0.177      0.430   0.391</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt;   group     `0 - 25%` `25 - 50%` `50 - 75%` `75% +`</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Director    1           <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Executive   1           <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Junior IC  <span style="color: #BB0000;">NA</span>            0.133      0.524   0.343</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Manager     0.417        0.102      0.282   0.198</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Senior IC  <span style="color: #BB0000;">NA</span>            0.233      0.417   0.350</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Support     0.002<span style="text-decoration: underline;">39</span>      0.177      0.430   0.391</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
@@ -435,19 +435,19 @@
 </h3>
 <p>With a few rare exceptions such as <code><a href="../reference/track_HR_change.html">track_HR_change()</a></code>, the majority of plot outputs returned by <strong>wpa</strong> functions are ggplot outputs. What this means is that there is a lot of flexibility in adding or overriding visual elements in the plots. For instance, you can take the following ‘fizzy drink’ (jittered scatter) plot:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-15-1.png" width="768"></p>
 <p>… and add custom titles, subtitles, and flip the axes by adding ggplot layers:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span> <span class="co"># Requires ggplot2 for customizations</span>
-
-<span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a custom title"</span>,
-       subtitle <span class="op">=</span> <span class="st">"This is a custom sub-title"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span>
-<span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span> <span class="co"># Requires ggplot2 for customizations</span></span>
+<span></span>
+<span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a custom title"</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="st">"This is a custom sub-title"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span></span>
+<span><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></span></code></pre></div>
 <p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
 <p>Note that the “pipe” syntax changes from <code>%&gt;%</code> to <code>+</code> once you are manipulating a ggplot output, which will return an error if not used correctly.</p>
 <p>Adding customized elements may ‘break’ the visualization, so please exercise caution when doing so.</p>
@@ -459,7 +459,7 @@
 </h3>
 <p>The <code><a href="../reference/collaboration_report.html">collaboration_report()</a></code> function enables you to get a quick view of the Standard Query data by producing an automated HTML report. This can be done by passing the dataset as the argument:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_report.html">collaboration_report</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_report.html">collaboration_report</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Running the function will open up a HTML report in your browser, summarising the key collaboration metrics and plots of the Standard Person Query. You can manually save this report, or only have it open as an ad-hoc reference document.</p>
 <hr>
 </div>
@@ -488,7 +488,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

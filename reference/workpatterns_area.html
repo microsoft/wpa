@@ -18,7 +18,7 @@ Emails sent and IMs sent attended by hour of the day."><meta property="og:image"
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,29 +160,35 @@ Emails sent and IMs sent attended by hour of the day.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">workpatterns_area</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  values <span class="op">=</span> <span class="st">"percent"</span>,
-  start_hour <span class="op">=</span> <span class="st">"0900"</span>,
-  end_hour <span class="op">=</span> <span class="st">"1700"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">workpatterns_area</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  signals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"email"</span>, <span class="st">"IM"</span><span class="op">)</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  values <span class="op">=</span> <span class="st">"percent"</span>,</span>
+<span>  start_hour <span class="op">=</span> <span class="st">"0900"</span>,</span>
+<span>  end_hour <span class="op">=</span> <span class="st">"1700"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame containing data from the Hourly Collaboration query.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>HR Variable by which to split metrics. Accepts a character
 vector, defaults to <code>"Organization"</code> but accepts any character vector, e.g.
 <code>"LevelDesignation"</code></p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size, defaults to 5.</p></dd>
+
+
 <dt>signals</dt>
 <dd><p>Character vector to specify which collaboration metrics to
 use:</p><ul><li><p>a combination of signals, such as <code>c("email", "IM")</code> (default)</p></li>
@@ -191,26 +197,40 @@ use:</p><ul><li><p>a combination of signals, such as <code>c("email", "IM")</cod
 <li><p><code>"unscheduled_calls"</code> for Unscheduled Calls only</p></li>
 <li><p><code>"meetings"</code> for Meetings only</p></li>
 </ul></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>values</dt>
 <dd><p>Character vector to specify whether to return percentages
 or absolute values in "data" and "plot". Valid values are:</p><ul><li><p><code>"percent"</code>: percentage of signals divided by total signals (default)</p></li>
 <li><p><code>"abs"</code>: absolute count of signals</p></li>
 </ul></dd>
+
+
 <dt>start_hour</dt>
 <dd><p>A character vector specifying starting hours,
 e.g. "0900"</p></dd>
+
+
 <dt>end_hour</dt>
 <dd><p>A character vector specifying starting hours,
 e.g. "1700"</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. An overlapping area plot (default).</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. An overlapping area plot (default).</p></li>
 <li><p><code>"table"</code>: data frame. A summary table.</p></li>
 </ul></div>
     <div id="see-also">
@@ -251,7 +271,12 @@ e.g. "1700"</p></dd>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -311,21 +336,21 @@ e.g. "1700"</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co"># Create a sample small dataset</span></span>
-<span class="r-in"><span class="va">orgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Customer Service"</span>, <span class="st">"Financial Planning"</span>, <span class="st">"Biz Dev"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">em_data</span> <span class="op">&lt;-</span> <span class="va">em_data</span><span class="op">[</span><span class="va">em_data</span><span class="op">$</span><span class="va">Organization</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">orgs</span>, <span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return visualization of percentage distribution</span></span>
-<span class="r-in"><span class="fu">workpatterns_area</span><span class="op">(</span><span class="va">em_data</span>, return <span class="op">=</span> <span class="st">"plot"</span>, values <span class="op">=</span> <span class="st">"percent"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create a sample small dataset</span></span></span>
+<span class="r-in"><span><span class="va">orgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Customer Service"</span>, <span class="st">"Financial Planning"</span>, <span class="st">"Biz Dev"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">em_data</span> <span class="op">&lt;-</span> <span class="va">em_data</span><span class="op">[</span><span class="va">em_data</span><span class="op">$</span><span class="va">Organization</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">orgs</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return visualization of percentage distribution</span></span></span>
+<span class="r-in"><span><span class="fu">workpatterns_area</span><span class="op">(</span><span class="va">em_data</span>, return <span class="op">=</span> <span class="st">"plot"</span>, values <span class="op">=</span> <span class="st">"percent"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="workpatterns_area-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return visualization of absolute values</span></span>
-<span class="r-in"><span class="fu">workpatterns_area</span><span class="op">(</span><span class="va">em_data</span>, return <span class="op">=</span> <span class="st">"plot"</span>, values <span class="op">=</span> <span class="st">"abs"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return visualization of absolute values</span></span></span>
+<span class="r-in"><span><span class="fu">workpatterns_area</span><span class="op">(</span><span class="va">em_data</span>, return <span class="op">=</span> <span class="st">"plot"</span>, values <span class="op">=</span> <span class="st">"abs"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="workpatterns_area-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary table</span></span>
-<span class="r-in"><span class="fu">workpatterns_area</span><span class="op">(</span><span class="va">em_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="fu">workpatterns_area</span><span class="op">(</span><span class="va">em_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 72 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    group   Hours Emails_sent IMs_sent     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
@@ -340,7 +365,7 @@ e.g. "1700"</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Biz Dev     8      0.105  0.102       27</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Biz Dev     9      0.095<span style="text-decoration: underline;">3</span> 0.099<span style="text-decoration: underline;">4</span>      27</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 62 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -355,7 +380,7 @@ e.g. "1700"</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

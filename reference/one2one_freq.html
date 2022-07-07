@@ -21,7 +21,7 @@ bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric."><me
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -166,44 +166,57 @@ bar plot, tables, or a data frame with a cadence of 1 on 1 meetings metric.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">one2one_freq</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  mode <span class="op">=</span> <span class="st">"dist"</span>,
-  sort_by <span class="op">=</span> <span class="st">"Quarterly or less\n(&gt;10 weeks)"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">one2one_freq</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"dist"</span>,</span>
+<span>  sort_by <span class="op">=</span> <span class="st">"Quarterly or less\n(&gt;10 weeks)"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
 instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul></dd>
+
+
 <dt>mode</dt>
 <dd><p>String specifying what method to use. This must be one of the
 following strings:</p><ul><li><p><code>"dist"</code></p></li>
 <li><p><code>"sum"</code></p></li>
 </ul></dd>
+
+
 <dt>sort_by</dt>
 <dd><p>String to specify the bucket label to sort by. Defaults to
 <code>NULL</code> (no sorting).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A stacked bar plot for the metric.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A stacked bar plot for the metric.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul></div>
     <div id="distribution-view">
@@ -257,7 +270,12 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -304,22 +322,22 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return plot, mode dist</span></span>
-<span class="r-in"><span class="fu">one2one_freq</span><span class="op">(</span><span class="va">sq_data</span>,</span>
-<span class="r-in">             hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
-<span class="r-in">             return <span class="op">=</span> <span class="st">"plot"</span>,</span>
-<span class="r-in">             mode <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return plot, mode dist</span></span></span>
+<span class="r-in"><span><span class="fu">one2one_freq</span><span class="op">(</span><span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>             hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span></span>
+<span class="r-in"><span>             return <span class="op">=</span> <span class="st">"plot"</span>,</span></span>
+<span class="r-in"><span>             mode <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="one2one_freq-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return plot, mode sum</span></span>
-<span class="r-in"><span class="fu">one2one_freq</span><span class="op">(</span><span class="va">sq_data</span>,</span>
-<span class="r-in">             hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
-<span class="r-in">             return <span class="op">=</span> <span class="st">"plot"</span>,</span>
-<span class="r-in">             mode <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return plot, mode sum</span></span></span>
+<span class="r-in"><span><span class="fu">one2one_freq</span><span class="op">(</span><span class="va">sq_data</span>,</span></span>
+<span class="r-in"><span>             hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span></span>
+<span class="r-in"><span>             return <span class="op">=</span> <span class="st">"plot"</span>,</span></span>
+<span class="r-in"><span>             mode <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="one2one_freq-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary table</span></span>
-<span class="r-in"><span class="fu">one2one_freq</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="fu">one2one_freq</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    group     `Every two mon…` `Monthly\n(3 -…` `Quarterly or …` `Twice monthly…`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -339,7 +357,7 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Inventor…           0.283             0.433           0.066<span style="text-decoration: underline;">7</span>            0.217</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Finance-…           0.114             0.457           0.057<span style="text-decoration: underline;">1</span>            0.371</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: Employee_Count &lt;int&gt;</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -354,7 +372,7 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

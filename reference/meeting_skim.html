@@ -18,7 +18,7 @@ when provided a standard query in the input."><meta property="og:image" content=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -160,22 +160,27 @@ when provided a standard query in the input.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meeting_skim</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"message"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meeting_skim</span><span class="op">(</span><span class="va">data</span>, return <span class="op">=</span> <span class="st">"message"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A standard person query data in the form of a data frame.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the following strings:</p><ul><li><p><code>"message"</code></p></li>
 <li><p><code>"text"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"message"</code>: message in console.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"message"</code>: message in console.</p></li>
 <li><p><code>"text"</code>: string.</p></li>
 <li><p><code>"table"</code>: data frame.</p></li>
 </ul></div>
@@ -199,13 +204,13 @@ when provided a standard query in the input.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">meeting_skim</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">meeting_skim</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> There are 134741 total meeting hours across the analysis population.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &gt;&gt;&gt; 94077 are low quality (70%)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &gt;&gt;&gt; 62409 are redundant (46%)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &gt;&gt;&gt; 53777 are conflicting (40%)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &gt;&gt;&gt; 7457 are multitasking (6%)</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -220,7 +225,7 @@ when provided a standard query in the input.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

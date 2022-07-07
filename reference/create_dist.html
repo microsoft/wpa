@@ -19,7 +19,7 @@ Additional options available to return a table with distribution elements."><met
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,67 +162,92 @@ Additional options available to return a table with distribution elements.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_dist</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">metric</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  cut <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span>,
-  dist_colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#facebc"</span>, <span class="st">"#fcf0eb"</span>, <span class="st">"#b4d5dd"</span>, <span class="st">"#bfe5ee"</span><span class="op">)</span>,
-  unit <span class="op">=</span> <span class="st">"hours"</span>,
-  lbound <span class="op">=</span> <span class="fl">0</span>,
-  ubound <span class="op">=</span> <span class="fl">100</span>,
-  sort_by <span class="op">=</span> <span class="cn">NULL</span>,
-  labels <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_dist</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">metric</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  cut <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span>,</span>
+<span>  dist_colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#facebc"</span>, <span class="st">"#fcf0eb"</span>, <span class="st">"#b4d5dd"</span>, <span class="st">"#bfe5ee"</span><span class="op">)</span>,</span>
+<span>  unit <span class="op">=</span> <span class="st">"hours"</span>,</span>
+<span>  lbound <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  ubound <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  sort_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  labels <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>metric</dt>
 <dd><p>String containing the name of the metric,
 e.g. "Collaboration_hours"</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the name of the HR Variable by which to split
 metrics. Defaults to <code>"Organization"</code>. To run the analysis on the total
 instead of splitting by an HR attribute, supply <code>NULL</code> (without quotes).</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>cut</dt>
 <dd><p>A numeric vector of length three to specify the breaks for the
 distribution,
 e.g. c(10, 15, 20)</p></dd>
+
+
 <dt>dist_colours</dt>
 <dd><p>A character vector of length four to specify colour
 codes for the stacked bars.</p></dd>
+
+
 <dt>unit</dt>
 <dd><p>String to specify what unit to use. This defaults to <code>"hours"</code>
 but can accept any custom string. See <code><a href="cut_hour.html">cut_hour()</a></code> for more details.</p></dd>
+
+
 <dt>lbound</dt>
 <dd><p>Numeric. Specifies the lower bound (inclusive) value for the
 minimum label. Defaults to 0.</p></dd>
+
+
 <dt>ubound</dt>
 <dd><p>Numeric. Specifies the upper bound (inclusive) value for the
 maximum label. Defaults to 100.</p></dd>
+
+
 <dt>sort_by</dt>
 <dd><p>String to specify the bucket label to sort by. Defaults to
 <code>NULL</code> (no sorting).</p></dd>
+
+
 <dt>labels</dt>
 <dd><p>Character vector to override labels for the created
 categorical variables. Must be a named vector - see examples.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A stacked bar plot for the metric.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A stacked bar plot for the metric.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
 </ul></div>
     <div id="see-also">
@@ -262,7 +287,12 @@ categorical variables. Must be a named vector - see examples.</p></dd>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -320,12 +350,12 @@ categorical variables. Must be a named vector - see examples.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return plot</span></span>
-<span class="r-in"><span class="fu">create_dist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return plot</span></span></span>
+<span class="r-in"><span><span class="fu">create_dist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_dist-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return summary table</span></span>
-<span class="r-in"><span class="fu">create_dist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="fu">create_dist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    group `&lt; 15 hours` `15 - 20 hours` `20 - 25 hours` `25+ hours` Employee_Count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
@@ -344,24 +374,24 @@ categorical variables. Must be a named vector - see examples.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> IT-C…       0.206           0.044<span style="text-decoration: underline;">1</span>          0.368       0.382              68</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> IT-E…       0.290           0.080<span style="text-decoration: underline;">6</span>          0.323       0.306              62</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Inve…       0.033<span style="text-decoration: underline;">3</span>          0.033<span style="text-decoration: underline;">3</span>          0.45        0.483              60</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Use custom labels by providing a label vector</span></span>
-<span class="r-in"><span class="va">eh_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="st">"Fewer than fifteen"</span> <span class="op">=</span> <span class="st">"&lt; 15 hours"</span>,</span>
-<span class="r-in">  <span class="st">"Between fifteen and twenty"</span> <span class="op">=</span> <span class="st">"15 - 20 hours"</span>,</span>
-<span class="r-in">  <span class="st">"Between twenty and twenty-five"</span> <span class="op">=</span> <span class="st">"20 - 25 hours"</span>,</span>
-<span class="r-in">  <span class="st">"More than twenty-five"</span> <span class="op">=</span> <span class="st">"25+ hours"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">create_dist</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Email_hours"</span>,</span>
-<span class="r-in">              labels <span class="op">=</span> <span class="va">eh_labels</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Use custom labels by providing a label vector</span></span></span>
+<span class="r-in"><span><span class="va">eh_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"Fewer than fifteen"</span> <span class="op">=</span> <span class="st">"&lt; 15 hours"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"Between fifteen and twenty"</span> <span class="op">=</span> <span class="st">"15 - 20 hours"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"Between twenty and twenty-five"</span> <span class="op">=</span> <span class="st">"20 - 25 hours"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"More than twenty-five"</span> <span class="op">=</span> <span class="st">"25+ hours"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_dist</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Email_hours"</span>,</span></span>
+<span class="r-in"><span>              labels <span class="op">=</span> <span class="va">eh_labels</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_dist-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Sort by a category</span></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">create_dist</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span>
-<span class="r-in">              sort_by <span class="op">=</span> <span class="st">"25+ hours"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Sort by a category</span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_dist</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span></span>
+<span class="r-in"><span>              sort_by <span class="op">=</span> <span class="st">"25+ hours"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_dist-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -377,7 +407,7 @@ categorical variables. Must be a named vector - see examples.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

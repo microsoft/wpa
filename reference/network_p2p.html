@@ -21,7 +21,7 @@ detection using either the Louvain or the Leiden algorithms."><meta property="og
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -166,33 +166,37 @@ detection using either the Louvain or the Leiden algorithms.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">network_p2p</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  display <span class="op">=</span> <span class="st">"hrvar"</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"network_p2p_"</span>, <span class="va">display</span><span class="op">)</span>,
-  desc_hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Organization"</span>, <span class="st">"LevelDesignation"</span>, <span class="st">"FunctionType"</span><span class="op">)</span>,
-  bg_fill <span class="op">=</span> <span class="st">"#FFFFFF"</span>,
-  font_col <span class="op">=</span> <span class="st">"grey20"</span>,
-  legend_pos <span class="op">=</span> <span class="st">"bottom"</span>,
-  palette <span class="op">=</span> <span class="st">"rainbow"</span>,
-  node_alpha <span class="op">=</span> <span class="fl">0.7</span>,
-  edge_alpha <span class="op">=</span> <span class="fl">1</span>,
-  res <span class="op">=</span> <span class="fl">0.5</span>,
-  seed <span class="op">=</span> <span class="fl">1</span>,
-  algorithm <span class="op">=</span> <span class="st">"mds"</span>,
-  size_threshold <span class="op">=</span> <span class="fl">5000</span>,
-  weight <span class="op">=</span> <span class="st">"StrongTieScore"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">network_p2p</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  display <span class="op">=</span> <span class="st">"hrvar"</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"network_p2p_"</span>, <span class="va">display</span><span class="op">)</span>,</span>
+<span>  desc_hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Organization"</span>, <span class="st">"LevelDesignation"</span>, <span class="st">"FunctionType"</span><span class="op">)</span>,</span>
+<span>  bg_fill <span class="op">=</span> <span class="st">"#FFFFFF"</span>,</span>
+<span>  font_col <span class="op">=</span> <span class="st">"grey20"</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>  palette <span class="op">=</span> <span class="st">"rainbow"</span>,</span>
+<span>  node_alpha <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>  edge_alpha <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  res <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  algorithm <span class="op">=</span> <span class="st">"mds"</span>,</span>
+<span>  size_threshold <span class="op">=</span> <span class="fl">5000</span>,</span>
+<span>  weight <span class="op">=</span> <span class="st">"StrongTieScore"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data frame containing a person-to-person query.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>String containing the label for the HR attribute.</p></dd>
+
+
 <dt>display</dt>
 <dd><p>String determining what output to return. Valid values
 include:</p><ul><li><p><code>"hrvar"</code> (default): compute analysis or visuals without computing
@@ -203,6 +207,8 @@ the Louvain algorithm.</p></li>
 the Leiden algorithm. This requires all the pre-requisites of the
 <strong>leiden</strong> package installed, which includes Python and <strong>reticulate</strong>.</p></li>
 </ul></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what output to return. This must be one of the
 following strings:</p><ul><li><p><code>'plot'</code> (default)</p></li>
@@ -212,16 +218,26 @@ following strings:</p><ul><li><p><code>'plot'</code> (default)</p></li>
 <li><p><code>'describe'</code></p></li>
 <li><p><code>'network'</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>path</dt>
 <dd><p>File path for saving the PDF output. Defaults to a timestamped
 path based on current parameters.</p></dd>
+
+
 <dt>desc_hrvar</dt>
 <dd><p>Character vector of length 3 containing the HR attributes
 to use when returning the <code>"describe"</code> output. See <code><a href="network_describe.html">network_describe()</a></code>.</p></dd>
+
+
 <dt>bg_fill</dt>
 <dd><p>String to specify background fill colour.</p></dd>
+
+
 <dt>font_col</dt>
 <dd><p>String to specify font and link colour.</p></dd>
+
+
 <dt>legend_pos</dt>
 <dd><p>String to specify position of legend. Defaults to
 <code>"bottom"</code>. See <code><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">ggplot2::theme()</a></code>. This is applicable for both the
@@ -230,43 +246,65 @@ to use when returning the <code>"describe"</code> output. See <code><a href="net
 <li><p><code>"left"</code>
 -<code>"right"</code></p></li>
 </ul></dd>
+
+
 <dt>palette</dt>
 <dd><p>Function for generating a colour palette with a single
 argument <code>n</code>. Uses "rainbow" by default.</p></dd>
+
+
 <dt>node_alpha</dt>
 <dd><p>A numeric value between 0 and 1 to specify the transparency
 of the nodes. Defaults to 0.7.</p></dd>
+
+
 <dt>edge_alpha</dt>
 <dd><p>A numeric value between 0 and 1 to specify the transparency
 of the edges (only for 'ggraph' mode). Defaults to 1.</p></dd>
+
+
 <dt>res</dt>
 <dd><p>Resolution parameter to be passed to <code><a href="https://rdrr.io/pkg/leiden/man/leiden.html" class="external-link">leiden::leiden()</a></code>. Defaults
 to 0.5.</p></dd>
+
+
 <dt>seed</dt>
 <dd><p>Seed for the random number generator passed to either
 <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> when the Louvain algorithm is used, or <code><a href="https://rdrr.io/pkg/leiden/man/leiden.html" class="external-link">leiden::leiden()</a></code> when
 the Leiden algorithm is used, to ensure consistency. Only applicable when
 <code>display</code> is set to <code>"louvain"</code> or <code>"leiden"</code>.</p></dd>
+
+
 <dt>algorithm</dt>
 <dd><p>String to specify the node placement algorithm to be used.
 Defaults to <code>"mds"</code> for the deterministic multi-dimensional scaling of
 nodes. See
 <a href="https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html" class="external-link">https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a full
 list of options.</p></dd>
+
+
 <dt>size_threshold</dt>
 <dd><p>Numeric value representing the maximum number of edges
 before <code><a href="network_leiden.html">network_leiden()</a></code> switches to use a more efficient, but less
 elegant plotting method (native igraph). Defaults to 5000. Set as <code>0</code> to
 coerce to a fast plotting method every time, and <code>Inf</code> to always use the
 default plotting method (with 'ggraph').</p></dd>
+
+
 <dt>weight</dt>
 <dd><p>String to specify which column to use as weights for the
 network. Defaults to <code>"StrongTieScore</code>. To create a graph without weights,
 supply <code>NULL</code> to this argument.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>'plot'</code>: return a network plot.</p></li>
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>'plot'</code>: return a network plot.</p></li>
 <li><p><code>'sankey'</code>: return a sankey plot combining communities and HR attribute.
 This is only valid if a community detection method is selected at
 <code>display</code>.</p></li>
@@ -287,15 +325,15 @@ at <code>display</code>.</p></li>
 
 <p>Running Leiden communities requires python dependencies installed.
 You can run the following:</p>
-<p></p><div class="sourceCode R"><pre><code><span class="co"># Return a network plot to console, coloured by Leiden communities</span>
-  <span class="va">p2p_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span>display <span class="op">=</span> <span class="st">"leiden"</span>,
-                path <span class="op">=</span> <span class="cn">NULL</span>,
-                return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></code></pre><p></p></div>
+<p></p><div class="sourceCode R"><pre><code><span><span class="co"># Return a network plot to console, coloured by Leiden communities</span></span>
+<span>  <span class="va">p2p_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span>display <span class="op">=</span> <span class="st">"leiden"</span>,</span>
+<span>                path <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre><p></p></div>
 <p>When installing the 'leiden' package, you may be required to install the Python
 libraries 'python-igraph' and 'leidenalg'. You can install them with:</p>
-<p></p><div class="sourceCode R"><pre><code><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">py_install</a></span><span class="op">(</span><span class="st">"python-igraph"</span><span class="op">)</span>
-<span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">py_install</a></span><span class="op">(</span><span class="st">"leidenalg"</span><span class="op">)</span></code></pre><p></p></div>
+<p></p><div class="sourceCode R"><pre><code><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">py_install</a></span><span class="op">(</span><span class="st">"python-igraph"</span><span class="op">)</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">py_install</a></span><span class="op">(</span><span class="st">"leidenalg"</span><span class="op">)</span></span></code></pre><p></p></div>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -313,43 +351,43 @@ libraries 'python-igraph' and 'leidenalg'. You can install them with:</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Simulate a small person-to-person dataset</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a network plot to console, coloured by hrvar</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"hrvar"</span>,</span>
-<span class="r-in">              path <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span class="r-in">              return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simulate a small person-to-person dataset</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a network plot to console, coloured by hrvar</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"hrvar"</span>,</span></span>
+<span class="r-in"><span>              path <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>              return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="network_p2p-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a network plot to console, coloured by Louvain communities</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>,</span>
-<span class="r-in">              path <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span class="r-in">              return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a network plot to console, coloured by Louvain communities</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>,</span></span>
+<span class="r-in"><span>              path <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>              return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="network_p2p-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a network plot to console</span></span>
-<span class="r-in"><span class="co"># Coloured by Leiden communities</span></span>
-<span class="r-in"><span class="co"># Using Fruchterman-Reingold force-directed layout algorithm</span></span>
-<span class="r-in"><span class="co"># Force the use of fast plotting method</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"hrvar"</span>,</span>
-<span class="r-in">              path <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span class="r-in">              return <span class="op">=</span> <span class="st">"plot"</span>,</span>
-<span class="r-in">              algorithm <span class="op">=</span> <span class="st">"lgl"</span>,</span>
-<span class="r-in">              size_threshold <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a network plot to console</span></span></span>
+<span class="r-in"><span><span class="co"># Coloured by Leiden communities</span></span></span>
+<span class="r-in"><span><span class="co"># Using Fruchterman-Reingold force-directed layout algorithm</span></span></span>
+<span class="r-in"><span><span class="co"># Force the use of fast plotting method</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"hrvar"</span>,</span></span>
+<span class="r-in"><span>              path <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>              return <span class="op">=</span> <span class="st">"plot"</span>,</span></span>
+<span class="r-in"><span>              algorithm <span class="op">=</span> <span class="st">"lgl"</span>,</span></span>
+<span class="r-in"><span>              size_threshold <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using fast plot method due to large network size...</span>
 <span class="r-plt img"><img src="network_p2p-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return a data frame matching HR variable and communities to nodes</span></span>
-<span class="r-in"><span class="co"># Using Louvain communities</span></span>
-<span class="r-in"><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>,</span>
-<span class="r-in">              return <span class="op">=</span> <span class="st">"data"</span>,</span>
-<span class="r-in">              algorithm <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return a data frame matching HR variable and communities to nodes</span></span></span>
+<span class="r-in"><span><span class="co"># Using Louvain communities</span></span></span>
+<span class="r-in"><span><span class="va">p2p_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">network_p2p</span><span class="op">(</span>display <span class="op">=</span> <span class="st">"louvain"</span>,</span></span>
+<span class="r-in"><span>              return <span class="op">=</span> <span class="st">"data"</span>,</span></span>
+<span class="r-in"><span>              algorithm <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 50 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name      Organization cluster</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
@@ -364,7 +402,7 @@ libraries 'python-igraph' and 'leidenalg'. You can install them with:</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> SIM_ID_10 Org C        2      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> SIM_ID_11 Org F        2      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 40 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -379,7 +417,7 @@ libraries 'python-igraph' and 'leidenalg'. You can install them with:</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

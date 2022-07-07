@@ -23,7 +23,7 @@ respect to an outcome variable."><meta property="og:image" content="https://micr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -168,26 +168,35 @@ respect to an outcome variable.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">map_IV</span><span class="op">(</span><span class="va">data</span>, predictors <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">outcome</span>, bins <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">map_IV</span><span class="op">(</span><span class="va">data</span>, predictors <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">outcome</span>, bins <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data frame containing the data.</p></dd>
+
+
 <dt>predictors</dt>
 <dd><p>Character vector containing the names of the predictor
 variables. If <code>NULL</code> (default) is supplied, all numeric variables in the
 data will be used.</p></dd>
+
+
 <dt>outcome</dt>
 <dd><p>String containing the name of the outcome variable.</p></dd>
+
+
 <dt>bins</dt>
 <dd><p>Numeric value representing the number of bins to use. Defaults to
 10.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list of data frames is returned as an output. The first layer of
+    
+
+<p>A list of data frames is returned as an output. The first layer of
 the list contains <code>Tables</code> and <code>Summary</code>:</p><ul><li><p><code>Tables</code> is a list of data frames containing the WOE and cumulative sum
 IV for each predictor.</p></li>
 <li><p><code>Summary</code> is a single data frame containing the IV for all predictors.</p></li>
@@ -209,7 +218,7 @@ IV for each predictor.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

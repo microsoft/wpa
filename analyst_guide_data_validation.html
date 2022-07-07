@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -152,7 +152,7 @@
     </div>
 
 <div id="data-validation" class="section level1">
-<p>This section covers the topic of <strong>how to validate Workplace Analytics data</strong>. Before you apply any functions to your data set and start looking for new insights, it is recommended that you perform data validation. This best practice is applicable regardless of whether your aim is to explore the data, to establish a baseline, or to perform advanced analytics.</p>
+<p>This section covers the topic of <strong>how to validate Flexible Query data from Viva Insights</strong>. Before you apply any functions to your data set and start looking for new insights, it is recommended that you perform data validation. This best practice is applicable regardless of whether your aim is to explore the data, to establish a baseline, or to perform advanced analytics.</p>
 <div class="section level2">
 <h2 id="why-validate">Why validate?<a class="anchor" aria-label="anchor" href="#why-validate"></a></h2>
 <p>Data validation is an essential routine for every analyst as it ensures that you can trust the data you are using to be accurate, clean and helpful. Data validation ensures that your dataset provides a good basis for your analyses, and acts as a proactive intervention to safeguard your analyses from the starting point.</p>
@@ -170,8 +170,8 @@
 <li>Organizational attributes int he dataset</li>
 </ul><p>This can all be done with <code><a href="reference/check_query.html">check_query()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/check_query.html">check_query</a></span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/check_query.html">check_query</a></span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span></code></pre></div>
 <p>The resulting output would look something like the following and will give you an initial view into your data:</p>
 <pre><code>The data used is a Person Query.
 
@@ -211,19 +211,19 @@ Variable name check:
 <h2 id="data-validation-report">Data Validation Report<a class="anchor" aria-label="anchor" href="#data-validation-report"></a></h2>
 <p>An easy way to perform data validation with the <strong>wpa</strong> package is to run the data validation report:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="co"># `spq_df` is your Standard Person Query data</span>
-<span class="fu"><a href="reference/validation_report.html">validation_report</a></span><span class="op">(</span><span class="va">spq_df</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span> <span class="co"># `spq_df` is your Standard Person Query data</span></span>
+<span><span class="fu"><a href="reference/validation_report.html">validation_report</a></span><span class="op">(</span><span class="va">spq_df</span><span class="op">)</span></span></code></pre></div>
 <p>This function generates an interactive HTML report in your working directory which contains a series of checks against your data, including:</p>
 <ul><li>Workplace Analytics Settings</li>
 <li>Organizational Data Quality</li>
 <li>M365 Data Quality</li>
 </ul><p>You can find a demo output of the validation report <a href="https://microsoft.github.io/wpa/report-demo/validation-report-demo.html">here</a>. Note that <code><a href="reference/validation_report.html">validation_report()</a></code> only runs with a Standard Person Query, but you can supply an optional meeting query to include checks against meeting subject lines. To do so, you should run:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Assuming:</span>
-<span class="co"># `spq_df` is your Standard Person Query data</span>
-<span class="co"># `mt_df` is your Standard Meeting Query data</span>
-<span class="fu"><a href="reference/validation_report.html">validation_report</a></span><span class="op">(</span><span class="va">spq_df</span>, 
-                  meeting_data <span class="op">=</span> <span class="va">mt_df</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Assuming:</span></span>
+<span><span class="co"># `spq_df` is your Standard Person Query data</span></span>
+<span><span class="co"># `mt_df` is your Standard Meeting Query data</span></span>
+<span><span class="fu"><a href="reference/validation_report.html">validation_report</a></span><span class="op">(</span><span class="va">spq_df</span>, </span>
+<span>                  meeting_data <span class="op">=</span> <span class="va">mt_df</span><span class="op">)</span></span></code></pre></div>
 <p>The data validation report provides you with a series of recommendations on whether you should adjust certain settings or consider certain assumptions before proceeding with your analysis. After you have made the relevant adjustments, you can run the ‘cleaned’ dataset through <code><a href="reference/validation_report.html">validation_report()</a></code> again to make sure that the potential issues have been caught out.</p>
 <p>Note that <code><a href="reference/validation_report.html">validation_report()</a></code> only provides recommendations based on common scenarios observed with Workplace Analytics data. When deciding whether to make an adjustment, you should consider other factors such as quality of organizational data, context, and other known collaboration norms within the organization.</p>
 </div>
@@ -234,10 +234,10 @@ Variable name check:
 <h3 id="organizational-attributes">Organizational attributes<a class="anchor" aria-label="anchor" href="#organizational-attributes"></a></h3>
 <p><code><a href="reference/check_query.html">check_query()</a></code> performs a check on a query (data frame) and returns a diagnostic message about the data query to the R console, with information such as date range, number of employees, HR attributes identified, etc.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/check_query.html">check_query</a></span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/check_query.html">check_query</a></span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span></code></pre></div>
 <p><code><a href="reference/hrvar_count.html">hrvar_count()</a></code> enables you to create a count of the distinct people by the specified HR attribute:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/hrvar_count.html">hrvar_count</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/hrvar_count.html">hrvar_count</a></span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></code></pre></div>
 <p>To run a blanket analysis for all the organizational attributes in the dataset, you can run <code><a href="reference/hrvar_count_all.html">hrvar_count_all()</a></code> instead.</p>
 <p>Also check out:</p>
 <ul><li><code><a href="reference/identify_privacythreshold.html">identify_privacythreshold()</a></code></li>
@@ -263,25 +263,25 @@ Variable name check:
 <h4 id="example-data-clean-up">Example data clean-up<a class="anchor" aria-label="anchor" href="#example-data-clean-up"></a></h4>
 <p>Below is an example of one might create a ‘clean’ dataset using the functions above:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span> <span class="co"># You may also just load dplyr</span>
-
-<span class="va">clean_spq</span> <span class="op">&lt;-</span>
-  <span class="va">raw_wowa</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># Loaded in as a Ways of Working query</span>
-  <span class="fu"><a href="reference/standardise_pq.html">standardise_pq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>  <span class="co"># Standardize variable names - not necessary if SPQ</span>
-  <span class="co"># Force the use of Teams metrics - optional</span>
-  <span class="fu">mutate</span><span class="op">(</span>Collaboration_hours <span class="op">=</span>
-           <span class="fu">select</span><span class="op">(</span><span class="va">.</span>,
-                  <span class="va">Email_hours</span>,
-                  <span class="va">Meeting_hours</span>,
-                  <span class="va">Unscheduled_Call_hours</span>,
-                  <span class="va">Instant_Message_hours</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
-           <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="reference/identify_nkw.html">identify_nkw</a></span><span class="op">(</span>collab_threshold <span class="op">=</span> <span class="fl">4.99999</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># &gt;= 5 CH</span>
-  <span class="fu"><a href="reference/identify_inactiveweeks.html">identify_inactiveweeks</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fl">2</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># 2 SD</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"08/30/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># Trim start date</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"03/07/2021"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># Trim end date</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"11/22/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="co"># Remove certain weeks</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">clean_spq</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">raw_wowa</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># Loaded in as a Ways of Working query</span></span>
+<span>  <span class="fu"><a href="reference/standardise_pq.html">standardise_pq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>  <span class="co"># Standardize variable names - not necessary if SPQ</span></span>
+<span>  <span class="co"># Force the use of Teams metrics - optional</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Collaboration_hours <span class="op">=</span></span>
+<span>           <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">.</span>,</span>
+<span>                  <span class="va">Email_hours</span>,</span>
+<span>                  <span class="va">Meeting_hours</span>,</span>
+<span>                  <span class="va">Unscheduled_Call_hours</span>,</span>
+<span>                  <span class="va">Instant_Message_hours</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>           <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/identify_nkw.html">identify_nkw</a></span><span class="op">(</span>collab_threshold <span class="op">=</span> <span class="fl">4.99999</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># &gt;= 5 CH</span></span>
+<span>  <span class="fu"><a href="reference/identify_inactiveweeks.html">identify_inactiveweeks</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fl">2</span>, return <span class="op">=</span> <span class="st">"data_cleaned"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># 2 SD</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"08/30/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># Trim start date</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"03/07/2021"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="co"># Trim end date</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Date</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"11/22/2020"</span>, <span class="st">"%m/%d/%Y"</span><span class="op">)</span><span class="op">)</span> <span class="co"># Remove certain weeks</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -311,7 +311,7 @@ Variable name check:
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

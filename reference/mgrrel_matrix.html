@@ -19,7 +19,7 @@ table."><meta property="og:image" content="https://microsoft.github.io/wpa/logo.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -162,42 +162,58 @@ table.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mgrrel_matrix</span><span class="op">(</span>
-  <span class="va">data</span>,
-  hrvar <span class="op">=</span> <span class="cn">NULL</span>,
-  mingroup <span class="op">=</span> <span class="fl">5</span>,
-  return <span class="op">=</span> <span class="st">"plot"</span>,
-  plot_colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#fe7f4f"</span>, <span class="st">"#b4d5dd"</span>, <span class="st">"#facebc"</span>, <span class="st">"#fcf0eb"</span><span class="op">)</span>,
-  threshold <span class="op">=</span> <span class="fl">15</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mgrrel_matrix</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
+<span>  plot_colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#fe7f4f"</span>, <span class="st">"#b4d5dd"</span>, <span class="st">"#facebc"</span>, <span class="st">"#fcf0eb"</span><span class="op">)</span>,</span>
+<span>  threshold <span class="op">=</span> <span class="fl">15</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Standard Person Query data to pass through. Accepts a data frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>HR Variable by which to split metrics. Accepts a character
 vector, e.g. "Organization". Defaults to <code>NULL</code>.</p></dd>
+
+
 <dt>mingroup</dt>
 <dd><p>Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.</p></dd>
+
+
 <dt>return</dt>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 <li><p><code>"data"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
+
+
 <dt>plot_colors</dt>
 <dd><p>Pass a character vector of length 4 containing HEX codes
 to specify colors to use in plotting.</p></dd>
+
+
 <dt>threshold</dt>
 <dd><p>Specify a numeric value to determine threshold (in minutes) for 1:1 manager hours.
 Defaults to 15.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. When <code>NULL</code> is passed to <code>hrvar</code>, a two-by-two
+    
+
+<p>A different output is returned depending on the value passed to the <code>return</code></p>
+
+
+<p>argument:</p><ul><li><p><code>"plot"</code>: ggplot object. When <code>NULL</code> is passed to <code>hrvar</code>, a two-by-two
 grid where the size of the grid represents total percentage of employees is
 returned. Otherwise, a horizontal stacked bar plot is returned.</p></li>
 <li><p><code>"table"</code>: data frame. A summary table is returned.</p></li>
@@ -248,7 +264,12 @@ the following columns:</p><ul><li><p><code>PersonId</code></p></li>
 <code><a href="email_rank.html">email_rank</a>()</code>,
 <code><a href="email_summary.html">email_summary</a>()</code>,
 <code><a href="email_trend.html">email_trend</a>()</code>,
+<code><a href="external_dist.html">external_dist</a>()</code>,
+<code><a href="external_fizz.html">external_fizz</a>()</code>,
+<code><a href="external_line.html">external_line</a>()</code>,
 <code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_rank.html">external_rank</a>()</code>,
+<code><a href="external_sum.html">external_sum</a>()</code>,
 <code><a href="hr_trend.html">hr_trend</a>()</code>,
 <code><a href="hrvar_count.html">hrvar_count</a>()</code>,
 <code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
@@ -299,31 +320,31 @@ the following columns:</p><ul><li><p><code>PersonId</code></p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Return matrix</span></span>
-<span class="r-in"><span class="fu">mgrrel_matrix</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return matrix</span></span></span>
+<span class="r-in"><span><span class="fu">mgrrel_matrix</span><span class="op">(</span><span class="va">sq_data</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="mgrrel_matrix-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Return stacked bar plot</span></span>
-<span class="r-in"><span class="fu">mgrrel_matrix</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return stacked bar plot</span></span></span>
+<span class="r-in"><span><span class="fu">mgrrel_matrix</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="mgrrel_matrix-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Visualize coaching style types</span></span>
-<span class="r-in"><span class="co"># Ensure dplyr is loaded</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Extract PersonId and Coaching Type</span></span>
-<span class="r-in"><span class="va">match_df</span> <span class="op">&lt;-</span></span>
-<span class="r-in">  <span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">mgrrel_matrix</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">PersonId</span>, <span class="va">Type</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Join and visualize baseline</span></span>
-<span class="r-in"><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">match_df</span>, by <span class="op">=</span> <span class="st">"PersonId"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Type"</span>,</span>
-<span class="r-in">                  return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Visualize coaching style types</span></span></span>
+<span class="r-in"><span><span class="co"># Ensure dplyr is loaded</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Extract PersonId and Coaching Type</span></span></span>
+<span class="r-in"><span><span class="va">match_df</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">mgrrel_matrix</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">PersonId</span>, <span class="va">Type</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Join and visualize baseline</span></span></span>
+<span class="r-in"><span><span class="va">sq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">match_df</span>, by <span class="op">=</span> <span class="st">"PersonId"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Type"</span>,</span></span>
+<span class="r-in"><span>                  return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="mgrrel_matrix-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -338,7 +359,7 @@ the following columns:</p><ul><li><p><code>PersonId</code></p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

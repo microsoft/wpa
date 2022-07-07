@@ -23,7 +23,7 @@ be run without it."><meta property="og:image" content="https://microsoft.github.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -170,40 +170,53 @@ be run without it.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">validation_report</span><span class="op">(</span>
-  <span class="va">data</span>,
-  meeting_data <span class="op">=</span> <span class="cn">NULL</span>,
-  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,
-  path <span class="op">=</span> <span class="st">"validation report"</span>,
-  hrvar_threshold <span class="op">=</span> <span class="fl">150</span>,
-  timestamp <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">validation_report</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  meeting_data <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"validation report"</span>,</span>
+<span>  hrvar_threshold <span class="op">=</span> <span class="fl">150</span>,</span>
+<span>  timestamp <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+
+
 <dt>meeting_data</dt>
 <dd><p>An optional Meeting Query dataset in the form of a data
 frame.</p></dd>
+
+
 <dt>hrvar</dt>
 <dd><p>HR Variable by which to split metrics, defaults to "Organization"
 but accepts any character vector, e.g. "Organization"</p></dd>
+
+
 <dt>path</dt>
 <dd><p>Pass the file path and the desired file name, <em>excluding the file
 extension</em>.</p></dd>
+
+
 <dt>hrvar_threshold</dt>
 <dd><p>Numeric value determining the maximum number of unique
 values to be allowed to qualify as a HR variable. This is passed directly
 to the <code>threshold</code> argument within <code><a href="hrvar_count_all.html">hrvar_count_all()</a></code>.</p></dd>
+
+
 <dt>timestamp</dt>
 <dd><p>Logical vector specifying whether to include a timestamp in
 the file name. Defaults to <code>TRUE</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An HTML report with the same file name as specified in the arguments is
+    
+
+<p>An HTML report with the same file name as specified in the arguments is
 generated in the working directory. No outputs are directly returned by the
 function.</p>
     </div>
@@ -242,7 +255,9 @@ is not available.</p>
 
 
 <p>Below is an example on how to run the report.</p>
-<p></p><div class="sourceCode"><pre><code></code></pre><p></p></div>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">validation_report</span>(dv_data,</span>
+<span id="cb1-2"><a href="#cb1-2"></a>                  <span class="dt">meeting_data =</span> mt_data,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>                  <span class="dt">hrvar =</span> <span class="st">"Organization"</span>)</span></code></pre><p></p></div>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -297,7 +312,7 @@ is not available.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
