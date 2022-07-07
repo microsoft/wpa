@@ -22,6 +22,7 @@ sq_data %>% collaboration_dist(hrvar = "LevelDesignation", return="table")
 - `one2one_dist()`
 - `afterhours_dist()`
 - `workloads_dist()`
+- `external_dist()`
 
 ## Fizzy Drink Plots 
 You can also explore distributions by using jittered ('fizzy drink') scatter plots. The `collaboration_fizz()` function illustrates how different individuals fall in a common scale:
@@ -43,6 +44,7 @@ Other examples of distribution fizzy drink plots include:
 - `one2one_fizz()`
 - `afterhours_fizz()`
 - `workloads_fizz()`
+- `external_fizz()`
 
 ## Custom bar charts and tables
 
