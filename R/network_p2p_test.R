@@ -38,7 +38,8 @@ network_p2p_test <- function(
     weight = "StrongTieScore"
     ){
 
-  # valid values for centrality
+  ## valid values for centrality -------------------------------------------
+
   valid_cen <- c(
     "betweenness",
     "closeness",
@@ -47,12 +48,40 @@ network_p2p_test <- function(
     "pagerank"
   )
 
-  # valid values for community
+  ## valid values for community --------------------------------------------
+
   valid_com <- c(
     "leiden",
     "louvain"
   )
 
+  ## Set data frame for `edges` --------------------------------------------
+
+  if(is.null(weight)){
+
+    edges <-
+      data %>%
+      mutate(NoWeight = 1) %>% # No weight
+      select(from = "TieOrigin_PersonId",
+             to = "TieDestination_PersonId",
+             weight = "NoWeight")
+
+  } else {
+
+    edges <-
+      data %>%
+      select(from = "TieOrigin_PersonId",
+             to = "TieDestination_PersonId",
+             weight = weight)
+
+  }
+
+  ## Set variables ---------------------------------------------------------
+
+   TO_hrvar <- paste0("TieOrigin_", hrvar)
+  TD_hrvar <- paste0("TieDestination_", hrvar)
+
+  ## Main algorithm --------------------------------------------------------
 
   if(centrality == FALSE & community == FALSE){
 
@@ -92,7 +121,7 @@ network_p2p_test <- function(
   } else {
 
     stop(
-      "Invalid inputs to `centrality` or `community".
+      "Invalid inputs to `centrality` or `community`".
     )
 
   }
