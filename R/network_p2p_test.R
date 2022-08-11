@@ -38,6 +38,65 @@ network_p2p_test <- function(
     weight = "StrongTieScore"
     ){
 
+  # valid values for centrality
+  valid_cen <- c(
+    "betweenness",
+    "closeness",
+    "degree",
+    "eigenvector",
+    "pagerank"
+  )
+
+  # valid values for community
+  valid_com <- c(
+    "leiden",
+    "louvain"
+  )
+
+
+  if(centrality == FALSE & community == FALSE){
+
+    # PLOT -> Returns basic plot with HR attribute
+    # PDF -> Exports plot as pdf file
+    # Table -> HR Var count
+    # Data -> Returns person dataset with HR attributes
+    # Network -> Returns network object
+
+
+  } else if(centrality %in% valid_cen & community == FALSE){
+
+    # PLOT -> Returns basic plot with HR attribute AND vertices proportional to centrality
+    # PDF -> Exports plot as pdf file
+    # Table -> HR Var count and average centrality
+    # Data -> Returns person dataset with HR attributes and centrality scores (ALL)
+    # Network -> Returns network object with centrality scores (ALL)
+
+  } else if(centrality == FALSE & community %in% valid_com){
+
+    # PLOT -> Returns basic plot with community (no hrvar)
+    # PDF -> Exports plot as pdf file
+    # Table -> HR Var x community count
+    # Data -> Returns person dataset with HR attributes and community attribute
+    # Network -> Returns network object with community attribute
+
+
+  } else if(centrality %in% valid_cen & community %in% valid_com){
+
+    # PLOT -> Returns basic plot with community AND vertices proportional to centrality
+    # PDF -> Exports plot as pdf file
+    # Table -> HR Var x community count and average centrality
+    # Data -> Returns person dataset with HR attributes, community attribute and centrality scores (ALL)
+    # Network -> Returns network object with community attribute and centrality scores (ALL)
+
+
+  } else {
+
+    stop(
+      "Invalid inputs to `centrality` or `community".
+    )
+
+  }
+
 
 }
 
