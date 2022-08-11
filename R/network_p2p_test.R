@@ -22,8 +22,8 @@
 network_p2p_test <- function(
     data,
     hrvar,
-    centrality = FALSE,
-    community = FALSE,
+    centrality = NULL,
+    community = NULL,
     return,
     bg_fill = "#FFFFFF",
     font_col = "grey20",
@@ -115,7 +115,7 @@ network_p2p_test <- function(
 
   ## Main algorithm --------------------------------------------------------
 
-  if(centrality == FALSE & community == FALSE){
+  if(is.null(centrality) & is.null(community)){
 
     # PLOT -> Returns basic plot with HR attribute
     # PDF -> Exports plot as pdf file
@@ -129,7 +129,7 @@ network_p2p_test <- function(
     v_attr <- hrvar
 
 
-  } else if(centrality %in% valid_cen & community == FALSE){
+  } else if(centrality %in% valid_cen & is.null(community)){
 
     # PLOT -> Returns basic plot with HR attribute AND vertices proportional to centrality
     # PDF -> Exports plot as pdf file
@@ -137,7 +137,7 @@ network_p2p_test <- function(
     # Data -> Returns person dataset with HR attributes and centrality scores (ALL)
     # Network -> Returns network object with centrality scores (ALL)
 
-  } else if(centrality == FALSE & community %in% valid_com){
+  } else if(is.null(centrality) & community %in% valid_com){
 
     # PLOT -> Returns basic plot with community (no hrvar)
     # PDF -> Exports plot as pdf file
