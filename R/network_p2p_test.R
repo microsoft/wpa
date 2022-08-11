@@ -78,8 +78,40 @@ network_p2p_test <- function(
 
   ## Set variables ---------------------------------------------------------
 
-   TO_hrvar <- paste0("TieOrigin_", hrvar)
+  TO_hrvar <- paste0("TieOrigin_", hrvar)
   TD_hrvar <- paste0("TieDestination_", hrvar)
+
+  ## Vertices data frame to provide meta-data ------------------------------
+
+  vert_ft <-
+    rbind(
+      # TieOrigin
+      edges %>%
+        select(from) %>% # Single column
+        unique() %>% # Remove duplications
+        left_join(select(data, TieOrigin_PersonId, TO_hrvar),
+                  by = c("from"  = "TieOrigin_PersonId")) %>%
+        select(node = "from", !!sym(hrvar) := TO_hrvar),
+
+      # TieDestination
+      edges %>%
+        select(to) %>% # Single column
+        unique() %>% # Remove duplications
+        left_join(select(data, TieDestination_PersonId, TD_hrvar),
+                  by = c("to"  = "TieDestination_PersonId")) %>%
+        select(node = "to", !!sym(hrvar) := TD_hrvar)
+    )
+
+  ## Create 'igraph' object -----------------------------------------------
+
+  g_raw <-
+    igraph::graph_from_data_frame(edges,
+                                  directed = TRUE, # Directed, but FALSE for visualization
+                                  vertices = unique(vert_ft)) # remove duplicates
+
+  ## Assign weights --------------------------------------------------------
+
+  g_raw$weight <- edges$weight
 
   ## Main algorithm --------------------------------------------------------
 
@@ -90,6 +122,11 @@ network_p2p_test <- function(
     # Table -> HR Var count
     # Data -> Returns person dataset with HR attributes
     # Network -> Returns network object
+
+    g <- g_raw %>% igraph::simplify()
+
+    ## Name of vertex attribute
+    v_attr <- hrvar
 
 
   } else if(centrality %in% valid_cen & community == FALSE){
@@ -109,6 +146,56 @@ network_p2p_test <- function(
     # Network -> Returns network object with community attribute
 
 
+    # TODO - modularise louvain and leiden?
+    if(community == "louvain"){
+
+      set.seed(seed = seed)
+
+      ## Convert to undirected
+      g_ud <- igraph::as.undirected(g_raw)
+
+      ## Return a numeric vector of partitions / clusters / modules
+      ## Set a low resolution parameter to have fewer groups
+      ## weights = NULL means that if the graph as a `weight` edge attribute, this
+      ## will be used by default.
+      lc <- igraph::cluster_louvain(g_ud, weights = NULL)
+
+      ## Add cluster
+      g <-
+        g_ud %>%
+        # Add louvain partitions to graph object
+        igraph::set_vertex_attr("cluster", value = as.character(igraph::membership(lc))) %>% # Return membership - diff from Leiden
+        igraph::simplify()
+
+      ## Name of vertex attribute
+      v_attr <- "cluster"
+
+    } else if(community == "leiden"){
+
+      # Check package installation
+      check_pkg_installed(pkgname = "leiden")
+
+      ## Return a numeric vector of partitions / clusters / modules
+      ## Set a low resolution parameter to have fewer groups
+      ld <- leiden::leiden(
+        g_raw,
+        resolution_parameter = res,
+        seed = seed,
+        weights = g_raw$weight) # create partitions
+
+      ## Add cluster
+      g <-
+        g_raw %>%
+        # Add leiden partitions to graph object
+        igraph::set_vertex_attr("cluster", value = as.character(ld)) %>%
+        igraph::simplify()
+
+      ## Name of vertex attribute
+      v_attr <- "cluster"
+
+    }
+
+
   } else if(centrality %in% valid_cen & community %in% valid_com){
 
     # PLOT -> Returns basic plot with community AND vertices proportional to centrality
@@ -121,7 +208,7 @@ network_p2p_test <- function(
   } else {
 
     stop(
-      "Invalid inputs to `centrality` or `community`".
+      "Invalid inputs to `centrality` or `community`."
     )
 
   }
