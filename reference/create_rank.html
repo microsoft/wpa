@@ -363,20 +363,20 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Emails_sent"</span>,</span></span>
 <span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 29 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 30 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar            group            Emails_sent     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> FunctionType     Marketing               57.4   158</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> LevelDesignation Director                54.9    54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> FunctionType     Sales                   54.5    58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Organization     Finance-South           49.9    60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Organization     Finance-East            48.9    53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> LevelDesignation Executive               48.2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Organization     Customer Service        47.4    41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Organization     Finance-West            47.4    54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Organization     G&amp;A Central             46.5    43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Organization     Facilities              46.4    54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 19 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> FunctionType     Sales                   58.0    61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> FunctionType     Marketing               57.0   164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> LevelDesignation Director                51.5    51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Organization     Finance-East            51.5    55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Organization     Human Resources         49.6    46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Organization     Customer Service        46.8    48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Organization     Finance-South           46.6    57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Organization     G&amp;A Central             45.9    46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Organization     Finance-West            45.7    55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> LevelDesignation Manager                 45.6   250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 20 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Return a table - combination mode</span></span></span>
@@ -386,20 +386,20 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <span class="r-in"><span>  mode <span class="op">=</span> <span class="st">"combine"</span>,</span></span>
 <span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 300 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar    group                                              Emails_sent     n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 352 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar    group                                                 Emails…¹     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Marketing [LevelDesignation] Direc…        70.2    11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Director          65.5     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Marketing [LevelDesignation] Senio…        60.1    18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Marketing [LevelDesignation] Suppo…        57.8    61</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Manager           57.3    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] Junio…        54.3    12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] Manag…        53.8    55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Sales [LevelDesignation] Support           52.4    17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Operations [LevelDesignation] Dire…        51.6    10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Sales [LevelDesignation] Senior IC         51.0     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 290 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Marketing [LevelDesignation] Director      61.6    13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Manager           59.9    21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Marketing [LevelDesignation] Manager       59.7    55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Marketing [LevelDesignation] Junior IC     59.4    15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Support           58.2    17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC         55.9    11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] Support       54.4    60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] Senior IC     52.1    20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Engineering [LevelDesignation] Manager     49.3    24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Sales [LevelDesignation] Senior IC         48.1     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 342 more rows, and abbreviated variable name ¹​Emails_sent</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -416,7 +416,7 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

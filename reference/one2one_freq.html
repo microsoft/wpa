@@ -339,24 +339,26 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">one2one_freq</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    group     `Every two mon…` `Monthly\n(3 -…` `Quarterly or …` `Twice monthly…`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> IT-East             0.258             0.274           0.355             0.113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Finance-…           0.068<span style="text-decoration: underline;">5</span>            0.479           0.288             0.164</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Human Re…           0.042<span style="text-decoration: underline;">3</span>            0.239           0.282             0.437</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Financia…           0.28              0.28            0.267             0.173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> IT-Corpo…           0.191             0.279           0.25              0.279</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> G&amp;A East            0.2               0.185           0.231             0.385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Faciliti…           0.208             0.458           0.194             0.139</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> G&amp;A South           0.158             0.237           0.184             0.421</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Biz Dev             0.307             0.347           0.173             0.173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Finance-…           0.160             0.444           0.148             0.247</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Customer…           0.115             0.213           0.148             0.525</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> G&amp;A Cent…           0.105             0.316           0.123             0.456</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Finance-…           0.265             0.441           0.088<span style="text-decoration: underline;">2</span>            0.206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Inventor…           0.283             0.433           0.066<span style="text-decoration: underline;">7</span>            0.217</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Finance-…           0.114             0.457           0.057<span style="text-decoration: underline;">1</span>            0.371</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: Employee_Count &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    group                Every two months\n(6 -…¹ Month…² Quart…³ Twice…⁴ Emplo…⁵</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> IT-East                                0.258    0.274  0.355    0.113      62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Finance-West                           0.068<span style="text-decoration: underline;">5</span>   0.479  0.288    0.164      73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Human Resources                        0.042<span style="text-decoration: underline;">3</span>   0.239  0.282    0.437      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Financial Planning                     0.28     0.28   0.267    0.173      75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> IT-Corporate                           0.191    0.279  0.25     0.279      68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> G&amp;A East                               0.2      0.185  0.231    0.385      65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Facilities                             0.208    0.458  0.194    0.139      72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> G&amp;A South                              0.158    0.237  0.184    0.421      76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Biz Dev                                0.307    0.347  0.173    0.173      75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Finance-South                          0.160    0.444  0.148    0.247      81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Customer Service                       0.115    0.213  0.148    0.525      61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> G&amp;A Central                            0.105    0.316  0.123    0.456      57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Finance-Corporate                      0.265    0.441  0.088<span style="text-decoration: underline;">2</span>   0.206      68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Inventory Management                   0.283    0.433  0.066<span style="text-decoration: underline;">7</span>   0.217      60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Finance-East                           0.114    0.457  0.057<span style="text-decoration: underline;">1</span>   0.371      70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​`Every two months\n(6 - 10 weeks)`,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​`Monthly\n(3 - 6 weeks)`, ³​`Quarterly or less\n(&gt;10 weeks)`,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​`Twice monthly or more\n(up to 3 weeks)`, ⁵​Employee_Count</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -372,7 +374,7 @@ set to <code>"sum"</code>, these rows are simply excluded from the calculation.<
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

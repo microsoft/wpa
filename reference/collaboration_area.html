@@ -304,22 +304,23 @@ and <code>Instant_Message_hours</code>.</p>
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">collaboration_area</span><span class="op">(</span><span class="va">sq_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Date       group Meeting_hours Email_hours Instant_Message_ho… Employee_Count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2019-11-03 Total         11.0        11.3                0.696           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2019-11-10 Total         11.0        11.0                0.675           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2019-11-17 Total         10.2        10.1                0.610           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2019-11-24 Total          9.74        9.84               0.598           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2019-12-01 Total          6.71        6.11               0.371           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2019-12-08 Total          9.59        9.37               0.581           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2019-12-15 Total         10.2        10.1                0.609           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2019-12-22 Total         10.4        10.1                0.608           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2019-12-29 Total          9.97        9.45               0.579           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2020-01-05 Total          8.96        8.50               0.523           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2020-01-12 Total         11.3        11.3                0.690           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2020-01-19 Total         11.2        11.6                0.706           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2020-01-26 Total         10.0         9.99               0.610           <span style="text-decoration: underline;">1</span>034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: Collaboration_hours &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Date       group Meeting_hours Email_hours Instant_Message_…¹ Emplo…² Colla…³</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2019-11-03 Total         11.0        11.3               0.696    <span style="text-decoration: underline;">1</span>034    23.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2019-11-10 Total         11.0        11.0               0.675    <span style="text-decoration: underline;">1</span>034    22.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2019-11-17 Total         10.2        10.1               0.610    <span style="text-decoration: underline;">1</span>034    20.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2019-11-24 Total          9.74        9.84              0.598    <span style="text-decoration: underline;">1</span>034    20.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2019-12-01 Total          6.71        6.11              0.371    <span style="text-decoration: underline;">1</span>034    13.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2019-12-08 Total          9.59        9.37              0.581    <span style="text-decoration: underline;">1</span>034    19.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2019-12-15 Total         10.2        10.1               0.609    <span style="text-decoration: underline;">1</span>034    20.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2019-12-22 Total         10.4        10.1               0.608    <span style="text-decoration: underline;">1</span>034    21.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2019-12-29 Total          9.97        9.45              0.579    <span style="text-decoration: underline;">1</span>034    20.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2020-01-05 Total          8.96        8.50              0.523    <span style="text-decoration: underline;">1</span>034    18.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2020-01-12 Total         11.3        11.3               0.690    <span style="text-decoration: underline;">1</span>034    23.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2020-01-19 Total         11.2        11.6               0.706    <span style="text-decoration: underline;">1</span>034    23.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2020-01-26 Total         10.0         9.99              0.610    <span style="text-decoration: underline;">1</span>034    20.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​Instant_Message_hours, ²​Employee_Count,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ³​Collaboration_hours</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -335,7 +336,7 @@ and <code>Instant_Message_hours</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

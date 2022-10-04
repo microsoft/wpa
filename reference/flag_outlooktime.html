@@ -246,19 +246,20 @@ following strings:</p><ul><li><p><code>"text"</code> (default)</p></li>
 <span class="r-in"><span><span class="co"># Return data</span></span></span>
 <span class="r-in"><span><span class="fu">flag_outlooktime</span><span class="op">(</span><span class="va">spq_df</span>, threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13</span><span class="op">)</span>, return <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13,442 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    PersonId                   WorkdayRange WorkdayFlag WorkdayFlag1 WorkdayFlag2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 93F763956FFC939A5DDE7D599…           17 TRUE        FALSE        TRUE        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13,432 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    PersonId                                      Workd…¹ Workd…² Workd…³ Workd…⁴</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 93F763956FFC939A5DDE7D599D04923290B41C935ECA…      17 TRUE    FALSE   TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13,432 more rows, and abbreviated variable names ¹​WorkdayRange,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​WorkdayFlag, ³​WorkdayFlag1, ⁴​WorkdayFlag2</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -274,7 +275,7 @@ following strings:</p><ul><li><p><code>"text"</code> (default)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

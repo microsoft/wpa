@@ -293,17 +293,18 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <span class="r-in"><span><span class="co"># Run table</span></span></span>
 <span class="r-in"><span><span class="fu">workloads_trend</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   group     `2019-11-03` `2019-11-10` `2019-11-17` `2019-11-24` `2019-12-01`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Director          45.8         45.4         43.3         44.3         38.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Executive         40.4         49.1         45.0         46.9         36.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Junior IC         43.1         44.0         41.9         42.1         36.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Manager           45.3         44.7         43.0         43.4         36.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Senior IC         45.2         44.4         41.6         41.2         37.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Support           43.3         42.9         41.0         40.5         34.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 8 more variables: `2019-12-08` &lt;dbl&gt;, `2019-12-15` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2019-12-22` &lt;dbl&gt;, `2019-12-29` &lt;dbl&gt;, `2020-01-05` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2020-01-12` &lt;dbl&gt;, `2020-01-19` &lt;dbl&gt;, `2020-01-26` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   group  2019-…¹ 2019-…² 2019-…³ 2019-…⁴ 2019-…⁵ 2019-…⁶ 2019-…⁷ 2019-…⁸ 2019-…⁹</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…    45.8    45.4    43.3    44.3    38.3    44.0    43.5    43.2    44.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Execu…    40.4    49.1    45.0    46.9    36.4    48.3    44.0    39.8    45.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Junio…    43.1    44.0    41.9    42.1    36.3    42.9    41.8    42.2    42.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Manag…    45.3    44.7    43.0    43.4    36.8    42.4    43.8    43.2    42.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Senio…    45.2    44.4    41.6    41.2    37.5    40.6    44.2    42.5    43.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Suppo…    43.3    42.9    41.0    40.5    34.5    40.9    42.0    41.3    41.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 4 more variables: `2020-01-05` &lt;dbl&gt;, `2020-01-12` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2020-01-19` &lt;dbl&gt;, `2020-01-26` &lt;dbl&gt;, and abbreviated variable names</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​`2019-11-03`, ²​`2019-11-10`, ³​`2019-11-17`, ⁴​`2019-11-24`, ⁵​`2019-12-01`,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁶​`2019-12-08`, ⁷​`2019-12-15`, ⁸​`2019-12-22`, ⁹​`2019-12-29`</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -320,7 +321,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

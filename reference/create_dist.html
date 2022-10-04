@@ -357,23 +357,25 @@ categorical variables. Must be a named vector - see examples.</p></dd>
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">create_dist</span><span class="op">(</span><span class="va">sq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    group `&lt; 15 hours` `15 - 20 hours` `20 - 25 hours` `25+ hours` Employee_Count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Biz …       0.52            0.48           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>                  75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Cust…       0.295           0.492           0.049<span style="text-decoration: underline;">2</span>      0.164              61</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Faci…       0.236           0.403           0.278       0.083<span style="text-decoration: underline;">3</span>             72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Fina…       0.471           0.309           0.176       0.044<span style="text-decoration: underline;">1</span>             68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Fina…       0.257           0.114           0.129       0.5                70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Fina…       0.407           0.235           0.049<span style="text-decoration: underline;">4</span>      0.309              81</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Fina…       0.192           0.342           0.192       0.274              73</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Fina…       0.373           0.48            0.013<span style="text-decoration: underline;">3</span>      0.133              75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> G&amp;A …       0.281           0.333           0.193       0.193              57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> G&amp;A …       0.4             0.508           0.092<span style="text-decoration: underline;">3</span>     <span style="color: #BB0000;">NA</span>                  65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> G&amp;A …       0.197           0.078<span style="text-decoration: underline;">9</span>          0.342       0.382              76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Huma…       0.141           0.056<span style="text-decoration: underline;">3</span>          0.310       0.493              71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> IT-C…       0.206           0.044<span style="text-decoration: underline;">1</span>          0.368       0.382              68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> IT-E…       0.290           0.080<span style="text-decoration: underline;">6</span>          0.323       0.306              62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Inve…       0.033<span style="text-decoration: underline;">3</span>          0.033<span style="text-decoration: underline;">3</span>          0.45        0.483              60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    group                `&lt; 15 hours` `15 - 20 hours` 20 - 25 h…¹ 25+ h…² Emplo…³</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Biz Dev                    0.52            0.48       <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Customer Service           0.295           0.492       0.049<span style="text-decoration: underline;">2</span>  0.164       61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Facilities                 0.236           0.403       0.278   0.083<span style="text-decoration: underline;">3</span>      72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Finance-Corporate          0.471           0.309       0.176   0.044<span style="text-decoration: underline;">1</span>      68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Finance-East               0.257           0.114       0.129   0.5         70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Finance-South              0.407           0.235       0.049<span style="text-decoration: underline;">4</span>  0.309       81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Finance-West               0.192           0.342       0.192   0.274       73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Financial Planning         0.373           0.48        0.013<span style="text-decoration: underline;">3</span>  0.133       75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> G&amp;A Central                0.281           0.333       0.193   0.193       57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> G&amp;A East                   0.4             0.508       0.092<span style="text-decoration: underline;">3</span> <span style="color: #BB0000;">NA</span>           65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> G&amp;A South                  0.197           0.078<span style="text-decoration: underline;">9</span>      0.342   0.382       76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Human Resources            0.141           0.056<span style="text-decoration: underline;">3</span>      0.310   0.493       71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> IT-Corporate               0.206           0.044<span style="text-decoration: underline;">1</span>      0.368   0.382       68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> IT-East                    0.290           0.080<span style="text-decoration: underline;">6</span>      0.323   0.306       62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Inventory Management       0.033<span style="text-decoration: underline;">3</span>          0.033<span style="text-decoration: underline;">3</span>      0.45    0.483       60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​`20 - 25 hours`, ²​`25+ hours`,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ³​Employee_Count</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use custom labels by providing a label vector</span></span></span>
 <span class="r-in"><span><span class="va">eh_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
@@ -407,7 +409,7 @@ categorical variables. Must be a named vector - see examples.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -293,19 +293,19 @@
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="../reference/collaboration_rank.html">collaboration_rank</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span>, mode <span class="op">=</span> <span class="st">"combine"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 382 × 4</span></span></span>
-<span><span class="co">#&gt;    hrvar    group                                         Collaboration_h…     n</span></span>
+<span><span class="co">#&gt;    hrvar    group                                                 Collab…¹     n</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Mana…             33.7    28</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Juni…             31.0    13</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Supp…             29.5    24</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Dire…             29.2     6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Seni…             28.2    11</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] …             27.4    72</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.9    17</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    14</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] …             25.1    81</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] …             24.3    22</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 372 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Manager           33.7    28</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC         31.0    13</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Support           29.5    24</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Director          29.2     6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Senior IC         28.2    11</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] Manager       27.4    72</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Marketing [LevelDesignation] Junior IC     25.9    17</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Marketing [LevelDesignation] Director      25.1    14</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] Support       25.1    81</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Marketing [LevelDesignation] Senior IC     24.3    22</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 372 more rows, and abbreviated variable name ¹​Collaboration_hours</span></span></span></code></pre></div>
 <p>The output table contains similar results from the group exploration above, but with more granularity. The function has automatically created smaller groups by combining two distinct groups from the organisational attributes in scope. In this case, it seems that the 28 managers in Sales are the worst affected group, with a weekly average of 33.7 hours in collaboration per week - that sounds like a lot of meetings!</p>
 </div>
 <div class="section level3">
@@ -395,7 +395,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

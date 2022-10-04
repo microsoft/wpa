@@ -291,17 +291,18 @@ size. Defaults to 5.</p></dd>
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">email_line</span><span class="op">(</span><span class="va">sq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   group     `2019-11-03` `2019-11-10` `2019-11-17` `2019-11-24` `2019-12-01`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Director         10.8          11.3         9.39        10.2          5.62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Executive         8.95         10.2         8.26         7.00         3.94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Junior IC        11.4          11.1        10.3          9.59         6.44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Manager          12.3          11.8        10.9         10.6          6.51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Senior IC        11.5          11.1        10.1          9.80         6.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Support          10.6          10.2         9.44         9.33         5.77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 8 more variables: `2019-12-08` &lt;dbl&gt;, `2019-12-15` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2019-12-22` &lt;dbl&gt;, `2019-12-29` &lt;dbl&gt;, `2020-01-05` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2020-01-12` &lt;dbl&gt;, `2020-01-19` &lt;dbl&gt;, `2020-01-26` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   group  2019-…¹ 2019-…² 2019-…³ 2019-…⁴ 2019-…⁵ 2019-…⁶ 2019-…⁷ 2019-…⁸ 2019-…⁹</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…   10.8     11.3    9.39   10.2     5.62    9.43    9.76    9.63    9.32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Execu…    8.95    10.2    8.26    7.00    3.94    9.67    9.74    8.61    8.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Junio…   11.4     11.1   10.3     9.59    6.44    8.80    9.78   10.1     9.45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Manag…   12.3     11.8   10.9    10.6     6.51   10.0    11.0    10.8    10.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Senio…   11.5     11.1   10.1     9.80    6.30    9.03   10.2    10.3     9.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Suppo…   10.6     10.2    9.44    9.33    5.77    9.07    9.46    9.48    9.04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 4 more variables: `2020-01-05` &lt;dbl&gt;, `2020-01-12` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2020-01-19` &lt;dbl&gt;, `2020-01-26` &lt;dbl&gt;, and abbreviated variable names</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​`2019-11-03`, ²​`2019-11-10`, ³​`2019-11-17`, ⁴​`2019-11-24`, ⁵​`2019-12-01`,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁶​`2019-12-08`, ⁷​`2019-12-15`, ⁸​`2019-12-22`, ⁹​`2019-12-29`</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -317,7 +318,7 @@ size. Defaults to 5.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

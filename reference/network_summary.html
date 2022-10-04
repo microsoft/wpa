@@ -227,33 +227,33 @@ there is a valid HR attribute.</p>
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 300 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    node_id   betweenness closeness degree eigenvector</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> SIM_ID_1          0       0.225     10       0.588</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> SIM_ID_2         58.0     0.233     12       0.685</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> SIM_ID_4        140.      0.239      9       0.587</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> SIM_ID_5        262.      0.238     11       0.681</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> SIM_ID_6        290.      0.222     11       0.687</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> SIM_ID_7        115.      0.201     10       0.639</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> SIM_ID_8        201.      0.219     10       0.643</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> SIM_ID_9        283.      0.228     11       0.700</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> SIM_ID_10       110.      0.217     10       0.646</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> SIM_ID_12       444.      0.232     11       0.650</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    node_id    betweenness closeness degree eigenvector</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> SIM_ID_1           0       0.223     11       0.671</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> SIM_ID_2          13.8     0.212     10       0.609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> SIM_ID_3          74.4     0.227     10       0.608</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> SIM_ID_4         132.      0.229     10       0.578</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> SIM_ID_6         333.      0.242     10       0.606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> SIM_ID_7         312.      0.233     10       0.564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> SIM_ID_236      <span style="text-decoration: underline;">1</span>296.      0.234     11       0.956</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> SIM_ID_9         326.      0.226     10       0.570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> SIM_ID_10        332.      0.221     10       0.560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> SIM_ID_11        235.      0.204     10       0.592</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 290 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return network with node centrality statistics</span></span></span>
 <span class="r-in"><span><span class="fu">network_summary</span><span class="op">(</span>graph <span class="op">=</span> <span class="va">g</span>, return <span class="op">=</span> <span class="st">"network"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IGRAPH d6c651f DNW- 300 1500 -- </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IGRAPH 8df3483 DNW- 300 1500 -- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + attr: weight (g/n), name (v/c), Organization (v/c), betweenness</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> | (v/n), closeness (v/n), degree (v/n), eigenvector (v/n), weight (e/n)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + edges from d6c651f (vertex names):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] SIM_ID_1-&gt;SIM_ID_2   SIM_ID_1-&gt;SIM_ID_4   SIM_ID_1-&gt;SIM_ID_6  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] SIM_ID_1-&gt;SIM_ID_207 SIM_ID_1-&gt;SIM_ID_296 SIM_ID_1-&gt;SIM_ID_297</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] SIM_ID_1-&gt;SIM_ID_298 SIM_ID_1-&gt;SIM_ID_299 SIM_ID_1-&gt;SIM_ID_3  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] SIM_ID_1-&gt;SIM_ID_300 SIM_ID_2-&gt;SIM_ID_4   SIM_ID_2-&gt;SIM_ID_6  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] SIM_ID_2-&gt;SIM_ID_7   SIM_ID_2-&gt;SIM_ID_125 SIM_ID_2-&gt;SIM_ID_136</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] SIM_ID_2-&gt;SIM_ID_294 SIM_ID_2-&gt;SIM_ID_297 SIM_ID_2-&gt;SIM_ID_298</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] SIM_ID_2-&gt;SIM_ID_299 SIM_ID_2-&gt;SIM_ID_3   SIM_ID_2-&gt;SIM_ID_300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + edges from 8df3483 (vertex names):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] SIM_ID_1-&gt;SIM_ID_2   SIM_ID_1-&gt;SIM_ID_3   SIM_ID_1-&gt;SIM_ID_4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] SIM_ID_1-&gt;SIM_ID_6   SIM_ID_1-&gt;SIM_ID_210 SIM_ID_1-&gt;SIM_ID_296</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] SIM_ID_1-&gt;SIM_ID_297 SIM_ID_1-&gt;SIM_ID_298 SIM_ID_1-&gt;SIM_ID_299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] SIM_ID_1-&gt;SIM_ID_5   SIM_ID_1-&gt;SIM_ID_300 SIM_ID_2-&gt;SIM_ID_3  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] SIM_ID_2-&gt;SIM_ID_4   SIM_ID_2-&gt;SIM_ID_7   SIM_ID_2-&gt;SIM_ID_287</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] SIM_ID_2-&gt;SIM_ID_297 SIM_ID_2-&gt;SIM_ID_298 SIM_ID_2-&gt;SIM_ID_299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] SIM_ID_2-&gt;SIM_ID_5   SIM_ID_2-&gt;SIM_ID_300 SIM_ID_3-&gt;SIM_ID_4  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + ... omitted several edges</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return summary plot</span></span></span>
@@ -298,7 +298,7 @@ there is a valid HR attribute.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

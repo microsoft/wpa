@@ -388,17 +388,17 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <span class="r-in"><span>                             <span class="st">"Instant_Message_hours"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                 return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   group       Meeting_hours Email_hours Call_hours Instant_Message_hours Total</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Engineering          9.28       10.3        4.56                 0.621  24.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Finance              8.35        8.17       4.28                 0.620  21.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> G_and_A              8.11        7.93       4.20                 0.610  20.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> IT                   7.02        7.97       3.42                 0.597  19.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Marketing           13.1        12.7        7.36                 0.576  33.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Operations           9.79        9.33       5.22                 0.655  25.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> R_and_D              7.37        7.79       4.05                 0.593  19.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Sales               16.2        14.7        8.92                 0.538  40.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: Employee_Count &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   group       Meeting_hours Email_hours Call_hours Instant_Messa…¹ Total Emplo…²</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Engineering          9.28       10.3        4.56           0.621  24.8      93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Finance              8.35        8.17       4.28           0.620  21.4     146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> G_and_A              8.11        7.93       4.20           0.610  20.9     128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> IT                   7.02        7.97       3.42           0.597  19.0      51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Marketing           13.1        12.7        7.36           0.576  33.8     207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Operations           9.79        9.33       5.22           0.655  25.0     176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> R_and_D              7.37        7.79       4.05           0.593  19.8     151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Sales               16.2        14.7        8.92           0.538  40.4      82</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​Instant_Message_hours, ²​Employee_Count</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -414,7 +414,7 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
