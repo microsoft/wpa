@@ -9,7 +9,7 @@
 
 ## Analyze and Visualize Advanced Insights data from Viva Insights
 
-This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://docs.microsoft.com/en-us/workplace-analytics/) (previously Microsoft Workplace Analytics). 
+This is an R package for analyzing and visualizing data from [Microsoft Workplace Analytics](https://docs.microsoft.com/en-us/workplace-analytics/). For analyzing data from [Microsoft Viva Insights](https://analysis.insights.viva.office.com/), please see our other package [**vivainsights**](https://microsoft.github.io/vivainsights/). 
 
 ## With the **wpa** package, you can...
 
