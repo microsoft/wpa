@@ -1,5 +1,7 @@
 # wpa 1.8.1
 
+- fixed issue due to a 'tidyr' update (see #233).
+
 # wpa 1.8.0
 
 - Updated and improved output and algorithm for `workpatterns_classify()`
