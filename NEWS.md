@@ -1,3 +1,5 @@
+# wpa 1.8.1
+
 # wpa 1.8.0
 
 - Updated and improved output and algorithm for `workpatterns_classify()`
