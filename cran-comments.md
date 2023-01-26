@@ -7,6 +7,10 @@
 
 0 errors | 0 warnings | 0 note
 
+## Submission 1.8.1
+
+Patch to fix bug due to an update in 'tidyr' dependency
+
 ## Submission 1.8.0
 
 New functions and improving outputs of existing functions
