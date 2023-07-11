@@ -62,6 +62,8 @@ See [NEWS.md](https://microsoft.github.io/wpa/news/index.html) for the package c
 
 ## Related repositories
 
+- [Viva Insights R library - new implementation](https://microsoft.github.io/vivainsights/)
+- [Viva Insights Python library](https://github.com/microsoft/vivainsights-py/)
 - [Viva RMarkdown Report Marketplace](https://github.com/microsoft/VivaRMDReportMarketplace)
 - [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code)
 - [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int)
