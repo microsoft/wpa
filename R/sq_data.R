@@ -84,5 +84,4 @@
 #'
 #'   ...
 #' }
-#' @source \url{https://workplaceanalytics-demo.office.com/en-us/Home}
 "sq_data"

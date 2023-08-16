@@ -18,9 +18,6 @@ A data frame with 3517 rows and 7 variables:
 ...
 }
 }
-\source{
-\url{https://workplaceanalytics-demo.office.com/en-us/Home}
-}
 \usage{
 g2g_data
 }

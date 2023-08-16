@@ -28,5 +28,4 @@
 #'
 #'   ...
 #' }
-#' @source \url{https://workplaceanalytics-demo.office.com/en-us/Home}
 "g2g_data"

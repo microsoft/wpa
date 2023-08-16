@@ -78,9 +78,6 @@ the last email or meeting for each day of the work week.}
 ...
 }
 }
-\source{
-\url{https://workplaceanalytics-demo.office.com/en-us/Home}
-}
 \usage{
 sq_data
 }

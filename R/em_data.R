@@ -125,6 +125,5 @@
 #'
 #'  ...
 #' }
-#' @source \url{https://workplaceanalytics-demo.office.com/en-us/Home}
 "em_data"
 
