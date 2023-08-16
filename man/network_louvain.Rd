@@ -25,22 +25,13 @@ network_louvain(
 
 \item{bg_fill}{String to specify background fill colour.}
 
-\item{font_col}{String to specify font and link colour.}
+\item{font_col}{String to specify font colour.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the nodes. Defaults to 0.7.}
 
-\item{algorithm}{String to specify the node placement algorithm to be used.
-Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
-nodes. See
-\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
-list of options.}
-
 \item{path}{File path for saving the PDF output. Defaults to a timestamped
 path based on current parameters.}
-
-\item{desc_hrvar}{Character vector of length 3 containing the HR attributes
-to use when returning the \code{"describe"} output. See \code{network_describe()}.}
 
 \item{return}{String specifying what output to return. Defaults to "plot-louvain". Valid
 return options include:
@@ -60,12 +51,6 @@ identified communities. The first data frame is a summary table of all the
 communities.
 \item \code{'network'}: return 'igraph' object.
 }}
-
-\item{size_threshold}{Numeric value representing the maximum number of edges
-before \code{network_leiden()} switches to use a more efficient, but less
-elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
-coerce to a fast plotting method every time, and \code{Inf} to always use the
-default plotting method (with 'ggraph').}
 }
 \value{
 See \code{return}.

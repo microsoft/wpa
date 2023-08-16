@@ -7,8 +7,8 @@
 network_p2p_test(
   data,
   hrvar,
-  centrality = FALSE,
-  community = FALSE,
+  centrality = NULL,
+  community = NULL,
   return,
   bg_fill = "#FFFFFF",
   font_col = "grey20",
