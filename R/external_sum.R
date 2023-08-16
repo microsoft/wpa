@@ -14,10 +14,10 @@
 #' @inherit create_stacked return
 #'
 #' @family Visualization
-#' @family External
+#' @family External Collaboration
 #'
 #' @examples
-#' # Return a  plot
+#' # Return a plot
 #' external_sum(sq_data, hrvar = "LevelDesignation")
 #'
 #' # Return summary table
@@ -32,9 +32,9 @@ external_sum <- function(data,
                                 return = "plot"){
 
 
-# Calculate Internal / External Collaboration time 
-plot_data <-  data %>% mutate(Internal_hours=  Collaboration_hours - Collaboration_hours_external)   %>%  mutate(External_hours=  Collaboration_hours_external) 
-  
+# Calculate Internal / External Collaboration time
+plot_data <-  data %>% mutate(Internal_hours=  Collaboration_hours - Collaboration_hours_external)   %>%  mutate(External_hours=  Collaboration_hours_external)
+
 # Plot Internal / External Collaboration time by Organization
 plot_data %>%  create_stacked(hrvar = hrvar, metrics = c("Internal_hours", "External_hours"),   plot_title = "Internal and External Collaboration Hours",  stack_colours = stack_colours, mingroup = mingroup, return = return)
 

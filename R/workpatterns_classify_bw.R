@@ -234,7 +234,8 @@ workpatterns_classify_bw <- function(data,
   WpA_classify <-
     WpA_classify[, c("PersonId", "Date", "Active_Hours", "HourType", "sent")] %>%
     .[, .(sent = sum(sent)), by = c("PersonId", "Date", "Active_Hours", "HourType")] %>%
-    tidyr::spread(HourType, sent)%>%
+    dplyr::as_tibble() %>%
+    tidyr::spread(HourType, sent) %>%
     left_join(WpA_classify %>%   ## Calculate first and last activity for day_span
                 filter(sent > 0)%>%
                 group_by(PersonId, Date)%>%
@@ -242,7 +243,8 @@ workpatterns_classify_bw <- function(data,
                           Last_signal = max(End)),
               by = c("PersonId","Date"))%>%
     mutate(Day_Span = Last_signal - First_signal,
-           Signals_Break_hours = Day_Span - Active_Hours)
+           Signals_Break_hours = Day_Span - Active_Hours) %>%
+  data.table::as.data.table()
 
 
   ## Working patterns classification ---------------------------------------

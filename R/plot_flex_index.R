@@ -151,7 +151,7 @@ plot_flex_index <- function(data,
       )
 
       ## 00, 01, 02, etc.
-      hours_col <- stringr::str_pad(seq(0,23), width = 2, pad = 0)
+      hours_col <- pad2(x = seq(0,23))
 
       # Use `mutate()` method
       # Will get 10 IDs, not 10 rows

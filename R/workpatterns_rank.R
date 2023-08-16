@@ -171,7 +171,7 @@ workpatterns_rank <- function(data,
         by = num_cols]
 
     ## 00, 01, 02, etc.
-    hours_col <- stringr::str_pad(seq(0,23), width = 2, pad = 0)
+    hours_col <- pad2(x = seq(0,23))
 
     # Wide table showing proportion of signals by hour
     # Ranked descending by `WeekCount`
