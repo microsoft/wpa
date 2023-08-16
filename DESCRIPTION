@@ -56,7 +56,7 @@ Imports:
     ggwordcloud,
     methods,
     data.table
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
