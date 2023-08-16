@@ -1,7 +1,7 @@
 Package: wpa
 Type: Package
 Title: Tools for Analysing and Visualising Viva Insights Data
-Version: 1.8.1
+Version: 1.9.0
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com"),
