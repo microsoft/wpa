@@ -7,6 +7,8 @@ Updates to `network_p2p()`, with breaking changes to the argument, addressing is
   - Improved consistency and intuitiveness of the API, with `style` argument now controlling the network plotting mechanism and `return` argument controlling whether plots are generated interactively or saved as PDF
   - Added a large number of community detection algorithms from `igraph`
 
+`network_summary()` adds the ability to return pagerank.
+
 This version also includes some minor dependency maintenance done to `create_dt()`.
 
 # wpa 1.8.1
