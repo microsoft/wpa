@@ -1,7 +1,7 @@
 # wpa <img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/logo2.png" align="right" width=15% />
 
   [![R build status](https://github.com/microsoft/wpa/workflows/R-CMD-check/badge.svg)](https://github.com/microsoft/wpa/actions/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
   [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
   [![CRAN status](https://www.r-pkg.org/badges/version/wpa)](https://CRAN.R-project.org/package=wpa/)
   [![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/wpa?color=green/)](https://cran.r-project.org/package=wpa/)
