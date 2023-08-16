@@ -36,7 +36,7 @@
 #' lc_df <-
 #'   sim_data %>%
 #'   network_p2p(
-#'     display = "louvain",
+#'     community = "louvain",
 #'     return = "data"
 #'   )
 #'
