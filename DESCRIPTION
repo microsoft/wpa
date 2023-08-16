@@ -61,7 +61,6 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
     extrafont,
-    leiden,
     lifecycle,
     fst,
     glue,

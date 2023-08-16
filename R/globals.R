@@ -260,6 +260,12 @@ utils::globalVariables(
     "Unique values",
     "Collaboration_hours_external",
     ".GRP",
-    "Id"
+    "Id",
+    "betweenness",
+    "closeness",
+    "degree",
+    "eigenvector",
+    "node_size",
+    "pagerank"
     )
 )
