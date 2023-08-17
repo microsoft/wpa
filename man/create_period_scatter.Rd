@@ -67,9 +67,9 @@ in the package that produce faceted scatter plots.
 # Return plot
 create_period_scatter(sq_data,
                       hrvar = "LevelDesignation",
-                      before_start = "2019-11-03",
-                      before_end = "2019-12-31",
-                      after_start = "2020-01-01",
+                      before_start = "2019-12-15",
+                      before_end = "2019-12-29",
+                      after_start = "2020-01-05",
                       after_end = "2020-01-26")
 
 # Return a summary table
