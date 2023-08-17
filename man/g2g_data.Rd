@@ -5,7 +5,7 @@
 \alias{g2g_data}
 \title{Sample Group-to-Group dataset}
 \format{
-A data frame with 3517 rows and 7 variables:
+A data frame with 1417 rows and 7 variables:
 \describe{
 \item{TimeInvestors_Organization}{ }
 \item{Collaborators_Organization}{ }

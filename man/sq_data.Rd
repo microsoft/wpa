@@ -5,7 +5,7 @@
 \alias{sq_data}
 \title{Sample Standard Person Query dataset}
 \format{
-A data frame with 13442 rows and 66 variables:
+A data frame with 4403 rows and 66 variables:
 \describe{
 \item{PersonId}{ }
 \item{Date}{ }
