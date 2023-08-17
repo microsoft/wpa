@@ -76,7 +76,7 @@ sq_data \%>\%
 
 # Return summary
 sq_data \%>\%
-  dplyr::mutate(X = ifelse(Collaboration_hours > 2, 1, 0)) \%>\%
+  dplyr::mutate(X = ifelse(Collaboration_hours > 10, 1, 0)) \%>\%
   create_IV(outcome = "X",
             predictors = c("Email_hours", "Meeting_hours"),
             return = "summary")
