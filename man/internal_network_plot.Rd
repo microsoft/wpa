@@ -43,10 +43,10 @@ Uses the metrics \code{Internal_network_size} and
 }
 \examples{
 # Return plot
-sq_data \%>\% internal_network_plot(return = "plot")
+internal_network_plot(sq_data, return = "plot")
 
 # Return summary table
-sq_data \%>\% internal_network_plot(return = "table")
+internal_network_plot(sq_data, return = "table")
 
 }
 \seealso{

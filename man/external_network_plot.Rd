@@ -42,7 +42,7 @@ Uses the metrics \code{External_network_size} and \code{Networking_outside_compa
 }
 \examples{
 # Return plot
-sq_data \%>\% external_network_plot(return = "plot")
+external_network_plot(sq_data, return = "plot")
 
 }
 \seealso{

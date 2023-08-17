@@ -51,10 +51,12 @@ personas_hclust(sq_data,
                 k = 4)
 
 # Return summary table
+\donttest{
 personas_hclust(sq_data,
                 metrics = c("Collaboration_hours", "Workweek_span"),
                 k = 4,
                 return = "table")
+}
 
 \donttest{
 # Return data with clusters appended

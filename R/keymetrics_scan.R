@@ -40,7 +40,9 @@
 #' keymetrics_scan(sq_data, low = "purple", high = "yellow")
 #'
 #' # Return summary table
+#' \donttest{
 #' keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
+#' }
 #'
 #' @export
 

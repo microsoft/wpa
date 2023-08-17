@@ -45,7 +45,9 @@
 #' collaboration_area(sq_data, hrvar = "Organization")
 #'
 #' # Return summary table
+#' \donttest{
 #' collaboration_area(sq_data, return = "table")
+#' }
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
