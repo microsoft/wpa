@@ -72,8 +72,8 @@ has since been removed and dependent functions \code{Ljungbox()} incorporated in
 the \strong{wpa} package.
 }
 \examples{
+\donttest{
 # Returns summary table
-
 create_ITSA(
   data = sq_data,
   before_start = "12/15/2019",
@@ -97,6 +97,7 @@ plot_list <-
 
 # Extract a plot as an example
 plot_list$Workweek_span
+}
 
 }
 \seealso{

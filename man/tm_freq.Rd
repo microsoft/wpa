@@ -45,8 +45,10 @@ There is an option to remove stopwords by passing a data frame into the
 \code{stopwords} argument.
 }
 \examples{
+\donttest{
 tm_freq(mt_data, token = "words")
 tm_freq(mt_data, token = "ngrams")
+}
 
 }
 \seealso{

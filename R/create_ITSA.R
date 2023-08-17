@@ -64,8 +64,8 @@
 #'
 #'
 #' @examples
+#' \donttest{
 #' # Returns summary table
-#'
 #' create_ITSA(
 #'   data = sq_data,
 #'   before_start = "12/15/2019",
@@ -89,6 +89,7 @@
 #'
 #' # Extract a plot as an example
 #' plot_list$Workweek_span
+#' }
 #'
 #' @export
 

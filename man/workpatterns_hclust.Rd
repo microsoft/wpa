@@ -80,16 +80,16 @@ In other words, the clustering is applied on a dataset where the collaboration h
 are averaged by person and calculated as \% of total daily collaboration.
 }
 \examples{
+\donttest{
 # Run clusters, returning plot
 workpatterns_hclust(em_data, k = 5, return = "plot")
 
 # Run clusters, return raw data
 workpatterns_hclust(em_data, k = 4, return = "data") \%>\% head()
 
-
 # Run clusters for instant messages only, return hclust object
 workpatterns_hclust(em_data, k = 4, return = "hclust", signals = c("IM"))
-
+}
 
 }
 \seealso{

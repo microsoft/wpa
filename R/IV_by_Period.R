@@ -40,6 +40,7 @@
 #' @family Time-series
 #'
 #' @examples
+#' \donttest{
 #' # Returns a data frame
 #' sq_data %>%
 #'   IV_by_period(
@@ -48,7 +49,7 @@
 #'     after_start = "2020-01-05",
 #'     after_end = "2020-01-26"
 #'   )
-#'
+#' }
 #' @export
 
 IV_by_period <-

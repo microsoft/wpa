@@ -87,6 +87,7 @@ grouped by a specified attribute such as organisational attribute, day of the
 week, or hours of the day.
 }
 \examples{
+\donttest{
 # return a heatmap table for words
 mt_data \%>\% subject_scan(hrvar = "Organizer_Organization")
 
@@ -105,5 +106,5 @@ mt_data \%>\% subject_scan(mode = "hours")
 
 # grouped by days
 mt_data \%>\% subject_scan(mode = "days")
-
+}
 }
