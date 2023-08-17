@@ -79,7 +79,7 @@ em_data <- em_data[em_data$Organization \%in\% orgs, ]
 workpatterns_area(em_data, return = "plot", values = "percent")
 
 # Return visualization of absolute values
-\dontest{
+\donttest{
 workpatterns_area(em_data, return = "plot", values = "abs")
 }
 
