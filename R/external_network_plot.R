@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' # Return plot
-#' sq_data %>% external_network_plot(return = "plot")
+#' external_network_plot(sq_data, return = "plot")
 #'
 #' @return
 #' 'ggplot' object showing a bubble plot with external network size as the

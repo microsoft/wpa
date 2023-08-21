@@ -54,12 +54,16 @@ a Standard Person Query as an input.
 meeting_quality(sq_data, return = "plot")
 
 # Return plot - showing multi-tasking \%
+\donttest{
 meeting_quality(sq_data,
                 metric_x = "Multitasking_meeting_hours",
                 return = "plot")
+}
 
 # Return summary table
+\donttest{
 meeting_quality(sq_data, return = "table")
+}
 
 }
 \seealso{

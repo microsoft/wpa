@@ -2,26 +2,28 @@
 % Please edit documentation in R/network_p2p.R
 \name{network_p2p}
 \alias{network_p2p}
-\title{Create a network plot with the person-to-person query}
+\title{Perform network analysis with the person-to-person query}
 \usage{
 network_p2p(
   data,
   hrvar = "Organization",
-  display = "hrvar",
   return = "plot",
-  path = paste0("network_p2p_", display),
-  desc_hrvar = c("Organization", "LevelDesignation", "FunctionType"),
+  centrality = NULL,
+  community = NULL,
+  weight = NULL,
+  comm_args = NULL,
+  layout = "mds",
+  path = paste("p2p", NULL, sep = "_"),
+  style = "igraph",
   bg_fill = "#FFFFFF",
   font_col = "grey20",
-  legend_pos = "bottom",
+  legend_pos = "right",
   palette = "rainbow",
   node_alpha = 0.7,
   edge_alpha = 1,
-  res = 0.5,
-  seed = 1,
-  algorithm = "mds",
-  size_threshold = 5000,
-  weight = "StrongTieScore"
+  edge_col = "#777777",
+  node_sizes = c(1, 20),
+  seed = 1
 )
 }
 \arguments{
@@ -29,43 +31,86 @@ network_p2p(
 
 \item{hrvar}{String containing the label for the HR attribute.}
 
-\item{display}{String determining what output to return. Valid values
-include:
-\itemize{
-\item \code{"hrvar"} (default): compute analysis or visuals without computing
-communities.
-\item \code{"louvain"}: compute analysis or visuals with community detection, using
-the Louvain algorithm.
-\item \code{"leiden"}: compute analysis or visuals with community detection, using
-the Leiden algorithm. This requires all the pre-requisites of the
-\strong{leiden} package installed, which includes Python and \strong{reticulate}.
-}}
-
-\item{return}{String specifying what output to return. This must be one of the
-following strings:
+\item{return}{A different output is returned depending on the value passed to the \code{return}
+argument:
 \itemize{
 \item \code{'plot'} (default)
+\item \code{'plot-pdf'}
 \item \code{'sankey'}
 \item \code{'table'}
 \item \code{'data'}
-\item \code{'describe'}
 \item \code{'network'}
+}}
+
+\item{centrality}{string to determines which centrality measure is used to
+scale the size of the nodes. All centrality measures are automatically
+calculated when it is set to one of the below values, and reflected in the
+\code{'network'} and \code{'data'} outputs.
+Measures include:
+\itemize{
+\item \code{betweenness}
+\item \code{closeness}
+\item \code{degree}
+\item \code{eigenvector}
+\item \code{pagerank}
 }
 
-See \code{Value} for more information.}
+When \code{centrality} is set to NULL, no centrality is calculated in the outputs
+and all the nodes would have the same size.}
+
+\item{community}{String determining which community detection algorithms to
+apply. Valid values include:
+\itemize{
+\item \code{NULL} (default): compute analysis or visuals without computing
+communities.
+\item \code{"louvain"}
+\item \code{"leiden"}
+\item \code{"edge_betweenness"}
+\item \code{"fast_greedy"}
+\item \code{"fluid_communities"}
+\item \code{"infomap"}
+\item \code{"label_prop"}
+\item \code{"leading_eigen"}
+\item \code{"optimal"}
+\item \code{"spinglass"}
+\item \code{"walk_trap"}
+}
+
+These values map to the community detection algorithms offered by \code{igraph}.
+For instance, \code{"leiden"} is based on \code{igraph::cluster_leiden()}. Please see
+the bottom of \url{https://igraph.org/r/html/1.3.0/cluster_leiden.html} on all
+applications and parameters of these algorithms.
+.}
+
+\item{weight}{String to specify which column to use as weights for the
+network. To create a graph without weights, supply \code{NULL} to this argument.}
+
+\item{comm_args}{list containing the arguments to be passed through to
+igraph's clustering algorithms. Arguments must be named. See examples
+section on how to supply arguments in a named list.}
+
+\item{layout}{String to specify the node placement algorithm to be used.
+Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
+nodes. See
+\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
+list of options.}
 
 \item{path}{File path for saving the PDF output. Defaults to a timestamped
 path based on current parameters.}
 
-\item{desc_hrvar}{Character vector of length 3 containing the HR attributes
-to use when returning the \code{"describe"} output. See \code{network_describe()}.}
+\item{style}{String to specify which plotting style to use for the network
+plot. Valid values include:
+\itemize{
+\item \code{"igraph"}
+\item \code{"ggraph"}
+}}
 
 \item{bg_fill}{String to specify background fill colour.}
 
-\item{font_col}{String to specify font and link colour.}
+\item{font_col}{String to specify font colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to
-\code{"bottom"}. See \code{ggplot2::theme()}. This is applicable for both the
+\code{"right"}. See \code{ggplot2::theme()}. This is applicable for both the
 'ggraph' and the fast plotting method. Valid inputs include:
 \itemize{
 \item \code{"bottom"}
@@ -74,8 +119,8 @@ to use when returning the \code{"describe"} output. See \code{network_describe()
 -\code{"right"}
 }}
 
-\item{palette}{Function for generating a colour palette with a single
-argument \code{n}. Uses "rainbow" by default.}
+\item{palette}{String specifying the function to generate a colour palette
+with a single argument \code{n}. Uses \code{"rainbow"} by default.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the nodes. Defaults to 0.7.}
@@ -83,46 +128,32 @@ of the nodes. Defaults to 0.7.}
 \item{edge_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the edges (only for 'ggraph' mode). Defaults to 1.}
 
-\item{res}{Resolution parameter to be passed to \code{leiden::leiden()}. Defaults
-to 0.5.}
+\item{edge_col}{String to specify edge link colour.}
+
+\item{node_sizes}{Numeric vector of length two to specify the range of node
+sizes to rescale to, when \code{centrality} is set to a non-null value.}
 
 \item{seed}{Seed for the random number generator passed to either
-\code{set.seed()} when the Louvain algorithm is used, or \code{leiden::leiden()} when
-the Leiden algorithm is used, to ensure consistency. Only applicable when
-\code{display} is set to \code{"louvain"} or \code{"leiden"}.}
-
-\item{algorithm}{String to specify the node placement algorithm to be used.
-Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
-nodes. See
-\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
-list of options.}
-
-\item{size_threshold}{Numeric value representing the maximum number of edges
-before \code{network_leiden()} switches to use a more efficient, but less
-elegant plotting method (native igraph). Defaults to 5000. Set as \code{0} to
-coerce to a fast plotting method every time, and \code{Inf} to always use the
-default plotting method (with 'ggraph').}
-
-\item{weight}{String to specify which column to use as weights for the
-network. Defaults to \verb{"StrongTieScore}. To create a graph without weights,
-supply \code{NULL} to this argument.}
+\code{set.seed()} when the louvain or leiden community detection algorithm is
+used, to ensure consistency. Only applicable when \code{community} is set to
+one of the valid non-null values.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return}
 argument:
 \itemize{
-\item \code{'plot'}: return a network plot.
+\item \code{'plot'}: return a network plot, interactively within R.
+\item \code{'plot-pdf'}: save a network plot as PDF. This option is recommended when
+the graph is large, which make take a long time to run if \code{return = 'plot'}
+is selected. Use this together with \code{path} to control the save location.
 \item \code{'sankey'}: return a sankey plot combining communities and HR attribute.
 This is only valid if a community detection method is selected at
-\code{display}.
+\code{community}.
 \item \code{'table'}: return a vertex summary table with counts in communities and
-HR attribute.
+HR attribute. When \code{centrality} is non-NULL, the average centrality values
+are calculated per group.
 \item \code{'data'}: return a vertex data file that matches vertices with
 communities and HR attributes.
-\item \code{'describe'}: return a list of data frames which describe each of the
-identified communities. The first data frame is a summary table of all the
-communities. This is only valid if a community detection method is selected
-at \code{display}.
 \item \code{'network'}: return 'igraph' object.
 }
 }
@@ -134,61 +165,52 @@ and analysis output options. Pass a data frame containing a person-to-person
 query and return a network visualization. Options are available for community
 detection using either the Louvain or the Leiden algorithms.
 }
-\section{Running Leiden communities}{
-
-
-Running Leiden communities requires python dependencies installed.
-You can run the following:
-
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{# Return a network plot to console, coloured by Leiden communities
-  p2p_data \%>\%
-    network_p2p(display = "leiden",
-                path = NULL,
-                return = "plot")
-}\if{html}{\out{</div>}}
-
-When installing the 'leiden' package, you may be required to install the Python
-libraries 'python-igraph' and 'leidenalg'. You can install them with:
-
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{reticulate::py_install("python-igraph")
-reticulate::py_install("leidenalg")
-}\if{html}{\out{</div>}}
-}
-
 \examples{
-# Simulate a small person-to-person dataset
-p2p_data <- p2p_data_sim(size = 50)
+p2p_df <- p2p_data_sim(dim = 1, size = 100)
 
-# Return a network plot to console, coloured by hrvar
-p2p_data \%>\%
-  network_p2p(display = "hrvar",
-              path = NULL,
-              return = "plot")
+# default - ggraph visual
+network_p2p(data = p2p_df, style = "ggraph")
 
-# Return a network plot to console, coloured by Louvain communities
-p2p_data \%>\%
-  network_p2p(display = "louvain",
-              path = NULL,
-              return = "plot")
+# return vertex table
+network_p2p(data = p2p_df, return = "table")
 
+# return vertex table with community detection
+network_p2p(data = p2p_df, community = "leiden", return = "table")
 
-# Return a network plot to console
-# Coloured by Leiden communities
-# Using Fruchterman-Reingold force-directed layout algorithm
-# Force the use of fast plotting method
-p2p_data \%>\%
-  network_p2p(display = "hrvar",
-              path = NULL,
-              return = "plot",
-              algorithm = "lgl",
-              size_threshold = 0)
+# leiden - igraph style with custom resolution parameters
+network_p2p(data = p2p_df, community = "leiden", comm_args = list("resolution" = 0.1))
 
-# Return a data frame matching HR variable and communities to nodes
-# Using Louvain communities
-p2p_data \%>\%
-  network_p2p(display = "louvain",
-              return = "data",
-              algorithm = "fr")
+# louvain - ggraph style, using custom palette
+network_p2p(
+  data = p2p_df,
+  style = "ggraph",
+  community = "louvain",
+  palette = "heat_colors"
+)
+
+# leiden - return a sankey visual with custom resolution parameters
+network_p2p(
+  data = p2p_df,
+  community = "leiden",
+  return = "sankey",
+  comm_args = list("resolution" = 0.1)
+)
+
+# using `fluid_communities` algorithm with custom parameters
+network_p2p(
+  data = p2p_df,
+  community = "fluid_communities",
+  comm_args = list("no.of.communities" = 5)
+)
+
+# Calculate centrality measures and leiden communities, return at node level
+network_p2p(
+  data = p2p_df,
+  centrality = "betweenness",
+  community = "leiden",
+  return = "data"
+) \%>\%
+  dplyr::glimpse()
 
 }
 \seealso{
@@ -198,8 +220,6 @@ Other Network:
 \code{\link{internal_network_plot}()},
 \code{\link{network_describe}()},
 \code{\link{network_g2g}()},
-\code{\link{network_leiden}()},
-\code{\link{network_louvain}()},
 \code{\link{network_summary}()},
 \code{\link{p2p_data_sim}()}
 }

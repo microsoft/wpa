@@ -33,6 +33,7 @@
 #' @family Visualization
 #'
 #' @examples
+#' \donttest{
 #' # Heatmap plot is returned by default
 #' keymetrics_scan(sq_data)
 #'
@@ -41,6 +42,7 @@
 #'
 #' # Return summary table
 #' keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
+#' }
 #'
 #' @export
 

@@ -54,5 +54,4 @@
 #'
 #'   ...
 #' }
-#' @source \url{https://workplaceanalytics-demo.office.com/en-us/Home}
 "mt_data"

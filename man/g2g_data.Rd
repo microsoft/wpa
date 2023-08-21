@@ -5,7 +5,7 @@
 \alias{g2g_data}
 \title{Sample Group-to-Group dataset}
 \format{
-A data frame with 3517 rows and 7 variables:
+A data frame with 1417 rows and 7 variables:
 \describe{
 \item{TimeInvestors_Organization}{ }
 \item{Collaborators_Organization}{ }
@@ -17,9 +17,6 @@ A data frame with 3517 rows and 7 variables:
 
 ...
 }
-}
-\source{
-\url{https://workplaceanalytics-demo.office.com/en-us/Home}
 }
 \usage{
 g2g_data
@@ -46,8 +43,6 @@ Other Network:
 \code{\link{internal_network_plot}()},
 \code{\link{network_describe}()},
 \code{\link{network_g2g}()},
-\code{\link{network_leiden}()},
-\code{\link{network_louvain}()},
 \code{\link{network_p2p}()},
 \code{\link{network_summary}()},
 \code{\link{p2p_data_sim}()}

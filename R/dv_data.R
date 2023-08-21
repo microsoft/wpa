@@ -90,5 +90,4 @@
 #'
 #'   ...
 #' }
-#' @source \url{https://workplaceanalytics-demo.office.com/en-us/Home}
 "dv_data"

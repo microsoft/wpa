@@ -25,6 +25,11 @@ See
 \url{https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/}
 for more.
 }
+\examples{
+out_tb <- hrvar_count(sq_data, hrvar = "Organization", return = "table")
+create_dt(out_tb)
+
+}
 \seealso{
 Other Import and Export: 
 \code{\link{copy_df}()},

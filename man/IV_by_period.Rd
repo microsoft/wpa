@@ -48,15 +48,16 @@ This function uses the Information Value algorithm to predict
 which Workplace Analytics metrics are most explained by the change in dates.
 }
 \examples{
+\donttest{
 # Returns a data frame
 sq_data \%>\%
   IV_by_period(
-    before_start = "2019-11-03",
-    before_end = "2019-11-09",
-    after_start = "2019-11-10",
-    after_end = "2019-11-16"
+    before_start = "2019-12-15",
+    before_end = "2019-12-29",
+    after_start = "2020-01-05",
+    after_end = "2020-01-26"
   )
-
+}
 }
 \seealso{
 Other Variable Association: 

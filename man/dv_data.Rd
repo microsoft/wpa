@@ -80,9 +80,6 @@ A data frame with 897 rows and 69 variables:
 ...
 }
 }
-\source{
-\url{https://workplaceanalytics-demo.office.com/en-us/Home}
-}
 \usage{
 dv_data
 }

@@ -38,6 +38,7 @@
 #' @family Collaboration
 #'
 #' @examples
+#' \donttest{
 #' # Return plot with total (default)
 #' collaboration_area(sq_data)
 #'
@@ -46,6 +47,7 @@
 #'
 #' # Return summary table
 #' collaboration_area(sq_data, return = "table")
+#' }
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:

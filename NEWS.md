@@ -1,3 +1,16 @@
+# wpa 1.9.0
+
+Updates to `network_p2p()`, with breaking changes to the argument, addressing issue #225:
+
+  - `network_p2p()` now has a `centrality` argument for computing and visualizing centrality as node sizes in the network plot
+  - the `algorithm` argument is renamed to `layout` for better intuitiveness
+  - Improved consistency and intuitiveness of the API, with `style` argument now controlling the network plotting mechanism and `return` argument controlling whether plots are generated interactively or saved as PDF
+  - Added a large number of community detection algorithms from `igraph`
+
+`network_summary()` adds the ability to return pagerank.
+
+This version also includes some minor dependency maintenance done to `create_dt()`.
+
 # wpa 1.8.1
 
 - fixed issue due to a 'tidyr' update (see #233).

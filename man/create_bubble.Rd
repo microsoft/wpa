@@ -53,16 +53,21 @@ This is a general purpose function that powers all the functions in
 the package that produce bubble plots.
 }
 \examples{
+\donttest{
 create_bubble(sq_data,
-"Internal_network_size",
-"External_network_size",
-"Organization")
+              "Internal_network_size",
+              "External_network_size",
+              "Organization")
 
-create_bubble(sq_data,
-"Generated_workload_call_hours",
-"Generated_workload_email_hours",
-"Organization", mingroup = 100, return = "plot")
-
+create_bubble(
+  sq_data,
+  "Generated_workload_call_hours",
+  "Generated_workload_email_hours",
+  "Organization",
+  mingroup = 100,
+  return = "plot"
+)
+}
 }
 \seealso{
 Other Visualization: 
