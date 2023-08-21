@@ -42,11 +42,13 @@ Uses the metrics \code{Internal_network_size} and
 \code{Networking_outside_organization}.
 }
 \examples{
+\donttest{
 # Return plot
 internal_network_plot(sq_data, return = "plot")
 
 # Return summary table
 internal_network_plot(sq_data, return = "table")
+}
 
 }
 \seealso{

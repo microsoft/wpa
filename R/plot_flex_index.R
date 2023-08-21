@@ -20,9 +20,9 @@
 #' @family Working Patterns
 #'
 #' @examples
+#' \donttest{
 #' # Pre-calculate Flexibility Index
 #' fi_output <- flex_index(em_data, return = "data")
-#'
 #'
 #' # Examples of how to test the plotting options individually
 #' # Sample of 10 work patterns
@@ -33,6 +33,7 @@
 #'
 #' # Plot Flexibility Index over time
 #' plot_flex_index(fi_output, method = "time")
+#' }
 #'
 #' @return ggplot object. See `method`.
 #'

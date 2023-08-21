@@ -196,7 +196,7 @@
 #'   archetypes. This is only available for the `bw` method.
 #'
 #' @examples
-#'
+#' \donttest{
 #' # Returns a plot by default
 #' em_data %>% workpatterns_classify(method = "bw")
 #'
@@ -208,8 +208,6 @@
 #'     return = "plot-area",
 #'     exp_hours = 7
 #'       )
-#'
-#' \donttest{
 #'
 #' em_data %>% workpatterns_classify(method = "bw", return = "table")
 #'

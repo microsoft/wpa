@@ -38,6 +38,7 @@
 #' @family Collaboration
 #'
 #' @examples
+#' \donttest{
 #' # Return plot with total (default)
 #' collaboration_area(sq_data)
 #'
@@ -45,7 +46,6 @@
 #' collaboration_area(sq_data, hrvar = "Organization")
 #'
 #' # Return summary table
-#' \donttest{
 #' collaboration_area(sq_data, return = "table")
 #' }
 #'

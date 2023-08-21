@@ -117,6 +117,7 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
+#' \donttest{
 #' # Create a sample small dataset
 #' orgs <- c("Customer Service", "Financial Planning", "Biz Dev")
 #' em_data <- em_data[em_data$Organization %in% orgs, ]
@@ -131,13 +132,10 @@
 #'   flex_index(return = "plot", plot_method = "common")
 #'
 #' # Plot Flexibility Index over time
-#' \donttest{
 #' em_data %>%
 #'   flex_index(return = "plot", plot_method = "time")
-#' }
 #'
 #' # Return a summary table with the computed Flexibility Index
-#' \donttest{
 #' em_data %>%
 #'   flex_index(hrvar = "Organization", return = "table")
 #' }

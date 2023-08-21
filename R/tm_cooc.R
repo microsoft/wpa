@@ -46,10 +46,12 @@
 #' @family Text-mining
 #'
 #' @examples
+#' \donttest{
 #' # Demo using a subset of `mt_data`
 #' mt_data %>%
 #'   dplyr::slice(1:20) %>%
 #'   tm_cooc(lmult = 0.01)
+#' }
 #'
 #' @export
 tm_cooc <- function(data,

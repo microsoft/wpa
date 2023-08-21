@@ -49,27 +49,25 @@
 #' @family Clustering
 #'
 #' @examples
+#' \donttest{
 #' # Return plot
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4)
 #'
 #' # Return summary table
-#' \donttest{
+#'
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4,
 #'                 return = "table")
-#' }
 #'
-#' \donttest{
 #' # Return data with clusters appended
 #' personas_hclust(sq_data,
 #'                 metrics = c("Collaboration_hours", "Workweek_span"),
 #'                 k = 4,
 #'                 return = "data")
 #' }
-#'
 #'
 #' @export
 personas_hclust <- function(data,

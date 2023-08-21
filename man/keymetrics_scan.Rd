@@ -57,6 +57,7 @@ When \code{'table'} is passed, a summary table is returned as a data frame.
 Returns a heatmapped table by default, with options to return a table.
 }
 \examples{
+\donttest{
 # Heatmap plot is returned by default
 keymetrics_scan(sq_data)
 
@@ -64,7 +65,6 @@ keymetrics_scan(sq_data)
 keymetrics_scan(sq_data, low = "purple", high = "yellow")
 
 # Return summary table
-\donttest{
 keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
 }
 
