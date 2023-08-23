@@ -42,7 +42,7 @@ Uses the metrics \code{External_network_size} and \code{Networking_outside_compa
 }
 \examples{
 # Return plot
-sq_data \%>\% external_network_plot(return = "plot")
+external_network_plot(sq_data, return = "plot")
 
 }
 \seealso{
@@ -127,8 +127,6 @@ Other Network:
 \code{\link{internal_network_plot}()},
 \code{\link{network_describe}()},
 \code{\link{network_g2g}()},
-\code{\link{network_leiden}()},
-\code{\link{network_louvain}()},
 \code{\link{network_p2p}()},
 \code{\link{network_summary}()},
 \code{\link{p2p_data_sim}()}

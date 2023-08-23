@@ -219,7 +219,7 @@ Hourly Collaboration Flexible Query.
 }
 
 \examples{
-
+\donttest{
 # Returns a plot by default
 em_data \%>\% workpatterns_classify(method = "bw")
 
@@ -231,8 +231,6 @@ em_data \%>\%
     return = "plot-area",
     exp_hours = 7
       )
-
-\donttest{
 
 em_data \%>\% workpatterns_classify(method = "bw", return = "table")
 

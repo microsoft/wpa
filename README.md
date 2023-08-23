@@ -1,8 +1,7 @@
 # wpa <img src="https://raw.githubusercontent.com/microsoft/wpa/main/man/figures/logo2.png" align="right" width=15% />
 
   [![R build status](https://github.com/microsoft/wpa/workflows/R-CMD-check/badge.svg)](https://github.com/microsoft/wpa/actions/)
-  [![CodeFactor](https://www.codefactor.io/repository/github/microsoft/wpa/badge/)](https://www.codefactor.io/repository/github/microsoft/wpa/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
   [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
   [![CRAN status](https://www.r-pkg.org/badges/version/wpa)](https://CRAN.R-project.org/package=wpa/)
   [![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/wpa?color=green/)](https://cran.r-project.org/package=wpa/)
@@ -63,6 +62,8 @@ See [NEWS.md](https://microsoft.github.io/wpa/news/index.html) for the package c
 
 ## Related repositories
 
+- [Viva Insights R library - new implementation](https://microsoft.github.io/vivainsights/)
+- [Viva Insights Python library](https://github.com/microsoft/vivainsights-py/)
 - [Viva RMarkdown Report Marketplace](https://github.com/microsoft/VivaRMDReportMarketplace)
 - [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code)
 - [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int)

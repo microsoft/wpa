@@ -5,7 +5,7 @@
 \alias{sq_data}
 \title{Sample Standard Person Query dataset}
 \format{
-A data frame with 13442 rows and 66 variables:
+A data frame with 4403 rows and 66 variables:
 \describe{
 \item{PersonId}{ }
 \item{Date}{ }
@@ -77,9 +77,6 @@ the last email or meeting for each day of the work week.}
 
 ...
 }
-}
-\source{
-\url{https://workplaceanalytics-demo.office.com/en-us/Home}
 }
 \usage{
 sq_data

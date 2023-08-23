@@ -12,7 +12,7 @@
 #'
 #' @return data frame.
 #'
-#' @format A data frame with 13442 rows and 66 variables:
+#' @format A data frame with 4403 rows and 66 variables:
 #' \describe{
 #'   \item{PersonId}{ }
 #'   \item{Date}{ }
@@ -84,5 +84,4 @@
 #'
 #'   ...
 #' }
-#' @source \url{https://workplaceanalytics-demo.office.com/en-us/Home}
 "sq_data"

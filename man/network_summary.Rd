@@ -31,6 +31,7 @@ statistics include:
 given node.
 \item degree: number of connections linked to a node.
 \item eigenvector: a measure of the influence a node has on a network.
+\item pagerank: calculates the PageRank for the specified vertices.
 Please refer to the igraph package documentation for the detailed technical
 definition.
 }
@@ -49,7 +50,7 @@ the centralization functions in 'igraph'.
 }
 \examples{
 # Simulate a p2p network
-p2p_data <- p2p_data_sim()
+p2p_data <- p2p_data_sim(size = 100)
 g <- network_p2p(data = p2p_data, return = "network")
 
 # Return summary table
@@ -73,8 +74,6 @@ Other Network:
 \code{\link{internal_network_plot}()},
 \code{\link{network_describe}()},
 \code{\link{network_g2g}()},
-\code{\link{network_leiden}()},
-\code{\link{network_louvain}()},
 \code{\link{network_p2p}()},
 \code{\link{p2p_data_sim}()}
 }

@@ -17,11 +17,13 @@
 #' @inheritParams create_bubble
 #'
 #' @examples
+#' \donttest{
 #' # Return plot
-#' sq_data %>% internal_network_plot(return = "plot")
+#' internal_network_plot(sq_data, return = "plot")
 #'
 #' # Return summary table
-#' sq_data %>% internal_network_plot(return = "table")
+#' internal_network_plot(sq_data, return = "table")
+#' }
 #'
 #' @family Visualization
 #' @family Network

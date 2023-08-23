@@ -47,6 +47,7 @@ Uses the metrics \code{Meeting_hours}, \code{Email_hours}, \code{Unscheduled_Cal
 and \code{Instant_Message_hours}.
 }
 \examples{
+\donttest{
 # Return plot with total (default)
 collaboration_area(sq_data)
 
@@ -55,6 +56,7 @@ collaboration_area(sq_data, hrvar = "Organization")
 
 # Return summary table
 collaboration_area(sq_data, return = "table")
+}
 
 }
 \seealso{

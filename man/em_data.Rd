@@ -116,9 +116,6 @@ A data frame with 2000 rows and 105 variables:
 ...
 }
 }
-\source{
-\url{https://workplaceanalytics-demo.office.com/en-us/Home}
-}
 \usage{
 em_data
 }

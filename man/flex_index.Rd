@@ -148,6 +148,7 @@ the following:
 }
 
 \examples{
+\donttest{
 # Create a sample small dataset
 orgs <- c("Customer Service", "Financial Planning", "Biz Dev")
 em_data <- em_data[em_data$Organization \%in\% orgs, ]
@@ -168,6 +169,7 @@ em_data \%>\%
 # Return a summary table with the computed Flexibility Index
 em_data \%>\%
   flex_index(hrvar = "Organization", return = "table")
+}
 
 }
 \seealso{

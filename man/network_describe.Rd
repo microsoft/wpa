@@ -35,7 +35,7 @@ sim_data <- p2p_data_sim()
 lc_df <-
   sim_data \%>\%
   network_p2p(
-    display = "louvain",
+    community = "louvain",
     return = "data"
   )
 
@@ -69,8 +69,6 @@ Other Network:
 \code{\link{g2g_data}},
 \code{\link{internal_network_plot}()},
 \code{\link{network_g2g}()},
-\code{\link{network_leiden}()},
-\code{\link{network_louvain}()},
 \code{\link{network_p2p}()},
 \code{\link{network_summary}()},
 \code{\link{p2p_data_sim}()}

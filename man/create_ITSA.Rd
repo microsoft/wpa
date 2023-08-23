@@ -72,13 +72,13 @@ has since been removed and dependent functions \code{Ljungbox()} incorporated in
 the \strong{wpa} package.
 }
 \examples{
+\donttest{
 # Returns summary table
-
 create_ITSA(
   data = sq_data,
-  before_start = "11/03/2019",
-  before_end = "12/15/2019",
-  after_start = "12/29/2019",
+  before_start = "12/15/2019",
+  before_end = "12/29/2019",
+  after_start = "1/5/2020",
   after_end = "1/26/2020",
   ac_lags_max = 7,
   return = "table")
@@ -88,15 +88,16 @@ create_ITSA(
 plot_list <-
   create_ITSA(
     data = sq_data,
-    before_start = "11/03/2019",
-    before_end = "12/15/2019",
-    after_start = "12/29/2019",
+    before_start = "12/15/2019",
+    before_end = "12/29/2019",
+    after_start = "1/5/2020",
     after_end = "1/26/2020",
     ac_lags_max = 7,
     return = 'plot')
 
 # Extract a plot as an example
 plot_list$Workweek_span
+}
 
 }
 \seealso{

@@ -70,6 +70,7 @@ table of working patterns, ranked from the most common to the
 least.
 }
 \examples{
+\donttest{
 # Plot by default
 workpatterns_rank(
   data = em_data,
@@ -86,7 +87,7 @@ workpatterns_rank(
   data = em_data,
   mode = "prop"
 )
-
+}
 
 }
 \seealso{

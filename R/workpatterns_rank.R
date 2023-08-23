@@ -50,6 +50,7 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
+#' \donttest{
 #' # Plot by default
 #' workpatterns_rank(
 #'   data = em_data,
@@ -66,7 +67,7 @@
 #'   data = em_data,
 #'   mode = "prop"
 #' )
-#'
+#' }
 #'
 #' @family Visualization
 #' @family Working Patterns

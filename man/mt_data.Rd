@@ -48,9 +48,6 @@ A data frame with 2001 rows and 30 variables:
 ...
 }
 }
-\source{
-\url{https://workplaceanalytics-demo.office.com/en-us/Home}
-}
 \usage{
 mt_data
 }

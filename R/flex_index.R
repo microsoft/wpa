@@ -117,6 +117,7 @@
 #' @importFrom data.table ":=" "%like%" "%between%"
 #'
 #' @examples
+#' \donttest{
 #' # Create a sample small dataset
 #' orgs <- c("Customer Service", "Financial Planning", "Biz Dev")
 #' em_data <- em_data[em_data$Organization %in% orgs, ]
@@ -137,6 +138,7 @@
 #' # Return a summary table with the computed Flexibility Index
 #' em_data %>%
 #'   flex_index(hrvar = "Organization", return = "table")
+#' }
 #'
 #' @section Returning the raw data:
 #' The raw data containing the computed Flexibility Index can be returned with

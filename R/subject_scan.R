@@ -50,6 +50,7 @@
 #' @import ggplot2
 #'
 #' @examples
+#' \donttest{
 #' # return a heatmap table for words
 #' mt_data %>% subject_scan(hrvar = "Organizer_Organization")
 #'
@@ -68,7 +69,7 @@
 #'
 #' # grouped by days
 #' mt_data %>% subject_scan(mode = "days")
-#'
+#' }
 #' @export
 subject_scan <- function(data,
                          hrvar,

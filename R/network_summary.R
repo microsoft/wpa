@@ -30,6 +30,7 @@
 #'   given node.
 #'   - degree: number of connections linked to a node.
 #'   - eigenvector: a measure of the influence a node has on a network.
+#'   - pagerank: calculates the PageRank for the specified vertices.
 #' Please refer to the igraph package documentation for the detailed technical
 #' definition.
 #'
@@ -44,7 +45,7 @@
 #'
 #' @examples
 #' # Simulate a p2p network
-#' p2p_data <- p2p_data_sim()
+#' p2p_data <- p2p_data_sim(size = 100)
 #' g <- network_p2p(data = p2p_data, return = "network")
 #'
 #' # Return summary table
@@ -67,7 +68,6 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
   ## NULL variables
   node_id <- NULL
 
-
   ## Calculate summary table
   sum_tb <-
     dplyr::tibble(
@@ -75,7 +75,8 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
       betweenness = igraph::centralization.betweenness(graph = graph)$res,
       closeness = igraph::centralization.closeness(graph = graph)$res,
       degree = igraph::centralization.degree(graph = graph)$res,
-      eigenvector = igraph::centralization.evcent(graph = graph)$vector
+      eigenvector = igraph::centralization.evcent(graph = graph)$vector,
+      pagerank = igraph::page_rank(graph)$vector
     )
 
   if(!is.null(hrvar)){
@@ -99,11 +100,11 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
       graph = graph,
       name = "betweenness",
       value = sum_tb$betweenness
-      ) %>%
+    ) %>%
       igraph::set_vertex_attr(
         name = "closeness",
         value = sum_tb$closeness
-        ) %>%
+      ) %>%
       igraph::set_vertex_attr(
         name = "degree",
         value = sum_tb$degree
@@ -111,6 +112,10 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
       igraph::set_vertex_attr(
         name = "eigenvector",
         value = sum_tb$eigenvector
+      ) %>%
+      igraph::set_vertex_attr(
+        name = "pagerank",
+        value = sum_tb$pagerank
       )
 
     graph
@@ -134,7 +139,8 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
             "betweenness",
             "closeness",
             "degree",
-            "eigenvector"
+            "eigenvector",
+            "pagerank"
           )
         )
     }
@@ -148,7 +154,8 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
             "betweenness: number of shortest paths going through a node.",
             "closeness: number of steps required to access every other node from a given node.",
             "degree: number of connections linked to a node.",
-            "eigenvector: a measure of the influence a node has on a network."
+            "eigenvector: a measure of the influence a node has on a network.",
+            "pagerank: a measure of the relative importance of nodes based on linked nodes."
           ),
           collapse = "\n"
         )
@@ -161,5 +168,4 @@ network_summary <- function(graph, hrvar = NULL, return = "table"){
   }
 
 }
-
 

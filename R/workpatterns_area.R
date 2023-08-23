@@ -68,10 +68,14 @@
 #' workpatterns_area(em_data, return = "plot", values = "percent")
 #'
 #' # Return visualization of absolute values
+#' \donttest{
 #' workpatterns_area(em_data, return = "plot", values = "abs")
+#' }
 #'
 #' # Return summary table
+#' \donttest{
 #' workpatterns_area(em_data, return = "table")
+#' }
 #'
 #' @family Working Patterns
 #'

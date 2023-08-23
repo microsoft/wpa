@@ -44,10 +44,12 @@ There is an option to remove stopwords by passing a data frame into the
 \code{stopwords} argument.
 }
 \examples{
+\donttest{
 # Demo using a subset of `mt_data`
 mt_data \%>\%
   dplyr::slice(1:20) \%>\%
   tm_cooc(lmult = 0.01)
+}
 
 }
 \seealso{

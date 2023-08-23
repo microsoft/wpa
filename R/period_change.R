@@ -43,16 +43,16 @@
 #'
 #' @examples
 #' # Run plot
-#' period_change(sq_data, compvar = "Workweek_span", before_end = "2019-11-16")
+#' period_change(sq_data, compvar = "Workweek_span", before_end = "2019-12-29")
 #'
 #' \donttest{
 #' # Run plot with more specific arguments
 #' period_change(sq_data,
 #'               compvar = "Workweek_span",
-#'               before_start = "2019-11-03",
-#'               before_end = "2019-11-16",
-#'               after_start = "2019-12-03",
-#'               after_end = "2019-12-16",
+#'               before_start = "2019-12-15",
+#'               before_end = "2019-12-29",
+#'               after_start = "2020-01-05",
+#'               after_end = "2020-01-26",
 #'               return = "percentage")
 #' }
 #' @family Flexible Input
