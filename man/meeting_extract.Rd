@@ -68,9 +68,9 @@ Other Meetings:
 \code{\link{meeting_summary}()},
 \code{\link{meeting_tm_report}()},
 \code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist}()},
 \code{\link{meetingtype_dist_ca}()},
 \code{\link{meetingtype_dist_mt}()},
-\code{\link{meetingtype_dist}()},
 \code{\link{meetingtype_summary}()}
 }
 \concept{Meetings}
