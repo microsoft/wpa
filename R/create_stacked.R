@@ -106,7 +106,7 @@ create_stacked <- function(data,
     check_inputs(requirements = required_variables)
 
   ## Plot Title Handling
-  if(class(metrics)=="character" & length(metrics)==1){ 
+  if(is(object = metrics, class2 = "character") & length(metrics) == 1){
     plot_title <- us_to_space(metrics)
   }
   else{   #vector of strings
