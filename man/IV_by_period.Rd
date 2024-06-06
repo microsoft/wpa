@@ -71,8 +71,8 @@ Other Information Value:
 \code{\link{plot_WOE}()}
 
 Other Time-series: 
-\code{\link{create_line_asis}()},
 \code{\link{create_line}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_trend}()},
 \code{\link{period_change}()}

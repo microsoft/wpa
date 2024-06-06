@@ -56,8 +56,8 @@ mt_data \%>\%
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},
 \code{\link{pairwise_count}()},
-\code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
+\code{\link{subject_validate_report}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_freq}()},
 \code{\link{tm_wordcloud}()}

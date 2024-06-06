@@ -60,15 +60,15 @@ Other Meetings:
 \code{\link{meeting_skim}()},
 \code{\link{meeting_summary}()},
 \code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist}()},
 \code{\link{meetingtype_dist_ca}()},
 \code{\link{meetingtype_dist_mt}()},
-\code{\link{meetingtype_dist}()},
 \code{\link{meetingtype_summary}()}
 
 Other Text-mining: 
 \code{\link{pairwise_count}()},
-\code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
+\code{\link{subject_validate_report}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_cooc}()},
 \code{\link{tm_freq}()},

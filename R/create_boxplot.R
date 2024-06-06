@@ -125,6 +125,14 @@ create_boxplot <- function(data,
     arrange(desc(mean)) %>%
     pull(group)
 
+  ## x axis label handling
+  if(hrvar == "Total"){
+    xlabel<-""
+  }
+  else{
+    xlabel<-hrvar
+  }
+
   plot_object <-
     plot_data %>%
     mutate(group = factor(group, levels = group_ord)) %>%
@@ -147,7 +155,7 @@ create_boxplot <- function(data,
                           tolower(clean_nm),
                           "by",
                           tolower(camel_clean(hrvar)))) +
-    xlab(hrvar) +
+    xlab(xlabel) +
     ylab(paste("Average", clean_nm)) +
     labs(caption = extract_date_range(data, return = "text"))
 

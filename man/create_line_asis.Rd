@@ -81,8 +81,8 @@ Other Visualization:
 \code{\link{collaboration_rank}()},
 \code{\link{collaboration_sum}()},
 \code{\link{collaboration_trend}()},
-\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
 \code{\link{create_dist}()},
@@ -120,9 +120,9 @@ Other Visualization:
 \code{\link{meeting_rank}()},
 \code{\link{meeting_summary}()},
 \code{\link{meeting_trend}()},
+\code{\link{meetingtype_dist}()},
 \code{\link{meetingtype_dist_ca}()},
 \code{\link{meetingtype_dist_mt}()},
-\code{\link{meetingtype_dist}()},
 \code{\link{meetingtype_summary}()},
 \code{\link{mgrcoatt_dist}()},
 \code{\link{mgrrel_matrix}()},
@@ -144,8 +144,8 @@ Other Visualization:
 \code{\link{workpatterns_rank}()}
 
 Other Flexible: 
-\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
 \code{\link{create_density}()},

@@ -67,12 +67,12 @@ This uses a person-average volume-based ('pav') method.
 \seealso{
 Other Working Patterns: 
 \code{\link{flex_index}()},
-\code{\link{identify_shifts_wp}()},
 \code{\link{identify_shifts}()},
+\code{\link{identify_shifts_wp}()},
 \code{\link{plot_flex_index}()},
 \code{\link{workpatterns_area}()},
-\code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_classify}()},
+\code{\link{workpatterns_classify_bw}()},
 \code{\link{workpatterns_hclust}()},
 \code{\link{workpatterns_rank}()},
 \code{\link{workpatterns_report}()}

@@ -68,8 +68,8 @@ tm_wordcloud(mt_data, keep = 30, stopwords = c("weekly", "update"))
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},
 \code{\link{pairwise_count}()},
-\code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
+\code{\link{subject_validate_report}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_cooc}()},
 \code{\link{tm_freq}()}
