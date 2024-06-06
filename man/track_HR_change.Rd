@@ -66,8 +66,8 @@ Other Data Validation:
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
 \code{\link{hr_trend}()},
-\code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_count_all}()},
 \code{\link{hrvar_trend}()},
 \code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},
@@ -76,13 +76,13 @@ Other Data Validation:
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
 \code{\link{identify_query}()},
-\code{\link{identify_shifts_wp}()},
 \code{\link{identify_shifts}()},
+\code{\link{identify_shifts_wp}()},
 \code{\link{identify_tenure}()},
 \code{\link{remove_outliers}()},
 \code{\link{standardise_pq}()},
-\code{\link{subject_validate_report}()},
 \code{\link{subject_validate}()},
+\code{\link{subject_validate_report}()},
 \code{\link{validation_report}()}
 }
 \author{

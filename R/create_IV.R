@@ -75,6 +75,23 @@ create_IV <- function(data,
                       exc_sig = FALSE,
                       return = "plot"){
 
+  # Input validation
+  if (!is.data.frame(data)) {
+    stop("The 'data' parameter should be a data frame.")
+  }
+
+  if (!is.null(predictors) && !all(predictors %in% names(data))) {
+    stop("Some predictors are not present in the data.")
+  }
+
+  if (!outcome %in% names(data)) {
+    stop("The outcome variable is not present in the data.")
+  }
+
+  if (!all(data[[outcome]] %in% c(0, 1))) {
+    stop("The outcome variable should be binary (0 or 1).")
+  }
+
   # Preserve string ----------------------------------------------------------
   pred_chr <- NULL
   pred_chr <- predictors
