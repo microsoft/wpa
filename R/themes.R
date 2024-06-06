@@ -15,7 +15,7 @@
 #'
 #' @param font_family Character value specifying the font family
 #' to be used in the plot. The default value is `"Segoe UI"`. To ensure
-#' you can use this font, install and load {extrafont} prior to
+#' you can use this font, install and load 'extrafont' prior to
 #' plotting. There is an initialisation process that is described by:
 #' <https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2>
 #'
