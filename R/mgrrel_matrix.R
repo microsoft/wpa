@@ -94,6 +94,15 @@ mgrrel_matrix <- function(data,
       hrvar <- "Total"
 
     }
+	
+  ## Ignore HRvar if return is insights
+  if(return=="insights"){
+
+      message("** Parameter hrvar not supported by return=insights. Results for full population:")
+      data <- mutate(data, Total = "Total")
+	  hrvar <- "Total"
+
+    }	
 
 
   ## Check inputs
@@ -214,7 +223,7 @@ mgrrel_matrix <- function(data,
       chart %>%
       ggplot() +
       geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill = mgrRel), color = "white") +
-      scale_fill_manual(name = "mgrRel", values = myColors) +
+      scale_fill_manual(name = "Coaching styles", values = myColors) +
       geom_text(aes(x = xmin + 0.5*sqrt(perc),
                     y = ymin + 0.5*sqrt(perc),
                     label = scales::percent(perc, accuracy = 1))) +
@@ -259,8 +268,8 @@ mgrrel_matrix <- function(data,
       scale_y_continuous(labels = scales::percent) +
       coord_flip() +
       theme_wpa_basic() +
-      labs(title = "Distribution of types of \nmanager-direct relationship across organizations",
-           subtitle = "Based on manager 1:1 time and percentage of overall time spent with managers",
+      labs(title = "Interactions between managers and their direct reports",
+           subtitle = "Manager 1:1 time and coattendance rate",
            y = "Percentage")
   }
 
@@ -268,14 +277,36 @@ mgrrel_matrix <- function(data,
   if(return == "plot"){
 
     plot +
-      labs(title = "Distribution of types of \nmanager-direct relationship",
-           subtitle = "Based on manager 1:1 time and percentage of\noverall time spent with managers")
+      labs(title = "Interactions between managers and their direct reports",
+           subtitle = "Manager 1:1 time and coattendance rate")
 
   } else if(return == "table"){
 
     clean_tb %>%
       as_tibble() %>%
       return()
+	  
+  } else if(return == "insights"){
+  
+  
+  	kpi_1 <- clean_tb  %>% filter(mgrRel =="Co-attending") %>%  pull(3)  %>% round(3)*100
+
+	insight_1 <- paste("-", kpi_1, "% of employees mostly see their managers in group meetings.")
+	
+	kpi_2 <- clean_tb  %>% filter(mgrRel =="Coaching") %>%  pull(3)  %>% round(3)*100
+
+	insight_2 <- paste("+", kpi_2, "% of employees seem empowered to attend meetings independently and receive frequent manager 1:1 support.")
+	
+	kpi_3 <- clean_tb  %>% filter(mgrRel =="Highly managed") %>%  pull(3)  %>% round(3)*100
+
+	insight_3 <- paste("-", kpi_3, "% of employees appear highly managed, with frequent 1:1 and group interactions.")
+		
+	kpi_4 <- clean_tb  %>% filter(mgrRel =="Under-coached") %>%  pull(3)  %>% round(3)*100
+  
+	insight_4 <- paste("-", kpi_4, "% of employees appear under-coached, with limited 1:1 or group interactions with their managers.")
+	
+	paste(insight_1, insight_2, insight_3, insight_4, "\n", sep="\n") %>% cat()
+
 
   } else if(return == "chartdata"){
 
