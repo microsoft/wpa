@@ -14,7 +14,8 @@
 #'   predictors. Defaults to NULL, where all numeric vectors in the data will be
 #'   used as predictors.
 #' @param outcome A string specifying a binary variable, i.e. can only contain
-#' the values 1 or 0.
+#' the values 1 or 0, or a logical variable (TRUE/FALSE). Logical variables will
+#' be automatically converted to binary (TRUE to 1, FALSE to 0).
 #' @param bins Number of bins to use, defaults to 5.
 #' @param siglevel Significance level to use in comparing populations for the
 #'   outcomes, defaults to 0.05
@@ -86,6 +87,11 @@ create_IV <- function(data,
 
   if (!outcome %in% names(data)) {
     stop("The outcome variable is not present in the data.")
+  }
+  
+  # Check if outcome is logical and convert to numeric if needed
+  if (is.logical(data[[outcome]])) {
+    data[[outcome]] <- as.numeric(data[[outcome]])
   }
 
   if (!all(data[[outcome]] %in% c(0, 1))) {
