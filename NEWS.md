@@ -1,5 +1,8 @@
 # wpa 1.9.2
 
+- Improved missing value detection for `validation_report()`, `hrvar_count_all()` (#35)
+- Added support for logical outcome variables for `create_IV()` (#240)
+
 # wpa 1.9.1
 
 - Minor bug fixes and aesthetic improvements.
