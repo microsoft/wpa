@@ -42,6 +42,11 @@
 #'   - `'message'`: outputs a message indicating which values are
 #' beyond the specified thresholds.
 #'
+#' @note
+#' As of v1.6.3, the function can detect and report text values like "NA", "N/A", 
+#' "#N/A", and spaces that represent missing values, by treating them as NA values.
+#' You can customize which values are treated as missing with the `na_values` parameter.
+#'
 #' @export
 hrvar_count_all <- function(data,
                             n_var = 50,
@@ -58,6 +63,11 @@ hrvar_count_all <- function(data,
     max_unique = threshold,
     exclude_constants = FALSE
     )
+    
+  # Ensure na_values is not NULL
+  if(is.null(na_values)){
+    na_values <- character(0)
+  }
 
   summary_table_n <-
     data %>%
@@ -70,39 +80,56 @@ hrvar_count_all <- function(data,
     select(PersonId, extracted_chr) %>%
     summarise_at(vars(extracted_chr),
                  list(`WPAn_unique` = ~n_distinct(., na.rm = TRUE), # Excludes NAs from unique count
-                      `WPAper_na` = ~(sum(is.na(.) | . %in% na_values)/ nrow(data) * 100), # % of missing values including na_values
-                      `WPAsum_na` = ~sum(is.na(.) | . %in% na_values), # Number of missing values including na_values
-                      `WPAsum_text_na` = ~sum(!is.na(.) & . %in% na_values) # Number of text values considered as NA
+                      `WPAper_na` = ~(sum(is.na(.) | . %in% na_values, na.rm = TRUE)/ nrow(data) * 100), # % of missing values including na_values
+                      `WPAsum_na` = ~sum(is.na(.) | . %in% na_values, na.rm = TRUE), # Number of missing values including na_values
+                      `WPAtext_na` = ~sum(!is.na(.) & . %in% na_values, na.rm = TRUE) # Number of text values considered as NA
                       )) %>%
     tidyr::gather(attribute, values) %>%
     tidyr::separate(col = attribute, into = c("attribute", "calculation"), sep = "_WPA") %>%
     tidyr::spread(calculation, values)
-
+    
+    # Initialize printMessage
+    printMessage <- ""
+    
     ## Single print message
     if(sum(results$n_unique >= threshold)==0){
-
       printMessage <- paste("No attributes have greater than", threshold, "unique values.")
     }
 
     if(sum(results$per_na >= maxna)==0){
       newMessage <- paste("No attributes have more than", maxna, "percent NA values.")
       printMessage <- paste(printMessage, newMessage, collapse = "\n")
-
     }
     
-    if(sum(results$sum_text_na) > 0){
-      missing_values_used <- na_values[sapply(na_values, function(na_val) {
-        any(unlist(lapply(extracted_chr, function(col) any(data[[col]] == na_val, na.rm = TRUE))))
-      })]
+    # Check for text NA values
+    if(length(na_values) > 0 && any(colnames(results) == "text_na")) {
+      total_text_na <- sum(results$text_na, na.rm = TRUE)
       
-      if(length(missing_values_used) > 0) {
-        newMessage <- paste0(
-          "There are ", sum(results$sum_text_na), 
-          " values which may potentially represent missing values: ", 
-          paste(missing_values_used, collapse = ", "), 
-          "."
-        )
-        printMessage <- paste(printMessage, newMessage, collapse = "\n")
+      if(total_text_na > 0) {
+        # Find which NA values were actually found in the data
+        found_na_values <- c()
+        for(na_val in na_values) {
+          for(col in extracted_chr) {
+            if(col %in% names(data)) {
+              if(any(data[[col]] == na_val, na.rm = TRUE)) {
+                found_na_values <- c(found_na_values, na_val)
+                break
+              }
+            }
+          }
+        }
+        
+        found_na_values <- unique(found_na_values)
+        
+        if(length(found_na_values) > 0) {
+          newMessage <- paste0(
+            "There are ", total_text_na, 
+            " values which may potentially represent missing values: ", 
+            paste(found_na_values, collapse = ", "), 
+            "."
+          )
+          printMessage <- paste(printMessage, newMessage, collapse = "\n")
+        }
       }
     }
 
