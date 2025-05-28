@@ -22,7 +22,8 @@ predictors. Defaults to NULL, where all numeric vectors in the data will be
 used as predictors.}
 
 \item{outcome}{A string specifying a binary variable, i.e. can only contain
-the values 1 or 0.}
+the values 1 or 0, or a logical variable (TRUE/FALSE). Logical variables will
+be automatically converted to binary (TRUE to 1, FALSE to 0).}
 
 \item{bins}{Number of bins to use, defaults to 5.}
 
