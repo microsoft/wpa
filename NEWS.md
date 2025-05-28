@@ -1,4 +1,4 @@
-# wpa (development version)
+# wpa 1.9.2
 
 # wpa 1.9.1
 
