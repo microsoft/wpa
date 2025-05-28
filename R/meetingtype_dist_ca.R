@@ -56,7 +56,7 @@ meetingtype_dist_ca <- function(data,
 
     myResultsTable <-
       data %>%
-      summarise_at(vars(mt_dist_str), ~sum(., na.rm = TRUE)) %>%
+      summarise(across(all_of(mt_dist_str), ~sum(., na.rm = TRUE))) %>%
       gather(MeetingType, AttendeeMeetingHours) %>%
       mutate(Prop = AttendeeMeetingHours / sum(AttendeeMeetingHours),
              Percent = paste(round(Prop * 100), "%")) %>%
@@ -66,7 +66,7 @@ meetingtype_dist_ca <- function(data,
     ## Only for creating the bottom row data
     myResultsTableTotal <-
       data %>%
-      summarise_at(vars(mt_dist_str), ~sum(., na.rm = TRUE)) %>%
+      summarise(across(all_of(mt_dist_str), ~sum(., na.rm = TRUE))) %>%
       gather(MeetingType, AttendeeMeetingHours) %>%
       mutate(MeetingType = "Total") %>%
       group_by(MeetingType) %>%
@@ -85,7 +85,7 @@ meetingtype_dist_ca <- function(data,
     myResultsTable <-
       data %>%
       group_by(!!sym(hrvar)) %>%
-      summarise_at(vars(mt_dist_str), ~sum(., na.rm = TRUE)) %>%
+      summarise(across(all_of(mt_dist_str), ~sum(., na.rm = TRUE))) %>%
       left_join(data %>% hrvar_count(hrvar = hrvar, return = "table"),
                 by = hrvar) %>%
       filter(n >= mingroup) %>%
