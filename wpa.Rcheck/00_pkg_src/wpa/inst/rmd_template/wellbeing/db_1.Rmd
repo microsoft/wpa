@@ -1,0 +1,162 @@
+Collaboration
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B>   <font size="+3">Is collaboration load reducing personal time?</font></B>
+<br>
+<br>
+</p>
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Average length of working day based on collaboration 
+
+```{r}
+
+if(sum(my_sq_data$Work_time, na.rm = TRUE) == 0){
+  
+  KPI_1 <- "0 "
+  
+} else {
+
+  KPI_1 <- 
+    my_sq_data %>%
+    create_bar(metric = "Work_time",
+               hrvar = NULL,
+               return = "table") %>%
+    select(Work_time) %>%
+    pull(1) %>%
+    round(1) 
+  
+}
+
+paste(KPI_1, "hr work days") %>%
+  flexdashboard::valueBox(icon = "fa-calendar", color = "#34b1e2")
+  
+```
+
+### <B>Are employees able to balance work and personal time?</B> <br> Employees should strive for an equal balance between work and personal time, assuming 8 hours a day is reserved for sleep. Research shows that employees who protect their personal time are more motivated and struggle less with mental health. 
+
+```{r}
+
+if(sum(my_sq_data$Work_time, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
+  
+  balance1_w1_plot1 <- 
+    my_sq_data %>%
+    mutate(Personal_time = 16 - Work_time) %>%
+    create_stacked(metric = c("Work_time", "Personal_time"),
+                   hrvar = hrvar,
+                   rank = NULL) +
+    labs(title = "Employee workday",
+         subtitle = "Average hours per person per day")
+  		 
+  balance1_w1_plot1 
+  
+  
+}
+
+```
+
+
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+###  Average collaboration time per day (meetings and emails) 
+
+```{r}
+
+KPI_2 <- my_sq_data %>%
+  create_bar(metric = "dailyCollabHours",
+             hrvar = NULL,
+             return = "table") %>%
+  select(dailyCollabHours) %>%
+  pull(1) %>%
+  round(1)
+
+paste(KPI_2, "hrs in collaboration") %>%
+  flexdashboard::valueBox(icon = "fa-user-friends", color = "#00508F")
+
+```
+
+###  <B> Is collaboration load impacting personal time?</B> <br> High levels of daily collaboration can become disruptive to an employee’s workday, forcing them to use personal time to complete tasks and meet deadlines. 
+
+```{r}
+balance1_w2_plot1 <- 
+  my_sq_data %>%
+  rename(`Collaboration Hours` = "dailyCollabHours") %>%
+  create_bar(metric = "Collaboration Hours",
+             hrvar = hrvar,
+             bar_colour = "#00508F",
+             rank = NULL)
+
+balance1_w2_plot1 +
+  labs(title = "Collaboration hours",
+       subtitle= "Average hours per person per day")
+
+```
+
+
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+###  Percentage of employees that collaborate 6 hrs + per day 
+
+```{r}
+
+KPI_3 <- 
+  my_sq_data %>%
+  create_dist(metric="dailyCollabHours",
+              hrvar=NULL,
+              cut = c(3, 6),
+             return="table")
+
+
+if(!("6+ hours" %in% names(KPI_3))){
+  
+  KPI_3 <- 0
+  
+} else {
+  
+  KPI_3 <- 
+    KPI_3 %>%
+    select("6+ hours") %>%
+    pull(1) %>%
+    round(2)
+}
+
+paste(KPI_3 * 100, "% over-collaborators")  %>%
+  flexdashboard::valueBox(icon = "fa-thermometer-full",
+                          color = "#f59b76")
+```
+
+###  <B>Which employees are most impacted by collaboration load?</B> <br> Identify critical groups in the company that may be stretched with collaboration overload. Encourage these teams to streamline collaboration and preserve personal time.  
+
+```{r}
+balance1_w3_plot1 <- 
+  my_sq_data %>%
+  create_dist(metric="dailyCollabHours",
+              hrvar=hrvar, 
+              cut = c(3, 6),
+              unit = "hours",
+			  dist_colours = c("#f59b76", "#fcf0eb", "#bfe5ee")) 
+
+balance1_w3_plot1 <- balance1_w3_plot1 +
+  labs(title = "Collaboration distribution",
+       subtitle ="% of employees by daily collaboration")
+
+balance1_w3_plot1 
+
+```
+
+
