@@ -1,0 +1,3 @@
+
+This section evaluates the quality of the collaboration data available in your tenant, that is calculated from email, meeting, calls and IM flows within your company (all gathered from M365 Exchange and Teams). In general, collaboration data provides a very accurate description of the digital habits of employees and their daily experience as they interact with peers and other teams. However, data may not be available for all employees, or may only partially capture their day to day experience (for example, in teams that use other communication platforms or that interact face-to-face without planning meetings in advance).     
+ 

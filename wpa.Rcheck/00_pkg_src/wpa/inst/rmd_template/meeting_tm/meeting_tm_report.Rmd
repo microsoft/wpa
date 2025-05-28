@@ -1,0 +1,139 @@
+---
+params:
+  data: data
+  stopwords: stopwords
+  set_title: report_title
+  keep: keep
+  seed: seed
+title: "`r params$set_title`"  
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(wpa)
+
+## Get user data
+data <- params$data
+stopwords <- params$stopwords
+keep <- params$keep
+seed <- params$seed
+```
+
+Introduction
+===============================================
+
+Column {data-width=40%}
+-------------------------------------
+
+### Introduction
+
+In this report, you will find analysis on **meeting subject lines**. This will allow you to refine meeting exclusion rules and identify topics that drive collaboration patterns.
+
+Column {data-width=60%}
+-------------------------------------
+
+### Word cloud
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>% tm_wordcloud(stopwords = stopwords, keep = keep)
+```
+
+Word Frequency
+===============================================
+
+Column {data-width=50%}
+-------------------------------------
+
+### Word Frequency - Plot
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>% tm_freq(token = "words", stopwords = stopwords, keep = keep)
+```
+
+Column {data-width=50%}
+-------------------------------------
+
+### Word Frequency - Table
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>%
+  tm_freq(
+    token = "words",
+    stopwords = stopwords,
+    keep = keep,
+    return = "table"
+    ) %>%
+  create_dt()
+```
+
+Phrase Frequency
+===============================================
+
+Column {data-width=50%}
+-------------------------------------
+
+### Phrase Frequency - Plot
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>% tm_freq(token = "ngrams", stopwords = stopwords, keep = keep)
+```
+
+Column {data-width=50%}
+-------------------------------------
+
+### Phrase Frequency - Table
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>%
+  tm_freq(
+    token = "ngrams",
+    stopwords = stopwords,
+    keep = keep,
+    return = "table"
+    ) %>%
+  create_dt()
+```
+
+Word co-occurrence
+===============================================
+
+Column {data-width=50%}
+-------------------------------------
+
+### Word co-occurrence - Plot
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>% tm_cooc(stopwords = stopwords, seed = seed, return = "plot")
+```
+
+Column {data-width=50%}
+-------------------------------------
+
+### Word co-occurrence - Table
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>%
+  tm_cooc(stopwords = stopwords, seed = seed, return = "table") %>%
+  create_dt()
+```
+
+Top terms
+===============================================
+
+Column {data-width=50%}
+-------------------------------------
+
+### Top terms - Days
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>% subject_scan(mode = "days", stopwords = stopwords)
+```
+
+Column {data-width=50%}
+-------------------------------------
+
+### Top terms - Hours
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data %>% subject_scan(mode = "hours", stopwords = stopwords)
+```
+
+
