@@ -43,9 +43,16 @@
 #' beyond the specified thresholds.
 #'
 #' @note
-#' As of v1.6.3, the function can detect and report text values like "NA", "N/A", 
-#' "#N/A", and spaces that represent missing values, by treating them as NA values.
-#' You can customize which values are treated as missing with the `na_values` parameter.
+#' As of v1.6.3, the function can detect and report text values like "NA",
+#' "N/A", "#N/A", and spaces that represent missing values, by treating them as
+#' NA values. You can customize which values are treated as missing with the
+#' `na_values` parameter.
+#' This can be validated as per:
+#' ```
+#' dv_data %>%
+#'   mutate(TempOrg = sample(c("NA", "#N/A", " "), size = nrow(.), replace = TRUE)) %>%
+#'   hrvar_count_all(return = "table")
+#' ```
 #'
 #' @export
 hrvar_count_all <- function(data,
@@ -63,7 +70,7 @@ hrvar_count_all <- function(data,
     max_unique = threshold,
     exclude_constants = FALSE
     )
-    
+
   # Ensure na_values is not NULL
   if(is.null(na_values)){
     na_values <- character(0)
@@ -87,10 +94,10 @@ hrvar_count_all <- function(data,
     tidyr::gather(attribute, values) %>%
     tidyr::separate(col = attribute, into = c("attribute", "calculation"), sep = "_WPA") %>%
     tidyr::spread(calculation, values)
-    
+
     # Initialize printMessage
     printMessage <- ""
-    
+
     ## Single print message
     if(sum(results$n_unique >= threshold)==0){
       printMessage <- paste("No attributes have greater than", threshold, "unique values.")
@@ -100,11 +107,11 @@ hrvar_count_all <- function(data,
       newMessage <- paste("No attributes have more than", maxna, "percent NA values.")
       printMessage <- paste(printMessage, newMessage, collapse = "\n")
     }
-    
+
     # Check for text NA values
     if(length(na_values) > 0 && any(colnames(results) == "text_na")) {
       total_text_na <- sum(results$text_na, na.rm = TRUE)
-      
+
       if(total_text_na > 0) {
         # Find which NA values were actually found in the data
         found_na_values <- c()
@@ -118,14 +125,14 @@ hrvar_count_all <- function(data,
             }
           }
         }
-        
+
         found_na_values <- unique(found_na_values)
-        
+
         if(length(found_na_values) > 0) {
           newMessage <- paste0(
-            "There are ", total_text_na, 
-            " values which may potentially represent missing values: ", 
-            paste(found_na_values, collapse = ", "), 
+            "There are ", total_text_na,
+            " values which may potentially represent missing values: ",
+            paste(found_na_values, collapse = ", "),
             "."
           )
           printMessage <- paste(printMessage, newMessage, collapse = "\n")

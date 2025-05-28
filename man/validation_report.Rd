@@ -10,7 +10,8 @@ validation_report(
   hrvar = "Organization",
   path = "validation report",
   hrvar_threshold = 150,
-  timestamp = TRUE
+  timestamp = TRUE,
+  na_values = c("NA", "N/A", "#N/A", " ")
 )
 }
 \arguments{
@@ -31,6 +32,9 @@ to the \code{threshold} argument within \code{hrvar_count_all()}.}
 
 \item{timestamp}{Logical vector specifying whether to include a timestamp in
 the file name. Defaults to \code{TRUE}.}
+
+\item{na_values}{Character vector of values to be treated as missing in addition
+to NA values. Defaults to c("NA", "N/A", "#N/A", " ").}
 }
 \value{
 An HTML report with the same file name as specified in the arguments is

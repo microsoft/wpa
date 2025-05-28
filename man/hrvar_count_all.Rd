@@ -10,7 +10,8 @@ hrvar_count_all(
   n_var = 50,
   return = "message",
   threshold = 100,
-  maxna = 20
+  maxna = 20,
+  na_values = c("NA", "N/A", "#N/A", " ")
 )
 }
 \arguments{
@@ -26,6 +27,9 @@ Default is 100.}
 
 \item{maxna}{The max percentage of NAs allowable for any column. Default is
 20.}
+
+\item{na_values}{Character vector of values to be treated as missing. Default is
+c("NA", "N/A", "#N/A", " ").}
 }
 \value{
 Returns an error message by default, where 'text' is passed in \code{return}.
@@ -46,6 +50,11 @@ the Viva Insights \emph{Data sources} page. This function will return a summary
 table with the count of distinct fields per HR attribute and the percentage
 of employees with missing values for that attribute. See \code{hrvar_count()}
 function for more detail on the specific HR attribute of interest.
+}
+\note{
+As of v1.6.3, the function can detect and report text values like "NA", "N/A",
+"#N/A", and spaces that represent missing values, by treating them as NA values.
+You can customize which values are treated as missing with the \code{na_values} parameter.
 }
 \examples{
 # Return a summary table of all HR attributes
