@@ -55,6 +55,8 @@
 #'   to the `threshold` argument within `hrvar_count_all()`.
 #' @param timestamp Logical vector specifying whether to include a timestamp in
 #'   the file name. Defaults to `TRUE`.
+#' @param na_values Character vector of values to be treated as missing in addition
+#'   to NA values. Defaults to c("NA", "N/A", "#N/A", " ").
 #'
 #' @section Creating a report:
 #'
@@ -81,7 +83,8 @@ validation_report <- function(data,
                               hrvar = "Organization",
                               path = "validation report",
                               hrvar_threshold = 150,
-                              timestamp = TRUE){
+                              timestamp = TRUE,
+                              na_values = c("NA", "N/A", "#N/A", " ")){
 
   ## Create timestamped path (if applicable)
   if(timestamp == TRUE){
@@ -195,7 +198,7 @@ validation_report <- function(data,
 
          read_preamble("organizational_data_quality.md"), #13, Header - 2. Organizational Data Quality
          read_preamble("attributes_available.md"),#14
-         data %>% hrvar_count_all(return = "table", threshold = hrvar_threshold),
+         data %>% hrvar_count_all(return = "table", threshold = hrvar_threshold, na_values = na_values),
 
          read_preamble("groups_under_privacy_threshold_1.md"), #16, Header - 2.2 Groups under Privacy Threshold
          paste(">", data %>% identify_privacythreshold(return="text")),

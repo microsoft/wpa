@@ -23,6 +23,8 @@
 #'   Default is 100.
 #' @param maxna The max percentage of NAs allowable for any column. Default is
 #'   20.
+#' @param na_values Character vector of values to be treated as missing. Default is
+#'   c("NA", "N/A", "#N/A", " ").
 #'
 #' @import dplyr
 #'
@@ -45,7 +47,8 @@ hrvar_count_all <- function(data,
                             n_var = 50,
                             return = "message",
                             threshold = 100,
-                            maxna = 20
+                            maxna = 20,
+                            na_values = c("NA", "N/A", "#N/A", " ")
                             ){
 
   ## Character vector of HR attributes
@@ -67,9 +70,10 @@ hrvar_count_all <- function(data,
     select(PersonId, extracted_chr) %>%
     summarise_at(vars(extracted_chr),
                  list(`WPAn_unique` = ~n_distinct(., na.rm = TRUE), # Excludes NAs from unique count
-                      `WPAper_na` = ~(sum(is.na(.))/ nrow(data) * 100),
-                      `WPAsum_na` = ~sum(is.na(.)) # Number of missing values
-                      )) %>% # % of missing values
+                      `WPAper_na` = ~(sum(is.na(.) | . %in% na_values)/ nrow(data) * 100), # % of missing values including na_values
+                      `WPAsum_na` = ~sum(is.na(.) | . %in% na_values), # Number of missing values including na_values
+                      `WPAsum_text_na` = ~sum(!is.na(.) & . %in% na_values) # Number of text values considered as NA
+                      )) %>%
     tidyr::gather(attribute, values) %>%
     tidyr::separate(col = attribute, into = c("attribute", "calculation"), sep = "_WPA") %>%
     tidyr::spread(calculation, values)
@@ -84,6 +88,22 @@ hrvar_count_all <- function(data,
       newMessage <- paste("No attributes have more than", maxna, "percent NA values.")
       printMessage <- paste(printMessage, newMessage, collapse = "\n")
 
+    }
+    
+    if(sum(results$sum_text_na) > 0){
+      missing_values_used <- na_values[sapply(na_values, function(na_val) {
+        any(unlist(lapply(extracted_chr, function(col) any(data[[col]] == na_val, na.rm = TRUE))))
+      })]
+      
+      if(length(missing_values_used) > 0) {
+        newMessage <- paste0(
+          "There are ", sum(results$sum_text_na), 
+          " values which may potentially represent missing values: ", 
+          paste(missing_values_used, collapse = ", "), 
+          "."
+        )
+        printMessage <- paste(printMessage, newMessage, collapse = "\n")
+      }
     }
 
     for (i in 1:nrow(results)) {
