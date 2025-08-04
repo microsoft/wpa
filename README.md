@@ -8,7 +8,7 @@
 
 ## Analyze and Visualize Viva Leader Insights data
 
-This is an R package for analyzing and visualizing data from [Microsoft Workplace Analytics](https://docs.microsoft.com/en-us/workplace-analytics/). For analyzing data from [Microsoft Viva Insights](https://analysis.insights.viva.office.com/), please see our other package [**vivainsights**](https://microsoft.github.io/vivainsights/). 
+This is an R package for analyzing and visualizing data from Microsoft Workplace Analytics. For analyzing data from [Microsoft Viva Insights](https://analysis.insights.viva.office.com/), please see our other package [**vivainsights**](https://microsoft.github.io/vivainsights/). 
 
 ## With the **wpa** package, you can...
 
@@ -34,7 +34,7 @@ To get started with the package,  please see the following links:
 - [Full function list](https://microsoft.github.io/wpa/reference/index.html)
 - [Analyst Guide](https://microsoft.github.io/wpa/analyst_guide.html)
 - [FAQ](https://microsoft.github.io/wpa/faq.html)
-- [Microsoft Learn module](https://docs.microsoft.com/en-us/learn/modules/workplace-analytics-r-package/)
+- [Microsoft Learn module](https://learn.microsoft.com/en-us/training/modules/workplace-analytics-r-package/)
 
 Also check out our package cheat sheet for a quick glimpse of what **wpa** offers:
 

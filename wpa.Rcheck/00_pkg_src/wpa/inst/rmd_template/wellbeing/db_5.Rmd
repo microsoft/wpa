@@ -1,0 +1,160 @@
+Activity patterns
+=====================================
+
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B>
+  <font size="+3">
+    Are employees able to switch off?
+  </font>
+</B>
+<br>
+<br>
+</p>
+
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Distinct hours with email / chat in the most frequent activity pattern
+
+```{r}
+
+KPI_1 <- 
+  my_em_data %>% workpatterns_rank(return="table") %>%  arrange( desc(WeekCount)) %>%  filter(row_number()==1)  %>% 
+  mutate(Signals_Total = select(., starts_with("Signals_sent_")) %>%
+           apply(1, sum, na.rm = TRUE)) %>% select(Signals_Total) %>% pull(1)
+  
+paste(KPI_1 ,"hours with activity") %>%
+  flexdashboard::valueBox(icon = "fa-arrows-alt", color = "#f59b76")
+  
+```
+
+### <B> When are employees engaging with work? </B> <br> Individuals may work outside regular working hours to deal with excessive workload, or to take advantage of flexible working arragements. Digital activity patterns reveals if groups are able to disconnect regularly.
+
+
+```{r}
+
+flexibility1_w3_plot1 <- my_em_data %>% workpatterns_rank()
+
+
+flexibility1_w3_plot1 
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of "always on" weeks based on collaboration patterns
+
+
+```{r}
+
+KPI_1 <- 
+  wp_list$data %>%
+  count(Personas) %>%
+  mutate(prop = n / sum(n)) %>%
+  select(Personas, Total = "prop") %>%
+  filter(Personas == "6 Always on (13h+)") %>%
+  select(Total) %>%
+  pull(1) %>%
+  round(3)*100
+						
+						
+paste(KPI_1, "% always-on") %>%
+  flexdashboard::valueBox(icon = "fa-lightbulb", color = "#325369" )
+  
+```
+
+### <B>Are employees able to switch off? </B> <br> Individuals that work long, continuous hours without breaks or remain actively engaged with work after hours can experience a deterioration of their wellbeing. 
+
+```{r}
+
+flexibility1_w1_plot1 <- wp_list$plot
+
+flexibility1_w1_plot1 +
+  labs(title = "Classification of activity patterns", subtitle = "Frequency of common archetypes")
+
+						
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+###  is the group where employees have the highest % of "always on" weeks 
+
+```{r}
+
+KPI_2 <-  
+  wp_list$table %>%
+  filter(Personas =="6 Always on (13h+)") %>%
+  pivot_longer(cols = -Personas, names_to = "group", values_to = "alwaysOn") %>%
+  filter(group %in% mingroup_str) %>%
+  arrange(desc(alwaysOn)) %>%
+  pull(group) %>%
+  .[[1]]
+
+KPI_2  %>% flexdashboard::valueBox(icon = "fa-search")  
+
+```
+
+### <B>Which teams are most affected? </B> <br> Identify groups with highest prevalence the negative activity patterns and  encourage them to disconnect and build regular breaks in their work day.
+
+```{r}
+
+round_percent <- function(x){
+  scales::percent(x, accuracy = 1)
+}
+
+wp_list$data %>%
+  mutate(Personas = case_when(Personas == "0 < 3 hours on" ~ "Low\nactivity",
+                              Personas == "1 Standard with breaks workday" ~ "Flexible",
+                              Personas == "2 Standard continuous workday" ~ "Standard",
+                              Personas == "3 Standard flexible workday" ~ "Flexible",
+                              Personas == "4 Long flexible workday" ~ "Long\nflexible",
+                              Personas == "5 Long continuous workday" ~ "Long\ncontinuous",
+                              Personas == "6 Always on (13h+)" ~ "Always\non"
+                              ) %>%
+           factor(levels = 
+                    c("Low\nactivity",
+                      "Standard",
+                      "Flexible",
+                      "Long\nflexible",
+                      "Long\ncontinuous",
+                      "Always\non"))) %>%
+  count(!!sym(hrvar), Personas) %>%
+  filter(!!sym(hrvar) %in% mingroup_str) %>%
+  group_by(!!sym(hrvar)) %>%
+  mutate(percent = n / sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x = Personas,
+             y = !!sym(hrvar),
+             fill = percent)) +
+  geom_tile() +
+  geom_text(aes(label = scales::percent(percent, accuracy = 1)),
+            size = 3) +
+  scale_fill_gradientn(name = "Row percentages",
+                       colours = c("steelblue4",
+                                   "aliceblue",
+                                   "white",
+                                   "mistyrose1",
+                                   "tomato1"),
+                       labels = round_percent) + 
+  # viridis::scale_fill_viridis(labels = scales::percent) +
+  scale_x_discrete(position = "top") +
+  theme_wpa_basic() +
+  theme(axis.text.x = element_text(angle = 50,
+                                   vjust = 0.5,
+                                   hjust = 0),
+        axis.title = element_blank(),
+        plot.margin=unit(c(0, 0, 0, 0),"cm"),
+        legend.text=element_text(size = 8)) +
+  labs(title = "Activity pattern distribution",
+       subtitle = "Distribution of archetypes",
+       caption = extract_date_range(wp_list$data, return = "text"))
+
+```
+

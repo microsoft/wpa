@@ -1,0 +1,208 @@
+---
+params:
+  wbq: wbq
+  hcq: hcq
+  set_title: report_title
+  hrvar: hrvar
+  mingroup: mingroup
+  start_hour: start_hour
+  end_hour: end_hour
+title: "`r params$set_title`"      
+---
+
+<body style="background-color:#ffffff;">
+
+```{r setup, include=FALSE}
+start_time <- Sys.time()
+
+# 1. Load Library
+library(wpa)
+library(dplyr)
+library(tidyr)
+
+# 1a. Load auxiliary functions
+source("auxiliary.R")
+
+# Glossary
+gloss_tb <-
+  readr::read_csv("glossary.csv")
+
+# 2. Load Data
+my_sq_data <- params$wbq
+my_em_data <- params$hcq
+hrvar <- params$hrvar
+mingroup <- params$mingroup
+start_hour <- params$start_hour
+end_hour <- params$end_hour
+
+intro_toc <- readLines("toc.md")
+
+# Add col checker ----------------------------------------------------------
+
+# If `replacement` is unspecified, it uses `col`
+
+col_checker <- function(x, col, replacement = col){
+
+  if(!(col %in% names(x)) & !(replacement %in% names(x))){
+    
+    # column does not exist at all
+    # ACTION: DUMMY COLUMN WITH REPLACEMENT
+    dplyr::mutate(x, !!sym(replacement) := NA) # create dummy column
+    
+  } else if(col %in% names(x) & !(replacement %in% names(x))){
+    
+    # column exists in x but not replacement
+    # ACTION: RENAME
+    dplyr::rename(x, !!sym(replacement) := col)
+    
+  } else if(!(col %in% names(x)) & replacement %in% names(x)){  
+    
+    # column does not exists in x but in replacement
+    # ACTION: RETURN
+    x
+  
+  } else if(col %in% names(x) & replacement %in% names(x)){  
+    
+    # column exists in both x and replacement
+    # ACTION: RETURN
+    x    
+
+  } else {
+
+    stop("Internal error with conditional.")
+    
+  }
+}
+
+# 3a. Simulate variables for custom Wellbeing query
+my_sq_data <-
+  my_sq_data %>%
+  
+  # Column checks ----------------------------------------------------------
+  col_checker(col = "Instant_Message_hours", replacement = "Instant_message_hours") %>%
+  col_checker(col = "Collaboration_hrs", replacement = "Collaboration_hours") %>%
+  col_checker(col = "Unscheduled_call_hours", replacement = "Unscheduled_Call_hours") %>%
+  col_checker(col = "Urgent_email_hours") %>%
+  col_checker(col = "Urgent_meeting_hours") %>%
+  col_checker(col = "Weekend_Email", replacement = "Weekend_emails_sent") %>%
+  col_checker(col = "Weekend_IMs_sent") %>%
+  col_checker(col = "IMs_sent_same_level") %>%
+  col_checker(col = "IMs_sent_other_level") %>%
+  col_checker(col = "Meeting_hours_1on1", replacement = "Intimate_1_on_1_meeting_hours") %>%
+  col_checker(col = "Meeting_hours_intimate_group",
+              replacement = "Intimate_group_meeting_hours") %>%
+  col_checker(col = "IMs_sent", replacement = "Instant_messages_sent") %>%
+  col_checker(col = "Workweek_span") %>%
+  
+  # Daily estimates --------------------------------------------------------
+  
+  mutate(Work_time = Workweek_span / 5) %>% # Average day span
+  mutate(dailyCollabHours = Collaboration_hours / 5)  %>% # Average daily CH
+  mutate(dailyAfterHours = After_hours_collaboration_hours / 5) %>%
+  
+  # Urgent collaboration ---------------------------------------------------
+  
+  # mutate(Urgent_collaboration_hours = Urgent_email_hours) %>%
+  mutate(Urgent_collaboration_hours = Urgent_meeting_hours + Urgent_email_hours) %>%
+  mutate(IsUrgent = ifelse(Urgent_collaboration_hours > 0, TRUE, FALSE)) %>%
+  
+  # Weekend work ------------------------------------------------------------
+
+  # mutate(Weekend_work = ifelse(Weekend_Email > 0 | Weekend_Meeting > 0, TRUE, FALSE)) %>%
+  mutate(Weekend_work = ifelse(Weekend_emails_sent > 0 | Weekend_IMs_sent > 0, TRUE, FALSE)) %>%
+  group_by(PersonId)  %>%
+  mutate(Frequency_of_weekend_work = 1 / (sum(Weekend_work) / n())) %>% #TODO: Verify logic
+  mutate(monthly_weekend_work = Frequency_of_weekend_work < (52/12)) %>%
+  ungroup() %>%
+  
+  # Two Hour Focus Blocks ---------------------------------------------------
+
+  mutate(focus_per = (Total_focus_hours/ Workweek_span)) %>%
+  mutate(focus_per = ifelse(is.infinite(focus_per), 0, focus_per)) %>%
+  rename(`% of 2-hour focus block` = "focus_per") %>% 
+  mutate(Total_focus_hours_daily = Total_focus_hours / 5) %>%
+  
+  # Unscheduled collaboration -----------------------------------------------
+  
+  mutate(Unscheduled_collaboration_hours_daily = (Unscheduled_Call_hours + Instant_message_hours + Email_hours)/5)
+
+# Values containing groups over minimum group size
+mingroup_str <-
+  my_sq_data %>%
+  hrvar_count(hrvar = hrvar,
+              return = "table") %>%
+  filter(n >= mingroup) %>%
+  pull(!!sym(hrvar))
+
+# 4. Compute working patterns list and flexibility index data
+wp_list <-
+  my_em_data %>%
+  workpatterns_classify(
+    start_hour = start_hour,
+    end_hour = end_hour,
+    signals = c("email", "IM"),
+    return = "list",
+    hrvar = hrvar)
+
+flex_index_data <- 
+  my_em_data %>%
+  flex_index(
+    return = "data",
+    hrvar = hrvar,
+    signals = c("email", "IM"),
+    start_hour = start_hour,
+    end_hour = end_hour
+    )
+
+```
+
+```{js, echo=FALSE}
+var scale = 'scale(1)';
+document.body.style.webkitTransform = scale; // Chrome, Opera, Safari
+document.body.style.msTransform = scale; // IE 9
+document.body.style.transform = scale; // General
+```
+
+```{r child = "db_cover_4.Rmd"}
+
+```
+
+```{r child = "db_1.Rmd"}
+
+```
+
+```{r child = "db_2.Rmd"}
+
+```
+
+```{r child = "db_3.Rmd"}
+
+```
+
+```{r child = "db_4.Rmd"}
+
+```
+
+```{r child = "db_5.Rmd"}
+
+```
+
+```{r child = "db_6.Rmd"}
+
+```
+
+```{r child = "db_7.Rmd"}
+
+```
+
+```{r child = "db_8.Rmd"}
+
+```
+
+```{r child = "db_trends.Rmd"}
+
+```
+
+```{r child = "db_notes.Rmd"}
+
+```
