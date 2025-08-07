@@ -89,9 +89,9 @@ create_bubble <- function(data,
   myTable <-
     data %>%
     group_by(PersonId, !!sym(hrvar)) %>%
-    summarise(across(c(!!sym(metric_x), !!sym(metric_y)), ~mean(., na.rm = TRUE))) %>%
+    summarise(across(all_of(c(metric_x, metric_y)), ~mean(., na.rm = TRUE))) %>%
     group_by(!!sym(hrvar)) %>%
-    summarise(across(c(!!sym(metric_x), !!sym(metric_y)), ~mean(., na.rm = TRUE))) %>%
+    summarise(across(all_of(c(metric_x, metric_y)), ~mean(., na.rm = TRUE))) %>%
     ungroup() %>%
     left_join(hrvar_count(data, hrvar = hrvar, return = "table"),
               by = hrvar) %>%
