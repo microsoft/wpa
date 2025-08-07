@@ -115,7 +115,7 @@ period_change <-
     mydata_table <-
       WpA_dataset_table %>%
       group_by(Period, PersonId) %>%
-      summarise(across(where(is.numeric), ~mean(., na.rm = TRUE)))
+      summarise(across(where(is.numeric), ~mean(., na.rm = TRUE)), .groups = "drop")
 
     # Select comparison variable
     mydata_table <-

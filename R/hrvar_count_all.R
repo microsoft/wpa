@@ -79,18 +79,18 @@ hrvar_count_all <- function(data,
   summary_table_n <-
     data %>%
     select(PersonId, extracted_chr) %>%
-    summarise_at(vars(extracted_chr), ~n_distinct(.,na.rm = TRUE)) # Excludes NAs from unique count
+    summarise(across(all_of(extracted_chr), ~n_distinct(.,na.rm = TRUE))) # Excludes NAs from unique count
 
   ## Note: WPA here is used for a matching separator
   results <-
     data %>%
     select(PersonId, extracted_chr) %>%
-    summarise_at(vars(extracted_chr),
+    summarise(across(all_of(extracted_chr),
                  list(`WPAn_unique` = ~n_distinct(., na.rm = TRUE), # Excludes NAs from unique count
                       `WPAper_na` = ~(sum(is.na(.) | . %in% na_values, na.rm = TRUE)/ nrow(data) * 100), # % of missing values including na_values
                       `WPAsum_na` = ~sum(is.na(.) | . %in% na_values, na.rm = TRUE), # Number of missing values including na_values
                       `WPAtext_na` = ~sum(!is.na(.) & . %in% na_values, na.rm = TRUE) # Number of text values considered as NA
-                      )) %>%
+                      ))) %>%
     tidyr::gather(attribute, values) %>%
     tidyr::separate(col = attribute, into = c("attribute", "calculation"), sep = "_WPA") %>%
     tidyr::spread(calculation, values)

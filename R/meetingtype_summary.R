@@ -62,7 +62,7 @@ meetingtype_summary <- function(data,
   returnTable <-
     data %>%
     group_by(!!sym(hrvar)) %>%
-    summarise(across(all_of(mt_dist_str), ~sum(., na.rm = TRUE))) %>%
+    summarise(across(all_of(mt_dist_str), ~sum(., na.rm = TRUE)), .groups = "drop") %>%
     gather(MeetingType, AttendeeMeetingHours, -!!sym(hrvar)) %>%
     mutate(MeetingType = gsub(pattern = "_meeting_hours", replacement = "", x = MeetingType)) %>%
     mutate(MeetingType = us_to_space(MeetingType)) %>%

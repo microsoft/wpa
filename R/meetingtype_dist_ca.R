@@ -85,7 +85,7 @@ meetingtype_dist_ca <- function(data,
     myResultsTable <-
       data %>%
       group_by(!!sym(hrvar)) %>%
-      summarise(across(all_of(mt_dist_str), ~sum(., na.rm = TRUE))) %>%
+      summarise(across(all_of(mt_dist_str), ~sum(., na.rm = TRUE)), .groups = "drop") %>%
       left_join(data %>% hrvar_count(hrvar = hrvar, return = "table"),
                 by = hrvar) %>%
       filter(n >= mingroup) %>%
