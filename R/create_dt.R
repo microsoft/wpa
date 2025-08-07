@@ -57,7 +57,7 @@ create_dt <- function(x, rounding = 1, freeze = 2, percent = FALSE, show_rows = 
   }
 
   # Round all numeric to "rounding" number of dp
-  num_cols <- dplyr::select_if(x, is.numeric) %>% names()
+  num_cols <- dplyr::select(x, where(is.numeric)) %>% names()
 
   if(length(num_cols) == 0){ # No numeric columns
 

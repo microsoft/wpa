@@ -50,9 +50,9 @@ meeting_skim <- function(data, return = "message"){
   key_output <-
     data %>%
     select(used_vars) %>%
-    summarise_at(vars(-PersonId), ~sum(.)) %>% # sum total
+    summarise(across(-PersonId, ~sum(.))) %>% # sum total
     tidyr::gather(HourType, Hours, -Meeting_hours) %>%
-    mutate_at(vars(Hours), ~./Meeting_hours) %>%
+    mutate(across(Hours, ~./Meeting_hours)) %>%
     mutate(RawHours = Hours * Meeting_hours)
 
   mh_total <- round(key_output$Meeting_hours[1])

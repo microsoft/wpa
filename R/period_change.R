@@ -115,7 +115,7 @@ period_change <-
     mydata_table <-
       WpA_dataset_table %>%
       group_by(Period, PersonId) %>%
-      summarise_if(is.numeric, mean, na.rm = TRUE)
+      summarise(across(where(is.numeric), ~mean(., na.rm = TRUE)), .groups = "drop")
 
     # Select comparison variable
     mydata_table <-
@@ -280,7 +280,7 @@ period_change <-
         )
     } else if(return == "table"){
       summary_table %>%
-        mutate_at("Employee_perc", ~round(. * 100, 1)) %>%
+        mutate(across("Employee_perc", ~round(. * 100, 1))) %>%
         as_tibble() %>%
         return()
 
