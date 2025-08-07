@@ -114,8 +114,7 @@ create_line <- function(data,
     myTable %>%
     select(Date, group, all_of(metric)) %>%
     group_by(Date, group) %>%
-    summarise_at(vars(all_of(metric)), ~mean(., na.rm = TRUE)) %>%
-    ungroup()
+    summarise(across(all_of(metric), ~mean(., na.rm = TRUE)), .groups = "drop")
 
 
   return_plot <- function(){

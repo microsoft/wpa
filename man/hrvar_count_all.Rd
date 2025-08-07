@@ -52,9 +52,16 @@ of employees with missing values for that attribute. See \code{hrvar_count()}
 function for more detail on the specific HR attribute of interest.
 }
 \note{
-As of v1.6.3, the function can detect and report text values like "NA", "N/A",
-"#N/A", and spaces that represent missing values, by treating them as NA values.
-You can customize which values are treated as missing with the \code{na_values} parameter.
+As of v1.6.3, the function can detect and report text values like "NA",
+"N/A", "#N/A", and spaces that represent missing values, by treating them as
+NA values. You can customize which values are treated as missing with the
+\code{na_values} parameter.
+This can be validated as per:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{dv_data \%>\%
+  mutate(TempOrg = sample(c("NA", "#N/A", " "), size = nrow(.), replace = TRUE)) \%>\%
+  hrvar_count_all(return = "table")
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Return a summary table of all HR attributes

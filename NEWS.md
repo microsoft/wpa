@@ -1,3 +1,9 @@
+# wpa 1.10.0
+
+- Refactored codebase to use latest dplyr syntax
+- Added support for logical outcome variables in `create_IV()`
+- Added detection of text missing values in `validation_report()`
+
 # wpa 1.9.2
 
 - Improved missing value detection for `validation_report()`, `hrvar_count_all()` (#35)
