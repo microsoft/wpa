@@ -4,18 +4,26 @@
 \alias{create_dt}
 \title{Create interactive tables in HTML with 'download' buttons.}
 \usage{
-create_dt(x, rounding = 1, freeze = 2, percent = FALSE)
+create_dt(x, rounding = 1, freeze = 2, percent = FALSE, show_rows = 10)
 }
 \arguments{
 \item{x}{Data frame to be passed through.}
 
-\item{rounding}{Numeric vector to specify the number of decimal points to display}
+\item{rounding}{Numeric vector to specify the number of decimal points to display.
+Can also be a named list to specify different rounding for specific columns,
+e.g., \code{list("Sepal.Width" = 1, "Sepal.Length" = 2)}. When a list is provided,
+columns not specified in the list will use the default of 1 decimal place.}
 
 \item{freeze}{Number of columns from the left to 'freeze'. Defaults to 2,
 which includes the row number column.}
 
 \item{percent}{Logical value specifying whether to display numeric columns
 as percentages.}
+
+\item{show_rows}{Numeric value or "All" to specify the default number of rows
+to display. Defaults to 10. When set to a specific number, that number will be
+the first option in the length menu. When set to "All", all rows will be shown
+by default.}
 }
 \value{
 Returns an HTML widget displaying rectangular data.
@@ -27,7 +35,20 @@ for more.
 }
 \examples{
 out_tb <- hrvar_count(sq_data, hrvar = "Organization", return = "table")
+out_tb$prop <- out_tb$n / sum(out_tb$n)
 create_dt(out_tb)
+
+# Show 25 rows by default
+create_dt(out_tb, show_rows = 25)
+
+# Show all rows by default
+create_dt(out_tb, show_rows = "All")
+
+# Apply different rounding to specific columns
+create_dt(out_tb, rounding = list("n" = 0, "prop" = 3))
+
+# Mix of list and default rounding
+create_dt(out_tb, rounding = list("prop" = 3))  # Other numeric columns get 1 dp
 
 }
 \seealso{

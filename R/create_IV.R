@@ -109,7 +109,7 @@ create_IV <- function(data,
     train <-
       data %>%
       rename(outcome = outcome) %>%
-      select_if(function(x) is.numeric(x) || is.character(x) || is.factor(x)) %>%
+      select(where(function(x) is.numeric(x) || is.character(x) || is.factor(x))) %>%
       tidyr::drop_na()
 
   } else {
@@ -162,7 +162,7 @@ create_IV <- function(data,
     }
   }
 
-  train <- train %>% select(predictors$Variable, outcome)
+  train <- train %>% select(all_of(predictors$Variable), outcome)
 
   # IV Analysis -------------------------------------------------------------
 
