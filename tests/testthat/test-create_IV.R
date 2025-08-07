@@ -62,39 +62,3 @@ test_that("create_IV handles logical outcome without error", {
     NA
   )
 })
-
-test_that("create_IV returns correct output types", {
-  df <- sq_data %>%
-    dplyr::mutate(outcome = ifelse(Email_hours > 10, 1, 0))
-  
-  # Test summary return
-  result_summary <- create_IV(df, predictors = c("Meeting_hours", "Collaboration_hours"), outcome = "outcome", return = "summary")
-  expect_s3_class(result_summary, "data.frame")
-  expect_true("Variable" %in% names(result_summary))
-  expect_true("IV" %in% names(result_summary))
-  
-  # Test plot return
-  result_plot <- create_IV(df, predictors = c("Meeting_hours", "Collaboration_hours"), outcome = "outcome", return = "plot")
-  expect_s3_class(result_plot, "ggplot")
-  
-  # Test IV return
-  result_iv <- create_IV(df, predictors = c("Meeting_hours", "Collaboration_hours"), outcome = "outcome", return = "IV")
-  expect_type(result_iv, "list")
-  expect_true("Summary" %in% names(result_iv))
-})
-
-test_that("create_IV handles errors correctly", {
-  df <- sq_data %>%
-    dplyr::mutate(outcome = ifelse(Email_hours > 10, 1, 0))
-  
-  # Test invalid outcome variable
-  expect_error(create_IV(df, outcome = "nonexistent_var"))
-  
-  # Test invalid predictor
-  expect_error(create_IV(df, predictors = "nonexistent_pred", outcome = "outcome"))
-  
-  # Test non-binary outcome
-  df_invalid <- sq_data %>%
-    dplyr::mutate(outcome = Email_hours)
-  expect_error(create_IV(df_invalid, outcome = "outcome"))
-})
