@@ -35,16 +35,16 @@ for more.
 }
 \examples{
 out_tb <- hrvar_count(sq_data, hrvar = "Organization", return = "table")
+out_tb$prop <- out_tb$n / sum(out_tb$n)
 create_dt(out_tb)
 
 # Show 25 rows by default
 create_dt(out_tb, show_rows = 25)
 
-# Show all rows by default  
+# Show all rows by default
 create_dt(out_tb, show_rows = "All")
 
 # Apply different rounding to specific columns
-out_tb$prop <- out_tb$prop / sum(out_tb$prop)
 create_dt(out_tb, rounding = list("n" = 0, "prop" = 3))
 
 # Mix of list and default rounding

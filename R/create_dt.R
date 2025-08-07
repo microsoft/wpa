@@ -28,18 +28,18 @@
 #'
 #' @examples
 #' out_tb <- hrvar_count(sq_data, hrvar = "Organization", return = "table")
+#' out_tb$prop <- out_tb$n / sum(out_tb$n)
 #' create_dt(out_tb)
-#' 
+#'
 #' # Show 25 rows by default
 #' create_dt(out_tb, show_rows = 25)
-#' 
-#' # Show all rows by default  
+#'
+#' # Show all rows by default
 #' create_dt(out_tb, show_rows = "All")
-#' 
+#'
 #' # Apply different rounding to specific columns
-#' out_tb$prop <- out_tb$n / sum(out_tb$n)
 #' create_dt(out_tb, rounding = list("n" = 0, "prop" = 3))
-#' 
+#'
 #' # Mix of list and default rounding
 #' create_dt(out_tb, rounding = list("prop" = 3))  # Other numeric columns get 1 dp
 #'
@@ -60,7 +60,7 @@ create_dt <- function(x, rounding = 1, freeze = 2, percent = FALSE, show_rows = 
     other_options <- c(10, 25, 50, -1)
     other_options <- other_options[other_options != show_rows]
     length_menu_values <- c(show_rows, other_options)
-    
+
     other_labels <- c(10, 25, 50, "All")
     other_labels <- other_labels[other_labels != show_rows]
     length_menu_labels <- c(show_rows, other_labels)
@@ -68,7 +68,7 @@ create_dt <- function(x, rounding = 1, freeze = 2, percent = FALSE, show_rows = 
 
   # Round all numeric to "rounding" number of dp
   num_cols <- dplyr::select(x, where(is.numeric)) %>% names()
-  
+
   # Handle rounding parameter - can be numeric or named list
   if(is.list(rounding)) {
     # When rounding is a list, extract specified columns and their rounding values
@@ -124,7 +124,7 @@ create_dt <- function(x, rounding = 1, freeze = 2, percent = FALSE, show_rows = 
       # Apply default rounding to unspecified columns
       out <- out %>% DT::formatRound(columns = unspecified_cols, default_rounding)
     }
-    
+
     if(length(specified_cols) > 0) {
       # Apply specific rounding to specified columns
       for(col in specified_cols) {
