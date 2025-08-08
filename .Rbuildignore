@@ -31,3 +31,6 @@ lastMiKTeXException
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^CRAN-SUBMISSION$
+
+# Reverse dependency checks
+^revdep/
