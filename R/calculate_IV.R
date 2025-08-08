@@ -45,23 +45,34 @@ calculate_IV <- function(data,
       )
   }
 
-  # Compute q
-  q <- stats::quantile(
-    pred_var,
-    probs = c(1:(bins - 1) / bins),
-    na.rm = TRUE,
-    type = 3
-    )
-
-  # Compute cuts
-  cuts <- unique(q)
-
-  # Compute intervals
-  intervals <-
-    findInterval(
+  # Check if predictor is categorical (character or factor)
+  if(is.character(pred_var) || is.factor(pred_var)){
+    
+    # For categorical variables, use the categories themselves as intervals
+    unique_vals <- unique(pred_var[!is.na(pred_var)])
+    intervals <- as.numeric(as.factor(pred_var))
+    
+  } else {
+    
+    # For numeric variables, use quantile-based binning (original logic)
+    # Compute q
+    q <- stats::quantile(
       pred_var,
-      vec = cuts,
-      rightmost.closed = FALSE)
+      probs = c(1:(bins - 1) / bins),
+      na.rm = TRUE,
+      type = 3
+      )
+
+    # Compute cuts
+    cuts <- unique(q)
+
+    # Compute intervals
+    intervals <-
+      findInterval(
+        pred_var,
+        vec = cuts,
+        rightmost.closed = FALSE)
+  }
 
   # Compute cut_table
   cut_table <-
@@ -70,23 +81,45 @@ calculate_IV <- function(data,
       outc_var) %>%
     as.data.frame.matrix()
 
-  ## get min/max
-  cut_table_2 <-
-    data.frame(
-    var = pred_var,
-    intervals
-  ) %>%
-    group_by(intervals) %>%
-    summarise(
-      min = min(var, na.rm = TRUE) %>% round(digits = 1),
-      max = max(var, na.rm = TRUE) %>% round(digits = 1),
-      n = n(),
-      .groups = "drop"
+  ## get min/max or category labels
+  if(is.character(pred_var) || is.factor(pred_var)){
+    
+    # For categorical variables, use the actual category names
+    cut_table_2 <-
+      data.frame(
+        var = pred_var,
+        intervals
+      ) %>%
+      group_by(intervals) %>%
+      summarise(
+        category = first(var),  # Get the actual category name
+        n = n(),
+        .groups = "drop"
+      ) %>%
+      mutate(!!sym(predictor) := category) %>%
+      mutate(percentage = n / sum(n)) %>%
+      select(!!sym(predictor), intervals, n, percentage)
+      
+  } else {
+    
+    # For numeric variables, use min/max ranges (original logic)
+    cut_table_2 <-
+      data.frame(
+      var = pred_var,
+      intervals
     ) %>%
-    mutate(!!sym(predictor) :=
-    glue::glue("[{round(min, digits = 1)},{round(max, digits = 1)}]")) %>%
-    mutate(percentage = n / sum(n)) %>%
-    select(!!sym(predictor), intervals, n, percentage)
+      group_by(intervals) %>%
+      summarise(
+        min = min(var, na.rm = TRUE) %>% round(digits = 1),
+        max = max(var, na.rm = TRUE) %>% round(digits = 1),
+        n = n(),
+        .groups = "drop"
+      ) %>%
+      mutate(!!sym(predictor) :=
+      glue::glue("[{round(min, digits = 1)},{round(max, digits = 1)}]")) %>%
+      mutate(percentage = n / sum(n)) %>%
+      select(!!sym(predictor), intervals, n, percentage)
+  }
 
   # Create variables that are double
   cut_table_1 <- as.numeric(cut_table$`1`)
@@ -138,8 +171,8 @@ calculate_IV <- function(data,
 #' @param data Data frame containing the data.
 #' @param outcome String containing the name of the outcome variable.
 #' @param predictors Character vector containing the names of the predictor
-#'   variables. If `NULL` (default) is supplied, all numeric variables in the
-#'   data will be used.
+#'   variables. If `NULL` (default) is supplied, all numeric, character, and factor 
+#'   variables in the data will be used.
 #' @param bins Numeric value representing the number of bins to use. Defaults to
 #'   10.
 #'
@@ -162,7 +195,7 @@ map_IV <- function(data,
       data %>%
       select(-!!sym(outcome)) %>%
       select(
-        where(is.numeric)
+        where(function(x) is.numeric(x) || is.character(x) || is.factor(x))
       ) %>%
       names()
   }
