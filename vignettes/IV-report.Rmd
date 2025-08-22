@@ -173,6 +173,70 @@ But what about the focus hours?
 + The two buckets on the left have a strong positive WOE value. So, less focus hours seems to have a correlation with more collaboration hours and vice versa. 
 
 
+### Working with categorical predictors
+
+The `create_IV()` function is not limited to numeric predictors - it can also handle categorical variables such as organizational attributes or job functions. This is particularly valuable when exploring how different groups within an organization might relate to specific outcomes.
+
+Let's explore how categorical predictors like `FunctionType` and `LevelDesignation` might predict high collaboration patterns:
+
+```{r message=FALSE, warning=FALSE}
+sq_data %>%
+    mutate(High_collab = ifelse(Collaboration_hours > 12, 1, 0)) %>%
+    create_IV(
+        outcome = "High_collab",
+        predictors = c("FunctionType", "LevelDesignation", "Organization"),
+        return = "plot")
+```
+
+The plot shows the Information Value scores for these categorical predictors. You can see that different organizational attributes have varying predictive power for high collaboration patterns.
+
+To get more detailed insights, let's examine the summary table:
+
+```{r message=FALSE, warning=FALSE}
+sq_data %>%
+    mutate(High_collab = ifelse(Collaboration_hours > 12, 1, 0)) %>%
+    create_IV(
+        outcome = "High_collab",
+        predictors = c("FunctionType", "LevelDesignation", "Organization"),
+        return = "summary")
+```
+
+The summary table provides the exact IV values, allowing you to quantify the predictive strength of each categorical variable. Based on our earlier reference table:
+
+- **IV < 0.02**: Not useful for prediction
+- **IV 0.02-0.1**: Weak predictive power  
+- **IV 0.1-0.3**: Medium predictive power
+- **IV 0.3-1.0**: Strong predictive power
+
+You can also examine the Weight of Evidence (WOE) patterns for categorical predictors to understand how different categories within each variable relate to the outcome:
+
+```{r message=FALSE, warning=FALSE}
+sq_data %>%
+    mutate(High_collab = ifelse(Collaboration_hours > 12, 1, 0)) %>%
+    create_IV(
+        outcome = "High_collab",
+        predictors = c("FunctionType", "LevelDesignation"),
+        return = "plot-WOE")
+```
+
+The WOE plots for categorical variables show how each category (e.g., different function types or organizational levels) contributes to predicting the outcome. Positive WOE values indicate that category is more associated with high collaboration (outcome = 1), while negative WOE values suggest lower collaboration patterns.
+
+### Combining numeric and categorical predictors
+
+One of the strengths of the IV approach is that you can easily combine both numeric and categorical predictors in a single analysis:
+
+```{r message=FALSE, warning=FALSE}
+sq_data %>%
+    mutate(High_collab = ifelse(Collaboration_hours > 12, 1, 0)) %>%
+    create_IV(
+        outcome = "High_collab",
+        predictors = c("Email_hours", "Meeting_hours", "FunctionType", "LevelDesignation"),
+        return = "plot")
+```
+
+This mixed approach gives you a comprehensive view of which factors - whether behavioral (like email/meeting hours) or organizational (like function type) - are most predictive of your outcome of interest.
+
+
 ### `IV_report()` function
 Another option is the `IV_report()` function, which generates an interactive HTML report, again using Standard Query data as an input. The report contains a full Information Value analysis.
 
