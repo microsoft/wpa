@@ -7,14 +7,15 @@
 #'
 #' @description
 #' Specify an outcome variable and return IV outputs.
-#' All numeric variables in the dataset are used as predictor variables.
+#' All numeric, character, and factor variables in the dataset are used as predictor variables.
 #'
 #' @param data A Person Query dataset in the form of a data frame.
 #' @param predictors A character vector specifying the columns to be used as
-#'   predictors. Defaults to NULL, where all numeric vectors in the data will be
-#'   used as predictors.
+#'   predictors. Defaults to NULL, where all numeric, character, and factor vectors 
+#'   in the data will be used as predictors.
 #' @param outcome A string specifying a binary variable, i.e. can only contain
-#' the values 1 or 0.
+#' the values 1 or 0, or a logical variable (TRUE/FALSE). Logical variables will
+#' be automatically converted to binary (TRUE to 1, FALSE to 0).
 #' @param bins Number of bins to use, defaults to 5.
 #' @param siglevel Significance level to use in comparing populations for the
 #'   outcomes, defaults to 0.05
@@ -87,6 +88,11 @@ create_IV <- function(data,
   if (!outcome %in% names(data)) {
     stop("The outcome variable is not present in the data.")
   }
+  
+  # Check if outcome is logical and convert to numeric if needed
+  if (is.logical(data[[outcome]])) {
+    data[[outcome]] <- as.numeric(data[[outcome]])
+  }
 
   if (!all(data[[outcome]] %in% c(0, 1))) {
     stop("The outcome variable should be binary (0 or 1).")
@@ -103,7 +109,7 @@ create_IV <- function(data,
     train <-
       data %>%
       rename(outcome = outcome) %>%
-      select_if(is.numeric) %>%
+      select(where(function(x) is.numeric(x) || is.character(x) || is.factor(x))) %>%
       tidyr::drop_na()
 
   } else {
@@ -156,7 +162,7 @@ create_IV <- function(data,
     }
   }
 
-  train <- train %>% select(predictors$Variable, outcome)
+  train <- train %>% select(all_of(predictors$Variable), outcome)
 
   # IV Analysis -------------------------------------------------------------
 

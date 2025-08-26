@@ -23,6 +23,8 @@
 #'   Default is 100.
 #' @param maxna The max percentage of NAs allowable for any column. Default is
 #'   20.
+#' @param na_values Character vector of values to be treated as missing. Default is
+#'   c("NA", "N/A", "#N/A", " ").
 #'
 #' @import dplyr
 #'
@@ -40,12 +42,25 @@
 #'   - `'message'`: outputs a message indicating which values are
 #' beyond the specified thresholds.
 #'
+#' @note
+#' As of v1.6.3, the function can detect and report text values like "NA",
+#' "N/A", "#N/A", and spaces that represent missing values, by treating them as
+#' NA values. You can customize which values are treated as missing with the
+#' `na_values` parameter.
+#' This can be validated as per:
+#' ```
+#' dv_data %>%
+#'   mutate(TempOrg = sample(c("NA", "#N/A", " "), size = nrow(.), replace = TRUE)) %>%
+#'   hrvar_count_all(return = "table")
+#' ```
+#'
 #' @export
 hrvar_count_all <- function(data,
                             n_var = 50,
                             return = "message",
                             threshold = 100,
-                            maxna = 20
+                            maxna = 20,
+                            na_values = c("NA", "N/A", "#N/A", " ")
                             ){
 
   ## Character vector of HR attributes
@@ -56,34 +71,73 @@ hrvar_count_all <- function(data,
     exclude_constants = FALSE
     )
 
+  # Ensure na_values is not NULL
+  if(is.null(na_values)){
+    na_values <- character(0)
+  }
+
   summary_table_n <-
     data %>%
     select(PersonId, extracted_chr) %>%
-    summarise_at(vars(extracted_chr), ~n_distinct(.,na.rm = TRUE)) # Excludes NAs from unique count
+    summarise(across(all_of(extracted_chr), ~n_distinct(.,na.rm = TRUE))) # Excludes NAs from unique count
 
   ## Note: WPA here is used for a matching separator
   results <-
     data %>%
     select(PersonId, extracted_chr) %>%
-    summarise_at(vars(extracted_chr),
+    summarise(across(all_of(extracted_chr),
                  list(`WPAn_unique` = ~n_distinct(., na.rm = TRUE), # Excludes NAs from unique count
-                      `WPAper_na` = ~(sum(is.na(.))/ nrow(data) * 100),
-                      `WPAsum_na` = ~sum(is.na(.)) # Number of missing values
-                      )) %>% # % of missing values
+                      `WPAper_na` = ~(sum(is.na(.) | . %in% na_values, na.rm = TRUE)/ nrow(data) * 100), # % of missing values including na_values
+                      `WPAsum_na` = ~sum(is.na(.) | . %in% na_values, na.rm = TRUE), # Number of missing values including na_values
+                      `WPAtext_na` = ~sum(!is.na(.) & . %in% na_values, na.rm = TRUE) # Number of text values considered as NA
+                      ))) %>%
     tidyr::gather(attribute, values) %>%
     tidyr::separate(col = attribute, into = c("attribute", "calculation"), sep = "_WPA") %>%
     tidyr::spread(calculation, values)
 
+    # Initialize printMessage
+    printMessage <- ""
+
     ## Single print message
     if(sum(results$n_unique >= threshold)==0){
-
       printMessage <- paste("No attributes have greater than", threshold, "unique values.")
     }
 
     if(sum(results$per_na >= maxna)==0){
       newMessage <- paste("No attributes have more than", maxna, "percent NA values.")
       printMessage <- paste(printMessage, newMessage, collapse = "\n")
+    }
 
+    # Check for text NA values
+    if(length(na_values) > 0 && any(colnames(results) == "text_na")) {
+      total_text_na <- sum(results$text_na, na.rm = TRUE)
+
+      if(total_text_na > 0) {
+        # Find which NA values were actually found in the data
+        found_na_values <- c()
+        for(na_val in na_values) {
+          for(col in extracted_chr) {
+            if(col %in% names(data)) {
+              if(any(data[[col]] == na_val, na.rm = TRUE)) {
+                found_na_values <- c(found_na_values, na_val)
+                break
+              }
+            }
+          }
+        }
+
+        found_na_values <- unique(found_na_values)
+
+        if(length(found_na_values) > 0) {
+          newMessage <- paste0(
+            "There are ", total_text_na,
+            " values which may potentially represent missing values: ",
+            paste(found_na_values, collapse = ", "),
+            "."
+          )
+          printMessage <- paste(printMessage, newMessage, collapse = "\n")
+        }
+      }
     }
 
     for (i in 1:nrow(results)) {

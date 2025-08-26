@@ -1,0 +1,158 @@
+Community
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B>
+  <font size="+3">
+    Are employees maintaining communities within the workplace?  
+  </font>
+</B>
+<br>
+<br>
+</p>
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Average hours in 1:1 meetings per person each week
+
+```{r}
+if(sum(my_sq_data$Intimate_1_on_1_meeting_hours, na.rm = TRUE) == 0){
+  
+  p_text <- "0"
+  
+} else {
+
+  p_text <- 
+  my_sq_data %>%
+  summarise(
+    across(
+      .cols = c(Intimate_1_on_1_meeting_hours),
+      .fns = ~mean(., na.rm = TRUE)
+    )
+  ) %>%
+  pull(Intimate_1_on_1_meeting_hours) %>%
+  round(digits = 1)
+  
+}
+
+p_text <- paste(p_text[[1]], "hours 1:1 meetings")
+  
+
+flexdashboard::valueBox(value = p_text,
+                        icon = "fa-users",
+                        color = rgb2hex(1, 147, 157))
+
+```
+
+### <B>Are employees part of communities in the workplace?</B> <br> Social and professional support at work ensures employees are safeguarded against feeling isolated. Successful rapport is built when employees meet in small group settings with two to five people attending.
+
+```{r}
+
+if(
+  sum(my_sq_data$Intimate_group_meeting_hours, na.rm = TRUE) == 0 |
+  sum(my_sq_data$Intimate_1_on_1_meeting_hours, na.rm = TRUE) == 0
+  ){
+  
+  md2html("## Note: there is insufficient collaboration data to display.")
+  
+} else {
+
+my_sq_data %>%
+  create_stacked(
+    hrvar = hrvar,
+    rank = NULL,
+    metrics = c("Intimate_group_meeting_hours", "Intimate_1_on_1_meeting_hours"),
+    stack_colours = c("Intimate_group_meeting_hours" = rgb2hex(49, 97, 124),
+                      "Intimate_1_on_1_meeting_hours" = rgb2hex(1, 147, 157)),
+    plot_title = "Intimate meetings",
+    plot_subtitle = "Average meeting hours per person each week"
+  )
+
+}  
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Average hours in intimate group meetings per person each week 
+```{r}
+
+if(sum(my_sq_data$Intimate_group_meeting_hours, na.rm = TRUE) == 0){
+  
+  p_text <- "0"
+  
+} else {
+
+p_text <-
+  my_sq_data %>%
+  summarise(
+    across(
+      .cols = c(Intimate_group_meeting_hours),
+      .fns = ~mean(., na.rm = TRUE)
+    )
+  ) %>%
+  pull(Intimate_group_meeting_hours) %>%
+  round(digits = 1) 
+
+}
+
+p_text <- paste(p_text[[1]], "hours intimate group meetings")
+
+flexdashboard::valueBox(value = p_text, 
+                        icon = "fa-users",
+                        color = rgb2hex(49, 97, 124))
+```
+
+### <B>Are employees maintaining these communities?</B> <br> Over time, relationships can fade and thus it is important to continue strengthening existing relationships and building new connections.
+
+```{r}
+
+if(
+  sum(my_sq_data$Intimate_group_meeting_hours, na.rm = TRUE) == 0 |
+  sum(my_sq_data$Intimate_1_on_1_meeting_hours, na.rm = TRUE) == 0
+  ){
+  
+  md2html("## Note: there is insufficient collaboration data to display.")
+  
+} else {
+  
+  my_sq_data %>%
+  mutate(Date = as.Date(Date, format = "%m/%d/%Y")) %>%
+  group_by(Date) %>%
+  summarise(
+    across(
+      .cols = c(Intimate_group_meeting_hours, Intimate_1_on_1_meeting_hours),
+      .fns = ~mean(., na.rm = TRUE)
+    )
+  ) %>%
+  pivot_longer(cols = c(Intimate_group_meeting_hours,
+                        Intimate_1_on_1_meeting_hours),
+               names_to = "Metrics",
+               values_to = "Hours") %>%
+  ggplot(aes(x = Date,
+             y = Hours,
+             group = Metrics,
+             fill = Metrics)) +
+  geom_area() +
+  scale_fill_manual(values = 
+                      c("Intimate_group_meeting_hours" = rgb2hex(49, 97, 124),
+                        "Intimate_1_on_1_meeting_hours" = rgb2hex(1, 147, 157)),
+                    labels = us_to_space) +
+  theme_wpa_basic() +
+  labs(
+    title = "Time in intimate meetings",
+    subtitle = "Average meeting hours per person each week",
+    caption = extract_date_range(my_sq_data, return = "text")
+  )
+  
+}
+
+
+
+```
+

@@ -1,0 +1,61 @@
+Notes
+=====================================
+
+
+Column {data-width=20%}
+-----------------------------------------------------------------------
+
+### Report Notes
+
+```{r}
+flexdashboard::valueBox(
+  value = "",
+  color = rgb2hex(130, 130, 130)
+  )
+
+```
+
+### <B>Report Notes</B> {.no-title}
+
+```{r}
+  
+end_time <- Sys.time()
+
+
+text1 <- paste("This report was generated on ", format(Sys.time(), "%b %d %Y"), ".") 
+
+text2 <- my_sq_data %>% check_query(return = "text", validation = TRUE) 
+
+text3 <- paste("Total Runtime was: ", difftime(end_time, start_time, units = "mins") %>% round(2), "minutes.")
+
+paste(text1, text2, text3, sep = "\n\n" )%>% md2html() 
+
+
+
+```
+
+
+Column {data-width=80%}
+-----------------------------------------------------------------------
+
+### Glossary
+
+```{r}
+flexdashboard::valueBox(
+  value = "",
+  color = rgb2hex(130, 130, 130)
+  )
+
+```
+
+
+### <B> Glossary </B> {.no-title}
+
+```{r}
+
+gloss_tb %>%
+  create_dt(
+    freeze = 0
+  )
+
+```

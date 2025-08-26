@@ -266,6 +266,7 @@ utils::globalVariables(
     "degree",
     "eigenvector",
     "node_size",
-    "pagerank"
+    "pagerank",
+    "category"
     )
 )

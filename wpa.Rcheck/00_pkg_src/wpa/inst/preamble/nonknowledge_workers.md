@@ -1,0 +1,3 @@
+**Non-knowledge workers**  refer to **persons** with unusually low average collaboration hours. These may represent individuals who are not required to collaborate via Outlook and Teams as part of their role or shift or may be part-time staff. Workplace Analytics data may not be representative of these individuals' workday experience.  
+
+For this reason, we suggest excluding non-knowledge workers from your analysis. You can easily remove them from your dataset by using the function `identify_nkw(return = "data_clean")`.  

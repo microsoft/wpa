@@ -58,10 +58,12 @@ There is an option to remove stopwords by passing a data frame into the
 \code{stopwords} argument.
 }
 \examples{
-tm_wordcloud(mt_data, keep = 30)
+mt_data_mini <- mt_data[sample(1:nrow(mt_data), 500), ]
+
+tm_wordcloud(mt_data_mini, keep = 30)
 
 # Removing stopwords
-tm_wordcloud(mt_data, keep = 30, stopwords = c("weekly", "update"))
+tm_wordcloud(mt_data_mini, keep = 30, stopwords = c("weekly", "update"))
 
 }
 \seealso{

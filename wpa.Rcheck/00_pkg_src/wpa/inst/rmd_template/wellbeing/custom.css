@@ -1,0 +1,25 @@
+.navbar {
+  background-color: rgb(47,85,151);
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: Arial;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+}
+
+body {
+  font-family: Arial;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-color: #FFFFFF;
+}
+
+.chart-title {
+  font-family: Arial;
+  height:100px;
+  display: inline-block;
+  overflow: auto;
+}

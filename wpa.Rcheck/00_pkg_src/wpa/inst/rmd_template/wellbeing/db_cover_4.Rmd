@@ -1,0 +1,35 @@
+Introduction
+=====================================
+
+<div class="jumbotron" style="background-color:#FFFFFF;">
+<!--<img src="Microsoft-Viva-Insights-logo.png" style="float:right;width:180px;height:180px;">-->
+  <h1 class="display-4">Employee Wellbeing Report</h1>
+  <p class="lead" style="color:gray;"> <B> Microsoft Viva | Organisational Insights </B></p>
+  <hr class="my-4">
+  <p>  <font size="+1"> <em> Employee wellbeing has demonstrated the ability to improve employee engagement, retention and productivity within a company. 
+  <br> Get insights into employee wellbeing across your company and uncover opportunities to improve work life balance, flexible working opportunities, organizational resilience and a sense of community. </em> </font></p>
+  <br>
+  <h4>Table of Contents</p>
+  <div class="row">
+  <div class="col-md-6"><!-- first column -->
+  <div class="list-group">
+  <a href="#collaboration" class="list-group-item">1. Collaboration</a>
+  <a href="#balance" class="list-group-item">2. Balance</a>
+  <a href="#urgency" class="list-group-item">3. Urgency</a>
+  <a href="#flexibility" class="list-group-item">4. Flexibility</a>
+  </div>
+  </div>
+  <div class="col-md-6"><!-- second column -->
+  <div class="list-group">
+  <a href="#activity-patterns" class="list-group-item">5. Activity Patterns</a>
+  <a href="#focus" class="list-group-item">6. Focus</a>
+  <a href="#community" class="list-group-item">7. Community</a>
+  <a href="#informal-communication" class="list-group-item">8. Informal communication</a>
+  </div>
+  </div>
+  </div>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#collaboration" role="button">Start exploring</a>
+  </p>
+</div>
+<br>

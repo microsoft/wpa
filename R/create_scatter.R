@@ -84,9 +84,7 @@ create_scatter <- function(data,
     data %>%
     filter(!(!!sym(hrvar) %in% violate_thres_chr)) %>%
     group_by(PersonId, !!sym(hrvar)) %>%
-    summarise_at(vars(!!sym(metric_x),
-                      !!sym(metric_y)),
-                 ~mean(.)) %>%
+    summarise(across(all_of(c(metric_x, metric_y)), ~mean(.)), .groups = "drop") %>%
     ungroup()
 
   plot_object <-
@@ -105,9 +103,7 @@ create_scatter <- function(data,
   myTable_return <-
     myTable %>%
     group_by(!!sym(hrvar)) %>%
-    summarise_at(vars(!!sym(metric_x),
-                      !!sym(metric_y)),
-                 ~mean(.))
+    summarise(across(all_of(c(metric_x, metric_y)), ~mean(.)), .groups = "drop")
 
   if(return == "table"){
 

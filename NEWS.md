@@ -1,3 +1,16 @@
+# wpa 1.10.0
+
+- Refactored codebase to use latest dplyr syntax
+- Added support for logical outcome and categorical predictor variables in `create_IV()`
+- Added detection of text missing values in `validation_report()`
+- Enhanced flexibility in display control for `create_dt()`
+- Improved test coverage
+
+# wpa 1.9.2
+
+- Improved missing value detection for `validation_report()`, `hrvar_count_all()` (#35)
+- Added support for logical outcome variables for `create_IV()` (#240)
+
 # wpa 1.9.1
 
 - Minor bug fixes and aesthetic improvements.

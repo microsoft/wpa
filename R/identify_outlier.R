@@ -47,7 +47,7 @@ identify_outlier <- function(data,
   main_table <-
     data %>%
     group_by(!!sym(group_var)) %>%
-    summarise_at(vars(!!sym(metric)), ~mean(.)) %>%
+    summarise(across(!!sym(metric), ~mean(.)), .groups = "drop") %>%
     mutate(zscore = (!!sym(metric) - mean(!!sym(metric)))/sd(!!sym(metric)))
 
   return(main_table)

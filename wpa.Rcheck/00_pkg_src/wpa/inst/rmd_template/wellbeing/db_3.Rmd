@@ -1,0 +1,221 @@
+Urgency
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B>
+  <font size="+3">
+    Can teams respond to urgent needs without risking employee wellbeing?
+  </font>
+</B>
+<br>
+<br>
+</p>
+
+<!--
+<p>
+  <a class="btn btn-primary btn-lg btn-block" data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample6">
+    Resilience: Is the organisation able to respond to urgent needs without risking employee wellbeing?
+  </a>
+</p>
+<div class="collapse" id="collapseExample6">
+  <div class="card card-body">
+    Companies need to cope with unexpected demands without impacting work-life balance. Protect groups with high levels of urgency and after-hours work by shifting towards more planned activities.
+  </div>
+</div>
+<hr>
+-->
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### % of work weeks included urgent collaboration
+
+```{r}
+
+## Pre-calculation
+## Summary table for urgency
+urg_sum_tb <-
+  list(
+  my_sq_data %>%
+    group_by(!!sym(hrvar), PersonId) %>%
+    summarise(across(IsUrgent, ~any(., na.rm = TRUE)), .groups = "drop") %>% # TRUE if any
+    group_by(!!sym(hrvar)) %>%
+    summarise(across(IsUrgent, ~mean(., na.rm = TRUE))) %>%
+    rename(PercentageAffected = "IsUrgent"),
+  my_sq_data %>%
+    group_by(!!sym(hrvar), PersonId) %>%
+    summarise(across(IsUrgent, ~sum(., na.rm = TRUE)), .groups = "drop") %>%
+    group_by(!!sym(hrvar)) %>%
+    summarise(across(IsUrgent, ~mean(., na.rm = TRUE))) %>%
+    rename(NumberUrgentWeeks = "IsUrgent"),
+  my_sq_data %>%
+    hrvar_count(hrvar,
+                return = "table")
+) %>%
+  purrr::reduce(full_join, by = hrvar) %>%
+  filter(n >= 5)
+
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  urg_percent <- "0 %"
+  
+} else {
+
+  urg_percent <- scales::percent(mean(my_sq_data$IsUrgent))  
+  
+}
+
+## KPI box
+
+paste(urg_percent, "urgent collaboration") %>%
+  flexdashboard::valueBox(icon = "fa-exclamation")
+
+
+```
+
+### <B>Which teams are affected by urgent needs more?</B> <br> Work can be unpreditcable and there will be urgent requests, but an overwhelming amount will prevent employees from being able to complete business-as-usual activities.
+
+```{r}
+
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
+  urg_sum_tb %>%
+  ggplot(aes(x = PercentageAffected,
+             y = NumberUrgentWeeks,
+             colour = !!sym(hrvar),
+             size = n)) +
+  geom_point(alpha = 0.8) +
+  theme_wpa_basic() +
+  labs(
+    title = "Urgent Collaboration",
+    subtitle = "Impact and Frequency of Emails with 'Urgent' keywords",
+    x = "% of employees affected",
+    y = "Urgent weeks per employee (average)",
+    caption = paste("Bubble size measures number of people in organization.",
+                    extract_date_range(my_sq_data, return = "text"))) +
+  scale_size(range = c(1, 20)) +
+  scale_x_continuous(labels = scales::percent) +
+  ggrepel::geom_text_repel(aes(label = !!sym(hrvar)),
+                           size = 3,
+                           force_pull = -0.02,
+                           colour = "grey40") +
+  theme(
+    legend.position = "none"
+  )
+  
+}
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### % change in after-hours when urgent collaboration is present
+
+```{r}
+urg_calc <- my_sq_data %>%
+  group_by(IsUrgent) %>%
+  summarise(across(After_hours_collaboration_hours, ~mean(.)))
+
+any_urg <-
+  urg_calc %>%
+  filter(IsUrgent == TRUE) %>%
+  nrow()
+
+afch_urg <-
+  urg_calc %>%
+  filter(IsUrgent == TRUE) %>%
+  pull(After_hours_collaboration_hours)
+
+afch_nonurg <-
+  urg_calc %>%
+  filter(IsUrgent == FALSE) %>%
+  pull(After_hours_collaboration_hours)
+
+
+afch_display <- (afch_urg - afch_nonurg) / afch_nonurg
+
+if(any_urg == 0){
+  
+  afch_display <- "0 %"
+  
+} else {
+  
+  afch_display <- scales::percent(afch_display)
+  
+}
+
+afch_display %>%
+  paste("change in after hours") %>%
+  flexdashboard::valueBox(icon = "fa-moon",
+                          color = "#f59b76")
+```
+
+
+### <B>Is the organization able to respond to urgent needs without risking employee wellbeing?</B> <br> Companies need to cope with unexpected demands without impacting work-life balance. Protect groups with high levels of urgency and after-hours work by shifting towards more planned activities.
+
+```{r}
+groups_above_mingroup <-
+  my_sq_data %>%
+  hrvar_count(hrvar = hrvar, return = "table") %>%
+  filter(n >= 5) %>%
+  pull(!!sym(hrvar))
+
+if(sum(my_sq_data$IsUrgent, na.rm = TRUE) == 0){
+  
+  md2html("## Note: there is insufficient urgent collaboration data to display.")
+  
+} else {
+  
+my_sq_data %>%
+  filter(!!sym(hrvar) %in% groups_above_mingroup) %>%
+  group_by(IsUrgent, !!sym(hrvar)) %>%
+  summarise(across(After_hours_collaboration_hours, ~mean(.)), .groups = "drop") %>%
+  mutate(Urgent_collaboration =
+           case_when(IsUrgent == TRUE ~ "Urgent weeks",
+                     IsUrgent == FALSE ~ "Non-urgent weeks")) %>%
+  ggplot(aes(x = After_hours_collaboration_hours,
+             y = !!sym(hrvar),
+             colour = Urgent_collaboration)) +
+  geom_point(size = 3) +
+  scale_x_continuous(position = "top") +
+  scale_colour_manual(
+    name = "Urgent collaboration",
+    values = c(
+      "Non-urgent weeks" = "#00508F",
+      "Urgent weeks" = "#f59b76"
+    )
+  ) +
+  theme_wpa_basic() +
+  labs(title = "After hours collaboration",
+       subtitle = "Average hours per person per week",
+       caption = extract_date_range(my_sq_data, return = "text"),
+       x = us_to_space("After_hours_collaboration_hours")) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "#D9E7F7", size = 3), # lightblue bar
+    panel.grid.minor.x = element_line(color="gray"),
+    strip.placement = "outside",
+    strip.background = element_blank(),
+    strip.text = element_blank(),
+    axis.title = element_blank()
+  ) +
+  geom_vline(xintercept =
+               my_sq_data %>%
+               afterhours_sum(hrvar = NULL,
+                              return = "table") %>%
+               pull(After_hours_collaboration_hours),
+             colour = "red")
+  
+}
+
+```
+

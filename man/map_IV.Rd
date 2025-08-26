@@ -12,8 +12,8 @@ map_IV(data, predictors = NULL, outcome, bins = 10)
 \item{data}{Data frame containing the data.}
 
 \item{predictors}{Character vector containing the names of the predictor
-variables. If \code{NULL} (default) is supplied, all numeric variables in the
-data will be used.}
+variables. If \code{NULL} (default) is supplied, all numeric, character, and factor
+variables in the data will be used.}
 
 \item{outcome}{String containing the name of the outcome variable.}
 

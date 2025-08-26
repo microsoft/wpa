@@ -1,0 +1,90 @@
+* using log directory ‘/home/runner/work/wpa/wpa/wpa.Rcheck’
+* using R version 4.3.3 (2024-02-29)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 13.2.0-23ubuntu3) 13.2.0
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu3) 13.2.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--as-cran’
+* checking for file ‘wpa/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘wpa’ version ‘1.9.2’
+* package encoding: UTF-8
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘Martin Chan <martin.chan@microsoft.com>’
+
+Found the following (possibly) invalid URLs:
+  URL: https://igraph.org/r/html/1.3.0/cluster_leiden.html
+    From: man/network_p2p.Rd
+    Status: Error
+    Message: libcurl error code 6:
+      	Could not resolve host: igraph.org
+  URL: https://lifecycle.r-lib.org/articles/stages.html#experimental
+    From: man/IV_by_period.Rd
+          man/create_bar.Rd
+          man/create_stacked.Rd
+          man/create_tracking.Rd
+          man/flex_index.Rd
+          man/hrvar_count_all.Rd
+          man/identify_datefreq.Rd
+          man/network_describe.Rd
+          man/network_p2p.Rd
+          man/one2one_freq.Rd
+          man/remove_outliers.Rd
+          man/subject_scan.Rd
+          man/wellbeing_report.Rd
+          man/workpatterns_classify.Rd
+          man/workpatterns_classify_bw.Rd
+          man/workpatterns_classify_pav.Rd
+          man/workpatterns_hclust.Rd
+          man/workpatterns_report.Rd
+    Status: Error
+    Message: libcurl error code 6:
+      	Could not resolve host: lifecycle.r-lib.org
+  URL: https://lifecycle.r-lib.org/articles/stages.html#questioning
+    From: man/personas_hclust.Rd
+    Status: Error
+    Message: libcurl error code 6:
+      	Could not resolve host: lifecycle.r-lib.org
+  URL: https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/
+    From: man/create_dt.Rd
+    Status: Error
+    Message: libcurl error code 6:
+      	Could not resolve host: martinctc.github.io
+  URL: https://microsoft.github.io/wpa/
+    From: DESCRIPTION
+    Status: Error
+    Message: libcurl error code 6:
+      	Could not resolve host: microsoft.github.io
+  URL: https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html
+    From: man/network_g2g.Rd
+          man/network_p2p.Rd
+    Status: Error
+    Message: libcurl error code 6:
+      	Could not resolve host: rdrr.io
+  URL: https://www.fstpackage.org/
+    From: man/import_to_fst.Rd
+    Status: Error
+    Message: libcurl error code 6:
+      	Could not resolve host: www.fstpackage.org
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available:
+  'dplyr', 'tidyr', 'tidyselect', 'magrittr', 'purrr', 'reshape2',
+  'ggplot2', 'ggrepel', 'scales', 'htmltools', 'markdown', 'rmarkdown',
+  'networkD3', 'DT', 'tidytext', 'ggraph', 'igraph', 'proxy',
+  'ggwordcloud', 'data.table'
+
+Packages suggested but not available:
+  'knitr', 'extrafont', 'lifecycle', 'fst', 'glue', 'flexdashboard',
+  'lmtest', 'sandwich', 'testthat'
+
+The suggested packages are required for a complete check.
+Checking can be attempted without them by setting the environment
+variable _R_CHECK_FORCE_SUGGESTS_ to a false value.
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR, 1 NOTE

@@ -1,0 +1,283 @@
+Informal Communication
+=====================================
+
+<body style="background-color:white;font-family:arial">
+
+<p style="color:gray;background-color:white;margin-left: 20px">
+<br>
+<B>
+  <font size="+3">
+    Are employees connecting informally? 
+  </font>
+</B>
+<br>
+<br>
+</p>
+
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Chats sent on average per person each week
+
+```{r}
+KPI_1 <- 
+  my_sq_data %>%
+  create_bar(metric = "Instant_messages_sent",
+             hrvar = NULL,
+             return = "table") %>%
+  select(Instant_messages_sent) %>%
+  pull(1) %>%
+  round(1)
+
+paste(KPI_1, "weekly chats") %>%
+  flexdashboard::valueBox(icon = "fa-users",
+                          color = "#34b1e2")
+
+```
+
+### <B>Are employees connecting informally?</B> <br> Boost employee satisfaction and increase networks through informal communication using teams chats.
+
+```{r}
+
+community2_w1_plot1 <- 
+  my_sq_data %>%
+  rename(Chats_sent = "Instant_messages_sent") %>%
+  create_bar(metric = "Chats_sent",
+             hrvar=hrvar,
+             rank = NULL
+             )
+
+community2_w1_plot1 <-
+  community2_w1_plot1 +
+  labs(title = "Weekly chats",
+       subtitle= "Average chats sent per person each week")
+
+community2_w1_plot1 
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of writen communication conducted informally via chats
+
+```{r}
+# Custom formatter for IMs
+format_im <- function(x){
+  x <- gsub(pattern = "Instant_messages_",
+            replacement = "Chats_",
+            x = x)
+  us_to_space(x)
+}
+
+p_table <-
+  my_sq_data %>%
+  group_by(PersonId) %>%
+  summarise(
+    across(
+      .cols = c(Instant_messages_sent,
+                Emails_sent),
+      .fns = ~mean(., na.rm = TRUE)
+    ),
+    .groups = "drop"
+  ) %>%
+  summarise(
+    across(
+      .cols = c(Instant_messages_sent,
+                Emails_sent),
+      .fns = ~mean(., na.rm = TRUE)
+    )
+  ) %>%
+  mutate(Answer = Instant_messages_sent / (Instant_messages_sent + Emails_sent))
+
+KPI_2 <- p_table$Answer %>%
+  scales::percent() %>%
+  .[[1]] 
+						  
+paste(KPI_2, "proportion of chats") %>%
+  flexdashboard::valueBox(icon = "fa-users",
+                          color = rgb2hex(1, 147, 157))
+
+```
+
+### <B>Can email activity be conducted via IM instead?</B> <br> Teams chats can help employees gain answers to questions faster and feel more connected to their colleagues, fostering friendships.
+
+```{r}
+my_sq_data %>%
+  group_by(PersonId, !!sym(hrvar)) %>%
+  summarise(
+    across(
+      .cols = c(Instant_messages_sent,
+                Emails_sent),
+      .fns = ~mean(., na.rm = TRUE)
+    ),
+    .groups = "drop"
+  ) %>%
+  group_by(!!sym(hrvar)) %>%
+  summarise(
+    Instant_messages_sent = mean(Instant_messages_sent, na.rm = TRUE),
+    Emails_sent = mean(Emails_sent, na.rm = TRUE),
+    n = n_distinct(PersonId)
+  ) %>%
+  filter(n >= 5) %>%
+  pivot_longer(cols = c(Instant_messages_sent, Emails_sent),
+               names_to = "Metrics",
+               values_to = "Sent") %>%
+  group_by(!!sym(hrvar)) %>%
+  mutate(Sent = Sent/sum(Sent, na.rm = TRUE)) %>%
+  mutate(Metrics = factor(Metrics,
+                        levels = rev(c("Instant_messages_sent",
+                                       "Emails_sent")))
+       ) %>%
+  ggplot(aes(x = !!sym(hrvar),
+             y = Sent,
+             fill = Metrics)) +
+  geom_col(position = "stack") +
+  geom_text(aes(colour = Metrics,
+                label = scales::percent(Sent, accuracy = 1)),
+                position = position_stack(vjust = .5)) +
+  scale_fill_manual(values = c(
+    "Instant_messages_sent" = rgb2hex(1, 147, 157),
+    "Emails_sent" = rgb2hex(189, 191, 192)), 
+    labels = format_im,
+    guide = guide_legend(reverse = TRUE)
+  ) +
+  scale_colour_manual(values = c(
+    "Instant_messages_sent" = "#FFFFFF",
+    "Emails_sent" = "#FFFFFF"), guide = FALSE) +
+  theme_wpa_basic() +
+  theme(
+    axis.line.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank()) +
+  scale_y_continuous(labels = scales::percent, position = "right") +
+  coord_flip() +
+  labs(title = "Written communciation",
+       subtitle = "Percentage of written communication by type",
+       caption = extract_date_range(my_sq_data, return = "text"))
+
+```
+
+Column {data-width=30%}
+-----------------------------------------------------------------------
+
+### Percentage of chats that occurs across levels
+
+```{r}
+
+if(
+  sum(my_sq_data$IMs_sent_other_level, na.rm = TRUE) == 0 |
+  sum(my_sq_data$IMs_sent_same_level, na.rm = TRUE) == 0
+  ){
+  
+  KPI_2 <- "0%"
+
+} else {
+  
+  p_table <-
+  my_sq_data %>%
+  group_by(PersonId) %>%
+  summarise(
+    across(
+      .cols = c(IMs_sent_other_level,
+                IMs_sent_same_level),
+      .fns = ~mean(., na.rm = TRUE)
+    ),
+    .groups = "drop"
+  ) %>%
+  summarise(
+    across(
+      .cols = c(IMs_sent_other_level,
+                IMs_sent_same_level),
+      .fns = ~mean(., na.rm = TRUE)
+    )
+  ) %>%
+  mutate(Answer = IMs_sent_other_level / (IMs_sent_other_level + IMs_sent_same_level))
+  
+  KPI_2 <- p_table$Answer %>%
+  scales::percent() %>%
+  .[[1]] 
+  
+}
+						  
+paste(KPI_2, "chats across levels") %>%
+  flexdashboard::valueBox(icon = "fa-users",
+                          color = rgb2hex(0, 43, 73))
+						  
+
+```
+
+### <B>Are employees engaging with people other than their peers?</B> <br> Encourage employees to engage with members of the team that not just their peers to help them feel a stronger sense of community.
+
+```{r}
+
+if(
+  sum(my_sq_data$IMs_sent_other_level, na.rm = TRUE) == 0 |
+  sum(my_sq_data$IMs_sent_same_level, na.rm = TRUE) == 0
+  ){
+  
+  md2html("## Note: there is insufficient collaboration data to display.")
+  
+} else {
+  
+  my_sq_data %>%
+  mutate(Informal_same_level = IMs_sent_same_level,
+         Informal_other_level = IMs_sent_other_level) %>%
+  group_by(PersonId, !!sym(hrvar)) %>%
+  summarise(
+    across(
+      .cols = c(Informal_same_level, Informal_other_level),
+      .fns = ~mean(., na.rm = TRUE)
+    ),
+    .groups = "drop"
+  ) %>%
+  group_by(!!sym(hrvar)) %>%
+  summarise(
+    Same_level = mean(Informal_same_level, na.rm = TRUE),
+    Across_levels = mean(Informal_other_level, na.rm = TRUE),
+    n = n_distinct(PersonId)
+  ) %>%
+  filter(n >= 5) %>%
+  pivot_longer(cols = c(Same_level, Across_levels),
+               names_to = "Metrics",
+               values_to = "Sent") %>%
+  group_by(!!sym(hrvar)) %>%
+  mutate(Sent = Sent/sum(Sent, na.rm = TRUE)) %>%
+  mutate(Metrics = factor(Metrics,
+                          levels = rev(c("Across_levels","Same_level")))
+         ) %>%
+  ggplot(aes(x = !!sym(hrvar),
+             y = Sent,
+             fill = Metrics)) +
+  geom_col(position = "stack") +
+  geom_text(aes(colour = Metrics,
+                label = scales::percent(Sent, accuracy = 1)),
+                position = position_stack(vjust = .5)) +
+  scale_fill_manual(values = c(
+    "Same_level" = rgb2hex(189, 191, 192) ,
+    "Across_levels" = rgb2hex(0, 43, 73) 
+  ), 
+  labels = us_to_space,
+  guide = guide_legend(reverse = TRUE)
+  ) +
+  
+  scale_colour_manual(values = c(
+    "Same_level" = "#FFFFFF",
+    "Across_levels" = "#FFFFFF" 
+  ), guide = FALSE) +
+  theme_wpa_basic() +
+  theme(
+    axis.line.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank()) +
+  scale_y_continuous(labels = scales::percent, position = "right") +
+  coord_flip() +
+  labs(title = "Chats distribution",
+       subtitle = "Percentage of chats sent",
+       caption = extract_date_range(my_sq_data, return = "text"))
+  
+}
+
+
+```
