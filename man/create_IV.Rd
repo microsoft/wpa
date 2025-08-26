@@ -18,8 +18,8 @@ create_IV(
 \item{data}{A Person Query dataset in the form of a data frame.}
 
 \item{predictors}{A character vector specifying the columns to be used as
-predictors. Defaults to NULL, where all numeric vectors in the data will be
-used as predictors.}
+predictors. Defaults to NULL, where all numeric, character, and factor vectors
+in the data will be used as predictors.}
 
 \item{outcome}{A string specifying a binary variable, i.e. can only contain
 the values 1 or 0, or a logical variable (TRUE/FALSE). Logical variables will
@@ -62,7 +62,7 @@ in \code{Information::create_infotables()}.
 }
 \description{
 Specify an outcome variable and return IV outputs.
-All numeric variables in the dataset are used as predictor variables.
+All numeric, character, and factor variables in the dataset are used as predictor variables.
 }
 \examples{
 # Return a summary table of IV
