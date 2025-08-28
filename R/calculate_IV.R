@@ -45,33 +45,35 @@ calculate_IV <- function(data,
       )
   }
 
-  # Check if predictor is categorical (character or factor)
-  if(is.character(pred_var) || is.factor(pred_var)){
-    
-    # For categorical variables, use the categories themselves as intervals
-    unique_vals <- unique(pred_var[!is.na(pred_var)])
-    intervals <- as.numeric(as.factor(pred_var))
-    
-  } else {
-    
+  # Treat numeric predictors as numeric; anything else (character, factor, logical, etc.) as categorical
+  if(is.numeric(pred_var) && !is.factor(pred_var) && !is.character(pred_var) && !is.logical(pred_var)){
+
     # For numeric variables, use quantile-based binning (original logic)
-    # Compute q
     q <- stats::quantile(
       pred_var,
       probs = c(1:(bins - 1) / bins),
       na.rm = TRUE,
       type = 3
-      )
+    )
 
     # Compute cuts
     cuts <- unique(q)
 
-    # Compute intervals
-    intervals <-
-      findInterval(
+    # Compute intervals (guard for degenerate cuts)
+    if(length(cuts) == 0 || all(is.na(cuts))){
+      intervals <- rep(1L, length(pred_var))
+    } else {
+      intervals <- findInterval(
         pred_var,
         vec = cuts,
-        rightmost.closed = FALSE)
+        rightmost.closed = FALSE
+      )
+    }
+
+  } else {
+
+    # For categorical variables (character, factor, logical, ordered, etc.)
+    intervals <- as.numeric(as.factor(pred_var))
   }
 
   # Compute cut_table
@@ -82,8 +84,28 @@ calculate_IV <- function(data,
     as.data.frame.matrix()
 
   ## get min/max or category labels
-  if(is.character(pred_var) || is.factor(pred_var)){
-    
+  if(is.numeric(pred_var)){
+
+    # For numeric variables, use min/max ranges (original logic)
+    cut_table_2 <-
+      data.frame(
+        var = pred_var,
+        intervals
+      ) %>%
+      group_by(intervals) %>%
+      summarise(
+        min = suppressWarnings(min(var, na.rm = TRUE)) %>% round(digits = 1),
+        max = suppressWarnings(max(var, na.rm = TRUE)) %>% round(digits = 1),
+        n = n(),
+        .groups = "drop"
+      ) %>%
+      mutate(!!sym(predictor) :=
+               glue::glue("[{round(min, digits = 1)},{round(max, digits = 1)}]")) %>%
+      mutate(percentage = n / sum(n)) %>%
+      select(!!sym(predictor), intervals, n, percentage)
+
+  } else {
+
     # For categorical variables, use the actual category names
     cut_table_2 <-
       data.frame(
@@ -92,33 +114,14 @@ calculate_IV <- function(data,
       ) %>%
       group_by(intervals) %>%
       summarise(
-        category = first(var),  # Get the actual category name
+        category = dplyr::first(as.character(var)),
         n = n(),
         .groups = "drop"
       ) %>%
-      mutate(!!sym(predictor) := category) %>%
+  mutate(!!sym(predictor) := .data$category) %>%
       mutate(percentage = n / sum(n)) %>%
       select(!!sym(predictor), intervals, n, percentage)
-      
-  } else {
-    
-    # For numeric variables, use min/max ranges (original logic)
-    cut_table_2 <-
-      data.frame(
-      var = pred_var,
-      intervals
-    ) %>%
-      group_by(intervals) %>%
-      summarise(
-        min = min(var, na.rm = TRUE) %>% round(digits = 1),
-        max = max(var, na.rm = TRUE) %>% round(digits = 1),
-        n = n(),
-        .groups = "drop"
-      ) %>%
-      mutate(!!sym(predictor) :=
-      glue::glue("[{round(min, digits = 1)},{round(max, digits = 1)}]")) %>%
-      mutate(percentage = n / sum(n)) %>%
-      select(!!sym(predictor), intervals, n, percentage)
+
   }
 
   # Create variables that are double

@@ -24,7 +24,7 @@ What has changed?
 
 Business leaders often want to understand how their business is performing so they can make data-driven decisions about how to work more efficiently and effectively. Identifying what has changed, and why, can lead business leaders to update their operations and strategy to improve business results. This means that one of the most common analytical asks for Workplace Analytics analysts is, “What has changed?” The **wpa** package offers two techniques to identify significant changes in Workplace Analytics metrics over time: `period_change()` and `IV_by_period()`.
 
-For example, leaders at Contoso Corporation might be interested in how overall levels of digital collaboration are changing as they approach the end-of-year holidays. We can look at this question with the built-in `sq_data` dataset and the `Collaboration_hours` metric to show how an analyst could answer that.
+For example, leaders at Contoso Corporation might be interested in how overall levels of digital collaboration are changing over time. We can look at this question with the built-in `sq_data` dataset and the `Collaboration_hours` metric to show how an analyst could answer that.
 
 First, let's load the **wpa** package:
 
@@ -34,12 +34,18 @@ library(dplyr)
 ```
 
 ```{r message=FALSE, warning=FALSE}
+# Ensure Date column is in Date class for downstream functions
+sq_data <- wpa::sq_data %>%
+  dplyr::mutate(Date = as.Date(Date, format = "%m/%d/%Y"))
+```
+
+```{r message=FALSE, warning=FALSE}
 sq_data %>% 
   create_line(hrvar = "Domain", 
               metric = "Collaboration_hours")
 ```
 
-This chart provides us with a good starting point, as we can see a change in collaboration activity throughout. We will study the change between November and December. The next step is to refine that insight, which we’ll do with the `period_change()` function.
+This chart provides us with a good starting point, as we can see a change in collaboration activity throughout. We will study the change across two adjacent weeks in the observed period. The next step is to refine that insight, which we’ll do with the `period_change()` function.
 
 ## `period_change()`
 
@@ -47,17 +53,27 @@ The `period_change()` function returns a histogram of how many people changed a 
 
 In the scenario with Contoso, we can see that collaboration hours step down throughout November and December – but is this significant?
 
-First, let’s compare the change in collaboration for the first two weeks of November. 
+First, let’s compare the change in collaboration for two adjacent weeks early in the observed period. 
 
 ```{r message=FALSE, warning=FALSE}
+# Derive two adjacent weekly windows from available dates
+all_dates <- sort(unique(sq_data$Date))
+min_date <- min(all_dates, na.rm = TRUE)
+max_date <- max(all_dates, na.rm = TRUE)
+
+before_start <- min_date
+before_end   <- min(min_date + 6, max_date)
+after_start  <- min(before_end + 1, max_date)
+after_end    <- min(after_start + 6, max_date)
+
 sq_data %>%
   period_change(
     compvar = "Collaboration_hours",
-    before_start = "2019-11-03",
-    before_end = "2019-11-09",
-    after_start = "2019-11-10",
-    after_end = "2019-11-16"
-    )
+    before_start = as.character(before_start),
+    before_end   = as.character(before_end),
+    after_start  = as.character(after_start),
+    after_end    = as.character(after_end)
+  )
 ```
 
 This function compares the collaboration hours of the population between the `before` period (week of November 3) and the `after` period (week of November 10). It places each employee’s data into bins according to how much their collaboration time changed between the two periods. For example, we see in the figure above that 107 people had their collaboration hours decrease by between 0 and 10%. We also see that 67 had their collaboration hours increase by between 0 and 10%. These 174 people had a total collaboration time during the second week of November that was within 10% of their collaboration time during the first week of November (so, it was more or less stable). 
@@ -66,17 +82,23 @@ In this way, we end up with a distribution of how employee collaboration hours h
 
 We also get a _p-value_ (shown at the right of the image caption) that tells us whether the two samples are statistically significantly different. The smaller the value, the more significant the differences. Typically, we look for a significance level of less than 0.05, but the exact threshold you pick depends on how sure you need to be. In this case, the p-value of 0.0629 is too large for us to be sure at the 95% confidence level that there has been a change in collaboration activity between the first two weeks of November.
 
-However, if we compare November to December, we see a significant difference in collaboration hours:
+However, if we compare two longer adjacent ranges in the observed period, we may see a significant difference in collaboration hours:
 
 ```{r message=FALSE, warning=FALSE}
+# Build two longer adjacent ranges (up to 4 weeks each) within available dates
+long_before_start <- min_date
+long_before_end   <- min(min_date + 27, max_date)
+long_after_start  <- min(long_before_end + 1, max_date)
+long_after_end    <- min(long_after_start + 27, max_date)
+
 sq_data %>%
   period_change(
     compvar = "Collaboration_hours",
-    before_start = "2019-11-03",
-    before_end = "2019-11-30",
-    after_start = "2019-12-01",
-    after_end = "2019-12-31"
-    )
+    before_start = as.character(long_before_start),
+    before_end   = as.character(long_before_end),
+    after_start  = as.character(long_after_start),
+    after_end    = as.character(long_after_end)
+  )
 ```
 
 The p-value here is close to zero. This change is unsurprising as we saw collaboration hours decrease sharply during the first week of December.
@@ -90,28 +112,28 @@ While `period_change()` is great for looking at a specific collaboration metric,
 
 Essentially, the `IV_by_period()` function tells us which metrics in the dataset best differentiate the `before` and `after` time periods. The higher the Information Value, the more different that metric is between the two periods (because it better explains the difference between those two groups).
 
-Looking at the change between the first two weeks of November, we see very small Information Values. This tells us that the collaboration activity is very similar between those two weeks.
+Looking at the change between these two adjacent weeks, we see very small Information Values. This tells us that the collaboration activity is very similar between those two weeks.
 
 ```{r message=FALSE, warning=FALSE}
 sq_data %>%
   IV_by_period(
-    before_start = "2019-11-03",
-    before_end = "2019-11-09",
-    after_start = "2019-11-10",
-    after_end = "2019-11-16"
-    )
+    before_start = as.character(before_start),
+    before_end   = as.character(before_end),
+    after_start  = as.character(after_start),
+    after_end    = as.character(after_end)
+  )
 ```
 
-If we look at the differences between November and December, we see higher Information Values that reflect a big difference in collaboration activity. In this case we see that the Internal Network Size has an Information Value score of 0.28, which means that it is moderately predictive of the difference between the two months. We also see large values for Email and Instant Message activities. Although the Information Value does not tell us how these metrics changed, it provides a good starting point for further analysis to determine what changed in those metrics.
+If we look at the differences between the two longer ranges, we often see higher Information Values that reflect a bigger difference in collaboration activity. Although the Information Value does not tell us how these metrics changed, it provides a good starting point for further analysis to determine what changed in those metrics.
 
 ```{r message=FALSE, warning=FALSE}
 sq_data %>%
   IV_by_period(
-    before_start = "2019-11-03",
-    before_end = "2019-11-30",
-    after_start = "2019-12-01",
-    after_end = "2019-12-31"
-    )
+    before_start = as.character(long_before_start),
+    before_end   = as.character(long_before_end),
+    after_start  = as.character(long_after_start),
+    after_end    = as.character(long_after_end)
+  )
 ```
 
 We can use this method to answer the Contoso leadership’s question about how collaboration activity has changed. Now that we know the top metrics that have changed, we can look at each of them in more detail, including with the `period_change()` function, to more fully describe how collaboration differs going into the end of the year.

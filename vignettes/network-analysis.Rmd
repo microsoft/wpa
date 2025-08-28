@@ -115,7 +115,7 @@ network_g2g(g2g_data, return = "plot")
 
 ```{r message=FALSE, warning=FALSE}
 p2p_data <- p2p_data_sim(size = 50)
-p2p_data %>% network_p2p(display = "louvain", path = NULL, return = "plot")
+p2p_data %>% network_p2p(community = "louvain", path = NULL, return = "plot")
 ```
 
 - `display` lets you decide on what algorithm you want your output to be based on. Find more information here. 

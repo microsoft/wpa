@@ -3,7 +3,8 @@ url: https://microsoft.github.io/wpa/
 template:
   params:
     bootswatch: cosmo
-  path: "inst/pkgdown"
+  includes:
+    footer: inst/pkgdown/footer.html
 
 navbar:
   structure:
