@@ -261,6 +261,7 @@ utils::globalVariables(
     "Collaboration_hours_external",
     ".GRP",
     "Id",
+    "id",
     "betweenness",
     "closeness",
     "degree",
