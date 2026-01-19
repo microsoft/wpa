@@ -1,3 +1,7 @@
+# wpa 1.10.1
+
+- Minor update to globals to support dplyr update.
+
 # wpa 1.10.0
 
 - Refactored codebase to use latest dplyr syntax

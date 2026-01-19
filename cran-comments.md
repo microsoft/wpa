@@ -1,8 +1,9 @@
 ## Test environments
-* local R installation, R 4.0.5
-* ubuntu 16.04 (on travis-ci), R 4.0.5
+* local Windows installation, R 4.5.1
+* GitHub Actions (ubuntu-latest), R-release
+* GitHub Actions (windows-latest), R-release
 * win-builder (devel)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 note
+0 errors | 0 warnings | 0 notes
