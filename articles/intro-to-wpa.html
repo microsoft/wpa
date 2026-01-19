@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.10.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.10.1</span>
       </span>
     </div>
 
@@ -177,7 +177,7 @@
                         <h4 data-toc-skip class="author">Martin
 Chan</h4>
             
-            <h4 data-toc-skip class="date">2025-08-28</h4>
+            <h4 data-toc-skip class="date">2026-01-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/main/vignettes/intro-to-wpa.Rmd" class="external-link"><code>vignettes/intro-to-wpa.Rmd</code></a></small>
       <div class="hidden name"><code>intro-to-wpa.Rmd</code></div>
@@ -239,12 +239,12 @@ generate a stacked bar plot summarising the email and meeting hours by
 an HR attribute you specify:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="768"></p>
 <p>By changing the <code>hrvar()</code> argument, you can change the
 data being shown easily:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="768"></p>
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function also comes with an
 option to return summary tables, rather than plots. Just specify “table”
 in the <code>return</code> argument:</p>
@@ -278,8 +278,15 @@ which HR attribute/variable to use as a grouping variable with the
 <p>And here are what the outputs look like.</p>
 <p>Heatmap:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
+<code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">wpa</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/microsoft/wpa/issues/&gt;</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="768"></p>
 <p>Summary table:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
@@ -334,7 +341,7 @@ ease of use and adoption.</p>
 <p>Heatmap:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="768"></p>
 <p>Summary table:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
@@ -355,7 +362,7 @@ plot a 2 by 2 matrix straight from the Standard Query data, which is
 returned as a ggplot object:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrrel_matrix.html">mgrrel_matrix</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="768"></p>
 <p>By changing the <code>return</code> argument, you can also return a
 <strong>summary table</strong>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -415,7 +422,7 @@ the plot:</p>
 of meeting co-attendance rate of staff with managers.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-13-1.png" width="768"></p>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="" width="768"></p>
 <p>A table can be generated:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/mgrcoatt_dist.html">mgrcoatt_dist</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
@@ -441,7 +448,7 @@ plot:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/workloads_fizz.html">workloads_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-15-1.png" width="768"></p>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="" width="768"></p>
 <p>… and add custom titles, subtitles, and flip the axes by adding
 ggplot layers:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -452,9 +459,9 @@ ggplot layers:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a custom title"</span>,</span>
 <span>       subtitle <span class="op">=</span> <span class="st">"This is a custom sub-title"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span></span>
-<span><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will</span></span>
-<span><span class="co">#&gt; replace the existing one.</span></span></code></pre></div>
-<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
+<span><span class="co">#&gt; Coordinate system already present.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding new coordinate system, which will replace the existing one.</span></span></code></pre></div>
+<p><img src="intro-to-wpa_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="" width="768"></p>
 <p>Note that the “pipe” syntax changes from <code>%&gt;%</code> to
 <code>+</code> once you are manipulating a ggplot output, which will
 return an error if not used correctly.</p>
@@ -501,7 +508,7 @@ please log them at <a href="https://github.com/microsoft/wpa/issues/" class="ext
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

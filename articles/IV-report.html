@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.10.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.10.1</span>
       </span>
     </div>
 
@@ -517,7 +517,7 @@ collaboration hours:</p>
 <span>        outcome <span class="op">=</span> <span class="st">"X"</span>,</span>
 <span>        predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Email_hours"</span>, <span class="st">"Meeting_hours"</span>, <span class="st">"Total_focus_hours"</span><span class="op">)</span>,</span>
 <span>        return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="768"></p>
 <p>You may see, that all three are very strong predictors. Initially it
 might come as a bit of a surprise, that <code>Total_focus_hours</code>
 is actually the strongest predictor of those three, even though focus
@@ -534,13 +534,13 @@ target variable:</p>
 <span>    predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Email_hours"</span>, <span class="st">"Meeting_hours"</span>, <span class="st">"Total_focus_hours"</span><span class="op">)</span>,</span>
 <span>    return <span class="op">=</span> <span class="st">"plot-WOE"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span></code></pre></div>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="768"></p>
 <pre><code><span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span></code></pre>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-4-2.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-4-2.png" class="r-plt" alt="" width="768"></p>
 <pre><code><span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span></code></pre>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-4-3.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-4-3.png" class="r-plt" alt="" width="768"></p>
 <p>You may see, that meeting hours and email hours seem to have direct
 relationship with collaboration hours:</p>
 <ul>
@@ -582,7 +582,7 @@ predict high collaboration patterns:</p>
 <span>        outcome <span class="op">=</span> <span class="st">"High_collab"</span>,</span>
 <span>        predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FunctionType"</span>, <span class="st">"LevelDesignation"</span>, <span class="st">"Organization"</span><span class="op">)</span>,</span>
 <span>        return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="768"></p>
 <p>The plot shows the Information Value scores for these categorical
 predictors. You can see that different organizational attributes have
 varying predictive power for high collaboration patterns.</p>
@@ -623,10 +623,10 @@ each variable relate to the outcome:</p>
 <span>        predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FunctionType"</span>, <span class="st">"LevelDesignation"</span><span class="op">)</span>,</span>
 <span>        return <span class="op">=</span> <span class="st">"plot-WOE"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span></code></pre></div>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-7-1.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="768"></p>
 <pre><code><span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span></code></pre>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-7-2.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-7-2.png" class="r-plt" alt="" width="768"></p>
 <p>The WOE plots for categorical variables show how each category (e.g.,
 different function types or organizational levels) contributes to
 predicting the outcome. Positive WOE values indicate that category is
@@ -646,7 +646,7 @@ analysis:</p>
 <span>        outcome <span class="op">=</span> <span class="st">"High_collab"</span>,</span>
 <span>        predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Email_hours"</span>, <span class="st">"Meeting_hours"</span>, <span class="st">"FunctionType"</span>, <span class="st">"LevelDesignation"</span><span class="op">)</span>,</span>
 <span>        return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="IV-report_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
+<p><img src="IV-report_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="768"></p>
 <p>This mixed approach gives you a comprehensive view of which factors -
 whether behavioral (like email/meeting hours) or organizational (like
 function type) - are most predictive of your outcome of interest.</p>
@@ -790,7 +790,7 @@ please visit <a href="https://github.com/microsoft/wpa/issues" class="external-l
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

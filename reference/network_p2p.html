@@ -21,7 +21,7 @@ detection using either the Louvain or the Leiden algorithms."><meta property="og
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wpa</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.10.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.10.1</span>
       </span>
     </div>
 
@@ -343,13 +343,13 @@ communities and HR attributes.</p></li>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other Network:
-<code><a href="external_network_plot.html">external_network_plot</a>()</code>,
+<code><a href="external_network_plot.html">external_network_plot()</a></code>,
 <code><a href="g2g_data.html">g2g_data</a></code>,
-<code><a href="internal_network_plot.html">internal_network_plot</a>()</code>,
-<code><a href="network_describe.html">network_describe</a>()</code>,
-<code><a href="network_g2g.html">network_g2g</a>()</code>,
-<code><a href="network_summary.html">network_summary</a>()</code>,
-<code><a href="p2p_data_sim.html">p2p_data_sim</a>()</code></p></div>
+<code><a href="internal_network_plot.html">internal_network_plot()</a></code>,
+<code><a href="network_describe.html">network_describe()</a></code>,
+<code><a href="network_g2g.html">network_g2g()</a></code>,
+<code><a href="network_summary.html">network_summary()</a></code>,
+<code><a href="p2p_data_sim.html">p2p_data_sim()</a></code></p></div>
     </div>
 
     <div id="ref-examples">
@@ -391,6 +391,7 @@ communities and HR attributes.</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># leiden - igraph style with custom resolution parameters</span></span></span>
 <span class="r-in"><span><span class="fu">network_p2p</span><span class="op">(</span>data <span class="op">=</span> <span class="va">p2p_df</span>, community <span class="op">=</span> <span class="st">"leiden"</span>, comm_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"resolution"</span> <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>vertex attribute frame.color contains NAs. Replacing with default value black</span>
 <span class="r-plt img"><img src="network_p2p-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># louvain - ggraph style, using custom palette</span></span></span>
@@ -417,6 +418,7 @@ communities and HR attributes.</p></li>
 <span class="r-in"><span>  community <span class="op">=</span> <span class="st">"fluid_communities"</span>,</span></span>
 <span class="r-in"><span>  comm_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"no.of.communities"</span> <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>vertex attribute frame.color contains NAs. Replacing with default value black</span>
 <span class="r-plt img"><img src="network_p2p-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Calculate centrality measures and leiden communities, return at node level</span></span></span>
@@ -452,7 +454,7 @@ communities and HR attributes.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>
