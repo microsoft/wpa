@@ -286,7 +286,7 @@
 <div class="section level3">
 <h3 id="how-do-i-create-a-custom-hr-variable">How do I create a custom HR variable?<a class="anchor" aria-label="anchor" href="#how-do-i-create-a-custom-hr-variable"></a></h3>
 <p>The most common way to create a ‘custom HR variable’ is to create a categorical variable from one or more numeric variables. You may want to do this if you are trying to <em>bin</em> a numeric variable or create a custom rule-based segmentation with Workplace Analytics metrics.</p>
-<p>Here is an example of how to create a categorical variable (<code>N_DirectReports_NET</code>) with a numeric variable representing the number of direct reports, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">dplyr::case_when()</a></code> .</p>
+<p>Here is an example of how to create a categorical variable (<code>N_DirectReports_NET</code>) with a numeric variable representing the number of direct reports, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">dplyr::case_when()</a></code> .</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microsoft/wpa/" class="external-link">wpa</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span> <span class="co"># Or load dplyr</span></span>
@@ -301,7 +301,7 @@
 <span>                   <span class="va">NumberofDirectReports</span> <span class="op">&lt;=</span> <span class="fl">20</span> <span class="op">~</span> <span class="st">"Up to 20"</span>,</span>
 <span>                   <span class="va">NumberofDirectReports</span> <span class="op">&gt;=</span> <span class="fl">21</span> <span class="op">~</span> <span class="st">"21 +"</span>,</span>
 <span>                   <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Not classified"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate()</a></code> creates a new column, whereas <code><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">dplyr::case_when()</a></code> runs an if-else operation to classify numeric ranges to the right hand side of the <code>~</code> symbol. When the expression on the left hand side evaluates to <code>TRUE</code>, the value on the right hand side is assigned to the new column. At the end of the code, you will see that anything that doesn’t get classified gets an ‘error handling’ value. If a value ends up as “Not classified”, you should check whether there may be gaps in your <code><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">dplyr::case_when()</a></code> chunk that is not capturing all the values.</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate()</a></code> creates a new column, whereas <code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">dplyr::case_when()</a></code> runs an if-else operation to classify numeric ranges to the right hand side of the <code>~</code> symbol. When the expression on the left hand side evaluates to <code>TRUE</code>, the value on the right hand side is assigned to the new column. At the end of the code, you will see that anything that doesn’t get classified gets an ‘error handling’ value. If a value ends up as “Not classified”, you should check whether there may be gaps in your <code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">dplyr::case_when()</a></code> chunk that is not capturing all the values.</p>
 <p>Once you have created this new variable and checked that the classifications are correct, you can further your analysis by using it as an HR attribute, such as:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clean_spq_with_new_var</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
@@ -444,7 +444,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>

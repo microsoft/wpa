@@ -148,7 +148,7 @@ original 'portes' package."><meta property="og:image" content="https://microsoft
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Ljung and Box Portmanteau Test</h1>
-    <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/v1.10.1/R/Ljungbox.R" class="external-link"><code>R/Ljungbox.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/main/R/Ljungbox.R" class="external-link"><code>R/Ljungbox.R</code></a></small>
     <div class="hidden name"><code>LjungBox.Rd</code></div>
     </div>
 
@@ -251,22 +251,22 @@ Series Models". Biometrika, 65, 297-303.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">LjungBox</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># univariate test</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  lags statistic df   p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     5  5.481149  5 0.3600174</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    10  9.536813 10 0.4820246</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    15 19.390141 15 0.1965958</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    20 20.297468 20 0.4394654</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    25 27.946396 25 0.3103269</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    30 31.801408 30 0.3768202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5  3.249372  5 0.6616013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    10  7.672212 10 0.6608199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    15 16.441933 15 0.3533037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    20 18.176409 20 0.5757885</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    25 24.864528 25 0.4699862</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    30 28.251753 30 0.5570977</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">LjungBox</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># multivariate test</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  lags statistic  df   p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     5  25.64750  20 0.1777721</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    10  39.48042  40 0.4934737</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    15  59.49526  60 0.4941186</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    20  80.77675  80 0.4546571</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    25  92.28066 100 0.6960525</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    30 110.02589 120 0.7321163</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5  26.53544  20 0.1488471</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    10  37.92056  40 0.5642265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    15  54.82111  60 0.6648523</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    20  76.86143  80 0.5786876</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    25  88.99106 100 0.7767891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    30 108.76759 120 0.7597808</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -282,7 +282,7 @@ Series Models". Biometrika, 65, 297-303.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>

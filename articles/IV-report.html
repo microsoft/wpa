@@ -180,7 +180,7 @@ Liebal</h4>
             
             <h4 data-toc-skip class="date">2020-11-25</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/v1.10.1/vignettes/IV-report.Rmd" class="external-link"><code>vignettes/IV-report.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/main/vignettes/IV-report.Rmd" class="external-link"><code>vignettes/IV-report.Rmd</code></a></small>
       <div class="hidden name"><code>IV-report.Rmd</code></div>
 
     </div>
@@ -282,11 +282,11 @@ illustrative purposes:</p>
 </table>
 <p>The information value is then calculated using the following
 formula:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>V</mi><mo>=</mo><mo>∑</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub><mo>−</mo><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>N</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>*</mo><mi>l</mi><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>N</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">IV=∑(ProportionPositive_i-ProportionNegative_i)*ln(\frac{ProportionPositive_i}{ProportionNegative_i})</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>V</mi><mo>=</mo><mo>∑</mo><mo stretchy="false" form="prefix">(</mo><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub><mo>−</mo><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>N</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>*</mo><mi>l</mi><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mfrac><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>N</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow></mfrac><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">IV=∑(ProportionPositive_i-ProportionNegative_i)*ln(\frac{ProportionPositive_i}{ProportionNegative_i})</annotation></semantics></math></p>
 <p>A component in calculating IV is the <strong>Weight of Evidence
 (WoE)</strong>, which is the logarithmic part within the formula
 above:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mi>O</mi><mi>f</mi><mi>E</mi><mi>v</mi><mi>i</mi><mi>d</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo>=</mo><mi>l</mi><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>N</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">WeightOfEvidence=ln(\frac{ProportionPositive_i}{ProportionNegative_i})</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mi>O</mi><mi>f</mi><mi>E</mi><mi>v</mi><mi>i</mi><mi>d</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo>=</mo><mi>l</mi><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mfrac><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>N</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><msub><mi>e</mi><mi>i</mi></msub></mrow></mfrac><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">WeightOfEvidence=ln(\frac{ProportionPositive_i}{ProportionNegative_i})</annotation></semantics></math></p>
 <p>WOE describes the relationship between a <em>predictor variable</em>
 and a <em>binary target variable</em> for each bin, while IV measures
 the strength of that total relationship across all the bins.</p>
@@ -790,7 +790,7 @@ please visit <a href="https://github.com/microsoft/wpa/issues" class="external-l
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>

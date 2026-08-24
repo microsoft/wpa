@@ -145,7 +145,7 @@ average of a specified advanced insights metric."><meta property="og:image" cont
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create combination pairs of HR variables and run 'create_rank()'</h1>
-    <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/v1.10.1/R/create_rank.R" class="external-link"><code>R/create_rank.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/microsoft/wpa/blob/main/R/create_rank.R" class="external-link"><code>R/create_rank.R</code></a></small>
     <div class="hidden name"><code>create_rank_combine.Rd</code></div>
     </div>
 
@@ -205,20 +205,20 @@ specified as <code>"combine"</code>.</p>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">sq_data_small</span>,</span></span>
 <span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Email_hours"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 130 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 132 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar    group                                              Email_hours     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Sales [LevelDesignation] Manager           15.3    14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Marketing [LevelDesignation] Manag…        15.1    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Sales [LevelDesignation] Support           13.8     9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Marketing [LevelDesignation] Senio…        13.6     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC         12.5     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Operations [LevelDesignation] Seni…        12.4     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] G_and_A [LevelDesignation] Senior …        11.2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Operations [LevelDesignation] Supp…        10.9    31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] Suppo…        10.8    20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Engineering [LevelDesignation] Man…        10.5     7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 120 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [FunctionType] Marketing [LevelDesignation] Direc…        15.4     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [FunctionType] Sales [LevelDesignation] Manager           14.6    12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [FunctionType] Marketing [LevelDesignation] Manag…        14.4    22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [FunctionType] Sales [LevelDesignation] Junior IC         13.9     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [FunctionType] Sales [LevelDesignation] Support           13.5    10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [FunctionType] Marketing [LevelDesignation] Senio…        13.1    11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Operations [LevelDesignation] Seni…        12.4     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] G_and_A [LevelDesignation] Senior …        11.6     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] Marketing [LevelDesignation] Suppo…        10.5    21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Operations [LevelDesignation] Supp…        10.3    34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 122 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -234,7 +234,7 @@ specified as <code>"combine"</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>
