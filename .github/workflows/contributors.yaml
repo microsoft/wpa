@@ -9,7 +9,7 @@ jobs:
   contributors:
     runs-on: ubuntu-latest
     steps:
-      - uses: bubkoo/contributors-list@b9e91f91a51a55460fdcae64daad0cb8122cdd53 # v1.1.0
+      - uses: bubkoo/contributors-list@7422dfe4e4e265fd00b097a40cfc8403bf6b345b # v1.2.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           round: true
