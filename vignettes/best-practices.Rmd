@@ -1,7 +1,7 @@
 ---
 title: "Best Practices: working with Workplace Analytics in R"
 author: "Martin Chan"
-date: "2020-09-23"
+date: "First written on 2020-09-23, last updated on `r format(Sys.time(), '%Y-%m-%d')`"
 categories: ["R"]
 tags: ["best practices"]
 ---
@@ -14,13 +14,13 @@ This post details the top best practices for working with Workplace Analytics da
 
 ## 1. Use `import_wpa()`
 
-We always recommend using `import_wpa()` for reading in CSV queries as it is optimised for the **wpa** package, applying certain checks as well as variable classifications based on what is expected from the Workplace Analytics data. In effect, `import_wpa()` is a substitute for `read.csv()`, `readr::read_csv()`, or `data.table::fread()`, whichever is your usual go-to CSV reader.
+We recommend using `import_wpa()` for reading in CSV queries as it is optimised for the **wpa** package, applying certain checks as well as variable classifications based on what is expected from the Workplace Analytics data. In effect, `import_wpa()` is a substitute for `read.csv()`, `readr::read_csv()`, or `data.table::fread()`, whichever is your usual go-to CSV reader.
 
 ## 2. Validate your data!
 
 Data validation is important - and with the R package, this is as simple as running `validation_report()` on the existing data.
 
-You would simply run it on the data frame containing the query:
+You would simply run it on the data frame that contains the query:
 
 ```
 library(wpa)
@@ -29,9 +29,9 @@ dv_data %>% validation_report()
 
 ## 3. Give informative names to your queries
 
-This is up to individual preferences, but here is a case for giving informative and slightly more elaborative names to queries. First, it will make it easy for you or your fellow analysts to have an idea of what is in the CSV file prior to reading in the data. Moreover, clear and informative names can help analysts avoid errors at the mid-stage of the analysis, where it is likely that numerous queries have been run, and it is imaginably confusing if they all have generic names like _Collaboration Assessment1.csv_ or _Person Query v5a.csv_. 
+We recommend that you give informative and elaborative names to queries. Doing so makes it easy for you or your fellow analysts to know what is in the CSV file before reading in the data. Also, clear and informative names can help analysts avoid errors during analysis, where it is likely that many queries have been run, and it is confusing if the queries have generic names like _Collaboration Assessment1.csv_ or _Person Query v5a.csv_. 
 
-We propose to get the name right from the start at the tenant, so that the name of the query on the tenant is consistent with the name of the query saved on your local machine. Here is an example of an informative query name:
+You should get the name right from the start at the tenant, so that the name of the query on the tenant is consistent with the name of the query saved on your local machine. Here is an example of an informative query name:
 
 `SPQ_May18toJune19_SalesOnly_MyInitials_20200923`
 
@@ -45,9 +45,9 @@ where:
 
 ## 4. Keep your R files short and use `source()`
 
-Although there isn't an universal guide on what the maximum _length_ of an individual R file should be, there is a good case for keeping an R file within 400 lines of code. The main reason is because it keeps the code easy to navigate, and you won't have to do a lot of scrolling or advanced search to find out where you wrote a specific chunk of code. 
+Try to keep R files under 400 lines of code. The main reason is because it keeps the code easy to navigate, and you won't have to do a lot of scrolling or advanced search to find out where you wrote a specific chunk of code. 
 
-To help keep your R files short, it is recommended that you use `source()`, which tells R to run another R script on your machine. For instance, you could use `source("myscripts/data_cleaning.R")` to run a script called `data_cleaning.R` which contains some upfront code that loads and prepares your data for analysis. You can also achieve the same with functions.
+To help keep your R files short, use `source()`, which tells R to run another R script on your machine. For instance, you could use `source("myscripts/data_cleaning.R")` to run a script called `data_cleaning.R` which contains upfront code that loads and prepares your data for analysis. You can also achieve the same with functions.
 
 
 ## 5. Use person-level averages
