@@ -7,6 +7,8 @@ on:
       - main
 jobs:
   contributors:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: bubkoo/contributors-list@7422dfe4e4e265fd00b097a40cfc8403bf6b345b # v1.2.1
